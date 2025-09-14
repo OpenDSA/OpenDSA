@@ -4,10 +4,7 @@ public class KVPair implements Comparable {
   Comparable theKey;
   Object theVal;
 
-  KVPair(Comparable k, Object v) {
-    theKey = k;
-    theVal = v;
-  }
+  KVPair(Comparable k, Object v) { theKey = k; theVal = v; }
 
   public int compareTo(Object it) throws ClassCastException {
     if (it instanceof KVPair) // Compare two KVPair objects
@@ -18,13 +15,8 @@ public class KVPair implements Comparable {
       throw new ClassCastException("Something comparable is expected.");
   }
 
-  public Comparable key() {
-    return theKey;
-  }
-
-  public Object value() {
-    return theVal;
-  }
+  public Comparable key() { return theKey; }
+  public Object value()   { return theVal; }
 
   public String toString() {
     String s = "(";

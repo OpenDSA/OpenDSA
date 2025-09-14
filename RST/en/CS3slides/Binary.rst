@@ -336,12 +336,10 @@ Comparison (2)
   NOT a property of the record.
 
 
-KVpair
-------
+KVpair: A Truly General Solution
+--------------------------------
 
 .. revealjs-slide::
-
-* This is a truly general way to solve the problem.
 
 .. codeinclude:: Utils/KVPair
    :tag: KVPair

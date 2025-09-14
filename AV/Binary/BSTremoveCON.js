@@ -21,8 +21,8 @@ $(document).ready(function () {
   var pseudo = av.code(code[0]);
   var temp1;
 
-  var bstTop = 410;
-  var bt = av.ds.binarytree({visible: true, nodegap: 15, top: bstTop, left: 275});
+  var bstTop = 40;
+  var bt = av.ds.binarytree({visible: true, nodegap: 15, top: bstTop, left: 20});
   bt.root(37);
   var rt = bt.root();
   rt.left(24);

@@ -4,10 +4,7 @@ public class KVPair<K extends Comparable<K>, E> implements Comparable<KVPair<K, 
   K theKey;
   E theVal;
 
-  KVPair(K k, E v) {
-    theKey = k;
-    theVal = v;
-  }
+  KVPair(K k, E v) { theKey = k; theVal = v; }
 
   // Compare KVPairs
   public int compareTo(KVPair<K,E> it) {
@@ -19,14 +16,8 @@ public class KVPair<K extends Comparable<K>, E> implements Comparable<KVPair<K, 
     return theKey.compareTo(it);
   }
 
-  public K key() {
-    return theKey;
-  }
-
-  public E value() {
-    return theVal;
-  }
-
+  public K key() { return theKey; }
+  public E value() { return theVal; }
 
   public String toString() {
     String s = "(";
