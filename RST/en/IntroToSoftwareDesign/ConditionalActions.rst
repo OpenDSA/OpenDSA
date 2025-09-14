@@ -478,31 +478,6 @@ Syntax Practice 3d: Compound Conditions
    :workout_id: 1376
 
 
-Your Opinions on Learning and Engagement
-----------------------------------------
-
-Please complete the survey at the link provided below. The survey results
-will be used to improve this course, and your input is critical because we
-want to create the best experience possible for students. Because it will
-take you about 10 to 15 minutes to complete, you will receive credit for
-completing it.
- 
-Near the end of the survey you will be asked if you consent for this
-information to be used in a study about perceptions of student learning
-and engagement, which is optional. There is no additional work on your
-part if you provide consent for your responses to be used in the study.
- 
-.. raw:: html
-
-    <a href="https://virginiatech.questionpro.com/t/AUHNlZ5Dux" target="_blank">CS 1114 Engagement Survey 1</a>
- 
-Please answer below and your participation in the survey will be verified
-for credit.
-
-.. avembed:: Exercises/IntroToSoftwareDesign/MUSICSurvey.html ka
-   :long_name: Survey Completed
-
-
 Repeating Actions
 -----------------
 
