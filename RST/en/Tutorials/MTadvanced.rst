@@ -420,8 +420,9 @@ have to do is insert anything in an expansion case.
 So a test that inserts something that would correctly hash into the
 existing half of the hash table (index 0-3) passes on both
 implementations.
-This satisfies mutation testing, misses actually exercising the bug.
-The example is a little strained, in that this requires that the
+This satisfies mutation testing,
+bug misses actually exercising the bug.
+The example is a little strained in that this requires that the
 testing be minimal by only hashing to the small indices in the table.
 Better tests would catch the error.
 Nonetheless, this is a case where Mutation Testing did not warn the
