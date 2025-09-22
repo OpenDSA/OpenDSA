@@ -60,6 +60,37 @@ Project 1 Issues
     appropriate back pointer value (null).
 
 
+Example: P1 Optimization
+------------------------
+
+.. revealjs-slide::
+
+::
+
+   // Return true iff there is a matching index
+   Boolean findIndex(listNode start, int index) {
+     while (start != null) {
+       if (start.index == index)
+         return true;
+       if (start.index > index) // Quit early
+         return false;
+       start = start.next;
+     }
+     return false; // Not there
+   }
+
+* Can you cover this? No.
+  
+  * If ``start.index > index`` is replaced with ``false``, the method
+    still correctly returns ``false``.
+
+* Is it really an optimization? Not as much as you might hope.
+
+  * Save (on average) half the work at the cost of a test.
+  * The test costs a dereference and a comparison.
+  * The work is 2 dereferences, 2 comparisons and an assignment.
+  
+
 Example: BST Range Query
 ------------------------
 
@@ -106,9 +137,8 @@ Example: BigNum Exponents
 * Example input: ``exponentiate(8, 2)``
 * Consider: ``else if (exponent == 1)``.
 
-  * If MT sets this to TRUE, this fails. OK
-  * If MT sets this to FALSE, then it gets picked up later by the odd
-    condition.
+  * If MT sets this to TRUE, this fails. OK. But if MT sets this to
+    FALSE, then it gets picked up later by the odd condition.
   * One solution: Simply remove the whole branch for ``exponent == 1``
 
 
