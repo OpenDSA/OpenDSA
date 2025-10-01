@@ -87,8 +87,12 @@
       "CS3slides/P2F25": {},
       "CS3slides/OverConstrained": {},
       "CS3slides/DesignPatt": {},
-      "CS3slides/MTAdvanced": {},
-      "CS3slides/Heaps": {}
+      "CS3slides/MTAdvanced": {}
+    },
+    "Week 6": {
+      "CS3slides/Heaps": {},
+      "CS3slides/Huffman": {},
+      "CS3slides/Trie": {}
     }
   }
 }
