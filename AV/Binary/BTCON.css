@@ -22,10 +22,6 @@
   top: 40px;
 }
 
-#inorderCON .jsavoutput.jsavline {
-  height: 15px;
-}
-
 #postorderCON {
   height: 500px;
 }
@@ -61,7 +57,7 @@
 }
 
 #compositeTraversalCON .jsavcode {
-  margin-top:  0px;
+  margin-top: 0px;
   margin-left: 300px;
 }
 
@@ -77,3 +73,16 @@
   line-height: 22px;
   z-index: 100; /* Prevents the tails of the edges from showing up in the background of the node */
 }
+
+/* Optional: semantic emphasis for BT nodes/edges can also reference odsaStyle.css */
+.emphasized-node {
+  background-color: white;
+  color: red;
+  border-color: red;
+}
+
+.emphasized-edge {
+  stroke: red;
+  stroke-width: 3;
+}
+
