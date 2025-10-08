@@ -200,9 +200,10 @@ record in node :math:`N`.
        temp2 = findmin(rt.right(), descrim, (level+1)%D);
        if (temp2 != null) key2 = temp2.key();
        if ((temp1 == null) || ((temp2 != null) &&
-                      (key1[descrim] > key2[descrim])))
-       temp1 = temp2;
-       key1 = key2;
+                      (key1[descrim] > key2[descrim]))) {
+         temp1 = temp2;
+         key1 = key2;
+       }
      } // Now, temp1 has the smaller value
      int[] rtkey = rt.key();
      if ((temp1 == null) || (key1[descrim] > rtkey[descrim]))
