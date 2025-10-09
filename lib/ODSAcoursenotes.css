@@ -1,31 +1,13 @@
-/* override reveal's defaults */
-.reveal {
-  --r-main-font-size: 24px;
-  --r-heading1-size: 2.5em;
-  --r-heading2-size: 1.6em;
-  --r-heading3-size: 1.3em;
-  --r-heading4-size: 1em;
-}
-
-.reveal .slides {
-  font-size: 24px;
-}
-
-/* prevent reveal default fonts from affecting jsav */
-.reveal .jsavcontainer,
-.reveal .divdgm,
-.reveal .ssAV {
-  font-size: initial;
-}
-
-/* jsav fixes */
 .jsavcontainer {
-  letter-spacing: 0;
+  letter-spacing: 0px;
   text-shadow: none;
 }
 
-.reveal .jsavcontainer {
-  text-align: left;
+/* fix for sphinx-reveal.js slides */
+.reveal .divdgm {
+  position: relative;
+  margin: 40px 0;
+  min-height: 300px;
 }
 
 .reveal .jsavlabel {
@@ -33,82 +15,21 @@
   letter-spacing: normal !important;
 }
 
-.reveal .jsavoutput {
-  text-align: left !important;
-}
-
-.reveal .jsavcode {
-  font-family: monospace !important;
-  margin: 0 auto !important;
-  display: table !important;
+ul li::before {
+  content: none;
+  width: 0px;
+  margin-left: 0px;
 }
 
 .jsavcanvas {
   overflow-x: visible;
 }
 
-.reveal .jsavcanvas svg {
-  overflow: visible !important;
+.hide {
+  display: none;
 }
 
-.divdgm text,
-.divdgm .jsavlabel {
-  font-family: 'Times New Roman', Times, serif !important;
-}
-
-.highlight, .highlight-guess,
-.ui-widget {
-  font-size: 15px;
-}
-
+/* Layout-specific or AV structure styling left in this file */
 .MathJax, .MathJax_Display {
-  font-size: 100% !important;
-}
-
-/* remove list markers */
-ul li::before {
-  content: none;
-  width: 0;
-  margin-left: 0;
-}
-
-/* hide notes  */
-.reveal .note,
-.reveal .admonition.note {
-  display: none !important;
-}
-
-/* Table of contents */
-.reveal .toctree-wrapper {
-  font-size: 18px !important;
-}
-
-.reveal .toctree-wrapper ul {
-  list-style: none !important;
-  padding-left: 20px !important;
-}
-
-.reveal .toctree-l2,
-.reveal .toctree-l3,
-.reveal .toctree-l4 {
-  display: none !important;
-}
-
-.reveal .toctree-l1 {
-  display: block !important;
-  margin-bottom: 10px !important;
-}
-
-.reveal .toctree-wrapper a {
-  color: #2a76dd !important;
-  text-decoration: none !important;
-}
-
-.reveal .toctree-wrapper a:hover {
-  text-decoration: underline !important;
-}
-
-/* hide index & search links */
-.reveal .toctree-wrapper + div + ul {
-  display: none !important;
+  font-size: 40%;
 }

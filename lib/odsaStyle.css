@@ -1,55 +1,116 @@
+/* ================= Global Font and Colors ================= */
+
+body,
+input,
+select {
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+}
+
+.headerTable {
+  border-bottom: 1px solid #B6C0B2;
+}
+
+.instructions {
+  border: 1px solid #B6C0B2;
+}
+
+#container {
+  border: 1px solid #B6C0B2;
+  background-color: #F5F5EA;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.admonition-todo {
+  background-color: #FFC0CB;
+}
+
+.jsavcontainer {
+  background-color: #F5F5EA;
+}
+
+.registration-popup {
+  background: #333;
+  color: #999;
+  font-size: 1em;
+  width: 260px;
+}
+
+#login-submit-button,
+#register-button,
+#register-submit-button {
+  background-color: #888;
+  width: 214px;
+}
+
+.showHideLink {
+  background-color: #f00;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  color: #fff;
+  margin-bottom: 15px;
+  padding: 3px 5px;
+}
+
+.cm_error_msg,
+.cm_saving_msg,
+.shb_msg {
+  color: red;
+}
+
+.mod_complete {
+  color: lime;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+tt {
+  background-color: #eed;
+}
+
+/* ================= JSAV Content Styling ================= */
+
 .jsavcanvas {
   font-family: Helvetica, Arial;
+  background-color: inherit;
 }
 
-/* Mark that an item (such as an array cell) is currently being processed
-   by the algorithm. This color is a medium blue. */
 .processing {
-  background-color: #ddf !important;
+  background-color: #ddf;
 }
 
-/* For array cells and the like that are unused */
 .unused {
   background-color: #ddd;
 }
 
-/* For marking a node (array cell, etc) as "special". This is a light red. */
 .special {
-  background-color: #FFB6C1 !important;
+  background-color: #FFB6C1;
 }
 
-/* For de-emphasizing the label/value of a node (array cell, etc). Light grey. */
 .deemph .jsavvalue {
   color: #ccc;
 }
 
-.invisnode {
-  /* Make a tree node invisible in a slideshow */
+.invisnode,
+.clearnode {
   background-color: #eed;
   color: #eed;
   border-color: #eed;
   box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.0);
 }
 
-
-/* Make a node's edge thick */
 .thicknode {
   border-width: 2px;
 }
 
-/* Make a slideshow tree node invisible (except for label) */
-.clearnode {
-  background-color: #eed;
-  border-color: #eed;
-  box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.0);
-}
-
-/* Make font bigger, used typically with click handler setting up swap */
 .enlarge .jsavvalue {
   font-size: 120%;
 }
 
-/* Makes (just) the text of a node or array cell to be green */
 .greentext .jsavvalue {
   color: #0b0;
   font-weight: bold;
@@ -59,42 +120,84 @@
   background-color: #f00 !important;
 }
 
-.jsavcontainer {
-  background-color: #F5F5EA;
-  margin: 0 auto;
-  border: 0;
-  width: 850px;
-  position: relative;
-}
-
-.ssAV {
-  font-size: 15px;
-}
-
-.jsavcontrols {
-  margin-top: -35px;
-  margin-left: 35px;
-  text-align: center;
-}
-
 .jsavcontrols span {
-  display: inline-block;
-  color: #777;
   font-family: 'Times New Roman';
   font-size: 20px;
   font-weight: bolder;
-  line-height: 45px;
-  width: 45px;
-  height: 45px;
-  margin: 15px 40px;
+  color: #777;
   background-color: #fff;
   border: 1px solid #777;
-  -o-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
-  cursor: pointer;
+}
+
+.jsavnode {
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.5);
+}
+
+.jsavhighlight,
+.jsavarray.jsavbararray .jsavindex.jsavhighlight .jsavvalue,
+.jsavvariable.jsavhighlight .jsavvalue {
+  background-color: yellow !important;
+  color: black !important;
+}
+
+.jsavnode.sorted {
+  background-color: #ffffcc;
+}
+
+.jsavvalue {
+  background-color: transparent;
+}
+
+.jsavindexlabel {
+  color: black;
+}
+
+.jsavbararray .jsavnode {
+  box-shadow: none;
+}
+
+.jsavbararray .jsavvalue {
+  background-color: inherit;
+  box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.5);
+}
+
+.jsavbararray .jsavvaluebar {
+  background-color: #fff;
+}
+
+.jsavbararray .jsavindexlabel {
+  font-size: 90%;
+}
+
+.jsavmark {
+  background-color: #FF6464;
+}
+
+.jsavmarkline {
+  background-color: rgba(255, 100, 100, 0.6);
+}
+
+.jsavline {
+  background-color: inherit;
+}
+
+.jsavscroll {
+  background-color: white;
+  border: 1px solid black;
+}
+
+.jsavoutput .jsavtitle {
+  font-size: 300%;
+  text-align: center;
+}
+
+.jsavindex.jsavarrow:before {
+  background-color: transparent;
+  border: 6px solid transparent;
+  border-top: 6px solid black;
 }
 
 .jsavbegin,
@@ -102,81 +205,189 @@
   letter-spacing: -2px;
 }
 
-.jsavnode.sorted {
-  background-color: #ffffcc !important;
+.jsavdialog {
+  border: 1px solid #aaa;
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
 }
 
-.jsavautoresize .jsavnode {
-  min-width: 30px;
-  min-height: 30px;
+.jsavdialog h2 {
+  background-color: #eee;
+  color: black;
+  font-family: Helvetica, Arial;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
-.jsavhorizontalarray .jsavnode {
-  line-height: 30px !important;
-  min-width: 30px !important;
-  max-width: 30px !important;
-  min-height: 30px !important;
-  max-height: 30px !important;
+.jsavsettings {
+  font-family: Helvetica, Arial;
 }
 
-.jsavverticalarray .jsavnode {
-  line-height: 30px !important;
-  min-width: 30px !important;
-  max-width: 30px !important;
-  min-height: 30px !important;
-  max-height: 30px !important;
+.jsavsettings-dialog:after {
+  border: 8px solid transparent;
+  border-left-color: #eee;
 }
 
-.jsavnode.jsavtreenode {
-  min-width: 30px;
-  max-width: 30px;
-  min-height: 30px;
-  max-height: 30px;
+.jsavsettings-dialog.arrow-bottom-left:after,
+.jsavsettings-dialog.arrow-bottom-right:after {
+  border-left-color: #fff;
 }
 
-.jsavhorizontallist.jsavautoresize .jsavnode {
-  min-width: 30px;
-  max-width: 30px;
-  min-height: 30px;
-  max-height: 30px;
-  line-height: 30px;
-  padding-right: 12px;
+.jsavsettings .jsavhelp {
+  font-size: 80%;
 }
 
-.jsavnode .jsavhorizontalarray .jsavvalue {
-  /* Center array cell values vertically */
-  height: 30px;
+.jsavsettings .jsavversion {
+  font-size: smaller;
 }
 
-.jsavnode .jsavverticalarray .jsavvalue {
-  /* Center array cell values vertically */
-  height: 30px;
+a.jsavsettings {
+  background-color: #aaa;
+  text-indent: 120%;
+  border: 1px solid #777;
 }
 
-.jsavnode .jsavvalue {
-  /* Center tree node values vertically */
-  height: 30px;
+a.jsavsettings:hover {
+  background-color: #888;
 }
 
-.jsavlist .jsavvalue {
-  /* Center linked list cell values vertically */
-  height: 30px;
+.jsavmodal {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
-.jsavarray .jsavvalue {
-  /* Center array cell values vertically */
-  height: 30px;
+a.jsavdialogclose {
+  border: 1px solid #777;
+  color: #777;
+  font-family: monospace;
+  font-size: 30px;
+  font-weight: normal;
+  text-decoration: none;
+  text-align: center;
 }
+
+a.jsavdialogclose:hover {
+  background-color: #ccc;
+}
+
+.jsavmodelanswer.jsavcontainer {
+  background-color: white;
+}
+
+/* ================= CSS from site.css ================= */
+
+#content {
+  background-color: white;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 2px 1px 5px #333, -2px 1px 5px #333;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+#maintext {
+  position: relative;
+}
+
+#firsttitle {
+  color: red;
+  position: absolute;
+  top: -85px;
+}
+
+h1 {
+  background-color: white;
+  border-bottom: 1px solid black;
+  color: #336299;
+  font-family: Arial, sans-serif;
+  font-size: 36px;
+  margin: -8px -8px 0 -8px;
+  padding: 8px 8px 2px 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+h2, h3, h4, h5, h6 {
+  background-color: white;
+  color: #336299;
+}
+
+html, body {
+  background-color: #F5F5E;
+  color: #000;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0 1.5%;
+  max-width: 1540px;
+  padding: 0;
+}
+
+tt {
+  font-size:13pt;
+}
+
+p, ul, ol {
+  color: black;
+  text-align: justify;
+}
+
+/* ================= JSAV Exercise Controls ================= */
+
+.jsavexercisecontrols input[type="button"] {
+  background: linear-gradient(#fff, #ccc);
+  border: 1px solid #777;
+  cursor: pointer;
+}
+
+.jsavexercisecontrols input[type="button"]:hover {
+  background: linear-gradient(#fff, #bbb);
+}
+
+/* ================= JSAV Graph/Tree/List Styling ================= */
+
+.jsavtree,
+.jsavgraph,
+.jsavlist {
+  background-color: inherit;
+}
+
+.jsavnullnode {
+  border-color: #eee;
+  opacity: 0;
+}
+
+.jsavnulledge {
+  stroke: transparent;
+  opacity: 0;
+}
+
+.jsavedgelabel {
+  background-color: inherit;
+}
+
+.jsavpointerarea {
+  background-color: #eee;
+}
+
+.jsavhorizontallist .jsavpointerarea {
+  border-left: 1px solid black;
+}
+
+.jsavverticallist .jsavpointerarea {
+  border-top: 1px solid black;
+}
+
+.jsavhorizontallist .jsavnonext .jsavpointerarea:after {
+  background-color: #000;
+}
+
+/* ================= JSAV Code Lines ================= */
 
 .jsavcodeline {
+  background-color: #FAFAFA;
   margin-bottom: 1px;
   font-size: 14px;
   line-height: 16px;
-}
-
-/* Put a white border around the code block. Do it this way to
-   keep from putting border around the line numbers. */
-.jsavcodeline {
   border-left: 1px solid #fff;
   border-right: 1px solid #fff;
 }
@@ -192,7 +403,7 @@
 }
 
 .jsavcodeline.jsavhighlight {
-  background-color: #ccc !important;
+  background-color: #ccc;
 }
 
 .jsavcodeline:hover {
@@ -203,32 +414,156 @@
   padding: 1px 10px;
 }
 
-.jsavbararray .jsavindex {
-  background-color: #eee;
+/* ================= Accessibility ================= */
+
+.accessible-focus {
+  outline: 2px solid #f00;
 }
 
-.jsavbararray.jsavindexed {
-  margin-bottom: 0;
+.accessible-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
 }
 
-.jsavstack {
-  position: relative;
-  background-color: inherit;
+/* ================= Slide Styling ================= */
+
+.odsaslide {
+  background-color: #fff;
+  border: 1px solid #aaa;
+  margin: 20px 0;
+  padding: 20px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }
 
-.jsavstack .jsavstacknode {
-  font-size: 120%;
-  position: absolute;
-  border-radius: 5px;
-  width: 30px;
+/* ================= Pairing / JSAV Pair ================= */
+
+.jsav-pair {
+  border: 2px solid black;
+  font-size: 1.1em;
+  font-family: monospace;
+  box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.5);
+  text-align: center;
+}
+
+.jsav-pair.jsav-pair-highlight {
+  background-color: green;
+}
+
+.jsav-pair-key.jsav-pair-key-highlight {
+  background-color: cornflowerblue;
+}
+
+.jsav-pair-values {
+  border-left: 2px solid black;
+}
+
+.jsav-pair-values.jsav-pair-values-highlight {
+  background-color: yellow;
+}
+
+.jsav-pair:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ================= ID Container ================= */
+
+.idContainer {
+  color: black;
+  border: 2px solid black;
+  text-align: center;
+}
+
+/* ================= JSAV Sound Buttons ================= */
+
+.jsavsound {
+  background-color: #aaa;
+  text-indent: 120%;
+  border: 1px solid #777;
+}
+
+.jsavsound.sound:hover,
+.jsavsound.soundOff:hover {
+  background-color: #888;
+}
+
+/* ================= Form Text ================= */
+
+.ssAV {
+  font-size: 15px;
+}
+
+form.signin p,
+form.signin span {
+  font-size: 12px;
+}
+
+/* ================= Show/Hide Links ================= */
+
+.showHideLink:hover {
+  box-shadow: 0 24px 0 0 rgba(0, 0, 0, 0.2) inset;
+}
+
+.resubmit_link {
+  text-decoration: underline;
+}
+
+/* ================= Node Sizing ================= */
+
+.jsavautoresize .jsavnode,
+.jsavhorizontalarray .jsavnode,
+.jsavverticalarray .jsavnode,
+.jsavnode.jsavtreenode,
+.jsavhorizontallist.jsavautoresize .jsavnode {
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  line-height: 30px;
+}
+
+.jsavhorizontallist.jsavautoresize .jsavnode {
+  padding-right: 12px;
+}
+
+/* ================= Text Alignment ================= */
+
+.jsavnode .jsavhorizontalarray .jsavvalue,
+.jsavnode .jsavverticalarray .jsavvalue,
+.jsavnode .jsavvalue,
+.jsavlist .jsavvalue,
+.jsavarray .jsavvalue {
   height: 30px;
-  z-index: 100;
 }
+
+.jsavnode {
+  text-align: center;
+}
+
+.jsavverticalarray .jsavindexlabel {
+  text-align: right;
+}
+
+.jsavoutput .jsavtitle {
+  text-align: center;
+}
+
+.jsavcontrols {
+  text-align: center;
+}
+
+.jsav-pair {
+  text-align: center;
+}
+
+/* ================= JSAV Red/Black Tree Nodes ================= */
 
 .jsavtreenode.emptynode {
-  border: 1px dashed #777 !important;
-  background-color: #fff !important;
-  color: #777 !important;
+  border: 1px dashed #777;
+  background-color: #fff;
+  color: #777;
   cursor: pointer;
 }
 
@@ -277,26 +612,123 @@
   stroke-width: 1.5px;
 }
 
+/* ================= jQuery UI Overrides ================= */
 
-/* jquery-ui customization */
 .ui-state-active a,
 .ui-state-hover a,
 .ui-state-visited a,
-.ui-state-focus a {
-  border: none;
-  outline: none;
-}
-
+.ui-state-focus a,
+.ui-state-active,
 .ui-state-focus {
   border: none;
   outline: none;
 }
 
-.ui-state-active {
-  border: none;
-  outline: none;
+/* ================= JSAV Stack Nodes ================= */
+
+.jsavstack {
+  position: relative;
+  background-color: inherit;
 }
 
-.redbg {
-  background-color: #FFB6C1 !important;
+.jsavstack .jsavstacknode {
+  font-size: 120%;
+  position: absolute;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  z-index: 100;
 }
+
+/* ================= JSAV Matrices ================= */
+
+.jsavmatrix .jsavarray li.jsavnode {
+  font-size: 14px;
+}
+
+.jsavmatrix .jsavarray:first-child li {
+  border-top: 1px solid black;
+}
+
+.jsavmatrix.jsavmatrixmatrix {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+/* ================= JSAV Swap Highlighting ================= */
+
+.jsavswap,
+.jsavswap .jsavvalue {
+  background-color: pink !important;
+  color: red !important;
+}
+
+/* ================= JSAV Scroll and Output ================= */
+
+.jsavscroll {
+  background-color: white;
+  border: 1px solid black;
+}
+
+.jsavoutput .jsavtitle {
+  font-size: 300%;
+  text-align: center;
+}
+
+/* ================= Misc JSAV Elements ================= */
+
+.jsavline {
+  background-color: inherit;
+}
+
+.jsavmark {
+  background-color: #FF6464;
+}
+
+.jsavmarkline {
+  background-color: rgba(255, 100, 100, 0.6);
+}
+
+/* ================= JSAV Null Pointers ================= */
+
+.jsavnullpointer .jsavpointerarea:after {
+  background-color: red;
+}
+
+/* ================= JSAV Matrix Bars ================= */
+
+.jsavbararray .jsavnode {
+  box-shadow: none;
+}
+
+.jsavbararray .jsavvalue {
+  background-color: inherit;
+  box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.5);
+}
+
+.jsavbararray .jsavvaluebar {
+  background-color: #fff;
+}
+
+.jsavbararray .jsavindexlabel {
+  font-size: 90%;
+}
+
+/* ================= JSAV Pointer Area ================= */
+
+.jsavpointer .jsavpointerarea {
+  border: 1px solid black;
+}
+
+/* ================= JSAV Model Answer ================= */
+
+.jsavmodelanswer.jsavcontainer {
+  background-color: white;
+}
+
+/* ================= JSAV Tree Edges ================= */
+
+.jsavgraph .jsavedge {
+  stroke-width: 1.5px;
+}
+
