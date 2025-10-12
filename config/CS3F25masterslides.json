@@ -92,12 +92,15 @@
     "Week 6": {
       "CS3slides/Heaps": {}
     },
-    "Week 7-8": {
+    "Week 7": {
       "CS3slides/Sorting1": {},
       "CS3slides/Sorting2": {}
     },
-    "Week 8-9": {
-      "CS3slides/FileProc": {},
+    "Week 8": {
+      "CS3slides/Sorting3": {},
+      "CS3slides/FileProc": {}
+    },
+    "Week 9": {
       "CS3slides/Huffman": {},
       "CS3slides/Trie": {}
     },
