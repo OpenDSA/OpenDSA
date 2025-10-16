@@ -20,7 +20,7 @@ Project 3: Disk-based Radix Sort
   * See OpenDSA 8.14.2.
 
 * The records consiste of two 32-bit fields, each storing integer
-  values between 1 and 2,000,000.
+  values between 1 and 2,000,000,000.
 
   * The first field is the key value (what you sort on) and the
     second is data.
@@ -42,7 +42,7 @@ Sorting the File
   * You need to handle files that are much larger than 900,000 bytes
     in size.
 
-    * Files are guaranteed to be multiples of 2048 bytes.
+    * Files are guaranteed to be multiples of 4096 bytes.
       
 * You read data from the file into the working memory, and out again
     to the file as you need to.
