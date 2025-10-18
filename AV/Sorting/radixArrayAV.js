@@ -36,7 +36,7 @@ $(document).ready(function() {
   function runIt() {
     var dSize = $("#digitsize").val(),
         i;
-    var arrValues = ODSA.AV.processArrayValues(Math.pow(10, dSize));
+    var arrValues = ODSA.AV.processArrayValues(Math.pow(10, dSize) - 1);
 
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
@@ -96,25 +96,20 @@ $(document).ready(function() {
       }
       av.umsg(interpret("av_c6"));
       av.step();
-      arrC.highlight(0);
-      av.umsg(interpret("av_c7"));
-      arrC.value(0, arrC.value(0) - 1);
-      av.step();
-      for (i = 1; i < 10; i++) {
-        av.umsg(arrC.value(i - 1) + " + " + arrC.value(i) +
-                interpret("av_c8") + (arrC.value(i - 1) + arrC.value(i)) +
-                interpret("av_c9") + i);
+      var total = ASize;
+      for (i = arrC.size() - 1; i >= 0; i--) {
         arrC.highlight(i);
+        av.umsg("Count[" + i + "] = " + total + " - " + arrC.value(i))
         av.step();
-        arrC.value(i, arrC.value(i) + arrC.value(i - 1));
+        total -= arrC.value(i);
+        arrC.value(i, total);
         av.step();
-        arrC.unhighlight(i - 1);
+        arrC.unhighlight(i);
       }
-      arrC.unhighlight(9);
 
       av.umsg(interpret("av_c10"));
       av.step();
-      for (i = ASize - 1; i >= 0; i--) {
+      for (i = 0; i < ASize; i++) {
         answer = Math.floor((arr.value(i) / shift) % 10);
         av.umsg(arr.value(i) + interpret("av_c3") + answer +
                 interpret("av_c11") + answer + interpret("av_c12") +
@@ -124,10 +119,10 @@ $(document).ready(function() {
         arr.highlight(i);
         arrO.value(arrC.value(answer), arr.value(i));
         av.step();
-        arrC.value(answer, arrC.value(answer) - 1);
+        arrC.value(answer, arrC.value(answer) + 1);
         av.umsg(interpret("av_c14") + answer);
         av.step();
-        arrO.unhighlight([arrC.value(answer) + 1]);
+        arrO.unhighlight([arrC.value(answer) - 1]);
         arrC.unhighlight([answer]);
         arr.unhighlight([i]);
       }

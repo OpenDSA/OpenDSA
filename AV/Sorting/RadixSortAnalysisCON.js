@@ -24,10 +24,11 @@ $(document).ready(function() {
   var count, out;
   var arr_values = [];
   var i;
+  var size = 12;
 
   // Slide 1
   av.umsg(interpret("Slide 1"));
-  for (i = 0; i < 12; i++) {
+  for (i = 0; i < size; i++) {
     arr_values[i] = parseInt(Math.random() * 100 + 1, 10);
   }
   arr = av.ds.array(arr_values, {left: 10, top: 10, indexed: true});
@@ -68,7 +69,7 @@ $(document).ready(function() {
   av.umsg(interpret("Slide 4"));
   pseudo.unhighlight("loop2");
   pseudo.highlight("loop3");
-  for (i = 0; i < 12; i++) {
+  for (i = 0; i < arr.size(); i++) {
     count.value(arr.value(i) % 10, count.value(arr.value(i) % 10) + 1);
   }
   arr.highlight();
@@ -80,9 +81,10 @@ $(document).ready(function() {
   count.highlight();
   pseudo.unhighlight("loop3");
   pseudo.highlight("loop4");
-  count.value(0, count.value(0) - 1);
-  for (i = 1; i < 10; i++) {
-    count.value(i, count.value(i) + count.value(i - 1));
+  var total = arr.size();
+  for (i = 9; i >= 0; i--) {
+    total -= count.value(i);
+    count.value(i, total);
   }
   av.step();
 
@@ -92,9 +94,9 @@ $(document).ready(function() {
   pseudo.unhighlight("loop4");
   pseudo.highlight("loop5");
   arr_values = [];
-  for (i = arr.size() - 1; i >= 0; i--) {
+  for (i = 0; i < arr.size(); i++) {
     arr_values[count.value(arr.value(i) % 10)] = arr.value(i);
-    count.value(arr.value(i) % 10, count.value(arr.value(i) % 10) - 1);
+    count.value(arr.value(i) % 10, count.value(arr.value(i) % 10) + 1);
   }
   out = av.ds.array(arr_values, {left: 10, top: 240, indexed: true});
   av.g.line(20, 240, 175, 240,
@@ -129,13 +131,14 @@ $(document).ready(function() {
     count.value(parseInt(arr.value(i) / 10, 10) % 10, count.value(parseInt(arr.value(i) / 10, 10) % 10) + 1);
     //console.log(count.value(arr.value(i) / 10 % 10));
   }
-  count.value(0, count.value(0) - 1);
-  for (i = 1; i < count.size(); i++) {
-    count.value(i, count.value(i) + count.value(i - 1));
+  var total = arr.size();
+  for (i = 9; i >= 0; i--) {
+    total -= count.value(i);
+    count.value(i, total);
   }
-  for (i = arr.size() - 1; i >= 0; i--) {
-    out.value(count.value(parseInt(arr.value(i) / 10, 10) % 10), arr.value(i));
-    count.value(parseInt(arr.value(i) / 10, 10) % 10, count.value(parseInt(arr.value(i) / 10, 10) % 10) - 1);
+  for (i = 0; i < arr.size(); i++) {
+    arr_values[count.value(arr.value(i) % 10)] = arr.value(i);
+    count.value(arr.value(i) % 10, count.value(arr.value(i) % 10) + 1);
   }
   for (i = 0; i < out.size(); i++) {
     arr.value(i, out.value(i));
