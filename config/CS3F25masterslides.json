@@ -102,6 +102,8 @@
       "CS3slides/FileProc": {}
     },
     "Week 9": {
+      "CS3slides/ExternalSorting": {},
+      "CS3slides/Recommender": {},
       "CS3slides/Huffman": {},
       "CS3slides/Trie": {}
     },
