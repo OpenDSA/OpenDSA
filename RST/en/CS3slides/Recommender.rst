@@ -43,25 +43,29 @@ How They Work
 
 .. revealjs-slide::
 
-* You already know the basics from Project 1.
+.. revealjs-fragments::
 
-  #. Collect information about your preferences.
+  * You already know the basics from Project 1.
 
-     * Explicitly (ask for ratings)
-     * Implicitly (watch your behavior -- where you go, how long you
-       look at things, what you "like" or otherwise comment on).
+  .. revealjs-fragments::
 
-  #. Compare that to other people for
-     similarities/opposites. (Collaborative Filtering)
+    #. Collect information about your preferences.
 
-     * Or possibly compare to yourself for things that get positive
-       vs. negative response.
+       * Explicitly (ask for ratings)
+       * Implicitly (watch your behavior -- where you go, how long you
+         look at things, what you "like" or otherwise comment on).
 
-  #. Give you "recommendations" based on the matches.
+    #. Compare that to other people for
+       similarities/opposites. (Collaborative Filtering)
 
-     * Broadly speaking... ads are "recommendations" too
+       * Or possibly compare to yourself for things that get positive
+         vs. negative response.
 
-* Of course, these are all far more sophisticated in real systems.
+    #. Give you "recommendations" based on the matches.
+
+       * Broadly speaking... ads are "recommendations" too
+
+  * Of course, these are all far more sophisticated in real systems.
   
 
 What Could Go Wrong?
@@ -80,20 +84,22 @@ What Could Go Wrong?
 
 .. revealjs-slide::
 
-* Pretty much by definition, a recommender system is trying to affect
-  your behavior.
+.. revealjs-fragments::
 
-* That can be good when its under your control. If you want a book or
-  a song, then it has to be good to have recommendations for things
-  that you would like, right?
+   * Pretty much by definition, a recommender system is trying to affect
+     your behavior.
 
-* Nearly always, the company has goals that benefit the company, with
-  little regard for whether they benefit you.
+   * That can be good when its under your control. If you want a book or
+     a song, then it has to be good to have recommendations for things
+     that you would like, right?
 
-  * Some companies are more ethical about that aspect than others.
+   * Nearly always, the company has goals that benefit the company, with
+     little regard for whether they benefit you.
+
+     * Some companies are more ethical about that aspect than others.
   
-* Possibly your goals and the goals of the company doing the
-  recommendation align... but that is more by happy coincidence.
+   * Possibly your goals and the goals of the company doing the
+     recommendation align... but that is more by happy coincidence.
 
 
 What Could Those Goals Be?
@@ -136,6 +142,8 @@ Social Media
 ------------
 
 * Lots of stuff gets posted to social media
+
+.. revealjs-fragments::
 
   * The companies complain that they can't track it all.
 
