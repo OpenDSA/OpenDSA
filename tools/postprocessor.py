@@ -490,7 +490,7 @@ if (typeof ODSA !== 'undefined' && ODSA.TP && ODSA.TP.courseOfferingId) {{
                 }});
                 
                 var completedInModule = moduleExerciseSections.filter(function(sectionId) {{
-                    return exerciseAttempts[sectionId].indexOf('attempt_flag') !== -1;
+                    return exerciseAttempts[sectionId].indexOf('complete_flag') !== -1;
                 }}).length;
                 
                 var totalInModule = {len(exercises)};
