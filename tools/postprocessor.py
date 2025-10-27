@@ -474,7 +474,7 @@ function toggleExerciseWidget(widgetId) {{
 }}
 
 if (typeof ODSA !== 'undefined' && ODSA.TP && ODSA.TP.courseOfferingId) {{
-    fetch('/course_offerings/' + ODSA.TP.courseOfferingId + '/exercise_list')
+    fetch('/course_offerings/' + ODSA.TP.courseOfferingId + '/exercise_list?check_proficiency=true')
         .then(function(response) {{ return response.json(); }})
         .then(function(data) {{
             var exerciseAttempts = data.odsa_exercise_attempts;
