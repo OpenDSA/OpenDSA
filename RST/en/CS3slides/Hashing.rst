@@ -228,6 +228,7 @@ Bucket Hashing (1)
    :links: AV/Hashing/buckethashCON.css
    :scripts: AV/Hashing/buckethashCON1.js
    :output: show
+   :keyword: Hashing; Bucket Hashing
 
 
 Bucket Hashing (2)
@@ -240,6 +241,7 @@ Bucket Hashing (2)
    :links: AV/Hashing/buckethashCON.css
    :scripts: AV/Hashing/buckethashCON2.js
    :output: show
+   :keyword: Hashing; Bucket Hashing
 
 
 Closed Hashing

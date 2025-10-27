@@ -106,6 +106,10 @@
       "CS3slides/Recommender": {},
       "CS3slides/Huffman": {},
       "CS3slides/Trie": {}
+    },
+    "Week 10": {
+      "CS3slides/Hashing": {},
+      "CS3slides/MemManage": {}
     }
   }
 }
