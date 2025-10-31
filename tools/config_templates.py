@@ -178,6 +178,10 @@ slides_lib = '%(slides_lib)s'
 # only import sphinx-revealjs when building course notes
 if slides_lib == 'revealjs' or on_slides:
   extensions.append('sphinx_revealjs')
+else:
+  # In non-slides mode, use stub directives to preserve revealjs content
+  sys.path.append(os.path.abspath(customsDir + 'revealjs_stub'))
+  extensions.append('revealjs_stub')
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
