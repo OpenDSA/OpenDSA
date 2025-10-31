@@ -614,6 +614,9 @@ if __name__ == "__main__":
     parser.add_argument("--verbose", help="Shows more output during building",action="store_true", default=False)
     args = parser.parse_args()
 
+    # Register revealjs stub directives for all builds (slides and notes)
+    register_revealjs_stubs()
+
     if args.slides:
         os.environ['SLIDES'] = 'yes'
     else:
