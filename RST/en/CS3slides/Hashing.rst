@@ -213,9 +213,14 @@ Open Hashing
 
 .. revealjs-slide::
 
-.. inlineav:: openhashCON dgm
-   :links: AV/Hashing/openhashCON.css
-   :scripts: AV/Hashing/openhashCON.js
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Hashing/openhashCON.html" 
+           width="960" 
+           height="500"
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Bucket Hashing (1)
@@ -227,7 +232,7 @@ Bucket Hashing (1)
 
    <iframe src="../../../Metadata/inlineav/Hashing/buckethashCON1.html" 
            width="960" 
-           height="700" 
+           height="500" 
            frameborder="0"
            style="background: white; display: block; margin: 0 auto;">
    </iframe>
@@ -242,7 +247,7 @@ Bucket Hashing (2)
 
    <iframe src="../../../Metadata/inlineav/Hashing/buckethashCON2.html" 
            width="960" 
-           height="700" 
+           height="500" 
            frameborder="0"
            style="background: white; display: block; margin: 0 auto;">
    </iframe>
