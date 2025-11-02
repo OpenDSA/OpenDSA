@@ -110,6 +110,11 @@
     "Week 10": {
       "CS3slides/Hashing": {},
       "CS3slides/MemManage": {}
+    },
+    "Week 11": {
+      "CS3slides/SkipList": {},
+      "CS3slides/Indexing": {},
+      "CS3slides/P4F25": {}
     }
   }
 }
