@@ -424,10 +424,7 @@ def create_exercise_widget(module_data, mod_name):
                  for name, data in exercises_dict.items() 
                  if data.get('points', 0) > 0]
     
-    # Return None if no exercises with points found
-    if not exercises:
-        return None
-     
+    exercise_names = [exercise for exercise, points in exercises] 
     total_points = sum(points for _, points in exercises)
     
     widget_id = f"exercise-widget-{mod_name.replace(' ', '-')}"
@@ -461,24 +458,111 @@ def create_exercise_widget(module_data, mod_name):
 
 <script>
 function toggleExerciseWidget(widgetId) {{
-    const content = document.getElementById(widgetId + '-content');
-    const icon = document.getElementById(widgetId + '-icon');
-    const arrow = document.getElementById(widgetId + '-arrow');
+    var content = document.getElementById(widgetId + '-content');
+    var icon = document.getElementById(widgetId + '-icon');
+    var arrow = document.getElementById(widgetId + '-arrow');
     
     if (content.style.display === 'none') {{
-        // Show content
         content.style.display = 'block';
         icon.innerHTML = '✕';  
         arrow.style.transform = 'rotate(180deg)';  
     }} else {{
-        // Hide content
         content.style.display = 'none';
         icon.innerHTML = '☰';  
         arrow.style.transform = 'rotate(0deg)';   
     }}
 }}
+
+if (typeof ODSA !== 'undefined' && ODSA.TP && ODSA.TP.courseOfferingId) {{
+    fetch('/course_offerings/' + ODSA.TP.courseOfferingId + '/exercise_list?check_proficiency=true')
+        .then(function(response) {{ return response.json(); }})
+        .then(function(data) {{
+            var exerciseAttempts = data.odsa_exercise_attempts;
+            var urlParams = new URLSearchParams(window.location.search);
+            var moduleTitle = decodeURIComponent(urlParams.get('custom_module_title') || '');
+            var moduleNumber = moduleTitle.match(/^(\d+\.\d+)/);
+            
+            if (moduleNumber) {{
+                moduleNumber = moduleNumber[1];
+                var moduleExerciseSections = Object.keys(exerciseAttempts).filter(function(sectionId) {{
+                    var exerciseTitle = exerciseAttempts[sectionId][0];
+                    return exerciseTitle.indexOf(moduleNumber) === 0;
+                }});
+                
+                var completedInModule = moduleExerciseSections.filter(function(sectionId) {{
+                    return exerciseAttempts[sectionId].indexOf('complete_flag') !== -1;
+                }}).length;
+                
+                var totalInModule = {len(exercises)};
+                
+                // Update widget with regular exercises first
+                var progressText = '(' + completedInModule + '/' + totalInModule + ' complete)';
+                var widgetHeader = document.querySelector('#{widget_id}-header span:nth-child(3)');
+                if (widgetHeader) {{
+                    widgetHeader.textContent = progressText;
+                }}
+                
+                // Check for CodeWorkout exercises
+                var codeWorkoutExercises = document.querySelectorAll('[data-frame-src*="launch_extrtool"]');
+                
+                if (codeWorkoutExercises.length > 0) {{
+                    var codeWorkoutTotal = codeWorkoutExercises.length;
+                    var codeWorkoutCompleted = 0;
+                    var codeWorkoutChecked = 0;
+                    
+                    codeWorkoutExercises.forEach(function(element) {{
+                        var frameSrc = element.getAttribute('data-frame-src');
+                        var match = frameSrc.match(/launch_extrtool\/(\d+)/);
+                        if (match) {{
+                            var exerciseId = match[1];
+                            fetch('/course_offerings/' + ODSA.TP.courseOfferingId + '/codeworkout_progress?inst_book_section_exercise_id=' + exerciseId)
+                                .then(function(response) {{ return response.json(); }})
+                                .then(function(cwData) {{
+                                    if (cwData.proficient_date || (cwData.highest_score && cwData.highest_score > 0)) {{
+                                        codeWorkoutCompleted++;
+                                    }}
+                                    codeWorkoutChecked++;
+                                    
+                                    if (codeWorkoutChecked === codeWorkoutTotal) {{
+                                        var finalCompleted = completedInModule + codeWorkoutCompleted;
+                                        var finalTotal = totalInModule + codeWorkoutTotal;
+                                        progressText = '(' + finalCompleted + '/' + finalTotal + ' complete)';
+                                        if (widgetHeader) {{
+                                            widgetHeader.textContent = progressText;
+                                        }}
+                                    }}
+                                }})
+                                .catch(function(error) {{
+                                    codeWorkoutChecked++;
+                                    if (codeWorkoutChecked === codeWorkoutTotal) {{
+                                        var finalCompleted = completedInModule + codeWorkoutCompleted;
+                                        var finalTotal = totalInModule + codeWorkoutTotal;
+                                        progressText = '(' + finalCompleted + '/' + finalTotal + ' complete)';
+                                        if (widgetHeader) {{
+                                            widgetHeader.textContent = progressText;
+                                        }}
+                                    }}
+                                }});
+                        }}
+                    }});
+                }}
+            }}
+        }})
+        .catch(function(error) {{
+            var progressText = '({len(exercises)} exercises, {total_points:.1f} points)';
+            var widgetHeader = document.querySelector('#{widget_id}-header span:nth-child(3)');
+            if (widgetHeader) {{
+                widgetHeader.textContent = progressText;
+            }}
+        }});
+}} else {{
+    var progressText = '({len(exercises)} exercises, {total_points:.1f} points)';
+    var widgetHeader = document.querySelector('#{widget_id}-header span:nth-child(3)');
+    if (widgetHeader) {{
+        widgetHeader.textContent = progressText;
+    }}
+}}
 </script>'''
-    
     # Convert HTML string to BeautifulSoup object
     return BeautifulSoup(widget_html, 'html.parser')
   
