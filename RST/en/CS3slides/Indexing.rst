@@ -71,7 +71,7 @@ Linear Indexing (2)
 .. revealjs-slide::
 
 * If the index is too large to fit in main memory, a second-level index
-     might be used.
+  might be used.
 
 .. inlineav:: linindexCON ss
    :long_name: Two-level linear index Slideshow
