@@ -14,7 +14,7 @@ from core.utils import *
 from core.workflow_manager import run_offline, run_online
 
 if __name__ == '__main__':
-    print("Calling inhabitants of interplanetary craft")
+    # print("Calling inhabitants of interplanetary craft")
     parser = ArgumentParser()
     expandHelp = "Generates an expanded configuration with extra details"
     # parser.add_argument("problem_attempt", help="input problem attempt JSON string", type=str)

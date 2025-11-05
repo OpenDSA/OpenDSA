@@ -106,6 +106,12 @@ def run_online(args):
         so no need to check anything else here.
     """
     if config_file["mode"] == "analyze":
-        run_workflow_analyze(config_file)
+        run_workflow_analyze(
+            {
+                "master_solution_path": config_file['master_solution_path'],
+                "attempt": config_file['attempt'],
+                "diagnose": args.diagnose,
+                "attempt_filename": Path("./").stem
+            })
     
     return
