@@ -7,6 +7,24 @@ requirejs(["./mathjs.js"], function(){});
     "use strict";
     //var definitions
     var av; //The JSAV Object
+    var feedbackEndpointURL; // Stores the URL to get feedback from TAFE
+
+    // For dev server : "https://deforms.localhost.devcom.vt.edu/deforms/api/deformsfeedback/",
+    // For staging : "https://opendsax.cs.vt.edu/deforms/api/deformsfeedback/"
+    // For production : "https://opendsa-server.cs.vt.edu/deforms/api/deformsfeedback/",
+    if(window.location.host === "deforms.localhost.devcom.vt.edu") 
+    {
+        feedbackEndpointURL = "https://deforms.localhost.devcom.vt.edu/deforms/api/deformsfeedback/";
+    }
+    else if(window.location.host === "opendsax.cs.vt.edu")
+    {
+        feedbackEndpointURL = "https://opendsax.cs.vt.edu/deforms/api/deformsfeedback/"
+    }
+    else if(window.location.host === "opendsa-server.cs.vt.edu")
+    {
+        feedbackEndpointURL = "https://opendsa-server.cs.vt.edu/deforms/api/deformsfeedback/";
+    }
+
     var eqbank;
     var wkspacelist;
 
@@ -339,9 +357,10 @@ requirejs(["./mathjs.js"], function(){});
                     {
                         var settings = {
                             //"url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
-                            "url": "https://deforms.localhost.devcom.vt.edu/deforms/api/deformsfeedback/",
+                            // "url": "https://deforms.localhost.devcom.vt.edu/deforms/api/deformsfeedback/",
                             // "url": "https://opendsa-server.cs.vt.edu/deforms/api/deformsfeedback/",
                             //"url": "https://opendsax.cs.vt.edu/deforms/api/deformsfeedback/",
+                            "url": feedbackEndpointURL,
                             "method": "POST",
                             // "async": false,
                             "timeout": 0,
@@ -702,9 +721,10 @@ requirejs(["./mathjs.js"], function(){});
             }
             var settings = {
                 //"url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
-                "url": "https://deforms.localhost.devcom.vt.edu/deforms/api/deformsfeedback/",
+                // "url": "https://deforms.localhost.devcom.vt.edu/deforms/api/deformsfeedback/",
                 // "url": "https://opendsa-server.cs.vt.edu/deforms/api/deformsfeedback/",
                 //"url": "https://opendsax.cs.vt.edu/deforms/api/deformsfeedback/",
+                "url": feedbackEndpointURL,
                 "async": false,
                 "method": "POST",
                 "timeout": 0,
@@ -767,9 +787,10 @@ requirejs(["./mathjs.js"], function(){});
                     })
                     var settings = {
                         //"url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
-                        "url": "https://deforms.localhost.devcom.vt.edu/deforms/api/deformsfeedback/",
+                        // "url": "https://deforms.localhost.devcom.vt.edu/deforms/api/deformsfeedback/",
                         // "url": "https://opendsa-server.cs.vt.edu/deforms/api/deformsfeedback/",
                         //"url": "https://opendsax.cs.vt.edu/deforms/api/deformsfeedback/",
+                        "url": feedbackEndpointURL,
                         "method": "POST",
                         "timeout": 0,
                         "headers": {
