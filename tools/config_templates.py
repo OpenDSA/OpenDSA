@@ -504,9 +504,6 @@ todo_include_todos = True
 
 #---- OpenDSA variables ---------------------------------------
 
-# @efouh: despise the fact that we are using an url hash, gradebook still needs book name
-book_name = '%(book_name)s'
-
 # Boolean to control whether book will compile in local mode, which means no communication with the server
 local_mode = %(local_mode)s
 
@@ -542,8 +539,6 @@ config_js_template = '''\
 "use strict";
 (function () {
   var settings = {};
-  //@efouh: added this variable back because it is needed by gradebook.html
-  settings.BOOK_NAME = "%(book_name)s";
   settings.BOOK_LANG = "%(lang)s";
   settings.REQ_FULL_SS = %(req_full_ss)s;
   settings.BUILD_TO_ODSA = "OpenDSA/";
