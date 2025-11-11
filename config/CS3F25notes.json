@@ -113,8 +113,13 @@
     },
     "Week 11": {
       "CS3slides/SkipList": {},
-      "CS3slides/Indexing": {},
-      "CS3slides/P4F25": {}
+      "CS3slides/LinearIndex": {},
+      "CS3slides/Mid2": {},
+      "CS3slides/P4F25": {},
+      "CS3slides/TreeIndex": {}
+    },
+    "Week 12": {
+      "CS3slides/BTrees": {}
     }
   }
 }
