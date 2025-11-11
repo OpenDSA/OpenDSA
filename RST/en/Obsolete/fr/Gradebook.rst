@@ -8,7 +8,7 @@
    :topic: Gradebook
 
 .. odsalink:: lib/gradebook-min.css
-.. odsascript:: lib/gradebook-min.js
+.. odsascript:: lib/gradebook.js
 
 .. index:: ! Gradebook
 

@@ -527,11 +527,11 @@ NOTES
     within the ODSA directory.
     Example, if ``odsa_path`` is defined to be ``..\..\..``, then
 
-    ``.. odsascript:: lib/JSAV-min.js``
+    ``.. odsascript:: lib/JSAV.js``
 
     will produce
 
-    ``<script type="text/javascript" src="../../../lib/JSAV-min.js"></script>``
+    ``<script type="text/javascript" src="../../../lib/JSAV.js"></script>``
 
     in the HTML output file.
 
