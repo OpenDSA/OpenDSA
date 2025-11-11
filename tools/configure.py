@@ -276,10 +276,6 @@ def generate_index_rst(config, slides=False, standalone_modules=False):
         index_rst.write(".. toctree::\n")
         index_rst.write("   :maxdepth: 3\n\n")
 
-        # Process the Registerbook as well
-        # if not slides:
-        #     process_module(config, mod_path='RegisterBook', index_rst=index_rst)
-
         # If a ToDo file will be generated, append it to index.rst
         if len(todo_list) > 0:
             index_rst.write("   ToDo\n")
