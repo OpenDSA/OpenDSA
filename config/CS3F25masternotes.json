@@ -113,17 +113,20 @@
     },
     "Week 11": {
       "CS3slides/SkipList": {},
-      "CS3slides/Indexing": {},
-      "CS3slides/P4F25": {}
+      "CS3slides/LinearIndex": {},
+      "CS3slides/Mid2": {},
+      "CS3slides/P4F25": {},
+      "CS3slides/TreeIndex": {}
     },
     "Week 12": {
-      "CS3slides/Graphs": {}
+      "CS3slides/BTrees": {}
     },
     "Week 13": {
-      "CS3slides/General": {},
-      "CS3slides/Union-Find": {}
+      "CS3slides/Graphs": {}
     },
     "Week 14": {
+      "CS3slides/General": {},
+      "CS3slides/Union-Find": {}
     }
   }
 }
