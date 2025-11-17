@@ -428,13 +428,13 @@ def initialize_conf_py_options(config, slides):
 
     if config.include_tree_view:
         if options['html_js_files'] != "":
-            options['html_js_files'] = options['html_js_files'] + ", '" + options['eb2root']+"lib/accessibility.js" + "'"
+            options['html_js_files'] = options['html_js_files'] + ", '" + options['eb2root']+"lib/codeinclude_accessibility.js" + "'"
         else:
-            options['html_js_files'] = ",'" + options['eb2root'] + "lib/accessibility.js" + "'"
+            options['html_js_files'] = ",'" + options['eb2root'] + "lib/codeinclude_accessibility.js" + "'"
         if options['html_css_files'] != "":
-            options['html_css_files'] = options['html_css_files'] + ", '" + options['eb2root']+"lib/accessibility.css" + "'"
+            options['html_css_files'] = options['html_css_files'] + ", '" + options['eb2root']+"lib/codeinclude_accessibility.css" + "'"
         else:
-            options['html_css_files'] = ",'" + options['eb2root']+"lib/accessibility.css" + "'"
+            options['html_css_files'] = ",'" + options['eb2root']+"lib/codeinclude_accessibility.css" + "'"
 
     # Sets the value to be used to indicate book sections.
     options['chapnum'] = config.chapter_name
