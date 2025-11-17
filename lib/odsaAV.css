@@ -65,15 +65,11 @@ form {
 }
 
 .jsavcontainer {
-
-  /*background-color: #efe;*/
   background-color: transparent;
   border: 0 none;
 }
 
 .jsavexercisecontrols {
-
-  /*margin-top: 10px;*/
   margin-top: 20px;
   text-align: center;
 }
@@ -125,15 +121,18 @@ form {
 }
 
 /* Style for the div containing the entire AV or exercise */
+/* Ideally we would move this out of here since it is setting the
+ * background color, and put it in odsaStyle.
+ * But we can't do that unless we also deal with the background for
+ * KA exercises in some other way.
+*/
 #container {
-
-  /*border: 1px solid black;
-  background-color: #efe;*/
   border: 1px solid #B6C0B2;
   background-color: #F5F5EA;  
   padding: 5px;
   overflow: hidden;
 }
+
 
 /* Style for the form holding AV inputs */
 #ssperform {
