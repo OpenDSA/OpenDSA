@@ -43,7 +43,7 @@ children.
 
 .. .. inlineav:: compositeTraversalCON ss
       :long_name: Composite Expression Tree Traversal Slideshow
-..    :links: AV/Binary/BTCON.css
+      :links: AV/Binary/BTCON.css
       :scripts: AV/Binary/compositeTraversalCON.js
       :output: show
       :keyword: Binary Trees; Design Patterns; Composite Design

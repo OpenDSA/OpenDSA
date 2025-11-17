@@ -20,7 +20,7 @@ $(document).ready(function() {
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
   var pseudo = av.code(code[0]);
-  var labelTop = 260;
+  var labelTop = 285;
 
   var bt = av.ds.binarytree({visible: true, nodegap: 15});
   bt.root("-");
