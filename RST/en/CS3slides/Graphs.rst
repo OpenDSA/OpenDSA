@@ -233,9 +233,14 @@ Depth-First Topological Sort (2)
 
 .. revealjs-slide::
 
-.. inlineav:: topSortCON dgm
-   :scripts: AV/Graph/topSortCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Graph/topSortCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Depth-First Topological Sort (3)
