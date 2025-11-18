@@ -25,8 +25,8 @@ $(document).ready(function() {
   var step;               //A counter of the nodes added so far
   var q;                  //Question
 
-  graph = jsav.ds.graph({width: 600, height: 300, layout: "manual", directed: false});
-  mst = jsav.ds.graph({width: 600, height: 300, layout: "manual", directed: true});
+  graph = jsav.ds.graph({width: 600, height: 280, layout: "manual", directed: false});
+  mst = jsav.ds.graph({width: 600, height: 280, layout: "manual", directed: true});
   initGraph();
   graph.layout();
   mst.hide(); //removes final graph....

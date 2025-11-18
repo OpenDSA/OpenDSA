@@ -35,11 +35,14 @@ General Tree Traversal
 
 .. revealjs-slide::
 
-.. inlineav:: GenTreePreTravCON ss
-   :long_name: General Tree Preorder Traversal Slideshow
-   :links: AV/General/GenTreeCON.css
-   :scripts: AV/General/GenTreePreTravCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/General/GenTreePreTravCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Representation: Lists of Children

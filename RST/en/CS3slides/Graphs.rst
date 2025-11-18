@@ -63,10 +63,14 @@ Directed Graph Representation
 
 .. revealjs-slide::
 
-.. inlineav:: GdirRepCON dgm 
-   :links: AV/Graph/GraphDefCON.css
-   :scripts: AV/Graph/GdirRepCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Graph/GdirRepCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Undirected Graph Representation
@@ -74,10 +78,14 @@ Undirected Graph Representation
 
 .. revealjs-slide::
 
-.. inlineav:: GundirRepCON dgm 
-   :links: AV/Graph/GraphDefCON.css
-   :scripts: AV/Graph/GundirRepCON.js
-   :output: show 
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Graph/GundirRepCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Representation Space Costs
@@ -235,11 +243,14 @@ Depth-First Topological Sort (3)
 
 .. revealjs-slide::
 
-.. inlineav:: topSortDFSCON ss
-   :long_name: TopSort Slideshow
-   :links: AV/Graph/topSortDFSCON.css
-   :scripts: AV/Graph/topSortDFSCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Graph/topSortDFSCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Queue-Based Topsort (1)
@@ -256,10 +267,14 @@ Queue-Based Topsort (2)
 
 .. revealjs-slide::
 
-.. inlineav:: topSortQCON ss
-   :links: AV/Graph/topSortQCON.css
-   :scripts: AV/Graph/topSortQCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Graph/topSortQCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Shortest Paths Problems
