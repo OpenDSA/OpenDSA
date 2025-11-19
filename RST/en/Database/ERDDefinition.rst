@@ -26,3 +26,4 @@ __________________
 5- After a relational database is completed, an ERD can still serve as a reference point, should any business process re-engineering be needed later.
 
 **V.I. Note:** In spite of considering ERD as a conceptual design model, ERDs can generally depicted in one or more of all other model types (logical, physical).
+

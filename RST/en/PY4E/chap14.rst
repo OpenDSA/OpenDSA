@@ -713,3 +713,4 @@ If you find a mistake in this book, feel free to send me a fix using
 .. |Ignoring Detail When Using an Object| image:: ./chap14_files/program-oo-code.svg
 .. |Ignoring Detail When Building an Object| image:: ./chap14_files/program-oo-bs4.svg
 .. |A Class and Two Objects| image:: ./chap14_files/cookie_cutter_flickr_Didriks.png
+

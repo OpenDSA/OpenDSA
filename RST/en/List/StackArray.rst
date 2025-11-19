@@ -114,3 +114,4 @@ Pop
 .. avembed:: Exercises/List/AstackPopPRO.html ka
    :long_name: Array-based Stack Pop Exercise
    :keyword: Array-based Stack Implementation
+

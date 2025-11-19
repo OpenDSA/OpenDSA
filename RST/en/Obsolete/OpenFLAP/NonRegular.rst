@@ -590,3 +590,4 @@ not regular. Contradiction.
         :math:`L_4 = L_3 \cap \{a^{*}b^{*}\} = \{a^nb^n | n > 0\}` is regular. 
       | We already proved that :math:`L_4` is not regular. Contradiction.
       | :math:`\Rightarrow L_1` is not regular.
+

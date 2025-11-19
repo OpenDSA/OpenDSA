@@ -383,3 +383,4 @@ modest speedup.
 .. avembed:: Exercises/Sorting/QuicksortSumm.html ka
    :long_name: Quicksort Summary Exercise
    :keyword: Sorting; Quicksort
+

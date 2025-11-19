@@ -143,3 +143,4 @@ Use this mock command line environment to solve the challenge. Use the visualiza
 
 .. avembed:: AV/CommandLineBased/exercises/git-challenge-3/git-challenge-3-exercise.html pe
 
+

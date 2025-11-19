@@ -28,3 +28,4 @@ you are in a series of repeating questions, then just reload the page.
 .. avembed:: Exercises/Hashing/HashChapterSumm.html ka
    :long_name: Hashing Chapter Summary Exercise
    :keyword: Hashing
+

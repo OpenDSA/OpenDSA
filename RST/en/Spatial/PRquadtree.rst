@@ -232,3 +232,4 @@ Use of the composite design would be difficult if NULL pointers are
 used to represent empty leaf nodes.
 It turns out that the PR quadtree insert and delete methods are easier
 to implement when using the composite design.
+

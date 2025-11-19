@@ -616,3 +616,4 @@ for :math:`{\cal H}_{n+1}`, the Harmonic Series.
 From Equation (10) of Module :ref:`summation <summation> <Summations>`,
 :math:`{\cal H}_{n+1} = \Theta(\log n)`,
 so the final solution is :math:`\Theta(n \log n)`.
+

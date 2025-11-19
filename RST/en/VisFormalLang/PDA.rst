@@ -322,3 +322,4 @@ NPDA :math:`M'` that accepts by empty stack such that :math:`L(M) = L(M')`.
      :math:`z'`, and the new transition can be followed to
      :math:`q_f`. QED 
 
+

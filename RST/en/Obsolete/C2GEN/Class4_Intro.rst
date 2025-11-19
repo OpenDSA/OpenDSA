@@ -19,3 +19,4 @@ The presentation can be found at
 Once you have played through the presentation (or at least reviewed
 the material on the following page), we encourage you to work through
 the assignment that follows.
+

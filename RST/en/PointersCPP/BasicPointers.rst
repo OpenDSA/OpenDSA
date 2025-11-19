@@ -518,3 +518,4 @@ that a variable may be used once it is declared. Unfortunately, pointers look li
 before use. It's unfortunate, in a way, that pointers happen look like other variables, since
 it makes it easy to forget that the rules for their use are very different. Oh well. Try to
 remember to assign your pointers to refer to pointees. Don't be surprised when you forget.
+

@@ -27,3 +27,4 @@ $(e.g.$ $ creating$ $conceptual$ $ERD$ $then$  $transforming$ $it$  $to$ $relati
 This chapter first defines what is relational database diagram (RDD), then discusses some basic definitions related to RDD (e.g. relation, relational schema, database 
 schema, domain and tuple), next it will illustrate relational integrity constraints and their types and finally demonstrates basic operations on relations and how to 
 execute these processes without violating constraints. 
+

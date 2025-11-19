@@ -46,3 +46,4 @@ hash table of size 15.
    specify a set of input keys, computes the hash function, then lets
    the user input keys to the table. A proper explanation for the
    process should be part of the visualization.
+

@@ -255,3 +255,4 @@ Summary Exercise
    :long_name: Lower Bounds and Theta Notation Exercise
    :keyword: Algorithm Analysis; Asymptotic Algorithm Analysis; Lower
            Bound; Big Theta; Big Omega
+

@@ -126,3 +126,4 @@ Now, let's start thinking about ways to speed this up.
 
 .. avembed:: Exercises/SeniorAlgAnal/Polynomial_multiplication.html ka
    :keyword: Algorithm Analysis; Transforms
+

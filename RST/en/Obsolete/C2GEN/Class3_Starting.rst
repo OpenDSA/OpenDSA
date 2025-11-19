@@ -32,3 +32,4 @@ OpenDSA: Getting Started
    book instance.
 
    * From the OpenDSA top level, type: ``make C2GEN``
+

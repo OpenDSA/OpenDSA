@@ -327,3 +327,4 @@ Blockchain Tutorial Glossary
       with no central authority to manage it, then losing the password
       or key to the ledger makes any resources owned by the account
       permanently inaccessible.
+

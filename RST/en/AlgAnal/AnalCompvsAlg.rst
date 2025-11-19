@@ -187,3 +187,4 @@ problem size that can run in a certain time on the new computer.
 .. avembed:: Exercises/AlgAnal/FasterCorASumm.html ka
    :long_name: Faster Computer or Faster Algorithm Exercise
    :keyword: Algorithm Analysis; Growth Rate
+

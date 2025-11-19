@@ -534,3 +534,4 @@ Kruskal’s MST Algorithm (3)
   * Can stop processing edges once all vertices are in the same MST
 
 * Total cost: :math:`\Theta(|V| + |E| log |E|)`.
+

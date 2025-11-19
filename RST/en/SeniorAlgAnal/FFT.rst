@@ -251,3 +251,4 @@ Thus, the full process for multiplying polynomials
 
 #. Perform the inverse Fourier transform to get the :math:`2n-1`
    degree polynomial :math:`AB`.
+

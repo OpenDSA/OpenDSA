@@ -55,3 +55,4 @@ Here is an implementation for the Dictionary interface, using a BST to
 store the records.
 
 .. codeinclude:: Binary/BSTDict
+

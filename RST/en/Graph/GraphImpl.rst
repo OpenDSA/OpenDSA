@@ -140,3 +140,4 @@ the one that holds vertex :math:`v` if that exists.
 
    Add a battery of questions to test knowledge of the
    implementations.
+

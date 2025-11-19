@@ -295,3 +295,4 @@ Here are some review questions to check that you understand Shellsort.
 If you want to know more about Shellsort, you can find a lot of
 details about its analysis along with ideas on how to pick a good
 increment series in [KnuthV3]_.
+

@@ -160,3 +160,4 @@ Again, when you provide your answer, remember to include the full denoted value.
 
 .. avembed:: Exercises/PL/LetNestedWithClosures.html ka
    :long_name: Nested Lets with Closures
+

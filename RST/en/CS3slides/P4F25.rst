@@ -97,3 +97,4 @@ Bintree 3
 * Since a box can appear in multiple nodes, collisions and
   intersections are only reported as associated with the origin point
   of the intersection box.
+

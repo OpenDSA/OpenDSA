@@ -15,3 +15,4 @@ Today's discussion topic:
 
 * How might you or your students become involved in the OpenDSA
   project?
+

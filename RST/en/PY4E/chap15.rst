@@ -1325,3 +1325,4 @@ If you find a mistake in this book, feel free to send me a fix using
 .. |Rows in a Table| image:: ./chap15_files/tracks.svg
 .. |Relationships Between Tables| image:: ./chap15_files/twitter.svg
 .. |Connecting Tables Using JOIN| image:: ./chap15_files/join.svg
+

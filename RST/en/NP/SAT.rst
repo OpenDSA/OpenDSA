@@ -25,3 +25,4 @@ Formula Satisfiability
    :scripts: AV/NP/SATCON.js
    :output: show
    :keyword: NP-completeness; Satisfiability
+

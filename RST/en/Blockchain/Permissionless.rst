@@ -417,3 +417,4 @@ Lastly, everyone involved is chosen by themselves!
 The power given to affect the blockchain is decentralized by requiring
 everyone to run a cryptographically fair lottery.
 Tokens deemed as winners by the lottery represent a committee member.
+

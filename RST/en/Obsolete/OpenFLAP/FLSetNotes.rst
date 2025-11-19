@@ -167,3 +167,4 @@ Proof of Example
    subset in :math:`T` with :math:`a` added,
    or :math:`2 *` number of subsets in :math:`T = 2*2^n = 2^{n+1}`.
 
+

@@ -311,3 +311,4 @@ Here are some review questions.
 .. avembed:: Exercises/Hashing/HashFuncSumm.html ka
    :long_name: Hash Function Summary Exercise
    :keyword: Hashing; Hash Functions
+

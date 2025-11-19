@@ -160,3 +160,4 @@ This requires the ability to guess accurately
 what information will be needed later and store it in primary memory
 now.
 This is referred to as :term:`caching`.
+

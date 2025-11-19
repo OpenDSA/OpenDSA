@@ -15,3 +15,4 @@ Today's discussion topics:
 
 * What visualizations might be useful for you?
 * Where do you want to go from here?
+

@@ -341,3 +341,4 @@ covers many aspects of the equivalence class problem.
 .. avembed:: AV/General/UnionFindPRO.html pe
    :long_name: Union/Find Proficiency Exercise
    :keyword: Union/Find Algorithm; Disjoint Sets; Equivalence Classes
+

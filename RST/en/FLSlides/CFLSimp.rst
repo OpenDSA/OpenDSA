@@ -441,3 +441,4 @@ Simplifying CFGs and Normal Forms
    |    Don't memorize the processes for eliminating them, but
         understand how they work in principle.
    |    Know what the GNF and CNF forms are.
+

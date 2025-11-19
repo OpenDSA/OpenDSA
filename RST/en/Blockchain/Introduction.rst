@@ -218,3 +218,4 @@ In the rest of this tutorial, we will cover:
 * The idea of a smart contract.
 
 * Some other applications for Blockchain.
+

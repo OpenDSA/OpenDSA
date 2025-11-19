@@ -109,3 +109,4 @@ In the rest of this chapter, we first study techniques for dynamic
 memory management.
 We then tackle the issue of what to do when no single block
 of memory in the memory pool is large enough to honor a given request.
+

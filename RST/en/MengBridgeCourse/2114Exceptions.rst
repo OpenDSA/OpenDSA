@@ -452,3 +452,4 @@ Checkpoint 2
 
 .. avembed:: Exercises/MengBridgeCourse/ExceptionsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
+

@@ -227,3 +227,4 @@ The final problem in this section deals with the syntax and semantics of the ``f
 .. avembed:: Exercises/PL/FPisEq.html ka
    :long_name: Using isEq test
 
+

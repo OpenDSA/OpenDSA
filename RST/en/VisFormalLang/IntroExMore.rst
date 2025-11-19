@@ -59,3 +59,4 @@ Exercise 7
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAno3a.html pe
    :long_name: No string with 3 consecutive a's
+

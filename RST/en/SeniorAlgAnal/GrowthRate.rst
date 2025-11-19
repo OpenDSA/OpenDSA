@@ -214,3 +214,4 @@ Order Notation gives practical indications.
 We use asymptotics because they provide a simple **model** that
 **usually** mirrors reality.
 This is **useful** to simplify our thinking.
+

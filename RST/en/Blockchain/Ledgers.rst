@@ -114,3 +114,4 @@ collectively accept the update.
 
 .. avembed:: AV/Blockchain/distributedLedger.html pe
    :long_name: Distributed Ledger Diagram
+

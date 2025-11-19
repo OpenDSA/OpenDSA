@@ -549,3 +549,4 @@ If you find a mistake in this book, feel free to send me a fix using
 .. |A Page Ranking| image:: ./chap16_files/pagerank.png
 .. |A Word Cloud from the Sakai Developer List| image:: ./chap16_files/wordcloud.png
 .. |Sakai Mail Activity by Organization| image:: ./chap16_files/mailorg.png
+

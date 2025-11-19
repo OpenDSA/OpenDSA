@@ -67,3 +67,4 @@ The next exercises will ask you to implement variations of merge sort.
     needed to merge the two halves together after they have been sorted. Plain old mergesort just needs the last one.The key to adaptive sort is in the way it splits the data.
     Instead of crudely splitting the dataset in half at the mid-point, adaptive sort treats every other datum as belonging to the same half-set; such that every even-indexed
     item in the original dataset ends up in one half-set, and all the odd-indexed items go in the other half-set. This is called a modulo-2 split.
+

@@ -172,3 +172,4 @@ The various proofs will link the problems together as shown here:
 
    We will use this sequence of reductions for in our collection of
    NP-Completeness Proofs.
+
