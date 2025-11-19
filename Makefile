@@ -98,8 +98,6 @@ TODOlintlib:
 	-@$(JS_LINT) lib/odsaUtils.js
 	-@$(JS_LINT) lib/odsaAV.js
 	-@$(JS_LINT) lib/odsaMOD.js
-	-@$(JS_LINT) lib/gradebook.js
-	-@$(JS_LINT) lib/registerbook.js
 	-@$(JS_LINT) lib/conceptMap.js
 
 jsonlint: ## Runs JSON linter on files in config/ and AV/
@@ -116,11 +114,11 @@ pyLint: ## Runs python linter on files in tools/ and ODSAextensions/
 rst2json: ## Runs the rst2json.py utility
 	$(PYTHON) tools/rst2json.py
 
-JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD gradebook registerbook JSAV timeme
+JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD JSAV timeme
 JS_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname).js)
 JS_MIN_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname)-min.js)
 
-CSS_FNAMES = site odsaMOD odsaStyle odsaAV odsaKA gradebook
+CSS_FNAMES = site odsaMOD odsaStyle odsaAV odsaKA
 CSS_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname).css)
 CSS_MIN_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname)-min.css)
 
