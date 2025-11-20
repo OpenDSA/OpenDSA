@@ -14563,6 +14563,7 @@ stacks and cards: i.e. the stack of mini cards, the big exercise card, etc.
 .current-card {
 	position: relative;
 	margin-bottom: 20px;
+    padding-right: 20px;
 }
 
 .current-card #answer_area_wrap {
