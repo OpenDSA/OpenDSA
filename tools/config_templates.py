@@ -262,8 +262,8 @@ if slides_lib == 'revealjs' or on_slides:
         '../%(eb2root)slib/normalize.css',
         '../%(eb2root)slib/jquery.ui.min.css',
         '../%(eb2root)slib/JSAV.css',
-        '../%(eb2root)slib/odsaMOD-min.css',
-        '../%(eb2root)slib/odsaStyle-min.css',
+        '../%(eb2root)slib/odsaMOD.css',
+        '../%(eb2root)slib/odsaStyle.css',
         '../%(eb2root)slib/chalkboard.css',
     ]
     revealjs_script_files = [
@@ -441,10 +441,10 @@ html_context = {"script_files": [
                 "css_files": [
                   '%(eb2root)slib/normalize.css',
                   '%(eb2root)slib/JSAV.css',
-                  '%(eb2root)slib/odsaMOD-min.css',
+                  '%(eb2root)slib/odsaMOD.css',
                   '%(eb2root)slib/jquery.ui.min.css',
                   #'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css',
-                  '%(eb2root)slib/odsaStyle-min.css'
+                  '%(eb2root)slib/odsaStyle.css'
                    %(html_css_files)s                  
                 ],
                 "odsa_root_path": "%(eb2root)s",
