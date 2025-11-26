@@ -32,17 +32,6 @@ framework.
 **Note**: AVs should not include ``odsaMOD.js`` and
 modules should not include ``odsaAV.js``.
 
-Be aware that modules and AVs actually load the minimized version of
-these files (such as ``odsaAV-min.js``).
-So if you edit one of the library files, be sure to run::
-
-   make min
-
-from the OpenDSA toplevel before you check to see the effect.  Note that 
-the minify process can be a *fake* minify (only copying the files) depending
-on the Makefile variables.  See the beginning lines of ``OpenDSA/Makefile`` to 
-update this to your preference.
-
 In order to allow AVs to be reused outside of OpenDSA (without including
 OpenDSA infrastructure), ``odsaAV.js`` checks for all dependencies provided
 by ``odsaUtils.js`` and provides default values or function stubs to

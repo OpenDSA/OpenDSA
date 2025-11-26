@@ -108,11 +108,9 @@ rst2json: ## Runs the rst2json.py utility
 
 JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD JSAV timeme
 JS_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname).js)
-JS_MIN_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname)-min.js)
 
 CSS_FNAMES = site odsaMOD odsaStyle odsaAV odsaKA
 CSS_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname).css)
-CSS_MIN_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname)-min.css)
 
 CONFIGS := $(wildcard config/*.json)
 ALL_BOOKS := $(patsubst config/%.json,%,$(CONFIGS))
