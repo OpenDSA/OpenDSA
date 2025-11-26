@@ -115,8 +115,8 @@ CSS_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname).css)
 CSS_MIN_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname)-min.css)
 
 # one file has a special minify process:
-# lib/odsaAV-min.css: lib/normalize.css lib/odsaAV.css
-#	@$(CSS_MINIFY) lib/normalize.css lib/odsaAV.css > lib/odsaAV-min.css
+# lib/odsaAV.css: lib/normalize.css lib/odsaAV.css
+#	@$(CSS_MINIFY) lib/normalize.css lib/odsaAV.css > lib/odsaAV.css
 
 CONFIGS := $(wildcard config/*.json)
 ALL_BOOKS := $(patsubst config/%.json,%,$(CONFIGS))

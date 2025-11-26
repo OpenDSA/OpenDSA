@@ -119,8 +119,8 @@ def generate_html(av_name, title, links, scripts, is_dgm, output_path):
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="{relative_prefix}lib/normalize.css" type="text/css" />
   <link rel="stylesheet" href="{relative_prefix}lib/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="{relative_prefix}lib/odsaMOD-min.css" type="text/css" />
-  <link rel="stylesheet" href="{relative_prefix}lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="{relative_prefix}lib/odsaMOD.css" type="text/css" />
+  <link rel="stylesheet" href="{relative_prefix}lib/odsaStyle.css" type="text/css" />
   <link rel="stylesheet" href="{relative_prefix}lib/jquery.ui.min.css" type="text/css" />
   {link_tags}
 
