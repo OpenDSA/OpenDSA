@@ -12,6 +12,13 @@ for (var i = 0; i < 14; i++) {
     codeCoverage[i] = false;
 }
 
+if (ODSA.UTILS.params.code === "true") {
+    document.getElementById("coverageCode").style.display = "block";
+    threshold = 100;
+} else {
+    document.getElementById("coverageCode").style.display = "none";
+}
+
 function reset(){
     av.clearumsg();
     document.getElementById("side1").value = "";
@@ -31,13 +38,13 @@ function reset(){
 function getTriangleTypeNumber(s1, s2, s3) {
     if (isNaN(s1) || isNaN(s2) || isNaN(s3)) {
         codeCoverage[12] = true;
-        return 0; 
+        return 0;
     } else if (s1 < 0 || s2 < 0 || s3 < 0) {
         codeCoverage[0] = true;
         return 0;
     } else if (s1 == 0) {
         codeCoverage[1] = true;
-        return 0;    
+        return 0;
     } else if (s2 == 0) {
         codeCoverage[2] = true;
         return 0;
@@ -67,7 +74,7 @@ function getTriangleTypeNumber(s1, s2, s3) {
         return 1;
     } else if (s1 != s2 && s1 != s3 && s2 != s3) {
         codeCoverage[11] = true;
-        return 3;   
+        return 3;
     } else {
         codeCoverage[13] = true;
         return 2;
@@ -121,7 +128,7 @@ function classifyTriangle() {
     ODSA.AV.logExerciseInit(initData);
     av.umsg("Test " + testNum + ": " + "Sides: " + side1 + ", " + side2 + ", " + side3 + " "
                                  + triangleType + "\n");
-    coverage = calculateCoverage(); 
+    coverage = calculateCoverage();
     document.getElementById("codeCoverageBar").style = "width:" + coverage + "%";
     document.getElementById("codeCoveragePercentage").innerText = coverage.toFixed(2) + "%";
     if(!creditStatus && (coverage >= threshold)){
@@ -130,31 +137,6 @@ function classifyTriangle() {
         creditStatus = true;
     }
     setPerformanceDetails();
-}
-
-window.onload = function() {
-    if (getUrlParam("code") == "true") {
-        document.getElementById("coverageCode").style.display = "block";
-        threshold = 100;
-        //document.getElementById("container").style.float = "right";
-    } else {
-        document.getElementById("coverageCode").style.display = "none";
-        //document.getElementById("container").style.float = "left";
-    }
-}
-
-/**
- * Gets the value of a url parameter
- * @param {*} name is the name of the parameter you want to get 
- * @param {*} url is the url we want to read, can leave empty.
- */
-function getUrlParam( name, url ) {
-    if (!url) url = location.href;
-    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-    var regexS = "[\\?&]"+name+"=([^&#]*)";
-    var regex = new RegExp( regexS );
-    var results = regex.exec( url );
-    return results == null ? null : results[1];
 }
 
 $("#classify").click(classifyTriangle);

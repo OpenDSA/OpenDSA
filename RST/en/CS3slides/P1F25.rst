@@ -19,7 +19,7 @@ General Project Rules
   Web-CAT.
   We won't accept submissions any other way.
 
-* There are 3 projects during the semester, each has a 3-4 week
+* There are 4 projects during the semester, each has a 3-4 week
   lifecyle.
 
   * Each has three milestones, so about one/week.
@@ -96,12 +96,16 @@ What We Give You to Get Started
   * Reference tests do not write to System.out, or check the contents
     of System.out.
 
-* We give you some initial tests that are meant to demonstrate all the
-  requirements related to formatting the interface method return
-  values.
+* We give you some initial tests (MovieRaterTest) that are meant to
+  demonstrate all the requirements related to formatting the interface
+  method return values.
 
   * If we get questions indicating that we left something ambiguous,
     we will update the example tests for you to see.
+  * Important service: We will check any tests added to MovieRaterTest
+    against the reference implementation. This lets you verify that
+    your tests are correct (meaning, that you have no misconceptions
+    about the project requirements --- if your tests are thorough).
 
 * The project design is pretty simple, because all that you really
   need to add is the implementation for the Sparse Matrix.   

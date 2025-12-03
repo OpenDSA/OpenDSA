@@ -111,17 +111,43 @@ But our real concern has to do with testing and mutation coverage.
 
 You can try yourself to verify this by carefully considering the logic
 of the code.
+Note that there are 4 possible outcomes (every test point has to be
+in one of the four quadrants) but at least 8 branches to test (there
+are 8 comparison operations).
 Can you think of test cases that will trigger each of the eight
 branches?
-Since there are effectively only four possible inputs
-(the one point can only be in one of four positions with respect to
-the other point), you cannot.
+With only four possible inputs, you cannot.
 
-We want complete mutation coverage but there are only four 
-logically distinct inputs.
-For that to be possible, we must come up with code that has only four
-branches!
+Looking at this more closely, consider that we can write tests that
+properly check all of the branches for the first ``if`` statement.
+These tests will properly fail when the comparisons are mutated to be
+replaced with ``true`` or ``false``.
 
+But consider what happens when we get to the second ``if`` statement.
+Ask yourself the question: Why are we here?
+The reason is that we have (already!) failed the first ``if`` test.
+Which means that there are preconditions to the fact that we are at
+the second ``if`` statement.
+Specifically, we know that we cannot have a point with both small
+``x`` and small ``y``, or we would not be here.
+So, consider what happens when we mutate the comparisons in the second
+``if`` statement.
+In particular, if the comparison of ``y`` values is mutated to be
+``true``, then only a test having small ``x`` and ``y`` values (that
+is, in the South-East quadrant) will properly fail (all other points
+will do the right thing eventually).
+But no test with those values would be here, because it would have
+passed the first ``if`` test and gone down the South-East branch
+instead.
+
+Note that this is not an issue with Mutation Testing as distinct from
+code coverage.
+It is not merely that the branch cannot be checked for the right
+answer, it cannot even be executed.
+So code coverage would also not count this branch.
+
+Since we want complete mutation coverage for the four possible inputs
+We must come up with code that has only four branches.
 For example, our refactored code could look like this:
 
 .. code-block:: java
@@ -420,8 +446,9 @@ have to do is insert anything in an expansion case.
 So a test that inserts something that would correctly hash into the
 existing half of the hash table (index 0-3) passes on both
 implementations.
-This satisfies mutation testing, misses actually exercising the bug.
-The example is a little strained, in that this requires that the
+This satisfies mutation testing,
+bug misses actually exercising the bug.
+The example is a little strained in that this requires that the
 testing be minimal by only hashing to the small indices in the table.
 Better tests would catch the error.
 Nonetheless, this is a case where Mutation Testing did not warn the

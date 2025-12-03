@@ -94,7 +94,7 @@ def extract_visualization_references(rst_files):
                     tags = tokens[1:]
 
                     if 'dgm' in tags:
-                        continue  
+                        continue
 
                     scripts_line = next((l for l in lines[i+1:i+5] if ":scripts:" in l), None)
                     js_file = None
@@ -225,16 +225,17 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
     source = vis['source']
     short_name = os.path.splitext(os.path.basename(source))[0]
     if vis['type'] == "inlineav":
-        rel_path = os.path.dirname(source).replace("\\", "/")  
+        rel_path = os.path.dirname(source).replace("\\", "/")
         if rel_path.startswith("AV/"):
-            rel_path = rel_path[len("AV/"):] 
-        embed_url = f"{host_url}/Metadata/inlineav/{rel_path}/{short_name}.html"
+            rel_path = rel_path[len("AV/"):]
+        embed_url = f"{host_url}/OpenDSA/Metadata/inlineav/{rel_path}/{short_name}.html"
     elif vis['type'] == "avembed":
         embed_url = f"{host_url}/OpenDSA/{source}"
     lti_url = f"{host_url}/lti/launch?custom_ex_short_name={short_name}&custom_ex_settings=%7B%7D"
     return {
         "catalog_type": "SLCItem",
         "platform_name": "OpenDSA",
+        "iframe_url": embed_url,
         "persistentID": embed_url,
         "protocol_url": [lti_url, embed_url],
         "protocol": ["LTI 1.1", "SPLICE"],
@@ -245,8 +246,8 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
         "keywords": metadata.get("Keywords", []),
         "features": metadata.get("Features", []),
         "title": metadata.get("Title", short_name),
-        "programming language": metadata.get("Programming Language", []),
-        "natural language": metadata.get("Natural Language", [])
+        "programming_language": metadata.get("Programming Language", []),
+        "natural_language": metadata.get("Natural Language", [])
 
     }
 
@@ -257,6 +258,7 @@ def build_catalog_entry(mod_name, metadata, host_url="https://opendsa-server.cs.
     return {
         "catalog_type": "Bundles",
         "platform_name": "OpenDSA",
+        "iframe_url": embed_url,
         "persistentID": embed_url,
         "protocol_url": lti_url,
         "protocol_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas" ,
@@ -267,8 +269,8 @@ def build_catalog_entry(mod_name, metadata, host_url="https://opendsa-server.cs.
         "institution": metadata.get("Institution", []),
         "keywords": metadata.get("Keywords", []),
         "title": metadata.get("Title", os.path.basename(mod_name)),
-        "programminglanguage": metadata.get("Programminglanguage", []),
-        "naturallanguage": metadata.get("Naturallanguage", [])
+        "programming_language": metadata.get("Programminglanguage", []),
+        "natural_language": metadata.get("Naturallanguage", [])
     }
 def collect_summary_from_existing_parsing(slc_entries, rst_entries, rst_files, config):
     summary = {
@@ -318,7 +320,7 @@ def collect_summary_from_existing_parsing(slc_entries, rst_entries, rst_files, c
                     key, value = match.groups()
                     key = key.strip().lower()
                     value = value.strip()
-                  
+
             elif inside_block:
                 break
 
@@ -376,8 +378,5 @@ if __name__ == "__main__":
     catalog_duplicates = detect_duplicate_fields(catalog_entries, "rst_path")
     catalog_missing.extend(catalog_duplicates)
     save_json(catalog_missing, "missing_catalog_metadata.json")
-    
+
     collect_summary_from_existing_parsing(slc_metadata, catalog_metadata, rst_files, config)
-
-
-

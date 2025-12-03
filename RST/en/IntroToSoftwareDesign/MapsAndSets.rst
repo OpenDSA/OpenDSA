@@ -311,7 +311,7 @@ answer some or all of the questions.
 
 .. raw:: html
 
-    <a href="https://virginiatech.questionpro.com/t/AYIrDZ5G9Y" target="_blank">CS 1114 Grading Policies Survey 2</a>
+    <a href="https://virginiatech.questionpro.com/t/AYIrDZ65ya" target="_blank">CS 1114 Grading Policies Survey 2</a>
 
 Please answer below and your submission of the survey will be verified
 for credit.

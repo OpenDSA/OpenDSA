@@ -311,8 +311,6 @@ The interface becomes a form of communication between the two programmers.
    Within the class, a variety of physical implementations for lists
    is possible.
 
-.. odsasection:: Concept Map Exercise
-
 Concept Map Exercise
 --------------------
 

@@ -102,13 +102,10 @@ array.
 The first inner ``for`` loop initializes array ``count``.
 The second loop counts the number of records to be assigned to each
 bin.
-The third loop sets the values in ``count`` to their proper
+The third loop changes the values in ``count`` from counts to
 indices within array ``B``.
-Note that the index stored in ``count[j]``
-is the *last* index for bin ``j``; bins are filled
-from high index to low index.
 The fourth loop assigns the records to the bins (within
-array ``B``).
+array ``B``) from right to left.
 The final loop simply copies the records back to
 array ``A`` to be ready for the next pass.
 Variable ``rtoi`` stores :math:`r^i` for use in bin computation

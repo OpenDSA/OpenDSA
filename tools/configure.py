@@ -8,7 +8,6 @@
 #   - Initializes the output directory
 #     - Creates the output directory and a source directory inside it
 #     - Copies _static directory to the source directory
-#     - Creates a copy of the config file in the _static directory for use by the gradebook page
 #   - Generates an index.html file in the output directory of the new book which redirects (via JavaScript) to the book_output_dir (html/)
 #   - Traverses the 'chapters' section of the configuration file
 #     - For each chapter and module, maps the name to its chapter or module number (used for numbering during postprocessing)
@@ -276,11 +275,6 @@ def generate_index_rst(config, slides=False, standalone_modules=False):
 
         index_rst.write(".. toctree::\n")
         index_rst.write("   :maxdepth: 3\n\n")
-
-        # Process the Gradebook and Registerbook as well
-        # if not slides:
-        #     process_module(config, mod_path='Gradebook', index_rst=index_rst)
-        #     process_module(config, mod_path='RegisterBook', index_rst=index_rst)
 
         # If a ToDo file will be generated, append it to index.rst
         if len(todo_list) > 0:
@@ -614,10 +608,11 @@ if __name__ == "__main__":
     parser.add_argument("--verbose", help="Shows more output during building",action="store_true", default=False)
     args = parser.parse_args()
 
+    # Register revealjs stub directives for all builds (slides and notes)
+    register_revealjs_stubs()
+
     if args.slides:
         os.environ['SLIDES'] = 'yes'
-        # Register stub directives for sphinx-revealjs when building slides
-        register_revealjs_stubs()
     else:
         os.environ['SLIDES'] = 'no'
 

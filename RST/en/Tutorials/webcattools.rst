@@ -272,6 +272,13 @@ Installing student.jar
 
 If you are using Web-CAT, then you probably will want to use the VT
 local support for JUnit tests.
+For many courses, you will be given "starter code" in the form of a
+project that you can drop into Eclipse, and that already contains the
+student.jar file in the project library folder along with the proper
+classpath information.
+But in case you want to create your own Eclipse project and add the
+student.jar (or any other library in the form of a .jar file),
+here is the process.
 
 First, download the |studentjar| file.
 
@@ -322,7 +329,7 @@ Installing formatting support
 
 You might want to make sure that your Eclipse style checker is as
 close as possible to the style guide that Web-CAT is enforcing.
-To do this, you can install three configuration files for tools
+To do this, you can install configuration files for tools
 that are used by Web-CAT.
 
 Eclipse Formatter

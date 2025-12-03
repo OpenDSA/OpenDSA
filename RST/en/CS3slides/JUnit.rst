@@ -17,15 +17,6 @@ Testing
 
 * What is the difference between testing and debugging?
 
-* How much time have you already spent on this project
-  testing/debugging your code?
-
-
-JUnit testing and code coverage
--------------------------------
-
-.. revealjs-slide::
-
 * It is a true art to be able to think in your head all the
   possible ways that your program could go wrong.
 
@@ -59,7 +50,7 @@ A Bad test (1)
 
 .. revealjs-slide::
 
-* I see many tests like this:
+* To get high code coverage, sometimes people write tests like this:
 
 ::
   
@@ -68,6 +59,12 @@ A Bad test (1)
      assertNotNull(mem);
      Memman.main(new String[] {"25", "20", "P1SampleInput.txt"});
    }
+
+* The last line means to execute an input file with lots of
+  commands.
+
+  * But they are not being checked for correctness
+  * Only some trivial part is being tested (to make the style checker happy)
 
 
 A Bad test (2)
@@ -78,11 +75,14 @@ A Bad test (2)
 * Why is this so bad?
   
   * It violates our essential rule.
-  * There is no testing of what running the program on
-    input DID. Pretty much your only conclusion is that the
-    program did not crash.
+    
+    * There is no testing of what running the program on
+      input DID. Pretty much your only conclusion is that the
+      program did not crash.
+
   * But worse: Lots of lines of code are "covered". So you don't
-    even know what paths have NOT been tested.
+    even know what paths have NOT been tested. This actively hurts
+    your ability to write new tests that help to find bugs.
 
 
 Full test of output
@@ -105,6 +105,9 @@ Full test of output
           "(44,11) -> (121,4) -> (319,1)\n");
   }
 
+* This test is from a program that has output for every command
+  executed, and the test verifies that they are correct.
+
 
 Selective Testing of Output
 ---------------------------
@@ -116,21 +119,14 @@ Selective Testing of Output
    public void testEmpty()
        throws Exception {
      String[] args = new String[3];
-     args[0] = "10";
-     args[1] = "32";
-     args[2] = "EmptyTest.txt";
-     System.out.println("Empty test");
+     args[0]= "10"; args[1]= "32"; args[2]= "P1sampleInput.txt";
      Memman.main(args);
-     assertTrue(systemOut().getHistory().endsWith("(17,47)\n"));
+     assertTrue(systemOut().getHistory().endsWith(" (319,1)\n");
    }
 
-
-What would be good testing for Project 1?
------------------------------------------
-
-.. revealjs-slide::
-
-* ??
+* This test is not nearly so good. It merely checks that the last
+  command is printing something that is correct. Perhaps that is easy
+  and hides lots of bugs.
 
 
 Mutation Testing
@@ -187,13 +183,13 @@ Models
 
 .. revealjs-slide::
 
-* JUnit testing compares a model of what the program should do
-  against what your program does do.
+* JUnit testing compares a model of what the program **should** do
+  against what your program **does** do.
 * Executing commands puts your program into a certain state
   (expressed by the output).
 * The assertions define characterstics of what you expect from that
   state. This is the model.
-* The test then compares what state YOUR program is in (expressed
+* The test then compares what state your program is in (expressed
   by the output) against the model (assertions).
 
 
@@ -207,7 +203,7 @@ What if your model is wrong?
   program will meet that model.
 * What if your model does not match reality?
 
-  * Specifically, Your assertions define a result is not what the
+  * Specifically, your assertions define a result is not what the
     project spec requires.
 
     * BUT you should be using the sample tests we give you to check
@@ -218,6 +214,9 @@ What if your model is wrong?
 
     * Don't do that! Carefully think through what the result SHOULD
       be, and then verify that your result matches.
+
+  * Take advantage of the service that Web-CAT provides to check your
+    tests against the reference implementation.
 
 
 Regression Testing
@@ -234,3 +233,5 @@ Regression Testing
 
 * If you find a bug, but your tests all pass, then update the tests
   to trigger on the bug.
+
+  * That should also improve your mutation coverage.

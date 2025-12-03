@@ -84,25 +84,32 @@ def generate_html(av_name, title, links, scripts, is_dgm, output_path):
     link_tags = '\n    '.join([f'<link rel="stylesheet" href="{relative_prefix}{link}" type="text/css" />' for link in links])
     script_tags = '\n    '.join([f'<script src="{relative_prefix}{script}" type="text/javascript"></script>' for script in scripts])
 
-    av_div = f"""
-    <div id="{av_name}" class="{('avcontainer' if is_dgm else 'ssAV')}" data-points="0" data-type="{('dgm' if is_dgm else 'ss')}"
-         data-required="true" data-long-name="{title}">
-      <span class="jsavcounter"></span>
-      <a class="jsavsettings" href="#">Settings</a>
-      <div class="jsavcontrols"></div>
-      <p class="jsavoutput jsavline"></p>
-      <div class="jsavcanvas"></div>
-      <div class="prof_indicators">
-        <img id="{av_name}_check_mark" class="prof_check_mark" src="{relative_prefix}RST/_static/Images/green_check.png" alt="Proficient" />
-        <span id="{av_name}_cm_saving_msg" class="cm_saving_msg">Saving...</span>
-        <span id="{av_name}_cm_error_msg" class="cm_error_msg">
-          <img id="{av_name}_cm_warning_icon" class="cm_warning_icon" src="{relative_prefix}RST/_static/Images/warning.png" alt="Error Saving"/>
-          <br />Server Error<br />
-          <a href="#" class="resubmit_link">Resubmit</a>
-        </span>
-      </div>
-    </div>
-    """
+
+    if is_dgm:
+        av_div = f"""
+        <div class="divdgm">
+        <div id="{av_name}"></div>
+        """
+    else:
+        av_div = f"""
+        <div id="{av_name}" class="{('avcontainer' if is_dgm else 'ssAV')}" data-points="0" data-type="{('dgm' if is_dgm else 'ss')}"
+            data-required="true" data-long-name="{title}">
+          <span class="jsavcounter"></span>
+          <a class="jsavsettings" href="#">Settings</a>
+          <div class="jsavcontrols"></div>
+          <p class="jsavoutput jsavline"></p>
+          <div class="jsavcanvas"></div>
+          <div class="prof_indicators">
+            <img id="{av_name}_check_mark" class="prof_check_mark" src="{relative_prefix}RST/_static/Images/green_check.png" alt="Proficient" />
+            <span id="{av_name}_cm_saving_msg" class="cm_saving_msg">Saving...</span>
+            <span id="{av_name}_cm_error_msg" class="cm_error_msg">
+              <img id="{av_name}_cm_warning_icon" class="cm_warning_icon" src="{relative_prefix}RST/_static/Images/warning.png" alt="Error Saving"/>
+              <br />Server Error<br />
+              <a href="#" class="resubmit_link">Resubmit</a>
+            </span>
+          </div>
+        </div>
+        """
 
     html = f"""<!DOCTYPE html>
 <html lang="en">

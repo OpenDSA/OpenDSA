@@ -213,9 +213,14 @@ Open Hashing
 
 .. revealjs-slide::
 
-.. inlineav:: openhashCON dgm
-   :links: AV/Hashing/openhashCON.css
-   :scripts: AV/Hashing/openhashCON.js
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Hashing/openhashCON.html" 
+           width="960" 
+           height="500"
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Bucket Hashing (1)
@@ -223,11 +228,14 @@ Bucket Hashing (1)
 
 .. revealjs-slide::
 
-.. inlineav:: buckethashCON1 ss
-   :long_name: Bucket Hashing Slideshow 1
-   :links: AV/Hashing/buckethashCON.css
-   :scripts: AV/Hashing/buckethashCON1.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Hashing/buckethashCON1.html" 
+           width="960" 
+           height="500" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Bucket Hashing (2)
@@ -235,11 +243,14 @@ Bucket Hashing (2)
 
 .. revealjs-slide::
 
-.. inlineav:: buckethashCON2 ss
-   :long_name: Bucket Hashing Slideshow 2
-   :links: AV/Hashing/buckethashCON.css
-   :scripts: AV/Hashing/buckethashCON2.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Hashing/buckethashCON2.html" 
+           width="960" 
+           height="500" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Closed Hashing

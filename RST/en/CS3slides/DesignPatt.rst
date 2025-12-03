@@ -6,97 +6,9 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-===================
-Binary Trees Part 2
-===================
-
-Binary Search Trees
--------------------
-
-.. revealjs-slide::
-
-.. inlineav:: BinDiffCON dgm
-   :links: AV/Binary/BinDiffCON.css
-   :scripts: AV/Binary/BinDiffCON.js
-   :align: center
-
-BST as a Dictionary (1)
------------------------
-
-.. revealjs-slide::
-
-.. codeinclude:: Binary/BST
-   :tag: BSTa
-
-BST as a Dictionary (2)
------------------------
-
-.. revealjs-slide::
-
-.. codeinclude:: Binary/BST
-   :tag: BSTb
-
-BST ``findhelp``
-----------------
-
-.. revealjs-slide::
-
-.. inlineav:: BSTsearchCON ss
-   :links: AV/Binary/BSTCON.css
-   :scripts: AV/Binary/BSTsearchCON.js
-   :output: show
-
-
-BST ``inserthelp``
-------------------
-
-.. revealjs-slide::
-
-.. inlineav:: BSTinsertCON ss
-   :links: AV/Binary/BSTCON.css
-   :scripts: AV/Binary/BSTinsertCON.js
-   :output: show
-
-
-BST ``deletemax``
------------------
-
-.. revealjs-slide::
-
-.. inlineav:: BSTdeletemaxCON ss
-   :links: AV/Binary/BSTCON.css
-   :scripts: AV/Binary/BSTdeletemaxCON.js
-   :output: show
-
-
-BST ``removehelp``
-------------------
-
-.. revealjs-slide::
-
-.. inlineav:: BSTremoveCON ss
-   :links: AV/Binary/BSTCON.css
-   :scripts: AV/Binary/BSTremoveCON.js
-   :output: show
-
-
-BST Analysis
-------------
-
-.. revealjs-slide::
-
-* Find: :math:`O(d)`
-
-* Insert: :math:`O(d)`
-
-* Delete: :math:`O(d)`
-
-* :math:`d =` depth of the tree
-
-* :math:`d` is :math:`O(\log n)` if the tree is balanced.
-
-* What is the worst case cost? When?
-
+===============
+Design Patterns
+===============
 
 Comparison (1)
 --------------
@@ -123,12 +35,10 @@ Comparison (2)
   NOT a property of the record.
 
 
-KVpair
-------
+KVpair: A Truly General Solution
+--------------------------------
 
 .. revealjs-slide::
-
-* This is a truly general way to solve the problem.
 
 .. codeinclude:: Utils/KVPair
    :tag: KVPair
@@ -190,12 +100,6 @@ Inheritance (1)
 .. codeinclude:: Binary/ExpressionTree
    :tag: ExpressionTree1
 
-
-Inheritance (2)
----------------
-
-.. revealjs-slide::
-
 .. codeinclude:: Binary/ExpressionTree
    :tag: ExpressionTree2
 
@@ -242,50 +146,5 @@ Composite (2)
 .. codeinclude:: Binary/ExpressionTreeC
    :tag: Composite2
 
-Composite (3)
--------------
-
-.. revealjs-slide::
-
 .. codeinclude:: Binary/ExpressionTreeC
    :tag: Composite3
-
-
-Space Overhead (1)
-------------------
-
-.. revealjs-slide::
-
-* From the Full Binary Tree Theorem:
-
-  * Half of the pointers are null.
-
-* If leaves store only data, then overhead depends on whether this
-  is full tree.
-
-* Ex: Full tree, all nodes the same, with two pointers to children and
-  one to element
-
-  * Total space required is :math:`(3p + d)n`
-  * Overhead: :math:`3pn`
-  * If :math:`p = d`, this means :math:`3p/(3p + d) = 3/4` overhead.
-
-
-Space Overhead (2)
-------------------
-
-.. revealjs-slide::
-
-* Eliminate pointers from the leaf nodes
-
-.. math::
-
-   \frac{n/2(2p)}{n/2(2p) + dn} = \frac{p}{p + d}
-
-* This is 1/2 if :math:`p = d`.
-
-* :math:`(2p)/(2p + d)` if data only at leaves :math:`\Rightarrow`
-  2/3 overhead.
-
-* Note that some method is needed to distinguish leaves from internal
-  nodes.

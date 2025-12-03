@@ -54,9 +54,6 @@ def update_index_html(dest_dir, startSectNum):
       index_html[line_num] = line.replace('</head>','<style>\nul li {\n\tbackground: none;\n\tlist-style-type: none;\n}\n</style>\n</head>')
     elif 'class="sectnum"' in line:
       sectNum += 1 # the start of a new sub-TOC for chapter/section
-    elif 'RegisterBook' in line:
-      #remove registerbook page from TOC
-      index_html[line_num] = ''
     elif 'hide-from-toc' in line:
       #remove stub chapter title
       if '<h1>' in index_html[line_num-1]:
@@ -79,7 +76,7 @@ def update_mod_html(file_path, data, prefix, standalone_modules):
 
   mod_name = os.path.splitext(os.path.basename(file_path))[0]
 
-  ignore_mods = ['index', 'Gradebook', 'search', 'RegisterBook']
+  ignore_mods = ['index', 'Gradebook', 'search']
 
   link_pattern = re.compile(r'<a.+href="(?P<href>.*).html">(?P<text>.*)</a>')
   title_pattern = re.compile(r'<title>(?P<title>.*)</title>')
@@ -92,13 +89,9 @@ def update_mod_html(file_path, data, prefix, standalone_modules):
       link_text = m.group('text')
       link_mod = m.group('href')
 
-      if link_mod in data and link_mod not in ['index', 'Gradebook', 'ToDo', 'RegisterBook']:
+      if link_mod in data and link_mod not in ['index', 'Gradebook', 'ToDo']:
         new_link_text = '%s.' % data[link_mod][1] + link_text
         html[line_num] = line.replace(link_text, new_link_text)
-
-      if link_mod in ['RegisterBook']:
-        html[line_num] = line.replace(link_text, "")
-
 
     if '&lt;anchor-text&gt;' in line:
       line_args = re.split('&lt;anchor-text&gt;|&lt;/anchor-text&gt;', line)
@@ -353,7 +346,7 @@ def make_lti(config, no_lms = False, standalone_modules = False):
   dest_dir = config.book_dir + config.rel_book_output_path
   # Iterate through all of the existing files
   ignore_files = ('Gradebook.html', 'search.html', 'conceptMap.html',
-                  'genindex.html', 'RegisterBook.html', 'index.html')
+                  'genindex.html', 'index.html')
   html_files = [path for path in os.listdir(dest_dir)
                 if path.endswith('.html') and path not in ignore_files]
 
@@ -693,6 +686,3 @@ if (typeof ODSA !== 'undefined' && ODSA.TP && ODSA.TP.courseOfferingId) {{
 </script>'''
     
     return BeautifulSoup(widget_html, 'html.parser')
-  
-  
-  

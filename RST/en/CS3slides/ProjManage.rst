@@ -26,8 +26,6 @@ Project Management
 
 * This semester, we will pay a lot of attention to your **process**
 
-  * We are working on ways to grade process
-
 
 Scheduling
 ----------
@@ -59,14 +57,13 @@ Historical Data
 ---------------
 .. revealjs-slide::
 
+* Relationship between final score on a project (Y axis)
+  and % of total time spent by about a week before the due date (X axis).
+
 .. image:: /Images/ProgramTime.png
    :width: 400
    :align: center
    :alt: Programmer time data
-
-* X axis is % of total time spent by about one week before program
-  due date.
-* Y axis is score.
 
 
 Historical Data 2
@@ -81,12 +78,6 @@ Historical Data 2
   * Few did poorly who put in > 50% time early
   * Some did well who didn’t put in >50% time early, but most who did well
     put in the early time
-
-   
-Historical Data 3
------------------
-
-.. revealjs-slide::
 
 * Correlations:
 
@@ -105,15 +96,17 @@ What is the Mechanism?
   * Do they behave that way because they are good, or does
     behaving that way make them good?
   * But, we have data from students who sometimes spread their
-    work over time (and generally doing better) vs. doing work at
-    the last minute (and generally doing worse)
-  * Why would this matter?
+    work over time (they generally did better) vs. doing work at
+    the last minute (they generally did worse)
+
+* Why would this matter?
+
   * Spreading projects over time allows the “sleep on it”
     heuristic to operate
   * Avoiding the “zombie” effect makes people more productive
     (and cuts time requirements)
 
-
+    
 How to fail at implementing your project:
 -----------------------------------------
 
@@ -128,41 +121,27 @@ How to succeed at implementing your project:
 
 .. revealjs-slide::
    
-* Write the smallest possible kernel
-* Debug that kernel thoroughly
-* Repeat until completion:
+* Use Incremental Development.
+  Begin with a small initial core
 
-  * Add a functional unit
-  * Debug the resulting program
+  * Implement and TEST and COMMENT the core.
+  * Then gradually add functionality.
+ 
+* The ideal: On any given day, write only as much code as you have
+  time to debug  THAT DAY.
+* This works well with Scheduling and Organizing.
 
-* Have a way to track details
-* Do mechanics early
-* Do structural design before implementation
-* Implement the tricky parts last
+   .. note::
 
-
-How to Survive These Projects
------------------------------
-
-.. revealjs-slide::
-   
-* Keys to success:
-
-* Keeping Track of all the details
-
-  * You can't remember it all
-
-* Rational Planning (and keeping to the plan)
-
-  * Spread the work over time
-
-* Incremental Development
-
-  * Interleave writing and debugging
+      For our projects, you need implementation, comments, and tests.
+      If you write the comments (especially javadoc comments) and the
+      tests when you add a functional unit, its not that big a burden.
+      If you add them at the end, it feels really tedious (and you don't
+      get any of the benefits).
 
    
-Being Organized 1
------------------
+Being Organized
+---------------
 
 .. revealjs-slide::
 
@@ -175,12 +154,6 @@ Being Organized 1
 
   * Assignments and other things to do
 
-
-Being Organized 2
------------------
-
-.. revealjs-slide::
-
 * You can't turn this on/off
 
   * Either you get in the habit of developing in an organized way,
@@ -189,72 +162,14 @@ Being Organized 2
   * Part of it is having the coping mechanisms to handle the
     details (organizational tactics)
 
-   .. note::
-
-      The good news is that there is an alternative: there are plenty of
-      jobs where someone will tell you what to do every minute of the day.
-      The bad news is that they tend not to pay well. Many of these jobs
-      involve hamburgers.
-
-
-Memory Can't Handle It
-----------------------
-
-.. revealjs-slide::
-
-* Externalize
-
-  * TODO lists (What)
-  * Scheduling (The Plan for How)
-  * Issue trackers
-  * Documenting/Commenting
-  * Be able to update lists at any time,
-  * Repository: GitHub
-
-
-Spread Work Over Time
----------------------
-
-.. revealjs-slide::
-
-* For anything beyond a small software project, you must have a
-  plan/schedule
-* Explicitly develop a schedule:
-
-  * Break into pieces: List of subtasks
-  * Deadlines for subtasks
-  * Realistic, enough flexibility built in
-  * Continuously modify and refine the plan
-
-
-Incremental Development
------------------------
-
-.. revealjs-slide::
-
-* Break the project into a small initial core
-
-  * Implement and TEST and COMMENT the core
-  * Then gradually add functionality
-  * On any given day, write only as much code as you have time to debug
-    THAT DAY
-  * This works well with Scheduling and Organizing
-
-   .. note::
-
-      For our projects, you need implementation, comments, and tests.
-      If you write the comments (especially javadoc comments) and the
-      tests when you add a functional unit, its not that big a burden.
-      If you add them at the end, it feels really tedious (and you don't
-      get any of the benefits).
-
 
 Milestones
 ----------
 
 .. revealjs-slide::
 
-* Big positive effect with milestones (S16) vs without (F14)
+* Big positive effect with milestones (introduced in Spring 2016)
+  vs. without (control group: Fall 2014).
 
 .. math::
 

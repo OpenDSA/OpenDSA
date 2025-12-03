@@ -20,7 +20,6 @@ Installing BlueJ
 
 Follow the instructions on your course site on Canvas to **Install BlueJ**.
 
-
 Introducing LightBot
 --------------------
 
@@ -29,6 +28,20 @@ your web browser, and looks like this:
 
 .. odsafig:: Images/LightBotLevel2.png
    :align: center
+
+.. sidebar:: Learning Objectives
+
+    * **Define** basic LightBot actions and their corresponding icons.
+    * **Apply** LightBot commands to solve simple LightBot levels (1-7).
+    * **Define** key programming concepts: object, program, algorithm, micro-world, source code, compiler, interpreter, behavior, method, precondition, postcondition, message, method call, instantiation, declaration, identifier, variable, class, constructor.
+    * **Describe** the characteristics of a micro-world, using LightBot as an example.
+    * **Explain** the use of a left-handed Cartesian plane with zero-based indexing for coordinates in a micro-world grid.
+    * **Translate** LightBot icon-based programs into textual Java-like method calls.
+    * **Differentiate** between a compiler and an interpreter.
+    * **Write** Java statements to declare a LightBot object, instantiate it, and add it to the world at a specified coordinate.
+    * **Write** Java statements to call methods on a LightBot object to control its actions.
+    * **Explain** the importance of code readability practices, including meaningful identifiers, commenting, and indentation.
+    * **Apply** proper Java commenting (single-line, multi-line, Javadoc) and indentation rules to source code.
 
 In the LightBot game, you create a **program** to control a little robot to
 solve a simple task in the miniature block-based world where the LightBot exists.
@@ -391,6 +404,44 @@ make these requests.
     When we ask an object to perform a task, we say that we are
     **sending a message** or **invoking the method** that
     describes the task.
+
+
+Why OOP?
+~~~~~~~~
+
+While we've learned how to define and use objects in programming, it's important
+to understand why we use them. Object-Oriented Programming (OOP) is a powerful
+paradigm because it helps us organize complex programs in ways that are more
+manageable and scalable. Think about building with LEGO bricks: each LEGO brick
+is an object with its own characteristics (color, shape) and behaviors (it can
+connect to other bricks). When you build a large structure, you don't think
+about every single plastic atom; you think about combining pre-made bricks.
+Similarly, in OOP, objects allow us to:
+
+* **Modularize our code**: Break down a big problem into smaller,
+  self-contained parts (objects), making the code easier to understand,
+  write, and debug.
+* **Promote reusability**: Once you've created an object (like our LightBot
+  object), you can reuse it in different parts of your program or even in 
+  entirely new programs without having to rewrite its internal logic. This
+  saves time and reduces errors.
+* **Simplify maintenance**: If you need to change a specific behavior, you
+  only need to modify the code within that object, rather than searching
+  through an entire program.
+* **Encapsulate data and behavior**: Objects bundle data (attributes like the
+  LightBot's position) with the methods that operate on that data
+  (like ``move()`` or ``turnLightOn()``). This means that an object controls its
+  own internal state, preventing other parts of the program from accidentally
+  corrupting it.
+
+By understanding these benefits, you'll see that OOP isn't just a set of rules;
+it's a philosophy for designing robust and efficient software.
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://youtu.be/m_MQYyJpIjg?si=JdsBbTp_Pn6SZ9dG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 
 A Programmable LightBot in Java
@@ -757,6 +808,59 @@ Finish writing the rest of the instructions for ``andy``
 so that he can light up all the blue tiles.
 
 
+We All Make Mistakes: Errors Happen
+-----------------------------------
+
+As you start writing more complex programs, you'll inevitably encounter
+**syntax errors** (or **compiler errors**). These are like grammatical mistakes
+in human language; the computer simply can't understand what you mean. The good
+news is that your programming environment, BlueJ, and the Java compiler are
+designed to help you find these errors. When you click *Compile*, if there's an
+issue, BlueJ will often highlight the line where it thinks the error occurred
+and provide a message at the bottom of the edit window.
+
+Common syntax errors to look out for include:
+
+* **Missing Semicolons**: Remember, almost all statements in Java must end with
+  a semicolon ``;``. Forgetting one is a very common mistake!
+
+  Incorrect: ``andy.move()``
+  
+  Correct: ``andy.move();``
+
+* **Mismatched Parentheses**: Method calls (and constructors) always require a
+  pair of parentheses ``()`` after the method name. Make sure you have both an
+  opening ``(`` and a closing ``)``.
+
+  Incorrect: ``andy.turnRight(``
+  
+  Correct: ``andy.turnRight();``
+
+* **Typographical Errors (Typos)**: Even a single misspelled word in a method
+  name (e.g., ``and.move();`` instead of ``andy.move();``) will cause an error
+  because the computer won't recognize the command. Pay close attention to
+  spelling and capitalization.
+
+* **Missing Braces**: Method bodies start with an opening brace ``{`` and end
+  with a corresponding closing brace ``}``. Ensure these are correctly paired.
+
+When you encounter an error:
+
+1. **Read the error message**: Don't just dismiss it. The message often gives
+   clues about what went wrong and where.
+2. **Look at the highlighted line or line number**: BlueJ usually tells you the
+   line where it detected the error. Start your investigation there. But
+   remember that the actual problem could be earlier in the code.
+3. **Check for common mistakes**: Review the syntax rules for semicolons,
+   parentheses, and braces on and around the indicated line.
+4. **Work backward**: If the error message isn't clear, look at the code before
+   the indicated line, as sometimes an error earlier in the code can cause a
+   later line to appear incorrect.
+
+Learning to debug is a fundamental programming skill. It's like being a
+detective, piecing together clues to solve a mystery!
+
+
 A Word on Making Code Easy to Read
 ----------------------------------
 
@@ -864,6 +968,94 @@ by four spaces.  You'll see that the editor automatically tries to
 help you keep this indentation habit as you write code, but it won't
 force you.  Ultimately, you are responsible for making your code
 look clean, neat, and readable.
+
+You've learned that choosing meaningful names for all our identifiers is
+crucial for writing readable code. But beyond being meaningful, programmers
+also follow specific naming conventions, like using a lowercase letter as
+the first letter for variables or methods (``andy``, ``move()``) and a
+capital letter for classes (``LightBot``). This isn't just about aesthetics;
+these conventions serve important purposes:
+
+* **Clarity and Consistency**: When everyone follows the same conventions, it
+  makes code instantly recognizable and understandable, even if you're reading
+  code written by someone else months or years later. It's like having a
+  universal sign language for programmers.
+* **Readability at a Glance**: The capitalization helps you immediately
+  distinguish between different types of programming elements. For instance,
+  seeing ``LightBot`` with a capital "L" tells you it's likely a class (a
+  blueprint for objects), while ``andy`` with a lowercase "a" tells you it's
+  an instance of that class (a specific object).
+* **Reduces Ambiguity**: Consistent naming prevents confusion. If ``Move()``
+  and ``move()`` were both allowed for the same action, it would be unclear
+  which one to use.
+* **Industry Standard**: These conventions (often called "camelCase" for
+  variables/methods and "PascalCase" for classes) are widely adopted in the
+  Java community and many other programming languages. Adhering to them makes
+  your code look professional and facilitates collaboration in team environments.
+* **Tooling Support**: Many Integrated Development Environments (IDEs) like
+  BlueJ are designed with these conventions in mind, sometimes offering
+  auto-completion or error hints based on expected naming patterns.
+
+Developing the habit of using correct and meaningful naming conventions from
+the start will significantly improve the quality and maintainability of your
+code as you progress in your programming journey.
+
+
+
+Comparing Visual and Textual Programming
+----------------------------------------
+
+You've experienced two different ways to create programs with LightBot: using
+the visual, iconic interface and writing textual Java-like code. Both achieve
+the same goal--controlling the robot--but they represent different approaches
+to programming.
+
+* **Iconic Programming (e.g., LightBot's drag-and-drop):**
+
+  - **Advantages:**
+  
+    * **Beginner-Friendly**: Very intuitive for new learners, as it removes the
+      burden of syntax and typing, allowing focus on logic.
+    * **Immediate Visual Feedback**: You can see the robot's actions directly
+      correspond to the icons you place, making it easy to understand the
+      flow of control.
+    * **Reduced Errors**: Eliminates syntax errors since you're selecting
+      pre-defined actions.
+
+  - **Disadvantages:**
+
+    * **Limited Complexity**: Becomes cumbersome for very large or complex
+      programs due to the visual space and number of available icons.
+    * **Less Flexible**: You're limited to the pre-defined actions and
+      structures provided by the visual environment.
+    * **Not Industry Standard**: Real-world programming primarily uses
+      textual languages.
+
+* **Textual Programming (e.g., Java):**
+
+  - **Advantages:**
+
+    * **Highly Expressive and Flexible**: Allows for much more complex and
+      nuanced logic, as you can write almost anything you can imagine.
+    * **Scalable**: Textual code is easier to manage, read, and organize for
+      large-scale projects.
+    * **Industry Standard**: The skills you learn in textual programming are
+      directly transferable to professional software development.
+
+  - **Disadvantages:**
+
+    * **Steeper Learning Curve**: Requires strict adherence to syntax rules,
+      which can be challenging for beginners (e.g., remembering semicolons,
+      parentheses, etc.).
+    * **Abstract**: The connection between the code and the program's behavior
+      isn't always immediately visual, requiring more mental modeling.
+    * **Prone to Typos**: Small errors can lead to compilation issues.
+
+LightBot's iconic interface is an excellent tool for understanding fundamental
+computational thinking--sequencing, use of methods or functions (through f1/f2),
+and problem-solving. Textual Java then builds on this by introducing the
+precise language and structure needed for real-world software development,
+giving you greater control and power over your programs.
 
 
 Syntax Practice 1b

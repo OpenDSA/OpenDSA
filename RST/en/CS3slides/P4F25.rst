@@ -1,0 +1,99 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata::
+   :author: Cliff Shaffer
+
+=========
+Project 4
+=========
+
+Project 4: Air Traffic Control
+------------------------------
+
+.. revealjs-slide::
+
+* Similar to Project 2
+
+* You will implement a simplified Air Traffic Control System
+
+  * Store a bunch of objects in 3D
+  * Objects are primarily represented by bounding boxes.
+  * Two indices: A SkipList (replaces the BST) and a 3d BinTree
+    (replaces the kd tree).
+
+
+Design Issues
+-------------
+
+.. revealjs-slide::
+
+* You will be storing a collection of objects that extend a base
+  class.
+
+  * Objects all have a name field (the key for the SkipList) and a 3D
+    bounding box (used by the Bintree).
+
+* The SkipList is a straightforward implementation (see code in
+  OpenDSA).
+
+  * This should be a generalized container class
+
+* The Bintree is a full binary tree
+
+  * Implement separate internal and leaf node classes that use an
+    interface.
+
+  * Implement empty nodes as a flyweight design pattern.
+
+  * Implement the tree using the Composite design pattern.
+
+
+Bintree 1
+---------
+
+.. revealjs-slide::
+
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Spatial/bintreeCON.html" 
+           width="960" 
+           height="550"
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
+
+
+
+Bintree 2
+---------
+
+.. revealjs-slide::
+
+.. avembed:: AV/Spatial/BintreeAV.html ss
+   :keyword: Spatial Data Structures, Bintree
+
+
+Bintree 3
+---------
+
+.. revealjs-slide::
+
+* You will be storing boxes, not points.
+
+* Spatial data structures have a **Decomposition Rule**.
+
+  * Our rule is that a node can store a list of up to three boxes, or
+    as many boxes as required if they all share a common intersection.
+
+  * If the boxes in the node violate this rule, then split it (during
+    insertion).
+
+  * If an internal node has two leaf children that, together, pass the
+    rule, then merge them (on deletion).
+
+* Since a box can appear in multiple nodes, collisions and
+  intersections are only reported as associated with the origin point
+  of the intersection box.

@@ -6,42 +6,66 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
 =========
 SkipLists
 =========
 
-.. slide:: SkipList Idea
+SkipList Ideal
+--------------
 
-   .. inlineav:: SkipListIntroCON ss
-      :links: DataStructures/SkipList.css AV/SearchStruct/SkipListIntroCON.css
-      :scripts: DataStructures/SkipList.js AV/SearchStruct/SkipListIntroCON.js
-      :output: show
+.. revealjs-slide::
+
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/SearchStruct/SkipListIntroCON.html" 
+           width="960" 
+           height="500"
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
-.. slide:: SkipList Reality
+SkipList Reality
+----------------
 
-   .. inlineav:: SkipListInsertCON ss
-      :links: DataStructures/SkipList.css AV/SearchStruct/SkipListInsertCON.css
-      :scripts: DataStructures/SkipList.js AV/SearchStruct/SkipListInsertCON.js
-      :output: show
-   
+.. revealjs-slide::
 
-.. slide:: Analysis
+.. raw:: html
 
-   * Best-case behavior is "balanced": :math:`\Theta(\log n)` (like a
-     BST).
-   * Worst-case behavior: All nodes at the same level (regardless of
-     what level): Effectively degenerates to a linked list (like a
-     BST).
-   * Reality: Its behavior is not so dependent on order of inserts as
-     a BST. Its similar to what BST cost would be if we randomized the
-     input order. A huge improvement in expected performance!
+   <iframe src="../../../Metadata/inlineav/SearchStruct/SkipListInsertCON.html" 
+           width="960" 
+           height="500"
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
-.. slide:: Programming Principles
 
-   #. All container classes should be general.
-   #. Any container class's initial state should be identical to its
-      empty state.
+Analysis
+--------
+
+.. revealjs-slide::
+
+* Best-case behavior is "balanced": :math:`\Theta(\log n)` (like a
+  BST).
+* Worst-case behavior: All nodes at the same level (regardless of
+  what level): Effectively degenerates to a linked list (like a
+  BST).
+* The Big Idea:
+
+  * SkipList behavior is not dependent on order of
+    inserts/delete as is a BST.
+
+  * SkipList performance is dictated entirely by random chance.
+
+  * It is similar to what the BST cost would be if we randomized the
+    input order. A huge improvement in expected performance!
+
+
+Programming Principles
+----------------------
+
+.. revealjs-slide::
+
+#. All container classes should be general.
+#. Any container class's initial state should be identical to its
+   empty state.

@@ -5,7 +5,7 @@ __all__ = ['eqbank']
 
 def load_bank():
     try:
-        return { obj["id"]: obj for obj in json.load(open("./tafe/core/equation_bank.json"))}
+        return { obj["id"]: obj for obj in json.load(open("./tools/tafe/core/equation_bank.json"))}
     except FileNotFoundError:
         print("CWD is",os.getcwd())
         print("{\"error\": \"Could not load the equation bank file, aborting\"}", end='')

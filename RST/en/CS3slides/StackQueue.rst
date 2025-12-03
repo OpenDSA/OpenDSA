@@ -130,11 +130,15 @@ Circular Queue (1)
 
 .. revealjs-slide::
 
-.. inlineav:: aqueueCircularCON ss
-   :long_name: Circular Array-based Queue Slideshow
-   :links: AV/List/aqueueCON.css
-   :scripts: DataStructures/CircularQueue.js AV/List/aqueueCircularCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/List/aqueueCircularCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
+
 
 
 Circular Queue (2)
@@ -142,8 +146,15 @@ Circular Queue (2)
 
 .. revealjs-slide::
 
-.. inlineav:: aqueueEmptyCON ss
-   :long_name: Empty Circular Array-based Queue Slideshow
-   :links: AV/List/aqueueCON.css
-   :scripts: DataStructures/CircularQueue.js AV/List/aqueueEmptyCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/List/aqueueEmptyCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
+
+.. only:: never
+
+   This is a comment that does NOT show in built slides: prevents 'odsalink' from appearing.

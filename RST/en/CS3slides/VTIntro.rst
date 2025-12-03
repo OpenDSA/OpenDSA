@@ -9,48 +9,13 @@
 CS3114/5040 Introduction
 ========================
 
-Introduction
-------------
-
-.. revealjs-slide::
-
-* What we are doing today:
-
-  * Administration stuff
-  * Course mechanics
-  * Course introduction (OpenDSA Chapter 1)
-
-
-Course Mechanics
-----------------
-
-.. revealjs-slide::
-
-* Course online support: Canvas, OpenDSA, Web-CAT
-* Those still needing to get into the course
-
-
-Canvas
-------
-
-.. revealjs-slide::
-
-* Course materials are organized and delivered through Canvas
-
-  * Course syllabus
-  * Project specs and supporting documents
-  * Link to Piazza forum
-  * Post scores and grades
-  * Access to OpenDSA (online textbook)
-
-
-Role in the Curriculum
-----------------------
+Role of CS3114/5040 in the Curriculum
+-------------------------------------
 
 .. revealjs-slide::
 
 * This course represents a transition between "learning to
-  program" courses (CS 1114, CS 2114) and "content" courses.
+  program" courses (CS 1114, CS 2114) and "CS content" courses.
 
 * To do well, you must be able to handle both
 
@@ -59,7 +24,7 @@ Role in the Curriculum
 
   * Content, theory and analysis
 
-* The projects test programming proficiencies
+* The projects test programming and testing proficiencies
 
 * OpenDSA exercises test knowledge of how algorithms work
 
@@ -72,12 +37,50 @@ Role in the Curriculum
    for job preparation. So its both high effort and high value.
 
 
+Introduction
+------------
+
+.. revealjs-slide::
+
+* What we are doing today:
+
+  * Administration stuff and Course mechanics
+  * Course introduction (OpenDSA Chapter 1)
+
+
+Course Mechanics
+----------------
+
+.. revealjs-slide::
+
+* Course online support:
+
+  * Canvas: Learning Management System
+  * OpenDSA: eTextbook
+  * Web-CAT: Project submission/automated grader
+  * Piazza: Forums
+
+
+Canvas
+------
+
+.. revealjs-slide::
+
+* Course materials are organized and delivered through Canvas
+
+  * Course syllabus
+  * Link to OpenDSA eTextbook (which is a separate Canvas course shell)
+  * Access to Project specs and supporting documents
+  * Link to Piazza forum
+  * Post scores and grades
+
+
 OpenDSA
 -------
 
 .. revealjs-slide::
 
-* Access OpenDSA through Canvas->Modules
+* Access OpenDSA through a link to Canvas->Modules
 
 * Lots of visualizations, exercises
 
@@ -93,11 +96,12 @@ Web-CAT
 
 .. revealjs-slide::
 
-* Must use Eclipse IDE for submissions: Be up to date!
+* Must use Eclipse IDE for submissions: Update if older than 2025
 * Get the updated Web-CAT plugin
 * Project submission support
-* Support for junit testing
-* Auto-grading: Correctness, style
+* Support for junit testing, mutation coverage
+* Auto-grading: Correctness (passes reference tests), style, test
+  suite quality (mutation testing)
 
 
 Milestones
@@ -108,10 +112,10 @@ Milestones
 * 4 projects, each with a 3-4 week life cycle
 * Most projects will have 3 milestones
 
-  * Intermediate deliverables with due dates
-  * First due at end of first week
-  * Second due about 2 weeks before due date
-  * Third due about 1 week before due date
+  * Milestones are intermediate deliverables with due dates
+  * First due next week (usually about a week or so into the project)
+  * Second due about 10 days before due date
+  * Third due about 4-5 days before due date
 
 * Milestones designed to encourage incremental development
 * In previous semesters, milestones had the effect of boosting the final
@@ -123,7 +127,7 @@ Today's Homework
 
 .. revealjs-slide::
 
-* Look at Canvas
+* Look at Canvas, check out the various links
 * Look at Piazza site, make sure you are enrolled there
 * Look at Project 1 spec: We will discuss next time
-* Do Chapter 1 exercises in OpenDSA by 11:00pm Thursday (in 2 days)
+* Do Chapter 1 exercises in OpenDSA by 11:00pm Friday (in 3 days)

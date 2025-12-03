@@ -62,13 +62,13 @@ and other interactive exercises.
 You can get "completion" for doing the various activities.
 When any of the following activities are completed, the interface
 should give you some type of feedback such as showing a green
-checkmark or adding a score in the associated LMS gradebook:
+checkmark or adding a score in the associated LMS grade book:
 going through a slideshow, completing a PIFrameset,
 completing a proficiency exercise, completing a programming exercise,
 completing a question set, or fulfilling the requirements of a
 calculator or other exercise.
 Depending on how your book is configured, completing an activity might
-or might not give assignment points, as shown in the gradebook for
+or might not give assignment points, as shown in the grade book for
 your LMS.
 
 **Seeing your credit and seeing your current score:**
@@ -76,7 +76,7 @@ Usually an exercise or slideshow will give you visual confirmation
 when you have completed it.
 Your LMS might indicate complete modules in its "table of contents"
 listing of modules.
-The LMS gradebook should indicate which exercises have been
+The LMS grade book should indicate which exercises have been
 completed.
 
 **Slideshows:**
