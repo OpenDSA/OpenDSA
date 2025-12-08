@@ -1,4 +1,5 @@
 import pint
+from typing import Union
 
 ureg = pint.UnitRegistry()
 ureg.define('strain = [length]/[length]')
@@ -8,7 +9,7 @@ ureg.define('rev = revolution')
 ureg.define('Radian = radian')
 
 # message_text is placed here to remove errors, resolve later
-message_text = None
+message_text : dict = {}
 
 def compare_quantities(m_magn, m_unit, a_magn, a_unit, debug=False):
     """
@@ -19,7 +20,7 @@ def compare_quantities(m_magn, m_unit, a_magn, a_unit, debug=False):
 
     try:
         if m_unit == "":
-            solutionComparableValue = m_magn;
+            solutionComparableValue = m_magn
             return abs((solutionComparableValue - a_magn) / solutionComparableValue) <= 0.0001 # corrected after DemoProblem error
         else:
             # solutionComparableValue = unit_parse.parser(f"{m_magn} {m_unit}").to(a_unit)
@@ -30,7 +31,13 @@ def compare_quantities(m_magn, m_unit, a_magn, a_unit, debug=False):
         
     except pint.DimensionalityError:
         return False
-    
+
+def is_unit_compatible(m_unit, a_unit, debug=False):
+    return ureg.is_compatible_with(m_unit, a_unit)
+
+def get_base_quantity(value, unit, debug=False):
+    return ureg.Quantity(value,unit).to_base_units()
+
 def compile_messages():
     """
     Takes the messages_text contents and puts them together

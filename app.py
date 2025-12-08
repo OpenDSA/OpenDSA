@@ -79,7 +79,7 @@ def deforms_feedback():
     script_path = "tools/tafe"
     problem_attempt = request.json
     str_problem_attempt = str(problem_attempt).replace(" ","")
-    cmd = f"python3 {script_path} -j \"{str_problem_attempt}\""
+    cmd = f"python3 -m {script_path} --analyze -j \"{str_problem_attempt}\""
     resp = run_command(cmd)
     return jsonify(resp)
 
