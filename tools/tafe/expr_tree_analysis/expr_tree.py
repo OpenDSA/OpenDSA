@@ -3,6 +3,7 @@ from networkx.drawing.nx_pydot import to_pydot
 from collections import defaultdict
 from sympy import Equality
 
+# from tafe.expr_tree_analysis.tree_utils import *
 from expr_tree_analysis.tree_utils import *
 
 class ExpressionTree(DiGraph):

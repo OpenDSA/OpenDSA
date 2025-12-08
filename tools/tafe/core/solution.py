@@ -15,20 +15,28 @@ Contains list of objects that represent each individual solution/solution subgro
 from networkx import Graph, DiGraph, connected_components, get_node_attributes
 from sympy import Eq, Symbol, parse_expr, solve
 from pprint import pp as prettyprint
-#from networkx.drawing.nx_pydot import to_pydot, pydot_layout
-#from networkx.drawing import bipartite_layout, rescale_layout_dict, draw_networkx_nodes, draw_networkx_labels, draw_networkx_edges, draw_networkx_edge_labels, draw_networkx
 
-#import matplotlib.pyplot as plt
-#import matplotlib
-#matplotlib.rcParams['mathtext.fontset'] = 'cm'
+# from tafe.core.global_objects import *
+# from tafe.core.solution_subgroup import SolutionSubgroup
+# from tafe.expr_tree_analysis.expr_tree import ExpressionTree
 
-import textwrap
+# from tafe.messages.message import MessageText
 
 from core.global_objects import *
 from core.solution_subgroup import SolutionSubgroup
 from expr_tree_analysis.expr_tree import ExpressionTree
 
 from messages.message import MessageText
+
+# Disable this/comment out for staging/production/repo
+# from networkx.drawing.nx_pydot import to_pydot, pydot_layout
+# from networkx.drawing import bipartite_layout, rescale_layout_dict, draw_networkx_nodes, draw_networkx_labels, draw_networkx_edges, draw_networkx_edge_labels, draw_networkx
+# import matplotlib.pyplot as plt
+# from matplotlib import rcParams
+# from matplotlib.figure import Figure
+# rcParams['mathtext.fontset'] = 'cm'
+# import textwrap
+# end block
 
 class Solution:
 
@@ -177,6 +185,8 @@ class Solution:
                             #     f"{var['value']} {var['currentUnit']}"
                             #     )
                     
+                if debug:
+                    print(template)
                 lhs, rhs = template.split("=")
                 self.main_dependency_graph.nodes[eq_node_name]['template'] = Eq(parse_expr(lhs), parse_expr(rhs))
                 self.main_dependency_graph.nodes[eq_node_name]['folded'] = []
@@ -243,8 +253,10 @@ class Solution:
             soln_ids : list = [g_dep.nodes[n]["solution_id"] for n in g_sub if "solution_id" in g_dep.nodes[n]]
             if len(soln_ids) == 1:
                 soln_id = soln_ids[0]
+                corrected_id = int(soln_id)+1
             elif len(soln_ids) > 1:
                 soln_id = ",".join(soln_ids)
+                corrected_id = ",".join([str(int(_)+1) for _ in soln_ids])
                 # TODO: Change this line to be a field in class Message
                 self.ref_report_context.message_text[soln_id] = {"details":[]}
             else:
@@ -265,11 +277,12 @@ class Solution:
                                 # the keys can be anything, I'm using dictionaries for faster access and addition of objects
                                 # but that also helps to double up. I'll probably use 0..n integers, with no actual ordering,
                                 # and then use this to map expression trees for n-n based on varmap, might make managing easier
-                                # (i.e. store dict and keys mapping to trees in that dict, faster access during comparison)
+                                # (i.e. store dict and keys mapping to trees in that dict, faster access during comparison),
+                'corrected_id': corrected_id
             }
         return self.solution_subgroups
 
-    def show_solution_subgroups(self, width = 11, debug=False):
+    def show_solution_subgroups(self, width = 12, debug=False):
         """diagnostic function only, used to create images of
         everything in the solution subgroups for this solution.
         Creates multiple images, as required.
@@ -290,7 +303,7 @@ class Solution:
                     len([_ for _ in subgroup["subgroup"].g_dep_unfolded 
                         if subgroup["subgroup"].g_dep_unfolded.nodes[_]['group'] == "unknown"]))
                     )
-            fig = plt.figure(figsize=(
+            fig : Figure = plt.figure(figsize=(
                 width, 8.8+(height_unit-2)*3
                 ))
             ax1_g_dep_unfolded = fig.add_axes((0, 0.7, 1, 0.3))
@@ -339,8 +352,8 @@ class Solution:
         # 4. the equation and symbol to be displayed is in the 'label' field.
         
         # just create a copy of the graph with the least amount of info needed to display it
-        # depG = Graph()
-        depG = DiGraph()    # temporarily changed because of 
+        depG = Graph()
+        # depG = DiGraph()    # temporarily changed because of 
                             # issues on drawing on new machine after crash, 
                             # to revert after resolving issue; 
                             # ignore if using on server and not for generating diagrams
@@ -415,7 +428,7 @@ class Solution:
         t,b = axes.get_ylim()
         axes.set_ylim(t+1,b-2)
 
-        #draw all unknowns except solution nodes
+        # draw all unknowns except solution nodes
         draw_networkx_nodes(
             depG, pos = bip_layout, 
             nodelist = [_ for _ in depG if depG.nodes[_]['color']=='cyan'],
@@ -463,6 +476,7 @@ class Solution:
         
         # possibly add directed arrows for direction of substituting variables? How to determine this?
         draw_networkx_edges(depG, pos = bip_layout, ax=axes)
+        # draw_networkx_edges(depG, pos = bip_layout, ax=axes, arrowstyle='-')
         draw_networkx_edge_labels(depG, pos = bip_layout, edge_labels=edge_labels, ax=axes, horizontalalignment="center")
     
     def draw_dag(self, G: DiGraph, axes, use_latex=True, debug=False):
@@ -514,7 +528,7 @@ class Solution:
         )
         draw_networkx_edges(dag, pos, ax=axes)
 
-    def get_expression_trees(self, debug=True):
+    def get_expression_trees(self, debug=False):
         """
         Goes through the dependency graph, which may have either
         * 1 equation and 1 unknown (1-1 system) [ideal] OR

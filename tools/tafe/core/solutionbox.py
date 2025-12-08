@@ -11,16 +11,21 @@ AND ONLY used in "analyze" mode, because otherwise we don't need to
 check this.
 """
 
+# from tafe.core.report import ReportContext
+# from tafe.core.utils import compare_quantities
+
 from core.report import ReportContext
 from core.utils import compare_quantities
+
 from enum import Enum
 
 SOLUTION_STATUS = Enum('status', ['correct', 'incorrect', 'magnitude', 'alternative', 'absent'])
 
 class SolutionBox:
     
-    def __init__(self, id: int, master_solution_box: dict, dict_attempt_solution: dict):
+    def __init__(self, id: str, master_solution_box: dict, dict_attempt_solution: dict):
         self.id = id
+        self.correct_id = int(id)+1
         self.status = None
         self.description = None # only used to elaborate, use description/enum values
         
