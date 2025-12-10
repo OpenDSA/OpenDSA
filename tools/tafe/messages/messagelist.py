@@ -3,7 +3,7 @@ Dedicated class to manage lists of messages and combine them as required
 Also used by Resolver
 """
 # from tafe.messages.message import MessageText
-from messages.message import MessageText
+from tools.tafe.messages.message import MessageText
 
 from pprint import pprint
 

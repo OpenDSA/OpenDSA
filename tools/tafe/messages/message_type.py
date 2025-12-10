@@ -16,11 +16,11 @@ otherwise generates an error message text
 
 # from tafe.messages.message_utils import *
 
-from core.report import ReportContext
-from core.solution_subgroup import SolutionSubgroup
-from equation_analysis.equation import CurrentEquation
+from tools.tafe.core.report import ReportContext
+from tools.tafe.core.solution_subgroup import SolutionSubgroup
+from tools.tafe.equation_analysis.equation import CurrentEquation
 
-from messages.message_utils import *
+from tools.tafe.messages.message_utils import *
 
 from enum import Enum
 from pprint import pprint
@@ -262,7 +262,7 @@ def find_equation_issues_in_subsequences(
     report_attempt: ReportContext,
     subgroup_id: str,
     metadata_object : dict,
-    debug = True
+    debug = False
 ) -> dict:
     """
     This one only parses the metadata object for the reduced equations

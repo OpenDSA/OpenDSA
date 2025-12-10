@@ -7,8 +7,8 @@ from typing import Union
 # from tafe.expr_tree_analysis.tree_utils import *
 # from tafe.equation_analysis.equation import CurrentEquation
 
-from expr_tree_analysis.tree_utils import *
-from equation_analysis.equation import CurrentEquation
+from tools.tafe.expr_tree_analysis.tree_utils import *
+from tools.tafe.equation_analysis.equation import CurrentEquation
 
 class DependencyDAG(DiGraph):
     def __init__(self, dag_id: str):

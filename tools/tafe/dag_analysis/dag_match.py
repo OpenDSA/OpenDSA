@@ -17,20 +17,20 @@ import sympy
 
 # from tafe.messages.message_type import ERROR_TYPE
 
-from core.global_objects import *
-from core.solution_subgroup import SolutionSubgroup
-from core.report import ReportContext
-from core.solutionbox import SOLUTION_STATUS
-from core.utils import compare_quantities, is_unit_compatible
+from tools.tafe.core.global_objects import *
+from tools.tafe.core.solution_subgroup import SolutionSubgroup
+from tools.tafe.core.report import ReportContext
+from tools.tafe.core.solutionbox import SOLUTION_STATUS
+from tools.tafe.core.utils import compare_quantities, is_unit_compatible
 
-from expr_tree_analysis.expr_tree import ExpressionTree
-from equation_analysis.equations_util import *
-from equation_analysis.equation import CurrentEquation, compare_equations
-from dag_analysis.dag import DependencyDAG
+from tools.tafe.expr_tree_analysis.expr_tree import ExpressionTree
+from tools.tafe.equation_analysis.equations_util import *
+from tools.tafe.equation_analysis.equation import CurrentEquation, compare_equations
+from tools.tafe.dag_analysis.dag import DependencyDAG
 
-from messages.message import MessageText
+from tools.tafe.messages.message import MessageText
 
-from messages.message_type import ERROR_TYPE
+from tools.tafe.messages.message_type import ERROR_TYPE
 
 from pprint import pprint
 from copy import deepcopy
@@ -684,7 +684,7 @@ def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext,
             if a_pair in dict_max_score_M_first:
                 subgroup_details[subgroup_id]['matches'][a_pair] = dict_max_score_A_first[a_pair]
 
-    if debug or True:
+    if debug:
         print("\nSubgroup details summary")
         pprint(subgroup_details)
     

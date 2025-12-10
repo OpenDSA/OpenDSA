@@ -16,7 +16,7 @@ will be useful in identifying which solutions we are trying to provide feedback 
 """
 
 # from tafe.dag_analysis.dag import DependencyDAG
-from dag_analysis.dag import DependencyDAG
+from tools.tafe.dag_analysis.dag import DependencyDAG
 
 import sympy
 from networkx import Graph, DiGraph, get_edge_attributes

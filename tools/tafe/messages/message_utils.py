@@ -1,18 +1,17 @@
 # from tafe.core.report import ReportContext
 # from tafe.core.global_objects import eqbank
 
-from core.report import ReportContext
-from core.global_objects import eqbank
+from tools.tafe.core.report import ReportContext
+from tools.tafe.core.global_objects import eqbank
 
 def get_html_equation_palette(
     equation_palette_id: str
 ) -> str:
     clickable_string = \
-        '<span class="param" data-type=\"pallette-eq\" data-page=\"'\
-            +str(eqbank[equation_palette_id])\
-                +'\" data-item=\"'+\
-                    str(equation_palette_id)+\
-                        '\">this equation</span>'
+        f'<span class="param" data-type=\"pallette-eq\"'+\
+            f'data-page=\"{str(eqbank[equation_palette_id]['group'])}\"'+\
+            f'data-item=\"{str(equation_palette_id)}'+\
+        f'\">{str(eqbank[equation_palette_id]['name'])}</span>'
     return clickable_string
 
 def get_html_equation_in_workspace(
