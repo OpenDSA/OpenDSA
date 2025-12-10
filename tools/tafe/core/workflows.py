@@ -7,20 +7,31 @@ import sympy
 import networkx as nx
 
 # from tafe.core.utils import *
-# from tafe.expr_tree_analysis.tree_utils import generateExpressionTree
 # from tafe.expr_tree_analysis.expr_tree import tree_annotator
 # from tafe.expr_tree_analysis.tree_match import compare_exp_trees
-# from tafe.expr_tree_analysis.tree_error import report_errors
-
 from core.utils import *
-# from expr_tree_analysis.tree_utils import generateExpressionTree
 from expr_tree_analysis.expr_tree import tree_annotator
 from expr_tree_analysis.tree_match import compare_exp_trees
-from expr_tree_analysis.tree_error import report_errors
+
+# from tafe.expr_tree_analysis.tree_error import report_errors
+# from tafe.expr_tree_analysis.tree_utils import generateExpressionTree
+
+# from core.utils import *
+# from expr_tree_analysis.expr_tree import tree_annotator
+# from expr_tree_analysis.tree_match import compare_exp_trees
+# from expr_tree_analysis.tree_error import report_errors
+
 # from core.pipeline import *
+
+# from tafe.core.report import ReportContext
+# from tafe.core.solutionbox import compare_solution_boxes, SOLUTION_STATUS
+# from tafe.dag_analysis.dag_match import dag_compare_new
+# from tafe.messages.message_core import *
+
 from core.report import ReportContext
 from core.solutionbox import compare_solution_boxes, SOLUTION_STATUS
 from dag_analysis.dag_match import dag_compare, dag_compare_new
+from messages.message_core import *
 
 # setting up dummy method stubs and variables for later
 # STUBS BEGIN
@@ -420,7 +431,7 @@ def run_analysis(master_soln_json, attempt_soln_json, debug=False):
     
     return 0
 
-def run_workflow_analyze(config_file: dict, debug=True):
+def run_workflow_analyze(config_file: dict, debug=False):
     
     # INITIALIZATION:
     # Loading the solution json for master from file
@@ -473,7 +484,7 @@ def run_workflow_analyze(config_file: dict, debug=True):
     Stage 6:    Compare threads/sets of threads using rich LCS search
 
     Phase 3: error reporting
-    Stage 6:    Collect and report the errors
+    Stage 1:    Collect and report the errors
     """
     
     """
@@ -481,8 +492,10 @@ def run_workflow_analyze(config_file: dict, debug=True):
     """
     
     """ REACTIVATE AFTER TESTING """
-    report_master = ReportContext(["master", "analyze", "master-file"], master_soln_json)
-    report_attempt = ReportContext(["attempt", "analyze", config_file["attempt_filename"]], attempt_json)
+    report_master = ReportContext(
+        ["master", "analyze", "master-file"], master_soln_json)
+    report_attempt = ReportContext(
+        ["attempt", "analyze", config_file["attempt_filename"]], attempt_json)
     """ REACTIVATE AFTER TESTING """
     # print(report_master.solution.solution_subgroups.keys())
     
@@ -526,8 +539,14 @@ def run_workflow_analyze(config_file: dict, debug=True):
     # DAG splitting to create threads has already been done.
     # Time to compare, score, and annotate threads.
 
+    # IMPORTANT: Use this line/salvage code to visualize equations with params
+    # eg: x = f(y) / g(y) etc. see what param to param relations are
+    # to create examples for comparing equations and do substitutions
+    # (eg: for CurrentEquation in equations.py)
     # dag_compare(report_master, report_attempt)
-    dag_compare_new(report_master, report_attempt)
+
+    # Otherwise, use this for the multistage comparison
+    comparison_results : dict = dag_compare_new(report_master, report_attempt)
 
     """
     ===PHASE II ENDS===
@@ -540,6 +559,23 @@ def run_workflow_analyze(config_file: dict, debug=True):
     ---PHASE III--- REPORT
     """
 
+    error_messages = find_errors(report_master, report_attempt, comparison_results)
+    
+    if not config_file["is_online"]:
+        print("===================================")
+        print("       ERROR ANALYSIS REPORT       ")
+        print("===================================")
+    # Start by printing the status of the solution box
+    for solution_box_id, solution_box in report_master.dict_solution_box.items():
+        if solution_box.status == True:
+            print(f"Solution for part {solution_box.correct_id} is CORRECT")
+        else:
+            print(f"Solution for part {solution_box.correct_id} is INCORRECT")
+            if solution_box.description == SOLUTION_STATUS.magnitude:
+                print("due to a sign error in your answer")
+
+    create_error_texts(error_messages, config_file["is_online"])
+
     """
     ===PHASE III ENDS===
     """
@@ -549,7 +585,8 @@ def run_workflow_analyze(config_file: dict, debug=True):
     
     # TODO: then choose from them by ranking them.
     
-    print("Processing finished, OK.\n\n\n")
+    if debug:
+        print("Processing finished, OK.\n\n\n")
     return
     
 # This could probably be its own pipeline
@@ -628,7 +665,8 @@ def run_workflow_training(config_file: dict, debug=False):
     TODO: Create and save alternatives for sign variations.
     This needs to be generated 
     """
-
+    global trainingStatus
+    trainingStatus = True
     # creating summary and creating Solution object is done in ReportContext()
     report_master_unused = ReportContext(["master", "training"], config_file)
     return
