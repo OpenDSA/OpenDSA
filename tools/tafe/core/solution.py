@@ -22,11 +22,11 @@ from pprint import pp as prettyprint
 
 # from tafe.messages.message import MessageText
 
-from core.global_objects import *
-from core.solution_subgroup import SolutionSubgroup
-from expr_tree_analysis.expr_tree import ExpressionTree
+from tools.tafe.core.global_objects import *
+from tools.tafe.core.solution_subgroup import SolutionSubgroup
+from tools.tafe.expr_tree_analysis.expr_tree import ExpressionTree
 
-from messages.message import MessageText
+from tools.tafe.messages.message import MessageText
 
 # Disable this/comment out for staging/production/repo
 # from networkx.drawing.nx_pydot import to_pydot, pydot_layout

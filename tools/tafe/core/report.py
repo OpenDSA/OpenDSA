@@ -19,14 +19,14 @@ from sympy import Equality
 # from tafe.messages.message import MessageText
 # from tafe.messages.messagelist import MessageList
 
-from core.solution import Solution
-from core.global_objects import *
-from core.utils import compare_quantities
+from tools.tafe.core.solution import Solution
+from tools.tafe.core.global_objects import *
+from tools.tafe.core.utils import compare_quantities
 
-from expr_tree_analysis.expr_tree import ExpressionTree
+from tools.tafe.expr_tree_analysis.expr_tree import ExpressionTree
 
-from messages.message import MessageText
-from messages.messagelist import MessageList
+from tools.tafe.messages.message import MessageText
+from tools.tafe.messages.messagelist import MessageList
 
 
 class ReportContext:

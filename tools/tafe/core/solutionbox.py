@@ -14,8 +14,8 @@ check this.
 # from tafe.core.report import ReportContext
 # from tafe.core.utils import compare_quantities
 
-from core.report import ReportContext
-from core.utils import compare_quantities
+from tools.tafe.core.report import ReportContext
+from tools.tafe.core.utils import compare_quantities
 
 from enum import Enum
 

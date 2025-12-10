@@ -28,7 +28,7 @@ attempt_dep_graph = None
 # in it's own context - compiled and printed later in compile_messages()
 message_text = dict()
 
-from tafe.core.global_objects import *
+# from tafe.core.global_objects import *
 # # loading the equation bank, one of the core global variables shared by everyone
 # try:
 #     eqbank = { obj["id"]: obj for obj in json.load(open("./tools/equation_bank.json"))}

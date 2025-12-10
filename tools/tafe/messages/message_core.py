@@ -8,15 +8,15 @@
 # from tafe.messages.message_type import *
 # from tafe.messages.message_utils import *
 
-from core.report import *
-from core.utils import *
-from core.solution_subgroup import *
-from dag_analysis.dag import *
-from equation_analysis.equation import *
-from equation_analysis.equations_util import *
+from tools.tafe.core.report import *
+from tools.tafe.core.utils import *
+from tools.tafe.core.solution_subgroup import *
+from tools.tafe.dag_analysis.dag import *
+from tools.tafe.equation_analysis.equation import *
+from tools.tafe.equation_analysis.equations_util import *
 
-from messages.message_type import *
-from messages.message_utils import *
+from tools.tafe.messages.message_type import *
+from tools.tafe.messages.message_utils import *
 
 from pprint import pprint
 

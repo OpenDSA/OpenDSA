@@ -9,9 +9,9 @@ import networkx as nx
 # from tafe.core.utils import *
 # from tafe.expr_tree_analysis.expr_tree import tree_annotator
 # from tafe.expr_tree_analysis.tree_match import compare_exp_trees
-from core.utils import *
-from expr_tree_analysis.expr_tree import tree_annotator
-from expr_tree_analysis.tree_match import compare_exp_trees
+from tools.tafe.core.utils import *
+from tools.tafe.expr_tree_analysis.expr_tree import tree_annotator
+from tools.tafe.expr_tree_analysis.tree_match import compare_exp_trees
 
 # from tafe.expr_tree_analysis.tree_error import report_errors
 # from tafe.expr_tree_analysis.tree_utils import generateExpressionTree
@@ -28,10 +28,10 @@ from expr_tree_analysis.tree_match import compare_exp_trees
 # from tafe.dag_analysis.dag_match import dag_compare_new
 # from tafe.messages.message_core import *
 
-from core.report import ReportContext
-from core.solutionbox import compare_solution_boxes, SOLUTION_STATUS
-from dag_analysis.dag_match import dag_compare, dag_compare_new
-from messages.message_core import *
+from tools.tafe.core.report import ReportContext
+from tools.tafe.core.solutionbox import compare_solution_boxes, SOLUTION_STATUS
+from tools.tafe.dag_analysis.dag_match import dag_compare, dag_compare_new
+from tools.tafe.messages.message_core import *
 
 # setting up dummy method stubs and variables for later
 # STUBS BEGIN
@@ -668,8 +668,8 @@ def run_workflow_training(config_file: dict, debug=False):
     global trainingStatus
     trainingStatus = True
     # creating summary and creating Solution object is done in ReportContext()
-    report_master_unused = ReportContext(["master", "training"], config_file)
-    return
+    # report_master_unused = ReportContext(["master", "training", config_file["master_solution_path"]], config_file)
+    # return
     
     
     # The following is done after the JSON is analyzed

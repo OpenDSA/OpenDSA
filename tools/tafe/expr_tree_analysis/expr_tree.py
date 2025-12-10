@@ -4,7 +4,7 @@ from collections import defaultdict
 from sympy import Equality
 
 # from tafe.expr_tree_analysis.tree_utils import *
-from expr_tree_analysis.tree_utils import *
+from tools.tafe.expr_tree_analysis.tree_utils import *
 
 class ExpressionTree(DiGraph):
     def __init__(self, report_context, expression : Equality):
