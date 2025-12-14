@@ -1,5 +1,5 @@
 /* *** ODSATag: MinVertex *** */
-// Find the unvisited vertex with the smalled distance
+// Find the unvisited vertex with the smallest distance
 static int minVertex(Graph G, int[] D) {
   int v = 0;  // Initialize v to any unvisited vertex;
   for (int i=0; i<G.nodeCount(); i++) {

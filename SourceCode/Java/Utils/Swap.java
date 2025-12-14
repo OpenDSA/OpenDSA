@@ -1,4 +1,4 @@
-public class Swap {
+
   // Swap for int arrays
   public static void swap(int[] A, int i, int j) {
     int temp = A[i];
@@ -12,4 +12,4 @@ public class Swap {
     A[i] = A[j];
     A[j] = temp;
   }
-}
+
