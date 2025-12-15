@@ -228,3 +228,4 @@ child of node :math:`B`.
 .. avembed:: Exercises/General/SequentialTreeGenTreePRO.html ka
    :long_name: General Tree Sequential Representation Exercise
    :keyword: General Trees; Sequential Tree Representations
+

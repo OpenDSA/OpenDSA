@@ -456,3 +456,4 @@ Checkpoint 2
 
 .. avembed:: Exercises/SWDesignAndDataStructs/ExceptionsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
+

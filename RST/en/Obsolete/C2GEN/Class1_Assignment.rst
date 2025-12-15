@@ -40,3 +40,4 @@ To Do On Your Own
       book instance.
 
       * From the OpenDSA top level, type: ``make C2GEN``
+

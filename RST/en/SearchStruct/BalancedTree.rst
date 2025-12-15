@@ -77,3 +77,4 @@ One example of such a compromise is called the
 
 The :ref:`Red-Black Tree <Red-Black Tree> <RedBlack>` is also a binary
 tree, but it uses a different balancing mechanism.
+

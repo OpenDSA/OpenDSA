@@ -68,3 +68,4 @@ Decideability vs. Acceptability
    |   while (n > 1)
    |     if (even(n)) n = n/2;
    |     else n = 3n + 1;
+

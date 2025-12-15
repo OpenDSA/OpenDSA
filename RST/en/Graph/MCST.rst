@@ -221,3 +221,4 @@ cost?
    :type: Exercise
 
    Proficiency exercise for Prim's algorithm.
+

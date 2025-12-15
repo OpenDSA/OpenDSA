@@ -234,3 +234,4 @@ Conclusion: NFA adds no new capability. So why bother with the idea?
 * We will see times when it is easier to see a conversion from
   something to a NFA,
   and we know that this can always be converted in turn to a DFA.
+

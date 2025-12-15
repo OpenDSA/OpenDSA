@@ -73,3 +73,4 @@ Recursion Programming Exercise: Count Characters
 
 .. extrtoolembed:: 'Recursion Programming Exercise: Count Characters'
    :workout_id: 54
+

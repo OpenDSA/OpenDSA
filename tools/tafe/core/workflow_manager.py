@@ -4,8 +4,8 @@ from pathlib import Path
 # from tafe.core.utils import clean_json, print_error
 # from tafe.core.workflows import run_workflow_init, run_workflow_training, run_workflow_analyze
 
-from core.utils import clean_json, print_error
-from core.workflows import run_workflow_init, run_workflow_training, run_workflow_analyze
+from tools.tafe.core.utils import clean_json, print_error
+from tools.tafe.core.workflows import run_workflow_init, run_workflow_training, run_workflow_analyze
 
 def run_workflow(config_file: dict):
     if config_file["mode"] == "analyze":

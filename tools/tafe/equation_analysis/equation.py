@@ -11,8 +11,8 @@ from pint import Quantity
 
 # from tafe.core.utils import *
 # from tafe.equation_analysis.equations_util import *
-from core.utils import *
-from equation_analysis.equations_util import *
+from tools.tafe.core.utils import *
+from tools.tafe.equation_analysis.equations_util import *
 
 from pprint import pprint
 

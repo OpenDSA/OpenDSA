@@ -25,3 +25,4 @@ Summary Exercise: CS3
 .. avembed:: Exercises/AlgAnal/AlgAnalCS3Summ.html ka
    :long_name: Algorithm Analysis Summary Questions
    :keyword: Algorithm Analysis
+

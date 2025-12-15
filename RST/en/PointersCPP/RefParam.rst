@@ -394,3 +394,4 @@ The types of the various variables and parameters operate simply as they are dec
 (``int`` in this case). The complicating layer of pointers required to implement the
 reference parameters is hidden. The compiler takes care of it without allowing the
 complication to disturb the types in the source code.
+

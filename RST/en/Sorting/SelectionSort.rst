@@ -127,3 +127,4 @@ Selection Sort.
 .. avembed:: Exercises/Sorting/SelsortSumm.html ka
    :long_name: Selection Sort Summary Exercise
    :keyword: Sorting; Selection Sort
+

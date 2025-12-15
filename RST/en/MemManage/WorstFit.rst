@@ -40,3 +40,4 @@ free block, possibly by using a priority queue implementation.
    :long_name: Worst Fit Visualization
    :url_params: fitAlgorithm=4
    :keyword: Memory Management; Sequential Fit Memory Allocation
+

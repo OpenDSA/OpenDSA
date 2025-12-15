@@ -40,3 +40,4 @@ Project 1 Design
    |   Command syntax is done in separate command processor class
    |   Command semantics are handled in a separate "world" or "database"
        class. For P1, this has hash table and memory manager objects.
+

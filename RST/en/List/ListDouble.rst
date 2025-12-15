@@ -178,3 +178,4 @@ A region of the computer screen can be highlighted by
 XORing the outline of a box around it.
 XORing the box outline a second time restores the original
 contents of the screen.
+

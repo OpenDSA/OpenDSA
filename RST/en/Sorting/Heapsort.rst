@@ -141,3 +141,4 @@ the heap each in constant time, for a total best-case time of
 .. avembed:: Exercises/Sorting/HeapsortSumm.html ka
    :long_name: Heapsort Summary Exercise
    :keyword: Sorting; Heapsort
+

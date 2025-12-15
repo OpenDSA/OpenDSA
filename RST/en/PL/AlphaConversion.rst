@@ -177,3 +177,4 @@ variable captures. :math:`\alpha`-conversion will be quite useful to
 us in the next section, where we describe the main algorithm for
 determining the meaning of a lambda calculus program, namely the
 process of substitution.
+

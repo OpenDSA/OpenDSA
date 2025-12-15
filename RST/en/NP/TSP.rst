@@ -31,3 +31,4 @@ Try out an instance of the Traveling Salesman problem on your own.
 .. avembed:: Exercises/NP/TSPPRO.html ka
    :long_name: Practice Exercise for Traveling Salesman Problem
    :keyword: NP-completeness; Traveling Salesman Problem
+

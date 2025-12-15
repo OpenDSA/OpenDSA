@@ -137,3 +137,4 @@ best, and are often machine dependent at worst.
 .. avembed:: Exercises/Binary/TreeOverheadFIB.html ka
    :long_name: Tree Overhead Exercise
    :keyword: Binary Trees; Binary Tree Space Analysis
+

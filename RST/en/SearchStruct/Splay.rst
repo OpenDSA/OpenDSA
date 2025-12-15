@@ -228,3 +228,4 @@ Proof that the splay tree meets the guarantee of
    unsuccessful with the node storing key value 89 being that last one
    visited. 
    In that case, the same splay operations would take place.
+

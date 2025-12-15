@@ -238,3 +238,4 @@ San Francisco as part of his |galles_AVs| package.
 .. |galles_AVs| raw:: html
 
    <a href="http://www.cs.usfca.edu/~galles/visualization/Algorithms.html" target="_blank">Data Structure Visualizations</a>
+

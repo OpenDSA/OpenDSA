@@ -183,3 +183,4 @@ To install:
   you downloaded. Then click **Finish** to import these settings.
 
 You're all set to begin the assignments!
+

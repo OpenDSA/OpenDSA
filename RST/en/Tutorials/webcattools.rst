@@ -406,3 +406,4 @@ and click ``Set as Default``. Finally, click ``Apply and Close``.
    :align: center
    :capalign: justify
    :figwidth: 90%
+

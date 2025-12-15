@@ -193,3 +193,4 @@ If your account is affected, report the suspicious transaction(s) to
 the company that the wallet is made with.
 [I think that we don't have an explanation anywhere in the tutorial
 about what a wallet is.]
+

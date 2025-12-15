@@ -131,3 +131,4 @@ Today's Homework
 * Look at Piazza site, make sure you are enrolled there
 * Look at Project 1 spec: We will discuss next time
 * Do Chapter 1 exercises in OpenDSA by 11:00pm Friday (in 3 days)
+

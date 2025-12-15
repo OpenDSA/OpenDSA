@@ -150,3 +150,4 @@ Acknowledgement
 
 This page borrows heavily from  presentation in Section 3.2 of
 *Compared to What?* by Gregory J.E. Rawlins.
+

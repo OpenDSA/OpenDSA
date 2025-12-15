@@ -212,3 +212,4 @@ frequently accessed record, and so on.
    methods, the total number of comparisons required by move-to-front is
    less than twice the number of comparisons required by the optimal
    static ordering.
+

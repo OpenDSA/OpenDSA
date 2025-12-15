@@ -174,3 +174,4 @@ overhead of a large number of additions.
 
 It is a theoretical open question as to whether it is possible to do
 matrix multiplication be done in :math:`O(n^2)` time.
+

@@ -118,3 +118,4 @@ Here is a visualization for the optimized merge step.
 .. avembed:: Exercises/Sorting/MergesortSumm.html ka
    :long_name: Mergesort Summary Exercise
    :keyword: Sorting; Mergesort
+

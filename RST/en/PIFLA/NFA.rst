@@ -152,3 +152,4 @@ And fourth, non-determinism is a useful concept to help simplify other
 concepts that we will cover later.
 A good example will be the study of so-called :term:`NP-Complete`
 problems (where NP stands for nondeterministic polynomial).
+

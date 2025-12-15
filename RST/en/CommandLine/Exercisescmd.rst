@@ -135,3 +135,4 @@ Challenge 3
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
 .. avembed:: AV/CommandLineBased/exercises/challenge-3/challenge-3-exercise.html pe
+

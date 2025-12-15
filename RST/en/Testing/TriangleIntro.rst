@@ -51,3 +51,4 @@ sets of inputs that will get you to even 50% code coverage.
    :long_name: Triangle Testing No Code
    :url_params: code=false
    :keyword: Testing; Code Coverage
+

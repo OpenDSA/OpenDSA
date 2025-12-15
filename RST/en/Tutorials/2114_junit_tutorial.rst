@@ -686,3 +686,4 @@ The ``student.TestCase`` provides a helper method called ``contains()`` that you
 The meaning of ``contains()`` is similar to the meaning of the method ``contains()`` provided by the ``String`` class, but extended to multiple arguments. In addition to the first argument--the string to search--you can provide as many substrings to look for as you like. The ``contains()`` method will return true if and only if every one of the specified substrings is found in the specified order in the string you are searching. The ``contains()`` method does not care what comes between the substrings, so they could be immediately adjacent to each other, or arbitrarily far apart. All it cares about is that every single one is present, and that they are present in the exact order you list them.
 
 You can use ``contains()`` to spot check key portions of your output, without having to list the entire output verbatim.
+

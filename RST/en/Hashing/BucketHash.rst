@@ -110,3 +110,4 @@ accesses.
 .. avembed:: Exercises/Hashing/HashBucket2PRO.html ka
    :long_name: Alternate Bucket Hashing Proficiency Exercise
    :keyword: Hashing; Bucket Hashing
+

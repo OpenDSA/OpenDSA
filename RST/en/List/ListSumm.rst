@@ -37,3 +37,4 @@ Here is a summary exercise with questions from everything in this chapter.
 .. avembed:: Exercises/List/ListChapterSumm.html ka
    :long_name: List Chapter Summary
    :keyword: Lists; Stacks; Queues
+

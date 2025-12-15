@@ -554,3 +554,4 @@ Tombstones (2)
   #. Local reorganizations to try to shorten the average path length.
   #. Periodically rehash the table (by order of most frequently accessed
      record).
+

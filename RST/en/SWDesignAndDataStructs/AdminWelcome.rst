@@ -121,3 +121,4 @@ The following questions will help ensure you understand and are aware of:
 .. avembed:: Exercises/SWDesignAndDataStructs/WelcomeCheckpointSumm.html ka
    :long_name: Checkpoint 1
 
+

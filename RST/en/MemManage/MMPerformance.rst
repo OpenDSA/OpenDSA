@@ -37,3 +37,4 @@ serviced by best fit but not by first fit on this same freelist.
 .. avembed:: AV/MemManage/firstFitAV.html ss
    :long_name: Sequential Fit Visualization
    :keyword: Memory Management; Sequential Fit Memory Allocation
+

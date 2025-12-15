@@ -201,3 +201,4 @@ Acknowledgement
 
 This page borrows heavily from  presentation in Section 3.5 of
 *Compared to What?* by Gregory J.E. Rawlins.
+

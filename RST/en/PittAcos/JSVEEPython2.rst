@@ -59,3 +59,4 @@ Another explanation of simple if statement using game scores
 
 .. extrtoolembed:: 'ae_adl_hiscore2'
    :learning_tool: mastery-grid-python-animations
+

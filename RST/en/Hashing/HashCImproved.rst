@@ -333,3 +333,4 @@ Now you can try it.
        bits, meaning that the max key value should be at least the
        square of the hash table size.
        This is not a problem for typical hashing applications.
+

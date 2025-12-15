@@ -59,3 +59,4 @@ Explanation of string concatenation and use of length function
 
 .. extrtoolembed:: 'ae_adl_strings'
    :learning_tool: mastery-grid-python-animations
+

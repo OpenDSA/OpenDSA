@@ -683,3 +683,4 @@ If you find a mistake in this book, feel free to send me a fix using
 `Github <https://github.com/csev/py4e/tree/master/book3>`__.
 
 .. |String Indexes| image:: ./chap6_files/string.svg
+

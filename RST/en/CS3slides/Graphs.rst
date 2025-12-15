@@ -374,7 +374,7 @@ Implementing minVertex
   implement a priority queue ordered by :math:`D` value.  Must
   update priority queue for each edge.
 
-  * Cost: :math:`\Theta((|V| + |E|)log|V|)`
+  * Cost: :math:`\Theta((|V| + |E|)\log|V|)`
 
 
 Approach 1
@@ -534,3 +534,4 @@ Kruskal’s MST Algorithm (3)
   * Can stop processing edges once all vertices are in the same MST
 
 * Total cost: :math:`\Theta(|V| + |E| log |E|)`.
+

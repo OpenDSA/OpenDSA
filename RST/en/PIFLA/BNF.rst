@@ -173,3 +173,4 @@ and type:
 
    | declare: int Sum(int a, int b, int c) ...
    | call: newsum = Sum(x,y);
+

@@ -14,3 +14,4 @@ Class 2: Discussion Topic
 Today's discussion topic:
 
 * How might you like to use OpenDSA in your class?
+

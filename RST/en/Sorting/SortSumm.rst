@@ -26,3 +26,4 @@ questions in the modules of this chapter.
 .. avembed:: Exercises/Sorting/SortChapterSumm.html ka
    :long_name: Sorting Chapter Summary Exercise
    :keyword: Sorting
+

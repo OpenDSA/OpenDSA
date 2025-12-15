@@ -90,3 +90,4 @@ is an excellent resource to read and learn from.
 .. |external_link2| raw:: html
 
    <a href="http://openmymind.net/2011/2/23/Foundations-of-Programming-2-Chapter-5-Effective-T/" target = "_blank">this blog</a>
+

@@ -565,3 +565,4 @@ then to use the induction hypothesis to show that the recursive step
 also produces the correct result.
 Prior to this, we must prove that the function always terminates,
 which might also be done using an induction proof.
+

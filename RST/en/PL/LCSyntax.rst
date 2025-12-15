@@ -157,3 +157,4 @@ correctly three times in a row.
 
 .. avembed:: Exercises/PL/LambdaCalcSyntax2.html ka
    :long_name: Lambda Calc Syntax 2
+

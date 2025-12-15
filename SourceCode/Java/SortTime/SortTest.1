@@ -217,9 +217,12 @@ static int[] int1000000SlightlyDis = new int[TESTSIZE];
 
 
 public static void main(String[]args) {
-
-	sorttime(args[0],args[1]); // This function is defined inside the specific
-                    // sorting code
+  if (args.length != 2) {
+    System.out.println("Usage: SortTest <arraysize> <arraytype>");
+  } else {
+    sorttime(args[0],args[1]); // This function is defined inside the specific
+                               // sorting code
+  }
 }
 
 

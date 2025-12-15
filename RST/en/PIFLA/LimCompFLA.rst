@@ -104,3 +104,4 @@ specified input.
 This is known as the :term:`halting problem`.
 To close this chapter, we will do a brief exploration of the theory of
 such problems, which is known as :term:`computability` theory.
+

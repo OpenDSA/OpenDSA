@@ -54,3 +54,4 @@ take into account the trap state.
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFACOMPno3a.html pe
    :long_name: Complement no string with 3 consecutive a's
    :keyword: Finite Automata; Deterministic Finite Acceptor
+
