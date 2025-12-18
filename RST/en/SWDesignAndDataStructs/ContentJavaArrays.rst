@@ -35,7 +35,7 @@ Interactive: Java Array Basics
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ArrayBasics.java"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
       ArrayBasics.java</img>
-      </a>
+      </a>  (right click-> save link as...)
 
 
 .. raw:: html
@@ -73,7 +73,7 @@ Interactive: Java Array Search
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ArrayLinearSearch.java"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">ArrayLinearSearch.java</img>
-      </a>
+      </a>  (right click-> save link as...)
 
 .. raw:: html
 
@@ -104,14 +104,14 @@ Interactive: Java Array Removing, Inserting, & Tips
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ArrayRemove.java"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
       ArrayRemove.java</img>
-      </a>
+      </a>  (right click-> save link as...)
 
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ArrayInsert.java"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
       ArrayInsert.java</img>
-      </a>
+      </a>  (right click-> save link as...)
 
 .. raw:: html
 
