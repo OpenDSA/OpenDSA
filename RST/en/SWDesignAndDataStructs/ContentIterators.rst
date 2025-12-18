@@ -141,14 +141,12 @@ Iterator Design Decisions
 
 .. _IteratorInner: 
 
-Inner Iterator for ex11.3-Iterator
-----------------------------------
-
-** TODO Verify link to example code and name** 
+Inner Iterator
+--------------
 
 As discussed throughout this section there are various design approaches for
 iterators.  Below is one example of how an inner Iterator class could be
-implemented for exIterator.
+implemented for LList.
 
 Include a public method to make the iterator object available:
 
