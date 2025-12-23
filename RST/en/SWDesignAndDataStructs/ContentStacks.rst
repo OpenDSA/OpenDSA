@@ -36,7 +36,8 @@ Interactive: Introduction to Stacks
     
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/StackInterface.java" target="_blank">
         <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
-        StackInterface.java</img></a>
+        StackInterface.java</img>
+        </a>  (right click-> save link as...)
     
    .. code-block:: java
    

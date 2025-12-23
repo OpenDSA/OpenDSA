@@ -314,8 +314,8 @@ Interactive: Java Control Flow
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/FridgeInventory.java"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
-      FridgeInventory.java</img>
-      </a>
+      FridgeInventory.java</img> 
+      </a> (right click-> save link as...)
 
 
 .. raw:: html
@@ -345,7 +345,7 @@ Interactive: Java Scope and Equality
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaFundamentalsTips.pdf"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       JavaFundamentalsTips.pdf</img>
-      </a>
+      </a> 
 
 
 .. raw:: html
