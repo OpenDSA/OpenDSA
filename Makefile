@@ -177,3 +177,17 @@ CS5040MasterN: min
 
 CS3SS18notes: min
 	$(PYTHON) $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes $(CONFIG_SCRIPT_OPTS)
+
+# Convenience target: fetch the official normalize.css release (v8.0.1)
+.PHONY: update-normalize
+update-normalize: lib/normalize.css
+
+lib/normalize.css:
+	@echo "Downloading normalize.css v8.0.1 to lib/normalize.css (if curl/wget available)"
+	@if command -v curl >/dev/null 2>&1; then \
+		curl -fsSL -o lib/normalize.css https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css; \
+	elif command -v wget >/dev/null 2>&1; then \
+		wget -qO lib/normalize.css https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css; \
+	else \
+		echo "Neither curl nor wget found; please download https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css and save to lib/normalize.css"; exit 1; \
+	fi
