@@ -225,3 +225,4 @@ the following slideshow.
    partial order.
    Thus, any algorithm must make at least :math:`n` comparisons in the
    worst case. 
+

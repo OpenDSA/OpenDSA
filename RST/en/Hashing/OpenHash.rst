@@ -93,3 +93,4 @@ other way.
 .. avembed:: Exercises/Hashing/OpenHashPRO.html ka
    :long_name: Open Hashing Proficiency Exercise
    :keyword: Hashing; Open Hashing
+

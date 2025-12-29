@@ -192,3 +192,4 @@ Hash Table Expansion (2)
     table[slot] = inH;
     numElements++;
   }
+

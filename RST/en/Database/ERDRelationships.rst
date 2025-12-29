@@ -259,3 +259,4 @@ Ternary Relationship  (degree 3)
 
 
 .. odsafig:: Images/ternaryCardinalityMappingPhoto.png
+

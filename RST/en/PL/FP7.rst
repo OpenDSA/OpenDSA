@@ -137,3 +137,4 @@ a row.
 
 .. avembed:: Exercises/PL/Reduce3.html ka
    :long_name: Reduce 3
+

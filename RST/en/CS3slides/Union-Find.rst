@@ -84,7 +84,7 @@ Algorithm Visualization
            style="background: white; display: block; margin: 0 auto;">
    </iframe>
 
-            
+
 Path Compression
 ----------------
 
@@ -102,3 +102,4 @@ Path Compression
 .. only:: never
 
    This is a comment that does NOT show in built slides: prevents 'odsalink' from appearing.
+

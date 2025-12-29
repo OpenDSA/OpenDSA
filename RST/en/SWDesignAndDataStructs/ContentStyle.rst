@@ -331,7 +331,7 @@ Code Review
        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/record.java"  target="_blank">
        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
        record.java</img>
-       </a>
+       </a>  (right click-> save link as...)
 
 
 Writing code that follows proper standards and conventions is a valuable skill that can greatly contribute to your success as a developer and your ability to work well with other developers. Every developer needs to learn how to review and assess their own code, as well as code written by others, to ensure that it meets quality standards and to determine possible areas of improvement.
@@ -1029,3 +1029,4 @@ Related Resources
       <li><a href="https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html  " target="_blank">Javadoc Guide </a></li>
        <li><a href="https://www.oracle.com/technetwork/java/codeconventions-150003.pdf  " target="_blank">Sun Microsystems, Inc (known today as Oracle). (1996). Java Code Conventions </a></li>
     </ul>
+

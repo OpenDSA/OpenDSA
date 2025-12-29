@@ -160,3 +160,4 @@ this proof.
 .. avembed:: Exercises/Sorting/SortBoundSumm.html ka
    :long_name: Lower Bounds Summary Exercise
    :keyword: Sorting; Sorting Problem Lower Bound
+

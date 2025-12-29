@@ -97,3 +97,4 @@ make Git not exactly like a blockchain system:
   Again, these proof of work/stake systems are application-dependent
   and not an intrinsic part of Blockchain.
 
+

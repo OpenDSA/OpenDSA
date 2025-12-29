@@ -119,3 +119,4 @@ times before we reach 1. [#]_
        the worst case when searching in a sorted array.
        This is even more difficult than proving that sequential search
        is the most efficient algorithm possible on an unsorted array.
+

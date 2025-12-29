@@ -32,3 +32,4 @@ Create NFA
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAex1.html pe
    :long_name: Create a NFA 1
    :keyword: Finite Automata; Non-Deterministic Finite Automata
+

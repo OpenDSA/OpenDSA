@@ -210,3 +210,4 @@ search, and delete in :math:`\Theta(\log n)` time.
 .. avembed:: Exercises/Design/DesignDictionarySumm.html ka
    :long_name: Dictionary Summary Exercise
    :keyword: Dictionary
+

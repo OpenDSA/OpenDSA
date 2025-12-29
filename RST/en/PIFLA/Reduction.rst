@@ -109,3 +109,4 @@ This also goes the other way.
 
 So, given good transformations, both problems take at least
 :math:`\Omega(P_1)` and at most :math:`O(P_2)`.
+

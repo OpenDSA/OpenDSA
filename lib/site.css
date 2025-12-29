@@ -1,3 +1,8 @@
+/* This file is used to style stand-alone supporting HTML pages.
+   This includes things like the help pages for some AVs, the license page,
+   and the About page for the OpenDSA system.
+*/
+
 #content {
   background-color: white;
   border-color: black;

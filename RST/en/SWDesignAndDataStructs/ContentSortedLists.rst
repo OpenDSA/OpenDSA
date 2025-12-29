@@ -56,12 +56,12 @@ Interactive: Introduction to Sorted Lists
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ListInterface.java"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
       ListInterface.java</img>
-      </a>
+      </a>  (right click-> save link as...)
       <br>
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/SortedListInterface.java"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
       SortedListInterface.java</img>
-      </a>
+      </a>  (right click-> save link as...)
       <br>
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/SortedListsOrderVsSorted.pdf"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
@@ -333,3 +333,4 @@ Checkpoint 2
 
 .. avembed:: Exercises/SWDesignAndDataStructs/SortedListsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
+

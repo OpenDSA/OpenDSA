@@ -18,3 +18,4 @@ complete it correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP37part1.html ka
    :long_name: RP set #37, question #1
+

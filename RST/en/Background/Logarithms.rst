@@ -140,3 +140,4 @@ Here is some practice with manipulating logarithms.
 .. avembed:: Exercises/Background/MathLogSumm.html ka
    :long_name: Logarithms Practice Questions
    :keyword: Logarithms
+

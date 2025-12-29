@@ -305,3 +305,4 @@ transitions in a simpler form.
    | Must show that the constructed grammar :math:`G` is such that
      :math:`L(G) = L(M')`. 
      That is, :math:`w \in L(G)` iff :math:`w \in L(M)`. QED.
+

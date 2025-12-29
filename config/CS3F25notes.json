@@ -120,6 +120,13 @@
     },
     "Week 12": {
       "CS3slides/BTrees": {}
+    },
+    "Week 13": {
+      "CS3slides/Graphs": {}
+    },
+    "Week 14": {
+      "CS3slides/Union-Find": {},
+      "CS3slides/General": {}
     }
   }
 }

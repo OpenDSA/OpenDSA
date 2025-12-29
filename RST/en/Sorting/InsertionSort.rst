@@ -182,3 +182,4 @@ search and insert can affect what is the best sort algorithm to use.
 
 .. `Computational Fairy Tales: Why Tailors Use Insertion Sort
 .. <http://computationaltales.blogspot.com/2011/04/why-tailors-use-insertion-sort.html target = "_blank">`_
+

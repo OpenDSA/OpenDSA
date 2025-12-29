@@ -3,7 +3,7 @@
 $(document).ready(function () {
   var av = new JSAV("UFconcomCON", {"animationMode": "none"});
 
-  var gr = av.ds.graph({width: 500, height: 300,
+  var gr = av.ds.graph({width: 500, height: 250,
                         layout: "manual", directed: false});
   var a = gr.addNode("A", {"left":   0, "top": 100});
   var b = gr.addNode("B", {"left": 100, "top": 100});

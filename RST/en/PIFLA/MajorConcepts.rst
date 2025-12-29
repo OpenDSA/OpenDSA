@@ -114,3 +114,4 @@ square, and maybe have a choice of whether to move right or left.
    This one accepts any string made of 1's and 0's that ends in 0
    (in other words, any even binary number).
    Can you figure out how it does that?
+

@@ -93,3 +93,4 @@ Analysis
 .. avembed:: Exercises/Sorting/ExchangeSumm.html ka
    :long_name: Exchange Sorting Summary Exercise
    :keyword: Sorting; Exchange Sorting; O(n^2) Sorts
+

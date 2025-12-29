@@ -381,3 +381,4 @@ seen.
        J.L. Bentley, D.D. Sleator, R.E. Tarjan, and V.K. Wei,
        "A Locally Adaptive Data Compression Scheme", 
        *Communications of the ACM 29*, 4(April 1986), 320-330.
+

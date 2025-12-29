@@ -1,9 +1,11 @@
 import json
 from pathlib import Path
 
-#from tafe.core.utils import clean_json
-from core.utils import clean_json, print_error
-from core.workflows import run_workflow_init, run_workflow_training, run_workflow_analyze
+# from tafe.core.utils import clean_json, print_error
+# from tafe.core.workflows import run_workflow_init, run_workflow_training, run_workflow_analyze
+
+from tools.tafe.core.utils import clean_json, print_error
+from tools.tafe.core.workflows import run_workflow_init, run_workflow_training, run_workflow_analyze
 
 def run_workflow(config_file: dict):
     if config_file["mode"] == "analyze":
@@ -15,7 +17,9 @@ def run_offline(args):
     Args:
         args (str): command line arguments
     """
-    
+
+    global onlineStatus
+    onlineStatus = True
     if args.init:
         # it's doing an initialization check
         run_workflow_init(
@@ -49,7 +53,8 @@ def run_offline(args):
                         "master_solution_path": args.master,
                         "attempt": json.load(f_attempt_json),
                         "diagnose": args.diagnose,
-                        "attempt_filename": Path(args.attempt).stem
+                        "attempt_filename": Path(args.attempt).stem,
+                        "is_online": False
                     }
                 )
         except json.JSONDecodeError as e:
@@ -81,6 +86,9 @@ def run_online(args):
         print_error("Unable to decode JSON string.",e)
         return
     
+    # setting the global variable for error finder, if needed
+    onlineStatus = True
+    
     # it's doing an initialization check
     if config_file["mode"] == "init":
         try:
@@ -111,7 +119,8 @@ def run_online(args):
                 "master_solution_path": config_file['master_solution_path'],
                 "attempt": config_file['attempt'],
                 "diagnose": args.diagnose,
-                "attempt_filename": Path("./").stem
+                "attempt_filename": Path("./").stem,
+                "is_online": True
             })
     
     return

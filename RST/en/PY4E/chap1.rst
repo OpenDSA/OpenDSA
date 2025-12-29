@@ -995,3 +995,4 @@ If you find a mistake in this book, feel free to send me a fix using
 .. |Programmers Talking to You| image:: ./chap1_files/pda2.svg
 .. |Hardware Architecture| image:: ./chap1_files/arch.svg
 .. |Where Are You?| image:: ./chap1_files/arch2.svg
+

@@ -30,3 +30,4 @@ While it is easy to check whether a given truth assignment satisfies a
 given circuit,
 we have no easy way of knowing whether an arbitrary cirucit has some
 satisfying assignment.
+

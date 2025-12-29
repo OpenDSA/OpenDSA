@@ -66,3 +66,4 @@ Reading strings from a file.
 
 .. extrtoolembed:: 'ae_adl_file2'
    :learning_tool: mastery-grid-python-animations
+

@@ -31,3 +31,4 @@ Try out an instance of the 3-SAT problem on your own.
 .. avembed:: Exercises/NP/threeSATPRO.html ka
    :long_name: Practice Exercise for 3-SAT
    :keyword: NP-completeness; 3-CNF Satisfiabilty
+

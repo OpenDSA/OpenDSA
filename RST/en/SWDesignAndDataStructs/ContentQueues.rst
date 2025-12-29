@@ -40,7 +40,7 @@ Interactive: Introduction to Queues
        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/QueueInterface.java"  target="_blank">
        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
        QueueInterface.java</img>
-       </a>
+       </a>  (right click-> save link as...)
    
    .. code-block:: java
    
@@ -173,7 +173,7 @@ Interactive: Introduction to Deque
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/DequeInterface.java"  target="_blank">
         <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
         DequeInterface.java</img>
-        </a>
+        </a>  (right click-> save link as...)
         <br>
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DequeIntro.pdf"  target="_blank">
         <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
@@ -449,3 +449,4 @@ Programming Practice: Queues 2
 
 .. extrtoolembed:: 'Programming Practice: Queues 2'
    :workout_id: 1921
+

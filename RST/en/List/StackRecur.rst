@@ -186,3 +186,4 @@ sub-problem is small.
 For example, :ref:`Quicksort <Quicksort> <Quicksort>` can effectively
 use a stack to replace its recursion since only bounds information for
 the subarray to be processed needs to be saved.
+

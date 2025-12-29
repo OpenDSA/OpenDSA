@@ -89,3 +89,4 @@ Exercise 9
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/abPalindromes.html pe
    :long_name: Turing Machines Exercise
    :keyword: Turing Machines
+

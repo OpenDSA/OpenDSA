@@ -9,7 +9,6 @@ body {
   background-color: #FFC0CB;
 }
 .jsavcontainer {
-  /* background-color: #eed; */
   background-color: #F5F5EA;  
   margin: 0 auto;
   border: 0;
@@ -39,29 +38,14 @@ body {
 
 /* Center inlineav diagrams */
 .divdgm {
-  width: 100% !important;
+  width: 100%
 }
 
 /* Hide flagged chapters fom the TOC */
 .hide-from-toc {
   display: none;
 }
-/* Style for the registration popup window */
-.registration-popup {
-  background: none repeat scroll 0 0 #333333;
-  color: #999999;
-  font-size: 1em;
-  width: 260px;
-}
-/* Make the width of the 'Sign In' and 'Register' buttons match the width of the textboxes */
-#login-submit-button, #register-button , #register-submit-button{
-  background-color: #888888;
-  width: 214px;
-}
-/* Increase the size of labels and links on login and registration forms */
-form.signin p, form.signin span {
-  font-size: 12px;
-}
+
 /* All showHide buttons default to red */
 .showHideLink {
   background-color: #FF0000;

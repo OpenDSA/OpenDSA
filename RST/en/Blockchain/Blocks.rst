@@ -126,3 +126,4 @@ important role in the ecosystem.
 For example, Bitcoin has associated entities known as "block
 explorers" that organize the transactions into a searchable database
 to allow efficient lookup of transactions of interest.
+

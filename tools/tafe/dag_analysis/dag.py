@@ -1,10 +1,14 @@
 from networkx import DiGraph, connected_components, neighbors
-from networkx.drawing.nx_pydot import to_pydot
+# from networkx.drawing.nx_pydot import to_pydot
 from collections import defaultdict
 
 from typing import Union
 
-from expr_tree_analysis.tree_utils import *
+# from tafe.expr_tree_analysis.tree_utils import *
+# from tafe.equation_analysis.equation import CurrentEquation
+
+from tools.tafe.expr_tree_analysis.tree_utils import *
+from tools.tafe.equation_analysis.equation import CurrentEquation
 
 class DependencyDAG(DiGraph):
     def __init__(self, dag_id: str):

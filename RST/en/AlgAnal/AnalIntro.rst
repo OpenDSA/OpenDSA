@@ -363,3 +363,4 @@ Growth Rates Ordering Exercise
    with the constant values for both functions and see that this only
    changes the crossing point but doesn't change which function grows
    faster than the other.
+

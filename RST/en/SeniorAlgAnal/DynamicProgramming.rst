@@ -560,3 +560,4 @@ Now, when we need to compute a series of matrices from :math:`i` to
 :math:`j`, we just look in position :math:`[i, j]` in the table. If
 there is an answer there, we use it.
 Otherwise, we do the computation, and note it in the table.
+

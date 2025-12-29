@@ -26,8 +26,8 @@ $(document).ready(function() {
   var q;                  //Question
 
 
-  graph = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: true});
-  mst = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: true});
+  graph = jsav.ds.graph({width: 600, height: 330, layout: "manual", directed: true});
+  mst = jsav.ds.graph({width: 600, height: 330, layout: "manual", directed: true});
   initGraph();
   graph.layout();
   mst.hide();

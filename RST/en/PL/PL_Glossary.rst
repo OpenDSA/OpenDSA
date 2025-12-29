@@ -62,3 +62,4 @@ GLOSSARY
    variable capture
       A free variable occurrence is captured when it becomes bound following 
       the renaming of some other variable occurrence.
+

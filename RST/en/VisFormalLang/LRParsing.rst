@@ -643,3 +643,4 @@ Possible Conflicts:
 3. | Shift/Shift Conflict
    | This cannot happen since the diagram is a DFA.
      There is a unique state to move into for each symbol. 
+

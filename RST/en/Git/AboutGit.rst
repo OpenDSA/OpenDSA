@@ -118,3 +118,4 @@ The following commands are currently supported. Arguments are surrounded by (par
 
 **git checkout [-b] (branch_name)**: Change the current branch to the branch with the name specified by (branch_name). Provide the [-b] flag to create a new branch with the name specified by (branch_name) if the branch does not exist. Provides the same functionality as git switch. In practice, it is better to use git switch for changing branches because git is migrating from checkout to switch for changing branches.
 
+

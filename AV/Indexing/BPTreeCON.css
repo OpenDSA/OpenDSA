@@ -1,13 +1,13 @@
-#BPbuildCON .jsavcanvas {
-  height: 250px;
+#BPbuildCON
+  height: 375px;
 }
 
 #BPbuildCON .jsavoutput.jsavline {
   height: 75px;
 }
 
-#BPfindCON .jsavcanvas {
-  height: 250px;
+#BPfindCON
+  height: 375px;
 }
 
 #BPfindCON .jsavoutput.jsavline {
@@ -15,19 +15,15 @@
 }
 
 #BPdeleteCON {
-  height: 350px;
-}
-
-#BPdeleteCON .jsavcanvas {
-  height: 250px;
+  height: 375px;
 }
 
 #BPdeleteCON .jsavoutput.jsavline {
   75px;
 }
 
-#BPbuild5CON .jsavcanvas {
-  height: 250px;
+#BPbuild5CON {
+  height: 350px;
 }
 
 #BPbuild5CON .jsavoutput.jsavline {

@@ -245,3 +245,29 @@
 .redbg{
   background-color: #FFB6C1 !important;
 }
+
+
+/* Semantic Classes */
+/* The goal is to eventually use only semantic class names,
+   in order to be able to better control the color palette for
+   accessibility improvements.
+*/
+
+.emphasizeedge {
+  /* Emphasize a tree edge */
+  stroke: red;
+  stroke-width: 3;
+}
+
+.emphasizenode {
+  /* Emphasize a node */
+  background-color: white;
+  color: red;
+  border-color: red;
+  box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+}
+
+.emphasizepointer {
+  /* Emphasize a JSAV pointer object */
+  stroke: red;
+}

@@ -36,3 +36,4 @@ Here is a pratice question from CodeCheck
    :height: 1050
    :width: 1050
    :name: exampleFrame
+

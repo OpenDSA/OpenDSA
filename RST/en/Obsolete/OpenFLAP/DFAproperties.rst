@@ -106,3 +106,4 @@ instead have the :math:`a` arc go to the corresponding destination
 below.
 
 For each :math:`b` arc in the first copy, change the :math:`b` to lambda.
+

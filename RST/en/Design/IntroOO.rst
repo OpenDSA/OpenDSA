@@ -418,3 +418,4 @@ development of very large programs.
 .. avembed:: Exercises/CMP/CMoopSumm.html ka
    :long_name: Concept map OOP exercises
    :keyword: Concept Map; Introduction to Object-Oriented Programming
+

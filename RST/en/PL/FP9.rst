@@ -283,3 +283,4 @@ for it, you must solve it correctly three times in a row.
 
 .. avembed:: Exercises/PL/ContinuationPassing4.html ka
    :long_name: Randomized CPS practice
+

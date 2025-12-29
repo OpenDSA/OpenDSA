@@ -34,3 +34,4 @@ Structurally Identical Binary Trees Exercise
 
 .. extrtoolembed:: 'Structurally Identical Binary Trees Exercise'
    :workout_id: 75
+

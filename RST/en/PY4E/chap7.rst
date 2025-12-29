@@ -680,3 +680,4 @@ If you find a mistake in this book, feel free to send me a fix using
 
 .. |Secondary Memory| image:: ./chap7_files/arch.svg
 .. |A File Handle| image:: ./chap7_files/handle.svg
+

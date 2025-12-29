@@ -15,8 +15,39 @@
           <em>trace the code starting at line 5</em>. What method activation
           records are on the call stack from top to bottom at <em>line 10</em>?
         </p>
-        <img src="./StacksCheckpointImages/Stacks_Checkpoint2_Q1.png" alt="image of code" width="400" height="335">
 
+ <pre class="prettyprint">
+
+public static void main(String[] args) {
+    method1();
+} // end main
+
+public static void method1() {
+    method2();
+    String message = new String("scope1");
+    method2();
+    System.out.println(message);
+}
+
+public static void method2() {
+    method3();
+    String message2 = new String("scope2");
+    method4();
+    message2 = "still scope2";
+    method3();
+    System.out.println(message2);
+}
+
+public static void method3() {
+    method4();
+}
+
+public static void method4() {
+    String message4 = new String("scope4");
+    System.out.println(message4);
+}
+
+ </pre>
 
         <div class="solution">method1</div>
         <ul class="choices">

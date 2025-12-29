@@ -397,5 +397,6 @@ Improved Interface (2)
 ----------------------
 
 .. revealjs-slide::
-   
+
 .. codeinclude:: BufferPool/BufferPoolADT
+

@@ -61,13 +61,13 @@ $(document).ready(function() {
   rt1.target(rt, {anchor: "left top"});
   rt.right(rt.right().left());
   var newedge = rt.edgeToRight();
-  newedge.addClass("rededge");
+  newedge.addClass("emphasizeedge");
   bt.layout();
   av.step();
 
   // Slide 6
   av.umsg(interpret("sc6"));
-  rt1.arrow.addClass("thinredline");
+  rt1.arrow.addClass("emphasizepointer");
   // This line should not be needed, it is here to fix Raphael bug with arrows
   rt1.arrow.css({stroke: "red"});
   av.recorded();

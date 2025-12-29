@@ -15,7 +15,8 @@ will be useful in identifying which solutions we are trying to provide feedback 
 
 """
 
-from dag_analysis.dag import DependencyDAG
+# from tafe.dag_analysis.dag import DependencyDAG
+from tools.tafe.dag_analysis.dag import DependencyDAG
 
 import sympy
 from networkx import Graph, DiGraph, get_edge_attributes
@@ -27,7 +28,7 @@ class SolutionSubgroup:
         self.g_dep_unfolded : Union[Graph, None] = g_dep_subgroup
         self.g_dep_folded : Union[Graph, None] = None # intialized here for readability
         self.dag_dep : Union[Graph, None] = None 
-        self.equation_threads: Union[dict, None]= None
+        self.equation_threads: Union[dict, None] = None
 
         # folding transformations begin here
         self.g_dep_folded, self.dag_dep = self.get_folded_dep_graph()
@@ -105,7 +106,6 @@ class SolutionSubgroup:
     
     def is_equation_in_unfolded_graph(self, node_term) -> bool:
         assert self.g_dep_unfolded is not None # this only for type checker, please ignore
-
         return self.g_dep_unfolded.nodes[node_term]['group'] == 'equation' \
         and self.is_node_connected_in_graph(self.g_dep_unfolded, node_term)
     
@@ -298,11 +298,38 @@ class SolutionSubgroup:
                         g_dag_dep.add_edge(eq, eq_target, variable=var)
 
                         # information is also duplicated in the nodes
-                        g_dag_dep.nodes[eq]['outgoing'] = var
-                        g_dag_dep.nodes[eq_target]['incoming'] = var
+                        if "outgoing" not in g_dag_dep.nodes[eq]:
+                            g_dag_dep.nodes[eq]['outgoing'] = [var]
+                        else:
+                            g_dag_dep.nodes[eq]['outgoing'].append(var)
+                        
+                        if "incoming" not in g_dag_dep.nodes[eq_target]:
+                            g_dag_dep.nodes[eq_target]['incoming'] = [var]
+                        else:
+                            g_dag_dep.nodes[eq_target]['incoming'].append(var)
             else:
                 flag = False # and the loop terminates
-    
+
+        # TODO: Analyze this and fix this better, later
+        # TODO: Because technically at that point, either you have a single variable
+        # TODO: that is outgoing, or you have a set of variables that are TECHNICALLY
+        # TODO: inputs AND outputs, and therefore should not be connected.
+
+        # TODO: Add code to take the remaining edges, and connect ONLY the solution box
+        # variables (squares) WITH A SINGLE EDGE to the corresponding equation nodes 
+        # as outgoing variables. These are the only ones KNOWN to be confirmed to be outgoing
+        # variables. If >1 edges for the unknown, it's part of the simultaneous system
+        # and is both an input and an output to others, so cannot be classified;
+        # MUST be analyzed using reduced arranged forms separately.
+
+        for eq_folded in g_solution: # since g_solution has not been assigned to g_dep_folded yet
+            if self.is_equation_in_unfolded_graph(eq_folded) and g_solution.degree(eq_folded) == 1: # type: ignore
+                soln_node = list(g_solution[eq_folded].keys())[0] # type: ignore
+                if "outgoing" not in g_dag_dep.nodes[eq_folded]: # type: ignore
+                    g_dag_dep.nodes[eq_folded]['outgoing'] = [soln_node] # type: ignore
+                else:
+                    g_dag_dep.nodes[eq_folded]['outgoing'].append(soln_node) # type: ignore
+
         return (g_solution, g_dag_dep)
     
     def get_eq_var_assignments(self, debug=False):
@@ -367,21 +394,27 @@ class SolutionSubgroup:
             print(dag_dep.thread_collection)
         return dag_dep.thread_collection
     
-    def get_dag_outgoing_var(self, dag_equation_id, debug=False):
+    def get_dag_outgoing_var(self, dag_equation_id, debug=False) -> list:
         if dag_equation_id in self.dag_dep and 'outgoing' in self.dag_dep.nodes[dag_equation_id]: # type: ignore
             return self.dag_dep.nodes[dag_equation_id]['outgoing'] # type: ignore
         else:
-            return None
+            return []
     
-    def get_dag_incoming_var(self, dag_equation_id, debug=False):
+    def get_dag_incoming_var(self, dag_equation_id, debug=False) -> list:
         if dag_equation_id in self.dag_dep and 'incoming' in self.dag_dep.nodes[dag_equation_id]: # type: ignore
             return self.dag_dep.nodes[dag_equation_id]['incoming'] # type: ignore
         else:
-            return None
+            return []
     
     def get_next_thread_equation(self, dag_equation_id, debug=False):
         if dag_equation_id in self.dag_dep and 'thread-next' in self.dag_dep.nodes[dag_equation_id]: # type: ignore
             return self.dag_dep.nodes[dag_equation_id]['thread-next'] # type: ignore
         else:
             return None
+    
+    def is_first_equation_in_thread(self, dag_equation_id, debug=False) -> bool:
+        if dag_equation_id in self.dag_dep and 'thread-prev' in self.dag_dep.nodes[dag_equation_id]: # type: ignore
+            return self.dag_dep.nodes[dag_equation_id]["thread-prev"] == None # type: ignore
+        else:
+            return None # type: ignore
     

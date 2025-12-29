@@ -366,3 +366,4 @@ Container Class Design Issues
 * Storing a record vs. Storing a reference to a record
 * Homogeneity: Allow different record types? Check and block?
 * Deletion: What happens to the record?
+

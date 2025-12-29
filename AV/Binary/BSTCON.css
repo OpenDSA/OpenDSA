@@ -11,7 +11,7 @@
 }
 
 #BSTinsertCON {
-  height: 515px;
+  height: 535px;
 }
 
 #BSTinsertCON .jsavoutput.jsavline {
@@ -23,7 +23,7 @@
 }
 
 #BSTdeletemaxCON {
-  height: 340px;
+  height: 355px;
 }
 
 #BSTdeletemaxCON .jsavoutput.jsavline {
@@ -49,20 +49,3 @@
 #BSTremoveCON .jsavtree { 
   top: 35px;
 }
-
-.thinredline {
-  stroke: red;
-}
-
-.rededge { /* Make a tree edge to be red */
-  stroke: red;
-  stroke-width: 3;
-}
-
-.rednode { /* Make a node red */
-  background-color: white;
-  color: red;
-  border-color: red;
-  box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
-}
-

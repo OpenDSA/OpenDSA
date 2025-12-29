@@ -519,3 +519,4 @@ This page is heavily influenced by the presentation in
 Sections 1.1 to 1.6 in *Compared to What?* by Gregory J.E. Rawlins.
 In particular, the "algorithm for designing algorithms" is borrowed
 directly from Rawlins.
+

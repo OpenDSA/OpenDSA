@@ -121,7 +121,7 @@ $(document).ready(function () {
     "This time it only takes 2 disk accesses.",
     "The problem with this layout is that it is difficult to maintain, especially when trying to maintain a complete tree. For example, lets try to remove the root node.",
     "Next we need to rearrange the remaining nodes.",
-    "As you can see a simple node removal may require access to several nodes."
+    "As you can see a simple node removal may require access to several nodes. But even so, its not good enough. We have now restored the correct shape... but this isn't a BST anymore! We would still need to totally reorganize the right subtree, requiring many more node accesses."
   ];
 
   jsav.label("Disk Accesses:", {visible: true, left: 0, top: 0});
@@ -221,48 +221,48 @@ $(document).ready(function () {
   toggleNodeHighlight(nodes[4]);
   toggleNodeHighlight(nodes[10]);
   disk_access_count.value(0, "");
-//  jsav.step();
+  jsav.step();
 
 // CAS: The remaining slides temporarily commented out
 // because the rebalancing gets the tree wrong, it is no longer a BST
 
-  /* 12th Slide ***************************************************************/
-//  jsav.umsg(messages.shift());
-//  toggleNodeHighlight(nodes[0]);
-//  nodes[0].value("");
-//  disk_access_count.value(0, 1);
-//  labels[0].text("");
-//  jsav.step();
+  // 12th Slide ***************************************************************/
+  jsav.umsg(messages.shift());
+  toggleNodeHighlight(nodes[0]);
+  nodes[0].value("");
+  disk_access_count.value(0, 1);
+  labels[0].text("");
+  jsav.step();
 
   /* 13th Slide ***************************************************************/
-//  toggleNodeHighlight(nodes[2]);
-//  toggleNodeHighlight(nodes[0]);
-//  jsav.effects.moveValue(nodes[2], nodes[0]);
-//  disk_access_count.value(0, 1);
-//  labels[2].css({left: "30px"});
-//  jsav.step();
+  toggleNodeHighlight(nodes[2]);
+  toggleNodeHighlight(nodes[0]);
+  jsav.effects.moveValue(nodes[2], nodes[0]);
+  disk_access_count.value(0, 1);
+  labels[2].css({left: "30px"});
+  jsav.step();
 
   /* 14th Slide ***************************************************************/
-//  toggleNodeHighlight(nodes[6]);
-//  toggleNodeHighlight(nodes[2]);
-//  jsav.effects.moveValue(nodes[6], nodes[2]);
-//  disk_access_count.value(0, 2);
-//  labels[12].css({left: "105px"});
-//  jsav.step();
+  toggleNodeHighlight(nodes[6]);
+  toggleNodeHighlight(nodes[2]);
+  jsav.effects.moveValue(nodes[6], nodes[2]);
+  disk_access_count.value(0, 2);
+  labels[12].css({left: "105px"});
+  jsav.step();
 
   /* 15th Slide ***************************************************************/
-//  toggleNodeHighlight(nodes[14]);
-//  toggleNodeHighlight(nodes[6]);
-//  jsav.effects.moveValue(nodes[14], nodes[6]);
-//  disk_access_count.value(0, 2);
-//  labels[14].css({left: "510px"});
-//  jsav.step();
+  toggleNodeHighlight(nodes[14]);
+  toggleNodeHighlight(nodes[6]);
+  jsav.effects.moveValue(nodes[14], nodes[6]);
+  disk_access_count.value(0, 2);
+  labels[14].css({left: "510px"});
+  jsav.step();
 
   /* 16th Slide ***************************************************************/
-//  jsav.umsg(messages.shift());
-//  toggleNodeHighlight(nodes[14]);
-//  nodes[14].remove();
-//  jsav.step();
+  jsav.umsg(messages.shift());
+  toggleNodeHighlight(nodes[14]);
+  nodes[14].remove();
+  jsav.step();
 
   jsav.recorded();
 });

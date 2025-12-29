@@ -863,3 +863,4 @@ Vending Machine, then
 * Consider the various processes that the software solution must support and note the main processes and some of the main requirements
 * Review your notes, identify the nouns and noun phrases, then consider which are classes and which fields
 * Review your notes, identify the verbs and verb phrases, then identify possible methods for each class
+

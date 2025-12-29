@@ -139,3 +139,4 @@ minimizing the DFA.
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/Minimization2CON.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/VisFormalLang/FA/Minimization2CON.js
    :output: show
+

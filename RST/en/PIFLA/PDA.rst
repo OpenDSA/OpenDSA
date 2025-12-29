@@ -117,3 +117,4 @@ Something to Think About
    Certainly it can, but can it do this deterministically?
 #. Can the PDA recognize the language $ww^R$?
    Yes, but can it do this deterministically?
+

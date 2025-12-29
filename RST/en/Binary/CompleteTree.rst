@@ -120,3 +120,4 @@ which must fall in the range 0 to :math:`n-1`.
 .. avembed:: Exercises/Binary/CompleteFIB.html ka
    :long_name: Complete Tree Exercise
    :keyword: Binary Trees; Complete Binary Trees
+

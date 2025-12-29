@@ -1000,3 +1000,4 @@ If you find a mistake in this book, feel free to send me a fix using
 `Github <https://github.com/csev/py4e/tree/master/book3>`__.
 
 .. |Variables and Objects| image:: ./chap8_files/list1.svg
+

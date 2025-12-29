@@ -47,3 +47,4 @@ Midterm 2
         probing by steps, pseudo-random probing, quadratic probing,
         double hashing
    |    Deletion
+

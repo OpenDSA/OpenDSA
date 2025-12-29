@@ -16,3 +16,4 @@ Deforms exercise
 
 .. avembed:: Exercises/DeformsTesting/f2020p7PPRO.html ka
    :long_name: Problem 7
+

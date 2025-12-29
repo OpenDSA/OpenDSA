@@ -1,55 +1,49 @@
+
 import networkx as nx
 import sympy
 
-from core.global_objects import *
-from core.solution_subgroup import SolutionSubgroup
-from expr_tree_analysis.expr_tree import ExpressionTree
-from core.report import ReportContext
-from core.solutionbox import SOLUTION_STATUS
-from core.utils import compare_quantities
-from equation_analysis.equations_util import *
+# from tafe.core.global_objects import *
+# from tafe.core.solution_subgroup import SolutionSubgroup
+# from tafe.core.report import ReportContext
+# from tafe.core.solutionbox import SOLUTION_STATUS
+# from tafe.core.utils import compare_quantities, is_unit_compatible
 
-from messages.message import MessageText
+# from tafe.expr_tree_analysis.expr_tree import ExpressionTree
+# from tafe.equation_analysis.equations_util import *
+# from tafe.equation_analysis.equation import CurrentEquation, compare_equations
+# from tafe.dag_analysis.dag import DependencyDAG
+
+# from tafe.messages.message import MessageText
+
+# from tafe.messages.message_type import ERROR_TYPE
+
+from tools.tafe.core.global_objects import *
+from tools.tafe.core.solution_subgroup import SolutionSubgroup
+from tools.tafe.core.report import ReportContext
+from tools.tafe.core.solutionbox import SOLUTION_STATUS
+from tools.tafe.core.utils import compare_quantities, is_unit_compatible
+
+from tools.tafe.expr_tree_analysis.expr_tree import ExpressionTree
+from tools.tafe.equation_analysis.equations_util import *
+from tools.tafe.equation_analysis.equation import CurrentEquation, compare_equations
+from tools.tafe.dag_analysis.dag import DependencyDAG
+
+from tools.tafe.messages.message import MessageText
+
+from tools.tafe.messages.message_type import ERROR_TYPE
 
 from pprint import pprint
+from copy import deepcopy
+
+
 
 subgroup_details = {}
 
-def compare_equations(source_eq: Equality, target_eq: Equality, debug=True) -> bool:
-    return True
+# (DEPRECATED) DO NOT ENABLE, OTHERWISE CONFLICTS WITH equations_util above
+# def compare_equations(source_eq: Equality, target_eq: Equality, debug=True) -> bool:
+#     return True
 
-def get_box_value_unit(report, boxid, wkspc, debug): # move into Report class later.
-    if debug:
-        print("Which variable box:", boxid)
-        print("valueSource:", report.summary[boxid]["valueSource"])
-        print("valueType:", report.summary[boxid]['valueType'])
-
-    # pulling info, NOTE: assoc, param, solutionBox all have value and unit attributes,
-    # manually added parameters don't, so they are treated specially    
-    if report.summary[boxid]["valueType"] == 'association':
-        if debug:
-            print("Value is in ", report.summary[boxid]['value']['var'])
-        value = report.json_object['workspaces'][wkspc]['solutionBoxes'][report.summary[boxid]['value']['var']] # move to a function
-    
-    elif report.summary[boxid]["valueType"] == 'number':
-        if report.summary[boxid]["valueSource"]:
-            value = report.json_object['parameters'][report.summary[boxid]['valueSource']] # move to a function
-
-        else: # manually entered quantity, had to explicitly pull info
-            value = {'value':report.summary[boxid]['value'], 'unit': report.summary[boxid]['currentUnit']} # move to a function
-            if debug:
-                print("Value is ", report.summary[boxid]['value'], report.summary[boxid]['currentUnit'])
-    
-    else:
-        if debug:
-            print("Value is in ", report.summary[boxid]['currentSymbol'])
-        value = report.json_object['workspaces'][wkspc]['solutionBoxes'][report.summary[boxid]['currentSymbol']] # move to a function
-    
-    if debug:
-        print("Value is", value['value'], value['unit']) # move to a function
-    return (value['value'], value['unit'])
-
-def dag_compare(report_master: ReportContext, report_attempt: ReportContext, debug=True):
+def dag_compare(report_master: ReportContext, report_attempt: ReportContext, debug=False):
     if debug:
         print("Inside workflows.py: dag_compare()")
     
@@ -83,7 +77,7 @@ def dag_compare(report_master: ReportContext, report_attempt: ReportContext, deb
         }
         print(subgroup, checklist)
         if all(checklist.values()):
-            print(f'{subgroup} can be compared')
+            print(f'{subgroup} can be compared')  if debug else None
             list_subgroups_to_test.append(subgroup)
 
     # Series of bookkeeping checks
@@ -98,8 +92,8 @@ def dag_compare(report_master: ReportContext, report_attempt: ReportContext, deb
         # NOTE: perhaps it might help to hold permanent references to the subgroups here
         # and refer to them later, instead of the extended references.
         # TODO: Change the code elsewhere as well to simplify, reduce references and function calls
-        m_subgroup : SolutionSubgroup = report_master.solution.solution_subgroups[subgroup]['subgroup']
-        a_subgroup : SolutionSubgroup = report_attempt.solution.solution_subgroups[subgroup]['subgroup']
+        m_subgroup : SolutionSubgroup = report_master.solution.solution_subgroups[subgroup_id]['subgroup']
+        a_subgroup : SolutionSubgroup = report_attempt.solution.solution_subgroups[subgroup_id]['subgroup']
 
         threads_subgroup_master : dict = m_subgroup.equation_threads # type: ignore
         threads_subgroup_attempt : dict = a_subgroup.equation_threads # type: ignore
@@ -146,14 +140,14 @@ def dag_compare(report_master: ReportContext, report_attempt: ReportContext, deb
                             for (k_m, k_a) in zip(m_variables.keys(), a_variables.keys()):
                                 if False:
                                     print('master')
-                                m_value, m_unit = get_box_value_unit(
-                                    report_master, k_m, 
+                                m_value, m_unit = report_master.get_box_value_unit(
+                                    k_m, 
                                     report_master.get_object_workspace_id(k_m), False) # type: ignore
                                 
                                 if False:
                                     print('attempt')
-                                a_value, a_unit = get_box_value_unit(
-                                    report_attempt, k_a, 
+                                a_value, a_unit = report_attempt.get_box_value_unit(
+                                    k_a, 
                                     report_attempt.get_object_workspace_id(k_a), False) # type: ignore
                                 
                                 dict_variable_check[(k_m, k_a)] = compare_quantities(
@@ -537,12 +531,12 @@ def dag_compare(report_master: ReportContext, report_attempt: ReportContext, deb
 
     return
 
-def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext, debug=True):
+def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext, debug=False) -> dict:
     """
     Cleaned up version of dag_compare to correspond to writeup
     """
     if debug:
-        print("Inside workflows.py: dag_compare_new()")
+        print("Inside workflows.py: dag_compare()")
         print("Show solution box")
         print(report_attempt.dict_solution_box)
         print("Show subgroups")
@@ -575,7 +569,7 @@ def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext,
             print(subgroup.split(","))
             print(subgroup, checklist)
         if all(checklist.values()):
-            print(f'{subgroup} can be compared')
+            print(f'{subgroup} can be compared')  if debug else None
             list_subgroups_to_test.append(subgroup)
             subgroup_details[subgroup] = {
                 # more details to be added later
@@ -596,7 +590,7 @@ def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext,
             }
     
     # cleaning up, the identifier subgroup can be confusing unless cleared up
-    del subgroup
+    del subgroup # type: ignore
     
     for subgroup_id in list_subgroups_to_test:
         # NOTE: perhaps it might help to hold permanent references to the subgroups here
@@ -605,7 +599,7 @@ def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext,
         m_subgroup : SolutionSubgroup = report_master.solution.solution_subgroups[subgroup_id]['subgroup']
         # No checks required here, since it's already taken care of before.
         a_subgroup : SolutionSubgroup = report_attempt.solution.solution_subgroups[subgroup_id]['subgroup']
-        
+
         threads_subgroup_master : dict = m_subgroup.equation_threads # type: ignore
         threads_subgroup_attempt : dict = a_subgroup.equation_threads # type: ignore
 
@@ -621,7 +615,10 @@ def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext,
                     }
                 
         for pair in subgroup_details[subgroup_id]['pairs']:
-            
+            if debug:
+                print("===============> THREADS BEING CHECKED ARE")
+                print(pair)
+
             # Label-based comparison of equations, storing metadata
             label_score, matched_pairs_scores_dict = compare_label(
                 report_master, report_attempt,
@@ -629,6 +626,8 @@ def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext,
                     threads_subgroup_master[pair[0]],
                     threads_subgroup_attempt[pair[1]]
                     )
+                ,
+                subgroup_id
             )
             subgroup_details[subgroup_id]['pairs'][pair]\
                 ['metadata']['matched_label_equations'] = matched_pairs_scores_dict
@@ -636,10 +635,16 @@ def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext,
             # Reduced form comparison of equations in threads, storing metadata
             reduced_score, matched_clusters_scores_dict = compare_structural_symbolic(
                 report_master, report_attempt,
-                (
-                    threads_subgroup_master[pair[0]],
-                    threads_subgroup_attempt[pair[1]]
-                    )
+                # (
+                #     threads_subgroup_master[pair[0]],
+                #     threads_subgroup_attempt[pair[1]]
+                #     ),
+                # matched_pairs_scores_dict,
+                # m_subgroup,
+                # a_subgroup
+                pair,
+                subgroup_id,
+                matched_pairs_scores_dict
             )
             subgroup_details[subgroup_id]['pairs'][pair]\
                 ['metadata']['matched_reduced_equations'] = matched_clusters_scores_dict
@@ -648,138 +653,935 @@ def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext,
             subgroup_details[subgroup_id]['pairs'][pair]['score'] = \
                 label_score + reduced_score
 
+        # Picking the maximal matching threads in the subgroup
+        
+        dict_max_score_M_first = {
+            _: subgroup_details[subgroup_id]['pairs'][_]
+            for _ in {(m_key, max([
+                a_key[1] for a_key 
+                in (filter(lambda y: y[0] == m_key, 
+                        list(subgroup_details[subgroup_id]['pairs'].keys())))
+                ], key = lambda y: subgroup_details[subgroup_id]['pairs'][(m_key, y)]['score']))
+            for m_key in {x[0] for x in subgroup_details[subgroup_id]['pairs']}}
+        }
+
+        dict_max_score_A_first = {
+            _: subgroup_details[subgroup_id]['pairs'][_]
+            for _ in {(max([
+                m_key[0] for m_key 
+                in (filter(lambda y: y[1] == a_key, 
+                        list(subgroup_details[subgroup_id]['pairs'].keys())))
+                ], key = lambda y: subgroup_details[subgroup_id]['pairs'][(y, a_key)]['score']
+                ), a_key)
+            for a_key in {x[1] for x in subgroup_details[subgroup_id]['pairs']}}
+        }
+
+        for m_pair in dict_max_score_M_first:
+            if m_pair in dict_max_score_A_first:
+                subgroup_details[subgroup_id]['matches'][m_pair] = dict_max_score_M_first[m_pair]
+        
+        for a_pair in dict_max_score_A_first:
+            if a_pair in dict_max_score_M_first:
+                subgroup_details[subgroup_id]['matches'][a_pair] = dict_max_score_A_first[a_pair]
+
     if debug:
+        print("\nSubgroup details summary")
         pprint(subgroup_details)
+    
+    return subgroup_details
         
-
 def compare_label(
-        report_master: ReportContext, 
-        report_attempt: ReportContext, 
-        thread_pair_tuple: tuple,
-        debug=True):
-        """
-        Internal function, uses the global scope object to get the threads, compare them,
-        then record score and similarities. Differences are collected later.
-        """
+    report_master: ReportContext, 
+    report_attempt: ReportContext, 
+    thread_pair_tuple: tuple,
+    subgroup_id: str,
+    debug=False):
+    """
+    Internal function, uses the global scope object to get the threads, compare them,
+    then record score and similarities. Differences are collected later.
+    """
 
-        m_thread, a_thread = thread_pair_tuple
-        thread_label_match_score=0.0
-        thread_label_match_pairs={}
+    # Get the solution subgroups for more information (mostly the DAG)
+    m_subgroup : SolutionSubgroup = report_master.solution.solution_subgroups[subgroup_id]['subgroup']
+    a_subgroup : SolutionSubgroup = report_attempt.solution.solution_subgroups[subgroup_id]['subgroup']
 
-        # thread compare by label only, commence
-        # prototype: don't record points, just print for now.
-        last_point_of_comparison = 0
-        for m_equation in m_thread:
-            for a_equation in a_thread[last_point_of_comparison:]:
-                if report_master.get_equation_name(m_equation) == report_attempt.get_equation_name(a_equation):
-                    # we have found an equation that matches what we're trying to do.
-                    if False:
-                        print(m_equation, a_equation, "---")
-                    if False:
-                        print(m_equation, report_master.summary[m_equation])
-                        print(a_equation, report_attempt.summary[a_equation])    
-                        print("Found the right label")
-                    # time to try and match the variable values
-                    # if you spot errors, then you know early estimate of
-                    # point of error
-                    # number of matched variables is the score
-                    m_variables = report_master.get_equation_variables(m_equation)
-                    a_variables = report_attempt.get_equation_variables(a_equation)
-                        
-                    if False:
-                        print("\n\nList of variables in equation")
-                        print("Master variables")
-                        print(m_variables.keys())
-                        print("Attempt variables")
-                        print(a_variables.keys())
+    m_thread, a_thread = thread_pair_tuple
+    thread_label_match_score=0.0
+    thread_label_match_pairs={}
+
+    # thread compare by label only, commence
+    # prototype: don't record points, just print for now.
+    last_point_of_comparison = 0
+    for m_equation in m_thread:
+        for a_equation in a_thread[last_point_of_comparison:]:
+            if report_master.get_equation_name(m_equation) == report_attempt.get_equation_name(a_equation):
+                # we have found an equation that matches what we're trying to do.
+                if debug:
+                    print(m_equation, a_equation, "---")
+                if debug:
+                    print(m_equation, report_master.summary[m_equation])
+                    print(a_equation, report_attempt.summary[a_equation])    
+                    print("Found the right label")
+                
+                # time to try and match the variable values
+                # if you spot errors, then you know early estimate of
+                # point of error
+                # number of matched variables is the score
+                m_variables = report_master.get_equation_variables(m_equation)
+                a_variables = report_attempt.get_equation_variables(a_equation)
+                
+                if debug:
+                    print("\n\nList of variables in equation")
+                    print("Master variables")
+                    pprint(sorted(m_variables.keys()))
+                    print("Attempt variables")
+                    pprint(sorted(a_variables.keys()))
+                
+                # We do a check to see if the incoming variable and outgoing variables match
+                # in case the labels match exactly
+                
+                m_incoming = sorted([
+                    report_master.get_variable_box_name(
+                        report_master.get_assoc_equation_box_id(m_equation, mvar)
+                        )
+                    for mvar in m_subgroup.get_dag_incoming_var(m_equation)
+                    ]) # type: ignore
+                a_incoming = sorted([
+                    report_attempt.get_variable_box_name(
+                        report_attempt.get_assoc_equation_box_id(a_equation, avar)
+                        )
+                    for avar in a_subgroup.get_dag_incoming_var(a_equation)
+                    ]) # type: ignore
+                
+                m_outgoing = sorted([
+                    report_master.get_variable_box_name(
+                        report_master.get_assoc_equation_box_id(m_equation, mvar)
+                        )
+                    for mvar in m_subgroup.get_dag_outgoing_var(m_equation)
+                    ]) # type: ignore
+                a_outgoing = sorted([
+                    report_attempt.get_variable_box_name(
+                        report_attempt.get_assoc_equation_box_id(a_equation, avar)
+                        )
+                    for avar in a_subgroup.get_dag_outgoing_var(a_equation)
+                    ]) # type: ignore
+                if debug:
+                        print("M, A")
+                        print("incoming",m_incoming,a_incoming)
+                        print("outgoing",m_outgoing,a_outgoing)
+                if  m_incoming == a_incoming and m_outgoing == a_outgoing:
+                    if debug:
+                        print("These matched just fine")
+                        # and nothing happens, we just continue processing
+                else:
+                    # otherwise, we should compare these two, so skip this one
+                    if debug:
+                        print("Right equation label, but not used in the right place")
+                    continue
+                
+                # If we reach here, we're good to compare and continue
+                dict_variable_check = {}
+                dict_variable_errors = {}
+
+                for (k_m, k_a) in zip(
+                    sorted(m_variables.keys()), 
+                    sorted(a_variables.keys())
+                    ):
                     
-                    dict_variable_check = {}
-                    for (k_m, k_a) in zip(m_variables.keys(), a_variables.keys()):
-                        if False:
-                            print('master')
-                        m_value, m_unit = get_box_value_unit(
-                            report_master, k_m, 
-                            report_master.get_object_workspace_id(k_m), False) # type: ignore
-                        
-                        if False:
-                            print('attempt')
-                        a_value, a_unit = get_box_value_unit(
-                            report_attempt, k_a, 
-                            report_attempt.get_object_workspace_id(k_a), False) # type: ignore
-                        
-                        dict_variable_check[(k_m, k_a)] = compare_quantities(
-                            m_magn=float(m_value),
-                            m_unit=m_unit,
-                            a_magn=float(a_value),
-                            a_unit=a_unit,
-                            )
-                        if False:
-                            print(dict_variable_check[(k_m, k_a)])
-
-                        # if values are calculated, then they care indexed by the internal variable name (eg: x_y),
-                        # not the variable box name (eg: wk1_XYZ_N_M_term).
-                        # this value is compared as is using compare_quantities()
-                        # for parameters, param name is enough, and check for sign.
-                        # if parameter was tampered with/other value was manually used, that is compared separately.
-                        if False:
-                            print("====")
+                    # We do a check to exclude incoming and outgoing variables
+                    # as applicable
+                    # NOTE: Lists of strings are matched per item and in order
+                    # AT THIS POINT, we know that the incoming and outgoing variables match exactly
+                    # We just have to decide when to count them for scoring and when not to.
+                    # Rule: ONLY discard outgoing variables for intermediate equations in a path.
+                    # (DEBATABLE) IF it's the first equation in a path,
+                    # (DEBATABLE) THEN count the incoming variables for calculating score.
+                    # outgoing variable is the dependent one, incoming variables and params are independent
+                    # ONLY independents scores determine correctness, if structure is the same 
+                    # (which is the case for label matching), so always discount outgoing variables
                     
-                    # increase the score for the thread based on this, move on
-                    # or note the error, and stop
-                    if False:
-                        print(f"match:{sum([_ for k,_ in dict_variable_check.items()])} out of {len(dict_variable_check)}")
-                        if all([_ for k,_ in dict_variable_check.items()]):
-                            print("it was a match")
+                    if debug:
+                        print(k_m, k_a)
+
+                    k_m_assoc = [
+                        assoc_id 
+                        for assoc_id in report_master.summary 
+                        if "locations" in report_master.summary[assoc_id] and k_m in report_master.summary[assoc_id]["locations"]
+                        ]
+                    k_a_assoc = [
+                        assoc_id 
+                        for assoc_id in report_attempt.summary 
+                        if "locations" in report_attempt.summary[assoc_id] and k_a in report_attempt.summary[assoc_id]["locations"]
+                        ]
+
+                    if len(k_m_assoc) > 0 and k_m_assoc[0] in m_subgroup.get_dag_outgoing_var(m_equation) \
+                    and len(k_a_assoc) > 0 and k_a_assoc[0] in a_subgroup.get_dag_outgoing_var(a_equation) :
+                        if debug:
+                            print(f"variable removed from {m_equation} is {k_m}")
+                            print(f"variable removed from {a_equation} is {k_a}")
+                        continue
+                    
+                    # NOTE: This one is heavily debatable, look at this later
+                    # elif not m_subgroup.is_first_equation_in_thread(m_equation) \
+                    # and not a_subgroup.is_first_equation_in_thread(a_equation) \
+                    # and k_m in m_subgroup.get_dag_incoming_var(m_equation) \
+                    # and k_a in a_subgroup.get_dag_incoming_var(a_equation) :
+                    #     continue
+                    
+                    if debug:
+                        print('master')
+                    m_value, m_unit = report_master.get_box_value_unit(k_m)
+                        # k_m, 
+                        # report_master.get_object_workspace_id(k_m), False) # type: ignore
+                    
+                    if debug:
+                        print('attempt')
+                    a_value, a_unit = report_attempt.get_box_value_unit(k_a)
+                        # k_a, 
+                        # report_attempt.get_object_workspace_id(k_a), False) # type: ignore
+                    
+                    actual_decision = compare_quantities(
+                        m_magn=float(m_value),
+                        m_unit=m_unit,
+                        a_magn=float(a_value),
+                        a_unit=a_unit,
+                        )
+                    
+                    sign_ignored_decision = compare_quantities(
+                        m_magn=abs(float(m_value)),
+                        m_unit=m_unit,
+                        a_magn=abs(float(a_value)),
+                        a_unit=a_unit,
+                        )
+                    
+                    if debug:
+                        print(float(m_value),m_unit,float(a_value),a_unit)
+                        print(f"actual match?: {actual_decision}")
+                        print(f"sign ignored match?: {sign_ignored_decision}")
+                    
+                    if actual_decision and sign_ignored_decision:
+                        dict_variable_check[(k_m, k_a)] = 1.0
+                    elif not actual_decision and sign_ignored_decision:
+                        dict_variable_check[(k_m, k_a)] = 0.5
+                        # change this to store the error also
+                        dict_variable_errors[(k_m, k_a)] = ERROR_TYPE.sign_error
+                        
+                    else:
+                        dict_variable_check[(k_m, k_a)] = 0.0
+                        # this just means the variable boxes did not match at all
+                        # additionally, track if this was from a box with an output from
+                        # a previous result
+                        if len(k_a_assoc) > 0 and k_a_assoc[0] in a_subgroup.get_dag_incoming_var(a_equation) :
+                            # TEST THIS LATER
+                            dict_variable_errors[(k_m, k_a)] = ERROR_TYPE.parameter_prev_error_no_match
                         else:
-                            print("there was an error")
-                    
-                    # score of success for a thread for ID check is the sum of 
-                    # match scores for each equation that we got.
-                    # NOTE: This must be bookkept
-                    score = sum([_ for k,_ in dict_variable_check.items()]) \
-                        / (len(dict_variable_check))
-                    
-                    # see algorithm in paper for justification
-                    # these are the generic equations that even with slight modifications can make
-                    # direct comparison impossible/inexact, so we defer these to a later time.
-                    if report_master.get_equation_name(m_equation) in ["add2","sub","mult","div"] \
-                        and score < 1.0:
-                        break
+                            dict_variable_errors[(k_m, k_a)] = ERROR_TYPE.parameter_no_match
 
-                    thread_label_match_score += score
-                    thread_label_match_pairs[(m_equation, a_equation)] = score
-                    last_point_of_comparison = a_thread.index(a_equation)+1
+                    # if values are calculated, then they care indexed by the internal variable name (eg: x_y),
+                    # not the variable box name (eg: wk1_XYZ_N_M_term).
+                    # this value is compared as is using compare_quantities()
+                    # for parameters, param name is enough, and check for sign.
+                    # if parameter was tampered with/other value was manually used, that is compared separately.
+                    if debug:
+                        print("====")
+                
+                # increase the score for the thread based on this, move on
+                # or note the error, and stop
+                if debug:
+                    print(f"match:{sum([_ for k,_ in dict_variable_check.items()])} out of {len(dict_variable_check)}")
+                    if all([_ for k,_ in dict_variable_check.items()]):
+                        print("it was a match")
+                    else:
+                        print("there was an error")
+                
+                # score of success for a thread for ID check is the sum of 
+                # match scores for each equation that we got.
+                # NOTE: This must be bookkept
+                score = (sum([_ for k,_ in dict_variable_check.items() if _>0]) + 1.0) \
+                    / (len(dict_variable_check) + 1.0) # ensures that we leave out the outgoing variables.
+                    # also, + 1.0 to to numerator and denominator ensures we reward finding a compatible labeled equation.
+                
+                # see algorithm in paper for justification
+                # these are the generic equations that even with slight modifications can make
+                # direct comparison impossible/inexact, so we defer these to a later time.
+                if report_master.get_equation_name(m_equation) in ["add2","sub","mult","div"] \
+                    and score < 1.0:
                     break
-            if False:
-                print(" ")
-                # compare equation boxes, including the results computed
 
+                thread_label_match_score += score
+                thread_label_match_pairs[(m_equation, a_equation)] = {
+                    "score": score,
+                    "errors": dict_variable_errors
+                }
+                last_point_of_comparison = a_thread.index(a_equation)+1
+                break
         if debug:
-            print("====> After label check phase")
-            print("Show thread scores")
-            pprint(thread_label_match_score)
-            print()
-        
-        return thread_label_match_score, thread_label_match_pairs
+            print(" ")
+            # compare equation boxes, including the results computed
+
+    if debug:
+        print("====> After label check phase")
+        print("Show thread scores")
+        pprint(thread_label_match_score)
+        print()
+    
+    return thread_label_match_score, thread_label_match_pairs
 
 def compare_structural_symbolic(
-        report_master: ReportContext, 
-        report_attempt: ReportContext, 
-        thread_pair_tuple: tuple,
-        debug=True):
-        """
-        Internal function, uses the global scope object to get the threads, compare them,
-        then record score and similarities. Differences are collected later.
+    report_master: ReportContext, 
+    report_attempt: ReportContext, 
+    # thread_pair_tuple: tuple,
+    # matched_label_pairs_scores_dict: dict,
+    # master_subgroup
+    thread_pair_id_tuple: tuple,
+    subgroup_id: str,
+    matched_label_pairs_scores_dict: dict,
+    debug=False):
+    """
+    Internal function, uses the global scope object to get the threads, compare them,
+    then record score and similarities. Differences are collected later.
 
-        NOTE: This one compares structurally and symbolically as applicable
-        """
+    NOTE: This one compares structurally and symbolically as applicable
 
-        m_thread, a_thread = thread_pair_tuple
-        thread_reduced_match_score=0.0
-        thread_reduced_match_clusters={}
+    matched_label_pairs_scores_dict: dict
+        pairs of equations that matched using labeled comparison 
+        in the label comparison stage, used to determine start 
+        and end of subsequences to be used for structural/symbolic
+        comparison of equations by merging.
+    """
+    
+    # Get the solution subgroups for more information (mostly the DAG)
+    m_subgroup : SolutionSubgroup = report_master.solution.solution_subgroups[subgroup_id]['subgroup']
+    a_subgroup : SolutionSubgroup = report_attempt.solution.solution_subgroups[subgroup_id]['subgroup']
 
-        # restarting
+    # Fetching the threads in question
+    m_thread = m_subgroup.equation_threads[thread_pair_id_tuple[0]] # type: ignore
+    a_thread = a_subgroup.equation_threads[thread_pair_id_tuple[1]] # type: ignore
 
+    # Fetching DAGs in question
+    m_dag_dep : DependencyDAG = m_subgroup.dag_dep # type: ignore
+    a_dag_dep : DependencyDAG = a_subgroup.dag_dep # type: ignore
+    
+    # m_thread, a_thread = thread_pair_tuple
+    thread_reduced_match_score=0.0
+    thread_reduced_match_clusters={}
+
+    # restarting
+    if debug:
+        print("Entering symbolic/structural comparison phase")
         print(m_thread, a_thread)
+
+    # Find all subsequences that aren't matched 
+    # in the thread_pair_tuple information
+    # Since the equation mapping from m_thread to a_thread is 1-1,
+    # iterating over m_thread is enough to find starting and ending points.
+    # And because of the same reason, unmatched sequences in between these 
+    # sentinel points are going to either match or not.
+    
+    unmatched_subseq_pairs_list = []
+    # start_index = 0
+    # end_index = -1
+
+    # (DEPRECATED) THIS IS INCORRECT!!!!
+    # # if debug:
+    # #     print(list(map(
+    # #     lambda eq: eq in map(lambda _:_[0], matched_label_pairs_scores_dict), 
+    # #     m_thread
+    # # )))
+    # for eq_status in list(map(
+    #         lambda eq: eq in map(lambda _:_[0], matched_label_pairs_scores_dict), 
+    #         m_thread
+    #     ))+[True]:
+    #     # The deliberate True at the end is to force a subsequence to close 
+    #     # especially if it is the last item in the thread
+    #     if eq_status:
+    #         if end_index > 0:
+    #             # You have reached the end of a subsequence, mark and store this
+    #             unmatched_subseq_pairs_list.append(
+    #                 (
+    #                     m_thread[start_index: end_index+1],
+    #                     a_thread[start_index: end_index+1] # TODO: This is wrong!!! FIX THIS!!!!
+    #                 )
+    #             )
+    #             end_index = -1
+    #         start_index += 1
+    #     else:
+    #         if end_index < 0:
+    #             end_index = start_index
+    #         else:
+    #             end_index += 1
+    
+    # if debug:
+    #     print(unmatched_subseq_pairs_list)
+
+    # all_subsequences = []
+    m_start_index = -1
+    a_start_index = -1
+    bool_started_subseq = False
+    
+    for m_eq_index in range(len(m_thread)):
+        broke_out = False
+        for a_eq_index in range(len(a_thread)):
+            if debug:
+                print(m_eq_index, a_eq_index)
+            
+            if (m_thread[m_eq_index], a_thread[a_eq_index]) in matched_label_pairs_scores_dict:
+                if debug:
+                    print("found a match")
+                
+                # if you have already started mapping a subsequence
+                if bool_started_subseq:
+                    print("ending one subsequence to start another") if debug else None
+                    m_subseq = m_thread[m_start_index+1:m_eq_index]
+                    a_subseq = a_thread[a_start_index+1:a_eq_index]
+                    unmatched_subseq_pairs_list.append((m_subseq, a_subseq))
+                    print(m_subseq, a_subseq) if debug else None
+                    bool_started_subseq = False
+                
+                # placed outside, since either
+                # 1. we are progressing the subsequence starting point gradually
+                # because we can't find start of parallel subsequences yet
+                # 2. we just finished looking at the end of parallel subsequences
+                # and need to reset (alternates between match, no match, match; 
+                # that's how we find an unmatched parallel subsequence)
+                m_start_index = m_eq_index
+                a_start_index = a_eq_index
+                
+                print("moving the next starting point to") if debug else None
+                print(m_start_index,a_start_index) if debug else None
+
+                broke_out = True
+                break
         
-        return thread_reduced_match_score, thread_reduced_match_clusters
+        if not broke_out:
+            print("found no other a_eqn to match with m_eqn, time to start/continue a subsequence") if debug else None
+            bool_started_subseq = True
+
+    if bool_started_subseq:
+        # then we need to end this current subsequence
+        # that hasn't been closed off
+        m_subseq = m_thread[m_start_index+1:len(m_thread)]
+        a_subseq = a_thread[a_start_index+1:len(a_thread)]
+        unmatched_subseq_pairs_list.append((m_subseq, a_subseq))
+
+    # AT THIS POINT:
+    # We have tuples of lists of equation wkX_Y IDs that were 
+    # unmatched using label comparison, and pairs of subsets 
+    # of these equations when reduced/substituted will match 
+    # with each other for symbolic comparison
+
+    # TESTING: Find all the input and output terms computed
+    # for each equation. Make sure that params and computed terms
+    # received from other equations are counted separately
+
+    for m_subseq, a_subseq in unmatched_subseq_pairs_list:
+        if debug:
+            print("\nMaster subsequence")
+            print(m_subseq)
+            print("Attempt subsequence")
+            print(a_subseq)
+
+        # Step 1: Calculating input and output overlaps for subsequences
+        dict_input_overlap = dict()
+        dict_output_overlap = dict()
+
+        m_eq_id, a_eq_id = "", ""
+
+        for m_eq_id in m_subseq:
+            # assuming that there is only one outgoing var, which is the case
+            # for equations in a subsequence that isn't the last one
+            # (if it is the last one, it's getting left as is) 
+            if len(m_subgroup.get_dag_outgoing_var(m_eq_id)) == 1:
+                m = CurrentEquation(
+                    report_master.rewrite_with_parameters(m_eq_id),
+                    report_master,
+                    m_subgroup.get_dag_outgoing_var(m_eq_id)[0]
+                    )
+            else:
+                # default reduced form
+                m = CurrentEquation(
+                    report_master.rewrite_with_parameters(m_eq_id),
+                    report_master
+                    )
+
+            for a_eq_id in a_subseq:
+                if debug:
+                    print(m_eq_id, a_eq_id)
+
+                if len(a_subgroup.get_dag_outgoing_var(a_eq_id)) == 1:
+                    a = CurrentEquation(
+                        report_attempt.rewrite_with_parameters(a_eq_id),
+                        report_attempt,
+                        a_subgroup.get_dag_outgoing_var(a_eq_id)[0]
+                        )
+                else:
+                    a = CurrentEquation(
+                        report_attempt.rewrite_with_parameters(a_eq_id),
+                        report_attempt,
+                        )
+                
+                if debug:
+                    print(f"{m_eq_id}: {m.show_equation()} \n\
+                        {m.get_leaf_units()} \n\
+                        {m.get_subject_units()}")
+                    print(f"{a_eq_id}: {a.show_equation()} \n\
+                        {a.get_leaf_units()} \n\
+                        {a.get_subject_units()}")
+                    print("=======")
+
+                # Calculating overlap of input variables
+                dict_input_overlap[(m_eq_id, a_eq_id)] = {
+                    "equations": {
+                        "m": m,
+                        "a": a,
+                    },
+                    "input_overlap": {
+                        m_param : [
+                            a_param for a_param, a_unit in a.get_leaf_units().items() \
+                                if is_unit_compatible(m_unit, a_unit)
+                            ]
+                        for m_param, m_unit in m.get_leaf_units().items()
+                    }
+                }
+                
+                # Filter out the params for which no corresponding items were found
+                dict_input_overlap[(m_eq_id, a_eq_id)]\
+                    ["input_overlap"] = {
+                        k:v for k,v in dict_input_overlap[(m_eq_id, a_eq_id)]["input_overlap"]\
+                        .items() if len(v) > 0
+                    }
+                
+                # Making it so that if there is no overlap, there is not entry at all
+                # TODO: See if this is rational or not
+                if len(dict_input_overlap[(m_eq_id, a_eq_id)]["input_overlap"]) == 0:
+                    del dict_input_overlap[(m_eq_id, a_eq_id)]
+                        
+                # Calculating overlap of output variables
+                
+                # if m_dag_dep.nodes[m_eq_id]["thread-next"] != None \
+                # and a_dag_dep.nodes[a_eq_id]["thread-next"] != None:
+                if not m.is_equation_canonical() and \
+                not a.is_equation_canonical():
+                    if is_unit_compatible(m.get_subject_units(), a.get_subject_units()):
+                        dict_output_overlap[(m_eq_id, a_eq_id)] =  {
+                            "equations": {
+                                "m": m,
+                                "a": a,
+                            },
+                        }
+                        dict_output_overlap[(m_eq_id, a_eq_id)]["output_overlap"] = {
+                            str(m.subject) : str(a.subject)
+                        }
+
+        del m_eq_id, a_eq_id # type: ignore
+
+        if debug:
+            print("Input overlaps: ")
+            pprint(dict_input_overlap)
+            print("Output overlaps: ")
+            pprint(dict_output_overlap)
+
+        # Step 2: Finding borders of sub-subsequences to compare and score
+        
+        # Picking up from after calculating the input and output overlaps
+
+        m_recent_start : int = 0
+        a_recent_start : int = 0
+
+        # Code below should be inside a while loop, that checks to see
+        # If m_recent start or a_recent_start reached the end or not
+        while \
+            m_recent_start < len(m_subseq) and \
+            a_recent_start < len(a_subseq):
+
+            if debug:
+                print("=====>>>>>>")
+                print("New iteration, starting new subsubsequence search")
+                print("=====>>>>>>")
+
+            # Initialize the new subsub start and end points
+            m_subsub_start : int = -1
+            a_subsub_start : int = -1
+            
+            m_subsub_end : int = -1
+            a_subsub_end : int = -1
+
+            # Stretching the input overlaps to cover lowest ends first
+            # TODO: Later, optimize to combine these two loops,
+            # TODO: they just need to be one loop filtering out by recent_start points
+            for m_eq_posn in range(m_recent_start, len(m_subseq)):
+                m_input_overlaps : list = [
+                    (m,a) for m,a in dict_input_overlap \
+                        if m == m_subseq[m_eq_posn] \
+                        and a_subseq.index(a) >= a_recent_start
+                    ]
+                for m_temp,a_eq_id in m_input_overlaps:
+                    if a_subsub_start == -1 and m_subsub_start == -1:
+                        # these would both be set at the same time
+                        # if they were both None, meaning no input overlap set
+                        # yet, looking for them still
+                        a_subsub_start = a_subseq.index(a_eq_id)
+                        m_subsub_start = m_eq_posn
+                    elif a_subseq.index(a_eq_id) < a_subsub_start:
+                        # If the start point a_substart changes, it changes for both
+                        # m and a equations. 
+                        a_subsub_start = a_subseq.index(a_eq_id)
+                        m_subsub_start = m_eq_posn
+                        
+            for a_eq_posn in range(a_recent_start, len(a_subseq)):
+                a_input_overlaps : list = [
+                    (m,a) for m,a in dict_input_overlap \
+                        if a == a_subseq[a_eq_posn] \
+                        and m_subseq.index(m) >= m_recent_start
+                    ]
+                for m_eq_id, a_temp in a_input_overlaps:
+                    if m_subsub_start == -1 and a_subsub_start == -1:
+                        # these would both be set at the same time
+                        # if they were both None, meaning no input overlap set
+                        # yet, looking for them still
+                        a_subsub_start = a_eq_posn
+                        m_subsub_start = m_subseq.index(m_eq_id)
+
+                    elif m_subseq.index(m_eq_id) < m_subsub_start:
+                        # If the start point a_substart changes, it changes for both
+                        # m and a equations. 
+                        a_subsub_start = a_eq_posn
+                        m_subsub_start = m_subseq.index(m_eq_id)
+
+            # del m_eq_id, a_eq_id, m_temp, a_temp
+
+            # Ensure that input bound of subsubequence exist first
+            # Either they'll both be set or they'll both be unset
+            if m_subsub_start == -1 and a_subsub_start == -1:
+                if debug:
+                    print("ERROR: breaking out since no START to a SUBsubsequence could be found")
+                break
+            if debug:
+                print(f"SUCCESS: START to a SUBsubsequence could be FOUND at {m_subsub_start} {a_subsub_start}")
+
+            # If not here, then adjusting subsub_start points further will not give us anything
+            # new either. Abandon and abort loop, no more subsubs to find.
+            # TODO: This logic can probably be moved out of the loop,
+            # TODO: since this means that there are no input overlaps we can find
+            # TODO: so continuing this step would be moot, we might as well
+            # TODO: ditch the effort of finding reducible subsubsequences for this.
+            # OR, it serves its purpose here, since the recent_start points change,
+            # Which means for the remaining subsequence, at a later time, there
+            # may not be any more input overlaps left, in which case break out.
+            # Outside the loop => there aren't any to begin with, which is a corner case.
+            # At most one can move this to the start of the loop to quit first,
+            # Or just go through the steps and then see if we found anything.
+            
+            # Stretching the output overlaps to cover upper ends next
+            for m_eq_posn in range(m_subsub_start,len(m_subseq)):
+                # find output overlaps with all equations
+                # that show up AFTER the start of this subsubsequence,
+                # i.e. that can mark the end of this subsubsequence
+                m_output_overlaps : list = [
+                    (m,a) for m,a in dict_output_overlap \
+                        if m == m_subseq[m_eq_posn] \
+                        and a_subseq.index(a) >= a_subsub_start
+                    ]
+                for m_temp, a_eq_id in m_output_overlaps:
+                    if a_subsub_end == -1 and m_subsub_end == -1:
+                        # these would both be set at the same time
+                        # if they were both None, meaning no output overlap set
+                        # yet, looking for them still; Otherwise, we have found 
+                        # a definite end for the subsub so far
+                        a_subsub_end = a_subseq.index(a_eq_id)
+                        m_subsub_end = m_eq_posn
+                    elif a_subseq.index(a_eq_id) < a_subsub_end:
+                        a_subsub_end = a_subseq.index(a_eq_id)
+                        m_subsub_end = m_eq_posn
+            
+            for a_eq_id in range(a_subsub_start, len(a_subseq)):
+                # find output overlaps with all equations
+                # that show up AFTER the start of this subsubsequence,
+                # i.e. that can mark the end of this subsubsequence
+                a_output_overlaps : list = [
+                    (m,a) for m,a in dict_output_overlap \
+                        if a == a_subseq[a_eq_posn] \
+                        and m_subseq.index(m) >= m_subsub_start
+                    ]
+                for m_eq_id, a_temp in a_output_overlaps:
+                    if m_subsub_end == -1 and a_subsub_end == -1:
+                        # these would both be set at the same time
+                        # if they were both None, meaning no output overlap set
+                        # yet, looking for them still; Otherwise, we have found 
+                        # a definite end for the subsub so far
+                        a_subsub_end = a_eq_posn
+                        m_subsub_end = m_subseq.index(m_eq_id)
+
+                    elif m_subseq.index(m_eq_id) < m_subsub_end:
+                        a_subsub_end = a_eq_posn
+                        m_subsub_end = m_subseq.index(m_eq_id)
+
+            # END of finding the opener and first-candidate-closer of the 
+            # subsubsequence, proceeding to updating them
+
+            # BUT FIRST
+            # ====Updating pointers at the end of the iteration====
+            # Before updating the starting points, make sure that we have found a 
+            # subsequence here. This means in both M and A paths, we found 
+            # subsequences with definite start and end points.
+            if m_subsub_end == -1 and a_subsub_end == -1:
+                if debug:
+                    print("ERROR: breaking out since no END to a SUBsubsequence could be found")
+                break
+            if debug:
+                print(f"SUCCESS: END to a SUBsubsequence could be FOUND at {m_subsub_end} {a_subsub_end}")
+            
+            # Otherwise, do other things but also
+            #    # m_recent_start = m_subsub_end+1
+            #    # a_recent_start = a_subsub_end+1
+
+            # initializing m_subsub_eq for substitutions
+            if len(m_subgroup.get_dag_outgoing_var(m_subseq[m_subsub_start])) == 1:
+                m_subsub_eq = CurrentEquation(
+                    report_master.rewrite_with_parameters(m_subseq[m_subsub_start]),
+                    report_master,
+                    m_subgroup.get_dag_outgoing_var(m_subseq[m_subsub_start])[0]
+                    )
+            else:
+                # default reduced form
+                m_subsub_eq = CurrentEquation(
+                    report_master.rewrite_with_parameters(m_subseq[m_subsub_start]),
+                    report_master
+                    )
+            
+            # initializing a_subsub_eq for substitutions
+            if len(a_subgroup.get_dag_outgoing_var(a_subseq[a_subsub_start])) == 1:
+                a_subsub_eq = CurrentEquation(
+                    report_attempt.rewrite_with_parameters(a_subseq[a_subsub_start]),
+                    report_attempt,
+                    a_subgroup.get_dag_outgoing_var(a_subseq[a_subsub_start])[0]
+                    )
+            else:
+                # default reduced form
+                a_subsub_eq = CurrentEquation(
+                    report_attempt.rewrite_with_parameters(a_subseq[a_subsub_start]),
+                    report_attempt
+                    )
+
+            # time to merge the equations up to this point before stretching the end point
+            # any further.
+            # NOTE: for multiple outgoing variables as in the case of simultaneous
+            # NOTE: equations, this would be a corner case where it's at the end of a path
+            # NOTE: This loop (and the next one) would never run to begin with.
+            for m_index in range(m_subsub_start+1,m_subsub_end+1):
+                m_out_var = m_subgroup.get_dag_outgoing_var(m_subseq[m_index-1])[0]
+                m_subsub_eq.substitute_into_equation(
+                    report_master.rewrite_with_parameters(m_subseq[m_index]),
+                    m_out_var
+                    )
+                m_subsub_eq.change_equation_subject(
+                    m_subgroup.get_dag_outgoing_var(m_subseq[m_index])[0]
+                    )
+            
+            for a_index in range(a_subsub_start+1,a_subsub_end+1):
+                a_out_var = a_subgroup.get_dag_outgoing_var(a_subseq[a_index-1])[0]
+                a_subsub_eq.substitute_into_equation(
+                    report_attempt.rewrite_with_parameters(a_subseq[a_index]),
+                    a_out_var
+                    )
+                a_subsub_eq.change_equation_subject(
+                    a_subgroup.get_dag_outgoing_var(a_subseq[a_index])[0]
+                    )
+
+            if debug:
+                print("Current limits of subsubsequence before stretching endpoint")
+                print(f"m_subsub endpoints are {m_subseq[m_subsub_start]} -> {m_subseq[m_subsub_end]}")
+                print(f"M: {m_subsub_eq.show_equation()}, p(M):{\
+                    m_subsub_eq.get_leaf_units()}, out(M):{m_subsub_eq.get_subject_units()}")
+                print(f"a_subsub endpoints are {a_subseq[a_subsub_start]} -> {a_subseq[a_subsub_end]}")
+                print(f"A: {a_subsub_eq.show_equation()}, p(A):{\
+                    a_subsub_eq.get_leaf_units()}, out(A):{a_subsub_eq.get_subject_units()}")
+
+            # NOTE: same as above, this loop will also not run in case of
+            # NOTE: singleton equations like in case of simultaneous equations.
+            
+            # for m_eq_posn in range(m_subsub_end+1, len(m_subseq)):
+            #     for a_eq_posn in range(a_subsub_end+1, len(a_subseq)):
+                    # if (
+                    #     m_subseq[m_eq_posn], a_subseq[a_eq_posn]
+                    # ) in dict_output_overlap:
+            # UPDATING the end point and conditional to ensure that 
+            # some overlap with the current candidate is also considered
+            # without just considering the most recent subsub_end only.
+            # only consider updates, if either or both endpoints move.
+            # if they are both the same, do not change.
+            # this is probably only true for the very first scenario to be honest.
+            for m_eq_posn in range(m_subsub_end, len(m_subseq)):
+                for a_eq_posn in range(a_subsub_end, len(a_subseq)):
+                    if debug:
+                        print("what ranges are we looking at")
+                        print(f"M:{(m_subsub_end, m_eq_posn, len(m_subseq))}")
+                        print(f"A:{(a_subsub_end, a_eq_posn, len(a_subseq))}")
+                        print((
+                            m_subseq[m_eq_posn], a_subseq[a_eq_posn]
+                        ) in dict_output_overlap,
+                        not (m_eq_posn == m_subsub_end and a_eq_posn == a_subsub_end))
+                    
+                    if (
+                        m_subseq[m_eq_posn], a_subseq[a_eq_posn]
+                    ) in dict_output_overlap \
+                    and not (m_eq_posn == m_subsub_end and a_eq_posn == a_subsub_end):
+                        
+                        if debug:
+                            print("Candidate for stretching endpoint")
+                            print(f"m_subsub endpoints are {m_subseq[m_subsub_start]\
+                                                            } -> {m_subseq[m_eq_posn]}")
+                            print(f"a_subsub endpoints are {a_subseq[a_subsub_start]\
+                                                            } -> {a_subseq[a_eq_posn]}")
+                            pprint(dict_output_overlap[(m_subseq[m_eq_posn], a_subseq[a_eq_posn])])
+                        
+                        # create a copy, and merge everything up to this equation
+                        # then, look at set difference between input unit set
+                        # of original vs copy.
+                        # any change ==> not to include this.
+                        copy_m_subsub_eq = deepcopy(m_subsub_eq)
+                        copy_a_subsub_eq = deepcopy(a_subsub_eq)
+
+                        # start using copy_* equations only from this point on
+                        # until you get to set symmetric difference for units
+                        if debug:
+                            print("stacking m_index equations now")
+                            print(f"on top of {m_subsub_eq.show_equation()}")
+                        for m_index in range(m_subsub_end+1, m_eq_posn+1):
+                            m_out_var = m_subgroup.get_dag_outgoing_var(m_subseq[m_index-1])[0]
+                            if debug:
+                                print(f"Currently stacking {m_subseq[m_index]} {\
+                                    report_master.rewrite_with_parameters(m_subseq[m_index])}")
+                                print(f"with output: {m_out_var}")
+
+                            copy_m_subsub_eq.substitute_into_equation(
+                                report_master.rewrite_with_parameters(m_subseq[m_index]),
+                                m_out_var
+                                )
+                            if debug:
+                                print("now rewriting to the corresponding output variable")
+                                print(f"{m_subgroup.get_dag_outgoing_var(m_subseq[m_index])}")
+                            copy_m_subsub_eq.change_equation_subject(
+                                m_subgroup.get_dag_outgoing_var(m_subseq[m_index])[0]
+                                )
+                        
+                        if debug:
+                            print("stacking m_index equations now")
+                        for a_index in range(a_subsub_end+1, a_eq_posn+1):
+                            a_out_var = a_subgroup.get_dag_outgoing_var(a_subseq[a_index-1])[0]
+                            if debug:
+                                print(f"Currently stacking {a_subseq[a_index-1]}")
+                                print(f"with output: {a_out_var}")
+
+                            copy_a_subsub_eq.substitute_into_equation(
+                                report_attempt.rewrite_with_parameters(a_subseq[a_index]),
+                                a_out_var
+                                )
+                            copy_a_subsub_eq.change_equation_subject(
+                                a_subgroup.get_dag_outgoing_var(a_subseq[a_index])[0]
+                                )
+                        
+                        if debug:
+                            print("Looking at combined equation copy so far")
+                            print(f"m_subsub endpoints are {m_subseq[m_subsub_start]\
+                                                            } -> {m_subseq[m_eq_posn]}")
+                            print(
+                                f"M: {copy_m_subsub_eq.show_equation()}, \
+                                p(M):{copy_m_subsub_eq.get_leaf_units()}")
+                            print(f"a_subsub endpoints are {a_subseq[a_subsub_start]\
+                                                            } -> {a_subseq[a_eq_posn]}")
+                            print(
+                                f"A: {copy_a_subsub_eq.show_equation()}, \
+                                p(A):{copy_a_subsub_eq.get_leaf_units()}")
+                        
+                        # Set symmetric difference from previous
+                        aA = a_subsub_eq.get_leaf_units()
+                        aB = copy_a_subsub_eq.get_leaf_units()
+                        mA = a_subsub_eq.get_leaf_units()
+                        mB = copy_a_subsub_eq.get_leaf_units()
+                        
+                        # TODO: fix this calculation, it is incorrect currently
+                        # a_set_difference = {k: aA[k] if k in aA else aB[k] for k in
+                        #             set(aA.keys()).symmetric_difference(aB.keys())}
+                        # m_set_difference = {k: mA[k] if k in mA else mB[k] for k in
+                        #             set(mA.keys()).symmetric_difference(mB.keys())}
+                        
+                        a_set_difference = dict()
+                        for aAterm in aA:
+                            if len([
+                                aBterm for aBterm in aB
+                                if is_unit_compatible(aB[aBterm], aA[aAterm])
+                                ]) == 0:
+                                a_set_difference[aAterm] = None
+                        for aBterm in aB:
+                            if len([
+                                aAterm for aAterm in aA
+                                if is_unit_compatible(aB[aBterm], aA[aAterm])
+                                ]) == 0:
+                                a_set_difference[aBterm] = None
+                        
+                        m_set_difference = dict()
+                        for mAterm in mA:
+                            if len([
+                                mBterm for mBterm in mB
+                                if is_unit_compatible(mB[mBterm], mA[mAterm])
+                                ]) == 0:
+                                m_set_difference[mAterm] = None
+                        for mBterm in mB:
+                            if len([
+                                mAterm for mAterm in mA
+                                if is_unit_compatible(mB[mBterm], mA[mAterm])
+                                ]) == 0:
+                                m_set_difference[mBterm] = None
+                        
+                        a_bool_set_difference_exists = len(a_set_difference) > 0
+                        m_bool_set_difference_exists = len(m_set_difference) > 0
+
+                        if not a_bool_set_difference_exists \
+                            and not m_bool_set_difference_exists:
+                            a_subsub_eq = copy_a_subsub_eq
+                            m_subsub_eq = copy_m_subsub_eq
+                            a_subsub_end = a_eq_posn
+                            m_subsub_end = m_eq_posn
+
+                        pass
+                    else:
+                        # thre
+                        pass
+
+            m_recent_start = m_subsub_end+1
+            a_recent_start = a_subsub_end+1
+            
+            # calculating similarity score based on tree comparison
+            subsub_score, subsub_tree = compare_equations(m_subsub_eq, a_subsub_eq)
+            
+            if debug:
+                print("match score between")
+                print(
+                    f"M: {m_subsub_eq.show_equation()}")
+                print(
+                    f"A: {a_subsub_eq.show_equation()}")
+                print("the value",subsub_score)
+                print("NEXT thread search starts at position:")
+                print(m_recent_start, a_recent_start)
+
+            thread_reduced_match_score+=subsub_score
+            thread_reduced_match_clusters[(
+                (m_subseq[m_subsub_start], m_subseq[m_subsub_end]),
+                (a_subseq[a_subsub_start], a_subseq[a_subsub_end]),
+            )] = {
+                "score": subsub_score,
+                "error_metadata": subsub_tree,
+                "reduced_equations": {
+                    "m": m_subsub_eq,
+                    "a": a_subsub_eq
+                }
+            }
+            del subsub_score
+
+            # NOTE: only for debugging single iteration
+            # if debug:
+            #     break
+            
+
+    return thread_reduced_match_score, thread_reduced_match_clusters

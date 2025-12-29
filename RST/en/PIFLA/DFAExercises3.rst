@@ -54,3 +54,4 @@ take into account the trap state.
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFACOMPnoba.html pe
    :long_name: DFA exercise does not end in ba
    :keyword: Finite Automata; Deterministic Finite Acceptor
+

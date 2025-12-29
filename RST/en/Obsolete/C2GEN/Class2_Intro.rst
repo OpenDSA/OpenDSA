@@ -27,3 +27,4 @@ Today we are going to talk about the following:
 * Some examples of where OpenDSA has been used in classes
 * Log analysis and examples of things that we have learned from our
   log analysis
+

@@ -221,3 +221,4 @@ expressions and JavaScript expressions.
 
 .. avembed:: Exercises/PL/LambdaCalcSemantics.html ka
    :long_name: Semantics of lambda calculus
+

@@ -97,3 +97,4 @@ to configure the details for book content when setting up a Canvas
 course.
 If you have trouble using this, feel free to contact the OpenDSA
 development team at opendsa@cs.vt.edu.
+

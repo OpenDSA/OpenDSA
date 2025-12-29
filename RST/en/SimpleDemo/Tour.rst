@@ -178,3 +178,4 @@ These are implemented using Code Workout.
 
 .. extrtoolembed:: 'Binary Search Tree Small Count Exercise'
    :workout_id: 64
+

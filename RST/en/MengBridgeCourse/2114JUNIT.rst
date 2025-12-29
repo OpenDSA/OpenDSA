@@ -163,3 +163,4 @@ Checkpoint 3
 
 .. avembed:: Exercises/MengBridgeCourse/JunitCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
+

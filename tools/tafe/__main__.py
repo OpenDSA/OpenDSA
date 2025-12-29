@@ -7,14 +7,15 @@ Receives the JSON object and type of operation, and processes it accordingly
 import sys, os, json
 from argparse import ArgumentParser
 
-#from tafe.core.utils import *
-from core.utils import *
+# from tafe.core.utils import *
+# from tafe.core.workflow_manager import run_offline, run_online
 
-#from tafe.core.workflow_manager import run_offline, run_online
-from core.workflow_manager import run_offline, run_online
+from tools.tafe.core.utils import *
+from tools.tafe.core.workflow_manager import run_offline, run_online
 
 if __name__ == '__main__':
     # print("Calling inhabitants of interplanetary craft")
+    # print(os.getcwd())
     parser = ArgumentParser()
     expandHelp = "Generates an expanded configuration with extra details"
     # parser.add_argument("problem_attempt", help="input problem attempt JSON string", type=str)

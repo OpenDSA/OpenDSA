@@ -98,11 +98,14 @@ Simple External Mergesort (3)
 
 .. revealjs-slide::
    
-.. inlineav:: extMergeSortCON ss
-   :long_name: External Merge Sort Slideshow
-   :links: AV/Files/extsortCON.css
-   :scripts: DataStructures/binaryheap.js AV/Files/extMergeSortCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Files/extMergeSortCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Problems with Simple Mergesort
@@ -127,11 +130,14 @@ A Better Process
 
 .. revealjs-slide::
 
-.. inlineav:: extMergeSortExampCON ss
-   :long_name: External Merge Sort Example Slideshow
-   :links: AV/Files/extsortCON.css
-   :scripts: DataStructures/binaryheap.js AV/Files/extMergeSortExampCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Files/extMergeSortExampCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Breaking a File into Runs
@@ -175,10 +181,14 @@ Replacement Selection (2)
 * Add the next record in the file to a new heap (actually, stick it at
   the end of the array).
 
-.. inlineav:: extSortOverCON dgm
-   :links: AV/Files/extsortCON.css
-   :scripts: AV/Files/extSortOverCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Files/extSortOverCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 RS Example
@@ -215,10 +225,14 @@ Snowplow Analogy (2)
 
 .. revealjs-slide::
 
-.. inlineav:: extSortSnowCON dgm
-   :links: AV/Files/extsortCON.css
-   :scripts: DataStructures/binaryheap.js AV/Files/extSortSnowCON.js
-   :align: justify
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Files/extSortSnowCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Problems with Simple Merge
@@ -370,3 +384,4 @@ Compute Cycles == Electricity == Money
     improvements with simple changes.
 
   * Can LLMs give us improved code easily?
+

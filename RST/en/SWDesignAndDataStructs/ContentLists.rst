@@ -61,7 +61,7 @@ Introduction to Lists
      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ListInterface.java"  target="_blank">
      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
      ListInterface.java</img>
-     </a>
+     </a>  (right click-> save link as...)
 
 
  .. code-block:: java
@@ -378,3 +378,4 @@ Programming Practice: Lists 2
 
 .. extrtoolembed:: 'Programming Practice: Lists 2'
    :workout_id: 1923
+

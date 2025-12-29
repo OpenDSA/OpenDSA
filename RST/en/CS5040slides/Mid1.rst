@@ -31,3 +31,4 @@ Midterm 1
 
    Mainly: Chapters on Algorithm Analysis, Linear Structures, Binary
    Trees
+

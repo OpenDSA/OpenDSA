@@ -126,3 +126,4 @@ most widely used indexing method today.
 .. avembed:: Exercises/Indexing/TreeIndexing.html ka
    :long_name: Tree Indexing Proficiency Exercise
    :keyword: Indexing; Tree Indexing
+

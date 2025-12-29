@@ -100,3 +100,4 @@ described later in this chapter.
 The process of searching the :term:`memory pool` for a block large
 enough to service the request, possibly reserving the remaining space
 as a free block, is referred to as a :term:`sequential fit` method.
+

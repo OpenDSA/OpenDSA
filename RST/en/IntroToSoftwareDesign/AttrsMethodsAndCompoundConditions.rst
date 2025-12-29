@@ -652,3 +652,4 @@ Check Your Understanding
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week4ReadingQuizSumm.html ka
    :long_name: Programming Concepts
+

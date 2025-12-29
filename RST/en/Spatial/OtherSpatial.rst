@@ -101,3 +101,4 @@ have to do with adapting them for disk-based applications.
 However, all such disk-based implementations boil down to storing the
 spatial data structure within some variant
 on either :term:`B-trees <B-tree>` or :term:`hashing`.
+

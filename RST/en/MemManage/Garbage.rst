@@ -306,3 +306,4 @@ collection algorithm.
    :type: Slideshow
 
    Replace this figure with an AV that demonstrates DSW.
+

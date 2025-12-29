@@ -23,8 +23,8 @@ $(document).ready(function () {
   var arr;     //Used to initialize the distance and labels arrays.
 
   var i;
-  graph = jsav.ds.graph({width: 600, height: 400, left: 250, layout: "manual", directed: false});
-  mst = jsav.ds.graph({width: 600, height: 400, left: 250, layout: "manual", directed: false});
+  graph = jsav.ds.graph({width: 600, height: 300, left: 250, layout: "manual", directed: false});
+  mst = jsav.ds.graph({width: 600, height: 300, left: 250, layout: "manual", directed: false});
   mst.hide();
   initGraph();
   initTree();
