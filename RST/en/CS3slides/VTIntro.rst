@@ -42,10 +42,11 @@ Introduction
 
 .. revealjs-slide::
 
-* What we are doing today:
+* What we are doing this week:
 
   * Administration stuff and Course mechanics
   * Course introduction (OpenDSA Chapter 1)
+  * Project 1 Introduction
 
 
 Course Mechanics
@@ -88,7 +89,7 @@ OpenDSA
 
 * Homework due periodically through the semester
 
-  * Small homework (Chapter 1) due at 11pm this Thursday (in 2 days)
+  * Small homework (Chapter 1) due at 11pm **this Thursday**
 
 
 Web-CAT
@@ -97,7 +98,8 @@ Web-CAT
 .. revealjs-slide::
 
 * Must use Eclipse IDE for submissions: Update if older than 2025
-* Get the updated Web-CAT plugin
+* Get the updated Web-CAT plugin.
+* Read OpenDSA Module 2.4 for details on setting up with Eclipse
 * Project submission support
 * Support for junit testing, mutation coverage
 * Auto-grading: Correctness (passes reference tests), style, test
@@ -113,9 +115,9 @@ Milestones
 * Most projects will have 3 milestones
 
   * Milestones are intermediate deliverables with due dates
-  * First due next week (usually about a week or so into the project)
-  * Second due about 10 days before due date
-  * Third due about 4-5 days before due date
+  * First due next week (typically due about a week or so into the project)
+  * Second due typically about 10 days before due date
+  * Third due typically about 4-5 days before due date
 
 * Milestones designed to encourage incremental development
 * In previous semesters, milestones had the effect of boosting the final
@@ -129,6 +131,5 @@ Today's Homework
 
 * Look at Canvas, check out the various links
 * Look at Piazza site, make sure you are enrolled there
-* Look at Project 1 spec: We will discuss next time
-* Do Chapter 1 exercises in OpenDSA by 11:00pm Friday (in 3 days)
-
+* Look at Project 1 spec. Start setting up Eclipse.
+* Do Chapter 1 exercises in OpenDSA by 11:00pm Friday

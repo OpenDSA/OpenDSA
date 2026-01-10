@@ -1,0 +1,242 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata::
+   :author: Cliff Shaffer
+
+=========
+Project 1
+=========
+
+General Project Rules
+---------------------
+
+.. revealjs-slide::
+
+* You **must** use Eclipse IDE, and you **must** use it to submit to
+  Web-CAT.
+  We won't accept submissions any other way.
+
+* There are 4 projects during the semester, each has a 3-4 week
+  lifecyle.
+
+  * Each has three milestones, so about one/week.
+  * P1's first milestone is really easy (make minor changes to the
+    starter kit and submit to Web-CAT), and is due at 11pm on
+    Wednesday, January 28.
+
+* A major part of the project score is based on correctness, as
+  defined by passing the reference tests at Web-CAT. We won't tell you
+  a lot of detail about what is in the reference tests.
+
+* The "correctness" score is adjusted by the quality
+  of your own test suite (as defined by Mutation Testing coverage ---
+  we will discuss this later).
+
+
+Project 1: Songs Database
+-------------------------
+
+.. revealjs-slide::
+
+* Background:
+
+  * You are implementing a database of Song Title/Artist pairs.
+
+  * Each song title is a string, each artist is a string.
+
+  * There are separate hash tables for the song titles and the
+    strings.
+
+  * The hash table does not actually store strings. Strings are stored
+    in a memory manager.
+
+* You will implement:
+
+  * A hash table (we give you the hash function)
+
+  * A memory manager (using the buddy method)
+
+  * Communications between them (a Handle)
+
+
+What We Give You to Get Started
+-------------------------------
+
+.. revealjs-slide::
+
+* We specify the class name for the project (SongsProj), an
+  interface that you must implement (Songs), and the name of a
+  class that implements MovieRater (SongsDB).
+
+* This lets us write reference test cases for grading that make calls
+  to the interface.
+
+  * Reference tests do not write to System.out, or check the contents
+    of System.out.
+
+* We give you the hash function to use.
+
+* We give you some initial tests (SongsTest) that are meant to
+  demonstrate all the requirements related to formatting the interface
+  method return values.
+
+  * If we get questions indicating that we left something ambiguous,
+    we will update the example tests for you to see.
+  * Important service: We will check any tests added to SongsTest
+    against the reference implementation. This lets you verify that
+    your tests are correct (meaning, that you have no misconceptions
+    about the project requirements --- if your tests are thorough).
+
+
+Design Issues
+-------------
+
+.. revealjs-slide::
+
+* The hash table does not store strings. The memory manager does.
+
+* How do the hash table and memory manager communicate?
+
+  * Through a Handle.
+
+  * The Handle encapsulates what the memory manager
+    needs to know to recover a string out of its memory.
+
+  * The hash table stores the handle in a given slot. Whenever there
+    is a reason to know what the associated string is, the hash table
+    passes that to the memory manager.
+
+
+What you need to know about Hash Tables
+---------------------------------------
+
+.. revealjs-slide::
+
+* You should briefly skim Chapter 10 for now
+  (we will cover this chapter in detail later in the semester).
+  Focus on the following three things:
+
+  * Insertion is pretty standard.
+    You will be hashing a string (song name or title).
+    You will use the hash function we give you in the Starter Kit
+    (see 10.3.3 String Folding).
+
+  * You will use Quadratic Probing for collision resolution.
+    See 10.7.3.
+
+  * You will use Tombstones on deletion.
+    See 10.9.
+
+
+Insert/Delete
+-------------
+
+.. revealjs-slide::
+
+.. inlineav:: hashdelCON ss
+   :long_name: Hash Deletion Slideshow
+   :links: 
+   :scripts: AV/Hashing/hashdelCON.js
+   :output: show
+   :keyword: Hashing; Hash Table Deletion
+
+
+Quadratic Probing
+-----------------
+
+.. revealjs-slide::
+
+.. avembed:: Exercises/Hashing/HashQuadraticPPRO.html ka
+   :long_name: Quadratic Probing Proficiency Exercise
+   :keyword: Hashing; Collision Resolution
+
+
+What you need to know about memory management
+---------------------------------------------
+
+.. revealjs-slide::
+
+* You should briefly skim Chapter 11 for now
+  (we will cover this chapter in more detail later in the semester).
+
+* Carefully read 11.1.
+
+* Read 11.9.1.1 Buddy Methods.
+  This is what you will implement.
+
+
+Memory Management
+-----------------
+
+.. revealjs-slide::
+
+* Problem: Records (of various lengths) need to be stored.
+
+* Model: A big array of space to store them, managed by a memory
+  manager.
+
+  * Like a coat-check stand, give them your coat, get back a ticket.
+    Later, return the ticket for your coat.
+  * We call the ticket a **handle**.
+
+
+Memory Manager ADT
+------------------
+
+.. revealjs-slide::
+
+::
+
+   // Memory Manager abstract class
+   interface MemManager {
+     // Store a record and return a handle to it
+     public MemHandle insert(byte[] info);
+
+     // Release the space associated with a record
+     public void release(MemHandle h);
+
+     // Get back a copy of a stored record
+     public byte[] getRecord(MemHandle h);
+   }
+
+
+Implementation Issues
+---------------------
+
+.. revealjs-slide::
+
+* The client doesn’t know what is in the handle.
+
+* The memory manager doesn’t know what is in the message.
+
+* Multiple clients can share a memory manager.
+
+* The memory manager might interact with a buffer pool:
+
+  * The client decides what gets stored
+  * The memory manager decides where things get stored
+  * The buffer pool decides when blocks are in main memory
+
+
+Buddy Method
+------------
+
+.. revealjs-slide::
+
+* The memory pool is a power of 2 in size.
+* Memory allocations are always the smallest power of 2 equal to or
+  bigger than the request.
+* Free (and allocated) blocks are therefore always a power of 2
+* Keep a list for each block size
+* Easy to merge freed blocks
+
+
+Buddy Method Example
+--------------------
+
+.. revealjs-slide::
+
+.. avembed:: AV/MemManage/BuddyAV.html ss
