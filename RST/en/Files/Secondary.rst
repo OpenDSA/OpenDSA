@@ -23,24 +23,19 @@ Computer storage devices are typically classified into
 Primary memory usually refers to :term:`Random Access Memory` (RAM),
 while secondary storage refers to devices such as
 hard disk drives, solid state drives, removable "USB" drives,
-CDs, and DVDs.
+and DVDs.
 Primary memory also includes registers, cache, and video memories,
 but we will ignore them for this discussion because their existence
 does not affect the principal differences between primary and
 secondary memory.
 
-Along with a faster CPU, every new model of computer seems to come
-with more main memory.
-As memory size continues to increase, is it possible that
-relatively slow disk storage will be unnecessary?
-Probably not, because the desire to store and process larger files
-grows at least as fast as main memory size.
-Prices for both main memory and peripheral storage devices have
-dropped dramatically in recent years, as demonstrated by
-Table :num:`#Price`.
-However, the cost per unit of disk drive storage is about two
-orders of magnitude less than RAM and has been for
-many years.
+As of the 2020's, typical home computer memory sizes, speeds, and
+prices have become fairly stable in comparison to prior decades.
+Table :num:`#Price` shows some representative pricing for various
+years from 1996 to 2025.
+Early years in this range saw steady decreases in prices (and
+consequently, increases in sizes that typical users would have).
+But that is not so true now.
 
 .. _Price:
 
@@ -52,82 +47,73 @@ many years.
 
    .. math::
 
-      \begin{array}{l|r|r|r|r|r|r|r}
+      \begin{array}{l|r|r|r|r|r|r|r|r}
       \hline
-      \textbf{Medium}& 1996 & 1997 & 2000 & 2004 & 2006 & 2008 & 2011\\
+      \textbf{Medium}&    1996 & 1997 &  2000 &   2004 &   2006 &   2008 &   2011 & 2025\\
       \hline
-      \textbf{RAM}&    \$45.00 & 7.00 & 1.500 & 0.3500 & 0.1500 & 0.0339 & 0.0138\\
-      \textbf{Disk}&      0.25 & 0.10 & 0.010 & 0.0010 & 0.0005 & 0.0001 & 0.0001\\
-      \textbf{USB drive}& -- & --   & --    & 0.1000 & 0.0900 & 0.0029 & 0.0018\\
-      \textbf{Floppy}&    0.50 & 0.36 & 0.250 & 0.2500 & -- & -- & --\\
-      \textbf{Tape}&      0.03 & 0.01 & 0.001 & 0.0003 & -- & -- & --\\
-      \textbf{Solid State}& -- & --   &  --   &  --    & -- & -- & 0.0021\\
+      \textbf{RAM}&    \$45.00 & 7.00 & 1.500 & 0.3500 & 0.1500 & 0.0339 & 0.0138 & 0.015\\
+      \textbf{HDD}&       0.25 & 0.10 & 0.010 & 0.0010 & 0.0005 & 0.0001 & 0.0001 & 0.000025\\
+      \textbf{SSD}&         -- & --   &  --   &  --    &     -- &     -- & 0.0021 & 0.000125\\
       \hline
       \end{array}
 
-There is now a wide range of removable media available for
-transferring data or storing data offline in relative safety.
-These include floppy disks (now largely obsolete), writable CDs and
-DVDs, "flash" drives, and magnetic tape.
-Optical storage such as CDs and DVDs costs roughly half the price of
-hard disk drive space per megabyte, and have become practical for use
-as backup storage within the past few years.
-Tape used to be much cheaper than other media, and was the preferred
-means of backup, but are not so popular now as other media have
-decreased in price.
-Flash drives cost the most per megabyte, but due to their storage
-capacity and flexibility, quickly replaced floppy disks as the
-primary storage device for transferring data between computer when
-direct network transfer is not available.
+As of 2025, both hard disk drives and solid state disk drives are
+widely used for secondary storage, with roughly a factor of five
+(or, half an order of magnitude) difference in unit price.
+In contrast, RAM is about two orders of magnitude more expensive per
+unit of storage compared to SSD storage, and 2.5 orders of magnitude
+more expensive compared to HDD.
 
-Secondary storage devices have
-at least two other advantages over RAM memory.
-Perhaps most importantly, disk, flash, and optical media are
-:term:`persistent`,
-meaning that they are not erased from the media when the power is
+HDD and SSD has another advantage over RAM memory,
+in that it is :term:`persistent`,
+meaning that data are not erased from the media when the power is
 turned off.
 In contrast, RAM used for main memory is usually :term:`volatile` |---|
 all information is lost with the power.
-A second advantage is that CDs and USB drives
-can easily be transferred between computers.
-This provides a convenient way to take information from one computer
-to another.
 
-In exchange for reduced storage costs, persistence, and
-portability, secondary storage devices pay a penalty in terms of
+In exchange for reduced storage costs and persistence,
+secondary storage devices pay a penalty in terms of
 increased access time.
 While not all accesses to disk take the same amount of time
 (more on this later), the typical time required to access a byte of
-storage from a disk drive in 2011 is around 9 ms
+storage from a HDD in 2025 is around 9 ms
 (i.e., 9 `thousandths` of a second).
+This metric is sometimes referred to as latency.
+This is roughly the same as it has been for the past 20 years.
 This might not seem slow, but compared to the time required
 to access a byte from main memory, this is fantastically slow.
 Typical access time from standard personal computer RAM in
-2011 is about 5-10 nanoseconds
-(i.e., 5-10 `billionths` of a second).
-Thus, the time to access a byte of data from a disk drive is about
+2025 is about 10-15 nanoseconds
+(i.e., 10-15 `billionths` of a second).
+(Again, this has been roughly the same for many years.)
+Thus, the time to access a byte of data from a HDD is about
 six orders of magnitude greater than that required to
 access a byte from main memory.
-While disk drive and RAM access times are both decreasing, they
-have done so at roughly the same rate.
+While disk drive and RAM access times have decreased over the past
+30-40 years, they have done so at roughly the same rate.
 The relative speeds have remained the same for over several decades,
 in that the difference in access time between RAM and a
 disk drive has remained in the range between a factor of 100,000 and
 1,000,000.
 
+SSD latency times are considerably less than HDD latency times.
+For the SSD, this is something around 100 microseconds, or 100 times
+faster than for a typical HDD on average.
+But that is still about four orders of magnitude slower than RAM
+latency time.
+
 To gain some intuition for the significance of this speed difference,
-consider the time that it might take for you to look up the entry for
-disk drives in the index of this book, and then turn to the
-appropriate page.
+consider the time that it might take for you to do an internet search
+for disk drives, then click on a link and load the page.
 Call this your "primary memory" access time.
-If it takes you about 20 seconds to perform this access, then
-an access taking 500,000 times longer would require
-months.
+If it takes you about 10 seconds to perform this access, then
+an access taking a million times longer would require months.
+In this analogy, SSD latency time is still a matter of weeks.
 
 It is interesting to note that while processing speeds have increased
 dramatically, and hardware prices have dropped dramatically, disk
 and memory access times have improved by less than an order of magnitude
-over the past 15 years.
+over the past 30 years.
 However, the situation is really much better than that modest speedup
 would suggest.
 During the same time period, the size of both disk and 
@@ -138,7 +124,7 @@ massive increase in the density of these storage devices.
 Due to the relatively slow access time for data on disk as compared to 
 main memory, great care is required to create efficient applications
 that process disk-based information.
-The million-to-one ratio of disk access time versus main memory access
+The million-to-one ratio of HDD access time versus main memory access
 time makes the following rule of paramount importance when designing
 disk-based applications:
 
@@ -160,4 +146,3 @@ This requires the ability to guess accurately
 what information will be needed later and store it in primary memory
 now.
 This is referred to as :term:`caching`.
-

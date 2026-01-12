@@ -44,6 +44,8 @@ then you can check for updates at ``Help --> Check for Updates``.
 
 **Note:** Eclipse requires JRE 21 or later to install, but we will
 **NOT** be using JRE 21 for projects.
+So the next step is to install a version of Java that Web-CAT can
+use.
 
 
 Installing Java 11
@@ -258,11 +260,9 @@ Put in the following information:
 
 * You can leave Outgoing SMTP Mail Server blank.
 
-* In the ``Download URL`` field, enter:
-  https://courses.cs.vt.edu/cs3114/Summer25/assignments.xml
-
-.. TODO: This URL changes with each semester and is VT specific.
-..   http://web-cat.cs.vt.edu/Web-CAT/assignments.xml
+* In the ``Download URL`` field, enter the URL for your semester. So
+  if you are taking the class in Spring 2026, you would use this URL:
+  https://courses.cs.vt.edu/cs3114/Spring26/assignments.xml
 
 * Click on ``Apply and Close`` to complete the process.
 

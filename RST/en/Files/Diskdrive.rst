@@ -4,30 +4,29 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Disk Drives
+   :title: Hard Disk Drives and Solid State Drives
    :author: Cliff Shaffer
    :institution: Virginia Tech
    :satisfies: disk drives
    :topic: File Processing
-   :keyword: File Processing; Disk Drive
+   :keyword: File Processing; Hard Disk Drive; Solid State Drive
    :naturallanguage: en
    :programminglanguage: N/A
-   :description: Introduction to how computer disk drives work and their performance characteristics.
+   :description: Introduction to how computer disk drives and solid state drives work and their performance characteristics.
 
 
-Disk Drives
-===========
+Hard Disk Drives and Solid State Drives
+=======================================
 
-Disk Drives
------------
+Files on Secondary Storage
+--------------------------
 
 A programmer typically views a :term:`random access` file stored on
-:term:`disk <disk drive>` as a contiguous series of bytes, with those
+secondary storage as a contiguous series of bytes, with those
 bytes possibly combining to form data records.
 This is called the :term:`logical file`.
-The :term:`physical file` actually stored on disk is
-usually not a contiguous series of
-bytes.
+The :term:`physical file` actually stored on a drive is usually not a
+contiguous series of bytes.
 It could well be in pieces spread all over the disk.
 The :term:`file manager`, a part of the operating
 system,
@@ -42,7 +41,7 @@ To gain some appreciation for the the approximate time costs for these
 operations, you need to understand the physical structure and basic
 workings of a disk drive.
 
-Disk drives are often referred to as
+Disk drives and solid state drives are often referred to as
 :term:`direct access` storage devices.
 This means that it takes roughly equal time to access any record in
 the file.
@@ -50,12 +49,15 @@ This is in contrast to :term:`sequential access` storage devices
 such as tape drives, which require the tape reader to
 process data from the beginning of the tape until the desired position
 has been reached.
-As you will see, the disk drive is only approximately direct access:
-At any given time, some records are more quickly accessible than
-others.
+As you will see, the hard disk drive in particular is only
+approximately direct access: At any given time, some records are more
+quickly accessible than others.
 
-Disk Drive Architecture
-~~~~~~~~~~~~~~~~~~~~~~~
+Hard Disk Drives
+----------------
+
+Hard Disk Drive Architecture
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A hard disk drive is composed of one or more round
 :term:`platters <platter>`,
@@ -79,7 +81,7 @@ A hard disk drive typically has several platters and
 several read/write heads, as shown in
 Figure :num:`Figure #Platters` (a).
 Each head is  attached to an :term:`arm`, which connects to the
-:term:`boom`. [#]_
+:term:`boom`.
 The boom moves all of the heads in or out together.
 When the heads are in some position over the platters, there are data
 on each platter directly accessible to each head.
@@ -283,8 +285,8 @@ fragmentation.
    inter-sector gap.
 
 
-Disk Access Costs
-~~~~~~~~~~~~~~~~~
+Hard Disk Drive Access Cost
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When a seek is required, it is usually
 the primary cost when accessing information on disk.
@@ -301,19 +303,20 @@ from a track to an adjacent track.
 This is appropriate when you want to analyze access times for files
 that are well placed on the disk.
 The second number is the average seek time for a random access.
-These two numbers are often provided by disk manufacturers.
-A typical example is the Western Digital Caviar serial ATA drive.
-The manufacturer's specifications indicate that the track-to-track
-time is 2.0 ms and the average seek time is 9.0 ms.
-In 2008 a typical drive in this line might be 120GB in size.
-In 2011, that same line of drives had sizes of up to 2 or 3TB.
-In both years, the advertised track-to-track and average seek times
-were identical.
+Unfortunately, it is often difficult to get these numbers for a given
+device.
+But typical times are about 1-2 ms for the track-to-track time,
+and an average seek time of about 5-10 ms.
+This has not changed much in a number of years, even though the
+storage density (and hence, total capacity rating that you see) has
+gone up over the years.
 
 For many years, typical rotation speed for disk drives was 3600 rpm,
 or one rotation every 16.7 ms.
-Most disk drives in 2011 had a rotation speed of 7200 rpm, or 8.3 ms
+By 2025, most disk drives had a rotation speed of 7200 rpm, or 8.3 ms
 per rotation.
+A few lower-priced drives run at 5400 RPM, and high-performance drives
+run at 10,800 RPM.
 When reading a sector at random, you can expect that the disk will
 need to rotate halfway around to bring the desired sector
 under the I/O head, or 4.2 ms for a 7200-rpm disk drive.
@@ -322,130 +325,76 @@ Once under the I/O head, a sector of data can be transferred as
 fast as that sector rotates under the head.
 If an entire track is to be read, then it will require one rotation
 (8.3 ms at 7200 rpm) to move the full track under the head.
-If only part of the track is to be read, then proportionately less
-time will be required.
-For example, if there are 16,000 sectors on the track and one sector
-is to be read, this will require a trivial amount of time
-(1/16,000 of a rotation).
+But that is a large amount of data.
+Far more typical is reading one sector.
 
-.. _DiskExamp:
+As an example, one recent disk with a nominal size of 2TB has
+approximately 1.8TB of usable space divided among 3 platters with 6
+heads.
+These contain a total of 62,016,065 tracks, or approximately
+10,000,000 tracks per suface
+Each track has 63 sectors per track, and so that amount of actual read
+time for a given sector (once the seek is done and the data rotate
+under the head) is quite low.
 
-.. topic:: Example
+This information should give you a sense for how much the layout of
+data on the drive will affect performance.
+If every record requires a random seek of 5-10 ms and rotational delay
+of another 4 ms, that is much slower than reading a track containing,
+say, 64 records for that same seek time and rotational delay.
 
-   Assume that an older disk drive has a total (nominal) capacity of
-   16.8GB spread among 10 platters, yielding 1.68GB/platter.
-   Each platter contains 13,085 tracks and each track contains (after
-   formatting) 256 sectors of 512 bytes/sector.
-   Track-to-track seek time is 2.2 ms and average seek time for random
-   access is 9.5 ms.
-   Assume the operating system maintains a cluster size
-   of 8 sectors per cluster (4KB), yielding 32 clusters per track.
-   The disk rotation rate is 5400 rpm (11.1 ms per rotation).
-   Based on this information we can estimate
-   the cost for various file processing operations.
 
-   How much time is required to read the track?
-   On average, it will require half a rotation to bring the first sector
-   of the track under the I/O head, and then one complete rotation to
-   read the track.
+Solid State Drives
+------------------
 
-   How long will it take to read a file of 1MB divided into
-   2048 sector-sized (512 byte) records?
-   This file will be stored in 256 clusters, because  each cluster holds
-   8 sectors.
-   The answer to the question depends largely on how the file
-   is stored on the disk, that is, whether it is all together or broken
-   into multiple extents.
-   We will calculate both cases to see how much difference this makes.
+Solid State Drives work quite differently from Hard Disk Drives.
+They do not require any physical movement to reach data,
+and as a consequence, they are far closer to being truly random access in
+that the time to get a byte of information is roughly the same no
+matter where it is on the drive.
 
-   If the file is stored so as to fill all of the sectors of eight
-   adjacent tracks, then the cost to read the first sector will be the
-   time to seek to the first track (assuming this requires a random
-   seek), then a wait for the initial rotational delay,
-   and then the time to read (which is the same as the time to rotate the
-   disk again).
-   This requires
+Getting detailed information about a HDD (such as
+track-to-track times) can be difficult.
+Getting meaningful information about SSD performance seems to be even
+harder.
+The typical vendor specs for SDD relate to total theoretical
+throughput of data read per second, or number if I/O operations per
+second.
+This might have some value for the manager of a data center.
+For a programmer of an application that has a loop of reading some
+data and making a decision before reading more data, none of those
+reported values are helpful for predicting performance.
+To make matters worse, SSDs degrade in their performance fairly
+quickly over time.
 
-   .. math::
+Probably the most useful performance metric for an individual
+programmer is the the latency time to get the next piece of
+information.
+Where this is typically around 10ms for a HDD, this more like .1ms for
+the SSD.
+So the SSD is roughly two orders of magnitude faster in this scenario.
+From a system perspective, the SSD is
+good at handling multiple data requests at once.
+In contrast, the HDD has difficulty even in a typical situation like
+copying a file from one place to another.
+This causes constant contention for the I/O heads as they move between
+the two files.
+None of that is an issue for the SSD.
 
-      9.5\mathrm{ms.} + 11.1\mathrm{ms.} \times 1.5 = 26.2 \mathrm{ms.}
+SSD typical smallest read size is the same as for a HDD: About 4K bytes
+these days.
+So it makes sense for an application using either storage type to buffer
+data at the block level.
+That is, given that a read is going to give you 4K bytes of data, you
+want to write the application so that future read requests will likely
+make use of this information that you already have available.
 
-   In this equation, 9.5ms. is the average seek time for a (random)
-   track on the disk. 11.1ms. is the time for one rotation of a disk
-   spinning at 5400RPM.
-   Since we need to wait for rotational delay (one half rotation) and
-   then read all of the contents of the track (one full rotation), we
-   multiply 11.1ms. by 1.5.
-   Thus, the total time to read a random track from the disk is 26.2ms.
-
-   After reading the first track, we can then assume that the next
-   seven tracks require only a track-to-track seek because they are
-   adjacent.
-   Therefore, each requires
-
-   .. math::
-
-      2.2\mathrm{ms.} + 11.1\mathrm{ms.} \times 1.5 = 18.9 \mathrm{ms.}
-
-   Here, 2.2ms. is the time to seek to an adjacent track.
-   Again we must wait for rotational delay (one half rotation)
-   followed by a full rotation to read the track, so we multiply the
-   rotation time (11.1ms.) times 1.5 for the disk rotation.
-   Thus, we get a total of 18.9ms. to read the data from an adjacent
-   track.
-
-   The total time required to read all 8 adjacent tracks is therefore
-
-   .. math::
-
-      26.2 \mathrm{ms} + 7 \times 18.9 \mathrm{ms} = 158.5 \mathrm{ms}.
-
-   In contrast, what would the time be if the file's clusters are
-   spread randomly across the disk?
-   Then we must perform a seek for each cluster, followed by the
-   time for rotational delay.
-   Once the first sector of the cluster comes under the I/O head, very
-   little time is needed to read the cluster because only 8/256 of the
-   track needs to rotate under the head, for a total time of about
-   5.9 ms for latency and read time.
-   Thus, the total time required is about
-
-   .. math::
-
-      256 (9.5\mathrm{ms.} + 5.9\mathrm{ms.}) \approx 3942 \mathrm{ms}
-
-   or close to 4 seconds.
-   This is much longer than the time required when the file is all
-   together on disk!
-   That is, 256 times we must perform a seek to a random track
-   (9.5ms.).
-   Then we wait on average one half of a disk rotation
-   followed by reading the actual data which requires a further 8/256
-   of a rotation, for a total of 5.9ms.
-
-   This example illustrates why it is important to keep disk files from
-   becoming fragmented,
-   and why so-called "disk defragmenters" can speed up file
-   processing time.
-   File fragmentation happens most commonly when the disk is nearly full
-   and the file manager must search for free space
-   whenever a file is created or changed.
-
-Notes
-~~~~~
-
-.. [#] This arrangement, while typical, is not necessarily true for
-       all disk drives.
-       Nearly everything said here about the physical arrangement of
-       disk drives represents a typical engineering compromise, not a
-       fundamental design principle.
-       There are many ways to design disk drives, and the engineering
-       compromises change over time.
-       In addition, most of the description given here for disk drives
-       is a simplified version of the reality.
-       But this is a useful working model to understand what is going
-       on.
-
-       To complicate matters further, Solid State Drives (SSD) work
-       rather differently.
-
+One of the most important metrics for SSD performance is the “queue
+depth”.
+This is the amount of I/O access that can be done before needing to
+get a decision from the first I/O access.
+In other words, if we have to read a piece of data and then decide
+from what we read where to go next, that is termed QD1.
+This is generally the least efficient data access paradigm for SSD.
+SSDs are really good at dealing with parallel I/O requests, which in
+the limit might be referred to as QD32 in performance specs.
