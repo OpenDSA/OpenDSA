@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 ''' Converts a simplified configuration file to a full configuration file
-''' 
+'''
 
 import sys, os
 import json
@@ -23,7 +23,7 @@ current_module_base = None # the name of the current module without the folder o
 expanded = False # whether we are generating the expanded version of the full configuration
                  # which contains additional info about the exercises
 
-# default options that will be used if options 
+# default options that will be used if options
 # aren't specified for a given exercise
 _default_ex_options = {
     'ka': {
@@ -31,19 +31,19 @@ _default_ex_options = {
       'points': 1,
       'threshold': 5,
       'partial_credit': False
-    }, 
+    },
     'ss': {
       'required': False,
       'points': 0,
       'threshold': 1,
       'partial_credit': False
-    }, 
+    },
     'ff': {
       'required': False,
       'points': 0,
       'threshold': 1,
       'partial_credit': False
-    }, 
+    },
     'pe': {
       'required': True,
       'points': 1,
@@ -150,7 +150,11 @@ class avembed(Directive):
   final_argument_whitespace = True
   option_spec = {
                   'long_name': directives.unchanged,
-                  'url_params': directives.unchanged
+                  'url_params': directives.unchanged,
+                  'title': directives.unchanged,
+                  'keyword': directives.unchanged,
+                  'naturallanguage': directives.unchanged,
+                  'institution': directives.unchanged
                 }
   has_content = True
 
@@ -192,7 +196,14 @@ class avmetadata(Directive):
                  'topic': directives.unchanged,
                  'requires': directives.unchanged,
                  'satisfies': directives.unchanged,
-                 'prerequisites': directives.unchanged
+                 'prerequisites': directives.unchanged,
+                 'title': directives.unchanged,
+                 'keyword': directives.unchanged,
+                 'naturallanguage': directives.unchanged,
+                 'description': directives.unchanged,
+                 'programminglanguage': directives.unchanged,
+                 'nocatalog': directives.unchanged,
+                 'institution': directives.unchanged
                  }
 
   def run(self):
@@ -243,7 +254,7 @@ class extrtoolembed(Directive):
     self.options['partial_credit'] = get_default_ex_option('extr', 'partial_credit', self.options['learning_tool'])
 
     self.options['mod_name'] = current_module_base
-    
+
     res = extertool_element % (self.options)
     return [nodes.raw('', res, format='xml')]
 
@@ -260,7 +271,11 @@ class inlineav(Directive):
                   'required': directives.unchanged,
                   'threshold': directives.unchanged,
                   'scripts': directives.unchanged,
-                  'links': directives.unchanged
+                  'links': directives.unchanged,
+                  'title': directives.unchanged,
+                  'keyword': directives.unchanged,
+                  'naturallanguage': directives.unchanged,
+                  'institution': directives.unchanged
                 }
   has_content = True
 
@@ -274,7 +289,7 @@ class inlineav(Directive):
     self.options['points'] = get_default_ex_option(self.options['type'], 'points')
     self.options['threshold'] = get_default_ex_option(self.options['type'], 'threshold')
     self.options['partial_credit'] = get_default_ex_option(self.options['type'], 'partial_credit')
-    
+
     self.options['mod_name'] = current_module_base
 
     if self.options['exer_name'] in ex_options[current_module]:
@@ -472,7 +487,7 @@ class iframe(Directive):
                   'name': directives.unchanged,
                   'absolute_url': directives.flag,
                   }
-  
+
   def run(self):
     return [nodes.raw('', '<iframe>null</iframe>', format='xml')]
 
@@ -490,7 +505,7 @@ class splicetoolembed(Directive):
                   'name': directives.unchanged,
                   'absolute_url': directives.flag,
                   }
-  
+
   def run(self):
     self.options['url'] = self.arguments[0]
     self.options['mod_name'] = current_module_base
@@ -523,7 +538,7 @@ class showhidecontent(Directive):
                  'long_name': directives.unchanged,
                  'showhide': showhide
                 }
-  
+
   def run(self):
     return [nodes.raw('', '<showhidecontent>null</showhidecontent>', format='xml')]
 
@@ -647,7 +662,7 @@ def extract_sec_config(sec_json):
               parts.extend(v['#text'])
             else:
               parts.append(v['#text'])
-            # if math content present, add it 
+            # if math content present, add it
             if 'emphasis' in v:
               if isinstance(v['emphasis'], list):
                 for emp in v['emphasis']:
@@ -843,7 +858,7 @@ def extract_exs_config(exs_json):
         exs_config[exer_name]['type'] = 'splicetoolembed'
         exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
       if exer_name in ex_options[current_module]:
-        #KVP 
+        #KVP
         for key, value in ex_options[current_module][exer_name].items():
           exs_config[exer_name][key] = value
         del ex_options[current_module][exer_name]
@@ -934,7 +949,7 @@ def remove_markup(source):
   return source
 
 def get_chapter_module_files(conf_data):
-  ''' get a dictionary where the keys are the chapter names and the values are 
+  ''' get a dictionary where the keys are the chapter names and the values are
       the paths to the rst files of the modules in the chapter
   '''
   files = OrderedDict()
@@ -947,10 +962,10 @@ def get_chapter_module_files(conf_data):
   return files
 
 def get_options(conf_data):
-  ''' 
-  gets a tuple where: 
-    the first item is a dictionary where the keys are the 
-      short names of exercises (or sections) and the values are the options that 
+  '''
+  gets a tuple where:
+    the first item is a dictionary where the keys are the
+      short names of exercises (or sections) and the values are the options that
       were specified for each exercise
     the second item is a dictionary where the keys are the names of sections and
      the values are options for each section
@@ -986,7 +1001,7 @@ def get_options(conf_data):
       if 'long_name' in children:
         del children['long_name']
       for key, value in children.items():
-        if key in MODULE_FIELDS:  
+        if key in MODULE_FIELDS:
           mod_opts[module][key] = value
         elif any(k in EXERCISE_FIELDS for k in value):
           mod_ex[key] = value
@@ -994,7 +1009,7 @@ def get_options(conf_data):
           mod_sect[key] = value
       if len(mod_opts[module]) == 0:
         del mod_opts[module]
-  
+
   return (exercises, sections, mod_opts)
 
 def validate_glob_config(conf_data):
@@ -1047,7 +1062,7 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
 
   mod_files = get_chapter_module_files(conf_data)
   for chapter, files in mod_files.items():
-    
+
     full_config['chapters'][chapter] = OrderedDict()
     for x in files:
       rst_dir_name = x.split(os.sep)[-2]
