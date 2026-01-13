@@ -75,3 +75,4 @@ You must solve it correctly three times in a row to earn credit for it.
 .. avembed:: Exercises/PL/MapReduce.html ka
    :long_name: Map Reduce
 
+

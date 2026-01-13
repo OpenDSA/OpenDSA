@@ -151,3 +151,4 @@ Note that sequence :math:`\langle3, 5, 4, 4\rangle` is distinct from
 sequence :math:`\langle3, 4, 5, 4\rangle`, and both are distinct from
 sequence :math:`\langle3, 4, 5\rangle`. 
 
+

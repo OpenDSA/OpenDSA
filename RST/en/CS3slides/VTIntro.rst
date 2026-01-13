@@ -133,3 +133,4 @@ Today's Homework
 * Look at Piazza site, make sure you are enrolled there
 * Look at Project 1 spec. Start setting up Eclipse.
 * Do Chapter 1 exercises in OpenDSA by 11:00pm Friday
+

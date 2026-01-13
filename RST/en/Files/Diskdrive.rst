@@ -398,3 +398,4 @@ from what we read where to go next, that is termed QD1.
 This is generally the least efficient data access paradigm for SSD.
 SSDs are really good at dealing with parallel I/O requests, which in
 the limit might be referred to as QD32 in performance specs.
+

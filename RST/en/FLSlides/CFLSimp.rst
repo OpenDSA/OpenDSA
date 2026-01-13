@@ -442,3 +442,4 @@ Simplifying CFGs and Normal Forms
         understand how they work in principle.
    |    Know what the GNF and CNF forms are.
 
+

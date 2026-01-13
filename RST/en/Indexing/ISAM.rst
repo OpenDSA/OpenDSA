@@ -95,3 +95,4 @@ index table and the within-cylinder block table.
 Such reorganization was typical of database systems during the 1960s
 and would normally be done each night or weekly.
 
+

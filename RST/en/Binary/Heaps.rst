@@ -406,3 +406,4 @@ For a story about Priority Queues and dragons, see |external_link|.
 
    <a href="http://computationaltales.blogspot.com/2011/04/stacks-queues-priority-queues-and.html" target="_blank">Computational Fairy Tales: Stacks, Queues, Priority Queues, and the Prince's Complaint Line</a>
 
+

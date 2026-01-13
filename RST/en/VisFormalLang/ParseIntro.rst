@@ -334,3 +334,4 @@ appear to the right of :math:`X` in some derivation.
 
    :math:`\mbox{FOLLOW}(E) = \{b, \$\}`
 
+

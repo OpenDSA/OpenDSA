@@ -100,3 +100,4 @@ It is a randomized problem. You have to solve it three times in a row.
 .. avembed:: Exercises/PL/AccumulatorPatternPractice.html ka
    :long_name: Accumulator Pattern Practice
 
+

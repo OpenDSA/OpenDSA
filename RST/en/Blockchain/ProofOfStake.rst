@@ -483,3 +483,4 @@ malicious intent, they can initiate the 51% attack.
 .. avembed:: Exercises/Blockchain/PoWvPoSSumm.html ka
     :long_name: Proof of Stake vs Proof of Work
 
+

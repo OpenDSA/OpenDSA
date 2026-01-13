@@ -32,3 +32,4 @@ Try out an instance of the 3-SAT problem on your own.
    :long_name: Practice Exercise for 3-SAT
    :keyword: NP-completeness; 3-CNF Satisfiabilty
 
+

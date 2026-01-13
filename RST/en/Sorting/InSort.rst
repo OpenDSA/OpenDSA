@@ -100,3 +100,4 @@ The final sorting method presented requires only
 The chapter concludes with a proof that sorting in general
 requires :math:`\Omega(n \log n)` time in the worst case.
 
+

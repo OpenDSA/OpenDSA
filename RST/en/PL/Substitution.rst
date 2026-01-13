@@ -214,3 +214,4 @@ a row.
 .. avembed:: Exercises/PL/Substitution2.html ka
    :long_name: Performing the full substitution algorithm
 
+

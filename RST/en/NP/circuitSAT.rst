@@ -31,3 +31,4 @@ given circuit,
 we have no easy way of knowing whether an arbitrary cirucit has some
 satisfying assignment.
 
+

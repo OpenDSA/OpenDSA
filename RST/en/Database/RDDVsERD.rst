@@ -28,3 +28,4 @@ This chapter first defines what is relational database diagram (RDD), then discu
 schema, domain and tuple), next it will illustrate relational integrity constraints and their types and finally demonstrates basic operations on relations and how to 
 execute these processes without violating constraints. 
 
+
