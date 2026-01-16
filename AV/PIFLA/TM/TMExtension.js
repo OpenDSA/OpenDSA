@@ -1,7 +1,7 @@
 // Title: Turing Machine Extensions Frameset
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Turing Machine
 // Natural Language: en
 // Programming Language: N/A
@@ -10,7 +10,7 @@
 $(document).ready(function () {
   "use strict";
 
-  var av_name = "TMExtensionFS";
+  var av_name = "TMExtension";
   var av = new JSAV(av_name);
 
   

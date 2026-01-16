@@ -5,7 +5,7 @@
 // Title: List ADT Positions Slideshow
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: List
 // Natural Language: en
 // Programming Language: N/A

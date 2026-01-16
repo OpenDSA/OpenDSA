@@ -5,7 +5,7 @@
 // Title: Writing a Recursive Function: Variations
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization
+// Features: Code Tracing Presentation
 // Keyword: Recursion
 // Natural Language: en
 // Programming Language: Java

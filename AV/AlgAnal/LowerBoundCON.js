@@ -4,7 +4,7 @@
 // Title: Lower Bounds Misconceptions
 // Author: Mohammed Farghally; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Problem; Algorithm; Program
 // Natural Language: en
 // Programming Language: N/A

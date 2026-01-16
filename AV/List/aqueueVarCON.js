@@ -4,7 +4,7 @@
 // Title: Circular Array-Based Queue Design Slideshow: Data Members
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization
+// Features: Code Tracing Presentation
 // Keyword: Array-Based Queue
 // Natural Language: en
 // Programming Language: N/A

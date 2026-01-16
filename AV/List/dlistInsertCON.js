@@ -5,7 +5,7 @@
 // Title: Doubly Linked List Insert Slideshow
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization; Algorithm Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Doubly Linked List
 // Natural Language: en
 // Programming Language: Java

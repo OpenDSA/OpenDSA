@@ -4,7 +4,7 @@
 // Title: DFA Example Trace: How a DFA Traces
 // Author: Jeffrey Peng
 // Institution: Virginia Tech
-// Features: Algorithm Visualization; Code Tracing Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Deterministic Finite Automata
 // Natural Language: en
 // Programming Language: N/A

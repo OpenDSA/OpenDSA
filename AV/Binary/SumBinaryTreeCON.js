@@ -3,7 +3,7 @@
 // Title: Recursive Operations in a Binary Tree
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Array-Based Stack
 // Natural Language: en
 // Programming Language: Java

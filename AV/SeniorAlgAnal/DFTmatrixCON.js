@@ -3,7 +3,7 @@
 // Title: Discrete Fourier Transform Matrix
 // Author: Irena Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Polynomial Multiplication; Fast Fourier Transform
 // Natural Language: en
 // Programming Language: N/A

@@ -4,7 +4,7 @@
 // Title: Introduction to the Independent Set Problem
 // Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Independent Set Problem
 // Natural Language: en
 // Programming Language: N/A

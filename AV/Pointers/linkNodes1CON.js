@@ -1,7 +1,7 @@
 // Title: Link Nodes
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization; Algorithm Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Link Node
 // Natural Language: en
 // Programming Language: Java

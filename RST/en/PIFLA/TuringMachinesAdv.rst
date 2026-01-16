@@ -203,9 +203,9 @@ simulates its execution on an input string!
 Turing Machine Extensions
 -------------------------
 
-.. inlineav:: TMExtensionFS ss
-   :links: DataStructures/FLA/FLA.css AV/PIFLA/TM/TMExtensionFS.css
-   :scripts: AV/PIFLA/TM/TMExtensionFS.js
+.. inlineav:: TMExtension ss
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/TM/TMExtension.css
+   :scripts: AV/PIFLA/TM/TMExtension.js
    :output: show
    :keyword: Turing Machines
 

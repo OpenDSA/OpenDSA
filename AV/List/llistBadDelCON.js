@@ -5,7 +5,7 @@
 // Title: Linked List Deletion Problem Slideshow
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Linked List
 // Natural Language: en
 // Programming Language: Java
