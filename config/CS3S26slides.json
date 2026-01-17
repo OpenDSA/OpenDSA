@@ -1,0 +1,72 @@
+{
+  "title": "CS3114/5040 S26 Coursenotes",
+  "desc": "CS3114/5040 S26 Coursenotes",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "tabbed_codeinc": false,
+  "build_JSAV": false,
+  "suppress_todo": false,
+  "glob_exer_options": {},
+  "glob_ss_options": {
+    "threshold": 1.0,
+    "points": 0.0,
+    "required": false,
+    "partial_credit": false
+  },
+  "glob_ff_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false,
+    "partial_credit": false
+  },
+  "glob_ka_options": {
+    "threshold": 5,
+    "points": 1.0,
+    "required": true,
+    "partial_credit": false
+  },
+  "glob_extr_options": {
+    "code-workout": {
+      "points": 2.0
+    },
+    "points": 1.0
+  },
+  "glob_pe_options": {
+    "threshold": 0.9,
+    "points": 2.0,
+    "required": true,
+    "partial_credit": false
+  },
+  "chapters": {
+    "Week 1": {
+      "CS3slides/VTIntro": {},
+      "CS3slides/Intro": {},
+      "CS3slides/P1S26": {}
+    }
+  }
+}

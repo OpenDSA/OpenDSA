@@ -33,7 +33,7 @@ General Project Rules
 
 * The "correctness" score is adjusted by the quality
   of your own test suite (as defined by Mutation Testing coverage ---
-  we will discuss this later).
+  we will discuss this in detail later).
 
 
 Project 1: Songs Database
@@ -62,30 +62,40 @@ Project 1: Songs Database
   * Communications between them (a Handle)
 
 
-What We Give You to Get Started
--------------------------------
+What We Give You: The Starter Kit (1)
+-------------------------------------
 
 .. revealjs-slide::
 
+* Starter kit is accessed through Eclipse
+  `Project -> Download Assignment`
+
 * We specify the class name for the project (SongsProj), an
   interface that you must implement (Songs), and the name of a
-  class that implements MovieRater (SongsDB).
+  class that implements the Songs interface (SongsDB).
 
 * This lets us write reference test cases for grading that make calls
   to the interface.
 
-  * Reference tests do not write to System.out, or check the contents
-    of System.out.
+  * Our reference tests do not write to System.out, nor check the
+    contents of System.out.
 
-* We give you the hash function to use.
+* We give you the hash function to use in the starter kit.
+
+  
+What We Give You: The Starter Kit (2)
+-------------------------------------
+
+.. revealjs-slide::
 
 * We give you some initial tests (SongsTest) that are meant to
   demonstrate all the requirements related to formatting the interface
   method return values.
 
+  * Note: The starter kit does not pass those tests.
   * If we get questions indicating that we left something ambiguous,
     we will update the example tests for you to see.
-  * Important service: We will check any tests added to SongsTest
+  * Important service: We will check any tests added to SongsTest.java
     against the reference implementation. This lets you verify that
     your tests are correct (meaning, that you have no misconceptions
     about the project requirements --- if your tests are thorough).
@@ -95,6 +105,9 @@ Design Issues
 -------------
 
 .. revealjs-slide::
+
+* In all projects, a major part of the design is handling proper
+  information encapsulation and flow
 
 * The hash table does not store strings. The memory manager does.
 
@@ -120,7 +133,7 @@ What you need to know about Hash Tables
   Focus on the following three things:
 
   * Insertion is pretty standard.
-    You will be hashing a string (song name or title).
+    You will be hashing a string (song or artist name).
     You will use the hash function we give you in the Starter Kit
     (see 10.3.3 String Folding).
 
@@ -136,6 +149,8 @@ Insert/Delete
 
 .. revealjs-slide::
 
+* Warning: This example is NOT using quadratic probing!
+  
 .. inlineav:: hashdelCON ss
    :long_name: Hash Deletion Slideshow
    :links: 
@@ -188,6 +203,9 @@ Memory Manager ADT
 
 .. revealjs-slide::
 
+You do NOT necessarily implement exactly this interface!
+This is just meant to get the idea across.
+
 ::
 
    // Memory Manager abstract class
@@ -210,15 +228,14 @@ Implementation Issues
 
 * The client doesn’t know what is in the handle.
 
-* The memory manager doesn’t know what is in the message.
+* The memory manager doesn’t know what is in the message. It should
+  not even know that it is a string!
 
-* Multiple clients can share a memory manager.
+* Multiple clients can share a memory manager. (The two hash tables do
+  in this project.)
 
-* The memory manager might interact with a buffer pool:
-
-  * The client decides what gets stored
-  * The memory manager decides where things get stored
-  * The buffer pool decides when blocks are in main memory
+* The client decides **what** gets stored
+* The memory manager decides **where** things get stored
 
 
 Buddy Method
@@ -226,12 +243,15 @@ Buddy Method
 
 .. revealjs-slide::
 
-* The memory pool is a power of 2 in size.
+* The memory pool is a power of 2 in size
 * Memory allocations are always the smallest power of 2 equal to or
-  bigger than the request.
+  bigger than the request
 * Free (and allocated) blocks are therefore always a power of 2
 * Keep a list for each block size
-* Easy to merge freed blocks
+* Easy to merge freed blocks (that is the point to the buddy method)
+
+  * This is done by matching the bits in the start address, buddies
+    are identical other than the bit for their size.
 
 
 Buddy Method Example

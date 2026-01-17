@@ -81,7 +81,8 @@ OpenDSA
 
 .. revealjs-slide::
 
-* Access OpenDSA through a link to Canvas->Modules
+* Access OpenDSA eTextbook through a 2nd Canvas course shell
+  (link from the course homepage)
 
 * Lots of visualizations, exercises
 
@@ -89,7 +90,7 @@ OpenDSA
 
 * Homework due periodically through the semester
 
-  * Small homework (Chapter 1) due at 11pm **this Thursday**
+  * Small homework (Chapter 1) due at 11pm **this Friday**
 
 
 Web-CAT
@@ -98,16 +99,21 @@ Web-CAT
 .. revealjs-slide::
 
 * Must use Eclipse IDE for submissions: Update if older than 2025
-* Get the updated Web-CAT plugin.
+* Install the updated Web-CAT plugin
+
+  * Be sure you use this semester's link to see the starter kits from
+    the "Download Assignment" link
+
 * Read OpenDSA Module 2.4 for details on setting up with Eclipse
-* Project submission support
-* Support for junit testing, mutation coverage
-* Auto-grading: Correctness (passes reference tests), style, test
-  suite quality (mutation testing)
+* Web-CAT provides project submission support
+
+  * Support for junit testing validation, mutation coverage
+  * Auto-grading: Correctness (passes reference tests), style, test
+    suite quality (mutation testing)
 
 
-Milestones
-----------
+Projects and Milestones
+-----------------------
 
 .. revealjs-slide::
 
@@ -115,7 +121,8 @@ Milestones
 * Most projects will have 3 milestones
 
   * Milestones are intermediate deliverables with due dates
-  * First due next week (typically due about a week or so into the project)
+  * First due typically due about a week or so into the project (your
+    first milestone is due **next week**)
   * Second due typically about 10 days before due date
   * Third due typically about 4-5 days before due date
 
@@ -131,5 +138,6 @@ Today's Homework
 
 * Look at Canvas, check out the various links
 * Look at Piazza site, make sure you are enrolled there
+* Make sure that you have Web-CAT access
 * Look at Project 1 spec. Start setting up Eclipse.
-* Do Chapter 1 exercises in OpenDSA by 11:00pm Friday
+* Do Chapter 1 exercises in OpenDSA by this week's due date
