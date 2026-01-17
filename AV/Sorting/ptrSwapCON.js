@@ -4,7 +4,7 @@
 // Title: Pointer Swap Optimization Slideshow
 // Author: Liling Yuan; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: 
 // Natural Language: en
 // Programming Language: N/A

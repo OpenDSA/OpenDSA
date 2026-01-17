@@ -4,7 +4,7 @@
 // Title: Introduction to the Traveling Salesman Problem
 // Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Traveling Salesman Problem
 // Natural Language: en
 // Programming Language: N/A

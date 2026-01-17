@@ -5,7 +5,7 @@
 // Title: Array-Based Stack Data Members Slideshow
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization
+// Features: Code Tracing Presentation
 // Keyword: Array-Based Stack
 // Natural Language: en
 // Programming Language: Java

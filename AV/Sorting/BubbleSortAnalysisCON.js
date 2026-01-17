@@ -5,7 +5,7 @@
 // Title: Bubble Sort Analysis Slideshow
 // Author: Mohammed Farghally; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Algorithm Analysis Demonstration
+// Features: Algorithm Analysis Presentation
 // Keyword: Bubble Sort; Worst Case; Average Case; Best Case
 // Natural Language: en
 // Programming Language: N/A

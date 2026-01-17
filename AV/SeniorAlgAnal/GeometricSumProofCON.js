@@ -1,7 +1,7 @@
 // Title: Geometric Summation Proof
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Summation
 // Natural Language: en
 // Programming Language: N/A

@@ -4,7 +4,7 @@
 // Title: A Heap Example
 // Author: Sushma Mandava
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization
+// Features: Code Tracing Presentation
 // Keyword: Memory Allocation
 // Natural Language: en
 // Programming Language: Java

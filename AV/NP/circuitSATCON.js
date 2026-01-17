@@ -4,7 +4,7 @@
 // Title: Introduction to the Circuit Satisfiability Problem
 // Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Circuit Satisfiability Problem
 // Natural Language: en
 // Programming Language: N/A

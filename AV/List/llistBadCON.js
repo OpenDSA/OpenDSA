@@ -5,7 +5,7 @@
 // Title: Bad Linked List Representation Slideshow
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Linked List
 // Natural Language: en
 // Programming Language: Java

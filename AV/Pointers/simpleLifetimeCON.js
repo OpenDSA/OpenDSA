@@ -1,7 +1,7 @@
 // Title: Lifetime of Local Variables
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization
+// Features: Code Tracing Presentation
 // Keyword: Pointer; Reference; Object
 // Natural Language: en
 // Programming Language: Java
