@@ -141,3 +141,4 @@ Today's Homework
 * Make sure that you have Web-CAT access
 * Look at Project 1 spec. Start setting up Eclipse.
 * Do Chapter 1 exercises in OpenDSA by this week's due date
+
