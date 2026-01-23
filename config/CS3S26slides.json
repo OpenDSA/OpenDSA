@@ -67,6 +67,11 @@
       "CS3slides/VTIntro": {},
       "CS3slides/Intro": {},
       "CS3slides/P1S26": {}
+    },
+    "Week 2": {
+      "CS3slides/AlgAnal": {},
+      "CS3slides/ProjManage": {},
+      "CS3slides/JUnit": {}
     }
   }
 }
