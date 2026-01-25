@@ -202,7 +202,7 @@ SLIDESHOW = '''\
  <a class="jsavsettings" href="#">Settings</a>
  <div class="jsavcontrols"></div>
  %(output_code)s
- <div class="jsavcanvas"></div>
+ <div class="jsavcanvas" style="overflow-y: auto" tabindex="0"></div>
  <div class="prof_indicators">
   <img id="%(exer_name)s_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" alt="Proficient" />
   <span id="%(exer_name)s_cm_saving_msg" class="cm_saving_msg">Saving...</span>
