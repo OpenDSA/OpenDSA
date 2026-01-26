@@ -10,6 +10,110 @@
 Algorithm Analysis Part 2
 =========================
 
+Growth Rate Example (1)
+-----------------------
+
+.. revealjs-slide::
+
+Example 1: Find largest value
+
+.. codeinclude:: Misc/LargestTest
+   :tag: Largest
+
+
+Growth Rate Example (2)
+-----------------------
+
+.. revealjs-slide::
+
+Example 2: Assignment statement
+
+Example 3: Double loop
+
+.. codeinclude:: Misc/Anal
+   :tag: c3p4
+
+         
+Growth Rate Graph (1)
+---------------------
+
+.. revealjs-slide::
+
+.. inlineav:: GrowthRatesCON dgm
+    :links: AV/AlgAnal/GrowthRatesCON.css
+    :scripts: DataStructures/Plot.js AV/AlgAnal/GrowthRatesCON.js
+    :align: center
+
+            
+Growth Rate Graph (2)
+---------------------
+
+.. revealjs-slide::
+
+.. inlineav:: GrowthRatesZoomCON dgm
+   :links: AV/AlgAnal/GrowthRatesZoomCON.css
+   :scripts: DataStructures/Plot.js AV/AlgAnal/GrowthRatesZoomCON.js
+   :align: center
+
+
+Best, Worst, Average Cases
+--------------------------
+
+.. revealjs-slide::
+
+* Not all inputs of a given size take the same time to run.
+
+  * Sequential search for K in an array of :math:`n` integers:
+
+  * Begin at first element in array and look at each element in turn
+    until K is found
+
+    * Best case:
+    * Worst case:
+    * Average case:
+
+
+Which Analysis to Use?
+----------------------
+
+.. revealjs-slide::
+
+* While average time appears to be the fairest measure, it may be
+  difficult to determine.
+  
+* When is the worst case time important?
+
+
+Faster Computer or Algorithm?
+-----------------------------
+
+.. revealjs-slide::
+
+Suppose we buy a computer 10 times faster.
+
+.. math::
+
+   \begin{array} {l|r|r|l|r}
+   \mathbf{f(n)} &
+   \mathbf{n} &
+   \mathbf{n'} &
+   \mathbf{Change} &
+   \mathbf{n'/n}\\
+   \hline
+   10n         & 1000 & 10,000 & n' = 10n               & 10\\
+   20n         & 500  & 5000   & n' = 10n               & 10\\
+   5 n \log n  & 250  & 1842   & \sqrt{10} n < n' < 10n & 7.37\\
+   2 n^2       & 70   & 223    & n' = \sqrt{10} n       & 3.16\\
+   2^n         & 13   & 16     & n' = n + 3             & --\\
+   \end{array}
+
+* :math:`n`: size of input that can be processed in one second on old
+  computer (in 1000 computational units)
+
+* :math:`n'`: size of input that can be processed in one second on new
+  computer (in 10,000 computational units)
+
+
 Asymptotic Analysis: Big-oh
 ---------------------------
 
@@ -51,13 +155,13 @@ Big-Oh Examples
 
 * Example 1: Finding value X in an array (average cost).
 
-* Then :math:`\textbf{T}(n) = c_{s}n/2`.
+  * Then :math:`\textbf{T}(n) = c_{s}n/2`.
 
-* For all values of :math:`n > 1, c_{s}n/2 \leq c_{s}n`.
+  * For all values of :math:`n > 1, c_{s}n/2 \leq c_{s}n`.
 
-* Therefore, the definition is satisfied for :math:`f(n)=n, n_0 = 1`,
-  and :math:`c = c_s`.
-  Hence, :math:`\textbf{T}(n)` is in :math:`O(n)`.
+  * Therefore, the definition is satisfied for :math:`f(n)=n, n_0 = 1`,
+    and :math:`c = c_s`.
+    Hence, :math:`\textbf{T}(n)` is in :math:`O(n)`.
 
 
 Big-Oh Examples (2)
@@ -68,13 +172,13 @@ Big-Oh Examples (2)
 * Example 2: Suppose :math:`\textbf{T}(n) = c_{1}n^2 + c_{2}n`, where
   :math:`c_1` and :math:`c_2` are positive.
 
-* :math:`c_{1}n^2 + c_{2}n \leq c_{1}n^2 + c_{2}n^2 \leq (c_1 + c_2)n^2`
-  for all :math:`n > 1`.
+  * :math:`c_{1}n^2 + c_{2}n \leq c_{1}n^2 + c_{2}n^2 \leq (c_1 + c_2)n^2`
+    for all :math:`n > 1`.
 
-* Then :math:`\textbf{T}(n) \leq cn^2` whenever :math:`n > n_0`,
-  for :math:`c = c_1 + c_2` and :math:`n_0 = 1`.
+  * Then :math:`\textbf{T}(n) \leq cn^2` whenever :math:`n > n_0`,
+    for :math:`c = c_1 + c_2` and :math:`n_0 = 1`.
 
-* Therefore, :math:`\textbf{T}(n)` is in :math:`O(n^2)` by definition.
+  * Therefore, :math:`\textbf{T}(n)` is in :math:`O(n^2)` by definition.
 
 * Example 3: :math:`\textbf{T}(n) = c`.  Then :math:`\textbf{T}(n)`
   is in :math:`O(1)`.
@@ -92,7 +196,7 @@ A Common Misunderstanding
 * Big-oh refers to a growth rate as n grows to :math:`\infty`
 
 * Best case is defined for the input of size n that is cheapest among
-  all inputs of size :math:`n`.
+  all inputs of the same size :math:`n`.
 
 
 Big :math:`\Omega`
@@ -119,12 +223,12 @@ Big-Omega Example
 
 * :math:`\textbf{T}(n) = c_1n^2 + c_2n`.
 
-* :math:`c_1n^2 + c_2n \geq c_1n^2` for all :math:`n > 1`.
+  * :math:`c_1n^2 + c_2n \geq c_1n^2` for all :math:`n > 1`.
 
-* :math:`\textbf{T}(n) \geq cn^2` for :math:`c = c_1` and :math:`n_0 = 1`.
+  * :math:`\textbf{T}(n) \geq cn^2` for :math:`c = c_1` and :math:`n_0 = 1`.
 
-* Therefore, :math:`\textbf{T}(n)` is in :math:`\Omega(n^2)` by the
-  definition.
+  * Therefore, :math:`\textbf{T}(n)` is in :math:`\Omega(n^2)` by the
+    definition.
 
 * We want the greatest lower bound.
 
@@ -183,6 +287,14 @@ Summary (1)
    :links: AV/SeniorAlgAnal/SimpleCostsCON.css
    :scripts: AV/SeniorAlgAnal/SimpleCosts1CON.js
    :output: show
+
+* If we fix the size of :math:`n`
+
+  * TOH only has one input of any given size :math:`n`.
+  * Findmax has the same cost (in terms of number of records viewed) for
+    all inputs of size :math:`n`.
+  * Find a value has different costs for different arrangements of the
+    values in the array (ranging from 1 to n).
 
 
 Summary (2)

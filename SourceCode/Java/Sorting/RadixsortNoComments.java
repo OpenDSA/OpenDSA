@@ -8,12 +8,12 @@ static void radix(Integer[] A, int k, int r) {
       count[j] = 0;
     for (j=0; j<A.length; j++) 
       count[(A[j]/rtok)%r]++;
-    count[0] = count[0] - 1;
-    for (j=1; j<r; j++) 
-      count[j] = count[j-1] + count[j];
-    for (j=A.length-1; j>=0; j--) {
+    int total = A.length;
+    for (j=r-1; j>=0; j--) {
+      total -= count[j]; count[j] = total; }
+    for (j=0; j<A.length; j++) {
       B[count[(A[j]/rtok)%r]] = A[j];
-      count[(A[j]/rtok)%r]--;
+      count[(A[j]/rtok)%r] = count[(A[j]/rtok)%r] + 1;
     }
     for (j=0; j<A.length; j++) A[j] = B[j];
   }

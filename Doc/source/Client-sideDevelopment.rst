@@ -117,8 +117,6 @@ Here is the structure for language_msg.json::
      }
    }
 
-The gradebook text strings are taken from ``RST/<lang>/Gradebook.rst``.
-
 The book configuration  program will read the language variable.
 If a translation for the entered language is not available, the
 default language English is used.

@@ -20,16 +20,14 @@ static void radix(Integer[] A, int k, int r) {
     // Count the number of records for each bin on this pass
     for (j=0; j<A.length; j++) { count[(A[j]/rtok)%r]++; }
 
-    // count[j] will be index in B for last slot of bin j.
-    // First, reduce count[0] because indexing starts at 0, not 1
-    count[0] = count[0] - 1;
-    for (j=1; j<r; j++) { count[j] = count[j-1] + count[j]; }
+    // After processing, count[j] will be index in B for first slot of bin j.
+    int total = A.length;
+    for (j=r-1; j>=0; j--) { total -= count[j]; count[j] = total; }
 
-    // Put records into bins, working from bottom of bin
-    // Since bins fill from bottom, j counts downwards
-    for (j=A.length-1; j>=0; j--) {
+    // Put records into bins, working from left to right
+    for (j=0; j<A.length; j++) {
       B[count[(A[j]/rtok)%r]] = A[j];
-      count[(A[j]/rtok)%r] = count[(A[j]/rtok)%r] - 1;
+      count[(A[j]/rtok)%r] = count[(A[j]/rtok)%r] + 1;
     }
     for (j=0; j<A.length; j++) { A[j] = B[j]; } // Copy B back
   }

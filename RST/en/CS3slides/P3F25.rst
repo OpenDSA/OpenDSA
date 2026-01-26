@@ -1,0 +1,88 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata::
+   :author: Cliff Shaffer
+
+=========
+Project 3
+=========
+
+Project 3: Disk-based Radix Sort
+--------------------------------
+
+.. revealjs-slide::
+
+* You will implement the (array-based version of) Radix Sort
+
+  * See OpenDSA 8.14.2.
+
+* The records consiste of two 32-bit fields, each storing integer
+  values between 1 and 2,000,000,000.
+
+  * The first field is the key value (what you sort on) and the
+    second is data.
+
+* Your sort must be **stable**. This means that records whose keys
+  have equal value must appear in the output in the same order as
+  they appeared in the input.
+
+* What is different: You are sorting a file.
+
+
+Sorting the File
+----------------
+
+.. revealjs-slide::
+
+* You use a "working memory" of 900,000 bytes.
+
+  * You need to handle files that are much larger than 900,000 bytes
+    in size.
+
+    * Files are guaranteed to be multiples of 4096 bytes.
+      
+* You read data from the file into the working memory, and out again
+    to the file as you need to.
+
+  * You can't put records from the file anywhere else.
+    
+    * You may use a small number (< 5) of integer variables to store
+      values temporarily while working.
+
+* You should use ``RandomAccessFile`` to interact with the file.
+
+* You should use ByteBuffer and IntBuffer to interact with the memory
+  pool.
+
+* You should think of the ``A`` array as the input file, and the
+  ``B`` array as a (temporary) output file.
+
+  * At the end of each pass, swap the meaning of the files.
+
+Managing Your Memory
+--------------------
+
+.. revealjs-slide::
+
+* Within these constraints, you can manage the data within the memory
+  pool any way that you like to do the sort.
+
+  * You can decide where to read data to, and where to write data from
+    (within the memory pool).
+
+  * You can decide what the radix should be (and consequently, how
+    many passes the sort has to make, and how big the ``count`` array
+    has to be).
+
+  * Read about buffer pools. You probably don't want to actually
+    implement your memory as a standard buffer pool, but many of the
+    ideas apply.
+
+* While you **may NOT** put data from the file anywhere other than the
+  memory pool, you **may** have other data structures (arrays or
+  lists, for example) to keep track of what information is where in
+  the memory pool.
+

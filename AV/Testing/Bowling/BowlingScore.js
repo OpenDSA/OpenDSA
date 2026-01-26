@@ -11,6 +11,13 @@ var creditStatus = false;
 var config = ODSA.UTILS.loadConfig(),
     interpret = config.interpreter,
     av = new JSAV("ssperform", {"animationMode": "none"});
+
+if (ODSA.UTILS.params.code === "true") {
+  document.getElementById("coverageCode").style.display = "block";
+  threshold = 100;
+} else {
+  document.getElementById("coverageCode").style.display = "none";
+}
 /**
  * Main function.  This is called when the 'Roll' button is clicked.
  */
@@ -159,30 +166,7 @@ function getCodeCoverage() {
     document.getElementById("codeCoveragePercentage").innerText = codeCoverageP.toFixed(2) + "%";
 }
 
-window.onload = function() {
-    if (getUrlParam("code") == "true") {
-        document.getElementById("coverageCode").style.display = "block";
-        threshold = 100;
-        //document.getElementById("container").style.float = "right";
-    } else {
-        document.getElementById("coverageCode").style.display = "none";
-        //document.getElementById("container").style.float = "left";
-    }
-}
 
-/**
- * Gets the value of a url parameter
- * @param {*} name is the name of the parameter you want to get 
- * @param {*} url is the url we want to read, can leave empty.
- */
-function getUrlParam( name, url ) {
-    if (!url) url = location.href;
-    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-    var regexS = "[\\?&]"+name+"=([^&#]*)";
-    var regex = new RegExp( regexS );
-    var results = regex.exec( url );
-    return results == null ? null : results[1];
-}
 
 function reset(){
     av.clearumsg();

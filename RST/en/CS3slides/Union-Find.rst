@@ -75,11 +75,14 @@ Algorithm Visualization
 
 .. revealjs-slide::
 
-.. inlineav:: ufCON ss
-   :long_name: Union/Find Example
-   :links: AV/General/UFCON.css
-   :scripts: AV/General/ufCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/General/ufCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
             
 Path Compression
@@ -87,8 +90,15 @@ Path Compression
 
 .. revealjs-slide::
 
-.. inlineav:: pathcompCON ss
-   :long_name: Union/Find Path Compression Example
-   :links: AV/General/UFCON.css
-   :scripts: AV/General/pathcompCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/General/pathcompCON.html" 
+           width="960" 
+           height="550" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
+
+.. only:: never
+
+   This is a comment that does NOT show in built slides: prevents 'odsalink' from appearing.

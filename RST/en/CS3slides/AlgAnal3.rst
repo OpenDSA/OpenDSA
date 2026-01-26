@@ -17,7 +17,7 @@ Time Complexity Examples (1)
 
 * Example: a = b;
 
-* This assignment takes constant time, so it is :math:`\Theta(1)`.
+  * This assignment takes constant time, so it is :math:`\Theta(1)`.
 
 * Example:
 
@@ -118,11 +118,11 @@ Space/Time Tradeoff Principle
 
 * Encoding or packing information
 
-  * Boolean flags
+  * Boolean flags: Need less space, but take time to unpack
 
 * Table lookup
 
-  * Factorials
+  * Factorials: Store a table of values for lookup instead of computing
 
 * Disk-based Space/Time Tradeoff Principle: The smaller you make the
   disk storage requirements, the faster your program will run.
@@ -139,7 +139,11 @@ Multiple Parameters
 .. codeinclude:: Misc/Anal
    :tag: c3p16
 
-* If we use P as the measure, then time is :math:`(P \log P)`.
+* If we use P as the measure, then time is :math:`(P \log
+  P)`. Unrealistically high.
+
+* If we use C as the measure, then time is :math:`(C \log
+  C)`. Unrealistically low.
 
 * More accurate is :math:`\Theta(P + C \log C)`.
 

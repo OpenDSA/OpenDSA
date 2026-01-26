@@ -39,23 +39,28 @@ Huffman Coding Trees
 
 .. revealjs-slide::
 
-.. inlineav:: huffmanBuildCON ss
-   :long_name: Huffman Coding Tree Slideshow: Build
-   :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
-   :scripts: DataStructures/huffman.js AV/Binary/huffmanBuildCON.js
-   :output: show
+.. raw:: html
 
+   <iframe src="../../../Metadata/inlineav/Binary/huffmanBuildCON.html" 
+           width="960" 
+           height="550" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 Assigning Codes
 ---------------
 
 .. revealjs-slide::
 
-.. inlineav:: huffmanLabelCON ss 
-   :long_name: Huffman Coding Tree Slideshow: Label Edges
-   :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
-   :scripts: DataStructures/huffman.js AV/Binary/huffmanLabelCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Binary/huffmanLabelCON.html" 
+           width="960" 
+           height="550" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Using Codes
@@ -63,11 +68,14 @@ Using Codes
 
 .. revealjs-slide::
 
-.. inlineav:: huffmanCodesCON ss 
-   :long_name: Huffman Coding Tree Slideshow: Setting Codes
-   :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
-   :scripts: DataStructures/huffman.js AV/Binary/huffmanCodesCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Binary/huffmanCodesCON.html" 
+           width="960" 
+           height="550" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Decoding
@@ -75,8 +83,11 @@ Decoding
 
 .. revealjs-slide::
 
-.. inlineav:: huffmanDecodeCON ss
-   :long_name: Huffman Coding Tree Slideshow: Decoding
-   :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
-   :scripts: DataStructures/huffman.js AV/Binary/huffmanDecodeCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Binary/huffmanDecodeCON.html" 
+           width="960" 
+           height="550" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>

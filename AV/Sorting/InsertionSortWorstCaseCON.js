@@ -21,8 +21,9 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
   var pseudo = av.code(code[0]).hide();
   var arr;
+  var yoffset = -20;
   var leftAlign = 320;
-  var topAlign = 290;
+  var topAlign = 290 + yoffset;
   var rectWidth = 50;
   var rectHeight = 20;
   var labelGap = 5;
@@ -64,8 +65,8 @@ $(document).ready(function() {
   arr.swap(0, 1);
   av.g.rect(leftAlign, topAlign, 50, 20);
   av.label("$i=1$", {
-    top: "300px",
-    left: "330px"
+    top: 300 + yoffset,
+    left: 330
   });
   av.step();
 
@@ -74,8 +75,8 @@ $(document).ready(function() {
   arr.swap(1, 2);
   av.g.rect(leftAlign + rectWidth, topAlign, 50, 20);
   av.label("$i=2$", {
-    top: "300px",
-    left: "380px"
+    top: 300 + yoffset,
+    left: 380
   });
   av.step();
 
@@ -89,8 +90,8 @@ $(document).ready(function() {
   arr.swap(2, 3);
   av.g.rect(leftAlign + 2 * rectWidth, topAlign, 50, 20);
   av.label("$i=3$", {
-    top: "300px",
-    left: "430px"
+    top: 300 + yoffset,
+    left: 430
   });
   av.step();
 
@@ -109,8 +110,8 @@ $(document).ready(function() {
   arr.swap(3, 4);
   av.g.rect(leftAlign + 3 * rectWidth, topAlign, 50, 20);
   av.label("$i=4$", {
-    top: "300px",
-    left: "480px"
+    top: 300 + yoffset,
+    left: 480
   });
   av.step();
 
@@ -134,8 +135,8 @@ $(document).ready(function() {
   arr.swap(4, 5);
   av.g.rect(leftAlign + 4 * rectWidth, topAlign, 50, 20);
   av.label("$i=5$", {
-    top: "300px",
-    left: "530px"
+    top: 300 + yoffset,
+    left: 530
   });
   av.step();
 
@@ -161,7 +162,7 @@ $(document).ready(function() {
 
   // Slide 21
   av.umsg(interpret("sc21"));
-  var rect5 = av.g.rect(310, 260, 268, 1);
+  var rect5 = av.g.rect(310, 260 + yoffset, 268, 1);
   rect5.rotate(-22);
 
   //Horizontal Line
@@ -198,42 +199,45 @@ $(document).ready(function() {
   av.label("$n - 1$",
            {top: topAlign - 3 * rectHeight,
              left: leftAlign + 5 * rectWidth + labelGap});
+  av.step();
 
   // Slide 22
   av.umsg(interpret("sc22_1"));
   av.g.polyline([
-    [320, 310],
-    [570, 310],
-    [570, 210]
+    [320, 310 + yoffset],
+    [570, 310 + yoffset],
+    [570, 210 + yoffset]
   ]).addClass("bigTriangle");
   av.step();
+  
+  // Slide 23
   av.umsg(interpret("sc22_2"), {
     preserve: true
   });
   av.g.polyline([
-    [320, 310],
-    [320, 290],
-    [370, 290]
+    [320, 310 + yoffset],
+    [320, 290 + yoffset],
+    [370, 290 + yoffset]
   ]).addClass("smallTriangle");
   av.g.polyline([
-    [370, 290],
-    [370, 270],
-    [420, 270]
+    [370, 290 + yoffset],
+    [370, 270 + yoffset],
+    [420, 270 + yoffset]
   ]).addClass("smallTriangle");
   av.g.polyline([
-    [420, 270],
-    [420, 250],
-    [470, 250]
+    [420, 270 + yoffset],
+    [420, 250 + yoffset],
+    [470, 250 + yoffset]
   ]).addClass("smallTriangle");
   av.g.polyline([
-    [470, 250],
-    [470, 230],
-    [520, 230]
+    [470, 250 + yoffset],
+    [470, 230 + yoffset],
+    [520, 230 + yoffset]
   ]).addClass("smallTriangle");
   av.g.polyline([
-    [520, 230],
-    [520, 210],
-    [570, 210]
+    [520, 230 + yoffset],
+    [520, 210 + yoffset],
+    [570, 210 + yoffset]
   ]).addClass("smallTriangle");
   av.step();
 

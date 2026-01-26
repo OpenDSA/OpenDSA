@@ -542,7 +542,7 @@ def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext,
     Cleaned up version of dag_compare to correspond to writeup
     """
     if debug:
-        print("Inside workflows.py: dag_compare()")
+        print("Inside workflows.py: dag_compare_new()")
         print("Show solution box")
         print(report_attempt.dict_solution_box)
         print("Show subgroups")
@@ -568,10 +568,11 @@ def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext,
             # ternary operator shorthand, see [geeksforgeeks]/ternary-operator-in-python/#Ternary%20Operator%20using%20Tuple
             # basically, sets it to False if it's absent, True for anything else but absent
             # opposite of intuition, false value first, then true value
-            soln_id: (True, False)[report_attempt.dict_solution_box[soln_id].status == SOLUTION_STATUS.absent]
+            soln_id: report_attempt.dict_solution_box[soln_id].description != SOLUTION_STATUS.absent
                 for soln_id in subgroup.split(",")
         }
         if debug:
+            print(subgroup.split(","))
             print(subgroup, checklist)
         if all(checklist.values()):
             print(f'{subgroup} can be compared')
@@ -594,13 +595,17 @@ def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext,
                 }
             }
     
+    # cleaning up, the identifier subgroup can be confusing unless cleared up
+    del subgroup
+    
     for subgroup_id in list_subgroups_to_test:
         # NOTE: perhaps it might help to hold permanent references to the subgroups here
         # and refer to them later, instead of the extended references.
         # TODO: Change the code elsewhere as well to simplify, reduce references and function calls
-        m_subgroup : SolutionSubgroup = report_master.solution.solution_subgroups[subgroup]['subgroup']
-        a_subgroup : SolutionSubgroup = report_attempt.solution.solution_subgroups[subgroup]['subgroup']
-
+        m_subgroup : SolutionSubgroup = report_master.solution.solution_subgroups[subgroup_id]['subgroup']
+        # No checks required here, since it's already taken care of before.
+        a_subgroup : SolutionSubgroup = report_attempt.solution.solution_subgroups[subgroup_id]['subgroup']
+        
         threads_subgroup_master : dict = m_subgroup.equation_threads # type: ignore
         threads_subgroup_attempt : dict = a_subgroup.equation_threads # type: ignore
 
@@ -625,7 +630,7 @@ def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext,
                     threads_subgroup_attempt[pair[1]]
                     )
             )
-            subgroup_details[subgroup]['pairs'][pair]\
+            subgroup_details[subgroup_id]['pairs'][pair]\
                 ['metadata']['matched_label_equations'] = matched_pairs_scores_dict
 
             # Reduced form comparison of equations in threads, storing metadata
@@ -636,11 +641,11 @@ def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext,
                     threads_subgroup_attempt[pair[1]]
                     )
             )
-            subgroup_details[subgroup]['pairs'][pair]\
+            subgroup_details[subgroup_id]['pairs'][pair]\
                 ['metadata']['matched_reduced_equations'] = matched_clusters_scores_dict
 
             # this needs to be right at the end, adding up all scores
-            subgroup_details[subgroup]['pairs'][pair]['score'] = \
+            subgroup_details[subgroup_id]['pairs'][pair]['score'] = \
                 label_score + reduced_score
 
     if debug:

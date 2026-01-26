@@ -6,7 +6,11 @@ rst_header = '''\
 
 .. raw:: html
 
- <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s"; ODSA.SETTINGS.BUILD_DATE = "%(mod_date)s"; ODSA.SETTINGS.BUILD_CMAP = %(build_cmap)s;%(mod_options)s</script>
+ <script>
+ if (typeof ODSA === 'undefined') { window.ODSA = {}; }
+ if (typeof ODSA.SETTINGS === 'undefined') { ODSA.SETTINGS = {}; }
+ ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s"; ODSA.SETTINGS.BUILD_DATE = "%(mod_date)s"; ODSA.SETTINGS.BUILD_CMAP = %(build_cmap)s;%(mod_options)s
+ </script>
  
 %(unicode_directive)s
 '''
@@ -174,6 +178,10 @@ slides_lib = '%(slides_lib)s'
 # only import sphinx-revealjs when building course notes
 if slides_lib == 'revealjs' or on_slides:
   extensions.append('sphinx_revealjs')
+else:
+  # In non-slides mode, use stub directives to preserve revealjs content
+  sys.path.append(os.path.abspath(customsDir + 'revealjs_stub'))
+  extensions.append('revealjs_stub')
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -496,9 +504,6 @@ todo_include_todos = True
 
 #---- OpenDSA variables ---------------------------------------
 
-# @efouh: despise the fact that we are using an url hash, gradebook still needs book name
-book_name = '%(book_name)s'
-
 # Boolean to control whether book will compile in local mode, which means no communication with the server
 local_mode = %(local_mode)s
 
@@ -534,8 +539,6 @@ config_js_template = '''\
 "use strict";
 (function () {
   var settings = {};
-  //@efouh: added this variable back because it is needed by gradebook.html
-  settings.BOOK_NAME = "%(book_name)s";
   settings.BOOK_LANG = "%(lang)s";
   settings.REQ_FULL_SS = %(req_full_ss)s;
   settings.BUILD_TO_ODSA = "OpenDSA/";

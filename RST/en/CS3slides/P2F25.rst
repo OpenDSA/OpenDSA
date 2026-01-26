@@ -15,22 +15,63 @@ Project 2 Description
 
 .. revealjs-slide::
 
-* Discuss Here
+* Geographic Information System (GIS)
+  
+  * City records
+
+    * Name (a string)
+    * Location (X and Y)
+
+  * Implement with two indices:
+
+    * BST for strings (allows duplicates)
+    * kd tree for 2D coordinates (no duplicates are allowed)
+
+      * Region search (by seach circle) is efficient
+
 
 Project 2 Design
 ----------------
 
 .. revealjs-slide::
 
-* Discuss Here
+* You can find a lot of helpful starter code at OpenDSA.
 
+  * The BST code is a good start, but it will need some modifications.
+
+    * Be careful on deletion: Need to delete the correct record, not
+      just any record that matches the name.
+
+  * Module 15.5 on kd trees has rough code to get you started.
+
+* Generalization: The BST should handle any key type that is
+  comparable, and any record type.
+
+  * Assume that the record type is comparable. (Using KV Pairs would be
+    more general purpose, but it is OK not to do that if you don't
+    want to.)
+
+* We do not require any generalization for the kd tree (though you are
+  free to build in some amount of encapsulation if you like). We won't
+  penalize if the kd tree is written for City records explicitly.
+  
 
 Spatial Data Structures
 -----------------------
 
 .. revealjs-slide::
 
-* The concept of multi-dimensional keys
+* BST can take any comparable type, but is a one-dimensional key.
+
+  * XY coords are 2-dimensional. Could combine? Would help for exact
+    match, but not ranges (find in a search circle).
+  * Could use two BSTs? Of narrow search on X? (would find everything
+    in a vertical band, each would have to be checked for distance)
+
+* kd-tree is one of several Spatial Data Structures for point data.
+
+  * It is not particularly better or worse than the others, its just
+    what we picked this semester.
 
 
 K-D Tree
@@ -38,4 +79,5 @@ K-D Tree
 
 .. revealjs-slide::
 
-* Discuss Here
+.. avembed:: AV/Spatial/kd-treeAV.html ss
+   :keyword: Spatial Data Structures, KD Tree

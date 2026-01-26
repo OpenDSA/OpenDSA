@@ -6,9 +6,9 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-===================
-Binary Trees Part 1
-===================
+============
+Binary Trees
+============
 
 Binary Trees
 ------------
@@ -79,10 +79,16 @@ Traversals
 
 * Preorder traversal: Visit each node before visiting its children.
 
+  * Use: Copy a tree
+
 * Postorder traversal: Visit each node after visiting its children.
+
+  * Use: Delete a tree
 
 * Inorder traversal: Visit the left subtree, then the node, then the
   right subtree.
+
+  * Use: Print the nodes of a BST in sorted order.
 
 
 Preorder Traversal (1)
@@ -201,6 +207,79 @@ Full Binary Tree Corollary
   node.  This is a full binary tree.
 
 
+Binary Search Trees
+-------------------
+
+.. revealjs-slide::
+
+.. inlineav:: BSTShapeCON dgm
+   :links: AV/Binary/BSTShapeCON.css
+   :scripts: AV/Binary/BSTShapeCON.js
+   :align: justify
+
+
+BST ``findhelp``
+----------------
+
+.. revealjs-slide::
+
+.. inlineav:: BSTsearchCON ss
+   :links: AV/Binary/BSTCON.css
+   :scripts: AV/Binary/BSTsearchCON.js
+   :output: show
+
+
+BST ``inserthelp``
+------------------
+
+.. revealjs-slide::
+
+.. inlineav:: BSTinsertCON ss
+   :links: AV/Binary/BSTCON.css
+   :scripts: AV/Binary/BSTinsertCON.js
+   :output: show
+
+
+BST ``deletemax``
+-----------------
+
+.. revealjs-slide::
+
+.. inlineav:: BSTdeletemaxCON ss
+   :links: AV/Binary/BSTCON.css
+   :scripts: AV/Binary/BSTdeletemaxCON.js
+   :output: show
+
+
+BST ``removehelp``
+------------------
+
+.. revealjs-slide::
+
+.. inlineav:: BSTremoveCON ss
+   :links: AV/Binary/BSTCON.css
+   :scripts: AV/Binary/BSTremoveCON.js
+   :output: show
+
+
+BST Analysis
+------------
+
+.. revealjs-slide::
+
+* Find: :math:`O(d)`
+
+* Insert: :math:`O(d)`
+
+* Delete: :math:`O(d)`
+
+* :math:`d =` depth of the tree
+
+* :math:`d` is :math:`O(\log n)` if the tree is balanced.
+
+* What is the worst case cost? When?
+
+
 Dictionary
 ----------
 
@@ -220,3 +299,19 @@ Dictionary (2)
   * We know about array-based lists and linked lists.
   * They might be sorted or unsorted.
   * What are the pros and cons?
+
+BST as a Dictionary (1)
+-----------------------
+
+.. revealjs-slide::
+
+.. codeinclude:: Binary/BST
+   :tag: BSTa
+
+BST as a Dictionary (2)
+-----------------------
+
+.. revealjs-slide::
+
+.. codeinclude:: Binary/BST
+   :tag: BSTb

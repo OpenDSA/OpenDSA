@@ -10,6 +10,46 @@
 Heaps
 =====
 
+Binary Tree Space Overhead (1)
+------------------------------
+
+.. revealjs-slide::
+
+* From the Full Binary Tree Theorem:
+
+  * Half of the pointers are null.
+
+* If leaves store only data, then overhead depends on whether this
+  is full tree.
+
+* Ex: Full tree, all nodes the same, with two pointers to children and
+  one to element
+
+  * Total space required is :math:`(3p + d)n`
+  * Overhead: :math:`3pn`
+  * If :math:`p = d`, this means :math:`3p/(3p + d) = 3/4` overhead.
+
+
+Binary Tree Space Overhead (2)
+------------------------------
+
+.. revealjs-slide::
+
+* Eliminate pointers from the leaf nodes
+
+.. math::
+
+   \frac{n/2(2p)}{n/2(2p) + dn} = \frac{p}{p + d}
+
+* This is 1/2 if :math:`p = d`.
+
+* :math:`(2p)/(2p + d)` if data only at leaves :math:`\Rightarrow`
+  2/3 overhead.
+
+* Note that some method is needed to distinguish leaves from internal
+  nodes.
+
+
 Complete Trees
 --------------
 
