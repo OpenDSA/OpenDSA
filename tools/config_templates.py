@@ -162,7 +162,7 @@ on_slides = os.environ.get('SLIDES', None) == "yes"
 
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'sphinxcontrib.jquery']
 
-ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe', 'splicetoolembed']
+ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'accessibility', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe', 'splicetoolembed']
 
 customsDir = '%(odsa_dir)sRST/ODSAextensions/odsa/'
 for c in ourCustoms:
@@ -354,7 +354,7 @@ if slides_lib == 'revealjs' or on_slides:
 # -- Options for HTML output ---------------------------------------------------
 #The fully-qualified name of a HTML Translator, that is used to translate document
 #trees to HTML.
-html_translator_class = 'html5.HTMLTranslator'
+html_translator_class = 'accessibility.HTMLTranslator'
 
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
