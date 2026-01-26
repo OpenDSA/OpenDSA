@@ -5,7 +5,7 @@
 // Title: Insertion Sort Best Case Slideshow
 // Author: Mohammed Farghally; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization; Algorithm Analysis Demonstration
+// Features: Code Tracing Presentation; Algorithm Analysis Presentation
 // Keyword: Insertion Sort; Best Case
 // Natural Language: en
 // Programming Language: N/A

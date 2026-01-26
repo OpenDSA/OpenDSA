@@ -4,8 +4,8 @@
    :author: Daniel Breakiron, Eric Fouh
    :topic: Gradebook
 
-.. odsalink:: lib/gradebook-min.css
-.. odsascript:: lib/gradebook-min.js
+.. odsalink:: lib/gradebook.css
+.. odsascript:: lib/gradebook.js
 
 .. index:: ! Gradebook
 
@@ -26,4 +26,5 @@ Suoritukset
    </div>
    <div id="gradeData"></div>
    <div id="gradeDataA"></div>
+
 

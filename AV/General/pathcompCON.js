@@ -5,7 +5,7 @@
 // Title: Union/Find with Path Compression Examaple Slideshow
 // Author: Mohammed Farghally; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Algorithm Visualization; Code Tracing Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Union/Find Algorithm; Disjoint Set
 // Natural Language: en
 // Programming Language: N/A

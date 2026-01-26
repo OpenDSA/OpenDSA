@@ -78,3 +78,4 @@ Chen vs Crow's foot notaion For Derived Attribute:
    :links: AV/Database/ChenVsCrossFootDerivedAtt.css
    :scripts: AV/Database/ChenVsCrossFootDerivedAtt.js
    :output: show
+

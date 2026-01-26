@@ -18,8 +18,8 @@ Description: Algorithm Visualization for generating the parse tree of a user-sup
   <title>Interactive parse tree builder</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="../../../lib/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
-  <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../lib/odsaAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../../lib/odsaStyle.css" type="text/css" />
   <link rel="stylesheet" href="parseTree3a.css" type="text/css" />
 </head>
 
@@ -47,8 +47,8 @@ Description: Algorithm Visualization for generating the parse tree of a user-sup
       <select id="arraysize"></select>-->
 <!--    </p>
     <p>-->
-      <label id="expLabel" for="expValue"></label>
-      <input size="60" name="expValue" id="expValue" type="text" value="A + B * C + ( E * F + G )"/>
+      <label for="expValue">Answer:</label>
+	<input size="60" name="expValue" id="expValue" type="text" value="A + B * C + ( E * F + G )"/>
     </p>
   </form>
 
@@ -63,7 +63,7 @@ Description: Algorithm Visualization for generating the parse tree of a user-sup
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="../../../lib/jquery.transit.js"></script>
 <script src="../../../lib/raphael.js"></script>
-<script src="../../../lib/JSAV-min.js"></script>
+<script src="../../../lib/JSAV.js"></script>
 <script src="../../../lib/odsaUtils.js"></script>
 <script src="../../../lib/odsaAV.js"></script>
 <script src="parseTree3a.js"></script>

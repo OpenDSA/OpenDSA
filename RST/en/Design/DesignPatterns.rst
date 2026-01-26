@@ -259,3 +259,4 @@ Summary Questions
    :long_name: Design Patterns Summary Exercise
    :keyword: Design Patterns
 
+

@@ -227,3 +227,4 @@ in a row.
 .. avembed:: Exercises/PL/Curry2.html ka
    :long_name: Curry and compose 2
 
+

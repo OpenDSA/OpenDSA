@@ -337,3 +337,4 @@ Examples on data models used
 
 • Though the initial creation of data model is labor and time consuming, in the long run, it makes your IT infrastructure upgrade and maintenance faster and cheaper.
 • 
+

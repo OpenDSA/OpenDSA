@@ -18,3 +18,4 @@ Visualization of the Machine that Finds The First Right Blank
    :scripts: AV/Kochan/TMblankR.js AV/Juwon/FAcopy.js
    :output: show
 
+

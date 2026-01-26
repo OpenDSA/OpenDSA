@@ -5,7 +5,7 @@
 // Title: Linked Queue Data Members Slideshow
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Algorithm Visualization; Code Tracing Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Linked Queue
 // Natural Language: en
 // Programming Language: Java

@@ -12,7 +12,7 @@ The OpenDSA client-side framework automatically handles as much logging as possi
 
 * Follow standard HTML layout as close as possible (use templates)
 
-  * Ensures proper CSS and scripts are loaded including: ``JSAV.css``, ``odsaAV-min.css``, ``jquery.min.js``, ``jquery-ui.min.js``, ``jsav-min.js``, ``odsaUtils-min.js``, ``odsaAV-min.js``
+  * Ensures proper CSS and scripts are loaded including: ``JSAV.css``, ``normalize.css``, ``odsaAV.css``, ``jquery.min.js``, ``jquery-ui.min.js``, ``jsav.js``, ``odsaUtils.js``, ``odsaAV.js``
   * Provides a standard appearance for all AVs
   * Makes maintenance and systematic changes easier
 

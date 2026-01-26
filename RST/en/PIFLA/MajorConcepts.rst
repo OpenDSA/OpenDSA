@@ -115,3 +115,4 @@ square, and maybe have a choice of whether to move right or left.
    (in other words, any even binary number).
    Can you figure out how it does that?
 
+

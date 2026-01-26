@@ -125,3 +125,4 @@ Unfortunately, hashing is not effective when implementing range queries,
 or answering questions like
 "Which record in the collection has the smallest key value?"
 
+

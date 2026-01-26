@@ -11,7 +11,7 @@ System documentation can be found at http://opendsa.readthedocs.io/.
 
 ## Setup
 
-1. Install [Docker](https://docs.docker.com/get-docker/). 
+1. Install [Docker](https://docs.docker.com/get-docker/).
 2. Install [Git](https://git-scm.com/book/en/v2/fGetting-Started-Installing-Git)
 3. Clone this repository
     - For reading only: `git clone git://github.com/OpenDSA/OpenDSA.git`
@@ -25,7 +25,7 @@ System documentation can be found at http://opendsa.readthedocs.io/.
     - In order to interact with OpenDSA, you must access a shell in the running container with `docker compose exec opendsa bash` in another console in the root of the OpenDSA directory.
         - Note: If you are on Windows using the MINGW64 shell, you might need to use the command: `winpty docker compose exec opendsa bash`
     - To make the book defined in `config/Test.json`, now use the command `make Test`
-6. See your created book at: https://opendsa.localhost.devcom.vt.edu/Books/
+6. See your created book at: https://opendsa.localhost.devcom.vt.edu/Books/ (or http://localhost:8080/Books/)
 7. In order to stop the container, you can use the CTRL + C (sending an interrupt signal).
 
 ### Toolchain Installation

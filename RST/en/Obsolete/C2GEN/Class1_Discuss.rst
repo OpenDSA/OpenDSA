@@ -16,3 +16,4 @@ Today's discussion topic:
 * Who are our participants?
 * What do you want to get out of this class?
 
+

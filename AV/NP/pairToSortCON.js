@@ -5,7 +5,7 @@
 // Title: Reduction of Pairing to Sorting
 // Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Reduction
 // Natural Language: en
 // Programming Language: N/A

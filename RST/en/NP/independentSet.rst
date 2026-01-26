@@ -32,3 +32,4 @@ Try out an instance of the Independent Set problem on your own.
    :long_name: Practice Exercise for Independent Set
    :keyword: NP-completeness; Independent Set Problem
 
+

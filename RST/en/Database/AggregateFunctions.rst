@@ -12,3 +12,4 @@ Aggregate Functions
    :links: AV/Database/AggregateFunction.css
    :scripts: AV/Database/AggregateFunction.js
    :output: show
+

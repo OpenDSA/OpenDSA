@@ -380,3 +380,4 @@ Here is a visualization of building a kd-tree.
        :math:`(P_x - N_x)^2 + (P_y - N_y)^{2} \leq d^{2}`.
        This avoids performing a square root function.
 
+

@@ -34,3 +34,4 @@ Example of database applications
 
 .. odsafig:: Images/ternaryCardinalityMappingPhoto.png
 
+

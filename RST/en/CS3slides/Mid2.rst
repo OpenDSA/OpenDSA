@@ -97,3 +97,4 @@ Topics (4)
 * How full the table ought to be (space vs. time)
 * Expected cost analysis for hashing (when properly implemented)
 
+

@@ -8,7 +8,7 @@
 // Title: Heap Build Proof Slideshow
 // Author: Mohammed Farghally; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization; Algorithm Visualization
+// Features: Code Tracing Presentation; Algorithm Visualization
 // Keyword: Heap
 // Natural Language: en
 // Programming Language: Java

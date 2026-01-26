@@ -2,7 +2,7 @@
 // Title: Two-level linear index Slideshow
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Algorithm Analysis Demonstration
+// Features: Algorithm Analysis Presentation
 // Keyword: Linear Indexing
 // Natural Language: en
 // Programming Language: N/A

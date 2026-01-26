@@ -2,7 +2,7 @@
 Title: Applicative-order reduction Proficiency Exercise
 Author: David Furcy; Tom Naps
 Institution: UW-Oshkosh
-Features: Algorithm Tracing Exercise
+Features: Tracing Exercise
 Keyword: Lambda Calculus
 Natural Language: en
 Programming Language: N/A
@@ -16,8 +16,9 @@ Description: Algorithm Proficiency Exercise for determining applicative-order re
 <html lang="en">
   <title><span>Applicative- versus Normal-Order Proficiency Exercise</title>
   <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/normalize.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle.css" type="text/css" />
   <link rel="stylesheet" href="./profExercises.css" type="text/css" />
 </head>
 
@@ -55,7 +56,10 @@ Description: Algorithm Proficiency Exercise for determining applicative-order re
         </div>
         <div id="righthalf">
           <p><strong>Your answer for this step:</strong></p>
-          <p><input type="text" name="answer" id="answer" size="40"></p>
+          <p>
+	    <label for="answer"><strong>Answer:</strong></label>
+	    <input type="text" name="answer" id="answer" size="40">
+	  </p>
           <p>
             <input type="button" id="submit" name="submit"
                    data-desc="Indicates user is ready for next step." value="Submit" />
@@ -70,12 +74,12 @@ Description: Algorithm Proficiency Exercise for determining applicative-order re
   </div>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<script src="../../lib/timeme-min.js"></script>
+<script src="../../lib/timeme.js"></script>
   <script src="../../lib/jquery.transit.js"></script>
   <script src="../../lib/raphael.js"></script>
-  <script src="../../lib/JSAV-min.js"></script>
-  <script src="../../lib/odsaUtils-min.js"></script>
-  <script src="../../lib/odsaAV-min.js"></script>
+  <script src="../../lib/JSAV.js"></script>
+  <script src="../../lib/odsaUtils.js"></script>
+  <script src="../../lib/odsaAV.js"></script>
   <script>var LAMBDA = {};</script>
   <script src="interpreters/lambdacalc/version1.4/scripts/grammar.js"></script>
   <script src="interpreters/lambdacalc/version1.4/scripts/absyn.js"></script>

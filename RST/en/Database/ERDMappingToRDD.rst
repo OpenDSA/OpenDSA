@@ -24,3 +24,4 @@ The below table shows the basic ERD elements and their corresponding relational 
 
 .. odsafig:: Images/ERDRDDMapping.png
     
+

@@ -302,3 +302,4 @@ Perhaps it is reasonable to say that each position in the array has
 equal probability of holding the first occurrance of :math:`X`.
 Or perhaps it is not.
 
+

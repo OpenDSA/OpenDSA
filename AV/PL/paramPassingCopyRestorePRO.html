@@ -2,7 +2,7 @@
 Title: Parameter Passing by Copy-Restore Exercise
 Author: David Furcy; Tom Naps
 Institution: UW-Oshkosh
-Features: Algorithm Tracing Exercise
+Features: Tracing Exercise
 Keywords: Parameter Passing
 Natural Language: en
 Programming Language: N/A
@@ -18,8 +18,9 @@ Description: Interactive exercise to demonstrate proficiency with parameter pass
   <title>By Copy Restore Proficiency Exercise</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/normalize.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle.css" type="text/css" />
   <link rel="stylesheet" href="paramPassingPRO.css" type="text/css" />
 </head>
 
@@ -35,7 +36,7 @@ Description: Interactive exercise to demonstrate proficiency with parameter pass
       </td>
       <td class="headerRight">
         <input type="button" id="about" name="about" />
-        <a id="settings" class="jsavsettings" href="#"></a>
+        <a id="settings" class="jsavsettings" href="#">settings</a>
       </td>
     </tr>
   </table>
@@ -47,8 +48,10 @@ Description: Interactive exercise to demonstrate proficiency with parameter pass
       </p>
 
       <span align="center">
-	<p><strong>Value:</strong>
-	<input type="text" name="answer" id="answer" size="5"></p>
+	<p>
+	  <label for="answer"><strong>Value:</strong></label>
+	  <input type="text" name="answer" id="answer" size="5">
+	</p>
       </span>
 
       <p class="jsavoutput jsavline"></p>
@@ -57,12 +60,12 @@ Description: Interactive exercise to demonstrate proficiency with parameter pass
 </div> <!-- container -->
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<script src="../../lib/timeme-min.js"></script>
+<script src="../../lib/timeme.js"></script>
 <script src="../../lib/jquery.transit.js"></script>
 <script src="../../lib/raphael.js"></script>
-<script src="../../lib/JSAV-min.js"></script>
-<script src="../../lib/odsaUtils-min.js"></script>
-<script src="../../lib/odsaAV-min.js"></script>
+<script src="../../lib/JSAV.js"></script>
+<script src="../../lib/odsaUtils.js"></script>
+<script src="../../lib/odsaAV.js"></script>
 <script src="paramPassingGenerator.js"></script>
 <script type="text/javascript" src="../../Exercises/PL/CallByAllFive.js"></script>
 <script src="interpreters/version2.00/scripts/absyn.js"></script>

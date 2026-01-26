@@ -10,7 +10,7 @@ requirejs.config({
   }, {
     name: "jsav",
     location: "../../lib",
-    main: "JSAV-min"
+    main: "JSAV"
   }, {
     name: "blockUI",
     location: "../../lib",
@@ -46,8 +46,8 @@ requirejs([
       "../../khan-exercises/interface.js"
     ], function () {
       requirejs(["../../khan-exercises/khan-exercise.js"], function () {
-        requirejs(["../../lib/timeme-min.js"], function () {
-          requirejs(["../../lib/odsaKA-min.js"], function () {
+        requirejs(["../../lib/timeme.js"], function () {
+          requirejs(["../../lib/odsaKA.js"], function () {
             Khan.odsaLoadExercises();
           });
         });

@@ -5,7 +5,7 @@
 // Title: Linked Stack Push Slideshow
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization; Algorithm Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Linked Stack
 // Natural Language: en
 // Programming Language: Java

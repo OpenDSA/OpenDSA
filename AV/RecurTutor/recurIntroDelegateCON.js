@@ -5,7 +5,7 @@
 // Title: Basics of Writing a Recursive Function
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization; Algorithm Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Recursion; Delegation
 // Natural Language: en
 // Programming Language: Java
