@@ -19,6 +19,7 @@ rst_footer = '''\
  .. raw:: html
  
     <script type="text/javascript">
+     window.ODSA.SETTINGS.MODULE_SECTIONS = %(sections)s;
      $(function () {
        var moduleName = "%(module_name)s";
        var sections = %(sections)s;
