@@ -311,7 +311,7 @@ def break_up_sections(path, module_data, config, standalone_modules):
   if element:
     element.extract()
   # Inject exercise widget for this module
-  widget = create_exercise_widget(module_data, mod_name)
+  widget = create_exercise_widget(module_data, mod_name, config)
   if widget:
   # Find the body and inject widget at the beginning
     body = soup.find('body')
@@ -404,8 +404,7 @@ if __name__ == "__main__":
    sys.exit(main(sys.argv))
 
 
-#(New)
-def create_exercise_widget(module_data, mod_name):
+def create_exercise_widget(module_data, mod_name, config):
     """
     Creates exercise widget HTML for a specific module to display exercise overview
     Widget dynamically populates with exercises from API and config
@@ -414,39 +413,54 @@ def create_exercise_widget(module_data, mod_name):
     
     exercises_dict = module_data.get('exercises', {})
     
-    # Extract CodeWorkout exercises from config
+    glob_extr_options = getattr(config, 'glob_extr_options', {})
+    default_cw_points = glob_extr_options.get('code-workout', {}).get('points', 2)
+    
+    regular_exercises_config = []
+    for name, data in exercises_dict.items():
+        if data.get('learning_tool') != 'code-workout':
+            points = data.get('points', 0)
+            if points > 0:
+                regular_exercises_config.append({
+                    'name': data.get('long_name', name),
+                    'points': points,
+                    'id': data.get('id')
+                })
+    
     codeworkout_exercises = []
     for name, data in exercises_dict.items():
         if data.get('learning_tool') == 'code-workout':
             launch_url = data.get('launch_url', '')
             exercise_id = launch_url.split('/')[-1] if launch_url else None
             
+            points = data.get('points', default_cw_points)
+            
             codeworkout_exercises.append({
                 'name': data.get('long_name', name),
                 'id': exercise_id,
-                'inst_section_id': data.get('id')
+                'points': points
             })
     
+    regular_exercises_json = json.dumps(regular_exercises_config)
     codeworkout_json = json.dumps(codeworkout_exercises)
     
     widget_id = f"exercise-widget-{mod_name.replace(' ', '-')}"
     
-    # Create the hamburger menu HTML widget
     widget_html = f'''
-<div id="exercise-summary-widget" style="border: 2px solid #007bff; padding: 10px 15px; margin: 15px 0; background-color: #f8f9fa; border-radius: 8px;">
+<div id="exercise-summary-widget" style="border: 2px solid #0056b3; padding: 10px 15px; margin: 15px 0; background-color: #f8f9fa; border-radius: 8px;">
     <!-- Hamburger Header (Always Visible) -->
     <div id="{widget_id}-header" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between;" onclick="toggleExerciseWidget('{widget_id}')">
         <div style="display: flex; align-items: center;">
-            <span id="{widget_id}-icon" style="font-size: 18px; margin-right: 10px; color: #007bff;">☰</span>
-            <span style="color: #007bff; font-weight: bold;">Exercise Overview</span>
-            <span id="{widget_id}-progress" style="margin-left: 10px; color: #6c757d;">Loading...</span>
+            <span id="{widget_id}-icon" style="font-size: 18px; margin-right: 10px; color: #0056b3;">☰</span>
+            <span style="color: #0056b3; font-weight: bold;">Exercise Overview</span>
+            <span id="{widget_id}-progress" style="margin-left: 10px; color: #495057;">Loading...</span>
         </div>
-        <span id="{widget_id}-arrow" style="color: #007bff; font-size: 14px; transform: rotate(0deg); transition: transform 0.3s;">▼</span>
+        <span id="{widget_id}-arrow" style="color: #0056b3; font-size: 14px; transform: rotate(0deg); transition: transform 0.3s;">▼</span>
     </div>
     
     <!-- Exercise Details (Initially Hidden) -->
     <div id="{widget_id}-content" style="display: none; margin-top: 15px; padding-top: 10px; border-top: 1px solid #dee2e6;">
-        <h4 style="margin: 0 0 10px 0; color: #007bff;">📊 {mod_name} - Exercise Details</h4>
+        <h4 style="margin: 0 0 10px 0; color: #0056b3;">📊 {mod_name} - Exercise Details</h4>
         <div id="{widget_id}-regular-section">
             <ul id="{widget_id}-exercise-list" style="margin: 0; padding-left: 20px; list-style: none;">
                 <li style="color: #999;">Loading exercises...</li>
@@ -457,7 +471,8 @@ def create_exercise_widget(module_data, mod_name):
 </div>
 
 <script>
-// CodeWorkout exercises from config
+// Config data
+var regularExercisesConfig = {regular_exercises_json};
 var codeWorkoutConfigExercises = {codeworkout_json};
 
 function toggleExerciseWidget(widgetId) {{
@@ -490,29 +505,62 @@ if (typeof ODSA !== 'undefined' && ODSA.TP && ODSA.TP.courseOfferingId) {{
             if (moduleNumber) {{
                 moduleNumber = moduleNumber[1];
                 
-                // Get all regular exercises for this module from API
-                var moduleExercises = [];
+                // Get API exercises for this module (in order)
+                var apiExercises = [];
                 Object.keys(exerciseAttempts).forEach(function(sectionId) {{
                     var exerciseTitle = exerciseAttempts[sectionId][0];
-                    // Check if this exercise belongs to current module
                     if (exerciseTitle.indexOf(moduleNumber) === 0) {{
-                        // Only check for complete_flag (proficiency-based completion)
                         var isComplete = exerciseAttempts[sectionId].indexOf('complete_flag') !== -1;
-                        moduleExercises.push({{
+                        apiExercises.push({{
                             title: exerciseTitle,
-                            isComplete: isComplete
+                            isComplete: isComplete,
+                            sectionId: sectionId
                         }});
                     }}
                 }});
                 
-                moduleExercises.sort(function(a, b) {{
+                // Sort API exercises by title to ensure consistent order
+                apiExercises.sort(function(a, b) {{
                     return a.title.localeCompare(b.title);
                 }});
                 
-                var completedCount = moduleExercises.filter(function(ex) {{ return ex.isComplete; }}).length;
+                // Match by order: pair config exercises with API exercises
+                var moduleExercises = [];
+                var totalPoints = 0;
+                var earnedPoints = 0;
+                
+                for (var i = 0; i < Math.max(regularExercisesConfig.length, apiExercises.length); i++) {{
+                    var configEx = regularExercisesConfig[i];
+                    var apiEx = apiExercises[i];
+                    
+                    if (configEx && apiEx) {{
+                        totalPoints += configEx.points;
+                        if (apiEx.isComplete) {{
+                            earnedPoints += configEx.points;
+                        }}
+                        
+                        moduleExercises.push({{
+                            title: configEx.name,
+                            isComplete: apiEx.isComplete,
+                            points: configEx.points
+                        }});
+                    }} else if (configEx) {{
+                        totalPoints += configEx.points;
+                        moduleExercises.push({{
+                            title: configEx.name,
+                            isComplete: false,
+                            points: configEx.points
+                        }});
+                    }} else if (apiEx) {{
+                        moduleExercises.push({{
+                            title: apiEx.title,
+                            isComplete: apiEx.isComplete,
+                            points: 0
+                        }});
+                    }}
+                }}
                 
                 var progressSpan = document.getElementById('{widget_id}-progress');
-                
                 var exerciseList = document.getElementById('{widget_id}-exercise-list');
                 var regularSection = document.getElementById('{widget_id}-regular-section');
                 
@@ -542,34 +590,37 @@ if (typeof ODSA !== 'undefined' && ODSA.TP && ODSA.TP.courseOfferingId) {{
                         li.appendChild(icon);
                         
                         var text = document.createElement('span');
-                        text.innerHTML = '<strong>' + exercise.title + '</strong>';
+                        text.innerHTML = '<strong>' + exercise.title + '</strong>' + 
+                                        (exercise.points > 0 ? ' (' + exercise.points + ' pts)' : '');
                         li.appendChild(text);
                         
                         exerciseList.appendChild(li);
                     }});
                     
-                    if (!hasCodeWorkout) {{
-                        // Only regular exercises
-                        progressSpan.textContent = '(' + completedCount + '/' + moduleExercises.length + ' complete)';
+                    // Only show points if there are regular exercises with points
+                    if (totalPoints > 0) {{
+                        progressSpan.textContent = '(' + earnedPoints + '/' + totalPoints + ' points)';
+                    }} else {{
+                        progressSpan.textContent = '';
                     }}
                 }} else {{
-                    // No regular exercises
                     if (hasCodeWorkout) {{
                         regularSection.style.display = 'none';
+                        progressSpan.textContent = '';
                     }} else {{
                         exerciseList.innerHTML = '<li style="color: #999;">No exercises found for this module</li>';
-                        progressSpan.textContent = '(0 exercises)';
+                        progressSpan.textContent = '(0 points)';
                     }}
                 }}
                 
-                // Handle CodeWorkout exercises from config
+                // Handle CodeWorkout exercises
                 if (hasCodeWorkout) {{
                     var cwContainer = document.getElementById('{widget_id}-codeworkout-container');
                     
                     var cwHeader = document.createElement('h5');
                     cwHeader.textContent = 'CodeWorkout Exercises';
                     cwHeader.style.marginTop = moduleExercises.length > 0 ? '15px' : '0';
-                    cwHeader.style.color = '#007bff';
+                    cwHeader.style.color = '#0056b3';
                     cwContainer.appendChild(cwHeader);
                     
                     var cwList = document.createElement('ul');
@@ -578,9 +629,14 @@ if (typeof ODSA !== 'undefined' && ODSA.TP && ODSA.TP.courseOfferingId) {{
                     cwList.style.listStyle = 'none';
                     cwContainer.appendChild(cwList);
                     
-                    var codeWorkoutTotal = codeWorkoutConfigExercises.length;
-                    var codeWorkoutCompleted = 0;
+                    var codeWorkoutTotalPoints = 0;
+                    var codeWorkoutEarnedPoints = 0;
                     var codeWorkoutChecked = 0;
+                    
+                    // Calculate total CodeWorkout points
+                    codeWorkoutConfigExercises.forEach(function(ex) {{
+                        codeWorkoutTotalPoints += ex.points;
+                    }});
                     
                     codeWorkoutConfigExercises.forEach(function(exercise, index) {{
                         var li = document.createElement('li');
@@ -593,13 +649,14 @@ if (typeof ODSA !== 'undefined' && ODSA.TP && ODSA.TP.courseOfferingId) {{
                         cwList.appendChild(li);
                     }});
                     
-                    // Fetch each CodeWorkout exercise
                     codeWorkoutConfigExercises.forEach(function(exercise, index) {{
                         if (!exercise.id) {{
                             codeWorkoutChecked++;
                             var li = document.getElementById('{widget_id}-cw-' + index);
                             if (li) {{
-                                li.innerHTML = '<span style="position: absolute; left: 0;">○</span><strong>' + exercise.name + '</strong>';
+                                li.innerHTML = '<span style="position: absolute; left: 0;">○</span><strong>' + 
+                                              exercise.name + '</strong>' + 
+                                              (exercise.points > 0 ? ' (' + exercise.points + ' pts)' : '');
                             }}
                             return;
                         }}
@@ -609,7 +666,7 @@ if (typeof ODSA !== 'undefined' && ODSA.TP && ODSA.TP.courseOfferingId) {{
                             .then(function(cwData) {{
                                 var isComplete = cwData.proficient_date && cwData.proficient_date !== null;
                                 if (isComplete) {{
-                                    codeWorkoutCompleted++;
+                                    codeWorkoutEarnedPoints += exercise.points;
                                 }}
                                 codeWorkoutChecked++;
                                 
@@ -634,19 +691,21 @@ if (typeof ODSA !== 'undefined' && ODSA.TP && ODSA.TP.courseOfferingId) {{
                                     }}
                                     
                                     var text = document.createElement('span');
-                                    text.innerHTML = '<strong>' + exercise.name + '</strong>';
+                                    text.innerHTML = '<strong>' + exercise.name + '</strong>' + 
+                                                    (exercise.points > 0 ? ' (' + exercise.points + ' pts)' : '');
                                     
                                     li.innerHTML = '';
                                     li.appendChild(icon);
                                     li.appendChild(text);
                                 }}
                                 
-                                // Update progress when all checked
-                                if (codeWorkoutChecked === codeWorkoutTotal) {{
-                                    var finalCompleted = completedCount + codeWorkoutCompleted;
-                                    var finalTotal = moduleExercises.length + codeWorkoutTotal;
-                                    if (progressSpan) {{
-                                        progressSpan.textContent = '(' + finalCompleted + '/' + finalTotal + ' complete)';
+                                if (codeWorkoutChecked === codeWorkoutConfigExercises.length) {{
+                                    var finalEarned = earnedPoints + codeWorkoutEarnedPoints;
+                                    var finalTotal = totalPoints + codeWorkoutTotalPoints;
+                                    if (progressSpan && finalTotal > 0) {{
+                                        progressSpan.textContent = '(' + finalEarned + '/' + finalTotal + ' points)';
+                                    }} else if (finalTotal === 0) {{
+                                        progressSpan.textContent = '';
                                     }}
                                 }}
                             }})
@@ -655,15 +714,19 @@ if (typeof ODSA !== 'undefined' && ODSA.TP && ODSA.TP.courseOfferingId) {{
                                 
                                 var li = document.getElementById('{widget_id}-cw-' + index);
                                 if (li) {{
-                                    li.innerHTML = '<span style="position: absolute; left: 0;">○</span><strong>' + exercise.name + '</strong>';
+                                    li.innerHTML = '<span style="position: absolute; left: 0;">○</span><strong>' + 
+                                                  exercise.name + '</strong>' + 
+                                                  (exercise.points > 0 ? ' (' + exercise.points + ' pts)' : '');
                                     li.style.color = '';
                                 }}
                                 
-                                if (codeWorkoutChecked === codeWorkoutTotal) {{
-                                    var finalCompleted = completedCount + codeWorkoutCompleted;
-                                    var finalTotal = moduleExercises.length + codeWorkoutTotal;
-                                    if (progressSpan) {{
-                                        progressSpan.textContent = '(' + finalCompleted + '/' + finalTotal + ' complete)';
+                                if (codeWorkoutChecked === codeWorkoutConfigExercises.length) {{
+                                    var finalEarned = earnedPoints + codeWorkoutEarnedPoints;
+                                    var finalTotal = totalPoints + codeWorkoutTotalPoints;
+                                    if (progressSpan && finalTotal > 0) {{
+                                        progressSpan.textContent = '(' + finalEarned + '/' + finalTotal + ' points)';
+                                    }} else if (finalTotal === 0) {{
+                                        progressSpan.textContent = '';
                                     }}
                                 }}
                             }});
