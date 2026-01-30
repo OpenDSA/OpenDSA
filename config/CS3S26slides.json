@@ -69,9 +69,15 @@
       "CS3slides/P1S26": {}
     },
     "Week 2": {
-      "CS3slides/AlgAnal": {},
+      "CS3slides/JUnit": {},
+      "CS3slides/AlgAnal1": {}
+    },
+    "Week 3": {
+      "CS3slides/AlgAnal2": {},
       "CS3slides/ProjManage": {},
-      "CS3slides/JUnit": {}
+      "CS3slides/Lists": {},
+      "CS3slides/Coding": {},
+      "CS3slides/StackQueue": {}
     }
   }
 }
