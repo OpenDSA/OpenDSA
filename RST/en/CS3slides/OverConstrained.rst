@@ -19,6 +19,7 @@ Over-constrained Code (1)
   quadrant the second point (2) is in w.r.t. the first point (1):
 
  ::
+
     public static String getQuadrant(int x1, int y1, int x2, int y2) {
         if ((x2 < x1) && (y2 < y1))
             return "North-West";
@@ -74,6 +75,7 @@ Over-constrained Code (4)
 * Refactored code:
 
   ::
+
     public static String getQuadrant2(int x1, int y1, int x2, int y2) {
         if (x2 < x1) {
             if (y2 < y1)
