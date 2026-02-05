@@ -19,11 +19,11 @@
 Mutation Coverage Advanced Examples
 ===================================
 
-This module presents various examples typically encountered by users
-of Mutation Testing.
-These include situations where branches of the code are not covered by
-the tests, and an example of code and tests that give 100% coverage
-but still has a bug.
+This module presents examples of situations typically encountered by
+users of Mutation Testing.
+These include situations where branches of the code are not
+(and never can be) covered by the tests, and an example of code and
+tests that give 100% coverage but still has a bug.
 
 
 Seeing the Effect: BST Range Query
@@ -44,62 +44,80 @@ printing output that is being checked.
 
 Example: Consider doing a range query on a BST, with the goal of
 visiting the minimum number of nodes.
-This means adding two checks to limit which children are being visited:
+This means adding two checks to limit which children are being
+visited:
 
-#. Only visit the right child if the root value is less than the range max.
-#. Only visit the left child if the root value is greater than or equal
-   to the range min.
+#. Only visit the right child if the current node's value is less than
+   the range max.
+#. Only visit the left child if the current node's value is greater
+   than or equal to the range min.
 
 A student might carefully construct test cases that properly avoid
-visiting children in all such cases --- that is, executing all the
-branches.
+visiting children in all such cases --- that is, the tests
+collectively execute all of the branches.
 And if the requirement is to print node values in the range,
-this might be completely correct.
+this output might be completely correct.
 Yet, none of that will get credit for mutation coverage of these
 branches.
 The reason is that visiting a child unnecessarily would not itself
 typically change whether the correct values are found during the
 search.
-The only likely difference in outcome from the checks on unnecessary
-visits come in the form of something like the count of the number of
-nodes visited.
-Therefore, in order to get credit for covering these branches, it is
-necessary that the tests actually check the outcome of something like
-the number of nodes visited, either by having this count returned by
-the search process (and the correct value verified by an assertion),
+The outcome (what gets found and returned) is the same whether the
+code properly minimizes the number of nodes visited or not.
+So any decision made to limit the number of nodes visited don't affect
+the result.
+Therefore, mutations of their behavior do not affect the test
+results, and so the mutation is not covered.
+
+The only likely difference in outcome from code that limits
+unnecessary visits would come in the form of something like a count
+of the number of nodes visited.
+Therefore, in order to get credit for covering these branches,
+it is necessary that the tests actually check the outcome of the
+optimization, not the outcome of the search.
+This means checking something like the number of nodes visited,
+either by having this count returned by the search process
+(and the correct value verified by an assertion), 
 or by checking that the correct node count is printed.
+But this typically requires building in a collector for that node
+count and reporting its value.
+
+Note that this is an example of an attempt to optimize performance,
+where the actual result being computed is not changed by the
+optimization.
+That is a common situation.
 
 
 Over-Constrained Code: Visiting Quadrants
 -----------------------------------------
 
 You may have a situation where your unit tests do not cover all
-branches of your code no matter how hard you try.
-This is not just an issue with Mutation Testing --- in these
-situations, you wouldn't get code coverage on the affected lines either.
+branches of your code no matter how hard you try,
+but its not an example of optimization as described above.
 In such cases, you should check whether you are writing
 over-constrained code, where execution of one branch "hides" or makes
-impossible execution of another.
+impossible execution of another branch.
 
 Consider this example of a comparison of two points.
+Here, smaller Y values are North of larger Y values,
+and smaller X values are West of larger X values.
 You want to know which quadrant the second point (x2, y2) is in with
-respect to the first point (x1, y1).
+respect to the first point (x1, y1):
+North-West, North-East, South-West, or South-East.
 
 .. code-block:: java
 
-  public class Quadrant {
     public static String getQuadrant(int x1, int y1, int x2, int y2) {
-      if (x2 >= x1 && y2 >= y1) {
-        return "South-East";
-      } else if (x2 < x1 && y2 >= y1) {
-        return "South-West";
-      } else if (x2 < x1 && y2 < y1) {
-        return "North-West";
-      } else if (x2 >= x1 && y2 < y1) {
-        return "North-East";
-      } 
+        if ((x2 < x1) && (y2 < y1))
+            return "North-West";
+        else if ((x2 < x1) && (y2 >= y1))
+            return "South-West";
+        else if ((x2 >= x1) && (y2 < y1))
+            return "North-East";
+        else if ((x2 >= x1) && (y2 >= y1))
+            return "South-East";
+        return null; // This should never happen
     }
-  }
 
 This has the virtue of being quite logical and clear.
 However, it has some problems.
@@ -120,8 +138,8 @@ With only four possible inputs, you cannot.
 
 Looking at this more closely, consider that we can write tests that
 properly check all of the branches for the first ``if`` statement.
-These tests will properly fail when the comparisons are mutated to be
-replaced with ``true`` or ``false``.
+For example, if the test is made on a point that is to the NW,
+then setting either test to ``false`` will (properly) fail the test.
 
 But consider what happens when we get to the second ``if`` statement.
 Ask yourself the question: Why are we here?
@@ -129,16 +147,17 @@ The reason is that we have (already!) failed the first ``if`` test.
 Which means that there are preconditions to the fact that we are at
 the second ``if`` statement.
 Specifically, we know that we cannot have a point with both small
-``x`` and small ``y``, or we would not be here.
+``x2`` and small ``y2``, or we would not be here.
 So, consider what happens when we mutate the comparisons in the second
 ``if`` statement.
-In particular, if the comparison of ``y`` values is mutated to be
-``true``, then only a test having small ``x`` and ``y`` values (that
-is, in the South-East quadrant) will properly fail (all other points
-will do the right thing eventually).
-But no test with those values would be here, because it would have
-passed the first ``if`` test and gone down the South-East branch
-instead.
+In particular, what happens when the comparison of ``y`` values is
+mutated to be ``true``?
+Then a point to the North-West would wrongly be returned as
+South-West, and the test would (properly) fail.
+But unfortunately, that case would have already been caught by the
+first ``if`` statement, and all other point positions correctly behave
+as expected.
+So no input can actually trigger the error and fail the test.
 
 Note that this is not an issue with Mutation Testing as distinct from
 code coverage.
@@ -152,30 +171,22 @@ For example, our refactored code could look like this:
 
 .. code-block:: java
 
-  public class Quadrant {
-    public static String getQuadrant(int x1, int y1, int x2, int y2) {
-      if (x2 >= x1) {
-        if (y2 >= y1) {
-          return "South-East";
-        } else {
-          return "North-East";
+    public static String getQuadrant2(int x1, int y1, int x2, int y2) {
+        if (x2 < x1) {
+            if (y2 < y1)
+                return "North-West";
+            return "South-West";
         }
-      } else {
-        if (y2 >= y1) {
-          return "South-West";
-        } else {
-          return "North-West";
-        }
-      }
+        if (y2 < y1)
+            return "North-East";
+        return "South-East";
     }
-  }
-
 
 With the refactored code, not only can you test every branch, but 
-this is a lot more efficient. 
-Every branch requires two tests.
-(In contrast, the original code needed eight tests if it had to go
-through to the North-East banch.)
+this is more efficient. 
+Here, every branch requires two boolean comparisons.
+(In contrast, the original code needed eight boolean comparisons if it
+had to go through all of the ``if`` statements.)
 
 Writing overly complicated code is a common problem for many
 programmers.
@@ -234,21 +245,23 @@ Otherwise, we have found the record and we process it.
 Four situations, four cases.
 Unfortunately, we will find that it is not possible to test all
 branches of this code.
-This sort of thing can drive students crazy because they are convinced
-that their tests “cover” all the cases (because they do execute all
-the branches!), but nothing they do gets them complete mutation
-coverage.
+This sort of thing can drive programmers crazy because they are
+convinced that their tests “cover” all the cases (because they do
+execute all the branches!),
+but nothing they do gets them complete mutation coverage.
 One red flag that there is trouble coming is that we have four
-branches, but really only three outcomes (note that we go left for two
-of these four conditions).
+branches, but really only three outcomes
+(note that while two of the conditions seem to be different
+logical situations, the fact is that the code goes left for both of
+them).
 
 What is causing the problem?
 Consider how MT works:
-Independently for each of the four tests, it will first replace the
+Independently for each of the four comparisons, it will first replace the
 expression with TRUE and run all the tests, following which it will
 replace the expression with FALSE and run all the tests.
-For each mutation, some test case must fail to get credit for covering
-that mutation.
+For each mutation, some test case must fail in order to get credit for
+covering that mutation.
 
 Consider what happens with the first test, where small key values
 should go left.
@@ -345,8 +358,8 @@ For example, exponentiate (8, 2) should return 64, but if the mutant
 makes the first else if TRUE, the code will return 8, allowing the
 mutant to be killed.
 But what happens when MT sets this condition to FALSE?
-Well that means our code will skip that base case, which
-seems like a good test should lead to a failure.
+Well that means our code will skip that base case,
+which seems like an input of 1 should lead to a failure.
 But consider what happens next.
 If we modify our example to try exponentiate(8, 1) where MT set the
 first else if to FALSE, we end up in our else case where we multiply
@@ -359,7 +372,7 @@ The "problem" here is that checking the test for 1 is redundant with
 In some circumstances an optimization test like this might lead to
 runtime efficiencies.
 But from the perspective of Mutation Testing, this is unnecessary
-complication.
+code complication.
 
 Here is a slight revision to the code that allows us to achieve 100%
 MT coverage:
@@ -393,7 +406,7 @@ Consider this example:
 In a hash table insertion operation, we don't want the hash table to
 get more than half full.
 Assume that any insert operation that would make the hash table become
-more half full will cause it instead to automatically be doubled in
+more than half full will cause it instead to automatically be doubled in
 size and all existing records reinserted.
 
 The correct way to handle this expansion is to calculate if expansion
@@ -447,7 +460,7 @@ So a test that inserts something that would correctly hash into the
 existing half of the hash table (index 0-3) passes on both
 implementations.
 This satisfies mutation testing,
-bug misses actually exercising the bug.
+but misses actually exercising the bug.
 The example is a little strained in that this requires that the
 testing be minimal by only hashing to the small indices in the table.
 Better tests would catch the error.
