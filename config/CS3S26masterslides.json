@@ -80,7 +80,8 @@
       "CS3slides/StackQueue": {}
     },
     "Week 4": {
-      "CS3slides/Binary": {}
+      "CS3slides/Binary": {},
+      "CS3slides/Heaps": {}
     },
     "Week 5": {
       "CS3slides/P2S26": {},
@@ -89,10 +90,9 @@
       "CS3slides/MTAdvanced": {}
     },
     "Week 6": {
-      "CS3slides/Heaps": {}
+      "CS3slides/Sorting1": {}
     },
     "Week 7": {
-      "CS3slides/Sorting1": {},
       "CS3slides/Sorting2": {}
     },
     "Week 8": {
