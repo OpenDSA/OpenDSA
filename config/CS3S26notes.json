@@ -81,7 +81,8 @@
     },
     "Week 4": {
       "CS3slides/Binary": {},
-      "CS3slides/Heaps": {}
+      "CS3slides/OverConstrained": {},
+      "CS3slides/MTAdvanced": {}
     }
   }
 }

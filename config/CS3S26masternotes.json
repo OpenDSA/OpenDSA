@@ -81,22 +81,22 @@
     },
     "Week 4": {
       "CS3slides/Binary": {},
-      "CS3slides/Heaps": {}
+      "CS3slides/OverConstrained": {},
+      "CS3slides/MTAdvanced": {}
     },
     "Week 5": {
       "CS3slides/P2S26": {},
-      "CS3slides/OverConstrained": {},
       "CS3slides/DesignPatt": {},
-      "CS3slides/MTAdvanced": {}
+      "CS3slides/Heaps": {}
     },
     "Week 6": {
       "CS3slides/Sorting1": {}
     },
     "Week 7": {
-      "CS3slides/Sorting2": {}
+      "CS3slides/Sorting2": {},
+      "CS3slides/Sorting3": {}
     },
     "Week 8": {
-      "CS3slides/Sorting3": {},
       "CS3slides/P3S26": {},
       "CS3slides/FileProc": {}
     },
