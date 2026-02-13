@@ -159,7 +159,19 @@ class codeinclude(Directive):
         html_strs[0] = tab_header + '</ul>' + html_strs[0]
         # Link to additional jQuery UI libraries, so we don't load it on pages where its not needed
         lib_path = os.path.relpath(conf.odsa_path,conf.ebook_path) + '/lib'
-        html_strs[-1] += '</div><script>$(function() {$( "#%s" ).tabs();});</script>' % (tab_id)
+        #The original code
+        #html_strs[-1] += '</div><script>$(function() {$( "#%s" ).tabs();});</script>' % (tab_id)
+
+        #TEMPORARY FIX: ARIA lables were nested and the DevTools were raising accessibility issues.
+        # This fix moves the ARIA atributes from <li> to <a> which fixes the nexting issue. 
+        html_strs[-1] += '</div><script>$(function() {' \
+          '$( "#%s" ).tabs();' \
+          '$( "#%s > ul > li" ).each(function() {' \
+            'var $li = $(this), $a = $li.children("a");' \
+            '$a.attr({"role": "tab", "tabindex": $li.attr("tabindex"), "aria-controls": $li.attr("aria-controls"), "aria-selected": $li.attr("aria-selected")});' \
+            '$li.attr("role", "presentation").removeAttr("tabindex aria-controls aria-selected aria-labelledby aria-expanded");' \
+          '});' \
+        '});</script>' % (tab_id, tab_id)
 
     # If only one code block exists, print the code normally
     if len(code_nodes) == 1:
