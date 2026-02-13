@@ -15,5 +15,82 @@ Project 2 Description
 
 .. revealjs-slide::
 
-* TODO
+* The data stored for this project are DNA sequences:
+
+  * (potentially long) strings consisting of the characters
+    A, C, G, T.
+    
+  * We want to know whether a search string is in the collection, and
+    we want to be able to find all strings that match a prefix.
+
+  * We don't want to pay the price of a string comparison that looks
+    at all the characters of the strings.
+
+* Our solution: DNA Trees.
+  (Note: This is totally invented for this project.)
+
+
+Project 2 Mechanics
+-------------------
+
+.. revealjs-slide::
+
+Completely identical to Project 1
+
+* Implementing to an interface.
+
+* Reference tests reference the interface methods.
+
+* Three milestones.
+
+* LLM Survey and Video requirements.
+
+* Mutation coverage threshold is 95%
+  (which should be easier than it sounds for this project).
+
+
+DNA Trees
+---------
+
+.. revealjs-slide::
+
+* A DNA Tree has branches for each letter.
+  So all sequences that start with A go down the A branch, and so on.
+
+* Only leaf nodes store sequences. Never internal nodes.
+
+* What if we want to store a sequence that is a prefix of another?
+
+  * The DNA tree internal nodes store a 5th branch labeled '$'.
+
+  * Note that the $ branch is always a leaf node.
+    (So it is a little bit special in that respect, but you don't need
+    to treat it differently in your tree implementation.)
+
+  * Searches can distinguish between a string and a string prefix by
+    putting $ at the end of a string, but not at the end of a string
+    prefix.
+
+
+PR Quadtrees
+------------
+
+.. revealjs-slide::
+
+Some similarity to DNA trees.
+
+.. avembed:: AV/Spatial/PRquadtreeInter.html ss
+   :keyword: Spatial Data Structures, PR Quadtree
+
+
+DNA Tree Implementation
+-----------------------
+
+.. revealjs-slide::
+
+Design requirements:
+
+* Must use Composite design pattern
+
+* Must use Flyweight design pattern
 

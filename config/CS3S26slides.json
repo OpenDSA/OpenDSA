@@ -83,6 +83,11 @@
       "CS3slides/Binary": {},
       "CS3slides/OverConstrained": {},
       "CS3slides/MTAdvanced": {}
+    },
+    "Week 5": {
+      "CS3slides/P2S26": {},
+      "CS3slides/DesignPatt": {},
+      "CS3slides/Heaps": {}
     }
   }
 }
