@@ -71,7 +71,8 @@
     "Stuff": {
       "Tutorials/MTfaq": {},
       "Tutorials/MTadvanced": {},
-      "SearchStruct/Sparse": {}
+      "SearchStruct/Sparse": {},
+      "SWDesignAndDataStructs/ContentStacks": {}
     }
   }
 }
