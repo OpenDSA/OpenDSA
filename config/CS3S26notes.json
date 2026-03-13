@@ -96,6 +96,11 @@
     "Week 7": {
       "CS3slides/Sorting2": {},
       "CS3slides/Sorting3": {}
+    },
+    "Week 8": {
+      "CS3slides/FileProc": {},
+      "CS3slides/P3S26": {},
+      "CS3slides/ExternalSorting": {}
     }
   }
 }

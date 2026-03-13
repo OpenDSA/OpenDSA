@@ -53,8 +53,9 @@ Primary vs. Secondary Storage
 * Secondary Storage: Peripheral devices
 
   * Disk drives
-  * Tape drives
+  * SSD
   * Flash drives
+  * (Network)
 
 
 Comparisons
@@ -66,14 +67,11 @@ Comparisons
 
    \begin{array}{l|r|r|r|r|r|r|r}
    \hline
-   \textbf{Medium}& 1996 & 1997 & 2000 & 2004 & 2006 & 2008 & 2011\\
+   \textbf{Medium}& 1996 & 1997 & 2000 & 2004 & 2006 & 2008 & 2011 & 2025\\
    \hline
-   \textbf{RAM}&    \$45.00 & 7.00 & 1.500 & 0.3500 & 0.1500 & 0.0339 & 0.0138\\
-   \textbf{Disk}&      0.25 & 0.10 & 0.010 & 0.0010 & 0.0005 & 0.0001 & 0.0001\\
-   \textbf{USB drive}& -- & --   & --    & 0.1000 & 0.0900 & 0.0029 & 0.0018\\
-   \textbf{Floppy}&    0.50 & 0.36 & 0.250 & 0.2500 & -- & -- & --\\
-   \textbf{Tape}&      0.03 & 0.01 & 0.001 & 0.0003 & -- & -- & --\\
-   \textbf{Solid State}& -- & --   &  --   &  --    & -- & -- & 0.0021\\
+   \textbf{RAM}&    \$45.00 & 7.00 & 1.500 & 0.3500 & 0.1500 & 0.0339 & 0.0138 & 0.015\\
+   \textbf{HDD}&      0.25 & 0.10 & 0.010 & 0.0010 & 0.0005 & 0.0001 & 0.0001 & 0.000025\\
+   \textbf{SSD}& -- & --   &  --   &  --    & -- & -- & 0.0021 & 0.000125\\
    \hline
    \end{array}
 
@@ -256,6 +254,36 @@ Newer Disk Spec Example
 * 6 surfaces/heads
 
 
+Solid State Drive (SSD)
+-----------------------
+
+* SSD do not require physical movement to read data.
+
+  * Far closer to being "random access" than HDD.
+
+* Detailed vendor specs are hard to get.
+
+  * Beware standard measures of I/O operations per second.
+    While that might help a data center manager, it tells almost
+    nothing about what a user on a personal computer will experience.
+
+  * Far more important is latency time to get the next piece of
+    information.
+    10ms for HDD, 0.1ms for SSD might be reasonable estimates.
+
+* SSD is far better at handling multiple requests in parallel, that
+  hugely improves the relative performance compared to HDD.
+  
+  * If interested, read discussions about "queue depth".
+    For most applications, the individual program is interested in QD1
+    performance, which is the worst for SSD.
+
+* SSD still reads in blocks, just like HDD:
+  Both are typically 4K bytes as basic unit of I/O.
+
+* Buffering still matters!
+
+
 Buffers
 -------
 
@@ -288,12 +316,14 @@ Buffer Pools
 
 .. revealjs-slide::
    
-.. inlineav:: buffintroCON ss
-   :long_name: Buffer Pool Introduction Slideshow
-   :align: center
-   :links: AV/Files/buffpoolCON.css 
-   :scripts: AV/Files/buffintroCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Files/buffintroCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Organizing Buffer Pools
@@ -317,12 +347,14 @@ LRU
 
 .. revealjs-slide::
    
-.. inlineav:: LRUCON ss
-   :long_name: LRU Replacement Slideshow
-   :align: center
-   :links: AV/Files/buffpoolCON.css 
-   :scripts: AV/Files/LRUCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Files/LRUCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Dirty Bit
@@ -330,12 +362,14 @@ Dirty Bit
 
 .. revealjs-slide::
    
-.. inlineav:: LRUwriteCON ss
-   :long_name: LRU Replacement with write Slideshow
-   :align: center
-   :links: AV/Files/buffpoolCON.css 
-   :scripts: AV/Files/LRUwriteCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/Files/LRUwriteCON.html" 
+           width="960" 
+           height="700" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Bufferpool ADT: Message Passing
