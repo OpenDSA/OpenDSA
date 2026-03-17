@@ -29,6 +29,8 @@ Project 3: External Sort
   * The first field is the key value (what you sort on) and the
     second is data.
 
+* Note that the act of sorting modifies the input file.
+
 
 Sorting the File
 ----------------
