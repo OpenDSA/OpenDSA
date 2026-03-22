@@ -103,29 +103,29 @@
       "CS3slides/ExternalSorting": {}
     },
     "Week 9": {
-      "CS3slides/Huffman": {},
+      "CS3slides/Hashing": {},
       "CS3slides/Trie": {}
     },
     "Week 10": {
-      "CS3slides/Hashing": {},
-      "CS3slides/MemManage": {}
-    },
-    "Week 11": {
-      "CS3slides/SkipList": {},
-      "CS3slides/LinearIndex": {},
-      "CS3slides/Mid2": {},
-      "CS3slides/P4S26": {},
-      "CS3slides/TreeIndex": {}
-    },
-    "Week 12": {
-      "CS3slides/BTrees": {}
-    },
-    "Week 13": {
       "CS3slides/Graphs": {}
     },
-    "Week 14": {
+    "Week 11": {
+      "CS3slides/Mid2": {},
+      "CS3slides/P4S26": {},
       "CS3slides/Union-Find": {},
       "CS3slides/General": {}
+    },
+    "Week 12": {
+      "CS3slides/LinearIndex": {},
+      "CS3slides/TreeIndex": {}
+    },
+    "Week 13": {
+      "CS3slides/BTrees": {},
+      "CS3slides/MemManage": {}
+    },
+    "Week 14": {
+      "CS3slides/Huffman": {},
+      "CS3slides/SkipList": {}
     }
   }
 }

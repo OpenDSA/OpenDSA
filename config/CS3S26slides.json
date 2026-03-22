@@ -101,6 +101,10 @@
       "CS3slides/FileProc": {},
       "CS3slides/P3S26": {},
       "CS3slides/ExternalSorting": {}
+    },
+    "Week 9": {
+      "CS3slides/Hashing": {},
+      "CS3slides/Trie": {}
     }
   }
 }
