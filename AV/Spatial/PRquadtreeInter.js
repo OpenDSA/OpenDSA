@@ -28,19 +28,23 @@ $(document).ready(function() {
 
   function removeAtPosition(pageX, pageY) {
     var point = new Point(pageX - clickOffsetX, pageY - clickOffsetY, "•");
-    bint.remove(point, txt);
+    return bint.remove(point, txt);
   }
 
   $('#container').mousedown(function(e) {
     if (insertMode === 2) {
       isDragging = true;
-      removeAtPosition(e.pageX, e.pageY);
+      if (removeAtPosition(e.pageX, e.pageY)) {
+        isDragging = false;
+      }
     }
   });
 
   $('#container').mousemove(function(e) {
     if (isDragging && insertMode === 2) {
-      removeAtPosition(e.pageX, e.pageY);
+      if (removeAtPosition(e.pageX, e.pageY)) {
+        isDragging = false;
+      }
     }
   });
 
