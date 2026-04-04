@@ -108,6 +108,12 @@
     },
     "Week 10": {
       "CS3slides/Graphs": {}
+    },
+    "Week 11": {
+      "CS3slides/Union-Find": {},
+      "CS3slides/Mid2": {},
+      "CS3slides/P4S26": {},
+      "CS3slides/General": {}
     }
   }
 }
