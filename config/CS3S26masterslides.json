@@ -116,10 +116,10 @@
       "CS3slides/General": {}
     },
     "Week 12": {
-      "CS3slides/LinearIndex": {}
+      "CS3slides/LinearIndex": {},
+      "CS3slides/TreeIndex": {}
     },
     "Week 13": {
-      "CS3slides/TreeIndex": {},
       "CS3slides/BTrees": {}
     },
     "Week 14": {

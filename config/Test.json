@@ -72,7 +72,12 @@
       "Tutorials/MTfaq": {},
       "Tutorials/MTadvanced": {},
       "SearchStruct/Sparse": {},
-      "SWDesignAndDataStructs/ContentStacks": {}
+      "SWDesignAndDataStructs/ContentStacks": {},
+      "Sorting/SortOpt": {
+        "insertionSortWithoutSwapPRO": {
+          "points": 0.0
+        }
+      }
     }
   }
 }
