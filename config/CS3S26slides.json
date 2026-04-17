@@ -118,6 +118,14 @@
     "Week 12": {
       "CS3slides/LinearIndex": {},
       "CS3slides/TreeIndex": {}
+    },
+    "Week 13": {
+      "CS3slides/BTrees": {},
+      "CS3slides/MemManage": {}
+    },
+    "Week 14": {
+      "CS3slides/Huffman": {},
+      "CS3slides/SkipList": {}
     }
   }
 }
