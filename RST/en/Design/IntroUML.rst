@@ -354,3 +354,4 @@ The caller of the purchase method is required to supply a *Book*.
 More example diagrams and explanations can be viewed at 
 `uml-diagrams.org <http://www.uml-diagrams.org/class-diagrams-overview.html>`_.
 
+

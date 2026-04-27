@@ -236,3 +236,4 @@ Wallet.
 It is estimated that some significant fraction of all the Bitcoins that
 can ever be mined have been permanently lost in this way.
 
+

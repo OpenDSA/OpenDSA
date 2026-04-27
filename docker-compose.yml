@@ -33,7 +33,7 @@ services:
       traefik.http.services.deforms.loadbalancer.server.port: 8080
 
   proxy:
-    image: code.vt.edu:5005/devcom/devcom-localhost-proxy:traefik-2.3
+    image: code.vt.edu:5005/devcom/devcom-localhost-proxy:traefik-2.11
     ports:
       - 80:80
       - 443:443

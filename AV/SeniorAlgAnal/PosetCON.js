@@ -3,7 +3,7 @@
 // Title: Using Posets for a Lower Bounds Proof
 // Author: Yuhui Lyu; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Poset; Search in Unsorted Lists
 // Natural Language: en
 // Programming Language: N/A

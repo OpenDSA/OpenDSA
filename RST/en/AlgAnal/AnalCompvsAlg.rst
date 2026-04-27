@@ -188,3 +188,4 @@ problem size that can run in a certain time on the new computer.
    :long_name: Faster Computer or Faster Algorithm Exercise
    :keyword: Algorithm Analysis; Growth Rate
 
+

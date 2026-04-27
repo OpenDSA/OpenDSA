@@ -5,7 +5,7 @@
 // Title: Array-based List Remove Slideshow
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Algorithm Visualization; Code Tracing Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Array-Based List
 // Natural Language: en
 // Programming Language: Java

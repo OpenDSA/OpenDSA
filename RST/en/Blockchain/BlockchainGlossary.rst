@@ -328,3 +328,4 @@ Blockchain Tutorial Glossary
       or key to the ledger makes any resources owned by the account
       permanently inaccessible.
 
+

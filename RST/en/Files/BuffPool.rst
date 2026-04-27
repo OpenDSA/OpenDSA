@@ -23,13 +23,13 @@ Buffer Pools
 ------------
 
 Given a :ref:`disk drive <DiskExamp>`
-rotating at 5400 rpm, :term:`average seek time` of 9.5ms,
-and :term:`track-to-track seek time` of 2.2ms,
+rotating at 7200 rpm, :term:`average seek time` of 9ms,
+and :term:`track-to-track seek time` of 2ms,
 we can calculate that it takes about
-:math:`9.5 + 11.1 \times 1.5 = 26.2` ms
+:math:`9 + 8.3 \times 1.5 \approx 21.5` ms
 to read one :term:`track` of data on average.
-It takes about
-:math:`9.5 + 11.1/2 + (1/256)\times11.1 = 15.1` ms on average
+If there are 64 sectors on a track, then it takes about
+:math:`9 + 8.3/2 + (1/64)\times 8.3 \approx 13.2` ms on average
 to read a single :term:`sector` of data.
 This is a good savings (slightly over half the time), but
 less than 1% of the data on the track are read.
@@ -451,4 +451,5 @@ transferred to the backing storage.
 This is in contrast to the :ref:`memory manager <MemmanIntro>`, in
 which the user passes a record to the manager and has no control at
 all over where the record is stored.
+
 

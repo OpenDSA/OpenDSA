@@ -4,7 +4,7 @@
 // Title: Introduction to the Vertex Cover Problem
 // Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Vertex Cover Problem
 // Natural Language: en
 // Programming Language: N/A

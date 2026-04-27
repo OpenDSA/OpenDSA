@@ -4,7 +4,7 @@
 // Title: Postorder Traversal Shown in Detail
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Algorithm Visualization; Code Tracing Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Postorder Traversal
 // Natural Language: en
 // Programming Language: Java

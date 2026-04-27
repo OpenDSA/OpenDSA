@@ -5,7 +5,7 @@
 // Title: Consequences of Dereferencing a Null Pointer
 // Author: Cliff Shaffer; Sushma Mandava; Aditya Tikhe; Milen John
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Pointer; Reference; Object
 // Natural Language: en
 // Programming Language: Java

@@ -184,3 +184,12 @@ svg {
 tt {
   background-color: #eed;
 }
+.embedContainer {
+  overflow-x: auto;
+}
+
+.embedContainer iframe.embeddedExercise {
+  max-width: none !important;
+  display: block !important;
+  margin: 0 auto !important;
+}

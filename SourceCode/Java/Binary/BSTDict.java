@@ -1,3 +1,4 @@
+/* *** ODSATag: BSTDicta *** */
 // Dictionary implementation using BST
 // This uses KVPair to manage the key/value pairs
 public class BSTDict implements Dictionary {
@@ -25,7 +26,9 @@ public class BSTDict implements Dictionary {
     if (temp == null) { return temp; }
     else { return ((KVPair)temp).value(); }
   }
+/* *** ODSAendTag: BSTDicta *** */
 
+/* *** ODSATag: BSTDictb *** */
   // Remove and return an arbitrary record from dictionary.
   // Return the record removed, or null if none exists.
   public Object removeAny() {
@@ -48,3 +51,4 @@ public class BSTDict implements Dictionary {
     return theBST.size();
   }
 }
+/* *** ODSAendTag: BSTDictb *** */

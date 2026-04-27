@@ -4,7 +4,7 @@
 // Title: Typical Mistakes During Tree Traversal
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization
+// Features: Code Tracing Presentation
 // Keyword: Preorder Traversal
 // Natural Language: en
 // Programming Language: Java

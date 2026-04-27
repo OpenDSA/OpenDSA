@@ -551,3 +551,4 @@ Checkpoint 6
 .. avembed:: Exercises/SWDesignAndDataStructs/JunitCheckpoint6Summ.html ka
    :long_name: Checkpoint 6
 
+

@@ -60,3 +60,4 @@ Finding the maximum element in the list
 .. extrtoolembed:: 'ae_adl_findmax'
    :learning_tool: mastery-grid-python-animations
 
+

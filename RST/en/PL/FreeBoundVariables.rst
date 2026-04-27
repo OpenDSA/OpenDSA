@@ -218,3 +218,4 @@ The reason we devoted a whole section to the notions of free and bound
 variables is because we will invoke them repeatedly throughout this
 chapter, starting in the next section.
 
+

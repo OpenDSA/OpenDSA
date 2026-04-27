@@ -3,7 +3,7 @@
 // Title: Lambda Calculus: How to Build a Parse Tree
 // Author: David Furcy; Tom Naps
 // Institution: UW-Oshkosh
-// Features: Algorithm Visualization; Code Tracing Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Lambda Calculus
 // Natural Language: en
 // Programming Language: N/A

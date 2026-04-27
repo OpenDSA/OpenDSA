@@ -59,3 +59,4 @@ that everyone on the blockchain can see ensuring no faulty exchanges. If Alice
 gives Bob the key, she can be paid. If Bob sends the correct payment, he can
 receive the key and anything else will be cancelled.
 
+

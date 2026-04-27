@@ -55,3 +55,4 @@ Checkpoint 1
 
 .. avembed:: Exercises/SWDesignAndDataStructs/Generics1Checkpoint1Summ.html ka
    :long_name: Checkpoint 1
+

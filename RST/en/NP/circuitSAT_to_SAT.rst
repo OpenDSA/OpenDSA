@@ -32,3 +32,4 @@ polynomial time.
 
 This reduction can help in providing an NP Completeness proof for SAT.
 
+

@@ -4,7 +4,7 @@
 // Title: Reduction of Circuit SAT to SAT Slideshow
 // Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Reduction; Satisfiability Problem
 // Natural Language: en
 // Programming Language: N/A

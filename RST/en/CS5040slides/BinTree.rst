@@ -131,3 +131,4 @@ BinTrees
    |          Keep a static member which is the copy of the
               flyweight that you create only one time.
 
+

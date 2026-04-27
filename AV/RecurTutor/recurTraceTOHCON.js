@@ -5,7 +5,7 @@
 // Title: Tracing Recursive Code: Towers of Hanoi
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization
+// Features: Code Tracing Presentation
 // Keyword: Recursion; Towers of Hanoi
 // Natural Language: en
 // Programming Language: Java

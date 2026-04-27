@@ -1560,8 +1560,10 @@ Khan.answerTypes = $.extend(Khan.answerTypes, {
 
             // Wrap each of the choices in elements and add radio buttons
             var wrappedChoices = _.map(shownChoices, function(choice, i) {
+                var choiceText = $(choice).text();
                 return $("<li><label></label></li>").find("label").append([
-                    $('<input type="radio" name="solution">').val(i),
+                    $('<input type="radio" name="solution">').val(i)
+                        .attr("aria-label", choiceText),
                     $('<span class="value"></span>').append(
                         $(choice).contents()
                     )

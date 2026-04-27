@@ -8,6 +8,7 @@ $(document).ready(function() {
   
   var numPoint = 1;
   var insertMode = 0;
+  var isDragging = false;
   $('#about').click(about);
   $('#remove').click(rmv);
   $('#insert').click(insert);
@@ -18,13 +19,34 @@ $(document).ready(function() {
   function coor(){
     var x = event.pageX; //649
     var y = event.pageY; //187
-    var point = new Point(event.pageX - clickOffsetX, event.pageY - clickOffsetY, "'");
+    var point = new Point(event.pageX - clickOffsetX, event.pageY - clickOffsetY, "•");
     if (insertMode === 1) {
       bint.insert(point, txt);
-    } else if (insertMode === 2) {
-      bint.remove(point, txt);
     }
+    // remove mode is handled by mousedown/mousemove drag handlers
   }
+
+  function removeAtPosition(pageX, pageY) {
+    var point = new Point(pageX - clickOffsetX, pageY - clickOffsetY, "•");
+    bint.remove(point, txt);
+  }
+
+  $('#container').mousedown(function(e) {
+    if (insertMode === 2) {
+      isDragging = true;
+      removeAtPosition(e.pageX, e.pageY);
+    }
+  });
+
+  $('#container').mousemove(function(e) {
+    if (isDragging && insertMode === 2) {
+      removeAtPosition(e.pageX, e.pageY);
+    }
+  });
+
+  $('#container').mouseup(function() {
+    isDragging = false;
+  });
   var clickOffsetX = 638;
   var clickOffsetY = 194;
   var mapleft = 640;

@@ -306,3 +306,4 @@ transitions in a simpler form.
      :math:`L(G) = L(M')`. 
      That is, :math:`w \in L(G)` iff :math:`w \in L(M)`. QED.
 
+

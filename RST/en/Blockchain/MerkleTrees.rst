@@ -114,3 +114,4 @@ This is a much more efficient means of payment verification
 than requiring any thin node to store the entire 
 transaction history of one or more blocks. 
 
+

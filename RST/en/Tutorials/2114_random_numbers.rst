@@ -73,3 +73,4 @@ It would be difficult to write a test case that used this code, since you have n
     // You know x will get the value 40, while y is 50, and z is 60
     
 So, when you are testing behaviors that are random, you can force the actions to be predictable just by saying in your test cases what sequence of values you want the random number generator to produce. Outside of test cases, the generator will produce a truly (pseudo-)random sequence, but inside your test cases, the numbers will be completely determined by you.
+

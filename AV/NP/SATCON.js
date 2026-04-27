@@ -4,7 +4,7 @@
 // Title: Introduction to the CNF Satisfiability Problem
 // Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Satisfiability Problem
 // Natural Language: en
 // Programming Language: N/A

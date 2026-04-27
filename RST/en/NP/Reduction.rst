@@ -486,3 +486,4 @@ vertices is the convex one.
 Therefore, by the Lower Bound Theorem, **SIMPLE POLYGON** is in
 :math:`\Omega(n \log n)`.
 
+

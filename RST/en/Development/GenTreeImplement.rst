@@ -287,3 +287,4 @@ implementations presented in this section.
    Figure :num:`Figure #GenLinkedLinked`, this
    representation requires less space.
 
+

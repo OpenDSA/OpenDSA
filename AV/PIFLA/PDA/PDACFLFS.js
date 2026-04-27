@@ -1,7 +1,7 @@
 // Title: Pushdown Automata and Context Free Languages
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Programmed Instruction
 // Keyword: Pushdown Automata
 // Natural Language: en
 // Programming Language: N/A

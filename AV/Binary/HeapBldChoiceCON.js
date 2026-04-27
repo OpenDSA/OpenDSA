@@ -3,7 +3,7 @@
 // Title: Heap Inefficient Build Slideshow
 // Author: Dana Gurland
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization; Algorithm Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Heap
 // Natural Language: en
 // Programming Language: Java

@@ -28,3 +28,4 @@ DFA Minimization Exercises
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAMinEx4.html pe
    :long_name: DFA minimization exercise
 
+

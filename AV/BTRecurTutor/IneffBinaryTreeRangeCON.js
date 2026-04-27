@@ -4,7 +4,7 @@
 // Title: Inefficient Range Query in a BST Slideshow
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization; Algorithm Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Binary Search Tree
 // Natural Language: en
 // Programming Language: Java

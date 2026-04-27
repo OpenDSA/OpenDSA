@@ -3,7 +3,7 @@
 // Title: Functional Programming: Accumulator Pattern Pivot
 // Author: David Furcy; Tom Naps
 // Institution: UW-Oshkosh
-// Features: Algorithm Visualization; Code Tracing Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Functional Programming
 // Natural Language: en
 // Programming Language: N/A

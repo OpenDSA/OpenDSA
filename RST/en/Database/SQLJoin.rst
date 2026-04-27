@@ -25,3 +25,4 @@ SQL Join Command
    :links: AV/Database/OuterJoin.css
    :scripts: AV/Database/OuterJoin.js
    :output: show
+

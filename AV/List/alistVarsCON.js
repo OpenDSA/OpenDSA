@@ -5,7 +5,7 @@
 // Title: Array-based List Private Data Members
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization
+// Features: Code Tracing Presentation
 // Keyword: Array-Based List
 // Natural Language: en
 // Programming Language: Java

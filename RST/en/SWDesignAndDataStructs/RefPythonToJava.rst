@@ -168,3 +168,4 @@ Object comparison:
 ----------------------
 
 In Python, you could use ``==`` to compare two objects, overriding the behavior of that operator as needed with ``__eq__``.  Java prevents us from overriding the comparison operator, so using ``==`` to compare two objects will return true if they point to the same location in memory and false otherwise.  To compare two objects in Java, we’ll instead use the ``.equals()`` method, which we are able to override.  This overridden method is provided for you, and the details are below in the method explanations.
+

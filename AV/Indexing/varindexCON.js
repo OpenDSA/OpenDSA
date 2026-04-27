@@ -2,7 +2,7 @@
 // Title: Simple linear index Slideshow
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Algorithm Analysis Demonstration
+// Features: Algorithm Visualization
 // Keyword: Linear Indexing; File Processing
 // Natural Language: en
 // Programming Language: N/A

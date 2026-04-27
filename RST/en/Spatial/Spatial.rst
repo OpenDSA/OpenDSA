@@ -96,3 +96,4 @@ In two dimensions, these four structures cover all four combinations
 of object- versus key-space decomposition on the one hand, and
 multi-level binary versus :math:`2^d`-way branching on the other.
 
+

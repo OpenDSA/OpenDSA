@@ -229,3 +229,4 @@ Proof that the splay tree meets the guarantee of
    visited. 
    In that case, the same splay operations would take place.
 
+

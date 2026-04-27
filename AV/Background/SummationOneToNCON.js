@@ -4,7 +4,7 @@
 // Title: Summation of the first N integers visualization
 // Author: Mohammed Farghally; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Summation
 // Natural Language: en
 // Programming Language: N/A

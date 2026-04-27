@@ -4,7 +4,7 @@
 // Title: Binary Search Algorithm Worst Case Analysis Recurrence Visualization
 // Author: Mohammed Farghally; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Algorithm Analysis Demonstration
+// Features: Algorithm Analysis Presentation
 // Keyword: Binary Search; Algorithm Analysis; Recurrence Relation
 // Natural Language: en
 // Programming Language: N/A

@@ -145,3 +145,4 @@ Boyer-Moore by completing the following four exercises.
 .. avembed:: Exercises/Development/StringMatch/Boyer_Moore_Alignment_Exercise.html ka
    :keyword: String Matching; Boyer-Moore String Match Algorithm
 
+

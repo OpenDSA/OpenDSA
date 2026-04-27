@@ -149,3 +149,29 @@ Composite (2)
 .. codeinclude:: Binary/ExpressionTreeC
    :tag: Composite3
 
+
+Flyweight
+---------
+
+.. revealjs-slide::
+
+The Problem:
+
+* Composite Design does not work well with NULL pointers.
+  
+  * (Do you understand why?)
+  * Need to make an empty node object
+
+* Empty nodes carry no information (aside from noting the fact that
+  they are empty).
+  Having a lot of them wastes a lot of space.
+
+
+Solution:
+
+* Make a Flyweight
+
+  * This is a single, specific, recognizeable object pointed to by all
+    places that need to reference an empty node.
+
+  * Flyweights may never carry state information (since there is only one).

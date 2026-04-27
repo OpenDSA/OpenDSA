@@ -1,0 +1,145 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata::
+   :author: Cliff Shaffer
+
+=========
+Project 4
+=========
+
+Project 4: Songs Database (with graph analysis)
+-----------------------------------------------
+
+.. revealjs-slide::
+
+* Background:
+
+  * You are implementing a database of Artist Name/Song Title pairs.
+
+  * Each song title is a string, each artist name is a string.
+
+  * There are separate hash tables for the song titles and the
+    artist names.
+
+  * This time there is no memory manager.
+    The hash tables provide a mapping from a string (artist or song)
+    to a graph vertex.
+
+* You will implement:
+
+  * A hash table (we give you the hash function)
+
+  * A graph that links artists to songs.
+
+
+What We Give You: The Starter Kit (1)
+-------------------------------------
+
+.. revealjs-slide::
+
+* The starter kit is accessed through Eclipse
+  ``Project -> Download Assignment``
+
+* We specify the class name for the project (``GraphProj``),
+  an interface that you must implement (``GPInterface``),
+  and the name of a class that implements the Songs interface
+  (``GraphDB``).
+
+* This lets us write reference test cases for grading that make calls
+  to the interface.
+
+  * Our reference tests do not write to ``System.out``, nor check the
+    contents of ``System.out``.
+
+* We give you the hash function to use in the starter kit.
+
+  
+What We Give You: The Starter Kit (2)
+-------------------------------------
+
+.. revealjs-slide::
+
+* We give you some initial tests (``GraphProjTest``) that are meant to
+  demonstrate all the requirements related to formatting the interface
+  method return values.
+
+  * Note: The starter kit does not pass those tests.
+  * If we get questions indicating that we left something ambiguous,
+    we will update the example tests for you to see.
+  * Important service: Validation
+
+    * We will check any tests added to
+      ``GraphProjTest.java`` against the reference implementation.
+      This lets you verify that your tests are correct (meaning, that
+      you have no misconceptions about the project requirements --- if
+      your tests are thorough).
+
+
+The Graph
+---------
+
+.. revealjs-slide::
+
+* The graph has edges that link an artist to a song (and vice versa).
+
+* The graph has to support adding new vertices (new artists and/or new
+  songs), and adding new edges.
+
+* It is also possible to delete an artist or song.
+
+  * In which case, all the associated edges need to be removed.
+
+  * Need to keep track of "freed up" vertices for reuse.
+
+* The graph starts with the same number of nodes as a hash table. When
+  it becomes full, it doubles in size (a bit like our hash tables).
+
+
+Graph Statistics
+----------------
+
+* The functional purpose of the graph is to support the ``graphprint``
+  method.
+
+* This does two things:
+
+  * Calculates connected components.
+
+    * Uses the Union/FIND algorithm to do this.
+
+  * Calculates the diameter of the largest component
+
+    * Uses Floyd's algorithm to do this.
+
+
+Design Issues
+-------------
+
+* The design of the Hash table is fairly traditional:
+
+  * Store a key (the string) and a value (a graph vertex).
+
+  * Once you have the vertex associated with the string, the graph
+    doesn't ever care about the string.
+
+  * The hash table shouldn't know anything about how graph nodes are
+    represented, or even that it is storing graph nodes.
+
+    * It just knows that it stores a key (it knows this is a string)
+      and a data value, or it stores an abstract record that has a
+      String key and some data value (a Key-Value Pair)
+
+* The Graph is implemented using an Adjacency List.
+
+  * This means an array for the list of vertices, and linked lists
+    for the neighbors of each vertex.
+
+  * Need to use a Parent Pointer representation to implement
+    Union/FIND.
+
+  * Just need a simple 2D array to implement Floyd's algorithm.
+
+    * Warning: Don't make that array bigger than it needs to be!

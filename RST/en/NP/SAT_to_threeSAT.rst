@@ -31,3 +31,4 @@ Satisfiability (**3-SAT**) problem in polynomial time.
 
 This reduction can help in providing an NP Completeness proof for 3-SAT.
 
+

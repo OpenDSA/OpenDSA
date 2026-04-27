@@ -4,7 +4,7 @@
 // Title: Reduction of Clique to Independent Set Slideshow
 // Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Reduction; Clique Problem; Independent Set Problem
 // Natural Language: en
 // Programming Language: N/A

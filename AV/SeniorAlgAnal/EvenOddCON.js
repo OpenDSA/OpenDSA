@@ -3,7 +3,7 @@
 // Title: Even and Odd Polynomials Slideshow
 // Author: Irena Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Polynomial Multiplication
 // Natural Language: en
 // Programming Language: N/A

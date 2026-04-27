@@ -996,3 +996,4 @@ If you find a mistake in this book, feel free to send me a fix using
 .. |Hardware Architecture| image:: ./chap1_files/arch.svg
 .. |Where Are You?| image:: ./chap1_files/arch2.svg
 
+

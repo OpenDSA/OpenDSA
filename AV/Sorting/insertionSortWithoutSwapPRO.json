@@ -22,6 +22,28 @@
     }
   },
   "code" : {
+    "java": {
+      "url": "../../SourceCode/Java/Sorting/Insertionsort.java",
+      "startAfter": "/* *** ODSATag: InsertionOpt *** */",
+      "endBefore": "/* *** ODSAendTag: InsertionOpt *** */",
+      "tags": {
+        "highlight": [5, 7, 8],
+        "copy_to_tmp": 5,
+        "shift": 7,
+        "copy_back": 8
+      }
+    },
+    "java_generic": {
+      "url": "../../SourceCode/Java_Generic/Sorting/Insertionsort.java",
+      "startAfter": "/* *** ODSATag: InsertionOpt *** */",
+      "endBefore": "/* *** ODSAendTag: InsertionOpt *** */",
+      "tags": {
+        "highlight": [5, 7, 8],
+        "copy_to_tmp": 5,
+        "shift": 7,
+        "copy_back": 8
+      }
+    },
     "python": {
       "url": "../../SourceCode/Python/Sorting/Insertionsort.py",
       "startAfter": "# /* *** ODSATag: Insertionsort shift *** */",

@@ -3,7 +3,7 @@
 // Title: Sorting Terminology and Notation Slideshow
 // Author: Yujie Chen
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Sorting Notation
 // Natural Language: en
 // Programming Language: N/A

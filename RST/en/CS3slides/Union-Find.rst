@@ -70,8 +70,8 @@ Weighted Union
   * Depth is :math:`O(\log n)`
 
 
-Algorithm Visualization
------------------------
+Union/FIND Visualization
+------------------------
 
 .. revealjs-slide::
 
@@ -102,4 +102,5 @@ Path Compression
 .. only:: never
 
    This is a comment that does NOT show in built slides: prevents 'odsalink' from appearing.
+
 

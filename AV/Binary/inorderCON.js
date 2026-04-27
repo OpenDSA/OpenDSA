@@ -4,7 +4,7 @@
 // Title: Inorder Traversal Shown in Detail
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Algorithm Visualization; Code Tracing Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Inorder Traversal
 // Natural Language: en
 // Programming Language: Java

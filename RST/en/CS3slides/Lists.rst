@@ -367,3 +367,4 @@ Container Class Design Issues
 * Homogeneity: Allow different record types? Check and block?
 * Deletion: What happens to the record?
 
+

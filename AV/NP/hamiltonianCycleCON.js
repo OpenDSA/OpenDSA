@@ -4,7 +4,7 @@
 // Title: Introduction to the Hamiltonian Cycle Problem
 // Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Hamiltonian Cycle Problem
 // Natural Language: en
 // Programming Language: N/A

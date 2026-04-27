@@ -5,7 +5,7 @@
 // Title: Linked List Constructors Slideshow
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization
+// Features: Code Tracing Presentation
 // Keyword: Linked List
 // Natural Language: en
 // Programming Language: Java

@@ -247,3 +247,4 @@ for all sorting algorithms will be less than half that shown.
 If we use a the more complicated ``KVPair`` objects, the costs will
 more than double over those shown in the table.
 
+

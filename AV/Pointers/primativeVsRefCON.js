@@ -6,7 +6,7 @@
 // Title: Java Data Types
 // Author: Cliff Shaffer; Sushma Mandava; Milen John
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Pointer; Reference; Data Type; Object
 // Natural Language: en
 // Programming Language: Java

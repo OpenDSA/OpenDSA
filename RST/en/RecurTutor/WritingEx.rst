@@ -42,3 +42,4 @@ Recursion Programming Exercise: Pascal Triangle
 .. extrtoolembed:: 'Recursion Programming Exercise: Pascal Triangle'
    :workout_id: 61
 
+

@@ -142,3 +142,4 @@ https://cointelegraph.com/ethereum-for-beginners/bitcoin-vs-ethereum-key-differe
 
 https://medium.com/nearprotocol/detailed-overview-of-ethereum-2-0-shard-chains-committees-proposers-and-attesters-a9992d2fd103
 
+

@@ -213,3 +213,4 @@ frequently accessed record, and so on.
    less than twice the number of comparisons required by the optimal
    static ordering.
 
+

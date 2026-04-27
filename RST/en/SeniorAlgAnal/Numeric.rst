@@ -190,3 +190,4 @@ Thus, function LCF will halve its first parameter in no more than 2
 iterations.
 The total cost is then :math:`O(\log n)`.
 
+

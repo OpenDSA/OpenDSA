@@ -4,7 +4,7 @@
 // Title: Introduction to the Clique Problem
 // Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Clique Problem
 // Natural Language: en
 // Programming Language: N/A

@@ -5,7 +5,7 @@
 // Title: Visualizaiton of the Turing Machine that accepts a^n b^n c^n
 // Author: Jeffrey Peng; Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Algorithm Visualization; Code Tracing Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Turing Machine
 // Natural Language: en
 // Programming Language: N/A

@@ -148,3 +148,4 @@ Checkpoint 4
 
 .. avembed:: Exercises/SWDesignAndDataStructs/BSTCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
+

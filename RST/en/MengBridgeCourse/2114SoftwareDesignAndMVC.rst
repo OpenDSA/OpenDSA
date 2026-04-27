@@ -864,3 +864,4 @@ Vending Machine, then
 * Review your notes, identify the nouns and noun phrases, then consider which are classes and which fields
 * Review your notes, identify the verbs and verb phrases, then identify possible methods for each class
 
+

@@ -15,17 +15,17 @@ Midterm 2 Structure
 
 .. revealjs-slide::
 
-* Online, Tuesday, November 11
-* Accessible (for 75 minutes) from 8am to 10pm
-* 125 points
+* Monday/Tuesday, April 13/14
+* 100 points
 * Format
 
   * Similar to Midterm 1
-  * Some Multiple Choice, True/False, some writing explanations or
-    workng out problems, etc. 
+  * The questions of of types that we can autograde:
+    Multiple Choice, True/False, fill-in-the-blank, etc.
 
 * Anything from Chapter 1-7 is fair to ask about, but focus is
-  on chapters 8-10.
+  on chapters 8 and 10.
+  (Chapters 9 and 11-14 will be covered on the final.)
 
 
 Topics (1)
@@ -36,11 +36,11 @@ Topics (1)
 * Chapter 8: Sorting
 
   * How each of the algorithms work
-  * The Best/Avg/Worst cost for each
-  * Key proofs:
+  * Know the Best/Avg/Worst cost for each
+  * Know the key proofs:
 
     * Lower bound for Exchange Sorts;
-    * Worst case analysis for Radix Sort O(n log n)
+    * Why the worst case analysis for Radix Sort is :math:`\Theta(n \log n)`
     * Lower bound for sorting
 
       
@@ -49,7 +49,7 @@ Topics (2)
 
 .. revealjs-slide::
 
-* Chapter 8: Sorting (cont)
+* Know how these sorting algorithms work, and their analysis.
 
   * Insertion Sort
   * Bubble Sort
@@ -62,21 +62,6 @@ Topics (2)
 
 
 Topics (3)
-----------
-
-.. revealjs-slide::
-
-* Chapter 9: File Processing
-
-  * Disk vs RAM memory hierarchy and equipment cost vs. access time
-  * Main parts of a disk access: Seek, rotational delay, actual read
-  * External Sorting Algorithm
-
-    * Replacement Selection
-    * Multiway Merge
-
-
-Topics (4)
 ----------
 
 .. revealjs-slide::
@@ -94,6 +79,6 @@ Topics (4)
   * quadratic probing
   * double hashing
 
-* How full the table ought to be (space vs. time)
+* How full the table ought to be for good performance
+  (tradeoff of space vs. time)
 * Expected cost analysis for hashing (when properly implemented)
-

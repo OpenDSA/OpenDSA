@@ -1,6 +1,6 @@
 {
-  "title": "CS3114/5040 F25 Coursenotes",
-  "desc": "CS3114/5040 F25 Coursenotes",
+  "title": "CS3114/5040 S26 Coursenotes",
+  "desc": "CS3114/5040 S26 Coursenotes",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "lang": "en",
@@ -66,67 +66,66 @@
     "Week 1": {
       "CS3slides/VTIntro": {},
       "CS3slides/Intro": {},
-      "CS3slides/P1F25": {},
-      "CS3slides/AlgAnal1": {}
+      "CS3slides/P1S26": {}
     },
     "Week 2": {
-      "CS3slides/ProjManage": {},
-      "CS3slides/AlgAnal2": {},
       "CS3slides/JUnit": {},
-      "CS3slides/AlgAnal3": {}
+      "CS3slides/AlgAnal1": {}
     },
     "Week 3": {
+      "CS3slides/AlgAnal2": {},
+      "CS3slides/ProjManage": {},
       "CS3slides/Lists": {},
       "CS3slides/Coding": {},
       "CS3slides/StackQueue": {}
     },
     "Week 4": {
-      "CS3slides/Binary": {}
-    },
-    "Week 5": {
-      "CS3slides/P2F25": {},
+      "CS3slides/Binary": {},
       "CS3slides/OverConstrained": {},
-      "CS3slides/DesignPatt": {},
       "CS3slides/MTAdvanced": {}
     },
-    "Week 6": {
+    "Week 5": {
+      "CS3slides/P2S26": {},
+      "CS3slides/DesignPatt": {},
+      "CS3slides/Mid1": {},
       "CS3slides/Heaps": {}
     },
+    "Week 6": {
+      "CS3slides/Sorting1": {}
+    },
     "Week 7": {
-      "CS3slides/Sorting1": {},
-      "CS3slides/Sorting2": {}
+      "CS3slides/Sorting2": {},
+      "CS3slides/Sorting3": {}
     },
     "Week 8": {
-      "CS3slides/Sorting3": {},
-      "CS3slides/P3F25": {},
-      "CS3slides/FileProc": {}
+      "CS3slides/FileProc": {},
+      "CS3slides/P3S26": {},
+      "CS3slides/ExternalSorting": {}
     },
     "Week 9": {
-      "CS3slides/ExternalSorting": {},
-      "CS3slides/Recommender": {},
-      "CS3slides/Huffman": {},
+      "CS3slides/Hashing": {},
       "CS3slides/Trie": {}
     },
     "Week 10": {
-      "CS3slides/Hashing": {},
-      "CS3slides/MemManage": {}
-    },
-    "Week 11": {
-      "CS3slides/SkipList": {},
-      "CS3slides/LinearIndex": {},
-      "CS3slides/Mid2": {},
-      "CS3slides/P4F25": {},
-      "CS3slides/TreeIndex": {}
-    },
-    "Week 12": {
-      "CS3slides/BTrees": {}
-    },
-    "Week 13": {
       "CS3slides/Graphs": {}
     },
-    "Week 14": {
+    "Week 11": {
       "CS3slides/Union-Find": {},
+      "CS3slides/Mid2": {},
+      "CS3slides/P4S26": {},
       "CS3slides/General": {}
+    },
+    "Week 12": {
+      "CS3slides/LinearIndex": {},
+      "CS3slides/TreeIndex": {}
+    },
+    "Week 13": {
+      "CS3slides/BTrees": {},
+      "CS3slides/MemManage": {}
+    },
+    "Week 14": {
+      "CS3slides/Huffman": {},
+      "CS3slides/SkipList": {}
     }
   }
 }

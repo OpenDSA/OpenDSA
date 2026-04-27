@@ -157,3 +157,4 @@ each suggests a useful way of thinking about binary trees.
    Because the total number of children is :math:`2n`, the remaining
    :math:`n+1` children must be empty.
 
+

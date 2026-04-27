@@ -5,7 +5,7 @@
 // Title: Array-based List Introduction Slideshow
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Array-Based List
 // Natural Language: en
 // Programming Language: Java

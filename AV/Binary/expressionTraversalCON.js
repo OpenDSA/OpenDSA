@@ -4,7 +4,7 @@
 // Title: Traverse an expression tree
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Tracing Visualization; Algorithm Visualization
+// Features: Algorithm Visualization; Code Tracing Presentation
 // Keyword: Expression Tree; Binary Tree Traversal; Full Binary Tree
 // Natural Language: en
 // Programming Language: Java

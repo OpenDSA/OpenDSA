@@ -127,3 +127,4 @@ your own, an effective one can be made with the following formula.
        from "thermal noise" in the system.
        Time will tell if this approach replaces deterministic approaches.
 
+

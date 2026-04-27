@@ -684,3 +684,4 @@ If you find a mistake in this book, feel free to send me a fix using
 
 .. |String Indexes| image:: ./chap6_files/string.svg
 
+

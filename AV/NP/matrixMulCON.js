@@ -4,7 +4,7 @@
 // Title: Symmetric Matrix Multiplication Reduction
 // Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Reduction
 // Natural Language: en
 // Programming Language: N/A

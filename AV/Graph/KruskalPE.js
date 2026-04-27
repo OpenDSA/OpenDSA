@@ -17,7 +17,8 @@
       width: 400,
       height: 400,
       layout: "automatic",
-      directed: false
+      directed: false,
+      draggable: true
     });
     graphUtils.generate(graph, {
       weighted: true,

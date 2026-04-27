@@ -18,3 +18,4 @@ Visualization of the Machine that Finds The First Left Blank
    :scripts: AV/Kochan/TMblankL.js AV/Juwon/FAcopy.js
    :output: show
 
+

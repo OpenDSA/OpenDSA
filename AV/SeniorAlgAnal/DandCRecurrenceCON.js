@@ -4,7 +4,7 @@
 // Title: Master Theorem for Recurrence Relations
 // Author: Yuhui Lyu; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration
+// Features: Presentation
 // Keyword: Recurrence Relation; Master Theorem
 // Natural Language: en
 // Programming Language: N/A

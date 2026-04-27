@@ -83,7 +83,7 @@ memory, so that's the way it has to be.
 The following are some important points about Garbage Collection.
 
 * Garbage collection is a mechanism that is invoked by the Java
-  Virtual Machine to get ride of the unused heap memory objects.
+  Virtual Machine to get rid of the unused heap memory objects.
   It removes every object that is not being used anymore by the
   running Java program.
   The result of this process is freeing up the unused memory so other
@@ -324,5 +324,6 @@ explicit allocation calls to manage the heap memory, and the program
 has to wait when the garbage collector runs.
 The heap memory does not operate automatically
 and conveniently the way local memory does.
+
 
 

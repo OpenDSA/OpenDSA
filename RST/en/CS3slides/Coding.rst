@@ -65,3 +65,4 @@ Example 2 (1)
         var noded = graph2.addNode("d", {left: 100, top: 100});
         var nodee = graph2.addNode("e", {left:  50, top:  50});
 
+
