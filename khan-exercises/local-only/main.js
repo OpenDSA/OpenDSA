@@ -10,7 +10,7 @@ requirejs.config({
   }, {
     name: "jsav",
     location: "../../lib",
-    main: "JSAV-min"
+    main: "JSAV"
   }, {
     name: "blockUI",
     location: "../../lib",
