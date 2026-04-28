@@ -1751,7 +1751,9 @@ Glossary
       The act of finding the value for a polynomial at a given point.
 
    exact-match query
-      Records are accessed by unique identifier.
+      A search for the record whose relevant key value exactly matches
+      a specified key value.
+      This is in contrast to a :term:`range query`.
 
    exceptions
       Exceptions are techniques used to predict possible runtime
@@ -4123,7 +4125,7 @@ Glossary
       The set of possible outputs for a function.
 
    range query
-      Records are returned if their relevant key value falls with a
+      Returns all records whose relevant key value falls with a
       specified range.
 
    read/write head

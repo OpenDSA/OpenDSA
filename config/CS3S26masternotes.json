@@ -87,8 +87,8 @@
     "Week 5": {
       "CS3slides/P2S26": {},
       "CS3slides/DesignPatt": {},
-     "CS3slides/Mid1": {},
-       "CS3slides/Heaps": {}
+      "CS3slides/Mid1": {},
+      "CS3slides/Heaps": {}
     },
     "Week 6": {
       "CS3slides/Sorting1": {}
@@ -125,7 +125,8 @@
     },
     "Week 14": {
       "CS3slides/Huffman": {},
-      "CS3slides/SkipList": {}
+      "CS3slides/SkipList": {},
+      "CS3slides/Spatial": {}
     }
   }
 }

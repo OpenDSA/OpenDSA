@@ -125,7 +125,8 @@
     },
     "Week 14": {
       "CS3slides/Huffman": {},
-      "CS3slides/SkipList": {}
+      "CS3slides/SkipList": {},
+      "CS3slides/Spatial": {}
     }
   }
 }

@@ -69,6 +69,7 @@ Nor can we easily find the record with the minimum or maximum key
 value, or visit the records in key order.
 Hashing is most appropriate for answering the question, 'What record,
 if any, has key value ``K``?'
+This is known as an :term:`exact-match query`.
 **For applications where all search is done by exact-match queries,
 hashing is the search method of choice because it is extremely
 efficient when implemented correctly.**
