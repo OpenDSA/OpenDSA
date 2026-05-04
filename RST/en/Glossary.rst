@@ -1378,6 +1378,11 @@ Glossary
       the element to be different from that of the :math:`i` th
       element in the proposed ordering.
 
+   diameter
+      For an :term:`undirected graph`, this is the longest path
+      between any pair of vertices.
+      Using :term:`Floyd's algorithm` is a good way to compute this.
+
    dictionary
       An abstract data type or :term:`interface` for a data structure or
       software subsystem that supports insertion, search, and deletion
