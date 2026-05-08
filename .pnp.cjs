@@ -1537,7 +1537,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["nomnom", "npm:1.8.1"],\
           ["chalk", "npm:0.4.0"],\
-          ["underscore", "npm:1.6.0"]\
+          ["underscore", "npm:1.13.8"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2028,10 +2028,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["underscore", [\
-      ["npm:1.6.0", {\
-        "packageLocation": "../root/.yarn/berry/cache/underscore-npm-1.6.0-100257a0c3-10c0.zip/node_modules/underscore/",\
+      ["npm:1.13.8", {\
+        "packageLocation": "../root/.yarn/berry/cache/underscore-npm-1.13.8-25374eb9a8-10c0.zip/node_modules/underscore/",\
         "packageDependencies": [\
-          ["underscore", "npm:1.6.0"]\
+          ["underscore", "npm:1.13.8"]\
         ],\
         "linkType": "HARD"\
       }]\
