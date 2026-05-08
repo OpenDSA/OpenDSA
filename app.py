@@ -1,6 +1,6 @@
 import subprocess
-from flask import Flask, jsonify, request, redirect
-from flask_autoindex import AutoIndex
+from flask import Flask, jsonify, request, redirect, render_template_string, send_from_directory, abort
+from werkzeug.utils import safe_join
 import os
 import logging
 from tools.compress_output import compress_lines
@@ -10,7 +10,74 @@ app = Flask(__name__)
 
 ############################## Direct File Index ###############################
 
-AutoIndex(app, browse_root=os.path.curdir)
+INDEX_TEMPLATE = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index of /{{ req_path }}</title>
+    <style>
+        body { font-family: monospace; padding: 20px; line-height: 1.5; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 2px 0; }
+        .dir { font-weight: bold; color: #0066cc; text-decoration: none; }
+        .file { color: #333; text-decoration: none; }
+        .dir:hover, .file:hover { text-decoration: underline; }
+        hr { border: 0; border-top: 1px solid #ccc; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h2>Index of /{{ req_path }}</h2>
+    <hr>
+    <ul>
+        {% if req_path %}
+            <li><a href=".." class="dir">.. / (Parent Directory)</a></li>
+        {% endif %}
+        {% for file in files %}
+            <li>
+                <a href="/{{ file.rel_path }}" class="{{ 'dir' if file.is_dir else 'file' }}">
+                    {{ file.name }}{{ '/' if file.is_dir else '' }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <hr>
+</body>
+</html>
+"""
+
+@app.route('/', defaults={'req_path': ''})
+@app.route('/<path:req_path>')
+def dir_listing(req_path):
+    base_dir = os.path.abspath(os.path.curdir)
+    abs_path = safe_join(base_dir, req_path)
+
+    if not abs_path or not os.path.exists(abs_path):
+        return abort(404)
+
+    if os.path.isdir(abs_path):
+        if req_path and not req_path.endswith('/'):
+            return redirect(f"/{req_path}/", code=301)
+
+        files = []
+        try:
+            with os.scandir(abs_path) as it:
+                for entry in it:
+                    if entry.name.startswith('.'):
+                        continue
+
+                    files.append({
+                        'name': entry.name,
+                        'is_dir': entry.is_dir(),
+                        'rel_path': os.path.normpath(os.path.join(req_path, entry.name)).replace('\\', '/')
+                    })
+        except PermissionError:
+            return abort(403)
+
+        files.sort(key=lambda x: (not x['is_dir'], x['name'].lower()))
+
+        return render_template_string(INDEX_TEMPLATE, req_path=req_path, files=files)
+
+    return send_from_directory(base_dir, req_path)
 
 @app.route('/Books/<book>/')
 def redirect_to_rendered_index(book):
