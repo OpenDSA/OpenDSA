@@ -165,13 +165,19 @@ class codeinclude(Directive):
         #TEMPORARY FIX: ARIA lables were nested and the DevTools were raising accessibility issues.
         # This fix moves the ARIA atributes from <li> to <a> which fixes the nexting issue. 
         html_strs[-1] += '</div><script>$(function() {' \
+          '$( "#%s > ul > li > a" ).each(function() {' \
+            'var href = $(this).attr("href");' \
+            'if (href && href.indexOf("#") !== -1) {' \
+              '$(this).attr("href", "#" + href.split("#").pop());' \
+            '}' \
+          '});' \
           '$( "#%s" ).tabs();' \
           '$( "#%s > ul > li" ).each(function() {' \
             'var $li = $(this), $a = $li.children("a");' \
             '$a.attr({"role": "tab", "tabindex": $li.attr("tabindex"), "aria-controls": $li.attr("aria-controls"), "aria-selected": $li.attr("aria-selected")});' \
             '$li.attr("role", "presentation").removeAttr("tabindex aria-controls aria-selected aria-labelledby aria-expanded");' \
           '});' \
-        '});</script>' % (tab_id, tab_id)
+        '});</script>' % (tab_id, tab_id, tab_id)
 
     # If only one code block exists, print the code normally
     if len(code_nodes) == 1:
