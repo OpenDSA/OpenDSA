@@ -2,6 +2,20 @@ import java.util.*;
 import java.math.*;
 
 public class Permute {
+  // Swap for int arrays
+  public static void swap(int[] A, int i, int j) {
+    int temp = A[i];
+    A[i] = A[j];
+    A[j] = temp;
+  }
+
+  // Swap for arrays of objects
+  public static void swap(Object[] A, int i, int j) {
+    Object temp = A[i];
+    A[i] = A[j];
+    A[j] = temp;
+  }
+
   /** Initialize the random variable */
   static private Random value = new Random(); // Hold the Random class object
 
@@ -20,13 +34,13 @@ public class Permute {
 // Randomly permute the values in array A
 public static void permute(Object[] A) {
   for (int i = A.length; i > 0; i--) // for each i
-    Swap.swap(A, i-1, random(i));         //   swap A[i-1] with a random
+    swap(A, i-1, random(i));         //   swap A[i-1] with a random
 }                                    //   position in the range 0 to i-1.
 /* *** ODSAendTag: Permute *** */
 
 // Randomly permute the values in array A
 public static void permute(int[] A) {
   for (int i = A.length; i > 0; i--) // for each i
-    Swap.swap(A, i-1, random(i));         //   swap A[i-1] with a random
+    swap(A, i-1, random(i));         //   swap A[i-1] with a random
 }                                    //   position in the range 0 to i-1.
 }

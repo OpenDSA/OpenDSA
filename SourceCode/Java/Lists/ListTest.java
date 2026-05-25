@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.LinkedList;
-import java.util.NoSuchElementException;
 
 /**
  * This program checks if all the methods in AList, LList and DList classes work
@@ -202,21 +201,18 @@ static boolean find(List L, Object k) {
          + "\nValue expected: 0");
     }
 
-    Object item;
     // Test remove with empty list
-    try {
-      item = l.remove();
-      record.printError("An unexpected result in empty " + l.getClass() + ". \nremove did not throw expected exception but returned " + item);
-    } catch (NoSuchElementException ex) {
-      // Do nothing since expect this exception
+    Object removed = l.remove();
+    if (removed != null) {
+      record.printError("An unexpected value in empty " + l.getClass() + ". \nremove from list: "
+        + removed.toString() + "\nValue expected: null");
     }
 
-    // check getting value on empty list
-    try {
-      item = l.getValue();
-      record.printError("An unexpected result in empty " + l.getClass() + ". \ngetValue did not throw expected exception but returned " + item);
-    } catch (NoSuchElementException ex) {
-      // Do nothing since expect this exception
+    // Test getting value from empty list
+    removed = l.getValue();
+    if (removed != null) {
+      record.printError("An unexpected value in empty " + l.getClass() + ". \ngetValue from empty list: "
+        + removed.toString() + "\nValue expected: null");
     }
 
     // Test move to bad positions
@@ -276,23 +272,6 @@ static boolean find(List L, Object k) {
 
     // Test moveToEnd and remove
     l.moveToEnd();
-
-    Object item;
-    // Test remove at end of list
-    try {
-      item = l.remove();
-      record.printError("An unexpected result at end of " + l.getClass() + ". \nremove did not throw expected exception");
-    } catch (NoSuchElementException ex) {
-      // Do nothing since expect this exception
-    }
- 
-    // Test getValue at end of list
-    try {
-      item = l.getValue();
-      record.printError("An unexpected result result at end of " + l.getClass() + ". \ngetValue did not throw expected exception");
-    } catch (NoSuchElementException ex) {
-      // Do nothing since expect this exception
-    }
 
     // Curr is out of bound
     l.prev();

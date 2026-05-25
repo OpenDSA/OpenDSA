@@ -140,7 +140,7 @@ public class StackTest {
    */
   public static void main(String args[]) throws IOException {
     // Create a useFile to record errors if necessary
-    record = new ErrorRec(useFile, "StackTest");
+    record = new ErrorRec("StackTest", useFile);
 
     // Test Integer
     AStack as = new AStack();

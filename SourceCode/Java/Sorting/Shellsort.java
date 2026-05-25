@@ -20,6 +20,6 @@ static void shellsort(int[] A) {
 static void inssort2(int[] A, int start, int incr) {
   for (int i=start+incr; i<A.length; i+=incr)
     for (int j=i; (j>=incr) && (A[j] < A[j-incr]); j-=incr)
-      Swap.swap(A, j, j-incr);
+      swap(A, j, j-incr);
 }
 /* *** ODSAendTag: Shellsort *** */

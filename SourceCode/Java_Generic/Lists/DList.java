@@ -81,9 +81,9 @@ class LList<E> implements List<E> {
   
   // Move down list to "pos" position
   public boolean moveToPos(int pos) {
-    if ((pos < 0) || (pos > listSize)) { return false };
+    if ((pos < 0) || (pos > listSize)) { return false; };
     curr = head.next();
-    for(int i=0; i<pos; i++) { curr = curr.next() };
+    for(int i=0; i<pos; i++) { curr = curr.next(); };
     return true;
   }
 
@@ -92,7 +92,7 @@ class LList<E> implements List<E> {
 
   // Return current element value
   public E getValue() {
-    if(curr == tail) { return null };
+    if(curr == tail) { return null; };
     return curr.element();
   }
   

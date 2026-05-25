@@ -56,7 +56,7 @@ static void simplebinsort2(int[] A) {
   /* *** ODSATag: simplebinsort2 *** */
   for (i=0; i<A.length; i++)
     while (A[i] != i) // Swap element A[i] with A[A[i]]
-      Swap.swap(A, i, A[i]);
+      swap(A, i, A[i]);
   /* *** ODSAendTag: simplebinsort2 *** */
 }
 

@@ -11,7 +11,7 @@ static Boolean sorttest(int[] B) {
 }
 
 /* *** ODSATag: Heapsort *** */
-static void heapsort(Comparable[] A) {
+static void heapsort(int[] A) {
   // The heap constructor invokes the buildheap method
   MaxHeap H = new MaxHeap(A, A.length, A.length);
   for (int i=0; i<A.length; i++) {  // Now sort
@@ -19,3 +19,11 @@ static void heapsort(Comparable[] A) {
   }
 }
 /* *** ODSAendTag: Heapsort *** */
+
+static void heapsort(Comparable[] A) {
+  // The heap constructor invokes the buildheap method
+  MaxHeap H = new MaxHeap(A, A.length, A.length);
+  for (int i=0; i<A.length; i++) {  // Now sort
+    H.removeMax(); // Removemax places max at end of heap
+  }
+}
