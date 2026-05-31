@@ -24,7 +24,7 @@ What's A CLI?
 
 A Command Line Interface or CLI is a simple text only interface. A user provides
 a command with or without some additional information and then the command is
-exectued.
+executed.
 
 Basics:
 
