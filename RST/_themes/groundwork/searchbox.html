@@ -1,0 +1,21 @@
+{#
+    basic/searchbox.html
+    ~~~~~~~~~~~~~~~~~~~~
+
+    Sphinx sidebar template: quick search box.
+
+    :copyright: Copyright 2017 by team useblocks for minor changes.
+    :copyright: Copyright 2007-2017 by the Sphinx team, see AUTHORS.
+#}
+{%- if pagename != "search" and builder != "singlehtml" %}
+<div id="searchbox" style="display: none" role="search">
+  <!--<h3>{{ _('Search') }}</h3>-->
+    <form class="search" action="{{ pathto('search') }}" method="get">
+      <div id="search_input"><input type="text" name="q" placeholder="{{ _('Search')}}"/></div>
+      <!--<div id="search_go"><input type="submit" value="{{ _('Go') }}" /></div>-->
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+{%- endif %}

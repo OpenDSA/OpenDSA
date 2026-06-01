@@ -1,0 +1,21 @@
+{% if theme_contribute %}
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <div class="contribute">
+        <h3>Contribute</h3>
+        <a class="github-button" href="https://github.com/{{ theme_github_fork }}/fork"
+           data-icon="octicon-repo-forked"
+           data-style="mega"
+           aria-label="Fork {{ theme_github_fork }} on GitHub">Fork</a>
+        <a class="github-button" href="https://github.com/{{ theme_github_fork }}"
+           data-icon="octicon-star"
+           data-style="mega"
+           data-count-href="/{{ theme_github_fork }}/stargazers"
+           data-count-api="/repos/{{ theme_github_fork }}#stargazers_count"
+           data-count-aria-label="# stargazers on GitHub"
+           aria-label="Star {{ theme_github_fork }} on GitHub">Star</a>
+        <br>
+        <a class="github-button" href="https://github.com/{{ theme_github_user }}"
+           data-style="mega"
+           aria-label="Follow @{{ theme_github_user }} on GitHub">Follow @{{ theme_github_user }}</a>
+    </div>
+{% endif %}
