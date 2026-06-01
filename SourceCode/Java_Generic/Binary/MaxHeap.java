@@ -2,14 +2,18 @@
 // Max-heap implementation
 // use `java -ea` to enable assertions that check valid heap positions
 /* *** ODSATag: Maxheap *** */
-class MaxHeap {
-  private int[] heap;   // Pointer to the heap array
-  private int maxSize;  // Maximum size of the heap
-  private int n;        // Number of things now in heap
+class MaxHeap<T extends Comparable<T>> {
+  private T[] heap; // Pointer to the heap array
+  private int maxSize; // Maximum size of the heap
+  private int n; // Number of things now in heap
 
   // Constructor supporting preloading of heap contents
-  MaxHeap(int[] h, int num, int max)
-    { heap = h; n = num; maxSize = max; buildHeap(); }
+  MaxHeap(T[] h, int inSize, int max) {
+    heap = h;
+    n = inSize;
+    maxSize = max;
+    buildHeap();
+  }
 
   // Return current size of the heap
   public int heapSize() { return n; }
@@ -19,23 +23,19 @@ class MaxHeap {
   { return (n / 2 <= pos ) && (pos < n); }
 
   // Return position for left child of pos
-  int leftchild(int pos) {
-    if (pos >= n / 2) return -1;
-    return 2 * pos + 1;
-  }
+  public int leftChild(int pos) 
+    { return 2 * pos + 1; }
 
   // Return position for right child of pos
-  int rightchild(int pos) {
-    if (pos >= (n - 1) / 2) return -1;
-    return 2 * pos + 2;
-  }
+  public int rightChild(int pos) 
+  { return 2 * pos + 2; }
 
   // Return position for parent
-  public static int parent(int pos) 
+  public int parent(int pos) 
   { return (pos - 1) / 2; }
 
   // Insert val into heap
-  public void insert(int key) {
+  public void insert(T key) {
     assert n < maxSize : "Heap is full; cannot insert";
     heap[n] = key;
     n++;
@@ -53,11 +53,11 @@ class MaxHeap {
   private void siftDown(int pos) {
     assert (0 <= pos && pos < n) : "Invalid heap position";
     while (!isLeaf(pos)) {
-      int child = leftchild(pos);
-      if ((child + 1 < n) && (heap[child + 1] > heap[child])) {
-        child = child + 1; // child is now index with the greater value
+      int child = leftChild(pos);
+      if ((child + 1 < n) && (heap[child+1].compareTo(heap[child]) > 0)) {
+        child++; // child is now index of child with greater value
       }
-      if (heap[child] <= heap[pos]) {
+      if (heap[child].compareTo(heap[pos]) <= 0) {
         return; // stop early
       }
       swap(pos, child);
@@ -70,7 +70,7 @@ class MaxHeap {
     assert (0 <= pos && pos < n) : "Invalid heap position";
     while (pos > 0) {
       int parent = parent(pos);
-      if (heap[parent] > heap[pos]) {
+      if (heap[parent].compareTo(heap[pos]) > 0) {
         return; // stop early
       }
       swap(pos, parent);
@@ -79,16 +79,15 @@ class MaxHeap {
   }
 
   // Remove and return maximum value
-  public int removeMax() {
+  public T removeMax() {
     assert n > 0 : "Heap is empty; cannot remove";
-    n--;
-    swap(0, n);  // Swap maximum with last value
+    swap(0, --n);  // Swap maximum with last value
     siftDown(0); // Put new heap root val in correct place
     return heap[n];
   }
 
   // Remove and return element at specified position
-  public int remove(int pos) {
+  public T remove(int pos) {
     assert (0 <= pos && pos < n) : "Invalid heap position";
     n--;
     swap(pos, n); // Swap with last value
@@ -97,7 +96,7 @@ class MaxHeap {
   }
 
   // Modify the value at the given position
-  public void modify(int pos, int newVal) {
+  public void modify(int pos, T newVal) {
     assert (0 <= pos && pos < n) : "Invalid heap position";
     heap[pos] = newVal;
     update(pos);
@@ -111,7 +110,7 @@ class MaxHeap {
 
   // swaps the elements at two positions
   private void swap(int pos1, int pos2) {
-    int temp = heap[pos1];
+    T temp = heap[pos1];
     heap[pos1] = heap[pos2];
     heap[pos2] = temp;
   }

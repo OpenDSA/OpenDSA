@@ -331,7 +331,7 @@
       "BTRecurTutor/BinaryTreeGuidedInfFlw": {}, 
       "BTRecurTutor/MultipleBinaryTrees": {}, 
       "BTRecurTutor/BSTCheck": {}, 
-      "Binary/CompleteTree": {}, 
+      "Binary/CompleteTree": {},
       "Binary/Heaps": {
         "heapinsertPRO": {
           "exer_options": {

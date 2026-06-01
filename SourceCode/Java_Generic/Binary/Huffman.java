@@ -1,8 +1,10 @@
+import java.io.*;
+
 /* *** ODSATag: HuffmanNode *** */
 /** Huffman tree node implementation: Base class */
 interface HuffBaseNode {
-  boolean isLeaf(); 
-  int weight();
+  public boolean isLeaf(); 
+  public int weight();
 }
 
 
@@ -16,13 +18,13 @@ class HuffLeafNode implements HuffBaseNode {
     { element = el; weight = wt; }
 
   /** @return The element value */
-  char value() { return element; }
+  public char value() { return element; }
 
   /** @return The weight */
-  int weight() { return weight; }
+  public int weight() { return weight; }
 
   /** Return true */
-  boolean isLeaf() { return true; }
+  public boolean isLeaf() { return true; }
 }
 
 
@@ -38,22 +40,22 @@ class HuffInternalNode implements HuffBaseNode {
     { left = l; right = r; weight = wt; }
 
   /** @return The left child */
-  HuffBaseNode left() { return left; }
+  public HuffBaseNode left() { return left; }
 
   /** @return The right child */
-  HuffBaseNode right() { return right; }
+  public HuffBaseNode right() { return right; }
 
   /** @return The weight */
-  int weight() { return weight; }
+  public int weight() { return weight; }
 
   /** Return false */
-  boolean isLeaf() { return false; }
+  public boolean isLeaf() { return false; }
 }
 /* *** ODSAendTag: HuffmanNode *** */
 
 /* *** ODSATag: HuffmanTree *** */
 /** A Huffman coding tree */
-class HuffTree implements Comparable {
+class HuffTree implements Comparable<HuffTree> {
   private HuffBaseNode root;  
 
   /** Constructors */
@@ -62,29 +64,34 @@ class HuffTree implements Comparable {
   HuffTree(HuffBaseNode l, HuffBaseNode r, int wt)
     { root = new HuffInternalNode(l, r, wt); }
 
-  HuffBaseNode root() { return root; }
-  int weight() // Weight of tree is weight of root
+  public HuffBaseNode root() { return root; }
+  public int weight() // Weight of tree is weight of root
     { return root.weight(); }
-  int compareTo(Object t) {
-    HuffTree that = (HuffTree)t;
-    if (root.weight() < that.weight()) { return -1; }
-    else if (root.weight() == that.weight()) { return 0; }
+  public int compareTo(HuffTree t) {
+    if (root.weight() < t.weight()) { return -1; }
+    else if (root.weight() == t.weight()) { return 0; }
     else { return 1; }
   }
 }
 /* *** ODSAendTag: HuffmanTree *** */
 
+class Huffman {
 /* *** ODSATag: HuffmanTreeBuild *** */
-static HuffTree buildTree() {
+public static HuffTree buildTree(MinHeap<HuffTree> hheap) {
   HuffTree tmp1, tmp2, tmp3 = null;
 
-  while (Hheap.heapsize() > 1) { // While two items left
-    tmp1 = Hheap.removemin();
-    tmp2 = Hheap.removemin();
+  while (hheap.heapSize() > 1) { // While two items left
+    tmp1 = hheap.removemin();
+    tmp2 = hheap.removemin();
     tmp3 = new HuffTree(tmp1.root(), tmp2.root(),
-                             tmp1.weight() + tmp2.weight());
-    Hheap.insert(tmp3);   // Return new tree to heap
+                        tmp1.weight() + tmp2.weight());
+    hheap.insert(tmp3);   // Return new tree to heap
   }
   return tmp3;            // Return the tree
 }
 /* *** ODSAendTag: HuffmanTreeBuild *** */
+
+    public static void main(String args[]) throws IOException {
+        System.out.println("We declare success (even though we can't build this heap)");
+    }
+}

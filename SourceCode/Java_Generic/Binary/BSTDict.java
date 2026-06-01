@@ -1,49 +1,49 @@
 /* *** ODSATag: BSTDicta *** */
 // Dictionary implementation using BST
 // This uses KVPair to manage the key/value pairs
-public class BSTDict implements Dictionary {
-  private BST theBST; // The BST that stores the records
+public class BSTDict<K extends Comparable<K>, E> implements Dictionary<K, E> {
+  private BST<KVPair<K, E>> theBST; // The BST that stores the records
 
   // constructor
-  BSTDict() { theBST = new BST(); }
+  BSTDict() { theBST = new BST<KVPair<K, E>>(); }
 
   // Reinitialize dictionary
-  public void clear() { theBST = new BST(); }
+  public void clear() { theBST = new BST<KVPair<K, E>>(); }
 
   // Insert a record
   // k: the key for the record being inserted.
   // e: the record being inserted.
-  public void insert(Comparable k, Object e) {
-    theBST.insert(new KVPair(k, e));
+  public void insert(K k, E e) {
+      theBST.insert(new KVPair<K, E>(k, e));
   }
 
   // Remove and return a record.
   // k: the key of the record to be removed.
   // Return a maching record. If multiple records match "k", remove
   // an arbitrary one. Return null if no record with key "k" exists.
-  public Object remove(Comparable k) {
-    Object temp = theBST.remove(k);
-    if (temp == null) { return temp; }
-    else { return ((KVPair)temp).value(); }
+  public E remove(K k) {
+    KVPair<K, E> temp = theBST.remove(new KVPair<K, E>(k, null));
+    if (temp == null) { return null; }
+    else { return temp.value(); }
   }
 /* *** ODSAendTag: BSTDicta *** */
 
 /* *** ODSATag: BSTDictb *** */
   // Remove and return an arbitrary record from dictionary.
   // Return the record removed, or null if none exists.
-  public Object removeAny() {
+  public E removeAny() {
     if (theBST.size() == 0) { return null; }
-    Object temp = theBST.remove(((KVPair)(theBST.root().value())).key());
-    return ((KVPair)temp).value();
+    KVPair<K, E> temp = theBST.remove(theBST.root().value());
+    return temp.value();
   }
 
   // Return a record matching "k" (null if none exists).
   // If multiple records match, return an arbitrary one.
   // k: the key of the record to find
-  public Object find(Comparable k) {
-    Object temp = theBST.find(k);
-    if (temp == null) { return temp; }
-    else { return ((KVPair)temp).value(); }
+  public E find(K k) {
+    KVPair<K, E> temp = theBST.find(new KVPair<K, E>(k, null));
+    if (temp == null) { return null; }
+    else { return temp.value(); }
   }
 
   // Return the number of records in the dictionary.

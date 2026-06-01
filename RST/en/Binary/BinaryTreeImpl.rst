@@ -137,8 +137,14 @@ they do not distinguish their children's actual subclass.
 Whenever a node is examined, its version of ``isLeaf`` indicates
 the node's subclass.
 
-.. codeinclude:: Binary/ExpressionTree
-   :tag: ExpressionTree
+.. codeinclude:: Binary/VarBinNode
+
+.. codeinclude:: Binary/VarLeafNode
+
+.. codeinclude:: Binary/VarIntlNode
+
+.. codeinclude:: Binary/ExpTree
+   :tag: ExpressionTraverse
 
 .. inlineav:: expressionTraversalCON ss
    :long_name: Expression Tree Traversal Slideshow

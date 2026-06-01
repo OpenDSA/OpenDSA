@@ -137,5 +137,3 @@ Binary Tree Increment By One Exercise
 
 .. extrtoolembed:: 'Binary Tree Increment By One Exercise'
    :workout_id: 80
-
-

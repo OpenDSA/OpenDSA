@@ -3,13 +3,13 @@
     "en": {
       "sc1": "When you write a recursive method that traverses a binary tree, you should avoid the following common mistakes.",
       "sc2": "Do not forget to check if the root is null",
-      "sc3": "Making a recursive call does not itself do anything with the return value.",
-      "sc4": "This line computes the correct value. But it does not go anywhere, as it is missing the return."
+      "sc3": "Making a recursive call does not itself do anything with the return value. Fortunately, Java might catch that no value is returned by the method.",
+      "sc4": "This line computes the correct value. But it does not go anywhere, as it is missing the return statement. Java won't even let this line compile since it is not a complete statement."
     }
   },
   "code": {
     "java": [{
-      "url": "../../../SourceCode/Java/Binary/RecTutor.java",
+      "url": "../../../SourceCode/Java/Binary/BadCount.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: bad_count *** */",
       "endBefore": "/* *** ODSAendTag: bad_count *** */",

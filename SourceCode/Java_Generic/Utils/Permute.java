@@ -1,3 +1,14 @@
+import java.util.*;
+import java.math.*;
+
+public class Permute {
+  // Swap for arrays of generic objects
+  static <T> void swap(T[] A, int i, int j) {
+    T temp = A[i];
+    A[i] = A[j];
+    A[j] = temp;
+  }
+
   /** Initialize the random variable */
   static private Random value = new Random(); // Hold the Random class object
 
@@ -14,9 +25,10 @@
 
 /* *** ODSATag: Permute *** */
 // Randomly permute the values in array A
-static <T> void permute(T[] A) {
+public static <T> void permute(T[] A) {
   for (int i = A.length; i > 0; i--) { // for each i
     swap(A, i-1, random(i));         //   swap A[i-1] with a random
   }
 }                                    //   position in the range 0 to i-1.
 /* *** ODSAendTag: Permute *** */
+}
