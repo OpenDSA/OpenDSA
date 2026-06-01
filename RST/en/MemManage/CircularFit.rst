@@ -31,4 +31,10 @@ small blocks that were passed over by previous requests.
    :url_params: fitAlgorithm=2
    :keyword: Memory Management; Sequential Fit Memory Allocation
 
+Now try it for yourself with the following exercise.
+
+.. avembed:: AV/MemManage/circularFirstFitPRO.html pe
+   :long_name: Circular First Fit Proficiency Exercise
+   :keyword: Memory Management; Sequential Fit Memory Allocation
+
 

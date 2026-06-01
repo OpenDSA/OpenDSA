@@ -1,0 +1,73 @@
+<!--
+Title: First Fit Memory Manager Proficiency Exercise
+Author: Samantha Fisher; Cliff Shaffer
+Institution: Virginia Tech
+Features: Tracing Exercise
+Keyword: Best Fit Memory Manager
+Natural Language: en
+Programming Language: N/A
+-->
+
+<!--
+Description: Proficiency exercise for first fit memory manager. User must show the complete sequence of steps for allocating memory blocks.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Best Fit Proficiency Exercise</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/normalize.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV.css" type="text/css" />
+  <link rel="stylesheet" href="bestFitPRO.css" type="text/css" />
+</head>
+
+<body>
+<div id="container">
+  <table class="proHeaderTable">
+    <tr>
+      <td class="headerLeft">
+        <input type="button" id="help" name="help" value="Help" />
+      </td>
+      <td class="headerCenter">
+        <p class="jsavexercisecontrols"></p>
+      </td>
+      <td class="headerRight">
+        <input type="button" id="about" name="about" value="About" />
+        <a id="settings" class="jsavsettings" href="#">Settings</a>
+      </td>
+    </tr>
+  </table>
+  <form class="avcontainer">
+    <div class="jsavcanvas">
+      <p class="instructLabel">Instructions:</p>
+      <p class="instructions">
+        For each block size listed in the stack, use the best fit
+        algorithm to find a free block in the memory pool to handle
+        the request.  Select a free block by clicking on some position
+        in the array that corresponds to the free block in the memory
+        pool.  Once you have selected the array element, the freeblock
+        list will be updated.
+      </p>
+      <p align="center">
+        <span class="jsavscore"></span>
+      </p>
+      <p class="jsavoutput jsavline"></p>
+    </div>
+  </form>
+</div> <!-- container -->
+
+<script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery.migrate.min.js"></script>
+<script src="../../lib/jquery.ui.min.js"></script>
+<script src="../../lib/timeme.js"></script>
+<script src="../../lib/jquery.transit.js"></script>
+<script src="../../lib/raphael.js"></script>
+<script src="../../lib/JSAV.js"></script>
+<script src="../../lib/odsaUtils.js"></script>
+<script src="../../lib/odsaAV.js"></script>
+<script src="../../DataStructures/stack.js"></script>
+<script src="bestFitPRO.js"></script>
+</body>
+</html>
