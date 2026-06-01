@@ -32,7 +32,7 @@ Print Debugging
 ~~~~~~~~~~~~~~~
 
 I frequently use this method to help me track down bugs in my code. The main
-idea is simple. Print out as much information as poissible in every stage of
+idea is simple. Print out as much information as possible in every stage of
 your program. By doing so we can see at every stage of the program how our
 data changes and if it changes in the way that we planned. It should be noted
 that this method comes with a few disadvantages as well.
