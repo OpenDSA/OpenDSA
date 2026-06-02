@@ -59,7 +59,8 @@
 
     // initialize temp variable
     initialTempArray = [];
-    initialTempArray[0] = Math.floor(JSAV.utils.rand.random() * 100) + 10;
+    //initialTempArray[0] = Math.floor(JSAV.utils.rand.random() * 100) + 10;
+    initialTempArray[0] = " ";
     tempArray = av.ds.array(initialTempArray, {indexed: false});
     clickHandler.addArray(tempArray);
 
