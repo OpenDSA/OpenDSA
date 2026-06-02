@@ -186,7 +186,7 @@ build/Huffman/success: Binary/Huffman.java
 	$(JAVA) $(RFLAGS) Huffman
 
 
-Sorting: Inssort Bubblesort Selsort
+Sorting: Inssort Bubblesort Selsort Binsort Shellsort Mergesort Quicksort Heapsort Binsort Radixsort
 
 Sorttime: InssortTime BubblesortTime SelsortTime
 

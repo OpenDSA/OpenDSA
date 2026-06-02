@@ -82,8 +82,10 @@ class MaxHeap {
   public int removeMax() {
     assert n > 0 : "Heap is empty; cannot remove";
     n--;
-    swap(0, n);  // Swap maximum with last value
-    siftDown(0); // Put new heap root val in correct place
+    if (n != 0) {
+      swap(0, n);  // Swap maximum with last value
+      siftDown(0); // Put new heap root val in correct place
+    }
     return heap[n];
   }
 

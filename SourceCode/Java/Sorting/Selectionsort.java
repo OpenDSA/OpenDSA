@@ -5,7 +5,7 @@ static void sorttime(int[] B) {
     int totaltime, runs;
     double avgtime;
 
-    println("Doing timings on the basis of " + numtests + " runs");
+    System.out.println("Doing timings on the basis of " + numtests + " runs");
 
     totaltime = 0;
     for (runs=0; runs<numtests; runs++) {
@@ -18,7 +18,7 @@ static void sorttime(int[] B) {
         totaltime += (time2-time1);
     }
     avgtime = ((double)totaltime)/numtests;
-    println("Standard Selection Sort: Size " + testsize + ", Time: " + avgtime);
+    System.out.println("Standard Selection Sort: Size " + testsize + ", Time: " + avgtime);
 
     totaltime = 0;
     for (runs=0; runs<numtests; runs++) {
@@ -30,7 +30,7 @@ static void sorttime(int[] B) {
         totaltime += (time2-time1);
     }
     avgtime = ((double)totaltime)/numtests;
-    println("Standard Selection Sort: Size " + testsize + ", Time: " + avgtime);
+    System.out.println("Standard Selection Sort: Size " + testsize + ", Time: " + avgtime);
 }
 
 // Same as selsort, but check if the swap is necessary

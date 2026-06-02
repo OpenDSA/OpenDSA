@@ -1,12 +1,11 @@
 static void sorttime(int[] B) {
     int i;
-    Integer[] A = new Integer[B.length];
     int[] Aint = new int[B.length];
     int totaltime, runs;
     double avgtime;
 
-    println("Doing timings on the basis of " + numtests + " runs");
-    println("B.length is " + B.length);
+    System.out.println("Doing timings on the basis of " + numtests + " runs");
+    System.out.println("B.length is " + B.length);
 
     swaps = 0;
     compares = 0;
@@ -15,78 +14,78 @@ static void sorttime(int[] B) {
         for (i=0; i<B.length; i++) {
             Aint[i] = B[i];
         }
-        println("A[0] is " + Aint[0] + ", A[9] is " + Aint[9]);
+        System.out.println("A[0] is " + Aint[0] + ", A[9] is " + Aint[9]);
         time1 = System.nanoTime();
         inssortinstrument(Aint);
         time2 = System.nanoTime();
         checkorder(Aint);
         totaltime += (time2-time1);
     }
-    println("Total time is: " + totaltime + ", numtests is: " + numtests);
+    System.out.println("Total time is: " + totaltime + ", numtests is: " + numtests);
     avgtime = (((double)totaltime)/numtests) / 1000000.0;
-    println("Instrumented Standard Insertion Sort: Size " + testsize + ", Time: " + avgtime);
-    println("Compares: " + compares/numtests + ", swaps: " + swaps/numtests);
+    System.out.println("Instrumented Standard Insertion Sort: Size " + testsize + ", Time: " + avgtime);
+    System.out.println("Compares: " + compares/numtests + ", swaps: " + swaps/numtests);
     
     totaltime = 0;
     for (runs=0; runs<numtests; runs++) {
         for (i=0; i<B.length; i++) {
             Aint[i] = B[i];
         }
-        println("A[0] is " + Aint[0] + ", A[9] is " + Aint[9]);
+        System.out.println("A[0] is " + Aint[0] + ", A[9] is " + Aint[9]);
         time1 = System.nanoTime();
         inssort(Aint);
         time2 = System.nanoTime();
         checkorder(Aint);
         totaltime += (time2-time1);
     }
-    println("Total time is: " + totaltime + ", numtests is: " + numtests);
+    System.out.println("Total time is: " + totaltime + ", numtests is: " + numtests);
     avgtime = (((double)totaltime)/numtests) / 1000000.0;
-    println("Standard Insertion Sort: Size " + testsize + ", Time: " + avgtime);
+    System.out.println("Standard Insertion Sort: Size " + testsize + ", Time: " + avgtime);
 
     totaltime = 0;
     for (runs=0; runs<numtests; runs++) {
         for (i=0; i<B.length; i++)
             Aint[i] = B[i];
-        println("A[0] is " + Aint[0] + ", A[9] is " + Aint[9]);
+        System.out.println("A[0] is " + Aint[0] + ", A[9] is " + Aint[9]);
         time1 = System.nanoTime();
         inssort2(Aint);
         time2 = System.nanoTime();
         checkorder(Aint);
         totaltime += (time2-time1);
     }
-    println("Total time is: " + totaltime + ", numtests is: " + numtests);
+    System.out.println("Total time is: " + totaltime + ", numtests is: " + numtests);
     avgtime = (((double)totaltime)/numtests) / 1000000.0;
-    println("Standard Insertion Sort/Inline swaps: Size " + testsize + ", Time: " + avgtime);
+    System.out.println("Standard Insertion Sort/Inline swaps: Size " + testsize + ", Time: " + avgtime);
 
     totaltime = 0;
     for (runs=0; runs<numtests; runs++) {
         for(i=0; i<B.length; i++)
             Aint[i] = B[i];
-        println("A[0] is " + Aint[0] + ", A[9] is " + Aint[9]);
+        System.out.println("A[0] is " + Aint[0] + ", A[9] is " + Aint[9]);
         time1 = System.nanoTime();
         inssortshift(Aint);
         time2 = System.nanoTime();
         checkorder(Aint);
         totaltime += (time2-time1);
     }
-    println("Total time is: " + totaltime + ", numtests is: " + numtests);
+    System.out.println("Total time is: " + totaltime + ", numtests is: " + numtests);
     avgtime = (((double)totaltime)/numtests) / 1000000.0;
-    println("shuffling Insertion Sort: Size " + testsize + ", Time: " + avgtime);
+    System.out.println("shuffling Insertion Sort: Size " + testsize + ", Time: " + avgtime);
 
     totaltime = 0;
     for (runs=0; runs<numtests; runs++) {
         for(i=0; i<B.length; i++)
             Aint[i] = B[i];
-        println("A[0] is " + Aint[0] + ", A[9] is " + Aint[9]);
+        System.out.println("A[0] is " + Aint[0] + ", A[9] is " + Aint[9]);
         time1 = System.nanoTime();
         inssortshift2(Aint);
         time2 = System.nanoTime();
         checkorder(Aint);
         totaltime += (time2-time1);
     }
-    println("Total time is: " + totaltime + ", numtests is: " + numtests);
+    System.out.println("Total time is: " + totaltime + ", numtests is: " + numtests);
     avgtime = (((double)totaltime)/numtests) / 1000000.0;
-    println("shuffling Insertion Sort 2: Size " + testsize + ", Time: " + avgtime);
+    System.out.println("shuffling Insertion Sort 2: Size " + testsize + ", Time: " + avgtime);
 }
 
 
@@ -125,22 +124,16 @@ static void inssort2(int[] A) {
     }
 }
 
-@SuppressWarnings("unchecked") // Generic array allocation
 static Boolean sorttest(int[] B) {
     int i;
-    Integer[] A = new Integer[B.length];
+    int[] Aint = new int[B.length];
     for (i=0; i<B.length; i++)
-        A[i] = Integer.valueOf(B[i]);
-    inssortgen(A);
-    if (!checkorder(A)) return false;
-
-    //  KVPair[] AKV = (KVPair[])new Object[B.length];
-    //  for (i=0; i<B.length; i++)
-    //    AKV[i] = new KVPair(new Integer(B[i]), new Integer(B[i]));
-    //  inssort(A);
-    //  if (!checkorder(A)) return false;
+        Aint[i] = B[i];
+    inssort(Aint);
+    if (!checkorder(Aint)) return false;
     return true;
 }
+
 
 /* *** ODSATag: Insertionsort *** */
 static void inssort(int[] A) {
@@ -162,9 +155,3 @@ static void inssortinstrument(int[] A) {
     }
 }
 
-
-static <T extends Comparable<T>> void inssortgen(T[] A) {
-    for (int i=1; i<A.length; i++) // Insert i'th record
-        for (int j=i; (j>0) && (A[j].compareTo(A[j-1]) < 0); j--)
-            swap(A, j, j-1);
-}
