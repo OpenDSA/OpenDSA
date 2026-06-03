@@ -270,7 +270,7 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
 
     // Process About button: Pop up a message with an Alert
     function about() {
-      alert("CircularFirst-fit Memory Management Proficiency Exercise\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://opendsa.org.\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+      alert("CircularFirst-fit Memory Management Proficiency Exercise\nAuthors: Kanye McKinney, Samantha Fisher, and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://opendsa.org.\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
     }
 
     // Initialize the exercise

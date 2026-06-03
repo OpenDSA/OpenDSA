@@ -1,7 +1,8 @@
 {
   "translations" :{
     "en": {
-      ".exerciseTitle": "Optimized Insertion Sort",
+      ".avTitle": "Optimized Insertion Sort with Shifting Proficiency Exercise",
+      "av_Authors": "Kasper Hellström; Kanye McKinney; Cliff Shaffer",
       ".instructLabel": "Instructions:",
       ".instructions": "Use Insertion Sort optimized with shifting to sort the table given below in ascending order. Use the temp variable to temporarily store values during sorting. Click on an item to select it and copy its value to another position by clicking on the new position.",
       "av_array_label": "Table to be sorted",

@@ -262,12 +262,13 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
     // Process help button: Give a full help page for this activity
     // We might give them another HTML page to look at.
     function help() {
-      //window.open("shellsorthelpPRO.html", 'helpwindow');
+      // Ideally, we would add a help page, and put back the help button.
+      // window.open("shellsorthelpPRO.html", 'helpwindow');
     }
 
     // Process About button: Pop up a message with an Alert
     function about() {
-      alert("First-fit Memory Management Proficiency Exercise\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://opendsa.org.\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+      alert("First-fit Memory Management Proficiency Exercise\nAuthors: Samantha Fisher and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://opendsa.org.\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
     }
 
     // Initialize the exercise

@@ -144,7 +144,7 @@
     //window.open("insertionSortWithoutSwapHelpPRO.html", "helpwindow");
   }
   function about() {
-    alert("Insertion Sort Optimized with Shifting Proficiency Exercise\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://opendsa.org.\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+    alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
   }
 
   //var exercise = av.exercise(modelSolution, initialize, {feedback: "atend"});
