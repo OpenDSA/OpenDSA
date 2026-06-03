@@ -59,7 +59,8 @@
 
     // initialize temp variable
     initialTempArray = [];
-    initialTempArray[0] = Math.floor(JSAV.utils.rand.random() * 100) + 10;
+    //initialTempArray[0] = Math.floor(JSAV.utils.rand.random() * 100) + 10;
+    initialTempArray[0] = " ";
     tempArray = av.ds.array(initialTempArray, {indexed: false});
     clickHandler.addArray(tempArray);
 
@@ -132,7 +133,29 @@
     return [modelArray, modelTempArray];
   }
 
-  var exercise = av.exercise(modelSolution, initialize, {feedback: "atend"});
+  function fixState(modelState) {
+    for (var i = 0; i < arraySize; i++) {
+      barArray.value(i, modelState[0].value(i));
+    }
+    tempArray.value(0, modelState[1].value(0));
+  }
+
+  function help() {
+    //window.open("insertionSortWithoutSwapHelpPRO.html", "helpwindow");
+  }
+  function about() {
+    alert("Insertion Sort Optimized with Shifting Proficiency Exercise\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://opendsa.org.\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+  }
+
+  //var exercise = av.exercise(modelSolution, initialize, {feedback: "atend"});
+  var exercise = av.exercise(modelSolution, initialize, {
+    feedback: "continuous",
+    controls: $(".jsavexercisecontrols"),
+    fix: fixState
+  });
+
+  $('#help').click(help);
+  $('#about').click(about);
   exercise.reset();
 
 }(jQuery));
