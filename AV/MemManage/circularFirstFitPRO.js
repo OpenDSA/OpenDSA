@@ -20,9 +20,11 @@
         initialArray = [], // needed for model answer
         theArray,
         stack,
-        currIncrIndex = 0, //index of the current block size array
+        //currIncrIndex = 0, //index of the current block size array removed
         usedNum,
         freeNum,
+        initialUsedNum,
+        initialFreeStartArray = [],
         usedAmountLabel,
         freeAmountLabel,
         freeStartArray,
@@ -134,7 +136,7 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
           labels[i].clear();
         }
       }
-      currIncrIndex = 0;
+      //currIncrIndex = 0;
     }
 
       
@@ -180,6 +182,8 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
       
       // Log the initial state of the exercise
       OriginalMemBlock();
+      initialFreeStartArray = freeStartArray.slice();
+      initialUsedNum = usedNum;
       var initData = {};
       initData.gen_array = initialArray;
       initData.gen_incrs = incrs;
@@ -200,22 +204,23 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
 
     function insertIntoBlock(index) {
 
-      var currIncr = incrs[currIncrIndex];
-      var newUsedRect = av.g.rect(freeStartArray[index], 215, currIncr * 2, 50).css({"fill": "coral"});
+      var currIncr = incrs[ArraySize - stack.size()];
+      var consumed = freeValues[index] - theArray.value(index);
+      var currentStart = initialFreeStartArray[index] + consumed * scale;
 
-      freeStartArray[index] = freeStartArray[index] + currIncr * 2;
+      av.g.rect(currentStart, 215, currIncr * 2, 50).css({"fill": "coral"});
 
-     //move connecting line accordingly
-      linesArray[index].movePoints([[0, connectStartArray[index], 358], [1, ((freeStartArray[index] + freeFinArray[index])/2), 265]]).css({"stroke-width": 1});
-      
-      freeAmountLabel.text(freeNum - currIncr);
-      usedNum = usedNum + currIncr;
-      usedAmountLabel.text(usedNum);
+      var newStart = currentStart + currIncr * scale;
+      linesArray[index].movePoints([
+        [0, connectStartArray[index], 358],
+        [1, ((newStart + freeFinArray[index]) / 2), 265]
+      ]).css({"stroke-width": 1});
 
-      var newValue = theArray.value(index)-currIncr;
-      theArray.value(index, newValue);
+      var currentFree = theArray.value(0) + theArray.value(1) + theArray.value(2) + theArray.value(3);
+      freeAmountLabel.text(currentFree - currIncr);
+      usedAmountLabel.text(initialUsedNum + freeNum - currentFree + currIncr);
 
-      currIncrIndex += 1;
+      theArray.value(index, theArray.value(index) - currIncr);
     }
 
     function modelSolution(jsav) {
@@ -287,8 +292,7 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
       if (!theArray.isHighlight(index)) {
         
         theArray.highlight(index);
-        setTimeout(function(){theArray.unhighlight(index)}, 250);
-        //inserts "used" rectangle in memory pool (visualize using up space)
+        theArray.unhighlight(index);
         insertIntoBlock(index);
         
         stack.removeFirst();
@@ -301,7 +305,6 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
       } else {
         theArray.unhighlight(index);
       }
-      av.step();
     });
 
     // Connect the action callbacks to the HTML entities
