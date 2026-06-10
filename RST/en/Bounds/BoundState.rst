@@ -54,6 +54,7 @@ further two comparisons to get the final result.
 The algorithm is as follows:
 
 .. codeinclude:: Misc/MinMax
+   :tag: MinMax
 
 The cost of this algorithm can be modeled by the following recurrence.
 

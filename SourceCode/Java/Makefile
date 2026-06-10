@@ -3,7 +3,7 @@ JAVA= java
 CFLAGS= -Xlint
 RFLAGS= 
 
-all: Analysis Demo Misc Lists Binary Sorting Searching Randomized BufferPool Memman Indexing General Graphs
+all: Analysis Demo Misc Lists Design Binary Sorting Searching Randomized BufferPool Memman Indexing General Graphs
 
 build:
 	@mkdir build
@@ -12,10 +12,18 @@ clean:
 	-rm -rf build
 	mkdir build
 
-Analysis: build/Analysis/success
+Analysis: Increment
 
-build/Analysis/success: Analysis/Increment.java
-	@echo "TODO: ANALYSIS: DOES INCREMENT.JAVA GET USED FOR ANYTHING?"
+Increment: build/Increment/success
+
+build/Increment/success: Analysis/Increment.java
+	@echo "Increment Test"
+	-@rm -rf build/Increment
+	@mkdir build/Increment
+	cp Analysis/Increment.java build/Increment
+	cd build/Increment; \
+	javac $(CFLAGS) Increment.java; \
+	$(JAVA) $(RFLAGS) Increment
 
 Demo: UpDown
 
@@ -30,7 +38,7 @@ build/UpDown/success: Demo/UpDown.java
 	javac $(CFLAGS) UpDown.java; \
 	$(JAVA) $(RFLAGS) UpDown
 
-Misc: Largest Anal TOH Fact Fibonnaci Collatz MinMax
+Misc: Largest Anal TOH Fact Fibonnaci MinMax
 
 Largest: build/LargestTest/success
 
@@ -89,11 +97,16 @@ build/Fibonnaci/success: Misc/Fibonnaci.java
 	javac $(CFLAGS) Fibonnaci.java; \
 	$(JAVA) $(RFLAGS) Fibonnaci
 
-Collatz: Misc/Collatz.java
-	@echo "TODO: COLLATZ: NEED TO COMPLETE COLLATZ"
+MinMax: build/MinMax/success
 
-MinMax: Misc/MinMax.java
-	@echo "TODO: MINMAX: DOES MINMAX GET USED FOR ANYTHING?"
+build/MinMax/success: Misc/MinMax.java
+	@echo "MinMax Function Test"
+	-@rm -rf build/MinMax
+	@mkdir build/MinMax
+	cp Misc/MinMax.java build/MinMax
+	cd build/MinMax; \
+	javac $(CFLAGS) MinMax.java; \
+	$(JAVA) $(RFLAGS) MinMax
 
 Lists: ListTest DoubleTest FreeList StackTest QueueTest ListAlt
 
@@ -483,7 +496,7 @@ build/Bsearch/success: Searching/Bsearch.java
 Sequential: build/Sequential/success
 
 build/Sequential/success: Searching/Sequential.java
-	@echo "Binary Search Test"
+	@echo "Sequential Search Test"
 	-@rm -rf build/Sequential
 	@mkdir build/Sequential
 	cp Searching/Sequential.java build/Sequential
@@ -491,11 +504,27 @@ build/Sequential/success: Searching/Sequential.java
 	javac $(CFLAGS) Sequential.java; \
 	$(JAVA) $(RFLAGS) Sequential
 
-Interpolation: Searching/interpolationSearch.java
-	@echo "TODO: Searching: DEAL WITH INTERPOLATIONSEARCH"
+Interpolation: build/Interpolation/success
 
-SequentialNoComments: Searching/SequentialNoComments.java
-	@echo "TODO: Searching: DEAL WITH SequentialNoComments"
+build/Interpolation/success: Searching/interpolationSearch.java
+	@echo "Interpolation Search Test"
+	-@rm -rf build/Interpolation
+	@mkdir build/Interpolation
+	cp Searching/interpolationSearch.java build/Interpolation
+	cd build/Interpolation; \
+	javac $(CFLAGS) interpolationSearch.java; \
+	$(JAVA) $(RFLAGS) interpolationSearch
+
+SequentialNoComments: build/SequentialNoComments/success
+
+build/SequentialNoComments/success: Searching/SequentialNoComments.java
+	@echo "Sequential Search Test -- No commments"
+	-@rm -rf build/SequentialNoComments
+	@mkdir build/SequentialNoComments
+	cp Searching/SequentialNoComments.java build/SequentialNoComments
+	cd build/SequentialNoComments; \
+	javac $(CFLAGS) SequentialNoComments.java; \
+	$(JAVA) $(RFLAGS) SequentialNoComments
 
 Randomized: SkipList
 

@@ -1,16 +1,16 @@
 static boolean sorttest(int[] B) {
   int i;
-  Integer[] A = new Integer[B.length];
+  int[] A = new int[B.length];
   for (i=0; i<B.length; i++)
-    A[i] = new Integer(B[i]);
+    A[i] = B[i];
   radix(A, 4, 256);
   if (!checkorder(A)) return false;
   return true;
 }
 
 /* *** ODSATag: Radixsort *** */
-static void radix(Integer[] A, int k, int r) {
-  Integer[] B = new Integer[A.length];
+static void radix(int[] A, int k, int r) {
+  int[] B = new int[A.length];
   int[] count = new int[r];     // Count[i] stores number of records with digit value i
   int i, j, rtok;
 
@@ -43,41 +43,41 @@ static void radix(Integer[] A, int k, int r) {
 void checkorderint(int[] A) {
   for (int i=1; i<A.length; i++)
     if (A[i] < A[i-1]) {
-      println("Error! Value " + A[i] + " at position " + i +
+      System.out.println("Error! Value " + A[i] + " at position " + i +
               " was less than " + A[i-1] + " at position " + (i-1));
     }
 }
 
-void sorttime(Comparable[] B) {
+void sorttime(int[] B) {
   int i;
-  Integer[] A = new Integer[B.length];
+  int[] A = new int[B.length];
   int totaltime, runs;
   int numruns = 20;
 
   // Timing test for standard implementation
   totaltime = 0;
   for (runs=0; runs<numruns; runs++) {
-    for(i=0; i<B.length; i++) A[i] = (Integer)B[i];
-    time1 = millis();
+    for(i=0; i<B.length; i++) A[i] = B[i];
+    time1 = System.nanoTime();
     radix(A, 4, 256);
-    time2 = millis();
+    time2 = System.nanoTime();
     checkorder(A);
     totaltime += (time2-time1);
   }
-  println("Standard Radixsort for " + numruns + " runs: Size " +
+  System.out.println("Standard Radixsort for " + numruns + " runs: Size " +
            testsize + ", Time: " + totaltime);
 
   // Timing test for optimized implementation
   totaltime = 0;
   for (runs=0; runs<numruns; runs++) {
-    for(i=0; i<B.length; i++) A[i] = (Integer)B[i];
-    time1 = millis();
+    for(i=0; i<B.length; i++) A[i] = B[i];
+    time1 = System.nanoTime();
     radixOpt(A, 4, 256);
-    time2 = millis();
+    time2 = System.nanoTime();
     checkorder(A);
     totaltime += (time2-time1);
   }
-  println("Optimized Radixsort for " + numruns + " runs: Size " +
+  System.out.println("Optimized Radixsort for " + numruns + " runs: Size " +
            testsize + ", Time: " + totaltime);
 
   // Timing test for integer-only optimized implementation
@@ -85,42 +85,42 @@ void sorttime(Comparable[] B) {
   int[] Aint = new int[B.length];
   int[] Bint = new int[B.length];
   for (i=0; i<B.length; i++)
-    Bint[i] = (Integer)B[i];
+    Bint[i] = B[i];
   for (runs=0; runs<numruns; runs++) {
     for(i=0; i<B.length; i++) Aint[i] = Bint[i];
-    time1 = millis();
+    time1 = System.nanoTime();
     radixOptint(Aint, 4, 256);
-    time2 = millis();
+    time2 = System.nanoTime();
     checkorderint(Aint);
     totaltime += (time2-time1);
   }
-  println("Optimized primitive int-only Radixsort for " + numruns + " runs: Size " +
+  System.out.println("Optimized primitive int-only Radixsort for " + numruns + " runs: Size " +
            testsize + ", Time: " + totaltime);
 
   // Timing test for standard linked-list implementation
   totaltime = 0;
   for (runs=0; runs<numruns; runs++) {
-    for(i=0; i<B.length; i++) A[i] = (Integer)B[i];
-    time1 = millis();
+    for(i=0; i<B.length; i++) A[i] = B[i];
+    time1 = System.nanoTime();
     radixlink(A, 4, 256);
-    time2 = millis();
+    time2 = System.nanoTime();
     checkorder(A);
     totaltime += (time2-time1);
   }
-  println("Standard linked-list Radixsort for " + numruns + " runs: Size " +
+  System.out.println("Standard linked-list Radixsort for " + numruns + " runs: Size " +
            testsize + ", Time: " + totaltime);
 
   // Timing test for optimized linked-list implementation
   totaltime = 0;
   for (runs=0; runs<numruns; runs++) {
-    for(i=0; i<B.length; i++) A[i] = (Integer)B[i];
-    time1 = millis();
+    for(i=0; i<B.length; i++) A[i] = B[i];
+    time1 = System.nanoTime();
     radixlinkOpt(A, 4, 256);
-    time2 = millis();
+    time2 = System.nanoTime();
     checkorder(A);
     totaltime += (time2-time1);
   }
-  println("Optimized linked-list Radixsort for " + numruns + " runs: Size " +
+  System.out.println("Optimized linked-list Radixsort for " + numruns + " runs: Size " +
            testsize + ", Time: " + totaltime);
 
   // Timing test for primitive int-only linked-list implementation
@@ -128,16 +128,16 @@ void sorttime(Comparable[] B) {
   Aint = new int[B.length];
   Bint = new int[B.length];
   for (i=0; i<B.length; i++)
-    Bint[i] = (Integer)B[i];
+    Bint[i] = B[i];
   for (runs=0; runs<numruns; runs++) {
     for(i=0; i<B.length; i++) Aint[i] = Bint[i];
-    time1 = millis();
+    time1 = System.nanoTime();
     radixlinkOptint(Aint, 4, 256);
-    time2 = millis();
+    time2 = System.nanoTime();
     checkorderint(Aint);
     totaltime += (time2-time1);
   }
-  println("Primitive int-only linked-list Radixsort for " + numruns + " runs: Size " +
+  System.out.println("Primitive int-only linked-list Radixsort for " + numruns + " runs: Size " +
            testsize + ", Time: " + totaltime);
 
 
@@ -145,8 +145,8 @@ void sorttime(Comparable[] B) {
 
 // This version of Radixsort assumes a 32 bit integer key, shifted by
 // some number of bits each pass
-static void radixOpt(Integer[] A, int k, int r) {
-  Integer[] B = new Integer[A.length];
+static void radixOpt(int[] A, int k, int r) {
+  int[] B = new int[A.length];
   int[] count = new int[r];     // Count[i] stores number of records with digit value i
   int i, j, rshift, shiftstep;
 
@@ -206,8 +206,8 @@ static void radixOptint(int[] A, int k, int r) {
 }
 
 // Standard radixsort using linked lists
-static void radixlink(Integer[] A, int k, int r) {
-  Integer[] B = new Integer[A.length];
+static void radixlink(int[] A, int k, int r) {
+  int[] B = new int[A.length];
   int[] bins = new int[r];         // List headers
   int[] tails = new int[r];        // List tails for appending
   int[] links = new int[A.length]; // The list links
@@ -243,8 +243,8 @@ static void radixlink(Integer[] A, int k, int r) {
 
 
 // Optimized radixsort using linked lists
-static void radixlinkOpt(Integer[] A, int k, int r) {
-  Integer[] B = new Integer[A.length];
+static void radixlinkOpt(int[] A, int k, int r) {
+  int[] B = new int[A.length];
   int[] bins = new int[r];         // List headers
   int[] tails = new int[r];        // List tails for appending
   int[] links = new int[A.length]; // The list links
