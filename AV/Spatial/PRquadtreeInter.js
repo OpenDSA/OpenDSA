@@ -19,7 +19,11 @@ $(document).ready(function() {
   function coor(){
     var x = event.pageX; //649
     var y = event.pageY; //187
-    var point = new Point(event.pageX - clickOffsetX, event.pageY - clickOffsetY, "•");
+    // var point = new Point(event.pageX - clickOffsetX, event.pageY - clickOffsetY, "•");
+    // The points are not registring correctly with respect to the
+    // curor position, so I introduced hard offsets that hopefully
+    // work across browsers
+    var point = new Point(event.pageX - clickOffsetX + 2, event.pageY - clickOffsetY - 17, "•");
     if (insertMode === 1) {
       bint.insert(point, txt);
     }
@@ -31,18 +35,20 @@ $(document).ready(function() {
     return bint.remove(point, txt);
   }
 
+  // Added hard-coded offsets to match actual cursor position
   $('#container').mousedown(function(e) {
     if (insertMode === 2) {
       isDragging = true;
-      if (removeAtPosition(e.pageX, e.pageY)) {
+      if (removeAtPosition(e.pageX + 2, e.pageY - 17)) {
         isDragging = false;
       }
     }
   });
 
+  // Added hard-coded offsets to match actual cursor position
   $('#container').mousemove(function(e) {
     if (isDragging && insertMode === 2) {
-      if (removeAtPosition(e.pageX, e.pageY)) {
+      if (removeAtPosition(e.pageX + 2, e.pageY - 17)) {
         isDragging = false;
       }
     }
