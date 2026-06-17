@@ -1,24 +1,19 @@
 /* *** ODSATag: BSTNode *** */
-// Binary tree node implementation: supports comparable objects
+// Binary tree node implementation for int values
 class BSTNode implements BinNode {
-  private Comparable element; // Element for this node
+  private int element; // Element for this node
   private BSTNode left;          // Pointer to left child
   private BSTNode right;         // Pointer to right child
 
   // Constructors
   BSTNode() { left = right = null; }
-  BSTNode(Comparable val) { left = right = null; element = val; }
-  BSTNode(Comparable val, BSTNode l, BSTNode r)
+  BSTNode(int val) { left = right = null; element = val; }
+  BSTNode(int val, BSTNode l, BSTNode r)
     { left = l; right = r; element = val; }
 
   // Get and set the element value
-  public Comparable value() { return element; }
-  public void setValue(Comparable v) { element = v; }
-  public void setValue(Object v) { // We need this one to satisfy BinNode interface
-    if (!(v instanceof Comparable))
-      throw new ClassCastException("A Comparable object is required.");
-    element = (Comparable)v;
-  }
+  public int value() { return element; }
+  public void setValue(int v) { element = v; }
 
   // Get and set the left child
   public BSTNode left() { return left; }

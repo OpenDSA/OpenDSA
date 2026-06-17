@@ -1,9 +1,10 @@
 {
   "translations" :{
     "en": {
-      ".exerciseTitle": "Optimized Insertion Sort",
+      ".avTitle": "Optimized Insertion Sort with Shifting Proficiency Exercise",
+      "av_Authors": "Kasper Hellström; Kanye McKinney; Cliff Shaffer",
       ".instructLabel": "Instructions:",
-      ".instructions": "Use Insertion Sort optimized with shifting to sort the table given below in ascending order. Click on an item to select it and copy its value to another position by clicking on the new position.",
+      ".instructions": "Use Insertion Sort optimized with shifting to sort the table given below in ascending order. Use the temp variable to temporarily store values during sorting. Click on an item to select it and copy its value to another position by clicking on the new position.",
       "av_array_label": "Table to be sorted",
       "av_temp_label": "temp variable",
       "av_ms_copy": "Copy {arr_at_i} from the array into the temp variable.",
@@ -22,6 +23,28 @@
     }
   },
   "code" : {
+    "java": {
+      "url": "../../SourceCode/Java/Sorting/Insertionsort.java",
+      "startAfter": "/* *** ODSATag: InsertionOpt *** */",
+      "endBefore": "/* *** ODSAendTag: InsertionOpt *** */",
+      "tags": {
+        "highlight": [5, 7, 8],
+        "copy_to_tmp": 5,
+        "shift": 7,
+        "copy_back": 8
+      }
+    },
+    "java_generic": {
+      "url": "../../SourceCode/Java_Generic/Sorting/Insertionsort.java",
+      "startAfter": "/* *** ODSATag: InsertionOpt *** */",
+      "endBefore": "/* *** ODSAendTag: InsertionOpt *** */",
+      "tags": {
+        "highlight": [5, 7, 8],
+        "copy_to_tmp": 5,
+        "shift": 7,
+        "copy_back": 8
+      }
+    },
     "python": {
       "url": "../../SourceCode/Python/Sorting/Insertionsort.py",
       "startAfter": "# /* *** ODSATag: Insertionsort shift *** */",

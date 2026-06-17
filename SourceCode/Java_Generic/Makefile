@@ -3,7 +3,7 @@ JAVA= java
 CFLAGS= -Xlint
 RFLAGS= 
 
-all: Demo Misc Lists Binary Sorting Searching
+all: Lists Binary Sorting Searching
 
 build:
 	@mkdir build
@@ -11,41 +11,6 @@ build:
 clean:
 	-rm -rf build
 	mkdir build
-
-Demo: UpDown
-
-UpDown: Demo/UpDown.java
-	@echo "UpDown Test"
-	-@rm -rf build/UpDown
-	@mkdir build/UpDown
-	cp Demo/UpDown.java build/UpDown
-	cd build/UpDown; \
-	javac $(CFLAGS) UpDown.java; \
-	$(JAVA) $(RFLAGS) UpDown
-
-Misc: LargestTest Anal
-
-LargestTest: build/LargestTest/success
-
-build/LargestTest/success: Misc/LargestTest.java
-	@echo "Largest Test"
-	-@rm -rf build/LargestTest
-	@mkdir build/LargestTest
-	cp Misc/LargestTest.java build/LargestTest
-	cd build/LargestTest; \
-	javac $(CFLAGS) LargestTest.java; \
-	$(JAVA) $(RFLAGS) LargestTest
-
-Anal: build/Anal/success
-
-build/Anal/success: Misc/Anal.java
-	@echo "Analysis Code Test"
-	-@rm -rf build/Anal
-	@mkdir build/Anal
-	cp Misc/Anal.java build/Anal
-	cd build/Anal; \
-	javac $(CFLAGS) Anal.java; \
-	$(JAVA) $(RFLAGS) Anal
 
 Lists: ListTest DoubleTest FreeList StackTest QueueTest
 
@@ -130,7 +95,7 @@ build/QueueTest/success: Lists/Queue.java Lists/AQueue.java Lists/Link.java List
 	$(JAVA) $(RFLAGS) QueueTest
 
 
-Binary: Traverse BST
+Binary: Traverse BST BSTDict MinHeap MaxHeap Huffman
 
 Traverse: build/Traverse/success
 
@@ -155,15 +120,73 @@ build/BSTTest/success: Binary/BST.java Binary/BSTTest1.java Binary/Preorder.java
 	@cp Binary/BST.java build/BSTTest
 	@cp Binary/BSTNode.java build/BSTTest
 	@cp Binary/BinNode.java build/BSTTest
-	@cat Binary/BSTTest1.java Utils/Permute.java Utils/Swap.java Binary/Preorder.java Binary/BSTTest.java > build/BSTTest/BSTTest.java
+	@cp Utils/Permute.java build/BSTTest
+	@cat Binary/BSTTest1.java Utils/Swap.java Binary/Preorder.java Binary/BSTTest.java > build/BSTTest/BSTTest.java
 	@cp Utils/KVPair.java build/BSTTest
 	@cp Utils/ErrorRec.java build/BSTTest
 	cd build/BSTTest; \
 	javac $(CFLAGS) BSTTest.java; \
 	$(JAVA) $(RFLAGS) BSTTest
 
+BSTDict: build/BSTDictTest/success
 
-Sorting: Inssort Bubblesort Selsort
+build/BSTDictTest/success: Binary/BST.java Binary/BSTDict.java Binary/BSTDictTest.java Binary/BSTNode.java Binary/BinNode.java Utils/Permute.java Utils/Swap.java Utils/KVPair.java Design/Dictionary.java
+	@echo "BST Dictionary Test"
+	-@rm -rf build/BSTDictTest
+	@mkdir build/BSTDictTest
+	@cp Binary/BST.java build/BSTDictTest
+	@cp Binary/BSTNode.java build/BSTDictTest
+	@cp Binary/BinNode.java build/BSTDictTest
+	@cp Design/Dictionary.java build/BSTDictTest
+	@cp Utils/Permute.java build/BSTDictTest
+	@cp Utils/Swap.java build/BSTDictTest
+	@cp Binary/BSTDictTest.java build/BSTDictTest
+	@cp Binary/BSTDict.java build/BSTDictTest
+	@cp Utils/KVPair.java build/BSTDictTest
+	cd build/BSTDictTest; \
+	javac $(CFLAGS) BSTDictTest.java; \
+	$(JAVA) $(RFLAGS) BSTDictTest
+
+MinHeap: build/MinheapTest/success
+
+build/MinheapTest/success: Binary/MinHeap.java Binary/MinheapTest.java Utils/Permute.java
+	@echo "Minheap Test"
+	-@rm -rf build/MinheapTest
+	@mkdir build/MinheapTest
+	@cp Binary/MinHeap.java build/MinheapTest
+	@cp Utils/Permute.java build/MinheapTest
+	@cp Binary/MinheapTest.java build/MinheapTest
+	cd build/MinheapTest; \
+	javac $(CFLAGS) MinheapTest.java; \
+	$(JAVA) $(RFLAGS) MinheapTest
+
+MaxHeap: build/MaxheapTest/success
+
+build/MaxheapTest/success: Binary/MaxHeap.java Binary/MaxheapTest.java Utils/Permute.java
+	@echo "Maxheap Test"
+	-@rm -rf build/MaxheapTest
+	@mkdir build/MaxheapTest
+	@cp Binary/MaxHeap.java build/MaxheapTest
+	@cp Utils/Permute.java build/MaxheapTest
+	@cp Binary/MaxheapTest.java build/MaxheapTest
+	cd build/MaxheapTest; \
+	javac $(CFLAGS) MaxheapTest.java; \
+	$(JAVA) $(RFLAGS) -ea MaxheapTest
+
+Huffman: build/Huffman/success
+
+build/Huffman/success: Binary/Huffman.java
+	@echo "Huffman Test"
+	-@rm -rf build/Huffman
+	@mkdir build/Huffman
+	@cp Binary/Huffman.java build/Huffman
+	@cp Binary/MinHeap.java build/Huffman
+	cd build/Huffman; \
+	javac $(CFLAGS) Huffman.java; \
+	$(JAVA) $(RFLAGS) Huffman
+
+
+Sorting: Inssort Bubblesort Selsort Binsort Shellsort Mergesort Quicksort Heapsort Binsort Radixsort
 
 Sorttime: InssortTime BubblesortTime SelsortTime
 

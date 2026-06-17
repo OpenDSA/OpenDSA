@@ -21,6 +21,10 @@ between all pairs of vertices in the graph, called
 the :term:`all-pairs shortest paths problem`.
 To be precise, for every :math:`u, v \in \mathbf{V}`,
 calculate :math:`d(u, v)`.
+Besides giving the shortest distance between any pair, solving this
+problem also is a good solution to finding the :term:`diameter` of an
+undirected graph, which is the longest path between any pair of
+vertices.
 
 One solution is to run :term:`Dijkstra's algorithm`
 for finding the :term:`shortest path <single-source shortest paths problem>`

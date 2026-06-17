@@ -10,7 +10,7 @@ static void sorttime(int[] B) {
 totaltime = 0;
 for (runs=0; runs<numruns; runs++) {
   for (i=0; i<B.length; i++)
-    A[i] = new Integer(B[i]);
+    A[i] = Integer.valueOf(B[i]);
   time1 = millis();
   inssort(A);
   time2 = millis();
@@ -104,7 +104,7 @@ static Boolean sorttest(int[] B) {
 
   //  KVPair[] AKV = (KVPair[])new Object[B.length];
   //  for (i=0; i<B.length; i++)
-  //    AKV[i] = new KVPair(new Integer(B[i]), new Integer(B[i]));
+  //    AKV[i] = new KVPair(Integer.valueOf(B[i]), Integer.valueOf(B[i]));
   //  inssort(A);
   //  if (!checkorder(A)) return false;
   return true;

@@ -1,3 +1,7 @@
+import java.io.*;
+
+class GenTreeTest {
+
 /* *** ODSATag: GenTreeADT *** */
 // General tree node ADT
 public interface GTNode {
@@ -20,10 +24,9 @@ public interface GenTree {
   public GTNode root();     // Return the root
   // Make the tree have a new root, give first child and sib
   public void newroot(Object value, GTNode first, GTNode sib);
-  public void newleftchild(E value); // Add left child
+  public void newleftchild(Object value); // Add left child
 }
 /* *** ODSAendTag: GenTreeADT *** */
-
 
 /* *** ODSATag: GenTreePrint *** */
 // Preorder traversal for general trees
@@ -38,3 +41,12 @@ static void preorder(GTNode rt) {
   }
 }
 /* *** ODSAendTag: GenTreePrint *** */
+
+    static void PrintNode(GTNode rt) {
+        System.out.println(rt.value());
+    }
+
+    public static void main(String args[]) throws IOException {
+        // Do nothing, we just want the code to compile
+    }
+}

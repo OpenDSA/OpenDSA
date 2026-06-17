@@ -300,20 +300,26 @@ Dictionary (2)
   * They might be sorted or unsorted.
   * What are the pros and cons?
 
+
 BST as a Dictionary (1)
 -----------------------
 
 .. revealjs-slide::
 
-.. codeinclude:: Binary/BST
-   :tag: BSTa
+.. codeinclude:: Binary/BSTDict
+   :tag: BSTDicta
+
 
 BST as a Dictionary (2)
 -----------------------
 
 .. revealjs-slide::
 
-.. codeinclude:: Binary/BST
-   :tag: BSTb
+.. codeinclude:: Binary/BSTDict
+   :tag: BSTDictb
 
 
+.
+-
+
+.. revealjs-slide::

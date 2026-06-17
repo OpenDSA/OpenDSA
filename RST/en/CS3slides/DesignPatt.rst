@@ -97,12 +97,11 @@ Inheritance (1)
 
 .. revealjs-slide::
 
-.. codeinclude:: Binary/ExpressionTree
-   :tag: ExpressionTree1
+.. codeinclude:: Binary/VarBinNode
 
-.. codeinclude:: Binary/ExpressionTree
-   :tag: ExpressionTree2
+.. codeinclude:: Binary/VarLeafNode
 
+.. codeinclude:: Binary/VarIntlNode
 
 Inheritance (3)
 ---------------
@@ -134,8 +133,9 @@ Composite (1)
 
 .. revealjs-slide::
 
-.. codeinclude:: Binary/ExpressionTreeC
-   :tag: Composite1
+.. codeinclude:: Binary/VarBinNodeC
+
+.. codeinclude:: Binary/VarLeafNodeC
 
 
 Composite (2)
@@ -143,10 +143,34 @@ Composite (2)
 
 .. revealjs-slide::
 
-.. codeinclude:: Binary/ExpressionTreeC
-   :tag: Composite2
+.. codeinclude:: Binary/VarIntlNodeC
 
-.. codeinclude:: Binary/ExpressionTreeC
+.. codeinclude:: Binary/ExpTreeC
    :tag: Composite3
 
 
+Flyweight
+---------
+
+.. revealjs-slide::
+
+The Problem:
+
+* Composite Design does not work well with NULL pointers.
+  
+  * (Do you understand why?)
+  * Need to make an empty node object
+
+* Empty nodes carry no information (aside from noting the fact that
+  they are empty).
+  Having a lot of them wastes a lot of space.
+
+
+Solution:
+
+* Make a Flyweight
+
+  * This is a single, specific, recognizeable object pointed to by all
+    places that need to reference an empty node.
+
+  * Flyweights may never carry state information (since there is only one).

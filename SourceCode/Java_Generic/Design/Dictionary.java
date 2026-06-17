@@ -1,6 +1,6 @@
 /* *** ODSATag: DictionaryADT *** */
 /** The Dictionary abstract class. */
-public interface Dictionary<K, E> {
+public interface Dictionary<K extends Comparable<K>, E> {
 
   /** Reinitialize dictionary */
   public void clear();

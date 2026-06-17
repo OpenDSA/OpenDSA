@@ -1,11 +1,11 @@
 <!--
 Title: Insertion Sort Optimized with Shifting Proficiency Exercise
-Author: Cliff Shaffer
+Author: Kasper Hellström; Kanye McKinney; Cliff Shaffer
 Institution: Virginia Tech
 Features: Tracing Exercise
 Keyword: Insertion Sort; Code Tuning
 Natural Language: en; fi; sv
-Programming Language: Python
+Programming Language: Python, Java
 --> 
 
 <!--
@@ -21,16 +21,37 @@ Description: Interactive algorithm proficiency exercise for optimized Insertion 
     <link rel="stylesheet" href="../../lib/normalize.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaAV.css" type="text/css" />
     <link rel="stylesheet" href="../../lib/odsaStyle.css" type="text/css" />
+  <style>
+    #container {
+      width: 850px;
+    }
+  </style>
   </head>
 
   <body>
     <div id="container">
       <div id="jsavcontainer">
-        <h1 class="exerciseTitle"></h1>
+        <table class="proHeaderTable">
+          <tr>
+            <td class="headerLeft">
+<!--
+              <input id="help" type="button" name="help" value="Help"/>
+-->
+            </td>
+            <td class="headerCenter">
+              <p class="jsavexercisecontrols"></p>
+            </td>
+            <td class="headerRight">
+              <input id="about" type="button" name="about" value="About" />
+              <a id="settings" class="jsavsettings" href="#"></a>
+            </td>
+          </tr>
+  </table>
         <p class="instructLabel"></p>
         <p class="instructions"></p>
-        <p align="center" class="jsavexercisecontrols"></p>
-        <p class="jsavscore"></p>
+        <p align="center">
+          <span class="jsavscore"></span>
+        </p>
       </div>
     </div>
 

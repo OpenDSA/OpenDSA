@@ -331,7 +331,7 @@
       "BTRecurTutor/BinaryTreeGuidedInfFlw": {}, 
       "BTRecurTutor/MultipleBinaryTrees": {}, 
       "BTRecurTutor/BSTCheck": {}, 
-      "Binary/CompleteTree": {}, 
+      "Binary/CompleteTree": {},
       "Binary/Heaps": {
         "heapinsertPRO": {
           "exer_options": {
@@ -389,9 +389,6 @@
       }, 
       "Sorting/SortOpt": {
         "insertionSortWithoutSwapPRO": {
-          "exer_options": {
-            "JXOP-code": "none"
-          }, 
           "points": 0.0
         }
       }, 
@@ -539,13 +536,40 @@
           "points": 2.0
         }
       },
-      "MemManage/CircularFit": {}, 
-      "MemManage/BestFit": {}, 
-      "MemManage/WorstFit": {}, 
-      "MemManage/MMPerformance": {}, 
-      "MemManage/Buddy": {}, 
+      "MemManage/CircularFit": {
+        "circularFirstFitPRO": {
+          "exer_options": {
+            "JXOP-code": "none",
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "undo"
+          },
+          "points": 2.0
+        }
+      },
+      "MemManage/BestFit": {
+        "bestFitPRO": {
+          "exer_options": {
+            "JXOP-code": "none",
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "undo"
+          },
+          "points": 2.0
+        }
+      },
+      "MemManage/WorstFit": {
+        "worstFitPRO": {
+          "exer_options": {
+            "JXOP-code": "none",
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "undo"
+          },
+          "points": 2.0
+        }
+      },
+      "MemManage/MMPerformance": {},
+      "MemManage/Buddy": {},
       "MemManage/Garbage": {}
-    }, 
+    },
     "Indexing": {
       "Indexing/IndexIntro": {}, 
       "Indexing/LinearIndexing": {}, 

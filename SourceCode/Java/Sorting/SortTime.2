@@ -1,17 +1,31 @@
 static int numtests = 5;
-static int testsize = 10000;
+static int testsize;
 static boolean SUCCESS = true;
 static long time1, time2;
 static Random value;
+static int swaps;
+static int compares;
 
 public static void main(String args[]) throws IOException {
+
+  if (args.length != 1) {
+    System.out.println(
+      "Usage: Sorttime <testsize>");
+    return;
+  }
+  testsize = Integer.valueOf(args[0]);
+  println("Test size: " + testsize);
+
   int[] A = new int[testsize];
   value = new Random();
 
+  // This version is for a random ordering
   for (int i=0; i<A.length; i++)
     A[i] = (Math.abs(value.nextInt()) % 1000) + 1;
+  // This version is for pre-sorted in ascending order
 //  for (int i=0; i<A.length; i++)
 //    A[i] = i+1;
+  // This version is for pre-sorted in descending order
 //  for (int i=0; i<A.length; i++)
 //    A[i] = 200000 - i;
 

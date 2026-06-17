@@ -1,3 +1,15 @@
+/* body definition: We want some consistency in all the various AV
+   types regarding things like line-height and fonts. Note that this
+   is taken from the Haiku styling. Which should be OK for the AVs
+   to have these even if a different style is used for the module
+   body. */
+body {
+    line-height: 1.5;
+    margin: auto;
+    padding: 0px;
+    font-family: "DejaVu Sans", Arial, Helvetica, sans-serif;
+}
+
 .jsavcanvas {
   font-family: Helvetica, Arial;
 }

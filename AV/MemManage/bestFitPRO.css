@@ -1,0 +1,52 @@
+label {
+  margin-left: 5px;
+}
+
+#container {
+  width: 800px;
+  height: 525px;
+}
+
+.jsavcanvas > svg { 
+  width: 760px;
+  height: 400px;
+}
+
+.avcontainer {
+  margin-top: 0;
+}
+
+.jsavnode {
+  line-height: 30px;
+}
+
+.jsavscroll {
+  width: 250px;
+  height: 505px;
+  font-size: 95%;
+  float: left;
+  margin-left: -10px;
+  margin-top: 5px;
+  padding-left: 5px;
+}
+
+.jsavstack {
+  position: absolute;
+  background-color: inherit;
+}
+
+.jsavstacknode {
+  position: absolute;
+  border-radius: 5px;
+  width: 45px;
+  height: 45px;
+  z-index: 100;
+}
+
+.jsavmodelanswer {
+  height: 220px;
+}
+
+#procontrols{
+  text-align: left;
+}

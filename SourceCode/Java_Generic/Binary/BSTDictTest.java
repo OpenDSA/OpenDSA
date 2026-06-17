@@ -10,7 +10,7 @@ static final int testsize = 100;
 public static void main(String args[]) throws IOException {
   Integer[] A = new Integer[testsize];
   int i;
-  Dictionary b = new BSTDict();
+  Dictionary<Integer, Integer> b = new BSTDict<Integer, Integer>();
 
   // Initialize to simply be the values from 0 to testsize-1
   // Ultimately, these are going to be our random keys
@@ -24,7 +24,7 @@ public static void main(String args[]) throws IOException {
   // Since we actually store KVPairs, we will give it a "data" value
   // That is simply the count + OFFSET (so we can distinguish "data" from keys)
   for (i=0; i<A.length; i++)
-    b.insert(new Integer(A[i]), new Integer(A[i] + OFFSET));
+    b.insert(Integer.valueOf(A[i]), Integer.valueOf(A[i] + OFFSET));
 
   if (b.size() != testsize) {
     System.out.println("Oops! Tree size is " + b.size() + ", it should be " + testsize);
@@ -33,7 +33,7 @@ public static void main(String args[]) throws IOException {
 
   // Test that search actually works.
   for (i=0; i<A.length; i++) {
-    Integer found = (Integer)b.find(A[i]);
+    Integer found = b.find(A[i]);
     if (found != A[i] + OFFSET) {
       System.out.println("Oops, expected " + (A[i] + OFFSET) + " but got " + found);
       SUCCESS = false;

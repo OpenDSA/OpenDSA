@@ -9,7 +9,6 @@ $(document).ready(function() {
       jsav = new JSAV($(".avcontainer"), {settings: settings});
 
   jsav.recorded();
-
   function init() {
     // create the graph
     if (graph) {
@@ -19,10 +18,12 @@ $(document).ready(function() {
       width: 400,
       height: 400,
       layout: "automatic",
-      directed: false
+      directed: false,
+      draggable: true
     });
     graphUtils.generate(graph); // Randomly generate the graph without weights
     graph.layout();
+    
     // mark the 'A' node
     graph.nodes()[0].addClass("marked");
 

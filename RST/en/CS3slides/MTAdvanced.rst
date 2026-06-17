@@ -29,50 +29,25 @@ Mutation Testing Principles
        Branch 2
 
   * One mutation causes Branch 1 to execute when it SHOULD NOT. A test
-    must catch that.
+    must recognize that (and fail).
   * Another mutation causes Branch 2 to execute when it SHOULD NOT. A
-    test must catch that.
+    test must recognize that (and fail).
   
 
-Project 1 Issues
-----------------
-
-.. revealjs-slide::
-
-* While insert returns a boolean, this is not meaningful to
-  correctness (beyond good parameter values), so not really testing
-  (only executes branches).
-
-  * Must actually do something else to check for correctness of the
-    insert, like look at what is in the Sparse Matrix
-
-* For deletion, printRatings might not have been enough to catch
-  errors
-
-  * printRatings is row-centric, so probably won't catch problems with
-    columns.
-
-  * You can add your own test support, such as a column-oriented
-    printRatings variant (or using a lot of listMovie calls).
-
-  * You can also add methods that, for example, go through each row
-    and column to make sure that the first entry on the list has the
-    appropriate back pointer value (null).
-
-
-Example: P1 Optimization
-------------------------
+Example: Sorted list Optimization
+---------------------------------
 
 .. revealjs-slide::
 
 ::
 
-   // Return true iff there is a matching index
+   // Return true iff there is a matching index.
+   // Assume the list is sorted by indices
    Boolean findIndex(listNode start, int index) {
      while (start != null) {
        if (start.index == index)
          return true;
-       if (start.index > index) // Quit early
+       if (start.index > index) // QUIT EARLY
          return false;
        start = start.next;
      }
@@ -82,7 +57,7 @@ Example: P1 Optimization
 * Can you cover this? No.
   
   * If ``start.index > index`` is replaced with ``false``, the method
-    still correctly returns ``false``.
+    still correctly returns ``false`` because the value is never found.
 
 * Is it really an optimization? Not as much as you might hope.
 

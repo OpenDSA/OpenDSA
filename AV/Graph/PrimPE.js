@@ -19,10 +19,12 @@
       width: 400,
       height: 400,
       layout: "automatic",
-      directed: false
+      directed: false,
+      draggable: true
     });
     graphUtils.generate(graph, {weighted: true}); // Randomly generate the graph with weights
     graph.layout();
+
     // mark the 'A' node
     graph.nodes()[0].addClass("marked");
 

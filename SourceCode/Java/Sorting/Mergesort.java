@@ -1,55 +1,57 @@
+static int THRESHOLD = 10;
+
 static boolean sorttest(int[] inA) {
   int i;
-  Comparable[] A = new Comparable[inA.length];
+  int[] Aint = new int[inA.length];
   for (i=0; i<inA.length; i++) {
-    A[i] = new Integer(inA[i]);
+    Aint[i] = inA[i];
   }
-  Comparable[] temp = new Comparable[A.length];
-  Comparable[] B = new Comparable[A.length];
-  for(i=0; i<A.length; i++) { B[i] = A[i]; }
-  mergesort(A, temp, 0, A.length-1);
-  if (!checkorder(A)) { return false; }
-  mergesortOpt(B, temp, 0, A.length-1);
+  int[] temp = new int[Aint.length];
+  int[] B = new int[Aint.length];
+  for(i = 0; i < Aint.length; i++) { B[i] = Aint[i]; }
+  mergesort(Aint, temp, 0, Aint.length-1);
+  if (!checkorder(Aint)) { return false; }
+  mergesortOpt(B, temp, 0, Aint.length-1);
   if (!checkorder(B)) { return false; }
   return true;
 }
 
-static void sorttime(Comparable[] B) {
+static void sorttime(int[] B) {
   int i;
-  Comparable[] A = new Comparable[B.length];
-  Comparable[] temp;
+  int[] Aint = new int[B.length];
+  int[] temp;
   int totaltime, runs;
   int numruns = 20;
 
   totaltime = 0;
   for (runs=0; runs<numruns; runs++) {
-    for(i=0; i<B.length; i++) { A[i] = B[i]; }
-    temp = new Comparable[B.length];
-    time1 = millis();
-    mergesort(A, temp, 0, A.length-1);
-    time2 = millis();
-    checkorder(A);
+    for(i=0; i<B.length; i++) { Aint[i] = B[i]; }
+    temp = new int[B.length];
+    time1 = System.nanoTime();
+    mergesort(Aint, temp, 0, Aint.length-1);
+    time2 = System.nanoTime();
+    checkorder(Aint);
     totaltime += (time2-time1);
   }
   System.out.println("Standard Mergesort for " + numruns + " runs: Size " +
           testsize + ", Time: " + totaltime);
   totaltime = 0;
   for (runs=0; runs<numruns; runs++) {
-    for(i=0; i<B.length; i++) A[i] = B[i];
-    temp = new Comparable[B.length];
-    time1 = millis();
-    mergesortOpt(A, temp, 0, A.length-1);
-    time2 = millis();
-    checkorder(A);
+      for(i=0; i<B.length; i++) { Aint[i] = B[i]; }
+    temp = new int[B.length];
+    time1 = System.nanoTime();
+    mergesortOpt(Aint, temp, 0, Aint.length-1);
+    time2 = System.nanoTime();
+    checkorder(Aint);
     totaltime += (time2-time1);
   }
-  println("Optimized Mergesort for " + numruns + " runs: Size " +
+  System.out.println("Optimized Mergesort for " + numruns + " runs: Size " +
           testsize + ", Time: " + totaltime);
 }
 
 
 /* *** ODSATag: Mergesort *** */
-static void mergesort(Comparable[] A, Comparable[] temp, int left, int right) {
+static void mergesort(int[] A, int[] temp, int left, int right) {
   if (left == right) { return; }       // List has one record
   int mid = (left+right)/2;          // Select midpoint
   mergesort(A, temp, left, mid);     // Mergesort first half
@@ -67,7 +69,7 @@ static void mergesort(Comparable[] A, Comparable[] temp, int left, int right) {
     else if (i2 > right) {             // Right sublist exhausted
       A[curr] = temp[i1++];
     }
-    else if (temp[i1].compareTo(temp[i2]) <= 0) {  // Get smaller value
+    else if (temp[i1] < temp[i2]) {  // Get smaller value
       A[curr] = temp[i1++];
     }
     else{
@@ -77,14 +79,14 @@ static void mergesort(Comparable[] A, Comparable[] temp, int left, int right) {
 }
 /* *** ODSAendTag: Mergesort *** */
 
-static void inssort(Comparable[] A, int left, int right) {
+static void inssort(int[] A, int left, int right) {
   for (int i=left+1; i<=right; i++)        // Insert i'th record
-    for (int j=i; (j>left) && (A[j].compareTo(A[j-1]) < 0); j--)
-      Swap.swap(A, j, j-1);
+      for (int j=i; (j>left) && (A[j] < A[j-1]); j--)
+      swap(A, j, j-1);
 }
 
 /* *** ODSATag: MergesortOpt *** */
-static void mergesortOpt(Comparable[] A, Comparable[] temp, int left, int right) {
+static void mergesortOpt(int[] A, int[] temp, int left, int right) {
   int i, j, k, mid = (left+right)/2;  // Select the midpoint
   if (left == right) { return; }          // List has one record
   if ((mid-left) >= THRESHOLD) { mergesortOpt(A, temp, left, mid); }
@@ -96,7 +98,7 @@ static void mergesortOpt(Comparable[] A, Comparable[] temp, int left, int right)
   for (j=right; j>mid; j--) { temp[i++] = A[j]; }
   // Merge sublists back to array
   for (i=left,j=right,k=left; k<=right; k++) {
-    if (temp[i].compareTo(temp[j]) <= 0) { A[k] = temp[i++]; }
+    if (temp[i] < temp[j]) { A[k] = temp[i++]; }
     else { 
       A[k] = temp[j--];
     }

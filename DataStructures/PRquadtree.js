@@ -51,10 +51,12 @@
 	QuadTreeProto.remove = function(point) {
 	  if (point.getX() < 0 || point.getX() > 256 ||
 	    point.getY() < 0 || point.getY() > 256) {
-	    return;
+	    return false;
 	  }
+	  this.qdt.lastRemoved = false;
 	  this.underRoot = this.underRoot.remove(this.qdt.root(), point, 0, 0, 256, 256, this.pte);
 	  this.qdt.layout();
+	  return this.qdt.lastRemoved;
 	}
 
 
@@ -188,6 +190,7 @@
 	    var label = this.list[index + 2];
 	    //this.list.splice(index, 2);
 	    this.current -= 3;
+	    this.qdt.lastRemoved = true;
 	  } else {
 	    if (noClick) {
 	      this.jsav.step();

@@ -10,6 +10,7 @@
 
   jsav.recorded();
 
+//-----------------------------
   function init() {
     // create the graph
     if (graph) {
@@ -19,10 +20,12 @@
       width: 400,
       height: 400,
       layout: "automatic",
-      directed: false
+      directed: false,
+      draggable: true
     });
     graphUtils.generate(graph); // Randomly generate the graph without weights
     graph.layout();
+    
     // mark the "A" node
     graph.nodes()[0].addClass("marked");
 

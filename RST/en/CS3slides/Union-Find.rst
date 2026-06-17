@@ -70,8 +70,8 @@ Weighted Union
   * Depth is :math:`O(\log n)`
 
 
-Algorithm Visualization
------------------------
+Union/FIND Visualization
+------------------------
 
 .. revealjs-slide::
 

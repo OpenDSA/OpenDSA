@@ -7,8 +7,6 @@ rst_header = '''\
 .. raw:: html
 
  <script>
- if (typeof ODSA === 'undefined') { window.ODSA = {}; }
- if (typeof ODSA.SETTINGS === 'undefined') { ODSA.SETTINGS = {}; }
  ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s"; ODSA.SETTINGS.BUILD_DATE = "%(mod_date)s"; ODSA.SETTINGS.BUILD_CMAP = %(build_cmap)s;%(mod_options)s
  </script>
  
@@ -19,6 +17,7 @@ rst_footer = '''\
  .. raw:: html
  
     <script type="text/javascript">
+     window.ODSA.SETTINGS.MODULE_SECTIONS = %(sections)s;
      $(function () {
        var moduleName = "%(module_name)s";
        var sections = %(sections)s;
@@ -162,7 +161,7 @@ on_slides = os.environ.get('SLIDES', None) == "yes"
 
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'sphinxcontrib.jquery']
 
-ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe', 'splicetoolembed']
+ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'accessibility', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe', 'splicetoolembed']
 
 customsDir = '%(odsa_dir)sRST/ODSAextensions/odsa/'
 for c in ourCustoms:
@@ -354,7 +353,7 @@ if slides_lib == 'revealjs' or on_slides:
 # -- Options for HTML output ---------------------------------------------------
 #The fully-qualified name of a HTML Translator, that is used to translate document
 #trees to HTML.
-html_translator_class = 'html5.HTMLTranslator'
+html_translator_class = 'accessibility.HTMLTranslator'
 
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -413,7 +412,8 @@ html_context = {"script_files": [
                   '%(eb2root)slib/jquery.min.js',
                   '%(eb2root)slib/jquery.migrate.min.js',
                   'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
-                  'https://cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js'
+                  'https://cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js',
+                  '_static/config.js'
                   %(html_js_files)s
                 ],
                 "search_scripts": [
@@ -428,7 +428,6 @@ html_context = {"script_files": [
                   '%(eb2root)slib/jquery.transit.js',
                   '%(eb2root)slib/raphael.js',
                   '%(eb2root)slib/JSAV.js',
-                  '_static/config.js',
                   '%(eb2root)slib/timeme.js',
                   '%(eb2root)slib/odsaUtils.js',
                   '%(eb2root)slib/odsaMOD.js',
@@ -540,6 +539,7 @@ config_js_template = '''\
 (function () {
   var settings = {};
   settings.BOOK_LANG = "%(lang)s";
+  settings.BOOK_NAME = "%(book_name)s";
   settings.REQ_FULL_SS = %(req_full_ss)s;
   settings.BUILD_TO_ODSA = "OpenDSA/";
   settings.LOCAL_MODE = %(local_mode)s;

@@ -1,6 +1,4 @@
 /* *** ODSATag: LList *** */
-import java.util.NoSuchElementException;
-
 // Linked list implementation
 /* *** ODSATag: LListVars *** */
 class LList<E> implements List<E> {
@@ -51,11 +49,8 @@ class LList<E> implements List<E> {
 
 /* *** ODSATag: LListRemove *** */
   // Remove and return current element
-  public E remove () throws NoSuchElementException {
-    if (curr == tail) {// Nothing to remove
-      throw new NoSuchElementException("remove() in LList has current of " + curr + " and size of "
-        + listSize + " that is not a a valid element");
-    }
+  public E remove () {
+    if (curr == tail) return null;          // Nothing to remove
     E it = curr.element();                  // Remember value
     curr.setElement(curr.next().element()); // Pull forward the next element
     if (curr.next() == tail) {
@@ -123,14 +118,9 @@ class LList<E> implements List<E> {
   public boolean isAtEnd() { return curr == tail; }
 
   // Return current element value. Note that null gets returned if curr is at the tail
-  public E getValue() throws NoSuchElementException {
-    if (curr == tail) // No current element
-    {
-      throw new NoSuchElementException("getvalue() in LList has current of " + curr + " and size of "
-        + listSize + " that is not a a valid element");
-    }
+  public E getValue() {
     return curr.element(); 
- }
+  }
   
   //Tell if the list is empty or not
   public boolean isEmpty() {

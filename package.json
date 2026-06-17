@@ -10,5 +10,8 @@
     "globals": "^15.8.0",
     "jsonlint": "^1.6.3",
     "uglify-js": "^3.19.0"
+  },
+  "resolutions": {
+    "underscore": "^1.12.1"
   }
 }

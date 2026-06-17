@@ -10,9 +10,9 @@ services:
       - 8080:8080
     expose:
       - 8080
-    # labels:
-    #   traefik.http.routers.opendsa.rule: Host(`opendsa.localhost.devcom.vt.edu`)
-    #   traefik.http.services.opendsa.loadbalancer.server.port: 8080
+    labels:
+      traefik.http.routers.opendsa.rule: Host(`opendsa.localhost.devcom.vt.edu`)
+      traefik.http.services.opendsa.loadbalancer.server.port: 8080
 
   deforms:
     profiles: ['deforms']
@@ -32,16 +32,16 @@ services:
       traefik.http.routers.deforms.rule: Host(`deforms.localhost.devcom.vt.edu`)
       traefik.http.services.deforms.loadbalancer.server.port: 8080
 
-  # proxy:
-  #   image: code.vt.edu:5005/devcom/devcom-localhost-proxy:traefik-2.3
-  #   ports:
-  #     - 80:80
-  #     - 443:443
-  #     - 127.0.0.1:8000:8080
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #   networks:
-  #     default:
-  #       aliases: # Ensure all container-to-container HTTP requests go through the proxy
-  #         - opendsa.localhost.devcom.vt.edu
-  #         - deforms.localhost.devcom.vt.edu
+  proxy:
+    image: code.vt.edu:5005/devcom/devcom-localhost-proxy:traefik-2.11
+    ports:
+      - 80:80
+      - 443:443
+      - 127.0.0.1:8000:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      default:
+        aliases: # Ensure all container-to-container HTTP requests go through the proxy
+          - opendsa.localhost.devcom.vt.edu
+          - deforms.localhost.devcom.vt.edu

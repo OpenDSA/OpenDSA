@@ -131,7 +131,7 @@ traversed like a list.
 Trying to find the next sibling of the rightmost sibling would return
 ``null``.
 
-.. codeinclude:: General/GenTree
+.. codeinclude:: General/GenTreeTest
    :tag: GenTreeADT
 
 

@@ -140,27 +140,27 @@ How to succeed at implementing your project:
       get any of the benefits).
 
    
-Being Organized
----------------
+.. Being Organized
+.. ---------------
 
-.. revealjs-slide::
+.. .. revealjs-slide::
 
-* Software development has so many details
+.. * Software development has so many details
 
-  * Spec requirements
-  * Program interactions
+..   * Spec requirements
+..   * Program interactions
 
-* So does Life
+.. * So does Life
 
-  * Assignments and other things to do
+..   * Assignments and other things to do
 
-* You can't turn this on/off
+.. * You can't turn this on/off
 
-  * Either you get in the habit of developing in an organized way,
-    or you can't succeed as a software developer
-  * Part of it is developing the attitude of "sweating the details"
-  * Part of it is having the coping mechanisms to handle the
-    details (organizational tactics)
+..   * Either you get in the habit of developing in an organized way,
+..     or you can't succeed as a software developer
+..   * Part of it is developing the attitude of "sweating the details"
+..   * Part of it is having the coping mechanisms to handle the
+..     details (organizational tactics)
 
 
 Milestones
