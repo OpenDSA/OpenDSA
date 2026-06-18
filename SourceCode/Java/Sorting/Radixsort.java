@@ -51,7 +51,8 @@ void checkorderint(int[] A) {
 void sorttime(int[] B) {
   int i;
   int[] A = new int[B.length];
-  int totaltime, runs;
+  long totaltime;
+  int runs;
   int numruns = 20;
 
   // Timing test for standard implementation

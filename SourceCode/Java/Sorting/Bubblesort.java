@@ -1,7 +1,8 @@
 static void sorttime(int[] B) {
     int i;
     int[] Aint = new int[B.length];
-    int totaltime, runs;
+    long totaltime;
+    int runs;
     double avgtime;
 
     System.out.println("Doing timings on the basis of " + numtests + " runs");

@@ -2,7 +2,8 @@ static void sorttime(int[] B) {
   int i;
   int[] A = new int[B.length];
   Integer[] Aint = new Integer[B.length];
-  int totaltime, runs;
+  long totaltime;
+  int runs;
   int numruns = 20;
 
   println("Doing timings on the basis of " + numruns + " runs");
@@ -10,7 +11,7 @@ static void sorttime(int[] B) {
 totaltime = 0;
 for (runs=0; runs<numruns; runs++) {
   for (i=0; i<B.length; i++) {
-    Aint[i] = new Integer(B[i]);
+    Aint[i] = B[i];
   }
   time1 = millis();
   selsort(Aint);
@@ -49,7 +50,7 @@ static Boolean sorttest(int[] B) {
   int i;
   Integer[] A = new Integer[B.length];
   for (i=0; i<B.length; i++)
-    A[i] = new Integer(B[i]);
+    A[i] = B[i];
   selsort(A);
   if (!checkorder(A)) return false;
 

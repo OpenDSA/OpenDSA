@@ -14,7 +14,7 @@ public class GraphL implements Graph {
   }
 
   private Edge[] nodeArray;
-  private Object[] nodeValues;
+  private int[] nodeValues;
   private int numEdge;
 
   // No real constructor needed
@@ -25,7 +25,7 @@ public class GraphL implements Graph {
     nodeArray = new Edge[n];
     // List headers;
     for (int i=0; i<n; i++) { nodeArray[i] = new Edge(-1, -1, null, null); }
-    nodeValues = new Object[n];
+    nodeValues = new int[n];
     numEdge = 0;
   }
 
@@ -36,10 +36,10 @@ public class GraphL implements Graph {
   public int edgeCount() { return numEdge; }
 
   // Get the value of node with index v
-  public Object getValue(int v) { return nodeValues[v]; }
+  public int getValue(int v) { return nodeValues[v]; }
 
   // Set the value of node with index v
-  public void setValue(int v, Object val) { nodeValues[v] = val; }
+  public void setValue(int v, int val) { nodeValues[v] = val; }
   
   // Return the link in v's neighbor list that preceeds the
   // one with w (or where it would be)

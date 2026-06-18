@@ -3,7 +3,7 @@ JAVA= java
 CFLAGS= -Xlint
 RFLAGS= 
 
-all: Lists Binary Sorting Searching
+all: Lists Binary Sorting Searching Graphs
 
 build:
 	@mkdir build
@@ -192,15 +192,15 @@ Sorttime: InssortTime BubblesortTime SelsortTime
 
 Inssort: build/InssortTest/success
 
-build/InssortTest/success: Sorting/Insertionsort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java
+build/InssortTest/success: Sorting/Sort.java Sorting/Insertionsort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Checkorder.java
 	@echo "Insertionsort Test"
 	-@rm -rf build/InssortTest
 	@mkdir build/InssortTest
-	cat Sorting/SortTest.1 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Sorting/Insertionsort.java Sorting/SortTest.2 > build/InssortTest/SortTest.java
-	cp Utils/KVPair.java build/InssortTest
+	cat Sorting/SortTest.1 Utils/Swap.java Utils/Checkorder.java Sorting/Insertionsort.java Sorting/SortTest.2 > build/InssortTest/SortTest.java
+	cp Sorting/Sort.java build/InssortTest
 	cd build/InssortTest; \
-	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest
+	javac $(CFLAGS) Sort.java; \
+	$(JAVA) $(RFLAGS) Sort
 
 Bubblesort: build/BubblesortTest/success
 
@@ -226,14 +226,16 @@ build/SelsortTest/success: Sorting/Selectionsort.java Sorting/SortTest.1 Sorting
 	javac $(CFLAGS) SortTest.java; \
 	$(JAVA) $(RFLAGS) SortTest
 
-InssortTime: Sorting/Insertionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Processing.java
+InssortTime: Sorting/Insertionsort.java Sorting/SortTime.1 Utils/Checkorder.java Sorting/SortTime.2 Utils/Swap.java Sorting/TimeSort.java Utils/KVPair.java
 	@echo "Inssort Timing Test"
 	-@rm -rf build/InssortTime
 	@mkdir build/InssortTime
-	cat Sorting/SortTime.1 Utils/Swap.java Utils/Processing.java Sorting/Insertionsort.java Sorting/SortTime.2 > build/InssortTime/SortTime.java
+	cat Sorting/SortTime.1 Utils/Swap.java Utils/Checkorder.java Sorting/Insertionsort.java Sorting/SortTime.2 > build/InssortTime/SortTime.java
+	cp Sorting/TimeSort.java build/InssortTime
+	cp Utils/KVPair.java build/InssortTime
 	cd build/InssortTime; \
-	javac $(CFLAGS) SortTime.java; \
-	$(JAVA) $(RFLAGS) SortTime
+	javac $(CFLAGS) TimeSort.java; \
+	$(JAVA) $(RFLAGS) TimeSort 1000
 
 BubblesortTime: Sorting/Bubblesort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Processing.java
 	@echo "Bubble Sort Timing Test"
@@ -292,3 +294,82 @@ build/SkipListTest/success: Randomized/SkipList.java Randomized/SkipListTest.jav
 	cd build/SkipListTest; \
 	javac $(CFLAGS) SkipListTest.java; \
 	$(JAVA) $(RFLAGS) SkipListTest
+
+Graphs: GraphDummy GraphTrav GraphTop GraphDijk Floyd MCST
+
+GraphDummy: build/GraphDummy/success
+
+build/GraphDummy/success: Graphs/GraphDummy.java Graphs/Graph.java Graphs/GraphM.java Graphs/GraphL.java
+	@echo "GraphDummy Test"
+	-@rm -rf build/GraphDummy
+	@mkdir build/GraphDummy
+	@cp Graphs/GraphDummy.java build/GraphDummy
+	@cp Graphs/Graph.java build/GraphDummy
+	@cp Graphs/GraphM.java build/GraphDummy
+	@cp Graphs/GraphL.java build/GraphDummy
+	cd build/GraphDummy; \
+	javac $(CFLAGS) GraphDummy.java; \
+	$(JAVA) $(RFLAGS) GraphDummy
+
+GraphTrav: build/GraphTrav/success
+
+build/GraphTrav/success: Graphs/BFS.java Graphs/DFS.java Graphs/Graph.java Graphs/GraphM.java Graphs/GraphL.java Graphs/GraphTrav.gph Graphs/GraphCreate.java Lists/Queue.java Lists/LQueue.java Lists/Link.java Graphs/GraphTrav.java Graphs/GraphTrav1.java
+	@echo "GraphTrav Test"
+	-@rm -rf build/GraphTrav
+	@mkdir build/GraphTrav
+	@cat Graphs/GraphTrav1.java Graphs/GraphCreate.java Graphs/BFS.java Graphs/DFS.java Graphs/GraphTrav.java > build/GraphTrav/GraphTrav.java
+	@cp Graphs/GraphTrav.gph build/GraphTrav
+	@cp Graphs/Graph.java build/GraphTrav
+	@cp Graphs/GraphM.java build/GraphTrav
+	@cp Graphs/GraphL.java build/GraphTrav
+	@cp Lists/Queue.java build/GraphTrav
+	@cp Lists/LQueue.java build/GraphTrav
+	@cp Lists/Link.java build/GraphTrav
+	cd build/GraphTrav; \
+	javac $(CFLAGS) GraphTrav.java; \
+	$(JAVA) $(RFLAGS) GraphTrav
+
+GraphTop: build/GraphTop/success
+
+build/GraphTop/success: Graphs/TopsortBFS.java Graphs/TopsortDFS.java Graphs/Graph.java Graphs/GraphM.java Graphs/GraphL.java Graphs/GraphTop.gph Graphs/GraphCreate.java Lists/Queue.java Lists/LQueue.java Lists/Link.java Graphs/GraphTop.java Graphs/GraphTop1.java
+	@echo "GraphTop Test"
+	-@rm -rf build/GraphTop
+	@mkdir build/GraphTop
+	@cat Graphs/GraphTop1.java Graphs/GraphCreate.java Graphs/TopsortBFS.java Graphs/TopsortDFS.java Graphs/GraphTop.java > build/GraphTop/GraphTop.java
+	@cp Graphs/GraphTop.gph build/GraphTop
+	@cp Graphs/Graph.java build/GraphTop
+	@cp Graphs/GraphM.java build/GraphTop
+	@cp Graphs/GraphL.java build/GraphTop
+	@cp Lists/Queue.java build/GraphTop
+	@cp Lists/LQueue.java build/GraphTop
+	@cp Lists/Link.java build/GraphTop
+	cd build/GraphTop; \
+	javac $(CFLAGS) GraphTop.java; \
+	$(JAVA) $(RFLAGS) GraphTop
+
+GraphDijk: build/GraphDijk/success
+
+build/GraphDijk/success: Graphs/Dijkstra.java Graphs/DijkstraPQ.java Graphs/Graph.java Graphs/GraphM.java Graphs/GraphL.java Graphs/GraphDijk.gph Graphs/GraphCreate.java Lists/Queue.java Lists/LQueue.java Lists/Link.java Graphs/GraphDijk.java Graphs/GraphDijk1.java Utils/KVPair.java Binary/MinHeap.java Utils/Swap.java
+	@echo "GraphDijk Test"
+	-@rm -rf build/GraphDijk
+	@mkdir build/GraphDijk
+	@cat Graphs/GraphDijk1.java Graphs/GraphCreate.java Graphs/Dijkstra.java Graphs/DijkstraPQ.java Graphs/GraphDijk.java > build/GraphDijk/GraphDijk.java
+	@cp Graphs/GraphDijk.gph build/GraphDijk
+	@cp Graphs/Graph.java build/GraphDijk
+	@cp Graphs/GraphM.java build/GraphDijk
+	@cp Graphs/GraphL.java build/GraphDijk
+	@cp Lists/Queue.java build/GraphDijk
+	@cp Lists/LQueue.java build/GraphDijk
+	@cp Lists/Link.java build/GraphDijk
+	@cp Utils/KVPair.java build/GraphDijk
+	@cp Utils/Swap.java build/GraphDijk
+	@cp Binary/MinHeap.java build/GraphDijk
+	cd build/GraphDijk; \
+	javac $(CFLAGS) GraphDijk.java; \
+	$(JAVA) $(RFLAGS) GraphDijk
+
+Floyd: Graphs/Floyde.java
+	@echo "TODO: Graphs: Floyd.java"
+
+MCST: GraphMCST.java Kruskal.java Prim.java PrimPQ.java
+	@echo "TODO: Graphs: TEST MCST CODE"

@@ -20,7 +20,8 @@ static void sorttime(int[] B) {
   int i;
   int[] Aint = new int[B.length];
   int[] temp;
-  int totaltime, runs;
+  long totaltime;
+  int runs;
   int numruns = 20;
 
   totaltime = 0;

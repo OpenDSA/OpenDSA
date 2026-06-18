@@ -1,6 +1,19 @@
-// Timing test for loops: incrementing vs. decrementing (test against 0)
+import java.lang.reflect.Array;
 import java.io.*;
 import java.math.*;
 import java.util.*;
 
-public class SortTime {
+public class SortTime<T extends Comparable<T>> {
+
+  static long time1, time2;
+  static int numruns = 5;
+  int swaps;
+  int compares;
+
+  private T[] A;
+  
+  @SuppressWarnings("unchecked")
+  public SortTime(Class<T> type, int size) {
+    // This creates a truly reified array of the correct type at runtime
+    A = (T[]) Array.newInstance(type, size);
+  }

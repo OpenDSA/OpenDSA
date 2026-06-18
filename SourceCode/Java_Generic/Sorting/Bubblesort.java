@@ -2,7 +2,8 @@ static void sorttime(int[] B) {
   int i;
   int[] A = new int[B.length];
   Integer[] Aint =  new Integer[B.length];
-  int totaltime, runs;
+  long totaltime;
+  int runs;
   int numruns = 5;
 
   println("Doing timings on the basis of " + numruns + " runs");

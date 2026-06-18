@@ -6,7 +6,7 @@
 /* *** ODSATag: Freelink *** */
 class Link<E> {      // Singly linked list node with freelist support
   private E e;       // Value for this node
-  private Link<E> n;    // Point to next node in list
+  private Link<E> n; // Point to next node in list
 
   // Constructors
   Link(E it, Link<E> inn) { e = it; n = inn; }
@@ -18,14 +18,14 @@ class Link<E> {      // Singly linked list node with freelist support
   Link<E> setNext(Link<E> inn) { return n = inn; } // Set next link
 
   // Extensions to support freelists
-  private static Link freelist = null;          // Freelist for the class
+  private static Link freelist = null;             // Freelist for the class
 
   // Return a new link, from freelist if possible
   static <E> Link<E> get(E it, Link<E> inn) {
     if (freelist == null) {
-      return new Link<E>(it, inn);              // Get from "new"
+      return new Link<E>(it, inn);                 // Get from "new"
     }
-    Link<E> temp = freelist;                    // Get from freelist
+    Link<E> temp = freelist;                       // Get from freelist
     freelist = freelist.next();
     temp.setElement(it);
     temp.setNext(inn);

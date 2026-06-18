@@ -49,7 +49,8 @@ static void quicksort(int[] A, int i, int j) { // Quicksort
 static void sorttime(int[] B) {
     int i;
     int[] Aint = new int[B.length];
-    int totaltime, runs;
+    long totaltime;
+    int runs;
     double avgtime;
 
     // Timing test for standard implementation
