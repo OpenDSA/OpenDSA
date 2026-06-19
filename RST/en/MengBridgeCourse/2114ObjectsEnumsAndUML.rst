@@ -333,10 +333,9 @@ Java UML Diagrams [6:50]
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_phzs60ad' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Java UML Diagrams"></iframe> 
-   </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=f7a40657-3bc8-4923-98b5-b4020048838f&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Java UML Diagrams" aria-description="Java UML Diagrams"></iframe>
+  </div>
 
 .. admonition:: Note
 

@@ -42,9 +42,9 @@ Introduction to Iterators [13:14]
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_8c0mzbfl' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Iterators"></iframe> 
-   </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=88c95ae7-58da-462b-99f6-b415007c2647&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Introduction to Iterators" aria-description="Introduction to Iterators"></iframe>
+     </div>
 
 Checkpoint 1
 ------------
@@ -72,9 +72,9 @@ Programming Using the Iterable Interface [4:36]
 
 .. raw:: html
 
-  <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_eqvj3pre' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Programming Using the Iterable Interface"></iframe> 
-  </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+    <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=386f42d2-85b2-44d2-9392-b40000ae4f83&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Programming Using the Iterable Interface" aria-description="Programming Using the Iterable Interface"></iframe>
+ </div>
 
 Checkpoint 2
 ------------
@@ -100,9 +100,9 @@ Programming Using Iterators [18:02]
 
 .. raw:: html
 
-  <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_qzq8us2t' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Programming Using Iterators"></iframe> 
-  </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+       <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=0bb45f1e-0f5f-4736-8e88-b3fc009da0ce&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Programming Using Iterators" aria-description="Programming Using Iterators"></iframe>
+    </div>
   
 Checkpoint 3
 ------------
@@ -129,10 +129,9 @@ Iterator Design Decisions [8:21]
 
 .. raw:: html
 
-  <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_suuo9vaf' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Iterator Design Decisions"></iframe> 
-  </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 35%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=4458fb06-4af6-41cb-b3ea-b410010b854d&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Iterator Design Decisions" aria-description="Iterator Design Decisions"></iframe>
+  </div>
 
 .. admonition:: Clarification
 

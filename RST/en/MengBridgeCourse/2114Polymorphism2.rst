@@ -40,12 +40,9 @@ Polymorphism Example Code
 
 .. raw:: html
 
-     <center>
-     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ywzatt7g' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Polymorphism Example"></iframe> 
-     </center>
-
-
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=ac8afca7-325c-48a0-a203-b401011f0aa4&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Polymorphism Example" aria-description="Polymorphism Example"></iframe>
+  </div>
 
 Checkpoint 1
 ------------
@@ -79,11 +76,10 @@ Interactive: Polymorphism Computer Superclass [12:09]
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_pkxo2beb' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Polymorphism Computer Superclass"></iframe> 
-   </center>
-
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=b79c21f1-928d-4c9b-8b84-b40c0076a902&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Polymorphism Computer Superclass" aria-description="Polymorphism Computer Superclass"></iframe>
+  </div>
+  
 Checkpoint 2
 ------------
 
@@ -108,10 +104,9 @@ Interactive: Polymorphism Integer Example [7:40]
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=0_33oovpxg' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Polymorphism Integer Example"></iframe> 
-   </center>    
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=042015a4-4cc0-4077-9d1f-b41d004c5c37&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Polymorphism Integer Example" aria-description="Polymorphism Integer Example"></iframe>
+  </div>
 
 Checkpoint 3
 ------------

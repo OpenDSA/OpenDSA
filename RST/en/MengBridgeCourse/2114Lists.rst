@@ -43,10 +43,10 @@ Introduction to Lists [13:41]
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_756fc9vh' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Lists"></iframe> 
-   </center>
-  
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+       <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=cc1859eb-f65a-4ea1-86c2-b42600ace3a4&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Introduction to Lists" aria-description="Introduction to Lists"></iframe>
+    </div>
+    
 .. admonition:: The List Interface
    
      Download to run and explore the java files (see below) from the video on your own in eclipse. 
@@ -204,10 +204,10 @@ Interactive: LinkedList Add() Implementation [10:21]
 
 .. raw:: html
 
-  <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ie408z9b' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="LinkedList Add method Implementation"></iframe> 
-  </center>
-      
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=c3cb1ea4-24cc-4948-b4fd-b3f601840d11&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="LinkedList Add method Implementation" aria-description="LinkedList Add method Implementation"></iframe>
+  </div>
+
 Checkpoint 2
 ------------
 
@@ -231,11 +231,10 @@ Interactive: Tracing Add() with Debugger [13:33]
 
 .. raw:: html
 
-  <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_g1bdzwhy' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Tracing Add method with Debugger"></iframe> 
-  </center>
-   
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=c6501c56-a0b4-4acd-bde0-b41300937afa&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Tracing Add method with Debugger" aria-description="Tracing Add method with Debugger"></iframe>
+  </div>
+  
 .. _ListRemove:
       
 Interactive: LinkedList Remove() [18:09]
@@ -258,9 +257,9 @@ Interactive: LinkedList Remove() [18:09]
 
 .. raw:: html
 
-  <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_m5thdypn' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="LinkedList Remove method"></iframe> 
-  </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=e51b8d9c-e7f4-4cad-9fe0-b40001394202&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="LinkedList Remove method" aria-description="LinkedList Remove method"></iframe>
+  </div>
 
 Checkpoint 3
 ------------
@@ -292,9 +291,9 @@ Interactive: LinkedList Details and Options [10:19]
 
 .. raw:: html
 
-  <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_a1ubm9cw' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="LinkedList Details and Options"></iframe> 
-  </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=9fa2f99b-b34f-419e-8e04-b4160093af92&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="LinkedList Details and Options" aria-description="LinkedList Details and Options"></iframe>
+  </div>
 
 Checkpoint 4
 ------------
@@ -322,9 +321,9 @@ Interactive: An Array Implementation of a List [15:48]
 
 .. raw:: html
 
-  <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_w004gjwr' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="An Array Implementation of a List"></iframe> 
-  </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=043eb221-7365-404e-85f0-b41a007c8d3c&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="An Array Implementation of a List" aria-description="An Array Implementation of a List"></iframe>
+  </div>
 
 Programming Practice: Lists 2
 -----------------------------

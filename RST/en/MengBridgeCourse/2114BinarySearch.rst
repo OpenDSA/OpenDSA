@@ -34,10 +34,10 @@ Introduction to Searching [10:14]
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_s97n1vm4' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Searching"></iframe> 
-    </center>     
-     
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 35%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=28d44ac5-eb58-4f52-9926-b4150129c2e2&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Introduction to Searching" aria-description="Introduction to Searching"></iframe>
+  </div>
+       
 Checkpoint 1
 ------------
 
@@ -60,9 +60,9 @@ Programming Searching [20:22]
         
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ykrtcb3f' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Programming Searching"></iframe> 
-   </center>     
+  <div style="position: relative; width: 100%; height: 0; padding-bottom: 35%">
+       <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=83c9cfd3-5f23-4d63-8ee7-b40400ec81c9&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Programming Searching" aria-description="Programming Searching"></iframe>
+    </div>   
    
 Programming Practice: Binary Search
 -----------------------------------

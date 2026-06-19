@@ -49,12 +49,12 @@ Interactive: Exception Handling [9:31]
       
 
 .. raw:: html
-  
-   <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_yrzfgb35' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Exception Handling"></iframe> 
-   </center>
        
-.. _ExceptionCheckedUnchecked: 
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 40%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=101c2442-7045-45ac-94e9-b40100c88bfb&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Exception Handling" aria-description="Exception Handling"></iframe>
+     </div>
+            
+             
 
 Reflecting on Checked and Runtime(Unchecked) Exceptions
 -------------------------------------------------------
@@ -108,9 +108,9 @@ Interactive: Exception Handling with try, catch, and finally [7:16]
 
 .. raw:: html
 
-     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_1n6iavk9' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Exception Handling with try, catch, and finally"></iframe> 
-     </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 35%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=6db9b90c-6edb-44ae-93c7-b41e00ae4c60&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Exception Handling with try, catch, and finally" aria-description="Exception Handling with try, catch, and finally"></iframe>
+  </div>
 
 .. _ExceptionHandleNow: 
 
@@ -122,11 +122,8 @@ You may use a single catch block, such as below:
 .. code-block:: java
 
    try {
-
    }
-
    catch(ExceptionType eName) {
-
    }
 
 
@@ -137,15 +134,10 @@ For example:
 .. code-block:: java
 
    try{
-
    }
-
-   catch(NumberFormatException nfe){
-
+   catch(NumberFormatException nfe)
    }
-
    catch(Exception e){
-
    }
 
 We may also use the *optional* **finally** block.  For example:
@@ -153,15 +145,10 @@ We may also use the *optional* **finally** block.  For example:
 .. code-block:: java
 
    try{
-
    }
-
    catch(Exception e){
-
    }
-
    finally{
-
    }
 
 
@@ -170,11 +157,8 @@ Note that you can also use the optional **finally** block with a **try** but wit
 .. code-block:: java
 
    try{
-
    }
-
    finally{
-
    }
 
 .. _ExceptionHandleLater:
@@ -249,27 +233,27 @@ Interactive: Basic ``try``, ``catch`` example [12:05]
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_s522xzgi' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Basic try, catch example"></iframe> 
-    </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 40%">
+         <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=6f8e760b-dc37-408d-8d84-b40f0112bea8&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Basic try, catch example" aria-description="Basic try, catch example"></iframe>
+      </div>
 
 Interactive: Tracing through a ``try``, ``catch`` example with multiple ``catch`` blocks [14:13]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_dlgt02u2' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Tracing through a try, catch example with multiple catch blocks"></iframe> 
-    </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 40%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=2f7f4395-4b50-4cc1-95c8-b40f010e73b2&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Tracing through a try, catch example with multiple catch blocks" aria-description="Tracing through a try, catch example with multiple catch blocks"></iframe>
+  </div>
 
 Example using "try, catch, and finally" blocks [12:33]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
-     <center>
-     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_kth4nto9' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="try, catch, and finally blocks"></iframe> 
-     </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 40%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=2b4f8feb-3f55-4a0d-a882-b40700f2adfe&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="try, catch, and finally blocks" aria-description="try, catch, and finally blocks"></iframe>
+  </div>
 
 .. _ExceptionTesting:
 

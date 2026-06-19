@@ -24,9 +24,9 @@ Introduction to Ethics Video [2:57]
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_rrxp1e7b' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Ethics"></iframe> 
-    </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 35%">
+         <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=2f600e79-d99c-48d6-a825-b42800416fc2&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Introduction to Ethics" aria-description="Introduction to Ethics"></iframe>
+      </div>
 
 Checkpoint 1
 ------------
@@ -40,10 +40,9 @@ Checkpoint 1
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4zeji3ij' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="ACM Code of Ethics Video"></iframe> 
-    </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 35%">
+         <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=5875d03b-5872-4353-8cc8-b41100606c99&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="ACM Code of Ethics Video" aria-description="ACM Code of Ethics Video"></iframe>
+      </div>
 
 TODO: fix URLS.
 
@@ -66,10 +65,9 @@ The Eight Key Questions (8KQ) Video [2:14]
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_y3a8kohy' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="The Eight Key Questions"></iframe> 
-    </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 35%">
+         <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=a3011f63-c59c-408c-8ac9-b41e00556c27&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="The Eight Key Questions" aria-description="The Eight Key Questions"></iframe>
+      </div>
 
 TODO: fix URLS.
 

@@ -81,10 +81,9 @@ Interactive: Intro to Linked Chains of Nodes [10:51]
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_xfyll19n' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Intro to Linked Chains of Nodes"></iframe> 
-    </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=0edc5f73-d8a7-4986-9eae-b40d012ea645&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Intro to Linked Chains of Nodes" aria-description="Intro to Linked Chains of Nodes"></iframe>
+  </div>
 
 Checkpoint 1
 ------------
@@ -110,9 +109,9 @@ Interactive: Demo in Visualizer [11:31]
    
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_dkk3roib' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Demo in Visualizer"></iframe> 
-    </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=340a8bc8-4e88-49ce-9ee0-b42600b66e5c&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Demo in Visualizer" aria-description="Demo in Visualizer"></iframe>
+  </div>
 
 Checkpoint 2
 ------------
@@ -138,8 +137,7 @@ Contains() method Animation [5:14]
    
 .. raw:: html
 
-  <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_q83rf3ey' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Contains method Animation"></iframe> 
-  </center>
-   
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 35%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=5fac67c7-6fc5-4b48-89f9-b4070133fffe&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Contains method Animation" aria-description="Contains method Animation"></iframe>
+  </div>
+  
