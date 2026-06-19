@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.io.*;
 import java.math.*;
 import java.util.*;
@@ -7,15 +8,19 @@ public class Sort {
     static int testsize = 1000;
     static int numtests = 5;
 
+    @SuppressWarnings("unchecked")
     public static void main(String args[]) throws IOException {
         boolean SUCCESS = true;
-        SortTest<Integer> myTest = new SortTest<>(Integer.class, testsize);
-        Integer[] B = new Integer[testsize];
+        SortTest<KVPair<Integer,Integer>> myTest =
+            new SortTest<>(KVPair.class, testsize);
+        KVPair<Integer, Integer>[] B =
+            (KVPair[]) Array.newInstance(KVPair.class, testsize);
         Random value = new Random();
 
         // Perform numtests trials to test this
         for (int i=0; i<testsize; i++) {
-            B[i] = (Math.abs(value.nextInt()) % 1000) + 1;
+            int temp = (Math.abs(value.nextInt()) % 1000) + 1;
+            B[i] = new KVPair<Integer,Integer>(temp, temp + 1);
         }
         
         SUCCESS = myTest.sorttest(B);

@@ -121,8 +121,9 @@ void inssort2(int[] A) {
 Boolean sorttest(int[] B) {
     int i;
 
-    for (i=0; i<B.length; i++)
+    for (i=0; i<B.length; i++) {
         A[i] = B[i];
+    }
     inssort(A);
     if (!checkorder(A)) return false;
     return true;

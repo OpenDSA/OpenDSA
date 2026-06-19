@@ -337,22 +337,21 @@ build/InssortTest/success: Sorting/Insertionsort.java Sorting/SortTest.1 Sorting
 	@mkdir build/InssortTest
 	cp Sorting/Sort.java build/InssortTest
 	cat Sorting/SortTest.1 Utils/Swap.java Utils/Checkorder.java Sorting/Insertionsort.java Sorting/SortTest.2 > build/InssortTest/SortTest.java
-	cp Utils/KVPair.java build/InssortTest
 	cd build/InssortTest; \
 	javac $(CFLAGS) Sort.java; \
 	$(JAVA) $(RFLAGS) Sort
 
 Bubblesort: build/BubblesortTest/success
 
-build/BubblesortTest/success: Sorting/Bubblesort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Checkorder.jav
+build/BubblesortTest/success: Sorting/Bubblesort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Checkorder.java Sorting/Sort.java
 	@echo "Bubblesort Test"
 	-@rm -rf build/BubblesortTest
 	@mkdir build/BubblesortTest
+	cp Sorting/Sort.java build/BubblesortTest
 	cat Sorting/SortTest.1 Utils/Swap.java Utils/Checkorder.java Sorting/Bubblesort.java Sorting/SortTest.2 > build/BubblesortTest/SortTest.java
-	cp Utils/KVPair.java build/BubblesortTest
 	cd build/BubblesortTest; \
-	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest
+	javac $(CFLAGS) Sort.java; \
+	$(JAVA) $(RFLAGS) Sort
 
 Selsort: build/SelsortTest/success
 
@@ -443,27 +442,25 @@ build/RadixsortTest/success: Sorting/Radixsort.java Sorting/SortTest.1 Sorting/S
 
 Sorttime: InssortTime BubblesortTime SelsortTime QuicksortTime
 
-InssortTime: build/InssortTime/SortTime.class
-
-build/InssortTime/SortTime.class: Sorting/Insertionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Checkorder.java
+InssortTime: Sorting/Insertionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Checkorder.java Sorting/TimeSort.java
 	@echo "Inssort Timing Test"
 	-@rm -rf build/InssortTime
 	@mkdir build/InssortTime
-	cp Sorting/TimeSort.java build/InssortTime
 	cat Sorting/SortTime.1 Utils/Swap.java Utils/Checkorder.java Sorting/Insertionsort.java Sorting/SortTime.2 > build/InssortTime/SortTime.java
+	cp Sorting/TimeSort.java build/InssortTime
 	cd build/InssortTime; \
 	javac $(CFLAGS) TimeSort.java; \
 	$(JAVA) $(RFLAGS) TimeSort 1000
 
-BubblesortTime: build/BubblesortTime/SortTime.class
-
-build/BubblesortTime/SortTime.class: Sorting/Bubblesort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Checkorder.java
+BubblesortTime: Sorting/Bubblesort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Checkorder.java
 	@echo "Bubble Sort Timing Test"
 	-@rm -rf build/BubblesortTime
 	@mkdir build/BubblesortTime
 	cat Sorting/SortTime.1 Utils/Swap.java Utils/Checkorder.java Sorting/Bubblesort.java Sorting/SortTime.2 > build/BubblesortTime/SortTime.java
+	cp Sorting/TimeSort.java build/BubblesortTime
 	cd build/BubblesortTime; \
-	javac $(CFLAGS) SortTime.java
+	javac $(CFLAGS) TimeSort.java; \
+	$(JAVA) $(RFLAGS) TimeSort 1000
 
 SelsortTime: build/SelsortTime/SortTime.class
 

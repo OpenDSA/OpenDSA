@@ -19,6 +19,7 @@ void sorttime(T[] B) {
     }
 
     System.out.println("Doing timings for an array of size " + B.length + " on the basis of " + numruns + " runs");
+    System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
     avgtime = (((double)totaltime)/numruns) / 1000000.0;
     System.out.println("Instrumented Standard Insertion Sort: Size " + A.length + ", Time: " + avgtime);
     System.out.println("Compares: " + compares/numruns + ", swaps: " + swaps/numruns);
