@@ -29,7 +29,7 @@ $(document).ready(function() {
   initGraph();
 
   // Slide 1
-  av.umsg("Let's look at the details of how a breadth-first seach works.");
+  av.umsg("Let's look at the details of how a breadth-first search works.");
   av.displayInit();
   av.step();
 
