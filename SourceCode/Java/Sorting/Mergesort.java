@@ -13,7 +13,7 @@ void sorttime(int[] B) {
   for (runs=0; runs<numruns; runs++) {
     for(i=0; i<B.length; i++) {
         A[i] = B[i];
-}
+    }
     temp = new int[B.length];
     time1 = System.nanoTime();
     mergesort(A, temp, 0, A.length-1);

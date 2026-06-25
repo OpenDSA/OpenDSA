@@ -119,7 +119,7 @@ void inssort2(T[] A) {
     }
 }
 
-Boolean sorttest(T[] B) {
+boolean sorttest(T[] B) {
     int i;
     System.out.println("Test Insertion Sort");
     for (i=0; i<B.length; i++) {
@@ -127,12 +127,6 @@ Boolean sorttest(T[] B) {
     }
     inssort(A);
     if (!checkorder(A)) { return false; };
-
-    //  KVPair[] AKV = (KVPair[])new Object[B.length];
-    //  for (i=0; i<B.length; i++)
-    //    AKV[i] = new KVPair(Integer.valueOf(B[i]), Integer.valueOf(B[i]));
-    //  inssort(A);
-    //  if (!checkorder(A)) return false;
     return true;
 }
 
@@ -144,6 +138,7 @@ Boolean sorttest(T[] B) {
 }
 /* *** ODSAendTag: Insertionsort *** */
 
+// Standard insertion sort instrumented to count swaps and compares
 void inssortinstrument(T[] A) {
     int j;
     for (int i=1; i<A.length; i++) { // Insert i'th record
