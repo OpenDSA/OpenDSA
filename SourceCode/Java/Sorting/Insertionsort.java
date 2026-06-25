@@ -118,7 +118,7 @@ void inssort2(int[] A) {
     }
 }
 
-Boolean sorttest(int[] B) {
+boolean sorttest(int[] B) {
     int i;
 
     for (i=0; i<B.length; i++) {
