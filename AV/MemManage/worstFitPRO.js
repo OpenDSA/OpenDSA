@@ -144,7 +144,8 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
       freeValues[1] = Math.floor(Math.random() * 3) + 40; 
 
       // freeValues[1] is something between incrs[0] and incrs[2]
-      freeValues[2] = Math.floor(Math.random() * (incrs[0] - incrs[1] - 1)) + incrs[1] + 1;
+      //freeValues[2] = Math.floor(Math.random() * (incrs[0] - incrs[1] - 1)) + incrs[1] + 1;
+      freeValues[2] = Math.floor(Math.random() * 3) + 25;
       freeValues[3] = Math.floor(Math.random() * 3) + 50;
     }
 
@@ -156,7 +157,8 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
       // incrs[1] is something between incrs[0] and incrs[2]
       incrs[2] = Math.floor(Math.random() * (incrs[0] - incrs[1] - 1)) + incrs[1] + 1;
       //incrs[3] = Math.floor(Math.random() * 3) + 3;
-      incrs[3] = Math.floor(Math.random() * (freeValues[0] - 1)) + 1;
+      //incrs[3] = Math.floor(Math.random() * (freeValues[0] - 1)) + 1;
+      incrs[3] = Math.floor(Math.random() * 10) + 1;
     }
 
     // Process reset button: Re-initialize everything, including the free blocks to insert
@@ -164,8 +166,9 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
 
       //reset the exercise
       resetAV();
-      generateInsertionBlocks();
       generateMemoryValues();
+      generateInsertionBlocks();
+      
 
       //create stack to store list of block sizes for user to input
       if (stack) {
@@ -196,8 +199,8 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
           theArray.unhighlight(i);
         }
       }
-      av.forward();
-      av._undo = [];
+      //av.forward();
+      //av._undo = [];
       return theArray;
     }
 
@@ -265,8 +268,9 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
               if (modelStack.first()) {
                 modelStack.first().highlight();
               }
-              jsav.step();
+              //jsav.step();
             }
+            jsav.step();
       }
           
       return modelarr;
