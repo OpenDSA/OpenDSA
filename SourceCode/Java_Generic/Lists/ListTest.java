@@ -5,7 +5,7 @@ import java.util.LinkedList;
  * This program checks if all the methods in AList, LList and DList classes work
  * properly.
   */
-public class ListTest {
+public class ListTest<T> {
   // The number of items stored in list during the test
   static final int TEST_SIZE = 9;
   // True if you want to create a text file to record errors
@@ -18,7 +18,7 @@ public class ListTest {
 
   static long time1, time2;
 
-  static void listIter(List<Integer> L) {
+  static void listIter(List<T> L) {
     Object it;
 /* *** ODSATag: listiter *** */
 for (L.moveToStart(); !L.isAtEnd(); L.next()) {
@@ -34,7 +34,7 @@ for (L.moveToStart(); !L.isAtEnd(); L.next()) {
 
 /* *** ODSATag: listfind *** */
 // Return true if k is in list L, false otherwise
-static boolean find(List<Integer> L, int k) {
+static boolean find(List<T> L, int k) {
   for (L.moveToStart(); !L.isAtEnd(); L.next()) {
     if (k == L.getValue()) {
       return true; // Found k
@@ -49,7 +49,7 @@ static boolean find(List<Integer> L, int k) {
   * 
   * @param l List to test.
   */
-  static void testOther(List<Integer> l)
+  static void testOther(List<T> l)
   {
     // Create non-empty list of items.
     int item = 10;
@@ -98,7 +98,7 @@ static boolean find(List<Integer> L, int k) {
   * 
   * @param l List to test.
   */
-  static void testInt(List<Integer> l) {
+  static void testInt(List<T> l) {
     // Check empty list
     checkEmp(l);
 

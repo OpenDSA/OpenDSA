@@ -2,7 +2,7 @@
 static void topsortDFS(Graph G) {
   int v;
   for (v=0; v<G.nodeCount(); v++) {
-    G.setValue(v, null); // Initialize
+    G.setValue(v, UNVISITED); // Initialize
   }
   for (v=0; v<G.nodeCount(); v++) {
     if (G.getValue(v) != VISITED) {

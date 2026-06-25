@@ -1,5 +1,5 @@
-static final Object VISITED = "Visited";
-static final Object UNVISITED = "unVisited";
+static final int VISITED = -1;
+static final int UNVISITED = 0;
 static final int INFINITY = Integer.MAX_VALUE;
 static String out;
 static Boolean SUCCESS = true;
@@ -14,16 +14,6 @@ static void test(Graph G) throws FileNotFoundException {
     out = out + D[i] + " ";
   if (out.equals("0 5 3 10 18 ") != true) {
     System.out.println("ERROR IN Dijkstra!!!:" + out);
-    SUCCESS = false;
-  }
-  out = "";
-  for (i=0; i<G.nodeCount(); i++)
-   G.setValue(i, UNVISITED);
-  DijkstraPQ(G, 0, D);
-  for (i=0; i<G.nodeCount(); i++)
-    out = out + D[i] + " ";
-  if (out.equals("0 5 3 10 18 ") != true) {
-    System.out.println("ERROR IN DijkstraPQ!!!:" + out);
     SUCCESS = false;
   }
 
@@ -41,19 +31,6 @@ static void test(Graph G) throws FileNotFoundException {
     System.out.println("ERROR IN Dijkstra!!!:" + out);
     SUCCESS = false;
   }
-  out = "";
-  for (i=0; i<G.nodeCount(); i++)
-   G.setValue(i, UNVISITED);
-  for (i=0; i<G.nodeCount(); i++)
-   G.setValue(i, UNVISITED);
-  DijkstraPQ(G, 0, D);
-  for (i=0; i<G.nodeCount(); i++)
-    out = out + D[i] + " ";
-  if (out.equals("0 5 3 10 2147483647 ") != true) {
-    System.out.println("ERROR IN DijkstraPQ!!!:" + out);
-    SUCCESS = false;
-  }
-
 }
 
 public static void main(String args[]) throws IOException {

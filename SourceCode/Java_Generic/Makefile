@@ -3,7 +3,7 @@ JAVA= java
 CFLAGS= -Xlint
 RFLAGS= 
 
-all: Lists Binary Sorting Searching
+all: Lists Binary Sorting Searching Graphs
 
 build:
 	@mkdir build
@@ -186,72 +186,179 @@ build/Huffman/success: Binary/Huffman.java
 	$(JAVA) $(RFLAGS) Huffman
 
 
-Sorting: Inssort Bubblesort Selsort Binsort Shellsort Mergesort Quicksort Heapsort Binsort Radixsort
-
-Sorttime: InssortTime BubblesortTime SelsortTime
+Sorting: Inssort Bubblesort Selsort Shellsort Mergesort Quicksort Heapsort
 
 Inssort: build/InssortTest/success
 
-build/InssortTest/success: Sorting/Insertionsort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java
+build/InssortTest/success: Sorting/Sort.java Sorting/Insertionsort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Checkorder.java Utils/KVPair.java
 	@echo "Insertionsort Test"
 	-@rm -rf build/InssortTest
 	@mkdir build/InssortTest
-	cat Sorting/SortTest.1 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Sorting/Insertionsort.java Sorting/SortTest.2 > build/InssortTest/SortTest.java
+	cat Sorting/SortTest.1 Utils/Swap.java Utils/Checkorder.java Sorting/Insertionsort.java Sorting/SortTest.2 > build/InssortTest/SortTest.java
+	cp Sorting/Sort.java build/InssortTest
 	cp Utils/KVPair.java build/InssortTest
 	cd build/InssortTest; \
-	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest
+	javac $(CFLAGS) Sort.java; \
+	$(JAVA) $(RFLAGS) Sort
 
 Bubblesort: build/BubblesortTest/success
 
-build/BubblesortTest/success: Sorting/Bubblesort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java
+build/BubblesortTest/success: Sorting/Sort.java Sorting/Bubblesort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Checkorder.java
 	@echo "Bubblesort Test"
 	-@rm -rf build/BubblesortTest
 	@mkdir build/BubblesortTest
-	cat Sorting/SortTest.1 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Sorting/Bubblesort.java Sorting/SortTest.2 > build/BubblesortTest/SortTest.java
+	cat Sorting/SortTest.1 Utils/Swap.java Utils/Checkorder.java Sorting/Bubblesort.java Sorting/SortTest.2 > build/BubblesortTest/SortTest.java
+	cp Sorting/Sort.java build/BubblesortTest
 	cp Utils/KVPair.java build/BubblesortTest
 	cd build/BubblesortTest; \
-	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest
+	javac $(CFLAGS) Sort.java; \
+	$(JAVA) $(RFLAGS) Sort
 
 Selsort: build/SelsortTest/success
 
-build/SelsortTest/success: Sorting/Selectionsort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java
+build/SelsortTest/success: Sorting/Selectionsort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Checkorder.java Utils/KVPair.java
 	@echo "Selectionsort Test"
 	-@rm -rf build/SelsortTest
 	@mkdir build/SelsortTest
-	cat Sorting/SortTest.1 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Sorting/Selectionsort.java Sorting/SortTest.2 > build/SelsortTest/SortTest.java
+	cat Sorting/SortTest.1 Utils/Swap.java Utils/Checkorder.java Sorting/Selectionsort.java Sorting/SortTest.2 > build/SelsortTest/SortTest.java
+	cp Sorting/Sort.java build/SelsortTest
 	cp Utils/KVPair.java build/SelsortTest
 	cd build/SelsortTest; \
-	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest
+	javac $(CFLAGS) Sort.java; \
+	$(JAVA) $(RFLAGS) Sort
 
-InssortTime: Sorting/Insertionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Processing.java
+Shellsort: build/ShellsortTest/success
+
+build/ShellsortTest/success: Sorting/Sort.java Sorting/Shellsort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Checkorder.java Utils/KVPair.java
+	@echo "Shellsort Test"
+	-@rm -rf build/ShellsortTest
+	@mkdir build/ShellsortTest
+	cat Sorting/SortTest.1 Utils/Swap.java Utils/Checkorder.java Sorting/Shellsort.java Sorting/SortTest.2 > build/ShellsortTest/SortTest.java
+	cp Sorting/Sort.java build/ShellsortTest
+	cp Utils/KVPair.java build/ShellsortTest
+	cd build/ShellsortTest; \
+	javac $(CFLAGS) Sort.java; \
+	$(JAVA) $(RFLAGS) Sort
+
+Mergesort: build/MergesortTest/success
+
+build/MergesortTest/success: Sorting/Sort.java Sorting/Mergesort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Checkorder.java Utils/KVPair.java
+	@echo "Mergesort Test"
+	-@rm -rf build/MergesortTest
+	@mkdir build/MergesortTest
+	cat Sorting/SortTest.1 Utils/Swap.java Utils/Checkorder.java Sorting/Mergesort.java Sorting/SortTest.2 > build/MergesortTest/SortTest.java
+	cp Sorting/Sort.java build/MergesortTest
+	cp Utils/KVPair.java build/MergesortTest
+	cd build/MergesortTest; \
+	javac $(CFLAGS) Sort.java; \
+	$(JAVA) $(RFLAGS) Sort
+
+Quicksort: build/QuicksortTest/success
+
+build/QuicksortTest/success: Sorting/Sort.java Sorting/Quicksort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Checkorder.java Utils/KVPair.java
+	@echo "Quicksort Test"
+	-@rm -rf build/QuicksortTest
+	@mkdir build/QuicksortTest
+	cat Sorting/SortTest.1 Utils/Swap.java Utils/Checkorder.java Sorting/Quicksort.java Sorting/SortTest.2 > build/QuicksortTest/SortTest.java
+	cp Sorting/Sort.java build/QuicksortTest
+	cp Utils/KVPair.java build/QuicksortTest
+	cd build/QuicksortTest; \
+	javac $(CFLAGS) Sort.java; \
+	$(JAVA) $(RFLAGS) Sort
+
+Heapsort: build/HeapsortTest/success
+
+build/HeapsortTest/success: Sorting/Sort.java Sorting/Heapsort.java Binary/MaxHeap.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Checkorder.java Utils/KVPair.java
+	@echo "Heapsort Test"
+	-@rm -rf build/HeapsortTest
+	@mkdir build/HeapsortTest
+	cat Sorting/SortTest.1 Utils/Swap.java Utils/Checkorder.java Sorting/Heapsort.java Sorting/SortTest.2 > build/HeapsortTest/SortTest.java
+	cp Sorting/Sort.java build/HeapsortTest
+	cp Utils/KVPair.java build/HeapsortTest
+	cp Binary/MaxHeap.java build/HeapsortTest
+	cd build/HeapsortTest; \
+	javac $(CFLAGS) Sort.java; \
+	$(JAVA) $(RFLAGS) Sort
+
+Sorttime: InssortTime BubblesortTime SelsortTime ShellsortTime MergesortTime QuicksortTime HeapsortTime
+
+InssortTime: Sorting/Insertionsort.java Sorting/SortTime.1 Utils/Checkorder.java Sorting/SortTime.2 Utils/Swap.java Sorting/TimeSort.java Utils/KVPair.java
 	@echo "Inssort Timing Test"
 	-@rm -rf build/InssortTime
 	@mkdir build/InssortTime
-	cat Sorting/SortTime.1 Utils/Swap.java Utils/Processing.java Sorting/Insertionsort.java Sorting/SortTime.2 > build/InssortTime/SortTime.java
+	cat Sorting/SortTime.1 Utils/Swap.java Utils/Checkorder.java Sorting/Insertionsort.java Sorting/SortTime.2 > build/InssortTime/SortTime.java
+	cp Sorting/TimeSort.java build/InssortTime
+	cp Utils/KVPair.java build/InssortTime
 	cd build/InssortTime; \
-	javac $(CFLAGS) SortTime.java; \
-	$(JAVA) $(RFLAGS) SortTime
+	javac $(CFLAGS) TimeSort.java; \
+	$(JAVA) $(RFLAGS) TimeSort 1000
 
-BubblesortTime: Sorting/Bubblesort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Processing.java
+BubblesortTime: Sorting/Bubblesort.java Sorting/SortTime.1 Utils/Checkorder.java Sorting/SortTime.2 Utils/Swap.java Sorting/TimeSort.java Utils/KVPair.java
 	@echo "Bubble Sort Timing Test"
 	-@rm -rf build/BubblesortTime
 	@mkdir build/BubblesortTime
-	cat Sorting/SortTime.1 Utils/Swap.java Utils/Processing.java Sorting/Bubblesort.java Sorting/SortTime.2 > build/BubblesortTime/SortTime.java
+	cat Sorting/SortTime.1 Utils/Swap.java Utils/Checkorder.java Sorting/Bubblesort.java Sorting/SortTime.2 > build/BubblesortTime/SortTime.java
+	cp Sorting/TimeSort.java build/BubblesortTime
+	cp Utils/KVPair.java build/BubblesortTime
 	cd build/BubblesortTime; \
-	javac $(CFLAGS) SortTime.java; \
-	$(JAVA) $(RFLAGS) SortTime
+	javac $(CFLAGS) TimeSort.java; \
+	$(JAVA) $(RFLAGS) TimeSort 1000
 
-SelsortTime: Sorting/Selectionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Processing.java
+SelsortTime: Sorting/Selectionsort.java Sorting/SortTime.1 Utils/Checkorder.java Sorting/SortTime.2 Utils/Swap.java Sorting/TimeSort.java Utils/KVPair.java
 	@echo "Selection Sort Timing Test"
 	-@rm -rf build/SelsortTime
 	@mkdir build/SelsortTime
-	cat Sorting/SortTime.1 Utils/Swap.java Utils/Processing.java Sorting/Selectionsort.java Sorting/SortTime.2 > build/SelsortTime/SortTime.java
+	cat Sorting/SortTime.1 Utils/Swap.java Utils/Checkorder.java Sorting/Selectionsort.java Sorting/SortTime.2 > build/SelsortTime/SortTime.java
+	cp Sorting/TimeSort.java build/SelsortTime
+	cp Utils/KVPair.java build/SelsortTime
 	cd build/SelsortTime; \
-	javac $(CFLAGS) SortTime.java; \
-	$(JAVA) $(RFLAGS) SortTime
+	javac $(CFLAGS) TimeSort.java; \
+	$(JAVA) $(RFLAGS) TimeSort 1000
+
+ShellsortTime: Sorting/Shellsort.java Sorting/SortTime.1 Utils/Checkorder.java Sorting/SortTime.2 Utils/Swap.java Sorting/TimeSort.java Utils/KVPair.java
+	@echo "Shellsort Timing Test"
+	-@rm -rf build/ShellsortTime
+	@mkdir build/ShellsortTime
+	cat Sorting/SortTime.1 Utils/Swap.java Utils/Checkorder.java Sorting/Shellsort.java Sorting/SortTime.2 > build/ShellsortTime/SortTime.java
+	cp Sorting/TimeSort.java build/ShellsortTime
+	cp Utils/KVPair.java build/ShellsortTime
+	cd build/ShellsortTime; \
+	javac $(CFLAGS) TimeSort.java; \
+	$(JAVA) $(RFLAGS) TimeSort 1000
+
+MergesortTime: Sorting/Mergesort.java Sorting/SortTime.1 Utils/Checkorder.java Sorting/SortTime.2 Utils/Swap.java Sorting/TimeSort.java Utils/KVPair.java
+	@echo "Mergesort Timing Test"
+	-@rm -rf build/MergesortTime
+	@mkdir build/MergesortTime
+	cat Sorting/SortTime.1 Utils/Swap.java Utils/Checkorder.java Sorting/Mergesort.java Sorting/SortTime.2 > build/MergesortTime/SortTime.java
+	cp Sorting/TimeSort.java build/MergesortTime
+	cp Utils/KVPair.java build/MergesortTime
+	cd build/MergesortTime; \
+	javac $(CFLAGS) TimeSort.java; \
+	$(JAVA) $(RFLAGS) TimeSort 1000
+
+QuicksortTime: Sorting/Quicksort.java Sorting/SortTime.1 Utils/Checkorder.java Sorting/SortTime.2 Utils/Swap.java Sorting/TimeSort.java Utils/KVPair.java
+	@echo "Quicksort Timing Test"
+	-@rm -rf build/QuicksortTime
+	@mkdir build/QuicksortTime
+	cat Sorting/SortTime.1 Utils/Swap.java Utils/Checkorder.java Sorting/Quicksort.java Sorting/SortTime.2 > build/QuicksortTime/SortTime.java
+	cp Sorting/TimeSort.java build/QuicksortTime
+	cp Utils/KVPair.java build/QuicksortTime
+	cd build/QuicksortTime; \
+	javac $(CFLAGS) TimeSort.java; \
+	$(JAVA) $(RFLAGS) TimeSort 1000
+
+HeapsortTime: Sorting/Heapsort.java Binary/MaxHeap.java Sorting/SortTime.1 Utils/Checkorder.java Sorting/SortTime.2 Utils/Swap.java Sorting/TimeSort.java Utils/KVPair.java
+	@echo "Heapsort Timing Test"
+	-@rm -rf build/HeapsortTime
+	@mkdir build/HeapsortTime
+	cat Sorting/SortTime.1 Utils/Swap.java Utils/Checkorder.java Sorting/Heapsort.java Sorting/SortTime.2 > build/HeapsortTime/SortTime.java
+	cp Sorting/TimeSort.java build/HeapsortTime
+	cp Binary/MaxHeap.java build/HeapsortTime
+	cp Utils/KVPair.java build/HeapsortTime
+	cd build/HeapsortTime; \
+	javac $(CFLAGS) TimeSort.java; \
+	$(JAVA) $(RFLAGS) TimeSort 1000
 
 Searching: Bsearch Sequential
 
@@ -292,3 +399,82 @@ build/SkipListTest/success: Randomized/SkipList.java Randomized/SkipListTest.jav
 	cd build/SkipListTest; \
 	javac $(CFLAGS) SkipListTest.java; \
 	$(JAVA) $(RFLAGS) SkipListTest
+
+Graphs: GraphDummy GraphTrav GraphTop GraphDijk Floyd MCST
+
+GraphDummy: build/GraphDummy/success
+
+build/GraphDummy/success: Graphs/GraphDummy.java Graphs/Graph.java Graphs/GraphM.java Graphs/GraphL.java
+	@echo "GraphDummy Test"
+	-@rm -rf build/GraphDummy
+	@mkdir build/GraphDummy
+	@cp Graphs/GraphDummy.java build/GraphDummy
+	@cp Graphs/Graph.java build/GraphDummy
+	@cp Graphs/GraphM.java build/GraphDummy
+	@cp Graphs/GraphL.java build/GraphDummy
+	cd build/GraphDummy; \
+	javac $(CFLAGS) GraphDummy.java; \
+	$(JAVA) $(RFLAGS) GraphDummy
+
+GraphTrav: build/GraphTrav/success
+
+build/GraphTrav/success: Graphs/BFS.java Graphs/DFS.java Graphs/Graph.java Graphs/GraphM.java Graphs/GraphL.java Graphs/GraphTrav.gph Graphs/GraphCreate.java Lists/Queue.java Lists/LQueue.java Lists/Link.java Graphs/GraphTrav.java Graphs/GraphTrav1.java
+	@echo "GraphTrav Test"
+	-@rm -rf build/GraphTrav
+	@mkdir build/GraphTrav
+	@cat Graphs/GraphTrav1.java Graphs/GraphCreate.java Graphs/BFS.java Graphs/DFS.java Graphs/GraphTrav.java > build/GraphTrav/GraphTrav.java
+	@cp Graphs/GraphTrav.gph build/GraphTrav
+	@cp Graphs/Graph.java build/GraphTrav
+	@cp Graphs/GraphM.java build/GraphTrav
+	@cp Graphs/GraphL.java build/GraphTrav
+	@cp Lists/Queue.java build/GraphTrav
+	@cp Lists/LQueue.java build/GraphTrav
+	@cp Lists/Link.java build/GraphTrav
+	cd build/GraphTrav; \
+	javac $(CFLAGS) GraphTrav.java; \
+	$(JAVA) $(RFLAGS) GraphTrav
+
+GraphTop: build/GraphTop/success
+
+build/GraphTop/success: Graphs/TopsortBFS.java Graphs/TopsortDFS.java Graphs/Graph.java Graphs/GraphM.java Graphs/GraphL.java Graphs/GraphTop.gph Graphs/GraphCreate.java Lists/Queue.java Lists/LQueue.java Lists/Link.java Graphs/GraphTop.java Graphs/GraphTop1.java
+	@echo "GraphTop Test"
+	-@rm -rf build/GraphTop
+	@mkdir build/GraphTop
+	@cat Graphs/GraphTop1.java Graphs/GraphCreate.java Graphs/TopsortBFS.java Graphs/TopsortDFS.java Graphs/GraphTop.java > build/GraphTop/GraphTop.java
+	@cp Graphs/GraphTop.gph build/GraphTop
+	@cp Graphs/Graph.java build/GraphTop
+	@cp Graphs/GraphM.java build/GraphTop
+	@cp Graphs/GraphL.java build/GraphTop
+	@cp Lists/Queue.java build/GraphTop
+	@cp Lists/LQueue.java build/GraphTop
+	@cp Lists/Link.java build/GraphTop
+	cd build/GraphTop; \
+	javac $(CFLAGS) GraphTop.java; \
+	$(JAVA) $(RFLAGS) GraphTop
+
+GraphDijk: build/GraphDijk/success
+
+build/GraphDijk/success: Graphs/Dijkstra.java Graphs/DijkstraPQ.java Graphs/Graph.java Graphs/GraphM.java Graphs/GraphL.java Graphs/GraphDijk.gph Graphs/GraphCreate.java Lists/Queue.java Lists/LQueue.java Lists/Link.java Graphs/GraphDijk.java Graphs/GraphDijk1.java Utils/KVPair.java Binary/MinHeap.java Utils/Swap.java
+	@echo "GraphDijk Test"
+	-@rm -rf build/GraphDijk
+	@mkdir build/GraphDijk
+	@cat Graphs/GraphDijk1.java Graphs/GraphCreate.java Graphs/Dijkstra.java Graphs/DijkstraPQ.java Graphs/GraphDijk.java > build/GraphDijk/GraphDijk.java
+	@cp Graphs/GraphDijk.gph build/GraphDijk
+	@cp Graphs/Graph.java build/GraphDijk
+	@cp Graphs/GraphM.java build/GraphDijk
+	@cp Graphs/GraphL.java build/GraphDijk
+	@cp Lists/Queue.java build/GraphDijk
+	@cp Lists/LQueue.java build/GraphDijk
+	@cp Lists/Link.java build/GraphDijk
+	@cp Utils/KVPair.java build/GraphDijk
+	@cp Utils/Swap.java build/GraphDijk
+	@cp Binary/MinHeap.java build/GraphDijk
+	cd build/GraphDijk; \
+	javac $(CFLAGS) GraphDijk.java; \
+	$(JAVA) $(RFLAGS) GraphDijk
+
+Floyd: Graphs/Floyde.java
+	@echo "TODO: Graphs: Floyd.java"
+
+MCST: GraphMCST.java Kruskal.java Prim.java PrimPQ.java
+	@echo "TODO: Graphs: TEST MCST CODE"

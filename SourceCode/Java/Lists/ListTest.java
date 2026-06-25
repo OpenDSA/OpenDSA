@@ -45,8 +45,7 @@ static boolean find(List L, Object k) {
   * 
   * @param l List to test.
   */
-  static void testOther(List l)
-  {
+   static void testOther(List l) {
     // Create non-empty list of items.
     int item = 10;
     int loc, locExpect;
