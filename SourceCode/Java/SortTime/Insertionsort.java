@@ -16,6 +16,7 @@ static void inssort2(int[] A, int startpos, int length) {
   for (int i = startpos + 1; i < startpos + length; i++) // Insert i'th record
     for (int j = i; (j>startpos) && (A[j] < A[j-1]); j--) {
       temp = A[j]; A[j] = A[j-1]; A[j-1] = temp;
+      
     }
 }
 

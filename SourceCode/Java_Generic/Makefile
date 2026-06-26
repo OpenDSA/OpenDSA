@@ -280,7 +280,7 @@ build/HeapsortTest/success: Sorting/Sort.java Sorting/Heapsort.java Binary/MaxHe
 	javac $(CFLAGS) Sort.java; \
 	$(JAVA) $(RFLAGS) Sort
 
-Sorttime: InssortTime BubblesortTime SelsortTime ShellsortTime MergesortTime QuicksortTime HeapsortTime
+SortTime: InssortTime BubblesortTime SelsortTime ShellsortTime MergesortTime QuicksortTime HeapsortTime
 
 InssortTime: Sorting/Insertionsort.java Sorting/SortTime.1 Utils/Checkorder.java Sorting/SortTime.2 Utils/Swap.java Sorting/TimeSort.java Utils/KVPair.java
 	@echo "Inssort Timing Test"

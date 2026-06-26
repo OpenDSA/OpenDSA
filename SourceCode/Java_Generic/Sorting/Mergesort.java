@@ -6,7 +6,8 @@ void sorttime(T[] B) {
     int runs;
     double avgtime;
 
-  System.out.println("Doing timings for an array of size " + B.length + " on the basis of " + numruns + " runs");
+    if (!prod)
+        System.out.println("Doing timings for an array of size " + B.length + " on the basis of " + numruns + " runs");
   
     totaltime = 0;
     for (runs=0; runs<numruns; runs++) {
@@ -19,7 +20,8 @@ void sorttime(T[] B) {
         checkorder(A);
         totaltime += (time2-time1);
     }
-    System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
+    if (!prod)
+        System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
     avgtime = (((double)totaltime)/numruns) / 1000000.0;
     System.out.println("Standard Mergesort: Size " + A.length + ", Time: " + avgtime);
 
@@ -34,7 +36,8 @@ void sorttime(T[] B) {
         checkorder(A);
         totaltime += (time2-time1);
     }
-    System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
+    if (!prod)
+        System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
     avgtime = (((double)totaltime)/numruns) / 1000000.0;
     System.out.println("Optimized Mergesort/Inline swaps: Size " + A.length + ", Time: " + avgtime);
 }

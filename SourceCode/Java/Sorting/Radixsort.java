@@ -56,9 +56,10 @@ void sorttime(int[] B) {
     checkorder(A);
     totaltime += (time2-time1);
   }
+  if (!prod)
     System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
-    avgtime = (((double)totaltime)/numruns) / 1000000.0;
-    System.out.println("Standard Radixsort: Size " + A.length + ", Time: " + avgtime);
+  avgtime = (((double)totaltime)/numruns) / 1000000.0;
+  System.out.println("Standard Radixsort: Size " + A.length + ", Time: " + avgtime);
 
   // Timing test for optimized implementation
   totaltime = 0;
@@ -72,9 +73,10 @@ void sorttime(int[] B) {
       checkorder(A);
       totaltime += (time2-time1);
   }
+  if (!prod)
     System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
-    avgtime = (((double)totaltime)/numruns) / 1000000.0;
-    System.out.println("Optimized Radixsort: Size " + A.length + ", Time: " + avgtime);
+  avgtime = (((double)totaltime)/numruns) / 1000000.0;
+  System.out.println("Optimized Radixsort: Size " + A.length + ", Time: " + avgtime);
 
   // Timing test for standard linked-list implementation
   totaltime = 0;
@@ -86,9 +88,10 @@ void sorttime(int[] B) {
     checkorder(A);
     totaltime += (time2-time1);
   }
+  if (!prod)
     System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
-    avgtime = (((double)totaltime)/numruns) / 1000000.0;
-    System.out.println("Standard linked-list Radixsort: Size " + A.length + ", Time: " + avgtime);
+  avgtime = (((double)totaltime)/numruns) / 1000000.0;
+  System.out.println("Standard linked-list Radixsort: Size " + A.length + ", Time: " + avgtime);
 
   // Timing test for optimized linked-list implementation
   totaltime = 0;
@@ -100,9 +103,10 @@ void sorttime(int[] B) {
     checkorder(A);
     totaltime += (time2-time1);
   }
+  if (!prod)
     System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
-    avgtime = (((double)totaltime)/numruns) / 1000000.0;
-    System.out.println("Optimized linked-list Radixsort: Size " + A.length + ", Time: " + avgtime);
+  avgtime = (((double)totaltime)/numruns) / 1000000.0;
+  System.out.println("Optimized linked-list Radixsort: Size " + A.length + ", Time: " + avgtime);
 }
 
 // This version of Radixsort assumes a 32 bit integer key, shifted by

@@ -81,8 +81,11 @@ class MaxHeap<T extends Comparable<T>> {
   // Remove and return maximum value
   public T removeMax() {
     assert n > 0 : "Heap is empty; cannot remove";
-    swap(0, --n);  // Swap maximum with last value
-    siftDown(0); // Put new heap root val in correct place
+    n--;
+    if (n != 0) {
+      swap(0, n);  // Swap maximum with last value
+      siftDown(0); // Put new heap root val in correct place
+    }
     return heap[n];
   }
 
@@ -90,8 +93,10 @@ class MaxHeap<T extends Comparable<T>> {
   public T remove(int pos) {
     assert (0 <= pos && pos < n) : "Invalid heap position";
     n--;
-    swap(pos, n); // Swap with last value
-    update(pos);  // Move other value to correct position
+    if (n != 0) {
+      swap(pos, n); // Swap with last value
+      update(pos);  // Move other value to correct position
+    }
     return heap[n];
   }
 

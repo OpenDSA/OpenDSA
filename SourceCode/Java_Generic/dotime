@@ -1,0 +1,47 @@
+cd build/InssortTime
+java TimeSort 10 x
+cd ../BubblesortTime
+java TimeSort 10 x
+cd ../SelsortTime
+java TimeSort 10 x
+cd ../ShellsortTime
+java TimeSort 10 x
+cd ../MergesortTime
+java TimeSort 10 x
+cd ../QuicksortTime
+java TimeSort 10 x
+cd ../HeapsortTime
+java TimeSort 10 x
+
+cd ../InssortTime
+java TimeSort 100 x
+cd ../BubblesortTime
+java TimeSort 100 x
+cd ../SelsortTime
+java TimeSort 100 x
+cd ../ShellsortTime
+java TimeSort 100 x
+cd ../MergesortTime
+java TimeSort 100 x
+cd ../QuicksortTime
+java TimeSort 100 x
+cd ../HeapsortTime
+java TimeSort 100 x
+
+cd ../InssortTime
+java TimeSort 1000 x
+cd ../BubblesortTime
+java TimeSort 1000 x
+cd ../SelsortTime
+java TimeSort 1000 x
+cd ../ShellsortTime
+java TimeSort 1000 x
+cd ../MergesortTime
+java TimeSort 1000 x
+cd ../QuicksortTime
+java TimeSort 1000 x
+cd ../HeapsortTime
+java TimeSort 1000 x
+
+echo ""
+echo ""
