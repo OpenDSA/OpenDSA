@@ -52,7 +52,8 @@ var lambda = String.fromCharCode(955),
       directed: true,
       center: true,
       arcoffset: 50,
-      emptystring: String.fromCharCode(955)
+      emptystring: String.fromCharCode(955),
+      draggable: true
     }, options);
     //this.options = $.extend({directed: true}, options);
     this.emptystring = this.options.emptystring;
@@ -256,14 +257,18 @@ var lambda = String.fromCharCode(955),
   automatonproto.enableDragging = function () {
     this.isDraggable = true;
     for (var i = this._nodes.length; i--;) {
-      this._nodes[i].element.draggable('enable');
+      if (this._nodes[i].element.data('ui-draggable')) {
+        this._nodes[i].element.draggable('enable');
+      }
     }
   };
 
   automatonproto.disableDragging = function () {
     this.isDraggable = false;
     for (var i = 0; i < this._nodes.length; i++) {
-      this._nodes[i].element.draggable('disable');
+      if (this._nodes[i].element.data('ui-draggable')) {
+        this._nodes[i].element.draggable('disable');
+      }
     }
   };
 
@@ -305,17 +310,64 @@ var lambda = String.fromCharCode(955),
     return this;
   };
 
-  // Method to create a new node (.addNode calls this)
+  // FA-specific drag handlers — handle state label and initial marker updates
+  function faDragStart(event, ui) {
+    var dragNode = $(this).data("node");
+    dragNode.wasHighlighted = dragNode.hasClass("jsavhighlight");
+    dragNode.highlight();
+  }
+
+  function faDragStop(event, ui) {
+    var dragNode = $(this).data("node");
+    if (!dragNode.wasHighlighted) {
+      dragNode.unhighlight();
+    }
+  }
+
+  function faDragging(event, ui) {
+    var dragNode = $(this).data("node");
+    var g = dragNode.automaton;
+    var nodes = g.nodes();
+    var neighbors = dragNode.neighbors();
+    nodes.reset();
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      if (next.neighbors().includes(dragNode)) {
+        neighbors.push(next);
+      }
+    }
+    for (var i = 0; i < neighbors.length; i++) {
+      var neighbor = neighbors[i];
+      var edge1 = g.getEdge(dragNode, neighbor);
+      var edge2 = g.getEdge(neighbor, dragNode);
+      if (edge1) { edge1.layout(); }
+      if (edge2) { edge2.layout(); }
+    }
+    if (dragNode === g.initial) {
+      g.removeInitial(dragNode);
+      g.makeInitial(dragNode);
+    }
+    dragNode.stateLabelPositionUpdate();
+  }
+
+  // Must override base class newNode — base hardcodes GraphNode, FA needs this.constructors.Node
   automatonproto.newNode = function (value, options) {
-    var newNode = new this.constructors.Node(this, value, options), // create new node
+    var newNode = new this.constructors.Node(this, value, options),
       newNodes = this._nodes.slice(0);
-    newNodes.push(newNode); // add new node to clone of node array
-    // set the nodes (makes the operation animatable
+    newNodes.push(newNode);
     this._setnodes(newNodes, options);
 
     var newAdjs = this._edges.slice(0);
     newAdjs.push([]);
     this._setadjs(newAdjs, options);
+
+    if (this.options.draggable) {
+      newNode.element.draggable({
+        start: faDragStart,
+        drag: faDragging,
+        stop: faDragStop,
+        containment: "parent"
+      });
+    }
 
     return newNode;
   };
