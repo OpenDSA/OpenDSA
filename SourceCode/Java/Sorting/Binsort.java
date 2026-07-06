@@ -1,4 +1,4 @@
-static final int MaxKeyValue = 200;
+final int MaxKeyValue = 200;
 
 // The following are dummy declarations to keep the compiler happy.
 // Need to implement this for real when there is a list class
@@ -13,7 +13,7 @@ public interface List {
   public int getValue();
 }
 
-public static class LinkedList implements List {
+public class LinkedList implements List {
   LinkedList() {}
 
   public void append(int it) {}
@@ -25,10 +25,10 @@ public static class LinkedList implements List {
   public int getValue() { return -1; }
 }
 
-static void output(Object x) {}
+void output(Object x) {}
 
 /* *** ODSATag: Binsort *** */
-static void binsort(int[] A) {
+void binsort(int[] A) {
   List[] B = new LinkedList[MaxKeyValue+1];
   int item;
   for (int i=0; i<=MaxKeyValue; i++)
@@ -42,7 +42,7 @@ static void binsort(int[] A) {
 /* *** ODSAendTag: Binsort *** */
 
 
-static void simplebinsort(int[] A, int[] B) {
+void simplebinsort(int[] A, int[] B) {
   int i;
   /* *** ODSATag: simplebinsort *** */
   for (i=0; i<A.length; i++)
@@ -51,7 +51,7 @@ static void simplebinsort(int[] A, int[] B) {
 }
 
 
-static void simplebinsort2(int[] A) {
+void simplebinsort2(int[] A) {
   int i;
   /* *** ODSATag: simplebinsort2 *** */
   for (i=0; i<A.length; i++)
@@ -60,41 +60,28 @@ static void simplebinsort2(int[] A) {
   /* *** ODSAendTag: simplebinsort2 *** */
 }
 
-static Boolean sorttest(int[] A) {
-  int[] B = new int[A.length];
+boolean sorttest(int[] B) {
+  int[] A = new int[B.length];
   int i;
 
-  // Perform numtests trials to test this
-  for (int tests=0; tests<numtests; tests++) {
-    for (i=0; i<A.length; i++) {
-      A[i] = i;
-      B[i] = 0;
-    }
-    Permute.permute(A);
-    simplebinsort(A, B);
-    for (i=1; i<A.length; i++) {
-      if (B[i] < B[i-1]) {
-        System.out.println("Error! Value " + B[i] + " at position " + i +
-                           " was less than " + B[i-1] + " at position " + (i-1));
-        SUCCESS = false;
-      }
-    }
-  }
-
-
-  for (int tests=0; tests<numtests; tests++) {
+  // Perform numruns trials to test this
+  for (int tests=0; tests<numruns; tests++) {
     for (i=0; i<B.length; i++) {
       B[i] = i;
     }
     Permute.permute(B);
-    simplebinsort2(B);
-    for (i=1; i<B.length; i++) {
-      if (B[i] < B[i-1]) {
-        System.out.println("Error! Value " + B[i] + " at position " + i +
-                           " was less than " + B[i-1] + " at position " + (i-1));
-        SUCCESS = false;
-      }
-    }
+    simplebinsort(B, A);
+    if (!checkorder(A)) return false;
   }
-  return SUCCESS;
+
+
+  for (int tests=0; tests<numruns; tests++) {
+    for (i=0; i<A.length; i++) {
+      A[i] = i;
+    }
+    Permute.permute(A);
+    simplebinsort2(A);
+    if (!checkorder(A)) return false;
+  }
+  return true;
 }

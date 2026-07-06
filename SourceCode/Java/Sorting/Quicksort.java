@@ -1,12 +1,54 @@
-static int THRESHOLD = 10;
+int THRESHOLD = 10;
 
-static boolean sorttest(int[] B) {
+void sorttime(int[] B) {
     int i;
-    int[] Aint = new int[B.length];
-    for (i = 0; i < B.length; i++)
-        Aint[i] = B[i];
-    quicksort(Aint, 0, Aint.length-1);
-    if (!checkorder(Aint)) return false;
+    long totaltime;
+    int runs;
+    double avgtime;
+
+  System.out.println("Doing timings for an array of size " + B.length + " on the basis of " + numruns + " runs");
+
+  // Timing test for standard implementation
+    totaltime = 0;
+    for (runs=0; runs<numruns; runs++) {
+        for(i=0; i<B.length; i++) {
+            A[i] = B[i];
+        }
+        time1 = System.nanoTime();
+        quicksort(A, 0, A.length-1);
+        time2 = System.nanoTime();
+        checkorder(A);
+        totaltime += (time2-time1);
+    }
+    System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
+    avgtime = (((double)totaltime)/numruns) / 1000000.0;
+    System.out.println("Standard Quicksort: Size " + A.length + ", Time: " + avgtime);
+
+    // Timing test for optimized version
+    totaltime = 0;
+    for (runs=0; runs<numruns; runs++) {
+        for(i=0; i<B.length; i++) {
+            A[i] = B[i];
+        }
+        time1 = System.nanoTime();
+        quicksortOpt(A, 0, A.length-1);
+        time2 = System.nanoTime();
+        checkorder(A);
+        totaltime += (time2-time1);
+    }
+    System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
+    avgtime = (((double)totaltime)/numruns) / 1000000.0;
+    System.out.println("Optimized Quicksort: Size " + A.length + ", Time: " + avgtime);
+}
+
+
+boolean sorttest(int[] B) {
+    int i;
+    for (i = 0; i < B.length; i++) {
+        A[i] = B[i];
+    }
+    quicksort(A, 0, A.length-1);
+    if (!checkorder(A)) return false;
     return true;
 }
 
@@ -15,7 +57,7 @@ static boolean sorttest(int[] B) {
    to work right when there is only one element in the partition
    (i.e., a list of 2 elements). */
 /* *** ODSATag: partition *** */
-static int partition(int[] A, int left, int right, int pivot) {
+int partition(int[] A, int left, int right, int pivot) {
     while (left <= right) { // Move bounds inward until they meet
         while (A[left] < pivot) { left++; }
         while ((right >= left) && (A[right] >= pivot)) { right--; }
@@ -26,12 +68,12 @@ static int partition(int[] A, int left, int right, int pivot) {
 /* *** ODSAendTag: partition *** */
 
 /* *** ODSATag: findpivot *** */
-static int findpivot(int[] A, int i, int j)
+int findpivot(int[] A, int i, int j)
 { return (i+j)/2; }
 /* *** ODSAendTag: findpivot *** */
 
 /* *** ODSATag: Quicksort *** */
-static void quicksort(int[] A, int i, int j) { // Quicksort
+void quicksort(int[] A, int i, int j) { // Quicksort
     int pivotindex = findpivot(A, i, j);  // Pick a pivot
     swap(A, pivotindex, j);               // Stick pivot at end
     // k will be the first position in the right subarray
@@ -44,49 +86,10 @@ static void quicksort(int[] A, int i, int j) { // Quicksort
 
 // ---------------------------------------------------------------
 
-// Set up and implementations for doing timing runs on certain variations
-
-static void sorttime(int[] B) {
-    int i;
-    int[] Aint = new int[B.length];
-    long totaltime;
-    int runs;
-    double avgtime;
-
-    // Timing test for standard implementation
-    totaltime = 0;
-    for (runs=0; runs<numtests; runs++) {
-        for(i=0; i<B.length; i++) Aint[i] = B[i];
-        time1 = System.nanoTime();
-        quicksort(Aint, 0, Aint.length-1);
-        time2 = System.nanoTime();
-        checkorder(Aint);
-        totaltime += (time2-time1);
-    }
-    avgtime = ((double)totaltime)/numtests;
-    System.out.println("Standard Quicksort for " + numtests + " runs: Size " +
-            testsize + ", Time: " + avgtime);
-
-    // Timing test for optimized version
-    totaltime = 0;
-    for (runs=0; runs<numtests; runs++) {
-        for(i=0; i<B.length; i++) Aint[i] = B[i];
-        time1 = System.nanoTime();
-        quicksortOpt(Aint, 0, Aint.length-1);
-        time2 = System.nanoTime();
-        checkorder(Aint);
-        totaltime += (time2-time1);
-    }
-    avgtime = ((double)totaltime)/numtests;
-    System.out.println("Optimized Quicksort for " + numtests + " runs: Size " +
-            testsize + ", Time: " + avgtime);
-}
-
-
 // Insertion sort used by optimized quicksort
 // Integer-only version
 // Instead of swapping, "shift" the values down the array
-static void inssortshiftint(int[] A) {
+void inssortshiftint(int[] A) {
     for (int i=1; i<A.length; i++) { // Insert i'th record
         int j;
         int temp = A[i];
@@ -97,11 +100,11 @@ static void inssortshiftint(int[] A) {
 }
 
 
-static int MAXSTACKSIZE = 100;
+int MAXSTACKSIZE = 100;
 
 // Optimized Quicksort: Not recursive, and uses Inssort for small lists
 // This version uses primitive integer values for the records
-static void quicksortOpt(int[] A, int oi, int oj) { // Quicksort
+void quicksortOpt(int[] A, int oi, int oj) { // Quicksort
     int[] Stack = new int[MAXSTACKSIZE]; // Stack for array bounds
     int listsize = oj-oi+1;
     int top = -1;

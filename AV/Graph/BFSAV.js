@@ -34,7 +34,7 @@ $(document).ready(function() {
     markCount = 0;
     nodeCount = g.nodeCount();
     g.layout();
-    av.umsg("Let's look at the details of how a breadth-first seach works.");
+    av.umsg("Let's look at the details of how a breadth-first search works.");
     av.displayInit();
     av.step();
     var start = g.nodes()[0];

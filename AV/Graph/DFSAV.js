@@ -35,7 +35,7 @@ $(document).ready(function() {
     size = 6;
     markCount = 0;
     nodeCount = g.nodeCount();
-    av.umsg("Let's look at the details of how a depth-first seach works.");
+    av.umsg("Let's look at the details of how a depth-first search works.");
     g.layout();
     av.displayInit();
     dfs(g.nodes()[0]);

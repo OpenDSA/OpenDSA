@@ -6,6 +6,7 @@ import java.util.*;
 public class SortTest<T extends Comparable<T>> {
 
   private T[] A;
+  private T[] mtemp;
   long time1, time2;
   int numruns = 5;
   int swaps;
@@ -13,6 +14,7 @@ public class SortTest<T extends Comparable<T>> {
   
   @SuppressWarnings("unchecked")
   public SortTest(Class<T> type, int size) {
-        // This creates a truly reified arrays of the correct type at runtime
-        this.A = (T[]) Array.newInstance(type, size);
+      // This creates a truly reified arrays of the correct type at runtime
+      A = (T[]) Array.newInstance(type, size);
+      mtemp = (T[]) Array.newInstance(type, size);
   }

@@ -30,7 +30,7 @@ $(document).ready(function() {
   initGraph();
 
   // Slide 1
-  av.umsg("Let's look at the details of how a depth-first seach works.");
+  av.umsg("Let's look at the details of how a depth-first search works.");
   av.displayInit();
   av.step();
 
