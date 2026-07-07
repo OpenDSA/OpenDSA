@@ -40,11 +40,10 @@ In this discussion we will be revisiting good testing practices with an example 
    
    .. raw:: html
    
-       <center>
-       <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_0850nht8' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Hokie Class"></iframe> 
-       </center>
-
-
+       <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+            <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=0fca1799-8438-43ec-98f1-b410006b5b7d" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Introduction to Hokie Class" aria-description="Introduction to Hokie Class"></iframe>
+       </div>
+         
 Checkpoint 1
 ------------
 
@@ -138,11 +137,10 @@ Interactive: Hokie Class JUnit Testing
      
      .. raw:: html
      
-        <center>
-        <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_35cpol6i' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Hokie Class JUnit Testing"></iframe> 
-        </center>
-
-
+        <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+             <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=37af952f-fdc3-4a54-a3c6-b4060094aad5" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Hokie Class JUnit Testing" aria-description="Hokie Class JUnit Testing"></iframe>
+        </div>
+        
 Checkpoint 2
 ------------
 
@@ -154,10 +152,9 @@ Review of Writing JUnit Tests with student.TestCase
 
 .. raw:: html
     
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_zj2voxbz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Review of Writing JUnit Tests with student.TestCase"></iframe> 
-    </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+         <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=4535fd9c-8ecf-4f43-bda7-b411013ea770" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Review of Writing JUnit Tests with student.TestCase" aria-description="Review of Writing JUnit Tests with student.TestCase"></iframe>
+    </div>
 
 
 Use JUnit
