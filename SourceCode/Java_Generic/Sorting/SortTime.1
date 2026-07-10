@@ -9,13 +9,15 @@ public class SortTime<T extends Comparable<T>> {
   static int numruns = 5;
   int swaps;
   int compares;
+  boolean prod;
 
   private T[] A;
   private T[] mtemp;
   
   @SuppressWarnings("unchecked")
-  public SortTime(Class<T> type, int size) {
+  public SortTime(Class<T> type, int size, boolean prodIn) {
     // This creates a truly reified array of the correct type at runtime
     A = (T[]) Array.newInstance(type, size);
     mtemp = (T[]) Array.newInstance(type, size);
+    prod = prodIn;
   }

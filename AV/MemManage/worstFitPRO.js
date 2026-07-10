@@ -5,7 +5,6 @@
 /*global alert: true, ODSA */
 (function ($) {
   $(document).ready(function () {
-
     // settings for the AV
     var settings = new JSAV.utils.Settings($(".jsavsettings"));
 
@@ -35,11 +34,12 @@
         scale = 2.0, // Scale block sizes to pixels
         linesArray = [];
 
-    //creates the initial visualization of the memory pool, rectangles are created based
-    //on the randomly generated values for the free list.
+    // Create the initial visualization of the memory pool.
+    // Requests are created based on the randomly generated values
+    // for the free list.
     function OriginalMemBlock() {
 
-      var memPoolLabel = av.label("Memory Pool", {"left": 150, "top": 195});
+      var memPoolLabel = av.label("Memory Pool", {"left": 150, "top": 180});
       
       var used1Size = scale * (Math.floor(Math.random() * 3) + 25);
       var used2Size = scale * (Math.floor(Math.random() * 3) + 58);
@@ -80,11 +80,10 @@
       var usedRec = av.g.rect(620, smallRectY, 30, 30).css({"fill": "coral"});
       var freeRec = av.g.rect(720, smallRectY, 30, 30).css({"fill": "cornflowerblue"});
       
-      var labelY = 170;
+      var labelY = 155;
       var usedLabel = av.label("Used Space", {left :  590, top:  labelY});
       var freeLabel = av.label("Free Space", {left :  690, top:  labelY});
       
-console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Size + ", " + used4Size);
       usedNum = used1Size + used2Size + used3Size + used4Size;
       freeNum = freeValues[0] + freeValues[1] + freeValues[2] + freeValues[3];
       
@@ -142,30 +141,24 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
     function generateMemoryValues() {
       freeValues[0] = Math.floor(Math.random() * 3) + 20;
       freeValues[1] = Math.floor(Math.random() * 3) + 40; 
-
-      // freeValues[1] is something between incrs[0] and incrs[2]
-      freeValues[2] = Math.floor(Math.random() * (incrs[0] - incrs[1] - 1)) + incrs[1] + 1;
+      freeValues[2] = Math.floor(Math.random() * 3) + 25;
       freeValues[3] = Math.floor(Math.random() * 3) + 50;
     }
 
     // Generate a random (but constrained) set of four block sizes to insert
     function generateInsertionBlocks() {
-
       incrs[0] = Math.floor(Math.random() * 3) + 36;
-      incrs[1] = Math.floor(Math.random() * 3) + 10; 
-      // incrs[1] is something between incrs[0] and incrs[2]
-      incrs[2] = Math.floor(Math.random() * (incrs[0] - incrs[1] - 1)) + incrs[1] + 1;
-      //incrs[3] = Math.floor(Math.random() * 3) + 3;
-      incrs[3] = Math.floor(Math.random() * (freeValues[0] - 1)) + 1;
+      incrs[1] = Math.floor(Math.random() * 3) + 10;
+      incrs[2] = Math.floor(Math.random() * 3) + 25;
+      incrs[3] = Math.floor(Math.random() * 10) + 1;
     }
 
     // Process reset button: Re-initialize everything, including the free blocks to insert
     function initialize() {
-
       //reset the exercise
       resetAV();
-      generateInsertionBlocks();
       generateMemoryValues();
+      generateInsertionBlocks();
 
       //create stack to store list of block sizes for user to input
       if (stack) {
@@ -196,13 +189,12 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
           theArray.unhighlight(i);
         }
       }
-      av.forward();
-      av._undo = [];
+      //av.forward();
+      //av._undo = [];
       return theArray;
     }
 
     function insertIntoBlock(index) {
-
       var currIncr = incrs[ArraySize - stack.size()];
       var consumed = freeValues[index] - theArray.value(index);
       var currentStart = initialFreeStartArray[index] + consumed * scale;
@@ -223,7 +215,6 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
     }
 
     function modelSolution(jsav) {
-
       var modelStack = jsav.ds.stack({left: 250, center: true});
       
       for (var i = 0; i < ArraySize; i++) {
@@ -234,11 +225,9 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
 
       var modelarr = jsav.ds.array([freeValues[0], freeValues[1], freeValues[2], freeValues[3]], {top: 50, left: 200});
       jsav.displayInit();
-
       var i, j;
 
       for (i = 0; i < 4; i += 1) {
-
         var worstIndex = -1;  
         var worstSize = -1;  
 
@@ -250,25 +239,24 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
             }
           }
         }
-          
-            if(worstIndex != -1) {
-              modelarr.highlight(worstIndex);
-              modelarr.unhighlight(worstIndex);
-              jsav.stepOption("grade", true);
+        if(worstIndex != -1) {
+          modelarr.highlight(worstIndex);
+          modelarr.unhighlight(worstIndex);
+          jsav.stepOption("grade", true);
 
+          var newVal = modelarr.value(worstIndex) - incrs[i];
+          modelarr.value(worstIndex, newVal);
 
-              var newVal = modelarr.value(worstIndex) - incrs[i];
-              modelarr.value(worstIndex, newVal);
-
-              modelStack.removeFirst();
-              modelStack.layout();
-              if (modelStack.first()) {
-                modelStack.first().highlight();
-              }
-              jsav.step();
-            }
+          modelStack.removeFirst();
+          modelStack.layout();
+          if (modelStack.first()) {
+            modelStack.first().highlight();
+          }
+          //jsav.step();
+        }
+        jsav.step();
       }
-          
+      
       return modelarr;
     }
 
@@ -293,23 +281,16 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
     
     // register click handlers for the array indices
     theArray.click(function (index) {
-
-      if (!theArray.isHighlight(index)) {
-        
-        theArray.highlight(index);
-        theArray.unhighlight(index);
+      if (stack.first()) {
         //inserts "used" rectangle in memory pool (visualize using up space)
         insertIntoBlock(index);
-        
         stack.removeFirst();
         stack.layout();
         //highlight the next value in the stack
         if (stack.first()) {
-         stack.first().highlight();
+          stack.first().highlight();
         }
         exer.gradeableStep();
-      } else {
-        theArray.unhighlight(index);
       }
     });
 

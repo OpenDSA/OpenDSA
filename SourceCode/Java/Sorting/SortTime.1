@@ -9,9 +9,11 @@ public class SortTime {
   int numruns = 5;
   int swaps;
   int compares;
+  boolean prod;
 
   int[] A;
 
-  public SortTime(int size) {
+  public SortTime(int size, boolean prodIn) {
     A = new int[size];
+    prod = prodIn;
   }

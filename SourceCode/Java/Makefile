@@ -439,7 +439,7 @@ build/RadixsortTest/success: Sorting/Radixsort.java Sorting/SortTest.1 Sorting/S
 	javac $(CFLAGS) Sort.java; \
 	$(JAVA) $(RFLAGS) Sort
 
-Sorttime: InssortTime BubblesortTime SelsortTime ShellsortTime MergesortTime QuicksortTime HeapsortTime RadixsortTime
+SortTime: InssortTime BubblesortTime SelsortTime ShellsortTime MergesortTime QuicksortTime HeapsortTime RadixsortTime
 
 InssortTime: Sorting/Insertionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Checkorder.java Sorting/TimeSort.java
 	@echo "Inssort Timing Test"

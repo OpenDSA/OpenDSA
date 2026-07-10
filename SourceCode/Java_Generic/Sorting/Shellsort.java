@@ -14,7 +14,8 @@ void sorttime(T[] B) {
         checkorder(A);
         totaltime += (time2-time1);
     }
-    System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
+    if (!prod)
+        System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
     avgtime = (((double)totaltime)/numruns) / 1000000.0;
     System.out.println("Standard Shellsort: Size " + A.length + ", Time: " + avgtime);
 }

@@ -6,7 +6,8 @@ void sorttime(int[] B) {
     int runs;
     double avgtime;
 
-  System.out.println("Doing timings for an array of size " + B.length + " on the basis of " + numruns + " runs");
+    if (!prod)
+        System.out.println("Doing timings for an array of size " + B.length + " on the basis of " + numruns + " runs");
 
   // Timing test for standard implementation
     totaltime = 0;
@@ -20,7 +21,8 @@ void sorttime(int[] B) {
         checkorder(A);
         totaltime += (time2-time1);
     }
-    System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
+    if (!prod)
+        System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
     avgtime = (((double)totaltime)/numruns) / 1000000.0;
     System.out.println("Standard Quicksort: Size " + A.length + ", Time: " + avgtime);
 
@@ -36,7 +38,8 @@ void sorttime(int[] B) {
         checkorder(A);
         totaltime += (time2-time1);
     }
-    System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
+    if (!prod)
+        System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
     avgtime = (((double)totaltime)/numruns) / 1000000.0;
     System.out.println("Optimized Quicksort: Size " + A.length + ", Time: " + avgtime);
 }

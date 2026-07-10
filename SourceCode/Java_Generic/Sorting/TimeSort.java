@@ -8,13 +8,13 @@ public class TimeSort {
 
     @SuppressWarnings("unchecked")
     public static void main(String args[]) throws IOException {
-        if (args.length != 1) {
-            System.out.println("Usage: TimeSort <size>");
+        if ((args.length != 1) && (args.length != 2)) {
+            System.out.println("Usage: TimeSort <size> [prod]");
             System.exit(0);
-        }
+        }        
         int testsize = Integer.parseInt(args[0]);
         SortTime<KVPair<Integer,Integer>> myTest =
-            new SortTime<>(KVPair.class, testsize);
+            new SortTime<>(KVPair.class, testsize, args.length == 2);
         KVPair<Integer, Integer>[] B =
             (KVPair[]) Array.newInstance(KVPair.class, testsize);
         Random value = new Random();

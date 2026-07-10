@@ -8,6 +8,7 @@ void sorttime(T[] B) {
     swaps = 0;
     compares = 0;
     totaltime = 0;
+    if (!prod) {
     for (runs=0; runs<numruns; runs++) {
         for (i=0; i<B.length; i++) {
             A[i] = B[i];
@@ -23,7 +24,7 @@ void sorttime(T[] B) {
     avgtime = (((double)totaltime)/numruns) / 1000000.0;
     System.out.println("Instrumented Standard Bubble Sort: Size " + A.length + ", Time: " + avgtime);
     System.out.println("Compares: " + compares/numruns + ", swaps: " + swaps/numruns);
-
+    }
 
     totaltime = 0;
     for (runs=0; runs<numruns; runs++) {
@@ -36,11 +37,13 @@ void sorttime(T[] B) {
         checkorder(A);
         totaltime += (time2-time1);
     }
-    System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
+    if (!prod)
+        System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
     avgtime = (((double)totaltime)/numruns) / 1000000.0;
     System.out.println("Standard Bubble Sort: Size " + A.length + ", Time: " + avgtime);
 
     totaltime = 0;
+    if (!prod) {
     for (runs=0; runs<numruns; runs++) {
         for (i=0; i<B.length; i++) {
             A[i] = B[i];
@@ -54,8 +57,10 @@ void sorttime(T[] B) {
     System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
     avgtime = (((double)totaltime)/numruns) / 1000000.0;
     System.out.println("Swap Check Bubble Sort: Size " + A.length + ", Time: " + avgtime);
-
+    }
+    
     totaltime = 0;
+    if (!prod) {
     for (runs=0; runs<numruns; runs++) {
         for (i=0; i<B.length; i++) {
             A[i] = B[i];
@@ -69,8 +74,10 @@ void sorttime(T[] B) {
     System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
     avgtime = (((double)totaltime)/numruns) / 1000000.0;
     System.out.println("Swap Check Bubble Sort 2: Size " + A.length + ", Time: " + avgtime);
+    }
 
     totaltime = 0;
+    if (!prod) {
     for (runs=0; runs<numruns; runs++) {
         for (i=0; i<B.length; i++) {
             A[i] = B[i];
@@ -84,8 +91,10 @@ void sorttime(T[] B) {
     System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
     avgtime = (((double)totaltime)/numruns) / 1000000.0;
     System.out.println("Wikipedia Bubble Sort: Size " + A.length + ", Time: " + avgtime);
-
+    }
+    
     totaltime = 0;
+    if (!prod) {
     for (runs=0; runs<numruns; runs++) {
         for (i=0; i<B.length; i++) {
             A[i] = B[i];
@@ -99,7 +108,8 @@ void sorttime(T[] B) {
     System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
     avgtime = (((double)totaltime)/numruns) / 1000000.0;
     System.out.println("Wikipedia Bubble Sort 2: Size " + A.length + ", Time: " + avgtime);
-
+    }
+    
     totaltime = 0;
     for (runs=0; runs<numruns; runs++) {
         for (i=0; i<B.length; i++) {
@@ -111,7 +121,8 @@ void sorttime(T[] B) {
         checkorder(A);
         totaltime += (time2-time1);
     }
-    System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
+    if (!prod)
+        System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
     avgtime = (((double)totaltime)/numruns) / 1000000.0;
     System.out.println("Wikipedia Bubble Sort w/out checks: Size " + A.length + ", Time: " + avgtime);
 }

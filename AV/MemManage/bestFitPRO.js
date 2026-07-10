@@ -39,7 +39,7 @@
     //on the randomly generated values for the free list.
     function OriginalMemBlock() {
 
-      var memPoolLabel = av.label("Memory Pool", {"left": 150, "top": 195});
+      var memPoolLabel = av.label("Memory Pool", {"left": 150, "top": 180});
       
       var used1Size = scale * (Math.floor(Math.random() * 3) + 25);
       var used2Size = scale * (Math.floor(Math.random() * 3) + 58);
@@ -80,11 +80,10 @@
       var usedRec = av.g.rect(620, smallRectY, 30, 30).css({"fill": "coral"});
       var freeRec = av.g.rect(720, smallRectY, 30, 30).css({"fill": "cornflowerblue"});
       
-      var labelY = 170;
+      var labelY = 155;
       var usedLabel = av.label("Used Space", {left :  590, top:  labelY});
       var freeLabel = av.label("Free Space", {left :  690, top:  labelY});
       
-console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Size + ", " + used4Size);
       usedNum = used1Size + used2Size + used3Size + used4Size;
       freeNum = freeValues[0] + freeValues[1] + freeValues[2] + freeValues[3];
       
@@ -202,7 +201,6 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
     }
 
     function insertIntoBlock(index) {
-
       var currIncr = incrs[ArraySize - stack.size()];
       var consumed = freeValues[index] - theArray.value(index);
       var currentStart = initialFreeStartArray[index] + consumed * scale;
@@ -223,7 +221,6 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
     }
 
     function modelSolution(jsav) {
-
       var modelStack = jsav.ds.stack({left: 250, center: true});
       
       for (var i = 0; i < ArraySize; i++) {
@@ -293,15 +290,9 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
     
     // register click handlers for the array indices
     theArray.click(function (index) {
-
-      if (!theArray.isHighlight(index)) {
-        
-        theArray.highlight(index);
-        theArray.unhighlight(index);
-        //setTimeout(function(){theArray.unhighlight(index)}, 250);
+      if (stack.first()) {
         //inserts "used" rectangle in memory pool (visualize using up space)
         insertIntoBlock(index);
-        
         stack.removeFirst();
         stack.layout();
         //highlight the next value in the stack
@@ -309,8 +300,6 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
          stack.first().highlight();
         }
         exer.gradeableStep();
-      } else {
-        theArray.unhighlight(index);
       }
     });
 
