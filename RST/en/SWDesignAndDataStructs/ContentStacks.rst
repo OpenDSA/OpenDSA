@@ -104,10 +104,11 @@ Interactive: Introduction to Stacks
 
 .. raw:: html
 
-     <center>
-     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_2th5gshg' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Stacks"></iframe> 
-     </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+          <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=49586488-7476-44e9-8e19-b3f1004dc64c" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Introduction to Stacks" aria-description="Introduction to Stacks"></iframe>
+       </div>
+       
+       
 Checkpoint 1
 ------------
 
@@ -121,10 +122,10 @@ Interactive: Stack Memory Example
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_0ahaxauj' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Stack Memory Example"></iframe> 
-    </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+         <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=842bca63-43cc-4ea7-8b60-b40101484b97" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Stack Memory Example" aria-description="Stack Memory Example"></iframe>
+      </div>
+      
 Checkpoint 2
 ------------
 
@@ -139,10 +140,10 @@ Stacks Array-Based Design
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_zvh51gzm' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Stacks Array-Based Design"></iframe> 
-    </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+         <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=86a26123-2251-4285-bc9c-b415015d6fbf" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Stacks Array-Based Design" aria-description="Stacks Array-Based Design"></iframe>
+      </div>
+      
 Checkpoint 3
 ------------
 
@@ -167,11 +168,11 @@ Stacks Array Implementation
 
 
 .. raw:: html
-
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_k40xld68' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Stacks Array Implementation"></iframe> 
-   </center>
-   
+ 
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+      <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=75a598b6-9212-417e-97b8-b4160075dff1" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Stacks Array Implementation" aria-description="Stacks Array Implementation"></iframe>
+   </div>
+     
 .. _StacksChainImpl:   
 
 Stacks Linked Chain Implementation
@@ -196,10 +197,10 @@ Stacks Linked Chain Implementation
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_miuoo412' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Stacks Linked Chain Implementation"></iframe> 
-   </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=f2e4f494-eeb9-414e-baf7-b405015df438" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Stacks Linked Chain Implementation" aria-description="Stacks Linked Chain Implementation"></iframe>
+     </div>
+     
 Checkpoint 4
 ------------
 

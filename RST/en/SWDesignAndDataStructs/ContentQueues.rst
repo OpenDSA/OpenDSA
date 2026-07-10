@@ -85,11 +85,10 @@ Interactive: Introduction to Queues
         
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_1km1xhtz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Queues"></iframe> 
-    </center>
-
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+         <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=7f04d504-60c4-4c5a-b52e-b41d0176174e" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Introduction to Queues" aria-description="Introduction to Queues"></iframe>
+      </div>
+      
 Checkpoint 1
 ------------
 
@@ -120,10 +119,10 @@ Interactive: Linked Queues Intro and Enqueue
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_nf3l8nvv' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Linked Queues Intro and Enqueue"></iframe> 
-    </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+         <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=7ec0a091-58ba-4a65-90e0-b404005a6af1" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Linked Queues Intro and Enqueue" aria-description="Linked Queues Intro and Enqueue"></iframe>
+      </div>
+      
 Checkpoint 2
 ------------
 
@@ -145,11 +144,10 @@ Interactive: Linked Queues Removing and More (Dequeue and Other Methods)
    
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_5m4m3con' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Linked Queues Removing and More"></iframe> 
-    </center>
-
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+         <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=ec77a709-1c31-4d98-9cad-b423010e7661" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Linked Queues Removing and More" aria-description="Linked Queues Removing and More"></iframe>
+      </div>
+      
 Checkpoint 3
 ------------
 
@@ -264,10 +262,10 @@ Interactive: Introduction to Deque
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_vj6hwbnk' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Deque"></iframe> 
-    </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+         <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=0091965a-230e-474a-8be2-b4010063d7ca" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Introduction to Deque" aria-description="Introduction to Deque"></iframe>
+      </div>
+      
 Checkpoint 4
 ------------
 
@@ -288,11 +286,10 @@ Interactive: Deque Removing and Wrap Up
   
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_c94y4y06' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" Deque Removing and Wrap Up></iframe> 
-   </center>
-
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=72267ace-a344-41ac-9b2c-b41000e960f0" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Deque Removing and Wrap Up" aria-description="Deque Removing and Wrap Up"></iframe>
+     </div>
+     
 Checkpoint 5
 ------------
 
@@ -318,14 +315,14 @@ Interactive: ArrayQueue: Array Implementation of Queues
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_no29pnf8' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="ArrayQueue"></iframe> 
-   </center>
-   <br>
-   <br>
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_8fs30aor' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Array Implementation of Queues"></iframe> 
-   </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=6234bbf0-a26a-4206-8c14-b41a00526c34" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="ArrayQueue" aria-description="ArrayQueue"></iframe>
+   </div>
+   <br><br>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+       <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=41ce4beb-a567-446b-a9c0-b413014a26f7" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Array Implementation of Queues" aria-description="Array Implementation of Queues"></iframe>
+    </div>
+    
 
 Checkpoint 6
 ------------
@@ -351,10 +348,10 @@ Interactive: ArrayQueue: One Unused Location
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_299igb5h' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="ArrayQueue: One Unused Location"></iframe> 
-   </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=e34572fa-1bf7-4c55-97a9-b426017c6e62" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="ArrayQueue: One Unused Location" aria-description="ArrayQueue: One Unused Location"></iframe>
+    </div>
+     
 Checkpoint 7
 -------------
 
@@ -379,10 +376,9 @@ Interactive: ArrayQueue: Ensure Capacity
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_vykguc35' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="ArrayQueue: Ensure Capacity"></iframe> 
-   </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=3946310a-52fe-402f-8b28-b4030189cd1b" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="ArrayQueue: Ensure Capacity" aria-description="ArrayQueue: Ensure Capacity"></iframe>
+     </div>
 
 Checkpoint 8
 ------------
@@ -408,11 +404,9 @@ Interactive: ArrayQueue WrapUp
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_8ktqd0d5' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="ArrayQueue WrapUp"></iframe> 
-   </center>
-
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=a2df4eca-c2ef-471b-be6e-b40300a7bf0b" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="ArrayQueue WrapUp" aria-description="ArrayQueue WrapUp"></iframe>
+     </div>
 
 .. admonition:: Empty Queue Exception
 
