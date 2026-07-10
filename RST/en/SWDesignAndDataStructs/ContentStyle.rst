@@ -145,7 +145,7 @@ should be changed to:
 
 - The name cannot use keywords/reserved words in Java. See https://docs.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html for a complete list of reserved words. For example: when creating an object, the keyword `new` is used. However, the following examples will both cause a syntax error because `new` is a reserved keyword:
 
-.. code-block:: java
+.. code-block::java
 
     //Using new as a variable name is a syntax error because new is a reserved word in Java
 
@@ -220,7 +220,7 @@ There is no whitespace in between the name of the method and it’s parameter pa
 
 Example(s):
 
-.. code-block:: java  
+.. code-block::java  
 
     calcClassAverage( … )
 

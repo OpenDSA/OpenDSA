@@ -189,7 +189,7 @@ To make a JUnit test class in eclipse:
 
 #. Write additional test methods as needed. A simplified test class example for the Student class:
 
-.. code-block:: java
+.. code-block::java
 
    public class StudentTest extends student.TestCase
    {
@@ -275,7 +275,7 @@ Clarification for edge and average cases- For a list that contains 100 values, y
 
 Example: say we had the following:
 
-.. code-block:: java
+.. code-block::java
 
    if ( score >= 90 )
    {
