@@ -61,12 +61,29 @@ void sorttime(int[] B) {
     }
     
     totaltime = 0;
+    if (!prod) {
+    for (runs=0; runs<numruns; runs++) {
+        for(i=0; i<B.length; i++) {
+            A[i] = B[i];
+        }
+        time1 = System.nanoTime();
+        bubblesortcheck2(A);
+        time2 = System.nanoTime();
+        checkorder(A);
+        totaltime += (time2-time1);
+    }
+    System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
+    avgtime = (((double)totaltime)/numruns) / 1000000.0;
+    System.out.println("Swap Check Bubble Sort 2: Size " + A.length + ", Time: " + avgtime);
+    }
+
+    totaltime = 0;
     for (runs=0; runs<numruns; runs++) {
         for (i=0; i<B.length; i++) {
             A[i] = B[i];
         }
         time1 = System.nanoTime();
-        bubblecheckswap(A);
+        bubwikipedia(A);
         time2 = System.nanoTime();
         checkorder(A);
         totaltime += (time2-time1);
@@ -75,6 +92,38 @@ void sorttime(int[] B) {
         System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
     avgtime = (((double)totaltime)/numruns) / 1000000.0;
     System.out.println("Wikipedia Bubble Sort: Size " + A.length + ", Time: " + avgtime);
+
+    totaltime = 0;
+    for (runs=0; runs<numruns; runs++) {
+        for (i=0; i<B.length; i++) {
+            A[i] = B[i];
+        }
+        time1 = System.nanoTime();
+        wikipedia2(A);
+        time2 = System.nanoTime();
+        checkorder(A);
+        totaltime += (time2-time1);
+    }
+    if (!prod)
+        System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
+    avgtime = (((double)totaltime)/numruns) / 1000000.0;
+    System.out.println("Wikipedia Bubble Sort with for loop: Size " + A.length + ", Time: " + avgtime);
+
+    totaltime = 0;
+    for (runs=0; runs<numruns; runs++) {
+        for (i=0; i<B.length; i++) {
+            A[i] = B[i];
+        }
+        time1 = System.nanoTime();
+        unwikipedia(A);
+        time2 = System.nanoTime();
+        checkorder(A);
+        totaltime += (time2-time1);
+    }
+    if (!prod)
+        System.out.println("Total time is: " + totaltime + ", numruns is: " + numruns);
+    avgtime = (((double)totaltime)/numruns) / 1000000.0;
+    System.out.println("UNWikipedia Bubble Sort: Size " + A.length + ", Time: " + avgtime);
 }
 
 // A flag check if a pass did not have any swaps, which lets us quit
@@ -113,7 +162,7 @@ void bubblesortcheck2(int[] A) {
 
 // Wikipedia article "optimization" to only swap up to the last swap seen
 /* *** ODSATag: BubblesortCheck *** */
-void bubblecheckswap(int[] A) {
+void bubwikipedia(int[] A) {
     int n = A.length;
     while (n > 0) {
         int newn = 0;
@@ -129,7 +178,10 @@ void bubblecheckswap(int[] A) {
 }
 /* *** ODSAendTag: BubblesortCheck *** */
 
-// Wikipedia article "optimization" to only swap up to the last swap seen
+// Imitate Wikipedia article "optimization" to only swap up to the last swap seen,
+// but don't actually check for this. In other words, do a standard bubblesort,
+// but make sure that we are really comparing exact apples to apples with the
+// Wikipedia version.
 void unwikipedia(int[] A) {
     int n = A.length-1;
     while (n>0) {

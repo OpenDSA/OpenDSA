@@ -49,7 +49,7 @@ void sorttime(int[] B) {
             for (i=0; i<B.length; i++)
                 A[i] = B[i];
             time1 = System.nanoTime();
-            inssort2(A);
+            inssortinline(A);
             time2 = System.nanoTime();
             checkorder(A);
             totaltime += (time2-time1);
@@ -118,7 +118,7 @@ void inssortshift(int[] A) {
 /* *** ODSAendTag: InsertionOpt *** */
 
 // Same as standard insertion sort, except inline the swap operation
-void inssort2(int[] A) {
+void inssortinline(int[] A) {
   int temp;
   for (int i=1; i<A.length; i++) { // Insert i'th record
     for (int j=i; (j>0) && (A[j] < A[j-1]); j--) {

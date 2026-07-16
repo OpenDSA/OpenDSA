@@ -19,19 +19,19 @@ class MaxHeap {
   { return (n / 2 <= pos ) && (pos < n); }
 
   // Return position for left child of pos
-  int leftchild(int pos) {
+  public int leftchild(int pos) {
     if (pos >= n / 2) return -1;
     return 2 * pos + 1;
   }
 
   // Return position for right child of pos
-  int rightchild(int pos) {
+  public int rightchild(int pos) {
     if (pos >= (n - 1) / 2) return -1;
     return 2 * pos + 2;
   }
 
   // Return position for parent
-  public static int parent(int pos) 
+  public int parent(int pos) 
   { return (pos - 1) / 2; }
 
   // Insert val into heap

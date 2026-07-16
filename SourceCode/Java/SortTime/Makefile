@@ -1,99 +1,185 @@
-# Java version of Makefile
-JAVA= java
-CFLAGS= -Xlint
-RFLAGS= 
+# Java version of Makefile to do sorting timings
+# CFLAGS= -Xlint -Werror
+CFLAGS= -cp "jmh-core-1.37.jar;jopt-simple-4.6.jar" -processorpath "jmh-generator-annprocess-1.37.jar;jmh-core-1.37.jar" -d .
+RFLAGS= -cp ".;jmh-core-1.37.jar;jopt-simple-4.6.jar;commons-math3-3.6.1.jar" org.openjdk.jmh.Main
 
 all: SortTime
 
-clean:
-	-rm -rf build
-	mkdir build
+# Should only need to do this one time when initially setting up
+# a new installation
+setup: jars build
 
 build:
-	mkdir build
+	@mkdir build
 
-Sorting: Inssort Bubblesort Mergesort QuickSort QuickSort3 RadixSort SelectionSort
+# Get the necessary .jar files when running from the command line with no infrastructure support. Should only need to do this one time.
+jars: commons-math3-3.6.1.jar jmh-generator-annprocess-1.37.jar jmh-core-1.37.jar jopt-simple-4.6.jar
+	curl - L -O https://repo1.maven.org/maven2/org/openjdk/jmh/jmh-core/1.37/jmh-core-1.37.jar
+	curl -L -O https://repo1.maven.org/maven2/org/openjdk/jmh/jmh-generator-annprocess/1.37/jmh-generator-annprocess-1.37.jar
+	curl -L -O https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar
+	curl -L -O https://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar
 
-Inssort: build/InssortTest/success
+demo: TimeDemo.java
+	@echo "Demonstration Timing Test"
+	-@mkdir build/demo
+	cp TimeDemo.java build/demo
+	javac $(CFLAGS) build/demo/TimeDemo.java
+	java $(RFLAGS) build.demo.TimeDemo
 
-build/InssortTest/success: build Insertionsort.java SortTest.1 SortTest.2 ../Utils/Swap.java ../Utils/Processing.java ../Utils/Checkorder.java ../Utils/KVPair.java
-	@echo "Insertionsort Test"
-	-@rm -rf build/InssortTest
-	@mkdir build/InssortTest
-	cat SortTest.1 ../Utils/Swap.java ../Utils/Processing.java ../Utils/Checkorder.java Insertionsort.java SortTest.2 > build/InssortTest/SortTest.java
-	cp ../Utils/KVPair.java build/InssortTest
-	cd build/InssortTest; \
-	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > Inssort.csv
+SortTime: inssort inssortinstrument inssortinline inssortshift bubsort bubsortcheck bubsortcheck2 bubwikipedia bubunwikipedia bubwikipedia2 selsort selsortcheck shellsort mergesort mergesortopt quicksort quicksortopt heapsort radix radixopt radixlink radixlinkopt
 
-Bubblesort: build/BubblesortTest/success
+SortTimeProd: shellsort mergesort mergesortopt quicksort quicksortopt heapsort radix radixopt radixlink radixlinkopt inssort inssortshift bubsort bubwikipedia bubwikipedia2 selsort
 
-build/BubblesortTest/success: build Bubblesort.java SortTest.1 SortTest.2 ../Utils/Swap.java ../Utils/Processing.java ../Utils/Checkorder.java ../Utils/KVPair.java
-	@echo "Bubblesort Test"
-	-@rm -rf build/BubblesortTest
-	@mkdir build/BubblesortTest
-	cat SortTest.1 ../Utils/Swap.java ../Utils/Processing.java ../Utils/Checkorder.java Bubblesort.java SortTest.2 > build/BubblesortTest/SortTest.java
-	cp ../Utils/KVPair.java build/BubblesortTest
-	cd build/BubblesortTest; \
-	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > Bubblesort.csv
+inssort: Timeinssort.java
+	@echo "Basic Insertionsort Timing Test"
+	-@mkdir build/inssort
+	cp Timeinssort.java build/inssort
+	javac $(CFLAGS) build/inssort/Timeinssort.java
+	java $(RFLAGS) build.inssort.Timeinssort
 
-Mergesort: build/MergesortTest/success
+inssortinstrument: Timeinssortinstrument.java
+	@echo "Instrumented Basic Insertionsort Timing Test"
+	-@mkdir build/inssortinstrument
+	cp Timeinssortinstrument.java build/inssortinstrument
+	javac $(CFLAGS) build/inssortinstrument/Timeinssortinstrument.java
+	java $(RFLAGS) build.inssortinstrument.Timeinssortinstrument
 
-build/MergesortTest/success: build Mergesort.java SortTest.1 SortTest.2 ../Utils/Swap.java ../Utils/Processing.java ../Utils/Checkorder.java ../Utils/KVPair.java
-	@echo "Mergesort Test"
-	-@rm -rf build/MergesortTest
-	@mkdir build/MergesortTest
-	cat SortTest.1 ../Utils/Swap.java ../Utils/Processing.java ../Utils/Checkorder.java Mergesort.java SortTest.2 > build/MergesortTest/SortTest.java
-	cp ../Utils/KVPair.java build/MergesortTest
-	cd build/MergesortTest; \
-	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > Mergesort.csv
+inssortinline: Timeinssortinline.java
+	@echo "Basic Insertionsort with Inlined Swaps Timing Test"
+	-@mkdir build/inssortinline
+	cp Timeinssortinline.java build/inssortinline
+	javac $(CFLAGS) build/inssortinline/Timeinssortinline.java
+	java $(RFLAGS) build.inssortinline.Timeinssortinline
 
-QuickSort: build/QuickSortTest/success
+inssortshift: Timeinssortshift.java
+	@echo "Shifting Insertionsort Timing Test"
+	-@mkdir build/inssortshift
+	cp Timeinssortshift.java build/inssortshift
+	javac $(CFLAGS) build/inssortshift/Timeinssortshift.java
+	java $(RFLAGS) build.inssortshift.Timeinssortshift
 
-build/QuickSortTest/success: build QuickSort.java SortTest.1 SortTest.2 ../Utils/Swap.java ../Utils/Processing.java ../Utils/Checkorder.java ../Utils/KVPair.java
-	@echo "QuickSort Test"
-	-@rm -rf build/QuickSortTest
-	@mkdir build/QuickSortTest
-	cat SortTest.1 ../Utils/Swap.java ../Utils/Processing.java ../Utils/Checkorder.java QuickSort.java SortTest.2 > build/QuickSortTest/SortTest.java
-	cp ../Utils/KVPair.java build/QuickSortTest
-	cd build/QuickSortTest; \
-	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > Quicksort.csv
+bubsort: Timebubsort.java
+	@echo "Basic Bubblesort Timing Test"
+	-@mkdir build/bubsort
+	cp Timebubsort.java build/bubsort
+	javac $(CFLAGS) build/bubsort/Timebubsort.java
+	java $(RFLAGS) build.bubsort.Timebubsort
 
-QuickSort3: build/QuickSort3Test/success
+bubsortcheck: Timebubsortcheck.java
+	@echo "Bubblesort with check flag Timing Test"
+	-@mkdir build/bubsortcheck
+	cp Timebubsortcheck.java build/bubsortcheck
+	javac $(CFLAGS) build/bubsortcheck/Timebubsortcheck.java
+	java $(RFLAGS) build.bubsortcheck.Timebubsortcheck
 
-build/QuickSort3Test/success: build QuickSort3.java SortTest.1 SortTest.2 ../Utils/Swap.java ../Utils/Processing.java ../Utils/Checkorder.java ../Utils/KVPair.java
-	@echo "QuickSort3 Test"
-	-@rm -rf build/QuickSort3Test
-	@mkdir build/QuickSort3Test
-	cat SortTest.1 ../Utils/Swap.java ../Utils/Processing.java ../Utils/Checkorder.java QuickSort3.java SortTest.2 > build/QuickSort3Test/SortTest.java
-	cp ../Utils/KVPair.java build/QuickSort3Test
-	cd build/QuickSort3Test; \
-	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > QuickSort3.csv
+bubsortcheck2: Timebubsortcheck2.java
+	@echo "Bubblesort with check flag last swap only Timing Test"
+	-@mkdir build/bubsortcheck2
+	cp Timebubsortcheck2.java build/bubsortcheck2
+	javac $(CFLAGS) build/bubsortcheck2/Timebubsortcheck2.java
+	java $(RFLAGS) build.bubsortcheck2.Timebubsortcheck2
 
-RadixSort: build/RadixSortTest/success
+bubwikipedia: Timebubwikipedia.java
+	@echo "Bubblesort: Wikipedia version Timing Test"
+	-@mkdir build/bubwikipedia
+	cp Timebubwikipedia.java build/bubwikipedia
+	javac $(CFLAGS) build/bubwikipedia/Timebubwikipedia.java
+	java $(RFLAGS) build.bubwikipedia.Timebubwikipedia
 
-build/RadixSortTest/success: build RadixSort.java SortTest.1 SortTest.2 ../Utils/Swap.java ../Utils/Processing.java ../Utils/Checkorder.java ../Utils/KVPair.java
-	@echo "RadixSort Test"
-	-@rm -rf build/RadixSortTest
-	@mkdir build/RadixSortTest
-	cat SortTest.1 ../Utils/Swap.java ../Utils/Processing.java ../Utils/Checkorder.java RadixSort.java SortTest.2 > build/RadixSortTest/SortTest.java
-	cp ../Utils/KVPair.java build/RadixSortTest
-	cd build/RadixSortTest; \
-	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > RadixSort.csv
+bubunwikipedia: Timebubunwikipedia.java
+	@echo "Bubblesort: Standard wikipedia-like version Timing Test"
+	-@mkdir build/bubunwikipedia
+	cp Timebubunwikipedia.java build/bubunwikipedia
+	javac $(CFLAGS) build/bubunwikipedia/Timebubunwikipedia.java
+	java $(RFLAGS) build.bubunwikipedia.Timebubunwikipedia
 
-SelectionSort: build/SelectionSortTest/success
+bubwikipedia2: Timebubwikipedia2.java
+	@echo "Bubblesort: Wikipedia version 2 (for loop) Timing Test"
+	-@mkdir build/bubwikipedia2
+	cp Timebubwikipedia2.java build/bubwikipedia2
+	javac $(CFLAGS) build/bubwikipedia2/Timebubwikipedia2.java
+	java $(RFLAGS) build.bubwikipedia2.Timebubwikipedia2
 
-build/SelectionSortTest/success: build SelectionSort.java SortTest.1 SortTest.2 ../Utils/Swap.java ../Utils/Processing.java ../Utils/Checkorder.java ../Utils/KVPair.java
-	@echo "SelectionSort Test"
-	-@rm -rf build/SelectionSortTest
-	@mkdir build/SelectionSortTest
-	cat SortTest.1 ../Utils/Swap.java ../Utils/Processing.java ../Utils/Checkorder.java SelectionSort.java SortTest.2 > build/SelectionSortTest/SortTest.java
-	cp ../Utils/KVPair.java build/SelectionSortTest
-	cd build/SelectionSortTest; \
-	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > SelectionSort.csv
+selsort: Timeselsort.java
+	@echo "Basic Selectionsort Timing Test"
+	-@mkdir build/selsort
+	cp Timeselsort.java build/selsort
+	javac $(CFLAGS) build/selsort/Timeselsort.java
+	java $(RFLAGS) build.selsort.Timeselsort
+
+selsortcheck: Timeselsortcheck.java
+	@echo "Basic Selectionsort with Check Timing Test"
+	-@mkdir build/selsortcheck
+	cp Timeselsortcheck.java build/selsortcheck
+	javac $(CFLAGS) build/selsortcheck/Timeselsortcheck.java
+	java $(RFLAGS) build.selsortcheck.Timeselsortcheck
+
+shellsort: Timeshellsort.java
+	@echo "Basic Shellsort Timing Test"
+	-@mkdir build/shellsort
+	cp Timeshellsort.java build/shellsort
+	javac $(CFLAGS) build/shellsort/Timeshellsort.java
+	java $(RFLAGS) build.shellsort.Timeshellsort
+
+mergesort: Timemergesort.java
+	@echo "Basic Mergesort Timing Test"
+	-@mkdir build/mergesort
+	cp Timemergesort.java build/mergesort
+	javac $(CFLAGS) build/mergesort/Timemergesort.java
+	java $(RFLAGS) build.mergesort.Timemergesort
+
+mergesortopt: Timemergesortopt.java
+	@echo "Optimzed Mergesort Timing Test"
+	-@mkdir build/mergesortopt
+	cp Timemergesortopt.java build/mergesortopt
+	javac $(CFLAGS) build/mergesortopt/Timemergesortopt.java
+	java $(RFLAGS) build.mergesortopt.Timemergesortopt
+
+quicksort: Timequicksort.java
+	@echo "Basic Quicksort Timing Test"
+	-@mkdir build/quicksort
+	cp Timequicksort.java build/quicksort
+	javac $(CFLAGS) build/quicksort/Timequicksort.java
+	java $(RFLAGS) build.quicksort.Timequicksort
+
+quicksortopt: Timequicksortopt.java
+	@echo "Optimized Quicksort Timing Test"
+	-@mkdir build/quicksortopt
+	cp Timequicksortopt.java build/quicksortopt
+	javac $(CFLAGS) build/quicksortopt/Timequicksortopt.java
+	java $(RFLAGS) build.quicksortopt.Timequicksortopt
+
+heapsort: Timeheapsort.java
+	@echo "Basic Heapsort Timing Test"
+	-@mkdir build/heapsort
+	cp Timeheapsort.java build/heapsort
+	javac $(CFLAGS) build/heapsort/Timeheapsort.java
+	java $(RFLAGS) build.heapsort.Timeheapsort
+
+radix: Timeradix.java
+	@echo "Basic Radix Sort Timing Test"
+	-@mkdir build/radix
+	cp Timeradix.java build/radix
+	javac $(CFLAGS) build/radix/Timeradix.java
+	java $(RFLAGS) build.radix.Timeradix
+
+radixopt: Timeradixopt.java
+	@echo "Optimized Radix Sort Timing Test"
+	-@mkdir build/radixopt
+	cp Timeradixopt.java build/radixopt
+	javac $(CFLAGS) build/radixopt/Timeradixopt.java
+	java $(RFLAGS) build.radixopt.Timeradixopt
+
+radixlink: Timeradixlink.java
+	@echo "Basic Linked-list Radix Sort Timing Test"
+	-@mkdir build/radixlink
+	cp Timeradixlink.java build/radixlink
+	javac $(CFLAGS) build/radixlink/Timeradixlink.java
+	java $(RFLAGS) build.radixlink.Timeradixlink
+
+radixlinkopt: Timeradixlinkopt.java
+	@echo "Optimized Linked-list Radix Sort Timing Test"
+	-@mkdir build/radixlinkopt
+	cp Timeradixlinkopt.java build/radixlinkopt
+	javac $(CFLAGS) build/radixlinkopt/Timeradixlinkopt.java
+	java $(RFLAGS) build.radixlinkopt.Timeradixlinkopt
