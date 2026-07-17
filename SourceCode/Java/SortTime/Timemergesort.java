@@ -19,6 +19,10 @@ public class Timemergesort {
     // JMH will run the benchmark for arrays of size 10 to 1,000,000
     @Param({"10", "100", "1000", "10000", "100000", "1000000"})
     private int testsize;
+
+    @Param({"regular", "up", "down"})
+    private String testtype;
+    
     private int maxval = 1000000;
 
     private int[] originalArray;
@@ -31,9 +35,22 @@ public class Timemergesort {
         originalArray = new int[testsize];
         temp =  new int[testsize];
         Random random = new Random(42); // Fixed seed makes tests reproducible
-        for (int i = 0; i < testsize; i++) {
-            originalArray[i] = random.nextInt(maxval);
+        if (testtype.equals("regular")) {
+            for (int i = 0; i < testsize; i++) {
+                originalArray[i] = random.nextInt(maxval);
+            }
         }
+        else if (testtype.equals("up")) {
+            for (int i = 0; i < testsize; i++) {
+                originalArray[i] = i + 1;
+            }
+        }
+        else if (testtype.equals("down")) {
+            for (int i = 0; i < testsize; i++) {
+                originalArray[i] = testsize - i;
+            }
+        }
+        else System.out.println("++++++++++++++++ ERROR!! BAD TEST TYPE!!");
     }
 
     // Generated right before every single iteration execution
@@ -45,6 +62,9 @@ public class Timemergesort {
 
     @Benchmark
     public int[] benchmarkmergesort() {
+        if (!testtype.equals("regular") && (testsize != 10000)) {
+            throw new RuntimeException("Up/down only 10,000");
+        }
         /* ========== CALL THE SORT ============== */
         mergesort(arrayToSort, temp, 0, arrayToSort.length-1);
         return arrayToSort; // Returning prevents Dead Code Elimination optimization

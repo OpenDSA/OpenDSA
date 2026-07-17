@@ -29,9 +29,22 @@ public class Timeradixopt {
     public void setupData() {
         originalArray = new int[testsize];
         Random random = new Random(42); // Fixed seed makes tests reproducible
-        for (int i = 0; i < testsize; i++) {
-            originalArray[i] = random.nextInt(maxval);
+        if (testtype.equals("regular")) {
+            for (int i = 0; i < testsize; i++) {
+                originalArray[i] = random.nextInt(maxval);
+            }
         }
+        else if (testtype.equals("up")) {
+            for (int i = 0; i < testsize; i++) {
+                originalArray[i] = i + 1;
+            }
+        }
+        else if (testtype.equals("down")) {
+            for (int i = 0; i < testsize; i++) {
+                originalArray[i] = testsize - i;
+            }
+        }
+        else System.out.println("++++++++++++++++ ERROR!! BAD TEST TYPE!!");
     }
 
     // Generated right before every single iteration execution
@@ -43,6 +56,9 @@ public class Timeradixopt {
 
     @Benchmark
     public int[] benchmarkradixopt() {
+        if (!testtype.equals("regular") && (testsize != 10000)) {
+            throw new RuntimeException("Up/down only 10,000");
+        }
         /* ========== CALL THE SORT ============== */
         radixopt(arrayToSort, 4, 256);
         return arrayToSort; // Returning prevents Dead Code Elimination optimization
