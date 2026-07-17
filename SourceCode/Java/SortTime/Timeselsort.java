@@ -16,8 +16,8 @@ import java.util.concurrent.TimeUnit;
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 public class Timeselsort {
 
-    // JMH will run the benchmark for arrays of size 10, 100, and 1000
-    @Param({"10", "100", "1000"})
+    // JMH will run the benchmark for arrays of size 10 to 1,000,000
+    @Param({"10", "100", "1000", "10000", "100000", "1000000"})
     private int testsize;
 
     @Param({"regular", "up", "down"})
