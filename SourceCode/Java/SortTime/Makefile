@@ -28,7 +28,7 @@ demo: TimeDemo.java
 
 SortTime: inssort inssortinstrument inssortinline inssortshift bubsort bubsortcheck bubsortcheck2 bubwikipedia bubunwikipedia bubwikipedia2 selsort selsortcheck shellsort mergesort mergesortopt quicksort quicksortopt heapsort radix radixopt radixlink radixlinkopt
 
-SortTimeProd: shellsort mergesort mergesortopt quicksort quicksortopt heapsort radix radixopt radixlink radixlinkopt inssort inssortshift bubsort bubwikipedia bubwikipedia2 selsort
+SortTimeProd: shellsort mergesort mergesortopt quicksort quicksortopt heapsort radix radixopt radixlink radixlinkopt inssort inssortshift bubsort bubwikipedia selsort
 
 inssort: Timeinssort.java
 	@echo "Basic Insertionsort Timing Test"
@@ -64,6 +64,13 @@ bubsort: Timebubsort.java
 	cp Timebubsort.java build/bubsort
 	javac $(CFLAGS) build/bubsort/Timebubsort.java
 	java $(RFLAGS) build.bubsort.Timebubsort
+
+bubsortJIT: TimebubsortJIT.java
+	@echo "JIT-friendly basic Bubblesort Timing Test"
+	-@mkdir build/bubsortJIT
+	cp TimebubsortJIT.java build/bubsortJIT
+	javac $(CFLAGS) build/bubsortJIT/TimebubsortJIT.java
+	java $(RFLAGS) build.bubsortJIT.TimebubsortJIT
 
 bubsortcheck: Timebubsortcheck.java
 	@echo "Bubblesort with check flag Timing Test"

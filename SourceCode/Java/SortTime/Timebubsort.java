@@ -17,7 +17,8 @@ import java.util.concurrent.TimeUnit;
 public class Timebubsort {
 
     // JMH will run the benchmark for arrays of size 10 to 1,000,000
-    @Param({"10", "100", "1000", "10000", "100000", "1000000"})
+    // @Param({"10", "100", "1000", "10000", "100000", "1000000"})
+    @Param({"10", "100", "1000", "10000"})
     private int testsize;
 
     @Param({"regular", "up", "down"})
@@ -45,7 +46,7 @@ public class Timebubsort {
         }
         else if (testtype.equals("down")) {
             for (int i = 0; i < testsize; i++) {
-                originalArray[i] = testsize - i;
+                originalArray[i] = maxval - i;
             }
         }
         else System.out.println("++++++++++++++++ ERROR!! BAD TEST TYPE!!");

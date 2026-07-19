@@ -45,7 +45,7 @@ public class Timeshellsort {
         }
         else if (testtype.equals("down")) {
             for (int i = 0; i < testsize; i++) {
-                originalArray[i] = testsize - i;
+                originalArray[i] = maxval - i;
             }
         }
         else System.out.println("++++++++++++++++ ERROR!! BAD TEST TYPE!!");

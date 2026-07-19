@@ -17,10 +17,12 @@ import java.util.concurrent.TimeUnit;
 public class Timeinssort {
 
     // JMH will run the benchmark for arrays of size 10 to 1,000,000
-    @Param({"10", "100", "1000", "10000", "100000", "1000000"})
+    //    @Param({"10", "100", "1000", "10000", "100000", "1000000"})
+    @Param({"10", "100", "1000", "10000"})
     private int testsize;
 
-    @Param({"regular", "up", "down"})
+    // @Param({"regular", "up", "down"})
+    @Param({"regular"})
     private String testtype;
     
     private int maxval = 1000000;
@@ -45,7 +47,7 @@ public class Timeinssort {
         }
         else if (testtype.equals("down")) {
             for (int i = 0; i < testsize; i++) {
-                originalArray[i] = testsize - i;
+                originalArray[i] = maxval - i;
             }
         }
         else System.out.println("++++++++++++++++ ERROR!! BAD TEST TYPE!!");
@@ -63,6 +65,10 @@ public class Timeinssort {
         if (!testtype.equals("regular") && (testsize != 10000)) {
             throw new RuntimeException("Up/down only 10,000");
         }
+        if ((arrayToSort[1] != originalArray[1]) || (arrayToSort[7] != originalArray[7])) {
+            throw new RuntimeException("NOT USING ORIGINAL VALUES!!");
+        }
+            
         /* ========== CALL THE SORT ============== */
         inssort(arrayToSort);
         return arrayToSort; // Returning prevents Dead Code Elimination optimization
