@@ -14,7 +14,16 @@ import java.util.concurrent.TimeUnit;
 @Fork(1)
 @Warmup(iterations = 3, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
+
 public class Timeradixlink {
+
+    static Boolean checkorder(int[] A) {
+        for (int i=1; i<A.length; i++)
+            if (A[i] < A[i-1]) {
+                return false;
+            }
+        return true;
+    }
 
     // JMH will run the benchmark for arrays of size 10 to 1,000,000
     @Param({"10", "100", "1000", "10000", "100000", "1000000"})
@@ -64,7 +73,13 @@ public class Timeradixlink {
             throw new RuntimeException("Up/down only 10,000");
         }
         /* ========== CALL THE SORT ============== */
+        //        if (checkorder(arrayToSort)) {
+        //            throw new RuntimeException("ARRAY SHOULD NOT START SORTED!!");
+        //        }
         radixlink(arrayToSort, 4, 256);
+        //        if (!checkorder(arrayToSort)) {
+        //            throw new RuntimeException("ARRAY DID NOT SORT PROPERLY!!");
+        //        }
         return arrayToSort; // Returning prevents Dead Code Elimination optimization
     }
 

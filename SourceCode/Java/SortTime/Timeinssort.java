@@ -14,14 +14,22 @@ import java.util.concurrent.TimeUnit;
 @Fork(1)
 @Warmup(iterations = 2, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
+
 public class Timeinssort {
+
+    static Boolean checkorder(int[] A) {
+        for (int i=1; i<A.length; i++)
+            if (A[i] < A[i-1]) {
+                return false;
+            }
+        return true;
+    }
 
     // JMH will run the benchmark for arrays of size 10 to 1,000,000
     @Param({"10", "100", "1000", "10000", "100000", "1000000"})
     private int testsize;
 
-    // @Param({"regular", "up", "down"})
-    @Param({"regular"})
+    @Param({"regular", "up", "down"})
     private String testtype;
     
     private int maxval = 1000000;
@@ -69,7 +77,13 @@ public class Timeinssort {
         }
             
         /* ========== CALL THE SORT ============== */
+        //        if (checkorder(arrayToSort)) {
+        //            throw new RuntimeException("ARRAY SHOULD NOT START SORTED!!");
+        //        }
         inssort(arrayToSort);
+        //        if (!checkorder(arrayToSort)) {
+        //            throw new RuntimeException("ARRAY DID NOT SORT PROPERLY!!");
+        //        }
         return arrayToSort; // Returning prevents Dead Code Elimination optimization
     }
 
