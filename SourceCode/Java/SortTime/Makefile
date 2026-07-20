@@ -65,13 +65,6 @@ bubsort: Timebubsort.java
 	javac $(CFLAGS) build/bubsort/Timebubsort.java
 	java $(RFLAGS) build.bubsort.Timebubsort
 
-bubsortJIT: TimebubsortJIT.java
-	@echo "JIT-friendly basic Bubblesort Timing Test"
-	-@mkdir build/bubsortJIT
-	cp TimebubsortJIT.java build/bubsortJIT
-	javac $(CFLAGS) build/bubsortJIT/TimebubsortJIT.java
-	java $(RFLAGS) build.bubsortJIT.TimebubsortJIT
-
 bubsortcheck: Timebubsortcheck.java
 	@echo "Bubblesort with check flag Timing Test"
 	-@mkdir build/bubsortcheck
