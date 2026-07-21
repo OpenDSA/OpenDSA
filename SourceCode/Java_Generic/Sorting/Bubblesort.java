@@ -179,7 +179,10 @@ void bubblecheckswap(T[] A) {
 }
 /* *** ODSAendTag: BubblesortCheck *** */
 
-// Wikipedia article "optimization" to only swap up to the last swap seen
+// Imitate Wikipedia article "optimization" to only swap up to the last swap seen,
+// but don't actually check for this. In other words, do a standard bubblesort,
+// but make sure that we are really comparing exact apples to apples with the
+// Wikipedia version.
 void unwikipedia(T[] A) {
     int n = A.length-1;
     while (n>0) {

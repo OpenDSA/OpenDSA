@@ -1,4 +1,4 @@
-package build.inssort;
+package build.bubwikipedia;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 2, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 
-public class Timeinssort {
+public class Timebubwikipedia {
 
     Boolean checkorder(KVPair[] A) {
         for (int i=1; i<A.length; i++)
@@ -97,7 +97,7 @@ public class Timeinssort {
     }
 
     @Benchmark
-    public KVPair[] benchmarkinssort() {
+    public KVPair[] benchmarkbubwikipedia() {
         if (!testtype.equals("regular") && (testsize != 10000)) {
             throw new RuntimeException("Up/down only 10,000");
         }
@@ -105,7 +105,7 @@ public class Timeinssort {
         //        if (!testtype.equals("up") && checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY SHOULD NOT START SORTED!!");
         //        }
-        inssort(arrayToSort);
+        bubwikipedia(arrayToSort);
         //        if (!checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY DID NOT SORT PROPERLY!!");
         //        }
@@ -120,16 +120,26 @@ public class Timeinssort {
         A[j] = temp;
     }
 
-    void inssort(KVPair[] A) {
-        for (int i=1; i<A.length; i++) // Insert i'th record
-            for (int j=i; (j>0) && (A[j].compareTo(A[j-1]) < 0); j--)
-                swap(A, j, j-1);
+    // Wikipedia article "optimization" to only swap up to the last swap seen
+    void bubwikipedia(KVPair[] A) {
+        int n = A.length - 1;
+        while (n > 0) {
+            int newn = 0;
+            for (int i = 0; i < n; i++) {
+                /* if this pair is out of order */
+                if (A[i].compareTo(A[i+1]) > 0) {
+                    swap(A, i, i+1);
+                    newn = i;
+                }
+            }
+            n = newn;
+        }
     }
     // =============== END THE BENCHMARKED CODE =======================
 
     public static void main(String[] args) throws Exception {
         Options opt = new OptionsBuilder()
-            .include(Timeinssort.class.getSimpleName())
+            .include(Timebubwikipedia.class.getSimpleName())
             .build();
 
         new Runner(opt).run();

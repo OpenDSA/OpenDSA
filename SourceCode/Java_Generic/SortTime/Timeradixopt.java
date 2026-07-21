@@ -1,4 +1,4 @@
-package build.inssort;
+package build.radixopt;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 2, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 
-public class Timeinssort {
+public class Timeradixopt {
 
     Boolean checkorder(KVPair[] A) {
         for (int i=1; i<A.length; i++)
@@ -97,7 +97,7 @@ public class Timeinssort {
     }
 
     @Benchmark
-    public KVPair[] benchmarkinssort() {
+    public KVPair[] benchmarkradixopt() {
         if (!testtype.equals("regular") && (testsize != 10000)) {
             throw new RuntimeException("Up/down only 10,000");
         }
@@ -105,7 +105,7 @@ public class Timeinssort {
         //        if (!testtype.equals("up") && checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY SHOULD NOT START SORTED!!");
         //        }
-        inssort(arrayToSort);
+        radixopt(arrayToSort, 4, 256);
         //        if (!checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY DID NOT SORT PROPERLY!!");
         //        }
@@ -113,23 +113,40 @@ public class Timeinssort {
     }
 
     // =============== HERE IS THE BENCHMARKED CODE =======================
-    // Swap for KVPair arrays
-    static void swap(KVPair[] A, int i, int j) {
-        KVPair temp = A[i];
-        A[i] = A[j];
-        A[j] = temp;
-    }
+    // This version of Radixsort assumes a 32 bit integer key, shifted by
+    // some number of bits each pass
+    static void radixopt(KVPair[] A, int k, int r) {
+        KVPair[] B = new KVPair[A.length];
+        int[] count = new int[r];     // Count[i] stores number of records with digit value i
+        int i, j, rshift, shiftstep;
 
-    void inssort(KVPair[] A) {
-        for (int i=1; i<A.length; i++) // Insert i'th record
-            for (int j=i; (j>0) && (A[j].compareTo(A[j-1]) < 0); j--)
-                swap(A, j, j-1);
+        // Compute the number of bits to shift on each step, from the input radix
+        for(shiftstep=0; (r>>shiftstep)>1; shiftstep++);
+        for (i=0, rshift=0; i<k; i++, rshift+=shiftstep) { // For k digits
+            for (j=0; j<r; j++) count[j] = 0;    // Initialize count
+
+            // Count the number of records for each bin on this pass
+            for (j=0; j<A.length; j++) count[((A[j].key())>>rshift)%r]++;
+
+            // count[j] will be index in B for last slot of bin j.
+            // First, reduce count[0] because indexing starts at 0, not 1
+            count[0] = count[0] - 1;
+            for (j=1; j<r; j++) count[j] = count[j-1] + count[j];
+
+            // Put records into bins, working from bottom of bin
+            // Since bins fill from bottom, j counts downwards
+            for (j=A.length-1; j>=0; j--) {
+                B[count[((A[j].key())>>rshift)%r]] = A[j];
+                count[((A[j].key())>>rshift)%r] = count[((A[j].key())>>rshift)%r] - 1;
+            }
+            for (j=0; j<A.length; j++) A[j] = B[j]; // Copy B back
+        }
     }
     // =============== END THE BENCHMARKED CODE =======================
 
     public static void main(String[] args) throws Exception {
         Options opt = new OptionsBuilder()
-            .include(Timeinssort.class.getSimpleName())
+            .include(Timeradixopt.class.getSimpleName())
             .build();
 
         new Runner(opt).run();

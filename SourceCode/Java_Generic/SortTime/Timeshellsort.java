@@ -1,4 +1,4 @@
-package build.inssort;
+package build.shellsort;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 2, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 
-public class Timeinssort {
+public class Timeshellsort {
 
     Boolean checkorder(KVPair[] A) {
         for (int i=1; i<A.length; i++)
@@ -97,7 +97,7 @@ public class Timeinssort {
     }
 
     @Benchmark
-    public KVPair[] benchmarkinssort() {
+    public KVPair[] benchmarkshellsort() {
         if (!testtype.equals("regular") && (testsize != 10000)) {
             throw new RuntimeException("Up/down only 10,000");
         }
@@ -105,7 +105,7 @@ public class Timeinssort {
         //        if (!testtype.equals("up") && checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY SHOULD NOT START SORTED!!");
         //        }
-        inssort(arrayToSort);
+        shellsort(arrayToSort);
         //        if (!checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY DID NOT SORT PROPERLY!!");
         //        }
@@ -120,16 +120,27 @@ public class Timeinssort {
         A[j] = temp;
     }
 
-    void inssort(KVPair[] A) {
-        for (int i=1; i<A.length; i++) // Insert i'th record
-            for (int j=i; (j>0) && (A[j].compareTo(A[j-1]) < 0); j--)
-                swap(A, j, j-1);
+    // Shellsort
+    void shellsort(KVPair[] A) {
+        for (int i=A.length/2; i>2; i/=2) { // For each increment
+            for (int j=0; j<i; j++) {         // Sort each sublist
+                inssort2(A, j, i);
+            }
+        }
+        inssort2(A, 0, 1);     // Could call regular inssort here
+    }
+
+    /** Modified Insertion Sort for varying increments */
+    void inssort2(KVPair[] A, int start, int incr) {
+        for (int i=start+incr; i<A.length; i+=incr)
+            for (int j=i; (j>=incr) && (A[j].compareTo(A[j-incr]) < 0); j-=incr)
+                swap(A, j, j-incr);
     }
     // =============== END THE BENCHMARKED CODE =======================
 
     public static void main(String[] args) throws Exception {
         Options opt = new OptionsBuilder()
-            .include(Timeinssort.class.getSimpleName())
+            .include(Timeshellsort.class.getSimpleName())
             .build();
 
         new Runner(opt).run();

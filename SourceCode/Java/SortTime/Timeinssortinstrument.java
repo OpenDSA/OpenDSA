@@ -56,11 +56,13 @@ public class Timeinssortinstrument {
         A[j] = temp;
     }
 
-    int swaps = 0;
-    int compares = 0;
+    int swaps;
+    int compares;
 
     void inssortinstrument(int[] A) {
         int j;
+        swaps = 0;
+        compares = 0;
         for (int i=1; i<A.length; i++) { // Insert i'th record
             for (j=i; (j>0) && (A[j] < A[j-1]); j--) {
                 swaps++;

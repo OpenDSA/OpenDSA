@@ -13,9 +13,17 @@ import java.util.concurrent.TimeUnit;
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 @Fork(1)
 @Warmup(iterations = 2, time = 1, timeUnit = TimeUnit.SECONDS)
-@Measurement(iterations = 3, time = 1, timeUnit = TimeUnit.SECONDS)
+@Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 
 public class Timebubsort {
+
+    Boolean checkorder(KVPair[] A) {
+        for (int i=1; i<A.length; i++)
+            if (A[i].compareTo(A[i-1]) < 0) {
+                return false;
+            }
+        return true;
+    }
 
     // KVPair class definition
     private class KVPair implements Comparable<KVPair> {
@@ -46,9 +54,13 @@ public class Timebubsort {
         }
     }
 
-    @Param({"100", "1000", "5000"})
+    // JMH will run the benchmark for arrays of size 10 to 1,000,000
+    @Param({"10", "100", "1000", "10000", "100000", "1000000"})
     private int testsize;
 
+    @Param({"regular", "up", "down"})
+    private String testtype;
+    
     private int maxval = 1000000;
 
     private KVPair[] originalArray;
@@ -58,10 +70,24 @@ public class Timebubsort {
     public void setupData() {
         originalArray = new KVPair[testsize];
         Random random = new Random(42);
-        for (int i = 0; i < testsize; i++) {
-            int temp = random.nextInt(maxval);
-            originalArray[i] = new KVPair(temp, temp + 10);
+        int temp;
+        if (testtype.equals("regular")) {
+            for (int i = 0; i < testsize; i++) {
+                temp = random.nextInt(maxval);
+                originalArray[i] = new KVPair(temp, temp + 10);
+            }
         }
+        else if (testtype.equals("up")) {
+            for (int i = 0; i < testsize; i++) {
+                originalArray[i] = new KVPair(i + 1, i + 11);
+            }
+        }
+        else if (testtype.equals("down")) {
+            for (int i = 0; i < testsize; i++) {
+                originalArray[i] = new KVPair(maxval - i, maxval - i + 10);
+            }
+        }
+        else System.out.println("++++++++++++++++ ERROR!! BAD TEST TYPE!!");
     }
 
     @Setup(Level.Invocation)
@@ -72,8 +98,17 @@ public class Timebubsort {
 
     @Benchmark
     public KVPair[] benchmarkbubsort() {
+        if (!testtype.equals("regular") && (testsize != 10000)) {
+            throw new RuntimeException("Up/down only 10,000");
+        }
         /* ========== CALL THE SORT ============== */
+        //        if (!testtype.equals("up") && checkorder(arrayToSort)) {
+        //            throw new RuntimeException("ARRAY SHOULD NOT START SORTED!!");
+        //        }
         bubsort(arrayToSort);
+        //        if (!checkorder(arrayToSort)) {
+        //            throw new RuntimeException("ARRAY DID NOT SORT PROPERLY!!");
+        //        }
         return arrayToSort;
     }
 

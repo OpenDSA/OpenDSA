@@ -1,4 +1,4 @@
-package build.inssort;
+package build.radix;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 2, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 
-public class Timeinssort {
+public class Timeradix {
 
     Boolean checkorder(KVPair[] A) {
         for (int i=1; i<A.length; i++)
@@ -97,7 +97,7 @@ public class Timeinssort {
     }
 
     @Benchmark
-    public KVPair[] benchmarkinssort() {
+    public KVPair[] benchmarkradix() {
         if (!testtype.equals("regular") && (testsize != 10000)) {
             throw new RuntimeException("Up/down only 10,000");
         }
@@ -105,7 +105,7 @@ public class Timeinssort {
         //        if (!testtype.equals("up") && checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY SHOULD NOT START SORTED!!");
         //        }
-        inssort(arrayToSort);
+        radix(arrayToSort, 4, 256);
         //        if (!checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY DID NOT SORT PROPERLY!!");
         //        }
@@ -113,23 +113,36 @@ public class Timeinssort {
     }
 
     // =============== HERE IS THE BENCHMARKED CODE =======================
-    // Swap for KVPair arrays
-    static void swap(KVPair[] A, int i, int j) {
-        KVPair temp = A[i];
-        A[i] = A[j];
-        A[j] = temp;
-    }
+    static void radix(KVPair[] A, int k, int r) {
+        KVPair[] B = new KVPair[A.length];
+        int[] count = new int[r];     // Count[i] stores number of records with digit value i
+        int i, j, rtok;
 
-    void inssort(KVPair[] A) {
-        for (int i=1; i<A.length; i++) // Insert i'th record
-            for (int j=i; (j>0) && (A[j].compareTo(A[j-1]) < 0); j--)
-                swap(A, j, j-1);
+        for (i=0, rtok=1; i<k; i++, rtok*=r) { // For k digits
+            for (j=0; j<r; j++) { count[j] = 0; }    // Initialize count
+
+            // Count the number of records for each bin on this pass
+            for (j=0; j<A.length; j++) {
+                count[((A[j].key())/rtok)%r]++;
+            }
+
+            // After processing, count[j] will be index in B for first slot of bin j.
+            int total = A.length;
+            for (j=r-1; j>=0; j--) { total -= count[j]; count[j] = total; }
+
+            // Put records into bins, working from left to right
+            for (j=0; j<A.length; j++) {
+                B[count[((A[j].key())/rtok)%r]] = A[j];
+                count[((A[j].key())/rtok)%r] = count[((A[j].key())/rtok)%r] + 1;
+            }
+            for (j=0; j<A.length; j++) { A[j] = B[j]; } // Copy B back
+        }
     }
     // =============== END THE BENCHMARKED CODE =======================
 
     public static void main(String[] args) throws Exception {
         Options opt = new OptionsBuilder()
-            .include(Timeinssort.class.getSimpleName())
+            .include(Timeradix.class.getSimpleName())
             .build();
 
         new Runner(opt).run();

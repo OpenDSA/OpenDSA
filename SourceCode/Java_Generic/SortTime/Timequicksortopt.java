@@ -1,4 +1,4 @@
-package build.inssort;
+package build.quicksortopt;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 2, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 
-public class Timeinssort {
+public class Timequicksortopt {
 
     Boolean checkorder(KVPair[] A) {
         for (int i=1; i<A.length; i++)
@@ -65,9 +65,11 @@ public class Timeinssort {
 
     private KVPair[] originalArray;
     private KVPair[] arrayToSort;
+    int THRESHOLD = 50;
 
     @Setup(Level.Trial)
     public void setupData() {
+        System.out.println("================= THRESHOLD: " + THRESHOLD + " ===============");
         originalArray = new KVPair[testsize];
         Random random = new Random(42);
         int temp;
@@ -97,7 +99,7 @@ public class Timeinssort {
     }
 
     @Benchmark
-    public KVPair[] benchmarkinssort() {
+    public KVPair[] benchmarkquicksortopt() {
         if (!testtype.equals("regular") && (testsize != 10000)) {
             throw new RuntimeException("Up/down only 10,000");
         }
@@ -105,7 +107,7 @@ public class Timeinssort {
         //        if (!testtype.equals("up") && checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY SHOULD NOT START SORTED!!");
         //        }
-        inssort(arrayToSort);
+        quicksortopt(arrayToSort, 0, arrayToSort.length-1);
         //        if (!checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY DID NOT SORT PROPERLY!!");
         //        }
@@ -119,17 +121,72 @@ public class Timeinssort {
         A[i] = A[j];
         A[j] = temp;
     }
+    // Insertion sort used by optimized quicksort
+    // Integer-only version
+    // Instead of swapping, "shift" the values down the array
+    void inssortshiftint(KVPair[] A) {
+        for (int i=1; i<A.length; i++) { // Insert i'th record
+            int j;
+            KVPair temp = A[i];
+            for (j=i; (j>0) && (temp.compareTo(A[j-1]) < 0); j--)
+                A[j] = A[j-1];
+            A[j] = temp;
+        }
+    }
 
-    void inssort(KVPair[] A) {
-        for (int i=1; i<A.length; i++) // Insert i'th record
-            for (int j=i; (j>0) && (A[j].compareTo(A[j-1]) < 0); j--)
-                swap(A, j, j-1);
+
+    int MAXSTACKSIZE = 50;
+
+    // Optimized Quicksort: Not recursive, and uses Inssort for small lists
+    // This version uses primitive integer values for the records
+    void quicksortopt(KVPair[] A, int oi, int oj) { // Quicksort
+        int[] Stack = new int[MAXSTACKSIZE]; // Stack for array bounds
+        int listsize = oj-oi+1;
+        int top = -1;
+        KVPair pivot;
+        int pivotindex, l, r;
+
+        Stack[++top] = oi;  // Initialize stack
+        Stack[++top] = oj;
+
+        while (top > 0) {   // While there are unprocessed subarrays
+            // Pop Stack
+            int j = Stack[top--];
+            int i = Stack[top--];
+
+            // Findpivot
+            pivotindex = (i+j)/2;
+            pivot = A[pivotindex];
+            swap(A, pivotindex, j); // Stick pivot at end
+
+            // Partition
+            l = i-1;
+            r = j;
+            do {
+                while (A[++l].compareTo(pivot) < 0);
+                while ((r!=0) && (A[--r].compareTo(pivot) > 0));
+                swap(A, l, r);
+            } while (l < r);
+            swap(A, l, r);  // Undo final swap
+            swap(A, l, j);  // Put pivot value in place
+
+            // Put new subarrays onto Stack if they are small
+            if ((l-i) > THRESHOLD) {   // Left partition
+                Stack[++top] = i;
+                Stack[++top] = l-1;
+            }
+            if ((j-l) > THRESHOLD) {   // Right partition
+                Stack[++top] = l+1;
+                Stack[++top] = j;
+            }
+        }
+        inssortshiftint(A);             // Final Insertion Sort
     }
     // =============== END THE BENCHMARKED CODE =======================
 
     public static void main(String[] args) throws Exception {
         Options opt = new OptionsBuilder()
-            .include(Timeinssort.class.getSimpleName())
+            .include(Timequicksortopt.class.getSimpleName())
             .build();
 
         new Runner(opt).run();

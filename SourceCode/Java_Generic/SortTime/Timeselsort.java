@@ -1,4 +1,4 @@
-package build.inssort;
+package build.selsort;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 2, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 
-public class Timeinssort {
+public class Timeselsort {
 
     Boolean checkorder(KVPair[] A) {
         for (int i=1; i<A.length; i++)
@@ -97,7 +97,7 @@ public class Timeinssort {
     }
 
     @Benchmark
-    public KVPair[] benchmarkinssort() {
+    public KVPair[] benchmarkselsort() {
         if (!testtype.equals("regular") && (testsize != 10000)) {
             throw new RuntimeException("Up/down only 10,000");
         }
@@ -105,7 +105,7 @@ public class Timeinssort {
         //        if (!testtype.equals("up") && checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY SHOULD NOT START SORTED!!");
         //        }
-        inssort(arrayToSort);
+        selsort(arrayToSort);
         //        if (!checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY DID NOT SORT PROPERLY!!");
         //        }
@@ -120,16 +120,20 @@ public class Timeinssort {
         A[j] = temp;
     }
 
-    void inssort(KVPair[] A) {
-        for (int i=1; i<A.length; i++) // Insert i'th record
-            for (int j=i; (j>0) && (A[j].compareTo(A[j-1]) < 0); j--)
-                swap(A, j, j-1);
+    void selsort(KVPair[] A) {
+        for (int i=0; i<A.length-1; i++) {       // Select i'th biggest record
+            int bigindex = 0;                      // Current biggest index
+            for (int j=1; j<A.length-i; j++)       // Find the max value
+                if (A[j].compareTo(A[bigindex]) > 0) // Found something bigger
+                    bigindex = j;                      // Remember bigger index
+            swap(A, bigindex, A.length-i-1);       // Put it into place
+        }
     }
     // =============== END THE BENCHMARKED CODE =======================
 
     public static void main(String[] args) throws Exception {
         Options opt = new OptionsBuilder()
-            .include(Timeinssort.class.getSimpleName())
+            .include(Timeselsort.class.getSimpleName())
             .build();
 
         new Runner(opt).run();

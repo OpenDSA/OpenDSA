@@ -1,4 +1,4 @@
-package build.inssort;
+package build.radixlink;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 2, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 
-public class Timeinssort {
+public class Timeradixlink {
 
     Boolean checkorder(KVPair[] A) {
         for (int i=1; i<A.length; i++)
@@ -97,7 +97,7 @@ public class Timeinssort {
     }
 
     @Benchmark
-    public KVPair[] benchmarkinssort() {
+    public KVPair[] benchmarkradixlink() {
         if (!testtype.equals("regular") && (testsize != 10000)) {
             throw new RuntimeException("Up/down only 10,000");
         }
@@ -105,7 +105,7 @@ public class Timeinssort {
         //        if (!testtype.equals("up") && checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY SHOULD NOT START SORTED!!");
         //        }
-        inssort(arrayToSort);
+        radixlink(arrayToSort, 4, 256);
         //        if (!checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY DID NOT SORT PROPERLY!!");
         //        }
@@ -113,23 +113,46 @@ public class Timeinssort {
     }
 
     // =============== HERE IS THE BENCHMARKED CODE =======================
-    // Swap for KVPair arrays
-    static void swap(KVPair[] A, int i, int j) {
-        KVPair temp = A[i];
-        A[i] = A[j];
-        A[j] = temp;
-    }
+    // Standard radixsort using linked lists
+    static void radixlink(KVPair[] A, int k, int r) {
+        KVPair[] B = new KVPair[A.length];
+        int[] bins = new int[r];         // List headers
+        int[] tails = new int[r];        // List tails for appending
+        int[] links = new int[A.length]; // The list links
+        int i, j, rtok;
 
-    void inssort(KVPair[] A) {
-        for (int i=1; i<A.length; i++) // Insert i'th record
-            for (int j=i; (j>0) && (A[j].compareTo(A[j-1]) < 0); j--)
-                swap(A, j, j-1);
+        for (i=0, rtok=1; i<k; i++, rtok*=r) { // For k digits
+            for (j=0; j<r; j++) bins[j] = -1;    // Initialize linked lists to empty
+            for (j=0; j<r; j++) tails[j] = -1;    // Initialize tails
+            for (j=0; j<A.length; j++) links[j] = -1; // Initialize links
+
+            // Throw everyone onto a bin
+            for (j=0; j<A.length; j++) {
+                int digit = ((A[j].key())/rtok)%r;
+                if (bins[digit] == -1) {
+                    bins[digit] = j;
+                    tails[digit] = j;
+                }
+                else {
+                    tails[digit] = links[tails[digit]] = j;
+                }
+            }
+            // Take them out of the bins and put back into an array
+            int Bcurr = 0;
+            for (j=0; j<r; j++) {
+                for (int curr = bins[j]; curr != -1; curr = links[curr]) {
+                    B[Bcurr++] = A[curr];
+                }
+            }
+            // Copy the array back to prepare for the next step
+            for (j=0; j<A.length; j++) A[j] = B[j]; // Copy B back
+        }
     }
     // =============== END THE BENCHMARKED CODE =======================
 
     public static void main(String[] args) throws Exception {
         Options opt = new OptionsBuilder()
-            .include(Timeinssort.class.getSimpleName())
+            .include(Timeradixlink.class.getSimpleName())
             .build();
 
         new Runner(opt).run();

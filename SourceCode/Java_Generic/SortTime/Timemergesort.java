@@ -1,4 +1,4 @@
-package build.inssort;
+package build.mergesort;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 2, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 
-public class Timeinssort {
+public class Timemergesort {
 
     Boolean checkorder(KVPair[] A) {
         for (int i=1; i<A.length; i++)
@@ -65,10 +65,12 @@ public class Timeinssort {
 
     private KVPair[] originalArray;
     private KVPair[] arrayToSort;
+    private KVPair[] temp;
 
     @Setup(Level.Trial)
     public void setupData() {
         originalArray = new KVPair[testsize];
+        temp =  new KVPair[testsize];
         Random random = new Random(42);
         int temp;
         if (testtype.equals("regular")) {
@@ -97,7 +99,7 @@ public class Timeinssort {
     }
 
     @Benchmark
-    public KVPair[] benchmarkinssort() {
+    public KVPair[] benchmarkmergesort() {
         if (!testtype.equals("regular") && (testsize != 10000)) {
             throw new RuntimeException("Up/down only 10,000");
         }
@@ -105,7 +107,7 @@ public class Timeinssort {
         //        if (!testtype.equals("up") && checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY SHOULD NOT START SORTED!!");
         //        }
-        inssort(arrayToSort);
+        mergesort(arrayToSort, temp, 0, arrayToSort.length-1);
         //        if (!checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY DID NOT SORT PROPERLY!!");
         //        }
@@ -120,16 +122,37 @@ public class Timeinssort {
         A[j] = temp;
     }
 
-    void inssort(KVPair[] A) {
-        for (int i=1; i<A.length; i++) // Insert i'th record
-            for (int j=i; (j>0) && (A[j].compareTo(A[j-1]) < 0); j--)
-                swap(A, j, j-1);
+    void mergesort(KVPair[] A, KVPair[] temp, int left, int right) {
+        if (left == right) { return; }       // List has one record
+        int mid = (left+right)/2;          // Select midpoint
+        mergesort(A, temp, left, mid);     // Mergesort first half
+        mergesort(A, temp, mid+1, right);  // Mergesort second half
+        for (int i=left; i<=right; i++) {    // Copy subarray to temp
+            temp[i] = A[i];
+        }
+        // Do the merge operation back to A
+        int i1 = left;
+        int i2 = mid + 1;
+        for (int curr = left; curr <= right; curr++) {
+            if (i1 == mid+1) {                 // Left sublist exhausted
+                A[curr] = temp[i2++];
+            }
+            else if (i2 > right) {             // Right sublist exhausted
+                A[curr] = temp[i1++];
+            }
+            else if (temp[i1].compareTo(temp[i2]) <= 0) {  // Get smaller value
+                A[curr] = temp[i1++];
+            }
+            else{
+                A[curr] = temp[i2++];
+            }
+        }
     }
     // =============== END THE BENCHMARKED CODE =======================
 
     public static void main(String[] args) throws Exception {
         Options opt = new OptionsBuilder()
-            .include(Timeinssort.class.getSimpleName())
+            .include(Timemergesort.class.getSimpleName())
             .build();
 
         new Runner(opt).run();

@@ -1,4 +1,4 @@
-package build.inssort;
+package build.quicksort;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 2, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 
-public class Timeinssort {
+public class Timequicksort {
 
     Boolean checkorder(KVPair[] A) {
         for (int i=1; i<A.length; i++)
@@ -97,7 +97,7 @@ public class Timeinssort {
     }
 
     @Benchmark
-    public KVPair[] benchmarkinssort() {
+    public KVPair[] benchmarkquicksort() {
         if (!testtype.equals("regular") && (testsize != 10000)) {
             throw new RuntimeException("Up/down only 10,000");
         }
@@ -105,7 +105,7 @@ public class Timeinssort {
         //        if (!testtype.equals("up") && checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY SHOULD NOT START SORTED!!");
         //        }
-        inssort(arrayToSort);
+        quicksort(arrayToSort, 0, arrayToSort.length-1);
         //        if (!checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY DID NOT SORT PROPERLY!!");
         //        }
@@ -120,16 +120,37 @@ public class Timeinssort {
         A[j] = temp;
     }
 
-    void inssort(KVPair[] A) {
-        for (int i=1; i<A.length; i++) // Insert i'th record
-            for (int j=i; (j>0) && (A[j].compareTo(A[j-1]) < 0); j--)
-                swap(A, j, j-1);
+    /* Warning: Partition is sensitive. If we don't make the right
+       position actually cross the left, then it seems hard to get things
+       to work right when there is only one element in the partition
+       (i.e., a list of 2 elements). */
+    int partition(KVPair[] A, int left, int right, KVPair pivot) {
+        while (left <= right) { // Move bounds inward until they meet
+            while (A[left].compareTo(pivot) < 0) { left++; }
+            while ((right >= left) && (A[right].compareTo(pivot) >= 0)) { right--; }
+            if (right > left) { swap(A, left, right); } // Swap out-of-place values
+        }
+        return left;            // Return first position in right partition
+    }
+
+    // Findpivot
+    int findpivot(KVPair[] A, int i, int j) { return (i+j)/2; }
+
+    // Main routine
+    void quicksort(KVPair[] A, int i, int j) { // Quicksort
+        int pivotindex = findpivot(A, i, j);  // Pick a pivot
+        swap(A, pivotindex, j);               // Stick pivot at end
+        // k will be the first position in the right subarray
+        int k = partition(A, i, j-1, A[j]);
+        swap(A, k, j);                        // Put pivot in place
+        if ((k-i) > 1) { quicksort(A, i, k-1); }  // Sort left partition
+        if ((j-k) > 1) { quicksort(A, k+1, j); }  // Sort right partition
     }
     // =============== END THE BENCHMARKED CODE =======================
 
     public static void main(String[] args) throws Exception {
         Options opt = new OptionsBuilder()
-            .include(Timeinssort.class.getSimpleName())
+            .include(Timequicksort.class.getSimpleName())
             .build();
 
         new Runner(opt).run();

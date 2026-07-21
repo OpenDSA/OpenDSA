@@ -17,16 +17,45 @@ import java.util.concurrent.TimeUnit;
 
 public class Timemergesortopt {
 
-    static Boolean checkorder(int[] A) {
+    Boolean checkorder(KVPair[] A) {
         for (int i=1; i<A.length; i++)
-            if (A[i] < A[i-1]) {
+            if (A[i].compareTo(A[i-1]) < 0) {
                 return false;
             }
         return true;
     }
 
+    // KVPair class definition
+    private class KVPair implements Comparable<KVPair> {
+        Integer theKey;
+        Integer theVal;
+
+        KVPair(Integer k, Integer v) {
+            theKey = k;
+            theVal = v;
+        }
+
+        // Compare KVPairs
+        public int compareTo(KVPair it) {
+            return theKey.compareTo(it.key());
+        }
+
+        // Compare against a key
+        public int compareTo(Integer it) {
+            return theKey.compareTo(it);
+        }
+
+        public Integer key() {
+            return theKey;
+        }
+
+        public Integer value() {
+            return theVal;
+        }
+    }
+
     // JMH will run the benchmark for arrays of size 10 to 1,000,000
-    @Param({"10", "100", "1000", "10000"})
+    @Param({"10", "100", "1000", "10000", "100000", "1000000"})
     private int testsize;
 
     @Param({"regular", "up", "down"})
@@ -34,80 +63,75 @@ public class Timemergesortopt {
     
     private int maxval = 1000000;
 
-    private int[] originalArray;
-    private int[] arrayToSort;
-    private int[] temp;
-    int THRESHOLD = 60;
+    private KVPair[] originalArray;
+    private KVPair[] arrayToSort;
+    private KVPair[] temp;
+    int THRESHOLD = 25;
 
-    // Generated once per benchmark trial run
     @Setup(Level.Trial)
     public void setupData() {
-        originalArray = new int[testsize];
-        temp =  new int[testsize];
-        Random random = new Random(42); // Fixed seed makes tests reproducible
+        System.out.println("================= THRESHOLD: " + THRESHOLD + " ===============");
+        originalArray = new KVPair[testsize];
+        temp =  new KVPair[testsize];
+        Random random = new Random(42);
+        int temp;
         if (testtype.equals("regular")) {
             for (int i = 0; i < testsize; i++) {
-                originalArray[i] = random.nextInt(maxval);
+                temp = random.nextInt(maxval);
+                originalArray[i] = new KVPair(temp, temp + 10);
             }
         }
         else if (testtype.equals("up")) {
             for (int i = 0; i < testsize; i++) {
-                originalArray[i] = i + 1;
+                originalArray[i] = new KVPair(i + 1, i + 11);
             }
         }
         else if (testtype.equals("down")) {
             for (int i = 0; i < testsize; i++) {
-                originalArray[i] = maxval - i;
+                originalArray[i] = new KVPair(maxval - i, maxval - i + 10);
             }
         }
         else System.out.println("++++++++++++++++ ERROR!! BAD TEST TYPE!!");
     }
 
-@Setup(Level.Trial) // Runs ONCE before the entire benchmark trial starts
-public void doSetup() {
-    System.out.println("====== Setup: Threshold is: " + THRESHOLD + " ======");
-}
-
-    // Generated right before every single iteration execution
     @Setup(Level.Invocation)
     public void copyArray() {
-        // Crucial for sorting algorithms so we never benchmark an already-sorted array
+        // Creates a fresh copy of the Integer object array before each run
         arrayToSort = originalArray.clone();
     }
 
     @Benchmark
-    public int[] benchmarkmergesortopt() {
+    public KVPair[] benchmarkmergesortopt() {
         if (!testtype.equals("regular") && (testsize != 10000)) {
             throw new RuntimeException("Up/down only 10,000");
         }
         /* ========== CALL THE SORT ============== */
-        //        if (checkorder(arrayToSort)) {
+        //        if (!testtype.equals("up") && checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY SHOULD NOT START SORTED!!");
         //        }
         mergesortopt(arrayToSort, temp, 0, arrayToSort.length-1);
         //        if (!checkorder(arrayToSort)) {
         //            throw new RuntimeException("ARRAY DID NOT SORT PROPERLY!!");
         //        }
-        return arrayToSort; // Returning prevents Dead Code Elimination optimization
+        return arrayToSort;
     }
 
     // =============== HERE IS THE BENCHMARKED CODE =======================
-    // Swap for int arrays
-    public static void swap(int[] A, int i, int j) {
-        int temp = A[i];
+    // Swap for KVPair arrays
+    static void swap(KVPair[] A, int i, int j) {
+        KVPair temp = A[i];
         A[i] = A[j];
         A[j] = temp;
     }
 
-    void inssort(int[] A, int left, int right) {
-        for (int i=left+1; i<=right; i++) {        // Insert i'th record
-            for (int j=i; (j>left) && (A[j] < A[j-1]); j--) {
+    void inssort(KVPair[] A, int left, int right) {
+        for (int i=left+1; i<=right; i++)        // Insert i'th record
+            for (int j=i; (j>left) && (A[j].compareTo(A[j-1]) < 0); j--)
                 swap(A, j, j-1);
-            }
-        }
     }
 
-    void mergesortopt(int[] A, int[] temp, int left, int right) {
+    // Optimized Mergesort
+    void mergesortopt(KVPair[] A, KVPair[] temp, int left, int right) {
         int i, j, k, mid = (left+right)/2;  // Select the midpoint
         if (left == right) { return; }          // List has one record
         if ((mid-left) >= THRESHOLD) { mergesortopt(A, temp, left, mid); }
@@ -119,9 +143,7 @@ public void doSetup() {
         for (j=right; j>mid; j--) { temp[i++] = A[j]; }
         // Merge sublists back to array
         for (i=left,j=right,k=left; k<=right; k++) {
-            if (temp[i] < temp[j]) {
-                A[k] = temp[i++];
-            }
+            if (temp[i].compareTo(temp[j]) <= 0) { A[k] = temp[i++]; }
             else { 
                 A[k] = temp[j--];
             }
@@ -129,7 +151,6 @@ public void doSetup() {
     }
     // =============== END THE BENCHMARKED CODE =======================
 
-    // Built-in main method so you can kick it off easily from your command line execution
     public static void main(String[] args) throws Exception {
         Options opt = new OptionsBuilder()
             .include(Timemergesortopt.class.getSimpleName())

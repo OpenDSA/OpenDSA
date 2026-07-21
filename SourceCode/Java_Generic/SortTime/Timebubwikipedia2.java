@@ -1,4 +1,4 @@
-package build.inssort;
+package build.bubwikipedia2;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 2, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 
-public class Timeinssort {
+public class Timebubwikipedia2 {
 
     Boolean checkorder(KVPair[] A) {
         for (int i=1; i<A.length; i++)
@@ -55,7 +55,7 @@ public class Timeinssort {
     }
 
     // JMH will run the benchmark for arrays of size 10 to 1,000,000
-    @Param({"10", "100", "1000", "10000", "100000", "1000000"})
+    @Param({"10", "100", "1000", "10000"})
     private int testsize;
 
     @Param({"regular", "up", "down"})
@@ -97,18 +97,18 @@ public class Timeinssort {
     }
 
     @Benchmark
-    public KVPair[] benchmarkinssort() {
+    public KVPair[] benchmarkbubwikipedia2() {
         if (!testtype.equals("regular") && (testsize != 10000)) {
             throw new RuntimeException("Up/down only 10,000");
         }
         /* ========== CALL THE SORT ============== */
-        //        if (!testtype.equals("up") && checkorder(arrayToSort)) {
-        //            throw new RuntimeException("ARRAY SHOULD NOT START SORTED!!");
-        //        }
-        inssort(arrayToSort);
-        //        if (!checkorder(arrayToSort)) {
-        //            throw new RuntimeException("ARRAY DID NOT SORT PROPERLY!!");
-        //        }
+        if (!testtype.equals("up") && checkorder(arrayToSort)) {
+            throw new RuntimeException("ARRAY SHOULD NOT START SORTED!!");
+        }
+        bubwikipedia2(arrayToSort);
+        if (!checkorder(arrayToSort)) {
+            throw new RuntimeException("ARRAY DID NOT SORT PROPERLY!!");
+        }
         return arrayToSort;
     }
 
@@ -120,16 +120,26 @@ public class Timeinssort {
         A[j] = temp;
     }
 
-    void inssort(KVPair[] A) {
-        for (int i=1; i<A.length; i++) // Insert i'th record
-            for (int j=i; (j>0) && (A[j].compareTo(A[j-1]) < 0); j--)
-                swap(A, j, j-1);
+    // Wikipedia article "optimization" rewritten with a for loop
+    void bubwikipedia2(KVPair[] A) {
+        int newn;
+        int loopcnt = 0;
+        for(int n=A.length-1; n>0; n=newn) {
+            loopcnt++;
+            newn = 0;
+            for (int i=0; i<n; i++)
+                /* if this pair is out of order */
+                if (A[i].compareTo(A[i+1]) > 0) {
+                    swap(A, i, i+1);
+                    newn = i;
+                }
+        }
     }
     // =============== END THE BENCHMARKED CODE =======================
 
     public static void main(String[] args) throws Exception {
         Options opt = new OptionsBuilder()
-            .include(Timeinssort.class.getSimpleName())
+            .include(Timebubwikipedia2.class.getSimpleName())
             .build();
 
         new Runner(opt).run();
