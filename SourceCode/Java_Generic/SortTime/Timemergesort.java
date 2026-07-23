@@ -70,6 +70,7 @@ public class Timemergesort {
     @Setup(Level.Trial)
     public void setupData() {
         originalArray = new KVPair[testsize];
+        arrayToSort = new KVPair[testsize];
         temp =  new KVPair[testsize];
         Random random = new Random(42);
         int temp;
@@ -94,8 +95,10 @@ public class Timemergesort {
 
     @Setup(Level.Invocation)
     public void copyArray() {
-        // Creates a fresh copy of the Integer object array before each run
-        arrayToSort = originalArray.clone();
+        // Creates a fresh copy of the array to sort before each run
+        for (int i = 0; i < testsize; i++) {
+            arrayToSort[i] = originalArray[i];
+        }
     }
 
     @Benchmark

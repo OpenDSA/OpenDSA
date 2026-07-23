@@ -65,12 +65,13 @@ public class Timequicksortopt {
 
     private KVPair[] originalArray;
     private KVPair[] arrayToSort;
-    int THRESHOLD = 50;
+    int THRESHOLD = 10;
 
     @Setup(Level.Trial)
     public void setupData() {
         System.out.println("================= THRESHOLD: " + THRESHOLD + " ===============");
         originalArray = new KVPair[testsize];
+        arrayToSort = new KVPair[testsize];
         Random random = new Random(42);
         int temp;
         if (testtype.equals("regular")) {
@@ -94,8 +95,10 @@ public class Timequicksortopt {
 
     @Setup(Level.Invocation)
     public void copyArray() {
-        // Creates a fresh copy of the Integer object array before each run
-        arrayToSort = originalArray.clone();
+        // Creates a fresh copy of the array to sort before each run
+        for (int i = 0; i < testsize; i++) {
+            arrayToSort[i] = originalArray[i];
+        }
     }
 
     @Benchmark

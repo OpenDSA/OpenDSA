@@ -72,6 +72,7 @@ public class Timemergesortopt {
     public void setupData() {
         System.out.println("================= THRESHOLD: " + THRESHOLD + " ===============");
         originalArray = new KVPair[testsize];
+        arrayToSort = new KVPair[testsize];
         temp =  new KVPair[testsize];
         Random random = new Random(42);
         int temp;
@@ -96,8 +97,10 @@ public class Timemergesortopt {
 
     @Setup(Level.Invocation)
     public void copyArray() {
-        // Creates a fresh copy of the Integer object array before each run
-        arrayToSort = originalArray.clone();
+        // Creates a fresh copy of the array to sort before each run
+        for (int i = 0; i < testsize; i++) {
+            arrayToSort[i] = originalArray[i];
+        }
     }
 
     @Benchmark

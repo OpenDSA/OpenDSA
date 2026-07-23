@@ -55,7 +55,8 @@ public class Timebubwikipedia {
     }
 
     // JMH will run the benchmark for arrays of size 10 to 1,000,000
-    @Param({"10", "100", "1000", "10000", "100000", "1000000"})
+    // @Param({"10", "100", "1000", "10000", "100000", "1000000"})
+    @Param({"10", "100", "1000", "10000", "100000"})
     private int testsize;
 
     @Param({"regular", "up", "down"})
@@ -69,6 +70,7 @@ public class Timebubwikipedia {
     @Setup(Level.Trial)
     public void setupData() {
         originalArray = new KVPair[testsize];
+        arrayToSort = new KVPair[testsize];
         Random random = new Random(42);
         int temp;
         if (testtype.equals("regular")) {
@@ -92,8 +94,10 @@ public class Timebubwikipedia {
 
     @Setup(Level.Invocation)
     public void copyArray() {
-        // Creates a fresh copy of the Integer object array before each run
-        arrayToSort = originalArray.clone();
+        // Creates a fresh copy of the array to sort before each run
+        for (int i = 0; i < testsize; i++) {
+            arrayToSort[i] = originalArray[i];
+        }
     }
 
     @Benchmark
