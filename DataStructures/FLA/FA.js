@@ -316,66 +316,36 @@ var lambda = String.fromCharCode(955),
     return this;
   };
 
-  // FA-specific drag handlers — handle state label and initial marker updates
-  function faDragStart(event, ui) {
-    var dragNode = $(this).data("node");
-    dragNode.wasHighlighted = dragNode.hasClass("jsavhighlight");
-    dragNode.highlight();
-  }
+  // FA-specific drag handlers. These override the base graph prototype
+  // methods (see JSAV src/graph.js): each one calls the inherited base
+  // implementation, then adds the FA-specific parts (highlighting,
+  // initial state marker and state label updates).
+  // Note: newNode no longer needs to be overridden — the base class uses
+  // this.constructors.Node and sets up dragging via _setupNodeDrag.
+  var basegraph = JSAV._types.ds.Graph.prototype;
 
-  function faDragStop(event, ui) {
-    var dragNode = $(this).data("node");
-    if (!dragNode.wasHighlighted) {
-      dragNode.unhighlight();
+  automatonproto.dragStart = function (node, event, ui) {
+    basegraph.dragStart.call(this, node, event, ui);
+    node.wasHighlighted = node.hasClass("jsavhighlight");
+    node.highlight();
+  };
+
+  automatonproto.drag = function (node, event, ui) {
+    // base class relayouts all edges connected to the dragged node
+    basegraph.drag.call(this, node, event, ui);
+    // redraw the initial state marker if the initial state is dragged
+    if (node === this.initial) {
+      this.removeInitial(node);
+      this.makeInitial(node);
     }
-  }
+    node.stateLabelPositionUpdate();
+  };
 
-  function faDragging(event, ui) {
-    var dragNode = $(this).data("node");
-    var g = dragNode.automaton;
-    var nodes = g.nodes();
-    var neighbors = dragNode.neighbors();
-    nodes.reset();
-    for (var next = nodes.next(); next; next = nodes.next()) {
-      if (next.neighbors().includes(dragNode)) {
-        neighbors.push(next);
-      }
+  automatonproto.dragStop = function (node, event, ui) {
+    basegraph.dragStop.call(this, node, event, ui);
+    if (!node.wasHighlighted) {
+      node.unhighlight();
     }
-    for (var i = 0; i < neighbors.length; i++) {
-      var neighbor = neighbors[i];
-      var edge1 = g.getEdge(dragNode, neighbor);
-      var edge2 = g.getEdge(neighbor, dragNode);
-      if (edge1) { edge1.layout(); }
-      if (edge2) { edge2.layout(); }
-    }
-    if (dragNode === g.initial) {
-      g.removeInitial(dragNode);
-      g.makeInitial(dragNode);
-    }
-    dragNode.stateLabelPositionUpdate();
-  }
-
-  // Must override base class newNode — base hardcodes GraphNode, FA needs this.constructors.Node
-  automatonproto.newNode = function (value, options) {
-    var newNode = new this.constructors.Node(this, value, options),
-      newNodes = this._nodes.slice(0);
-    newNodes.push(newNode);
-    this._setnodes(newNodes, options);
-
-    var newAdjs = this._edges.slice(0);
-    newAdjs.push([]);
-    this._setadjs(newAdjs, options);
-
-    if (this.options.draggable) {
-      newNode.element.draggable({
-        start: faDragStart,
-        drag: faDragging,
-        stop: faDragStop,
-        containment: "parent"
-      });
-    }
-
-    return newNode;
   };
 
   /*
@@ -2253,54 +2223,31 @@ var lambda = String.fromCharCode(955),
     }
   }
 
-  //Peixuan added backupAnimStacks function
+  // Editor drag handlers. These delegate the shared drag behavior to the
+  // automaton prototype methods above (which in turn extend the base graph
+  // class), and only add the editor-specific parts: animation stack
+  // backup/restore (Peixuan) and the initial state left-edge clamp.
   function dragStart(event, node) {
-    backupAnimStacks(node.helper.data("node").automaton.jsav);
-    $(document).trigger("jsav-speed-change", 50);
     var dragNode = node.helper.data("node");
-    dragNode.wasHighlighted = dragNode.hasClass("jsavhighlight");
-    dragNode.highlight();
+    backupAnimStacks(dragNode.automaton.jsav);
+    dragNode.automaton.dragStart(dragNode, event, node);
   };
 
-  //Peixuan added restoreAnimStacks and addLayoutListeners functions
   function dragStop(event, node) {
     var dragNode = node.helper.data("node");
-    if (!dragNode.wasHighlighted) {
-      dragNode.unhighlight();
-    }
-    $(document).trigger("jsav-speed-change", JSAV.ext.SPEED);
+    dragNode.automaton.dragStop(dragNode, event, node);
     restoreAnimStacks(dragNode.automaton.jsav);
     addLayoutListeners(dragNode.automaton.jsav, dragNode);
   };
 
   function dragging(event, node) {
     var dragNode = node.helper.data("node");
-    g = dragNode.automaton;
-    if (dragNode == g.initial) {
-      if (node.helper.offset().left < 45) {
-        node.helper.offset({ left: 45 });
-      }
+    var g = dragNode.automaton;
+    // keep the initial state marker from being dragged off the left edge
+    if (dragNode == g.initial && node.helper.offset().left < 45) {
+      node.helper.offset({ left: 45 });
     }
-    var nodes = g.nodes();
-    var neighbors = dragNode.neighbors();
-    nodes.reset();
-    for (var next = nodes.next(); next; next = nodes.next()) {
-      if (next.neighbors().includes(dragNode)) {
-        neighbors.push(next);
-      }
-    }
-    for (var i = 0; i < neighbors.length; i++) {
-      var neighbor = neighbors[i];
-      var edge1 = g.getEdge(dragNode, neighbor);
-      var edge2 = g.getEdge(neighbor, dragNode);
-      if (edge1) edge1.layout();
-      if (edge2) edge2.layout();
-    }
-    if (dragNode == g.initial) {
-      g.removeInitial(dragNode);
-      g.makeInitial(dragNode);
-    }
-    dragNode.stateLabelPositionUpdate();
+    g.drag(dragNode, event, node);
     dragNode.element.draggable('enable');
   };
 
