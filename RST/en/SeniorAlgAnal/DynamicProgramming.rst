@@ -409,9 +409,6 @@ although the most "natural" is to start filling the array for row 0
 We then fill in the succeeding rows
 from :math:`i=1` to :math:`n`.
 
-.. codeinclude:: Dynamic/Knapsack
-   :tag: Knapsack
-
 In other words, a new slot in the array gets its solution by looking
 at most at two slots in the preceding row.
 Since filling each slot in the array takes constant time, the total

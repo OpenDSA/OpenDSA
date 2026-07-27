@@ -189,10 +189,10 @@
       },
       "PIFLA/DFAMinimization": {},
       "PIFLA/MinimizationEx": {
-        "DFAMinEx1": {
+        "DFAMinEx3": {
           "points": 2.0
         },
-        "DFAMinEx2": {
+        "DFAMinEx4": {
           "points": 2.0
         }
       }
