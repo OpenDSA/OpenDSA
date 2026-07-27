@@ -69,10 +69,7 @@
   },
   "chapters": {
     "Stuff": {
-      "Tutorials/MTfaq": {},
-      "Tutorials/MTadvanced": {},
-      "SearchStruct/Sparse": {},
-      "SWDesignAndDataStructs/ContentStacks": {},
+      "General/GenTreeIntro": {},
       "Sorting/SortOpt": {
         "insertionSortWithoutSwapPRO": {
           "points": 0.0
