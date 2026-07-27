@@ -17,14 +17,6 @@
       ],
       "label": "Java (Generic)",
       "lang": "java"
-    },
-    "C++": {
-      "ext": [
-        "cpp",
-        "h"
-      ],
-      "label": "C++",
-      "lang": "C++"
     }
   },
   "lang": "en",
