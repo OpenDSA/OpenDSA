@@ -1,0 +1,51 @@
+/* Accessible BST Palette */
+
+/* 1. Connecting Edges & Branches */
+.jsavgraph .jsavedge {
+  stroke: #334155 !important;
+  stroke-width: 4px !important;
+}
+
+.emphasizeedge {
+  stroke: #0369a1 !important;
+  stroke-width: 3.5px !important;
+}
+
+/* 2. Default Standard Node */
+.jsavtreenode {
+  background-color: #ffffff !important;
+  border: 3px solid #334155 !important;
+  color: #0f172a !important;
+}
+
+/* 3. Active State (Blue) */
+.jsavtreenode.processing,
+.jsavtreenode.selected {
+  background-color: #DDDDFF !important;
+  border: 3px solid #003F61 !important;
+  color: #0f172a !important;
+}
+
+/* 4.Focus State (Red) */
+.jsavtreenode.special,
+.jsavtreenode.redbg {
+  background-color: #f43f5e !important;
+  border: 3px solid #9f1239 !important;
+  color: #ffffff !important;
+}
+
+/* 5. Sorted (Green) */
+.jsavtreenode.sorted,
+.jsavtreenode.greenbg {
+  background-color: #22c55e !important;
+  border: 3px solid #15803d !important;
+  color: #022c22 !important;
+}
+
+/* 6. Unused (Slate Grey) */
+.jsavtreenode.unused,
+.jsavtreenode.deemph {
+  background-color: #e2e8f0 !important;
+  border: 3px solid #64748b !important;
+  color: #475569 !important;
+}

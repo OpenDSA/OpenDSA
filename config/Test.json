@@ -68,6 +68,9 @@
     "partial_credit": false
   },
   "chapters": {
+    "Binary Trees": {
+      "Binary/BST": {}
+    },
     "Stuff": {
       "Tutorials/MTfaq": {},
       "Tutorials/MTadvanced": {},
