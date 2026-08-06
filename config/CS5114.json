@@ -41,23 +41,23 @@
   },
   "glob_ka_options": {
     "threshold": 5, 
-    "points": 1.0, 
+    "points": 0.0, 
     "required": true,
     "partial_credit": false
   }, 
   "glob_extr_options": {
     "code-workout": {
-      "points": 2.0,
+      "points": 0.0,
       "required": true,
       "partial_credit": true,
       "enable_scrolling": true
     }, 
-    "points": 1.0,
+    "points": 0.0,
     "partial_credit": false
   }, 
   "glob_pe_options": {
     "threshold": 0.9, 
-    "points": 2.0, 
+    "points": 0.0, 
     "required": true,
     "partial_credit": false
   }, 
@@ -74,6 +74,7 @@
     "Analyzing Problems: The Basics": {
       "SeniorAlgAnal/TOH": {},
       "Background/Proofs": {},
+      "Background/SetDef": {},
       "SeniorAlgAnal/BoundsReview": {},
       "SeniorAlgAnal/GrowthRate": {},
       "Background/Summations": {},
@@ -81,27 +82,137 @@
       "Background/RecurrenceIntro": {},
       "SeniorAlgAnal/Recurrence": {}
     },
+    "Dynamic Programming": {
+      "SeniorAlgAnal/DynamicProgramming": {}
+    },
+    "Sorting": {
+      "Sorting/InSort": {}, 
+      "Sorting/SortNotation": {
+        "SortIntroSumm": {
+          "threshold": 3
+        }
+      }, 
+      "Sorting/InsertionSort": {}, 
+      "Sorting/BubbleSort": {
+        "BubsortPRO": {
+          "points": 0.0, 
+          "threshold": 3
+        }
+      }, 
+      "Sorting/SelectionSort": {
+        "SelsortPRO": {
+          "points": 0.0
+        }
+      }, 
+      "Sorting/ExchangeSort": {
+        "FindInversionsPRO": {
+          "points": 0.0
+        }
+      }, 
+      "Sorting/SortOpt": {
+        "insertionSortWithoutSwapPRO": {
+          "points": 0.0
+        }
+      }, 
+      "Sorting/Shellsort": {
+        "shellsortPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous", 
+            "JXOP-fixmode": "fix"
+          }
+        }, 
+        "shellsortPerf": {
+          "threshold": 1.0
+        }
+      }, 
+      "Sorting/Mergesort": {
+        "mergesortPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous", 
+            "JXOP-fixmode": "fix"
+          }
+        }
+      }, 
+      "Sorting/MergesortImpl": {}, 
+      "Sorting/Quicksort": {
+        "quicksortPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous", 
+            "JXOP-fixmode": "fix"
+          }
+        }
+      }, 
+      "Sorting/Heapsort": {
+        "HeapsortStepPRO": {
+          "points": 0.0
+        }, 
+        "heapsortPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous", 
+            "JXOP-fixmode": "fix"
+          }
+        }
+      }, 
+      "Sorting/BinSort": {}, 
+      "Sorting/RadixSort": {
+        "RadixsortPRO": {
+          "points": 0.0, 
+          "threshold": 4
+        }
+      }, 
+      "Sorting/SortingEmpirical": {},
+      "Sorting/SortingLowerBound": {
+        "SortBoundSumm": {
+          "threshold": 4
+        }
+      }, 
+      "Sorting/SortSumm": {
+        "SortChapterSumm": {
+          "points": 0, 
+          "threshold": 10
+        }
+      }
+    }, 
     "Searching": {
       "SeniorAlgAnal/SearchIntro": {},
       "Searching/UnsortedSearch": {},
-      "Searching/SortedSearch": {},
-      "SearchStruct/SkipList": {}
+      "Searching/SortedSearch": {}
     },
     "Lower Bounds": {
-      "Sorting/ExchangeSort": {},
-      "Sorting/SortingLowerBound": {},
       "Bounds/BoundMax": {},
-      "Background/SetDef": {},
       "Bounds/BoundAdversary": {},
       "Bounds/BoundState": {},
       "Bounds/BoundiBest": {},
       "Bounds/SortingOptimal": {},
       "SeniorAlgAnal/AmortAnal": {}
     },
-    "Dynamic Programming": {
-      "SeniorAlgAnal/DynamicProgramming": {},
-      "Graph/Floyd": {}
+    "Probabilistic Algorithms": {
+      "SearchStruct/SkipList": {},
+      "SeniorAlgAnal/RandomNums": {}
     },
+        "Graphs": {
+      "Graph/GraphIntro": {
+        "GspaceCalcSumm": {
+          "points": 0.0
+        }, 
+        "GraphIntroSumm": {
+          "points": 0.0, 
+          "threshold": 10
+        }
+      }, 
+      "Graph/GraphImpl": {}, 
+      "Graph/GraphTraversal": {},
+      "Graph/GraphTopsort": {}, 
+      "Graph/GraphShortest": {},
+      "Graph/MCST": {}, 
+      "Graph/Kruskal": {},
+      "Graph/Floyd": {},
+      "Graph/GraphCM": {
+        "CMgraphSumm": {
+          "threshold": 5
+        }
+      }
+    }, 
     "Limits to Computing": {
       "NP/LimComp": {},
       "NP/Reduction": {},
@@ -146,23 +257,18 @@
       "NP/threeSAT_to_hamiltonianCycle": {},
       "NP/clique_to_independentSet": {},
       "NP/hamiltonianCycle_to_TSP": {},
-      "NP/NPCoping": {},
-      "SeniorAlgAnal/Impossible": {},
-      "SeniorAlgAnal/TuringMachines": {},
-      "SeniorAlgAnal/TuringMachinesAdv": {}
+      "NP/NPCoping": {}
     },
     "Number Problems": {
       "SeniorAlgAnal/Numeric": {},
       "SeniorAlgAnal/Matrix": {},
       "SeniorAlgAnal/Probabilistic": {},
       "SeniorAlgAnal/Primes": {},
-      "SeniorAlgAnal/RandomNums": {},
       "SeniorAlgAnal/Transform": {},
       "SeniorAlgAnal/FFT": {}
     },
     "Appendix": {
-      "Glossary": {},
-      "Bibliography": {}
+      "Glossary": {}
     }
   }
 }

@@ -17,9 +17,7 @@ $(document).ready(function() {
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
   MathJax.Hub.Config({tex2jax: {inlineMath: [["$", "$"], ["\\(", "\\)"]]}});
-  $(".avcontainer").on("jsav-message", function() {
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-  });
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
   var leftAlign = 150;
   var topAlign = 5;
 

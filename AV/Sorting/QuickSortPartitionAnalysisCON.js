@@ -18,6 +18,9 @@ $(document).ready(function() {
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
+  // Invoke MathJax to get equations to display correctly
+  MathJax.Hub.Queue(["Typeset" , MathJax.Hub]);
+
   var av = new JSAV(av_name);
   var pseudo = av.code(code).hide();
   var arr;

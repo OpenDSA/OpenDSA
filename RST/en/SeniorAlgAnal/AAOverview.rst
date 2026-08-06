@@ -291,7 +291,7 @@ options:
 Acknowledgement
 ---------------
 
-This page is heavily influenced by the presentation in the introdction
+This page is heavily influenced by the presentation in the introduction
 to Chapter 1 in *Compared to What?* by Gregory J.E. Rawlins.
 
 

@@ -191,5 +191,3 @@ to the next child until calling	``next`` returns ``null``.
 
 .. codeinclude:: General/GenTreeTest
    :tag: GenTreePrint
-
-
