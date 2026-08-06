@@ -10,10 +10,10 @@ interface Graph { // Graph class ADT
   int edgeCount();
 
   // Get the value of node with index v
-  Object getValue(int v);
+  int getValue(int v);
 
   // Set the value of node with index v
-  void setValue(int v, Object val);
+  void setValue(int v, int val);
   
   // Adds a new edge from node v to node w with weight wgt
   void addEdge(int v, int w, int wgt);

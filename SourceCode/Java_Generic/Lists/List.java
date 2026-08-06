@@ -1,5 +1,3 @@
-import java.util.NoSuchElementException;
-
 /* *** ODSATag: ListADT *** */
 /* *** ODSATag: ListADT1 *** */
 // List class ADT. Generalize the element type using Java Generics.
@@ -16,7 +14,7 @@ public interface List<E> { // List class ADT
   public boolean append(E it);
 
   // Remove and return the current element
-  public E remove() throws NoSuchElementException;
+  public E remove();
 /* *** ODSAendTag: ListADT1 *** */
 
 /* *** ODSATag: ListADT2 *** */
@@ -47,7 +45,7 @@ public interface List<E> { // List class ADT
   public boolean isAtEnd();
 
   // Return the current element
-  public E getValue() throws NoSuchElementException;
+  public E getValue();
   
   // Tell if the list is empty or not
   public boolean isEmpty();

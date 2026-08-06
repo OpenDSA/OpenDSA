@@ -137,7 +137,7 @@ public class QueueTest {
    */
   public static void main(String args[]) throws IOException {
     // Create a file to record errors if necessary
-    record = new ErrorRec(useFile, "QueueTest");
+    record = new ErrorRec("QueueTest", useFile);
 
     // Test integer
     AQueue<Integer> aq = new AQueue<Integer>();

@@ -103,14 +103,11 @@ static boolean ODD(int n) {
 
 static void collatz(int n) {
 /* *** ODSATag: Collatz *** */
-while (n > 1) {
-  if (ODD(n)) {
+while (n > 1)
+  if (ODD(n))
     n = 3 * n + 1;
-  }
-   else{
+   else
      n = n / 2;
-   }
-}
 /* *** ODSAendTag: Collatz *** */
 }
 

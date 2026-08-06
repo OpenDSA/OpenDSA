@@ -45,9 +45,8 @@ compile without these.
       step 1 Extract the zipped file (likely it will extract to your downloads folder) 
             a. For Window’s, you can specify where to extract - extract it to your user name folder. The example below is Professor Hillman’s example.
             b. If you did part (a) above, skips steps 2 and 3
-      step 2 Find the eclipse folder (after extraction - very likely in your downloads folder) 
+      step 2 Find the eclipse folder (after extraction - very likely in your downloads folder)
       step 3 Move the eclipse folder to your user name folder (this is where the installer would put your folder)
-      step 4
 
 
 3. After the download is complete, follow the installation instructions
@@ -236,10 +235,9 @@ Adding CS2 Support Projects
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4snkjorp' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Adding CS2 Support Projects"></iframe> 
-   </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=bcbf2943-bd8a-47a9-861c-b4210014ce82" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Adding CS2 Support Projects" aria-description="Adding CS2 Support Projects"></iframe>
+  </div>
 
 
 Creating a Project and Setting Default JDK
@@ -286,8 +284,7 @@ Troubleshooting Setting JDK to 1.8
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_q98qkist' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Troubleshooting Setting JDK to 1.8 "></iframe> 
-   </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=0b236924-08d6-4a06-a5c2-b40d00582a96" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Troubleshooting Setting JDK to 1.8" aria-description="Troubleshooting Setting JDK to 1.8"></iframe>
+  </div>
 

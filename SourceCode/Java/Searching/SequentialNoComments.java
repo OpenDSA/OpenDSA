@@ -1,7 +1,7 @@
 import java.io.*;
 
 // Tester for binary search function
-public class Sequential {
+public class SequentialNoComments {
 
 static boolean SUCCESS = true;
 

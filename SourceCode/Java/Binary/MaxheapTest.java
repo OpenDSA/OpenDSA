@@ -6,7 +6,7 @@ public class MaxheapTest {
   static int testsize = 1000;
 
   public static void main(String args[]) throws IOException {
-    Integer[] A = new Integer[testsize];
+    int[] A = new int[testsize];
     int i;
 
     // Initialize to simply be the values from 0 to testsize-1
@@ -23,12 +23,12 @@ public class MaxheapTest {
     // Now, verify that it is really a heap
     for (i = testsize / 2 - 1; i >= 0; i--) {
       if (i < (testsize - 1) / 2) {
-        if (A[i].compareTo(A[2 * i + 2]) < 0) {
+        if (A[i] < A[2 * i + 2]) {
           System.out.println("Oops! Heap out of order");
           SUCCESS = false;
         }
       }
-      if (A[i].compareTo(A[2 * i + 1]) < 0) {
+      if (A[i] < A[2 * i + 1]) {
         System.out.println("Oops! Heap out of order");
         SUCCESS = false;
       }
@@ -45,7 +45,7 @@ public class MaxheapTest {
     }
   }
 
-  static void permute(Integer[] array) {
+  static void permute(int[] array) {
     // For every element, do a swap with a random element
     Random rand = new Random();
     for (int i = 0; i < array.length; i++) {

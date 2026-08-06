@@ -9,7 +9,7 @@ static void visit(BinNode rt) {
 }
 
 public static void main(String args[]) throws IOException {
-  Integer[] A = new Integer[testsize];
+  int[] A = new int[testsize];
   int i;
   BST b = new BST();
 
@@ -21,15 +21,11 @@ public static void main(String args[]) throws IOException {
   Permute.permute(A);
 
   // Now, build the BST
-  // Each record will have a random key value from the permuation.
-  // Since we actually store KVPairs, we will give it a "data" value
-  // that is simply the count + OFFSET (so we can distinguish "data" from keys)
   for (i=0; i<A.length; i++)
-    b.insert(new KVPair(new Integer(A[i]), new Integer(i + OFFSET)));
+    b.insert(A[i]);
 
   // Make sure that the thing is really a BST
-  if (!checkBST(b.root(), new KVPair(new Integer(-1), new Integer(-1)),
-                new KVPair(new Integer(testsize), new Integer(testsize)))) {
+  if (!checkBST(b.root(), -1, testsize)) {
     System.out.println("Oops! It was not a BST!");
     SUCCESS = false;
   }
@@ -37,14 +33,14 @@ public static void main(String args[]) throws IOException {
   // Now, let's test delete by randomly removing all the keys
   Permute.permute(A);
   for (i=0; i<A.length; i++) {
-    KVPair key = new KVPair(new Integer(A[i]), null);
-    KVPair k = (KVPair)b.remove(key);
+    int key = A[i];
+    int k = b.remove(key);
     if (b.size() != (testsize - i - 1)) {
       System.out.println("Oops! Wrong size. Should be " + (testsize - i - 1) + " and it is " + b.size());
       SUCCESS = false;
     }
-    if (k.key().compareTo(A[i]) != 0) {
-      System.out.println("Oops! Wrong key value. Should be " + A[i] + " and it is " + k.key());
+    if (k != A[i]) {
+      System.out.println("Oops! Wrong key value. Should be " + A[i] + " and it is " + k);
        SUCCESS = false;
     }
   }
@@ -53,7 +49,7 @@ public static void main(String args[]) throws IOException {
   Permute.permute(A);
   BST btest = new BST();
   for (i=0; i<A.length; i++)
-    btest.insert(new KVPair(new Integer(A[i]), new Integer(i + OFFSET)));
+    btest.insert(A[i]);
   time1 = System.currentTimeMillis();
   preorder(btest.root());
   time2 = System.currentTimeMillis();
@@ -65,8 +61,8 @@ public static void main(String args[]) throws IOException {
   totaltime = (time2-time1);
   System.out.println("Preorder2 time: " + totaltime);
 
-  // Finally, let's test with simple Integer values
-  Integer[] AA = new Integer[testsize];
+  // Finally, let's test with simple int values
+  int[] AA = new int[testsize];
   BST bb = new BST();
 
   // Initialize to simply be the values from 0 to testsize-1
@@ -80,10 +76,10 @@ public static void main(String args[]) throws IOException {
   // Now, build the BST
   // Each record will have a random key value from the permuation.
   for (i=0; i<AA.length; i++)
-    bb.insert(new Integer(AA[i]));
+    bb.insert(AA[i]);
 
   // Make sure that the thing is really a BST
-  if (!checkBST(bb.root(), new Integer(-1), new Integer(testsize))) {
+  if (!checkBST(bb.root(), -1, testsize)) {
     System.out.println("Oops! It was not a BST!");
     SUCCESS = false;
   }

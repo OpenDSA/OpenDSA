@@ -20,9 +20,11 @@
         initialArray = [], // needed for model answer
         theArray,
         stack,
-        currIncrIndex = 0, //index of the current block size array
+        //currIncrIndex = 0, //index of the current block size array
         usedNum,
         freeNum,
+        initialUsedNum,
+        initialFreeStartArray = [],
         usedAmountLabel,
         freeAmountLabel,
         freeStartArray,
@@ -37,7 +39,7 @@
     //on the randomly generated values for the free list.
     function OriginalMemBlock() {
 
-      var memPoolLabel = av.label("Memory Pool", {"left": 150, "top": 195});
+      var memPoolLabel = av.label("Memory Pool", {"left": 150, "top": 180});
       
       var used1Size = scale * (Math.floor(Math.random() * 3) + 25);
       var used2Size = scale * (Math.floor(Math.random() * 3) + 58);
@@ -78,11 +80,10 @@
       var usedRec = av.g.rect(620, smallRectY, 30, 30).css({"fill": "coral"});
       var freeRec = av.g.rect(720, smallRectY, 30, 30).css({"fill": "cornflowerblue"});
       
-      var labelY = 170;
+      var labelY = 155;
       var usedLabel = av.label("Used Space", {left :  590, top:  labelY});
       var freeLabel = av.label("Free Space", {left :  690, top:  labelY});
       
-console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Size + ", " + used4Size);
       usedNum = used1Size + used2Size + used3Size + used4Size;
       freeNum = freeValues[0] + freeValues[1] + freeValues[2] + freeValues[3];
       
@@ -134,7 +135,7 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
           labels[i].clear();
         }
       }
-      currIncrIndex = 0;
+      //currIncrIndex = 0;
     }
 
       
@@ -180,6 +181,10 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
       
       // Log the initial state of the exercise
       OriginalMemBlock();
+
+      initialFreeStartArray = freeStartArray.slice();
+      initialUsedNum = usedNum;
+
       var initData = {};
       initData.gen_array = initialArray;
       initData.gen_incrs = incrs;
@@ -200,22 +205,24 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
 
     function insertIntoBlock(index) {
 
-      var currIncr = incrs[currIncrIndex];
-      var newUsedRect = av.g.rect(freeStartArray[index], 215, currIncr * 2, 50).css({"fill": "coral"});
-
-      freeStartArray[index] = freeStartArray[index] + currIncr * 2;
-
+      var currIncr = incrs[ArraySize - stack.size()];
+      var consumed = freeValues[index] - theArray.value(index);
+      var currentStart = initialFreeStartArray[index] + consumed * scale;
+      //var currIncr = incrs[currIncrIndex];
+      var newUsedRect = av.g.rect(currentStart, 215, currIncr * 2, 50).css({"fill": "coral"});
      //move connecting line accordingly
-      linesArray[index].movePoints([[0, connectStartArray[index], 358], [1, ((freeStartArray[index] + freeFinArray[index])/2), 265]]).css({"stroke-width": 1});
-      
-      freeAmountLabel.text(freeNum - currIncr);
-      usedNum = usedNum + currIncr;
-      usedAmountLabel.text(usedNum);
+      var newStart = currentStart + currIncr * scale;
+      linesArray[index].movePoints([
+        [0, connectStartArray[index], 358],
+        [1, ((newStart + freeFinArray[index]) / 2), 265]
+      ]).css({"stroke-width": 1});
 
-      var newValue = theArray.value(index)-currIncr;
+      var currentFree = theArray.value(0) + theArray.value(1) + theArray.value(2) + theArray.value(3);
+      freeAmountLabel.text(currentFree - currIncr);
+      usedAmountLabel.text(initialUsedNum + freeNum - currentFree + currIncr);
+
+      var newValue = theArray.value(index) - currIncr;
       theArray.value(index, newValue);
-
-      currIncrIndex += 1;
     }
 
     function modelSolution(jsav) {
@@ -262,12 +269,13 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
     // Process help button: Give a full help page for this activity
     // We might give them another HTML page to look at.
     function help() {
-      //window.open("shellsorthelpPRO.html", 'helpwindow');
+      // Ideally, we would add a help page, and put back the help button.
+      // window.open("shellsorthelpPRO.html", 'helpwindow');
     }
 
     // Process About button: Pop up a message with an Alert
     function about() {
-      alert("First-fit Memory Management Proficiency Exercise\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://opendsa.org.\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+      alert("First-fit Memory Management Proficiency Exercise\nAuthors: Samantha Fisher and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://opendsa.org.\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
     }
 
     // Initialize the exercise
@@ -280,14 +288,9 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
     
     // register click handlers for the array indices
     theArray.click(function (index) {
-
-      if (!theArray.isHighlight(index)) {
-        
-        theArray.highlight(index);
-        setTimeout(function(){theArray.unhighlight(index)}, 250);
+      if (stack.first()) {
         //inserts "used" rectangle in memory pool (visualize using up space)
         insertIntoBlock(index);
-        
         stack.removeFirst();
         stack.layout();
         //highlight the next value in the stack
@@ -295,10 +298,7 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
          stack.first().highlight();
         }
         exer.gradeableStep();
-      } else {
-        theArray.unhighlight(index);
       }
-      av.step();
     });
 
     // Connect the action callbacks to the HTML entities

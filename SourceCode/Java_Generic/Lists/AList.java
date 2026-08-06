@@ -1,6 +1,3 @@
-import java.util.List;
-import java.util.NoSuchElementException;
-
 /* *** ODSATag: AList *** */
 // Array-based list implementation
 /* *** ODSATag: AListVars *** */
@@ -59,10 +56,9 @@ class AList<E> implements List<E> {
 
 /* *** ODSATag: AListRemove *** */
   // Remove and return the current element
-  public E remove() throws NoSuchElementException {
+  public E remove() {
     if ((curr<0) || (curr>=listSize)) {  // No current element
-      throw new NoSuchElementException("remove() in AList has current of " + curr + " and size of "
-        + listSize + " that is not a a valid element");
+      return null;
     }
     E it = listArray[curr];            // Copy the element
     for(int i=curr; i<listSize-1; i++) {// Shift them down
@@ -111,12 +107,10 @@ class AList<E> implements List<E> {
   }
 
   // Return the current element
-  public E getValue() throws NoSuchElementException {
-    if ((curr < 0) || (curr >= listSize)) {// No current element
-      throw new NoSuchElementException("getvalue() in AList has current of " + curr + " and size of "
-        + listSize + " that is not a a valid element");
-    }
-  return listArray[curr];
+  public E getValue() {
+    if ((curr < 0) || (curr >= listSize)) // No current element
+      return null;
+    return listArray[curr];
   }
  
   //Tell if the list is empty or not

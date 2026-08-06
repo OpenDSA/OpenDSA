@@ -1,6 +1,7 @@
 static boolean SUCCESS = true;
 
-static final Object VISITED = "Visited";
+static final int VISITED = -1;
+static final int UNVISITED = 0;
 static String out;
 
 static void PreVisit(Graph G, int v) {
@@ -38,7 +39,7 @@ static void test(Graph G) throws FileNotFoundException {
 static void graphTraverseBFS(Graph G) {
   int v;
   for (v=0; v<G.nodeCount(); v++)
-    G.setValue(v, null); // Initialize
+    G.setValue(v, UNVISITED); // Initialize
   for (v=0; v<G.nodeCount(); v++)
     if (G.getValue(v) != VISITED)
       doTraversalBFS(G, v);
@@ -48,7 +49,7 @@ static void graphTraverseBFS(Graph G) {
 static void graphTraverse(Graph G) {
   int v;
   for (v=0; v<G.nodeCount(); v++) {
-    G.setValue(v, null); // Initialize
+    G.setValue(v, UNVISITED); // Initialize
   }
   for (v=0; v<G.nodeCount(); v++) {
     if (G.getValue(v) != VISITED) {

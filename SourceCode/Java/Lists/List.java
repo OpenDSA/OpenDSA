@@ -1,5 +1,3 @@
-import java.util.NoSuchElementException;
-
 /* *** ODSATag: ListADT *** */
 /* *** ODSATag: ListADT1 *** */
 // List class ADT. Generalize by using "Object" for the element type.
@@ -16,7 +14,7 @@ public interface List { // List class ADT
   public boolean append(Object it);
 
   // Remove and return the current element
-  public Object remove() throws NoSuchElementException;
+  public Object remove();
 /* *** ODSAendTag: ListADT1 *** */
 
 /* *** ODSATag: ListADT2 *** */
@@ -47,7 +45,7 @@ public interface List { // List class ADT
   public boolean isAtEnd();
 
   // Return the current element
-  public Object getValue() throws NoSuchElementException;
+  public Object getValue();
   
   public boolean isEmpty();
 }

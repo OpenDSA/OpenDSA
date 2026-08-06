@@ -38,8 +38,14 @@ The whole traversal process is called by invoking ``traverse``
 on the root node, which in turn invokes ``traverse`` on its
 children.
 
-.. codeinclude:: Binary/ExpressionTreeC
-   :tag: Composite
+.. codeinclude:: Binary/VarBinNodeC
+
+.. codeinclude:: Binary/VarLeafNodeC
+
+.. codeinclude:: Binary/VarIntlNodeC
+
+.. codeinclude:: Binary/ExpTreeC
+   :tag: Composite3
 
 .. .. inlineav:: compositeTraversalCON ss
       :long_name: Composite Expression Tree Traversal Slideshow

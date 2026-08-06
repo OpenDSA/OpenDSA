@@ -20,16 +20,6 @@ static <E> void postorder(BinNode<E> rt) {
 }
 /* *** ODSAendTag: postorder *** */
 
-// Visit nodes via preorder traversal
-/* *** ODSATag: preorder *** */
-static <E> void preorder(BinNode<E> rt) {
-  preorder(rt.left());
-  preorder(rt.right());
-  if (rt == null) { return; }
-  visit(rt);
-}
-/* *** ODSAendTag: preorder *** */
-
 static <E> void visit(BinNode<E> rt) {
   System.out.print(rt.value() + " ");
 }
@@ -45,11 +35,11 @@ public static void main(String args[]) throws IOException {
   BSTNode<Integer> rt1 = null;
   int temp = count(rt1);
 
-  rt1 = new BSTNode<Integer>(new Integer(5));
+  rt1 = new BSTNode<Integer>(Integer.valueOf(5));
   preorder(rt1);
   System.out.println();
-  rt1.setLeft(new BSTNode<Integer>(new Integer(3)));
-  rt1.setRight(new BSTNode<Integer>(new Integer(6)));
+  rt1.setLeft(new BSTNode<Integer>(Integer.valueOf(3)));
+  rt1.setRight(new BSTNode<Integer>(Integer.valueOf(6)));
   preorder(rt1);
   System.out.println();
   preorder2(rt1);
@@ -60,18 +50,18 @@ public static void main(String args[]) throws IOException {
   System.out.println();
 
   BSTNode<KVPair<Integer,String>> rt2 =
-    new BSTNode<KVPair<Integer,String>>(new KVPair<Integer,String>(new Integer(5), "John"));
+    new BSTNode<KVPair<Integer,String>>(new KVPair<Integer,String>(Integer.valueOf(5), "John"));
 
-  if (!checkBST(rt2, new KVPair<Integer,String>(new Integer(-1), ""),
-		new KVPair<Integer,String>(new Integer(999999), "")))
+  if (!checkBST(rt2, new KVPair<Integer,String>(Integer.valueOf(-1), ""),
+		new KVPair<Integer,String>(Integer.valueOf(999999), "")))
     SUCCESS = false;
-  rt2.setLeft(new BSTNode<KVPair<Integer,String>>(new KVPair<Integer,String>(new Integer(10), "Jack")));
-  if (checkBST(rt2, new KVPair<Integer,String>(new Integer(-1), ""),
-	       new KVPair<Integer,String>(new Integer(999999), "")))
+  rt2.setLeft(new BSTNode<KVPair<Integer,String>>(new KVPair<Integer,String>(Integer.valueOf(10), "Jack")));
+  if (checkBST(rt2, new KVPair<Integer,String>(Integer.valueOf(-1), ""),
+	       new KVPair<Integer,String>(Integer.valueOf(999999), "")))
     SUCCESS = false;
 
-  Integer myi = new Integer(10);
-  Integer myj = new Integer(12);
+  Integer myi = Integer.valueOf(10);
+  Integer myj = Integer.valueOf(12);
   KVPair<Integer,String> kv = new KVPair<Integer,String>(myi, "John");
 
   if (kv.compareTo(myi) != 0)

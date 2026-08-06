@@ -1,3 +1,10 @@
+// MinMax implementation
+// Used in module Bounds/BoundsState
+import java.io.*;
+
+public class MinMax {
+
+/* *** ODSATag: MinMax *** */
 // Return the minimum and maximum values in A between positions l and r
 void MinMax(int A[], int l, int r, int Out[]) {
   if (l == r) {        // n=1
@@ -18,3 +25,15 @@ void MinMax(int A[], int l, int r, int Out[]) {
     Out[1] = Math.max(Out1[1], Out2[1]);
   }
 }
+/* *** ODSAendTag: MinMax *** */
+
+    public static void main(String args[]) throws IOException {
+
+        PrintWriter output = new PrintWriter("success");
+        output.println("Success");
+        output.flush();
+        output.close();
+        System.out.println("Success!");
+    }
+}
+        

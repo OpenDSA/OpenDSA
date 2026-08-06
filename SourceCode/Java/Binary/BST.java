@@ -12,9 +12,8 @@ class BST {
   public void clear() { root = null; nodecount = 0; }
 
   // Insert a record into the tree.
-  // Records can be anything, but they must be Comparable
   // e: The record to insert.
-  public void insert(Comparable e) {
+  public void insert(int e) {
     root = inserthelp(root, e);
     nodecount++;
   }
@@ -24,9 +23,9 @@ class BST {
   // Remove a record from the tree
   // key: The key value of record to remove
   // Returns the record removed, null if there is none.
-  public Comparable remove(Comparable key) {
-    Comparable temp = findhelp(root, key); // First find it
-    if (temp != null) {
+  public int remove(int key) {
+    int temp = findhelp(root, key); // First find it
+    if (temp != -1) {
       root = removehelp(root, key); // Now remove it
       nodecount--;
     }
@@ -35,7 +34,7 @@ class BST {
 
   // Return the record with key value k, null if none exists
   // key: The key value to find
-  public Comparable find(Comparable key) { return findhelp(root, key); }
+  public int find(int key) { return findhelp(root, key); }
 
   // Return the number of records in the dictionary
   public int size() { return nodecount; }
@@ -44,11 +43,11 @@ class BST {
 
   // Return a record that matches the key value
 /* *** ODSATag: findhelp *** */
-  private Comparable findhelp(BSTNode rt, Comparable key) {
-    if (rt == null) return null;
-    if (rt.value().compareTo(key) > 0)
+  private int findhelp(BSTNode rt, int key) {
+    if (rt == null) return -1;
+    if (rt.value() > key)
       return findhelp(rt.left(), key);
-    else if (rt.value().compareTo(key) == 0)
+    else if (rt.value() == key)
       return rt.value();
     else return findhelp(rt.right(), key);
   }
@@ -58,9 +57,9 @@ class BST {
   // Return the current subtree,
   // modified to contain the new item
 /* *** ODSATag: inserthelp *** */
-  private BSTNode inserthelp(BSTNode rt, Comparable e) {
+  private BSTNode inserthelp(BSTNode rt, int e) {
     if (rt == null) return new BSTNode(e);
-    if (rt.value().compareTo(e) >= 0)
+    if (rt.value() >= e)
       rt.setLeft(inserthelp(rt.left(), e));
     else
       rt.setRight(inserthelp(rt.right(), e));
@@ -88,11 +87,11 @@ class BST {
   // Remove a node with the key value
   // Return the tree with the node removed
 /* *** ODSATag: removehelp *** */
-  private BSTNode removehelp(BSTNode rt, Comparable key) {
+  private BSTNode removehelp(BSTNode rt, int key) {
     if (rt == null) return null;
-    if (rt.value().compareTo(key) > 0)
+    if (rt.value() > key)
       rt.setLeft(removehelp(rt.left(), key));
-    else if (rt.value().compareTo(key) < 0)
+    else if (rt.value() < key)
       rt.setRight(removehelp(rt.right(), key));
     else { // Found it
       if (rt.left() == null) return rt.right();
@@ -117,7 +116,7 @@ class BST {
 /* *** ODSAendTag: printhelp *** */
 
 // Used for testing
-  private void printVisit(Comparable e) { System.out.print(e + " "); }
+  private void printVisit(int e) { System.out.print(e + " "); }
 
 // Used for testing
 public BSTNode root() {

@@ -1,7 +1,9 @@
 import java.io.*;
 
+
 public class SkipListTest {
-  final static int maxValue = 100;
+    static boolean SUCCESS = true;
+    final static int maxValue = 100;
 
   public static void main(String args[]) throws IOException {
     SkipList mySL = new SkipList();
@@ -22,6 +24,15 @@ public class SkipListTest {
     findValue(mySL, 20);
     findValue(mySL, 25);
 
+  if (SUCCESS) {
+    PrintWriter output = new PrintWriter("success");
+    output.println("Success");
+    output.flush();
+    output.close();
+    System.out.println("Success!");
+  } else {
+    System.out.println("Testing failed");
+  }
   }
 
   /**

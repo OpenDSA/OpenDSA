@@ -3,7 +3,7 @@ import java.io.*;
 // Tester for Graph class code
 public class GraphDummy {
 
-static final Object VISITED = "Visited";
+static final int VISITED = -1;
 
 static void DoSomething() {
 }

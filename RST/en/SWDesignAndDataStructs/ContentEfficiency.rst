@@ -43,10 +43,9 @@ Interactive: Intro to Algorithmic Efficiency
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_vnmd5r1v' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Intro to Algorithmic Efficiency"></iframe> 
-   </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=5039bf9c-5160-4264-a439-b400013e3d85" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Intro to Algorithmic Efficiency" aria-description="Intro to Algorithmic Efficiency"></iframe>
+     </div>
 
 Checkpoint 1
 ------------
@@ -60,11 +59,10 @@ Interactive: Efficiency of Summation Algorithms
 
 
 .. raw:: html
-
-     <center>
-     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_aqcczmyk' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Efficiency of Summation Algorithms"></iframe> 
-     </center>
-     
+    
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+          <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=699408a7-9098-4f0b-9ca7-b41d0102a95b" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Efficiency of Summation Algorithms" aria-description="Efficiency of Summation Algorithms"></iframe>
+       </div>
 
 Checkpoint 2
 ------------
@@ -90,9 +88,8 @@ Interactive: Efficiency of Bag Methods
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_87khvnlc' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Efficiency of Bag Methods"></iframe> 
-   </center>
-
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=a800a51b-211f-402c-a442-b40100f8e817" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Efficiency of Bag Methods" aria-description="Efficiency of Bag Methods"></iframe>
+  </div>
+  
 

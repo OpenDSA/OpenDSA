@@ -1,7 +1,15 @@
 import java.io.*;
 
 // Tester for Expression Tree
-public class ExpTreeC {
+public class ExpTree {
+
+/* *** ODSATag: Composite3 *** */
+   /** Preorder traversal */
+   public static void traverse(VarBinNode rt) {
+     if (rt != null) { rt.traverse(); }
+   }
+/* *** ODSAendTag: Composite3 *** */
+/* *** ODSAendTag: Composite *** */
 
     static boolean SUCCESS = true;
 
@@ -11,7 +19,7 @@ public class ExpTreeC {
 
         VarLeafNode temp1 = new VarLeafNode(string1);
         VarLeafNode temp2 = new VarLeafNode(string2);
-        VarIntlNode root = new VarIntlNode(new Character('+'), temp1, temp2);
+        VarIntlNode root = new VarIntlNode(Character.valueOf('+'), temp1, temp2);
         Visit.VisitInit();
         traverse(root);
         String out = Visit.VisitOut();

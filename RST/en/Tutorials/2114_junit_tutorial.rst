@@ -58,7 +58,7 @@ To make a JUnit test class in eclipse:
 
 A simplified test class example for the Student class:
 
-.. code-block:: java
+.. code-block::java
 
     public class StudentTest extends student.TestCase
     {
@@ -144,7 +144,7 @@ N simple conditions, N+1 branches and tests
 *******************************************
 Assertions in a test method need to make it to every condition of an if-else statement. It isn’t enough that the test reaches the ‘else’ condition. To test an if-else statement properly, the body of each condition must be run during testing.
 
-.. code-block:: java
+.. code-block::java
 
   if (x == 0 && y ==1) // 2 conditions, 3 checks- TF, FT, TT
 
@@ -155,7 +155,7 @@ Clarification for edge and average cases- For a list that contains 100 values, y
 
 **Example**: say we had the following:
 
-.. code-block:: java
+.. code-block::java
 
     if ( score >= 90 )
     {
@@ -186,7 +186,7 @@ Cleaning up your code before you test it can save lots of time. In addition, the
 
 Example: Say we had written the following inside of a method:
 
-.. code-block:: java
+.. code-block::java
 
     if ( A > B )
     {
@@ -210,7 +210,7 @@ We can easily clean up this if statement by noticing that we are evaluating A > 
     
 We might decide to un-nest them as well:
 
-.. code-block:: java
+.. code-block::java
 
     if ( (A > B) && ( C != 0) )
     {
@@ -226,7 +226,7 @@ When testing a method with multiple if-else statements, it can usually simplify 
 
 Say we are testing a method with the following if-else statement in it:
 
-.. code-block:: java
+.. code-block::java
 
     if ( A > B)
     {
@@ -286,7 +286,7 @@ Use a ``try-catch`` block in your testing to check if your code has thrown the r
 
 **Example**:
 
-.. code-block:: java
+.. code-block::java
 
     Exception thrown = null;
 
@@ -337,7 +337,7 @@ Using the assert in this manner would result in a failed test and an ``Assertion
 
 nor can we use:
 
-.. code-block:: java
+.. code-block::java
 
     assertTrue( expectedArray.equals( actualArray) );
 

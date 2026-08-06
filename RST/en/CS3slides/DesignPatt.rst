@@ -97,12 +97,11 @@ Inheritance (1)
 
 .. revealjs-slide::
 
-.. codeinclude:: Binary/ExpressionTree
-   :tag: ExpressionTree1
+.. codeinclude:: Binary/VarBinNode
 
-.. codeinclude:: Binary/ExpressionTree
-   :tag: ExpressionTree2
+.. codeinclude:: Binary/VarLeafNode
 
+.. codeinclude:: Binary/VarIntlNode
 
 Inheritance (3)
 ---------------
@@ -134,8 +133,9 @@ Composite (1)
 
 .. revealjs-slide::
 
-.. codeinclude:: Binary/ExpressionTreeC
-   :tag: Composite1
+.. codeinclude:: Binary/VarBinNodeC
+
+.. codeinclude:: Binary/VarLeafNodeC
 
 
 Composite (2)
@@ -143,10 +143,9 @@ Composite (2)
 
 .. revealjs-slide::
 
-.. codeinclude:: Binary/ExpressionTreeC
-   :tag: Composite2
+.. codeinclude:: Binary/VarIntlNodeC
 
-.. codeinclude:: Binary/ExpressionTreeC
+.. codeinclude:: Binary/ExpTreeC
    :tag: Composite3
 
 

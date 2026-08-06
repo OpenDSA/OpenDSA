@@ -1,7 +1,7 @@
 /* *** ODSATag: GraphM *** */
 class GraphM implements Graph {
   private int[][] matrix;
-  private Object[] nodeValues;
+  private int[] nodeValues;
   private int numEdge;
 
   // No real constructor needed
@@ -10,7 +10,7 @@ class GraphM implements Graph {
   // Initialize the graph with n vertices
   public void init(int n) {
     matrix = new int[n][n];
-    nodeValues = new Object[n];
+    nodeValues = new int[n];
     numEdge = 0;
   }
 
@@ -21,10 +21,10 @@ class GraphM implements Graph {
   public int edgeCount() { return numEdge; }
   
   // Get the value of node with index v
-  public Object getValue(int v) { return nodeValues[v]; }
+  public int getValue(int v) { return nodeValues[v]; }
   
   // Set the value of node with index v
-  public void setValue(int v, Object val) { nodeValues[v] = val; }
+  public void setValue(int v, int val) { nodeValues[v] = val; }
 
   // Adds a new edge from node v to node w
   // Returns the new edge

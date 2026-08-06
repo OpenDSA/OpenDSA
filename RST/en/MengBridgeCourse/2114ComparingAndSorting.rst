@@ -41,9 +41,9 @@ Introduction to Ordering, Comparing, and Sorting [13:39]
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_nhqfykqn' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Ordering, Comparing, and Sorting"></iframe> 
-   </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 35%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=d5d981dc-2cfb-44bb-8531-b412005faa27&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Introduction to Ordering, Comparing, and Sorting" aria-description="Introduction to Ordering, Comparing, and Sorting"></iframe>
+     </div>   
 
 Checkpoint 1
 ------------
@@ -69,9 +69,10 @@ Interactive: Introduction to Sorting [12:51]
 
 .. raw:: html
 
-  <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_px7gfy13' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Sorting"></iframe> 
-  </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 35%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=2e56f9cf-2982-4ba5-9746-b40c00bd2c79&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Introduction to Sorting" aria-description="Introduction to Sorting"></iframe>
+  </div>
+  
 
 Checkpoint 2
 ------------
@@ -97,9 +98,9 @@ Interactive: Selection Sort [12:36]
 
 .. raw:: html
 
-  <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_cs0nki5i' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Selection Sort"></iframe> 
-  </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 35%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=1fe7eb9a-a54f-4a05-b2cd-b41f0059cf81&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Selection Sort" aria-description="Selection Sort"></iframe>
+  </div>
 
 Checkpoint 3
 ------------
@@ -125,10 +126,10 @@ Insertion Sort with an Array
 
 .. raw:: html
 
-  <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_19z2exnz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Insertion Sort with an Array"></iframe> 
-  </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 35%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=871cb78b-3e68-4834-bbe8-b4270036a247&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Insertion Sort with an Array" aria-description="Insertion Sort with an Array"></iframe>
+  </div>
+  
 Checkpoint 4
 ------------
 
@@ -150,10 +151,10 @@ Insertion Sort with a Linked Chain [16:50]
      </a>
      
 .. raw:: html
-
-  <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_qc2qxx6h' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Insertion Sort with a Linked Chain"></iframe> 
-  </center>
+  
+  <div style="position: relative; width: 100%; height: 0; padding-bottom: 35%">
+       <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=42b2267e-b157-4907-8d5a-b41a01725b36&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Insertion Sort with a Linked Chain"" aria-description="Insertion Sort with a Linked Chain""></iframe>
+    </div>
 
 Checkpoint 5
 ------------
@@ -188,10 +189,10 @@ Introduction to Comparators [11:22]
       
 
 .. raw:: html
-
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_pit1l2lg' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Comparators"></iframe> 
-    </center>
+    
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 35%">
+         <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=a9d98503-7ec5-4fd8-83d3-b3f6006fa882&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Introduction to Comparators" aria-description="Introduction to Comparators"></iframe>
+      </div>    
 
 Programming Practice: Comparators
 ---------------------------------

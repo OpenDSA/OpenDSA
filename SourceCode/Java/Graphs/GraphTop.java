@@ -1,6 +1,7 @@
 static boolean SUCCESS = true;
 
-static final Object VISITED = "Visited";
+static final int VISITED = -1;
+static final int UNVISITED = 0;
 static String out;
 
 static void printout(int v) {

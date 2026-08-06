@@ -42,4 +42,10 @@ service an occasional large request.
    :url_params: fitAlgorithm=3
    :keyword: Memory Management; Sequential Fit Memory Allocation
 
+Now try it for yourself with the following exercise.
+
+.. avembed:: AV/MemManage/bestFitPRO.html pe
+   :long_name: Best Fit Proficiency Exercise
+   :keyword: Memory Management; Sequential Fit Memory Allocation
+
 

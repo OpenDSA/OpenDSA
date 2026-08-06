@@ -35,11 +35,11 @@ public static void main(String args[]) throws IOException {
   BSTNode rt1 = null;
   int temp = count(rt1);
 
-  rt1 = new BSTNode(new Integer(5));
+  rt1 = new BSTNode(5);
   preorder(rt1);
   System.out.println();
-  rt1.setLeft(new BSTNode(new Integer(3)));
-  rt1.setRight(new BSTNode(new Integer(6)));
+  rt1.setLeft(new BSTNode(3));
+  rt1.setRight(new BSTNode(6));
   preorder(rt1);
   System.out.println();
   preorder2(rt1);
@@ -49,24 +49,17 @@ public static void main(String args[]) throws IOException {
   postorder(rt1);
   System.out.println();
 
-  BSTNode rt2 = new BSTNode(new KVPair(new Integer(5), "John"));
+  BSTNode rt2 = new BSTNode(5);
 
-  if (!checkBST(rt2, new KVPair(new Integer(-1), ""),
-		new KVPair(new Integer(999999), "")))
+  if (!checkBST(rt2, -1, 999999)) {
     SUCCESS = false;
-  rt2.setLeft(new BSTNode(new KVPair(new Integer(10), "Jack")));
-  if (checkBST(rt2, new KVPair(new Integer(-1), ""),
-	       new KVPair(new Integer(999999), "")))
+    System.out.println("Bad BST 1");
+  }
+  rt2.setLeft(new BSTNode(10));
+  if (checkBST(rt2, -1, 999999)) {
     SUCCESS = false;
-
-  Integer myi = new Integer(10);
-  Integer myj = new Integer(12);
-  KVPair kv = new KVPair(myi, "John");
-
-  if (kv.compareTo(myi) != 0)
-    SUCCESS = false;
-  if (kv.compareTo(myj) == 0)
-    SUCCESS = false;
+    System.out.println("Bad BST 2");
+  }
 
   if (SUCCESS) {
     PrintWriter output = new PrintWriter("success");

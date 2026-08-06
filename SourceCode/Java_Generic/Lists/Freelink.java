@@ -1,9 +1,12 @@
-// WARNING: The definition for freelist generates unchecked warnings
-// I don't know of a way to get around this, or to suppress (all of) the warnings.
+// WARNING: The definition for freelist Link class uses a static variable for
+// the freelist head. Because of this, it generates unchecked warnings.
+// I don't know of a way to get around this, or how to suppress (all of)
+// the warnings, unless we make it instead a part of the List class instead of
+// the Link class.
 /* *** ODSATag: Freelink *** */
 class Link<E> {      // Singly linked list node with freelist support
   private E e;       // Value for this node
-  private Link<E> n;    // Point to next node in list
+  private Link<E> n; // Point to next node in list
 
   // Constructors
   Link(E it, Link<E> inn) { e = it; n = inn; }
@@ -15,7 +18,7 @@ class Link<E> {      // Singly linked list node with freelist support
   Link<E> setNext(Link<E> inn) { return n = inn; } // Set next link
 
   // Extensions to support freelists
-  private static Link freelist = null;                  // Freelist for the class
+  private static Link freelist = null;             // Freelist for the class
 
   // Return a new link, from freelist if possible
   static <E> Link<E> get(E it, Link<E> inn) {

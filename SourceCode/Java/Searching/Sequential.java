@@ -34,7 +34,7 @@ public static void main(String args[]) throws IOException {
     output.close();
     System.out.println("Success!");
   } else {
-    System.out.println("Binary Search Testing failed");
+    System.out.println("Sequentail Search Testing failed");
   }
 }
 

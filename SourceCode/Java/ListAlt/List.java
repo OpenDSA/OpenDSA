@@ -1,11 +1,11 @@
-interface List {
-  void clear();
-  void insert(Object it, ListIndex where);
-  void append(Object it);
-  Object remove(ListIndex where);
-  ListIndex getStart();
-  ListIndex getEnd();
-  ListIndex pointToPos(int where);
-  int length();
-  Object getValue(ListIndex where);
+public interface List {
+  public void clear();
+  public void insert(Object it, ListIndex where);
+  public void append(Object it);
+  public Object remove(ListIndex where);
+  public ListIndex getStart();
+  public ListIndex getEnd();
+  public ListIndex pointToPos(int where);
+  public int length();
+  public Object getValue(ListIndex where);
 }

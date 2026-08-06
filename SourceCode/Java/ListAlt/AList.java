@@ -5,8 +5,8 @@ class AList implements List {
     int pos;
 
     AListIndex(int posit) { pos = posit; }
-    void prev() { if (pos != 0) { pos--; } }
-    void next() { if (pos < listSize) { pos++; } }
+    public void prev() { if (pos != 0) { pos--; } }
+    public void next() { if (pos < listSize) { pos++; } }
   }
 
   private static final int defaultSize = 10; // Default size
@@ -24,13 +24,13 @@ class AList implements List {
   // Create a list with the default capacity
   AList() { this(defaultSize); }          // Just call the other constructor
 
-  void clear()                     // Reinitialize the list
+  public void clear()                     // Reinitialize the list
     { listSize = 0; }              // Simply reinitialize values
 
   // Insert "it" at current position
-  void insert(Object it, ListIndex where) {
+  public void insert(Object it, ListIndex where) {
     if (listSize >= maxSize) {
-      println("List capacity exceeded, nothing inserted");
+      System.out.println("List capacity exceeded, nothing inserted");
       return;
     }
     int pos = ((AListIndex)where).pos;
@@ -42,16 +42,16 @@ class AList implements List {
   }
 
   // Append "it" to list
-  void append(Object it) {
+  public void append(Object it) {
     if (listSize >= maxSize) {
-      println("List capacity exceeded, nothing inserted");
+      System.out.println("List capacity exceeded, nothing inserted");
       return;
     }
     listArray[listSize++] = it;
   }
 
   // Remove and return the current element
-  Object remove(ListIndex where) {
+  public Object remove(ListIndex where) {
     int pos = ((AListIndex)where).pos;
     if ((pos<0) || (pos>=listSize)) {     // No current element
       return null;
@@ -65,24 +65,24 @@ class AList implements List {
   }
 
   // Return list size
-  int length() { return listSize; }
+  public int length() { return listSize; }
 
   // Return a ListIndex to the beginning of the list
-  ListIndex getStart() {
+  public ListIndex getStart() {
     return new AListIndex(0);
   }
   
   // Return a ListIndex past the end of the list
-  ListIndex getEnd() {
+  public ListIndex getEnd() {
     return new AListIndex(listSize);
   }
   
-  ListIndex pointToPos(int pos) {
+  public ListIndex pointToPos(int pos) {
     return new AListIndex(pos);
   }
 
   // Return the current element
-  Object getValue(ListIndex where) {
+  public Object getValue(ListIndex where) {
     int pos = ((AListIndex)where).pos;
     if ((pos < 0) || (pos >= listSize)) { // No current element
       return null;

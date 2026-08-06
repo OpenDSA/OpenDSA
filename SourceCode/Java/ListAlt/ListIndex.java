@@ -1,5 +1,4 @@
-interface ListIndex {
-  void prev();
-  void next();
+public interface ListIndex {
+  public void prev();
+  public void next();
 }
-

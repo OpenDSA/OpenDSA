@@ -41,4 +41,8 @@ free block, possibly by using a priority queue implementation.
    :url_params: fitAlgorithm=4
    :keyword: Memory Management; Sequential Fit Memory Allocation
 
+Now try it for yourself with the following exercise.
 
+.. avembed:: AV/MemManage/worstFitPRO.html pe
+   :long_name: Worst Fit Proficiency Exercise
+   :keyword: Memory Management; Sequential Fit Memory Allocation

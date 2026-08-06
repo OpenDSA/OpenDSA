@@ -52,7 +52,7 @@ Surely this can be automated.
 As a warning to those who believe any program can be analyzed in this
 way, carefully examine the following code fragment before reading on.
 
-.. codeinclude:: Misc/Collatz
+.. codeinclude:: Misc/Anal
    :tag: Collatz
 
 This is a famous piece of code.

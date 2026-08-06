@@ -1,6 +1,6 @@
 /* *** ODSATag: Radixsort *** */
-static void radix(Integer[] A, int k, int r) {
-  Integer[] B = new Integer[A.length];
+static void radix(int[] A, int k, int r) {
+  int[] B = new int[A.length];
   int[] count = new int[r];
   int i, j, rtok;
   for (i=0, rtok=1; i<k; i++, rtok*=r) { 

@@ -34,28 +34,18 @@ static int ineff_count(BinNode root) {
 /* *** ODSATag: IneffbtInc *** */
 static void ineff_BTinc(BinNode root) {
   if (root != null) {
-      root.setValue((int)(root.value()) + 1);
+    root.setValue(root.value() + 1);
     if (root.left() != null) {
-      root.left().setValue((int)(root.left().value()) + 1);
+      root.left().setValue(root.left().value() + 1);
       ineff_BTinc(root.left().left());
     }
     if (root.right() != null) {
-      root.right().setValue((int)(root.right().value()) + 1);
+      root.right().setValue(root.right().value() + 1);
       ineff_BTinc(root.right().right());
     }
   }
 }
 /* *** ODSAendTag: IneffbtInc *** */
-
-/* *** ODSATag: bad_count *** */
-static int bad_count(BinNode root) {
-  if (root == null) { return 0; }  // Nothing to count
-  bad_count(root.left());
-  1 + bad_count(root.left()) + bad_count(root.right());
-}
-/* *** ODSAendTag: bad_count *** */
-
-
 
 public static void main(String args[]) throws IOException {
    BSTNode root = null;

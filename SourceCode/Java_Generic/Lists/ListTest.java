@@ -1,12 +1,11 @@
 import java.io.*;
 import java.util.LinkedList;
-import java.util.NoSuchElementException;
 
 /**
  * This program checks if all the methods in AList, LList and DList classes work
  * properly.
   */
-public class ListTest {
+public class ListTest<T> {
   // The number of items stored in list during the test
   static final int TEST_SIZE = 9;
   // True if you want to create a text file to record errors
@@ -19,7 +18,7 @@ public class ListTest {
 
   static long time1, time2;
 
-  static void listIter(List<Integer> L) {
+  static void listIter(List<T> L) {
     Object it;
 /* *** ODSATag: listiter *** */
 for (L.moveToStart(); !L.isAtEnd(); L.next()) {
@@ -35,7 +34,7 @@ for (L.moveToStart(); !L.isAtEnd(); L.next()) {
 
 /* *** ODSATag: listfind *** */
 // Return true if k is in list L, false otherwise
-static boolean find(List<Integer> L, int k) {
+static boolean find(List<T> L, int k) {
   for (L.moveToStart(); !L.isAtEnd(); L.next()) {
     if (k == L.getValue()) {
       return true; // Found k
@@ -50,7 +49,7 @@ static boolean find(List<Integer> L, int k) {
   * 
   * @param l List to test.
   */
-  static void testOther(List<Integer> l)
+  static void testOther(List<T> l)
   {
     // Create non-empty list of items.
     int item = 10;
@@ -99,7 +98,7 @@ static boolean find(List<Integer> L, int k) {
   * 
   * @param l List to test.
   */
-  static void testInt(List<Integer> l) {
+  static void testInt(List<T> l) {
     // Check empty list
     checkEmp(l);
 
@@ -206,20 +205,18 @@ static boolean find(List<Integer> L, int k) {
       + "\nValue expected: 0");
     }
 
-    E item;
-    try {
-      item = l.remove();
-      record.printError("An unexpected result in empty " + l.getClass() + ". \nremove did not throw expected exception but returned " + item);
-    } catch (NoSuchElementException ex) {
-      // Do nothing since expect this exception
+    // Test remove with empty list
+    E removed = l.remove();
+    if (removed != null) {
+      record.printError("An unexpected value in empty " + l.getClass() + ". \nremove from list: "
+        + removed.toString() + "\nValue expected: null");
     }
 
-    // check getting value on empty list
-    try {
-      item = l.getValue();
-      record.printError("An unexpected result in empty " + l.getClass() + ". \ngetValue did not throw expected exception but returned " + item);
-    } catch (NoSuchElementException ex) {
-      // Do nothing since expect this exception
+    // Test getting value from empty list
+    removed = l.getValue();
+    if (removed != null) {
+      record.printError("An unexpected value in empty " + l.getClass() + ". \ngetValue from empty list: "
+        + removed.toString() + "\nValue expected: null");
     }
 
     // Test move to bad positions
@@ -279,23 +276,6 @@ static boolean find(List<Integer> L, int k) {
 
     // Test moveToEnd and remove
     l.moveToEnd();
-
-    E item;
-    // Test remove at end of list
-    try {
-      item = l.remove();
-      record.printError("An unexpected result at end of " + l.getClass() + ". \nremove did not throw expected exception");
-    } catch (NoSuchElementException ex) {
-      // Do nothing since expect this exception
-    }
- 
-    // Test getValue at end of list
-    try {
-      item = l.getValue();
-      record.printError("An unexpected result result at end of " + l.getClass() + ". \ngetValue did not throw expected exception");
-    } catch (NoSuchElementException ex) {
-      // Do nothing since expect this exception
-    }
 
      // Curr is out of bound
     l.prev();
