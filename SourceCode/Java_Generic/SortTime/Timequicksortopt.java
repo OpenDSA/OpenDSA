@@ -65,7 +65,7 @@ public class Timequicksortopt {
 
     private KVPair[] originalArray;
     private KVPair[] arrayToSort;
-    int THRESHOLD = 10;
+    int THRESHOLD = 12;
 
     @Setup(Level.Trial)
     public void setupData() {
@@ -141,7 +141,7 @@ public class Timequicksortopt {
     int MAXSTACKSIZE = 50;
 
     // Optimized Quicksort: Not recursive, and uses Inssort for small lists
-    // This version uses primitive integer values for the records
+    // This version uses KVPair values for the records
     void quicksortopt(KVPair[] A, int oi, int oj) { // Quicksort
         int[] Stack = new int[MAXSTACKSIZE]; // Stack for array bounds
         int listsize = oj-oi+1;
@@ -160,20 +160,21 @@ public class Timequicksortopt {
             // Findpivot
             pivotindex = (i+j)/2;
             pivot = A[pivotindex];
+            Integer pivotval = pivot.value();
             swap(A, pivotindex, j); // Stick pivot at end
 
             // Partition
             l = i-1;
             r = j;
             do {
-                while (A[++l].compareTo(pivot) < 0);
-                while ((r!=0) && (A[--r].compareTo(pivot) > 0));
+                while (A[++l].compareTo(pivotval) < 0);
+                while ((r!=0) && (A[--r].compareTo(pivotval) > 0));
                 swap(A, l, r);
             } while (l < r);
             swap(A, l, r);  // Undo final swap
             swap(A, l, j);  // Put pivot value in place
 
-            // Put new subarrays onto Stack if they are small
+            // Put new subarrays onto Stack if they are not small
             if ((l-i) > THRESHOLD) {   // Left partition
                 Stack[++top] = i;
                 Stack[++top] = l-1;
