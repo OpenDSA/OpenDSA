@@ -42,9 +42,9 @@ Interactive: Introduction to Linked Bags
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_dh0z9agx' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Linked Bags"></iframe> 
-   </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=cbdcad17-6a0c-466f-9e67-b41f000287b4&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Introduction to Linked Bags" aria-description="Introduction to Linked Bags"></iframe>
+  </div>
 
 
 .. _LinkedBagAdd: 
@@ -65,10 +65,10 @@ Interactive: LinkedBag add() and toArray()
 
 
 .. raw:: html
-
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_7kh033i4' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="LinkedBag add method and toArray method"></iframe> 
-   </center>
+   
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=3703ad16-d2d4-4a74-a74b-b3f5009b9efc&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="LinkedBag add and toArray" aria-description="LinkedBag add and toArray"></iframe>
+     </div>
 
 Checkpoint 1
 ------------
@@ -96,9 +96,10 @@ Interactive: ExLinkedBagJUnit Demonstration
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_y9dkjp2z' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="ExLinkedBagJUnit Demonstration"></iframe> 
-    </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+         <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=ff0f0fbf-6565-479c-ab9f-b41d00af9834&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="ExLinkedBagJUnit Demonstration" aria-description="ExLinkedBagJUnit Demonstration"></iframe>
+      </div>
+    
 
 .. _LinkedBagContains: 
 
@@ -119,10 +120,9 @@ Interactive: LinkedBag getFrequencyOf() and contains()
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_jaeiozal' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="LinkedBag getFrequencyOf method and contains method"></iframe> 
-   </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=827aa698-c770-451a-b334-b410004b722f&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="LinkedBag getFrequencyOf() and contains() Demonstration" aria-description="LinkedBag getFrequencyOf() and contains() Demonstration"></iframe>
+  </div>
 
 Checkpoint 2
 ------------
@@ -149,9 +149,9 @@ Interactive: LinkedBag Removing an item
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_kps8b356' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="LinkedBag Removing an item"></iframe> 
-   </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+     <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=299f94fa-d34b-4443-8648-b428017e83dc&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="LinkedBag Removing an Item" aria-description="LinkedBag Removing an Item"></iframe>
+   </div>
 
 
 .. admonition:: Tradeoffs of using a linked chain implementation for a bag

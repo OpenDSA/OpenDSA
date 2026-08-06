@@ -46,11 +46,10 @@ Interactive: Java Basics
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_2khwqw42' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Java Basics"></iframe> 
-   </center>
-
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=3069051e-3047-420a-ac9d-b42200e457fe" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Java Basics" aria-description="Java Basics"></iframe>
+     </div>
+     
 Some Java Basics To Be Familiar With
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Primitive types, Objects or reference types, wrappers, type casting
@@ -214,10 +213,10 @@ Interactive: Java Methods
       
  .. raw:: html
   
-     <center>
-     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_9mkx6ln7' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Java Methods"></iframe> 
-     </center>
-
+    <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+          <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=54703875-cad0-46db-84f7-b3f3013fe2c0" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Java Methods" aria-description="Java Methods"></iframe>
+    </div>
+       
 .. admonition:: Correction to the video!
 
     A double can also be thought of as float (not long) https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
@@ -249,10 +248,9 @@ Interactive: Java Variables
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_wi24ln1w' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Java Variables"></iframe> 
-   </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=76ac3431-4815-41c1-818d-b40100b767fe" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Java Variables" aria-description="Java Variables"></iframe>
+     </div>
 
 Decimal Formatting
 ~~~~~~~~~~~~~~~~~~
@@ -319,11 +317,10 @@ Interactive: Java Control Flow
 
 
 .. raw:: html
-
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_0ejygvhn' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Java Control Flow"></iframe> 
-    </center>
     
+    <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+         <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=72e4bb3a-bf13-464e-93b5-b40300e52d86" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Java Control Flow" aria-description="Java Control Flow"></iframe>
+      </div>
 
 Checkpoint 3
 ------------
@@ -350,10 +347,9 @@ Interactive: Java Scope and Equality
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_x2wjt0tt' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Java Scope and Equality"></iframe> 
-   </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=171e1d51-7609-4555-adcf-b405017ca199" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Java Scope and Equality" aria-description="Java Scope and Equality"></iframe>
+     </div>
 
 Checkpoint 4
 ------------
@@ -491,8 +487,7 @@ Interactive: Java Objects and Enum
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_b6aiijwb' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Java Objects and Enum"></iframe> 
-   </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=c489f5e7-3807-43d3-8904-b40800fc2a01" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Java Objects and Enum" aria-description="Java Objects and Enum"></iframe>
+     </div>
 

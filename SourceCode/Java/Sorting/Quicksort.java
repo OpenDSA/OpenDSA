@@ -109,7 +109,6 @@ int MAXSTACKSIZE = 100;
 // This version uses primitive integer values for the records
 void quicksortOpt(int[] A, int oi, int oj) { // Quicksort
     int[] Stack = new int[MAXSTACKSIZE]; // Stack for array bounds
-    int listsize = oj-oi+1;
     int top = -1;
     int pivot;
     int pivotindex, l, r;

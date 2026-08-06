@@ -35,10 +35,9 @@ Interactive: Cloning Concepts Video
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_yt31ss9x' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Cloning Concepts Video"></iframe> 
-   </center>
-
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=3ac3d752-eb34-4596-87ea-b4190005c337" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Cloning Concepts Video" aria-description="Cloning Concepts Video"></iframe>
+     </div>
 
 Checkpoint 1
 ------------
@@ -64,8 +63,8 @@ Interactive: Programming Cloning
 
 .. raw:: html
    
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_tvic5c73' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Programming Cloning"></iframe> 
-   </center>
+   <div style="position: relative; width: 100%; height: 0; padding-bottom: 38%">
+        <iframe src="https://virginiatech.hosted.panopto.com/Panopto/Pages/Embed.aspx?autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all&id=b4f9156e-3f3c-4c51-b9d9-b3ff017dbd9a" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 960px; height: 395px; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Programming Cloning" aria-description="Programming Cloning"></iframe>
+     </div>
 
 

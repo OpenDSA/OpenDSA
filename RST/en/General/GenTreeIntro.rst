@@ -189,7 +189,5 @@ Note the `while` loop at the end, which processes the list of
 children by beginning with the leftmost child, then repeatedly moving
 to the next child until calling	``next`` returns ``null``.
 
-.. codeinclude:: General/GenTree
+.. codeinclude:: General/GenTreeTest
    :tag: GenTreePrint
-
-
