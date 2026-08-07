@@ -91,14 +91,10 @@ For example if you call the program with {"-f", "-v"}, this will set
 the filename to -v.
 Or if you call the program with {"-f"}, you will get an exception for
 trying to access outside the array bounds.
-You can prevent this by using a try-catch, but I chose to keep this
-example very simple.
+You can prevent this by using a try-catch block.
 Once you have your parameters set, you can call the appropriate
 methods to launch your program.
-There you go, simple command line parsing!
 
 .. |external_link2| raw:: html
 
    <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html" target="_blank">switch statements</a>
-
-

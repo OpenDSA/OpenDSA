@@ -1,4 +1,4 @@
-int THRESHOLD = 10;
+int THRESHOLD = 14;
 
 void sorttime(int[] B) {
     int i;
@@ -90,9 +90,8 @@ void quicksort(int[] A, int i, int j) { // Quicksort
 // ---------------------------------------------------------------
 
 // Insertion sort used by optimized quicksort
-// Integer-only version
 // Instead of swapping, "shift" the values down the array
-void inssortshiftint(int[] A) {
+void inssort(int[] A) {
     for (int i=1; i<A.length; i++) { // Insert i'th record
         int j;
         int temp = A[i];
@@ -104,9 +103,9 @@ void inssortshiftint(int[] A) {
 
 
 int MAXSTACKSIZE = 100;
-
-// Optimized Quicksort: Not recursive, and uses Inssort for small lists
 // This version uses primitive integer values for the records
+/* *** ODSATag: Quicksortopt *** */
+// Optimized Quicksort: Not recursive, and uses Insertion sort for small lists
 void quicksortOpt(int[] A, int oi, int oj) { // Quicksort
     int[] Stack = new int[MAXSTACKSIZE]; // Stack for array bounds
     int top = -1;
@@ -138,14 +137,15 @@ void quicksortOpt(int[] A, int oi, int oj) { // Quicksort
         swap(A, l, j);  // Put pivot value in place
 
         // Put new subarrays onto Stack if they are small
-        if ((l-i) > THRESHOLD) {   // Left partition
+        if ((l-i) > THRESHOLD) { // Left partition
             Stack[++top] = i;
             Stack[++top] = l-1;
         }
-        if ((j-l) > THRESHOLD) {   // Right partition
+        if ((j-l) > THRESHOLD) { // Right partition
             Stack[++top] = l+1;
             Stack[++top] = j;
         }
     }
-    inssortshiftint(A);             // Final Insertion Sort
+    inssort(A);                  // Final Insertion Sort
 }
+/* *** ODSAendTag: Quicksortopt *** */

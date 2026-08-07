@@ -78,3 +78,7 @@ bool sorttest(int array[], int n, int threshold) {
 }
 
 #include "SortTest.cpp"
+
+/* Placeholder so that Sphinx won't complain */
+/* *** ODSATag: Quicksortopt *** */
+/* *** ODSAendTag: Quicksortopt *** */
