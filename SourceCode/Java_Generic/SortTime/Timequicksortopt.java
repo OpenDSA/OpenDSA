@@ -55,7 +55,8 @@ public class Timequicksortopt {
     }
 
     // JMH will run the benchmark for arrays of size 10 to 1,000,000
-    @Param({"10", "100", "1000", "10000", "100000", "1000000"})
+    // @Param({"10", "100", "1000", "10000", "100000", "1000000"})
+    @Param({"1000000"})
     private int testsize;
 
     @Param({"regular", "up", "down"})
@@ -65,7 +66,7 @@ public class Timequicksortopt {
 
     private KVPair[] originalArray;
     private KVPair[] arrayToSort;
-    int THRESHOLD = 12;
+    int THRESHOLD = 13;
 
     @Setup(Level.Trial)
     public void setupData() {
@@ -144,34 +145,36 @@ public class Timequicksortopt {
     // This version uses KVPair values for the records
     void quicksortopt(KVPair[] A, int oi, int oj) { // Quicksort
         int[] Stack = new int[MAXSTACKSIZE]; // Stack for array bounds
-        int listsize = oj-oi+1;
         int top = -1;
         KVPair pivot;
+        Integer pivotkey;
         int pivotindex, l, r;
 
         Stack[++top] = oi;  // Initialize stack
         Stack[++top] = oj;
+        int i;
+        int j;
 
         while (top > 0) {   // While there are unprocessed subarrays
             // Pop Stack
-            int j = Stack[top--];
-            int i = Stack[top--];
+            j = Stack[top--];
+            i = Stack[top--];
 
             // Findpivot
             pivotindex = (i+j)/2;
             pivot = A[pivotindex];
-            Integer pivotval = pivot.value();
+            pivotkey = pivot.key();
             swap(A, pivotindex, j); // Stick pivot at end
 
             // Partition
             l = i-1;
             r = j;
-            do {
-                while (A[++l].compareTo(pivotval) < 0);
-                while ((r!=0) && (A[--r].compareTo(pivotval) > 0));
-                swap(A, l, r);
-            } while (l < r);
-            swap(A, l, r);  // Undo final swap
+            while (true) {
+                while (A[++l].compareTo(pivotkey) < 0);
+                while ((r!=0) && (A[--r].compareTo(pivotkey) > 0));
+                if (l >= r) break;
+                swap (A, l, r);
+            }
             swap(A, l, j);  // Put pivot value in place
 
             // Put new subarrays onto Stack if they are not small

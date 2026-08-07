@@ -66,7 +66,7 @@ public class Timemergesortopt {
     private KVPair[] originalArray;
     private KVPair[] arrayToSort;
     private KVPair[] temp;
-    int THRESHOLD = 25;
+    int THRESHOLD = 12;
 
     @Setup(Level.Trial)
     public void setupData() {

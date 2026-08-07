@@ -70,7 +70,7 @@ int partition(T[] A, int left, int right, T pivot) {
   while (left <= right) { // Move bounds inward until they meet
     while (A[left].compareTo(pivot) < 0) { left++; }
     while ((right >= left) && (A[right].compareTo(pivot) >= 0)) { right--; }
-      if (right > left) { swap(A, left, right); } // Swap out-of-place values
+    if (right > left) { swap(A, left, right); } // Swap out-of-place values
   }
   return left;            // Return first position in right partition
 }
@@ -135,12 +135,12 @@ void quicksortOpt(T[] A, int oi, int oj) { // Quicksort
         // Partition
         l = i-1;
         r = j;
-        do {
+        while (true) {
             while (A[++l].compareTo(pivot) < 0);
             while ((r!=0) && (A[--r].compareTo(pivot) > 0));
+            if (l > r) break;
             swap(A, l, r);
-        } while (l < r);
-        swap(A, l, r);  // Undo final swap
+        }
         swap(A, l, j);  // Put pivot value in place
 
         // Put new subarrays onto Stack if they are small

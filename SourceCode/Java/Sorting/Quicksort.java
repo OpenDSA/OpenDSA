@@ -129,12 +129,12 @@ void quicksortOpt(int[] A, int oi, int oj) { // Quicksort
         // Partition
         l = i-1;
         r = j;
-        do {
+        while (true) {
             while (A[++l] < pivot);
             while ((r!=0) && (A[--r] > pivot));
+            if (l >= r) break;
             swap(A, l, r);
-        } while (l < r);
-        swap(A, l, r);  // Undo final swap
+        }
         swap(A, l, j);  // Put pivot value in place
 
         // Put new subarrays onto Stack if they are small

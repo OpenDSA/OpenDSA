@@ -26,7 +26,7 @@ public class Timemergesortopt {
     }
 
     // JMH will run the benchmark for arrays of size 10 to 1,000,000
-    @Param({"10", "100", "1000", "10000"})
+    @Param({"10", "100", "1000", "10000", "100000", "1000000"})
     private int testsize;
 
     @Param({"regular", "up", "down"})
@@ -37,7 +37,7 @@ public class Timemergesortopt {
     private int[] originalArray;
     private int[] arrayToSort;
     private int[] temp;
-    int THRESHOLD = 60;
+    int THRESHOLD = 14;
 
     // Generated once per benchmark trial run
     @Setup(Level.Trial)
