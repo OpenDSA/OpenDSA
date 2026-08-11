@@ -22,15 +22,6 @@ Optimizing Sort Algorithms with Code Tuning
 Code Tuning for Simple Sorting Algorithms
 -----------------------------------------
 
-.. TODO::
-   :type: Revision
-
-   Rewrite along these lines: A classic form of code tuning is "test
-   to save work". For each of our three sorting algorithms, we have a
-   potential "test to save work" "optimization". The question is: When
-   is the cost of test worth the work saved? Let's look at each of the
-   three.
-
 Since sorting is such an important application,
 it is natural for programmers to want
 to optimize their sorting code to run faster.
@@ -46,6 +37,31 @@ seeing which of these ideas actually turn out to give better
 performance.
 It is also interesting to see the relative performance of the three
 algorithms, as well as how various programming languages compare.
+
+Many attempts at code tuning take a similar form:
+The idea is to do a test.
+If the test is successful, then some work can be skipped.
+If it is not, then the work needs to be done.
+In this prototypical code tuning, when work is skipped then time is
+saved.
+However, there are several points to consider:
+
+#. How much work is saved when it is saved?
+#. How often does the test succeed? That is, what fraction of the time
+   is the work saved?
+#. What is the cost of making the test?
+
+The more often that the test passes, and the more work that is saved,
+the more benefit we get from the optimization.
+The more expensive the test, and the more often the test fails, the
+less benefit we get.
+In some cases, the cost of the tests is greater than the work that is
+saved, and the "code tuning" actually slows things down.
+Given that people don't typically set out to write inefficient code,
+it is not necessarily the case that an idea intended to speed things
+up will actually make the code faster!
+So, all code tuning efforts should be tested empirically under
+realistic scenarios to see if they really make an improvement.
 
 We start by trying to speed up Insertion Sort.
 Recall that Insertion Sort repeatedly moves an element toward the
@@ -90,32 +106,33 @@ Now, you can test whether you understand how this works.
 
       \begin{array}{l|rrrr}
       \hline
-      \textbf{Sort} & \textbf{Java}& \textbf{Processing} & \textbf{JavaScript}&
+      \textbf{Sort} & \textbf{Java/I}& \textbf{Java/C} & \textbf{JavaScript}&
       \textbf{Python}\\
       \hline
       \textbf{Insertion Sort}\\
-      \textrm{Standard}    &  60 &  26 & 118 & 11,220\\
-      \textrm{Shifting}    &  41 &  18 &  77 &  5,100\\
+      \textrm{Standard}    &  644 &  7.0 & 26.5 & 1190\\
+      \textrm{Shifting}    &  231 &  2.7 & 19.2 &  672\\
       \hline
       \textbf{Bubble Sort}\\
-      \textrm{Standard}    & 202 & 149 & 303 & 12,700\\
-      \textrm{Check Swaps} & 230 & 152 & 327 & 13,275\\
+      \textrm{Standard}    & 980 & 63.6 & 70.5 & 2058\\
+      \textrm{Check Swaps} & 902 & 63.6 & 65.7 & 1693\\
       \hline
       \textbf{Selection Sort}\\
-      \textrm{Standard}    & 104 &  65 & 158 &  4,000\\
-      \textrm{Check Swaps} & 104 &  65 & 155 &  4,050\\
+      \textrm{Standard}    & 342 &  18.0 & 42.5 &  3502\\
+      \textrm{Check Swaps} & 393 &  17.9 & 42.5 &  3560\\
       \hline
       \end{array}
 
 Table :num:`#OptimizeTable` shows the relative costs for
-a number of optimizations in four programming languages: Java,
-JavaScipt, Processing, and Python.
+a number of optimizations in four scenarios: Java with code
+interpretted, Java with code compiled by the standard Just-in-Time
+compiler, JavaScipt, and Python.
 
 The programming language that you use can have a big influence on the
 runtime for a program.
 Perhaps the greatest distinction is whether your language is compiled
 or not.
-Java, C++, and Processing are normally compiled, while JavaScript and
+Java, and C++, are normally compiled, while JavaScript and
 Python are normally interpreted.
 This can make a huge difference in whether a given code change will
 actually speed the program up or not.
@@ -125,7 +142,8 @@ This is more true for the interpreted languages JavaScript and
 Python than for Java and Processing, but still an improvement
 either way.
 But the biggest effect that we see is that Python takes
-over 100 times as long to execute the same program as Java.
+over 100 times as long to execute the same program as compiled Java
+code (and still twice as long as interpreted Java code).
 
 Some languages have peculiarities that it pays to be aware of.
 It turns out that there is a big difference in JavaScript between
@@ -154,11 +172,11 @@ swap within the inner loop.
 This tracking process has a cost, and that cost is worthwhile only if
 the amount of work it saves is greater than the amout of work that it
 causes.
-Unfortunately, as the table shows, in the average case it just is not
-worth the time.
+Unfortunately, as the table shows, in the average case it sometimes is
+not worth the cost, depending on the language.
 Modifying the code simply by removing the tracking steps (and so not
 getting either the cost of tracking or the benefit of avoiding some of
-the key comparisons) is faster in the average case.
+the key comparisons) is nearly as fast in the average case.
 Of course, whether this is always true will depend on how much it
 costs to extract the record keys and compare them, which depends on
 the details of the record type and the sort implementation.
@@ -193,9 +211,11 @@ position.
 That is, tracking the position of the largest element and performing
 one swap to put it into place is a far better optimization to Bubble
 Sort than tracking the position of the last swap seen.
-The table also shows that Selection Sort is faster in the average case
-than Insertion Sort when implemented in Python.
-Evidently, the cost to swap is high for Python.
+Though, perhaps surprisingly, this is not true in Python.
+On the other hand, the table also shows that Selection Sort is faster
+in the average case than un-optimized Insertion Sort when implemented
+in Java in its interpreted form.
+Evidently, the cost to swap is high in this situation.
 
 Our original Selection Sort implementation is written to make a call
 to ``swap`` even if the current record is already in its correct
@@ -234,17 +254,15 @@ A simple way to speed things up is to replace this function call with
 the code that the function would perform.
 Depending on the language, compiler, and operating system, one might
 expect to save between 5 and 10 percent of the total time by doing so.
+On the other hand, a good compiler will effectively do the same thing
+automatically.
 
 Another important consideration is the type of data object being
 used.
-For Processing and Java, we use a simple Integer wrapper object that
-supports the Comparable interface.
-This means that some dereferencing of the key value from an object is
-required, which is a typical expectation in a realistic application of
-a sorting function.
-However, if we were to sort a simple array of ``int`` values, the cost
-for all sorting algorithms will be less than half that shown.
-If we use a the more complicated ``KVPair`` objects, the costs will
-more than double over those shown in the table.
-
-
+For Java, we use a simple ``int`` array, and so no dereferencing of
+the key value from an object needs to be done.
+If we were to use a the more complicated ``KVPair`` objects, the costs
+will greatly increase over those shown in the table for Java.
+JavaScript and Python are already paying this price, since they don't
+have the concept of a primitive ``int``, and instead implement
+integers as objects.
