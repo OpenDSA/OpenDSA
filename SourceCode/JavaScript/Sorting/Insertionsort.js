@@ -14,7 +14,7 @@ for (runs=0; runs<numruns; runs++) {
   checkorder(A);
 totaltime += (time2-time1);
 }
-  console.log("Standard Insertion Sort: Size " + testsize + ", Time: " + totaltime);
+  console.log("Standard Insertion Sort: Size " + testsize + ", Time: " + totaltime/numruns);
 
 totaltime = 0;
 for (runs=0; runs<numruns; runs++) {
@@ -25,7 +25,7 @@ for (runs=0; runs<numruns; runs++) {
   checkorder(A);
 totaltime += (time2-time1);
 }
-  console.log("Standard Insertion Sort, no swap function: Size " + testsize + ", Time: " + totaltime);
+  console.log("Standard Insertion Sort, no swap function: Size " + testsize + ", Time: " + totaltime/numruns);
 
 totaltime = 0;
 for (runs=0; runs<numruns; runs++) {
@@ -36,7 +36,7 @@ for (runs=0; runs<numruns; runs++) {
   checkorder(A);
 totaltime += (time2-time1);
 }
-  console.log("Shifting Insertion Sort: Size " + testsize + ", Time: " + totaltime);
+  console.log("Shifting Insertion Sort: Size " + testsize + ", Time: " + totaltime/numruns);
 
 totaltime = 0;
 for (runs=0; runs<numruns; runs++) {
@@ -47,7 +47,7 @@ for (runs=0; runs<numruns; runs++) {
   checkorder(A);
 totaltime += (time2-time1);
 }
-  console.log("Shifting Insertion Sort 2 (!==): Size " + testsize + ", Time: " + totaltime);
+  console.log("Shifting Insertion Sort 2 (!==): Size " + testsize + ", Time: " + totaltime/numruns);
 }
 
 

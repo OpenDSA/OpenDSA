@@ -469,7 +469,7 @@ SelsortTime: Sorting/Selectionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Ut
 	cp Sorting/TimeSort.java build/SelsortTime
 	cd build/SelsortTime; \
 	javac $(CFLAGS) TimeSort.java; \
-	$(JAVA) $(RFLAGS) TimeSort 1000
+	$(JAVA) $(RFLAGS) TimeSort 10000
 
 ShellsortTime: Sorting/Shellsort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Checkorder.java Sorting/TimeSort.java
 	@echo "Shellsort Timing Test"

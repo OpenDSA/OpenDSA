@@ -339,14 +339,16 @@ All values in the array to the right of the partition are greater than
 all values in the partition.
 Thus, even if Quicksort only gets the values to
 "nearly" the right locations, the array will be close to sorted.
-This is an ideal situation in which to take advantage of the best-case
-performance of Insertion Sort.
+This is an ideal situation in which to take advantage of the (near)
+best-case performance of Insertion Sort.
 The final step is a single call to Insertion Sort to process the
 entire array, putting the records into final sorted order.
-Empirical testing shows that the subarrays should be left unordered
-whenever they get down to nine or fewer records.
+The exact threshold value to use depends on the details of the
+implementation and runtime environment, but empirical testing shows
+that the subarrays should be left unordered whenever they get down to
+somewhere around 10-15 records.
 
-The last speedup to be considered reduces the cost of making
+The last speedup we will consider reduces the cost of making
 recursive calls.
 Quicksort is inherently recursive, because each Quicksort operation
 must sort two sublists.
@@ -361,11 +363,18 @@ the order in which Quicksort's recursive calls are executed.
 We can also place the code for ``findpivot`` and
 ``partition`` inline to eliminate the remaining function
 calls.
-Note however that by not processing sublists of size nine or
-less as suggested above, about three quarters of the function calls
-will already have been eliminated.
+Note however that by not processing small sublists as suggested above,
+about three quarters of the function calls will already have been
+eliminated.
 Thus, eliminating the remaining function calls will yield only a
 modest speedup.
+
+Here is a sample implementation for Quicksort that takes advantage of
+the optimizations described above.
+
+.. codeinclude:: Sorting/Quicksort
+   :tag: Quicksortopt
+
 
 .. TODO::
    :type: Exercise

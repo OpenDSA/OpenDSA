@@ -123,19 +123,8 @@ kd tree is associated with a particular discriminator.
    equivalent to the ``findhelp`` function of the BST class.
    ``KD`` class private member ``D`` stores the key's dimension.
 
-::
-
-   private E findhelp(KDNode<E> rt, int[] key, int level) {
-     if (rt == null) return null;
-     E it = rt.element();
-     int[] itkey = rt.key();
-     if ((itkey[0] == key[0]) && (itkey[1] == key[1]))
-       return rt.element();
-     if (itkey[level] > key[level])
-       return findhelp(rt.left(), key, (level+1)%D);
-     else
-       return findhelp(rt.right(), key, (level+1)%D);
-   }
+.. codeinclude:: Spatial/KDtree
+   :tag: findhelp
 
 Inserting a new node into the kd tree is similar to
 BST insertion.
@@ -186,32 +175,8 @@ A recursive call to the delete routine will then remove
 Finally, :math:`Y_{min}`'s record is substituted for the
 record in node :math:`N`.
 
-::
-
-   private KDNode<E>
-   findmin(KDNode<E> rt, int descrim, int level) {
-     KDNode<E> temp1, temp2;
-     int[] key1 = null;
-     int[] key2 = null;
-     if (rt == null) return null;
-     temp1 = findmin(rt.left(), descrim, (level+1)%D);
-     if (temp1 != null) key1 = temp1.key();
-     if (descrim != level) {
-       temp2 = findmin(rt.right(), descrim, (level+1)%D);
-       if (temp2 != null) key2 = temp2.key();
-       if ((temp1 == null) || ((temp2 != null) &&
-                      (key1[descrim] > key2[descrim]))) {
-         temp1 = temp2;
-         key1 = key2;
-       }
-     } // Now, temp1 has the smaller value
-     int[] rtkey = rt.key();
-     if ((temp1 == null) || (key1[descrim] > rtkey[descrim]))
-       return rt;
-     else
-       return temp1;
-   }
-
+.. codeinclude:: Spatial/KDtree
+   :tag: findmin
 
 In ``findmin``, on levels using the minimum value's discriminator,
 branching is to the left.
@@ -321,19 +286,8 @@ the query circle.
 
 Here is an implementation for the region search method.
 
-::
-
-   private void rshelp(KDNode<E> rt, int[] point,
-                       int radius, int lev) {
-     if (rt == null) return;
-     int[] rtkey = rt.key();
-     if (InCircle(point, radius, rtkey))
-       System.out.println(rt.element());
-     if (rtkey[lev] > (point[lev] - radius))
-       rshelp(rt.left(), point, radius, (lev+1)%D);
-     if (rtkey[lev] < (point[lev] + radius))
-       rshelp(rt.right(), point, radius, (lev+1)%D);
-   }
+.. codeinclude:: Spatial/KDtree
+   :tag: rshelp
 
 When a node is visited, function ``InCircle`` is used to
 check the Euclidean distance between the node's record and the query

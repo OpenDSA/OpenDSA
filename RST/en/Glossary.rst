@@ -3499,6 +3499,9 @@ Glossary
       visiting :math:`n` cities in some order has a cost, and the goal
       is to visit in the cheapest order.
 
+   orthogonal list
+       A data structure used to implement a :term:`sparse matrix`.
+
    out degree
       In :term:`graph` terminology, the out degree for a :term:`vertex` is
       the number of edges directed out of the vertex.
@@ -4743,6 +4746,7 @@ Glossary
       of space required to represent it as compared to simply using a
       regular matrix representation that stores a value for every
       matrix position.
+      One such example is the :term:`orthogonal list`.
 
    sparse graph
       A :term:`graph` where the actual number of :term:`edges <edge>`

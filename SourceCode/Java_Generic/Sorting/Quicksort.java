@@ -1,4 +1,4 @@
-int THRESHOLD = 10;
+int THRESHOLD = 14;
 
 void sorttime(T[] B) {
     int i;
@@ -70,7 +70,7 @@ int partition(T[] A, int left, int right, T pivot) {
   while (left <= right) { // Move bounds inward until they meet
     while (A[left].compareTo(pivot) < 0) { left++; }
     while ((right >= left) && (A[right].compareTo(pivot) >= 0)) { right--; }
-      if (right > left) { swap(A, left, right); } // Swap out-of-place values
+    if (right > left) { swap(A, left, right); } // Swap out-of-place values
   }
   return left;            // Return first position in right partition
 }
@@ -97,7 +97,7 @@ void quicksort(T[] A, int i, int j) { // Quicksort
 // Insertion sort used by optimized quicksort
 // Integer-only version
 // Instead of swapping, "shift" the values down the array
-void inssortshiftint(T[] A) {
+void inssort(T[] A) {
     for (int i=1; i<A.length; i++) { // Insert i'th record
         int j;
         T temp = A[i];
@@ -110,8 +110,8 @@ void inssortshiftint(T[] A) {
 
 int MAXSTACKSIZE = 100;
 
-// Optimized Quicksort: Not recursive, and uses Inssort for small lists
-// This version uses primitive integer values for the records
+/* *** ODSATag: Quicksortopt *** */
+// Optimized Quicksort: Not recursive, and uses Insetion sort for small lists
 void quicksortOpt(T[] A, int oi, int oj) { // Quicksort
     int[] Stack = new int[MAXSTACKSIZE]; // Stack for array bounds
     int listsize = oj-oi+1;
@@ -135,12 +135,12 @@ void quicksortOpt(T[] A, int oi, int oj) { // Quicksort
         // Partition
         l = i-1;
         r = j;
-        do {
+        while (true) {
             while (A[++l].compareTo(pivot) < 0);
             while ((r!=0) && (A[--r].compareTo(pivot) > 0));
+            if (l > r) break;
             swap(A, l, r);
-        } while (l < r);
-        swap(A, l, r);  // Undo final swap
+        }
         swap(A, l, j);  // Put pivot value in place
 
         // Put new subarrays onto Stack if they are small
@@ -153,5 +153,6 @@ void quicksortOpt(T[] A, int oi, int oj) { // Quicksort
             Stack[++top] = j;
         }
     }
-    inssortshiftint(A);             // Final Insertion Sort
+    inssort(A);                    // Final Insertion Sort
 }
+/* *** ODSAendTag: Quicksortopt *** */

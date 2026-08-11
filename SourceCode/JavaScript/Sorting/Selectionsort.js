@@ -14,7 +14,7 @@ for (runs=0; runs<numruns; runs++) {
   checkorder(A);
 totaltime += (time2-time1);
 }
-  console.log("Standard Selection Sort: Size " + testsize + ", Time: " + totaltime);
+  console.log("Standard Selection Sort: Size " + testsize + ", Time: " + totaltime/numruns);
 
 totaltime = 0;
 for (runs=0; runs<numruns; runs++) {
@@ -25,7 +25,7 @@ for (runs=0; runs<numruns; runs++) {
   checkorder(A);
 totaltime += (time2-time1);
 }
-  console.log("Selection Sort/Check swaps: Size " + testsize + ", Time: " + totaltime);
+  console.log("Selection Sort/Check swaps: Size " + testsize + ", Time: " + totaltime/numruns);
 }
 
 // Same as selsort, but check if the swap is necessary

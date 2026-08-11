@@ -1,7 +1,11 @@
 # Java version of Makefile to do sorting timings
 # CFLAGS= -Xlint -Werror
-CFLAGS= -cp "jmh-core-1.37.jar;jopt-simple-4.6.jar" -processorpath "jmh-generator-annprocess-1.37.jar;jmh-core-1.37.jar" -d .
-RFLAGS= -cp ".;jmh-core-1.37.jar;jopt-simple-4.6.jar;commons-math3-3.6.1.jar" org.openjdk.jmh.Main
+CFLAGS= -d . -cp ".:jmh-core-1.37.jar:jopt-simple-4.6.jar:commons-math3-3.6.1.jar:jmh-generator-annprocess-1.37.jar"
+# CFLAGS= -cp "jmh-core-1.37.jar:jopt-simple-4.6.jar" -processorpath "jmh-generator-annprocess-1.37.jar;jmh-core-1.37.jar" -d .
+# RFLAGS= -cp ".:jmh-core-1.37.jar:jopt-simple-4.6.jar:commons-math3-3.6.1.jar" org.openjdk.jmh.Main
+# RFLAGS= -cp ".:jmh-core-1.37.jar:jopt-simple-4.6.jar:commons-math3-3.6.1.jar" org.openjdk.jmh.Main
+# Turn off JIT optimizations
+RFLAGS= -Xint -cp ".:jmh-core-1.37.jar:jopt-simple-4.6.jar:commons-math3-3.6.1.jar" org.openjdk.jmh.Main
 
 all: SortTime
 
@@ -13,8 +17,8 @@ build:
 	@mkdir build
 
 # Get the necessary .jar files when running from the command line with no infrastructure support. Should only need to do this one time.
-jars: commons-math3-3.6.1.jar jmh-generator-annprocess-1.37.jar jmh-core-1.37.jar jopt-simple-4.6.jar
-	curl - L -O https://repo1.maven.org/maven2/org/openjdk/jmh/jmh-core/1.37/jmh-core-1.37.jar
+jars:
+	curl -L -O https://repo1.maven.org/maven2/org/openjdk/jmh/jmh-core/1.37/jmh-core-1.37.jar
 	curl -L -O https://repo1.maven.org/maven2/org/openjdk/jmh/jmh-generator-annprocess/1.37/jmh-generator-annprocess-1.37.jar
 	curl -L -O https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar
 	curl -L -O https://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar

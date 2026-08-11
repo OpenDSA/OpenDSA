@@ -28,7 +28,7 @@ body {
 }
 
 #page-container {
-  min-width: 0; 
+  min-width: 0;
 }
 
 #container.single-exercise {
@@ -47,11 +47,6 @@ body {
 
 footer .footer-container {
   min-width: 950px;
-}
-
-.CodeMirror {
-  /* Set  borders */
-  border: 1.5px solid #000;
 }
 
 #warning-bar {

@@ -8,7 +8,7 @@ def sorttime(B):
   bubblesort(A)
   time2 = datetime.now()
   checkorder(A)
-  print "Standard Bubble Sort: Size ", testsize, ", Time: ", millis(time2 - time1)
+  print("Standard Bubble Sort: Size ", testsize, ", Time: ", millis(time2 - time1))
 
   for i in range(len(B)):
     A[i] = B[i]
@@ -16,7 +16,7 @@ def sorttime(B):
   bubblesortcheck(A)
   time2 = datetime.now()
   checkorder(A)
-  print "Swap Check Bubble Sort: Size ", testsize, ", Time: ", millis(time2 - time1)
+  print("Swap Check Bubble Sort: Size ", testsize, ", Time: ", millis(time2 - time1))
 
   for i in range(len(B)):
     A[i] = B[i]
@@ -24,7 +24,7 @@ def sorttime(B):
   bubblesortcheck2(A)
   time2 = datetime.now()
   checkorder(A)
-  print "Swap Check Bubble Sort 2: Size ", testsize, ", Time: ", millis(time2 - time1)
+  print("Swap Check Bubble Sort 2: Size ", testsize, ", Time: ", millis(time2 - time1))
 
   totaltime = 0
   for runs in range(1, numruns):
@@ -35,7 +35,7 @@ def sorttime(B):
     time2 = datetime.now()
     checkorder(A)
     totaltime += millis(time2-time1)
-  print "Wikipedia Bubble Sort: Size ", testsize, ", for ", numruns, " runs, Time: ", totaltime
+  print("Wikipedia Bubble Sort: Size ", testsize, ", for ", numruns, " runs, Time: ", totaltime/numruns)
 
   totaltime = 0
   for runs in range(1, numruns):
@@ -46,7 +46,7 @@ def sorttime(B):
     time2 = datetime.now()
     checkorder(A)
     totaltime += millis(time2-time1)
-  print "Wikipedia-compatible Bubble Sort without swap checking: Size ", testsize, " for ", numruns, "runs, Time: ", totaltime
+  print("Wikipedia-compatible Bubble Sort without swap checking: Size ", testsize, " for ", numruns, "runs, Time: ", totaltime/numruns)
 
 # A flag check if a pass did not have any swaps, which lets us quit
 def bubblesortcheck(A):
@@ -57,7 +57,7 @@ def bubblesortcheck(A):
         swap(A, j-1, j)
         swaps = True
     if (not swaps):
-      print "Quit at ", i
+      print("Quit at ", i)
       break  # Can quit early
 
 # Modify the flag to check position of last swap taken
@@ -71,7 +71,7 @@ def bubblesortcheck2(A):
         lastseen = j - 1
     top = lastseen
     if (top == 0):
-      print "Quit at ", i
+      print("Quit at ", i)
       break   # Can quit early
 
 # Wikipedia article "optimization" to only swap up to the last swap seen
@@ -97,7 +97,7 @@ def unwikipedia(A):
     n -= 1
 
 def success():
-  print "Success! (Need to define this)"
+  print("Success! (Need to define this)")
 
 def sorttest(A):
   bubblesort(A)

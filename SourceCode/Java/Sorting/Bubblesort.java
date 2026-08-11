@@ -83,7 +83,7 @@ void sorttime(int[] B) {
             A[i] = B[i];
         }
         time1 = System.nanoTime();
-        bubwikipedia(A);
+        bubblecheckswap(A);
         time2 = System.nanoTime();
         checkorder(A);
         totaltime += (time2-time1);
@@ -162,7 +162,7 @@ void bubblesortcheck2(int[] A) {
 
 // Wikipedia article "optimization" to only swap up to the last swap seen
 /* *** ODSATag: BubblesortCheck *** */
-void bubwikipedia(int[] A) {
+void bubblecheckswap(int[] A) {
     int n = A.length;
     while (n > 0) {
         int newn = 0;
