@@ -2,7 +2,7 @@ def sorttime(B):
   A = [randrange(1,1000) for _ in range(testsize)]  # To make it create a real A for copying
   numruns = 5
 
-  print "Range ", range(0, numruns)
+  print("Range ", range(0, numruns))
 
   totaltime = 0
   for runs in range(1, numruns):
@@ -13,7 +13,7 @@ def sorttime(B):
     time2 = datetime.now()
     checkorder(A)
     totaltime += millis(time2-time1)
-  print "Standard Insertion Sort: Size ", testsize, ", Time: ", totaltime
+  print("Standard Insertion Sort: Size ", testsize, ", Time: ", totaltime/numruns)
 
   totaltime = 0
   for runs in range(1, numruns):
@@ -24,7 +24,7 @@ def sorttime(B):
     time2 = datetime.now()
     checkorder(A)
     totaltime += millis(time2-time1)
-  print "Standard Insertion Sort, no swap function: Size ", testsize, ", Time: ", totaltime
+  print("Standard Insertion Sort, no swap function: Size ", testsize, ", Time: ", totaltime/numruns)
 
   totaltime = 0
   for runs in range(1, numruns):
@@ -35,7 +35,7 @@ def sorttime(B):
     time2 = datetime.now()
     checkorder(A)
     totaltime += millis(time2-time1)
-  print "Shifting Insertion Sort: Size ", testsize, ", Time: ", totaltime
+  print("Shifting Insertion Sort: Size ", testsize, ", Time: ", totaltime/numruns)
 
   totaltime = 0
   for runs in range(1, numruns):
@@ -46,7 +46,7 @@ def sorttime(B):
     time2 = datetime.now()
     checkorder(A)
     totaltime += millis(time2-time1)
-  print "Shifting Insertion Sort 2 (!=): Size ", testsize, ", Time: ", totaltime
+  print("Shifting Insertion Sort 2 (!=): Size ", testsize, ", Time: ", totaltime/numruns)
 
   totaltime = 0
   for runs in range(1, numruns):
@@ -57,7 +57,7 @@ def sorttime(B):
     time2 = datetime.now()
     checkorder(A)
     totaltime += millis(time2-time1)
-  print "Chris Dusold's Insertion Sort: Size ", testsize, ", Time: ", totaltime
+  print("Chris Dusold's Insertion Sort: Size ", testsize, ", Time: ", totaltime/numruns)
 
   totaltime = 0
   for runs in range(1, numruns):
@@ -68,7 +68,7 @@ def sorttime(B):
     time2 = datetime.now()
     checkorder(A)
     totaltime += millis(time2-time1)
-  print "Python'y Insertion Sort with shift: Size ", testsize, ", Time: ", totaltime
+  print("Python'y Insertion Sort with shift: Size ", testsize, ", Time: ", totaltime/numruns)
 
 # Instead of swapping, "shift" the values down the array
 # /* *** ODSATag: Insertionsort shift *** */
@@ -106,7 +106,7 @@ def inssort2(A):
       j -= 1
 
 def success():
-  print "Success! (Need to define this)"
+  print("Success! (Need to define this)")
 
 def sorttest(A):
   inssort(A)

@@ -11,7 +11,7 @@ def sorttime(B):
     time2 = datetime.now()
     checkorder(A)
     totaltime += millis(time2-time1)
-  print "Standard Selectionsort Sort: Size ", testsize, ", Time: ", totaltime
+  print("Standard Selectionsort Sort: Size ", testsize, ", Time: ", totaltime)
 
   totaltime = 0
   for runs in range(1, numruns):
@@ -22,7 +22,7 @@ def sorttime(B):
     time2 = datetime.now()
     checkorder(A)
     totaltime += millis(time2-time1)
-  print "Selectionsort Sort/Check swaps: Size ", testsize, ", Time: ", totaltime
+  print("Selectionsort Sort/Check swaps: Size ", testsize, ", Time: ", totaltime)
 
 # Same as selsort, but check if the swap is necessary
 def selsortcheck(A):
@@ -35,7 +35,7 @@ def selsortcheck(A):
       swap(A, bigindex, len(A) - i - 1)  # Put it into place
 
 def success():
-  print "Success! (Need to define this)"
+  print("Success! (Need to define this)")
 
 def sorttest(A):
   selsort(A)

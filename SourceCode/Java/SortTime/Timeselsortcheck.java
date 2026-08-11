@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class Timeselsortcheck {
 
     // JMH will run the benchmark for arrays of size 10, 100, and 1000
-    @Param({"10", "100", "1000"})
+    @Param({"10000"})
     private int testsize;
     private int maxval = 1000000;
 

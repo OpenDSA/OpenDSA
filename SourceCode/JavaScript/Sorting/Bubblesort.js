@@ -5,26 +5,38 @@ function sorttime(B) {
   var totaltime, runs;
   var numruns = 20;
 
+totaltime = 0;
+for (runs=0; runs<numruns; runs++) {
   for(i = 0; i < B.length; i++) A[i] = B[i];
   time1 = new Date();
   bubblesort(A);
   time2 = new Date();
   checkorder(A);
-  console.log("Standard Bubble Sort: Size " + testsize + ", Time: " + (time2 - time1));
+totaltime += (time2-time1);
+}
+  console.log("Standard Bubble Sort: Size " + testsize + ", Time: " + totaltime/numruns);
 
+totaltime = 0;
+for (runs=0; runs<numruns; runs++) {
   for(i = 0; i < B.length; i++) A[i] = B[i];
   time1 = new Date();
   bubblesortcheck(A);
   time2 = new Date();
   checkorder(A);
-  console.log("Swap Check Bubble Sort: Size " + testsize + ", Time: " + (time2 -time1));
+totaltime += (time2-time1);
+}
+  console.log("Swap Check Bubble Sort: Size " + testsize + ", Time: " + totaltime/numruns);
 
+totaltime = 0;
+for (runs=0; runs<numruns; runs++) {
   for(i = 0; i < B.length; i++) A[i] = B[i];
   time1 = new Date();
   bubblesortcheck2(A);
   time2 = new Date();
   checkorder(A);
-  console.log("Swap Check Bubble Sort 2: Size " + testsize + ", Time: " + (time2 - time1));
+totaltime += (time2-time1);
+}
+  console.log("Swap Check Bubble Sort 2: Size " + testsize + ", Time: " + totaltime/numruns);
 
 totaltime = 0;
 for (runs=0; runs<numruns; runs++) {
@@ -35,14 +47,18 @@ for (runs=0; runs<numruns; runs++) {
   checkorder(A);
 totaltime += (time2-time1);
 }
-  console.log("Wikipedia Bubble Sort: Size " + testsize + ", " + " for " + numruns + " runs, Time: " + totaltime);
+  console.log("Wikipedia Bubble Sort: Size " + testsize + ", " + " for " + numruns + " runs, Time: " + totaltime/numruns);
 
+totaltime = 0;
+for (runs=0; runs<numruns; runs++) {
   for(i = 0; i < B.length; i++) A[i] = B[i];
   time1 = new Date();
   wikipedia2(A);
   time2 = new Date();
   checkorder(A);
-  console.log("Wikipedia Bubble Sort 2: Size " + testsize + ", Time: " + (time2 - time1));
+  totaltime += (time2-time1);
+}
+  console.log("Wikipedia Bubble Sort 2: Size " + testsize + ", Time: " + totaltime/numruns);
 
 totaltime = 0;
 for (runs=0; runs<numruns; runs++) {
@@ -53,7 +69,7 @@ for (runs=0; runs<numruns; runs++) {
   checkorder(A);
 totaltime += (time2-time1);
 }
-  console.log("Wikipedia Bubble Sort without swap checking: Size " + testsize + ", " + " for " + numruns + " runs, Time: " + totaltime);
+  console.log("Wikipedia Bubble Sort without swap checking: Size " + testsize + ", " + " for " + numruns + " runs, Time: " + totaltime/numruns);
 }
 
 // A flag check if a pass did not have any swaps, which lets us quit
@@ -65,7 +81,7 @@ function bubblesortcheck(A) {
         swap(A, j-1, j);
         swaps = true;
       }
-    if(!swaps) { console.log("Quit at " + i); break; }  // Can quit early
+    if(!swaps) { /* console.log("Quit at " + i); */ break; }  // Can quit early
   }
 }
 
@@ -80,7 +96,7 @@ function bubblesortcheck2(A) {
         lastseen = j - 1;
       }
     top = lastseen;
-    if (top == 0) { console.log("Quit at " + i); break; }  // Can quit early
+    if (top == 0) { /* console.log("Quit at " + i); */ break; }  // Can quit early
   }
 }
 

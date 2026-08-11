@@ -110,6 +110,24 @@ build/BubblesortTest/success: Sorting/Bubblesort.cpp Sorting/SortTest.cpp Utils/
 	$(CC) $(CFLAGS) Bubblesort.o -o Bubblesort; \
 	./Bubblesort 1000
 
+BubblesortTime: build build/BubblesortTime/success
+
+build/BubblesortTime/success: Sorting/Bubblesort.cpp Sorting/SortTime.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
+	@echo "Bubblesort Time Test"
+	-@rm -rf build/BubblesortTime
+	@mkdir build/BubblesortTime
+	@cp Sorting/Bubblesort.cpp build/BubblesortTime
+	@cp Sorting/SortTime.cpp build/BubblesortTime/SortTest.cpp
+	@cp Utils/Checkorder.cpp build/BubblesortTime
+	@cp Utils/KVPair.cpp build/BubblesortTime
+	@cp Utils/Comparable.cpp build/BubblesortTime
+	@cp Utils/Int.cpp build/BubblesortTime
+	@cp Utils/utils.h build/BubblesortTime
+	cd build/BubblesortTime; \
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Bubblesort.o Bubblesort.cpp; \
+	$(CC) $(CFLAGS) Bubblesort.o -o Bubblesort; \
+	./Bubblesort 10000 1000
+
 Selectionsort: build build/SelectionsortTest/success
 
 build/SelectionsortTest/success: Sorting/Selectionsort.cpp Sorting/SortTest.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
