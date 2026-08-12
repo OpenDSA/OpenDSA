@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html data-require="codemirror math RectFIBmystery" lang="en">
+<html data-require="math RectFIBmystery" lang="en">
   <head>
     <title> Recursion Tracing Exercise: Mystery Return</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <script src="../../lib/splice-iframe.js"></script> 
-  </head>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+</head>
 
   <body data-height="750" data-width="950">
     <div class="exercise">
@@ -16,7 +17,7 @@
       <div class="problems">
         <div id="RectFIBmysteryp"> <!-- Supresses answer box -->
           <p class="question">Consider the following code:
-            <textarea id="codeTextarea" name="codeTextarea">
+            <pre class="prettyprint">
 public void mystery(int n) {
   if (n < 0) {
     System.out.print("-");
@@ -29,7 +30,7 @@ public void mystery(int n) {
     System.out.print(two % 10);
     mystery(n / 100); 
   } 
-}</textarea>
+}</pre>
             What will be printed by the call <tt>mystery(<var>n</var>)</tt>?
           </p>
           <p class="solution" data-type="text"><var>ANS</var></p>

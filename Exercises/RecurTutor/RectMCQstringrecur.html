@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html data-require="codemirror math" lang="en">
+<html data-require="math" lang="en">
   <head>
     <title> Recursion Tracing Exercise: Function Error</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <script src="../../lib/splice-iframe.js"></script> 
-  </head>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+</head>
 
   <body  data-height="550" data-width="950">
     <div class="exercise">
       <div class="problems">
         <div id="RectMCQstringrecurp"> <!-- Supresses answer box -->
           <p class="question">Consider the following code:
-            <textarea id="codeTextarea" name="codeTextarea">
+            <pre class="prettyprint">
 public void stringRecur(String s) {
   if(s.length() < 15)
     System.out.println(s);     
   stringRecur(s + "*");
-}</textarea><br/>
+}</pre><br/>
             When will method stringRecur terminate without error?
           </p>
           <div class="solution">It never works. It calls itself for

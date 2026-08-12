@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html data-require="codemirror math" lang="en">
+<html data-require="math" lang="en">
   <head>
     <title> Recursion Tracing Exercise: Two Successive Recursive calls</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <script src="../../lib/splice-iframe.js"></script> 
-  </head>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+</head>
 
   <body data-height="750" data-width="950">
     <div class="exercise">
@@ -16,14 +17,14 @@
       <div class="problems">
         <div id="RectFIBasteriskp"> <!-- Supresses answer box -->
           <p class="question">Consider the following function:
-            <textarea id="codeTextarea" name="codeTextarea">
+            <pre class="prettyprint">
 void asterisksPrinter(int i) {	
   if (i > 1) {
     asterisksPrinter(i / 2);	
     asterisksPrinter(i / 2);	
   }	
   System.out.print("*");
-}</textarea>
+}</pre>
             How many asterisks are printed by the method call
             <tt>asterisksPrinter(<var>i</var>)</tt>?<br/>
             (Either write a number, or write "infinite recursion".)

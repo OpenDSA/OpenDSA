@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html data-require="codemirror math RectFIBmax" lang="en">
+<html data-require="math RectFIBmax" lang="en">
   <head>
     <title> Recursion Tracing Exercise: mystrey return</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <script src="../../lib/splice-iframe.js"></script> 
-  </head>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+</head>
  
   <body  data-height="775" data-width="950">
     <div class="exercise">
@@ -16,7 +17,7 @@
       <div class="problems">
         <div id="RectFIBmaxp"> <!-- Supresses answer box -->
           <p class="question">Consider the following function:
-            <textarea id="codeTextarea" name="codeTextarea">
+            <pre class="prettyprint">
 int mystery (int[] numbers, int index) {
   if (index == numbers.length - 1)
     return numbers[index];	
@@ -27,7 +28,7 @@ int mystery (int[] numbers, int index) {
     else
       return numbers[index];
   }
-}</textarea>
+}</pre>
             If initially numbers = [<var>A</var>] and index = 0, what will
             be the value returned by this mystery function?<br/>
             (Either write a number, or write "infinite recursion".)

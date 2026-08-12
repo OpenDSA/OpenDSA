@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html data-require="codemirror math" lang="en">
+<html data-require="math" lang="en">
   <head>
     <title> Recursion Tracing Exercise: Fix the error in print</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <script src="../../lib/splice-iframe.js"></script> 
-  </head>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+</head>
 
   <body  data-height="1000" data-width="1000">
     <div class="exercise">
@@ -13,7 +14,7 @@
         <div id="RectMCQwritecommafixp"> <!-- Supresses answer box -->
           <p class="question">Which proposed code change will result
             in this code properly inserting commas?
-            <textarea id="codeTextarea" name="codeTextarea">
+            <pre class="prettyprint">
 public static void writeThreeDigits(int n) {
   System.out.print(n / 100);	
   System.out.print((n / 10) % 10);		
@@ -28,7 +29,7 @@ public static void writeWithCommas(int n) {
     System.out.print(",");	
     writeWithCommas(n/1000);
   }
-}</textarea><br/>
+}</pre><br/>
           </p>
           <div class="solution">Interchange the
             line: <tt>writeThreeDigits(n%1000);</tt> with the

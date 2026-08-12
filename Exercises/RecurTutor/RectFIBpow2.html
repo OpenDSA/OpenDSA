@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html data-require="codemirror math" lang="en">
+<html data-require="math" lang="en">
   <head>
     <title> Recursion Tracing Exercise: Result Return</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
-    <script src="../../lib/splice-iframe.js"></script> 
-  </head>
- 
+    <script src="../../lib/splice-iframe.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+</head>
+
   <body  data-height="775" data-width="950">
     <div class="exercise">
       <div class="vars">
@@ -16,13 +17,13 @@
       <div class="problems">
         <div id="RectFIBpow2p"> <!-- Supresses answer box -->
           <p class="question">Consider the following function:
-            <textarea id="codeTextarea" name="codeTextarea">
+            <pre class="prettyprint">
 public int result(int n) {
   if(n == 1)
     return 2;
   else
-    return 2 * result(n-1);	
-}</textarea><br/>
+    return 2 * result(n-1);
+}</pre><br/>
             What value does result(<var>n</var>) return?<br/>
             (Either write a number, or write "infinite recursion".)
           </p>
@@ -30,7 +31,7 @@ public int result(int n) {
           <div class="hints">
             <p>2 is multiplied by itself n times. In other words the
               result is <code>2^n</code>.</p>
-          </div> 
+          </div>
         </div>
       </div>
     </div>

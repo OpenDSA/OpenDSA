@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html data-require="codemirror math" lang="en">
+<html data-require="math" lang="en">
   <head>
     <title> Recursion Tracing Exercise: Mystery Return</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <script src="../../lib/splice-iframe.js"></script> 
-  </head>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+</head>
  
   <body  data-height="550" data-width="950">
     <div class="exercise">
@@ -18,13 +19,13 @@
       <div class="problems">
         <div id="RectFIBmysterynadp"> <!-- Supresses answer box -->
           <p class="question">Consider the following function:
-            <textarea id="codeTextarea" name="codeTextarea">
+            <pre class="prettyprint">
 public int mystery(int n, int a , int d) {
   if(n == 1)
     return a;
   else
     return d + mystery(n - 1, a, d);
-}</textarea>		
+}</pre>		
             What value is returned by the
             call <tt>mystery(<var>n</var>,<var>a</var>,<var>d</var>)</tt>?<br/>
             (Either write a number, or write "infinite recursion".)
