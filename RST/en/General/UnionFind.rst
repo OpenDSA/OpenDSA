@@ -333,10 +333,11 @@ This is an example of
 
 The expression :math:`\log^* n` is closely related to the inverse of
 Ackermann's function.
-For more information about Ackermann's function and the cost of path
-compression for UNION/FIND, see [Tarjan75]_.
-The survey article by Galil & Italiano [GalilItaliano91]_
-covers many aspects of the equivalence class problem.
+
+.. .. For more information about Ackermann's function and the cost of path
+      compression for UNION/FIND, see [Tarjan75]_.
+      The survey article by Galil & Italiano [GalilItaliano91]_
+      covers many aspects of the equivalence class problem.
 
 .. avembed:: AV/General/UnionFindPRO.html pe
    :long_name: Union/Find Proficiency Exercise
