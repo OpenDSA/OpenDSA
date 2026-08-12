@@ -13,7 +13,7 @@
       <div class="problems">
         <div id="RectMCQwritecommafixp"> <!-- Supresses answer box -->
           <p class="question">Which proposed code change will result
-            in this code properly inserting commas?
+            in this code properly inserting commas?</p>
             <pre class="prettyprint">
 public static void writeThreeDigits(int n) {
   System.out.print(n / 100);	
@@ -29,8 +29,7 @@ public static void writeWithCommas(int n) {
     System.out.print(",");	
     writeWithCommas(n/1000);
   }
-}</pre><br/>
-          </p>
+}</pre>
           <div class="solution">Interchange the
             line: <tt>writeThreeDigits(n%1000);</tt> with the
             line: <tt>writeWithCommas(n/1000);</tt>.</div>
