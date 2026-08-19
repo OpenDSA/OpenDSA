@@ -131,13 +131,6 @@ examples would cause an ``IndexOutOfBoundsException`` when executed:
    </div>
 
 
-Check Your Understanding: 2D Arrays
------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week11Quiz1Summ.html ka
-   :long_name: 2D Arrays
-
-
 Syntax Practice: 2D Array Basics 
 --------------------------------
 
@@ -191,13 +184,6 @@ month, is given by ``rainfall[month].length``.
 The outer loop of the nested for loop iterates through months 1 through
 12, and the inner for loop iterates through days 1 through 31. In this way,
 372 = 12 × 31 elements of the array are set to 0.0.
-
-
-Check Your Understanding: Iterating with 2D Arrays
---------------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week11Quiz2Summ.html ka
-   :long_name: Iterating with 2D Arrays
 
 
 Syntax Practice: Looping Over 2D Arrays 
@@ -428,13 +414,6 @@ modulo arithmetic as well:
    <div class="align-center" style="margin-top:1em;">
    <iframe width="560" height="315" src="https://www.youtube.com/embed/VUZpocjQFWo?start=200&end=259" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
    </div>
-
-
-Check Your Understanding: Modulus
----------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week11Quiz3Summ.html ka
-   :long_name: Modulus
 
 
 Syntax Practice: Modulus

@@ -473,15 +473,3 @@ far beyond this course, and that is the reason for the course policy regarding
 generative AI use.
 
 
-Self-Check: Confirm Your Understanding
---------------------------------------
-
-To check your understanding of the Honor Code policy in this course,
-return to Canvas and take the Honor System quiz provided there. You can
-repeat the quiz as many times as needed, but need to achieve 100% before
-you can begin other work in this course.
-
-.. avembed:: Exercises/IntroToSoftwareDesign/HonorCodeSurvey.html ka
-    :long_name: Understanding the Honor Code
-
-

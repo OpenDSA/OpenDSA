@@ -131,7 +131,6 @@ An Overview of Conditional Statements
    </div>
 
 
-
 Java's Syntax for the If-Then-Else Structure
 --------------------------------------------
 
@@ -176,12 +175,6 @@ simply turns right, Timmy must move one space forward.
     }
 
     timmy.hop();
-
-
-Self-Check
-~~~~~~~~~~
-.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz1Summ.html ka
-    :long_name: Working with If-Then-Else Statements
 
 
 Syntax Practice 3a: If-Then-Else
@@ -251,12 +244,6 @@ disables a net, Jessica should hop one space ahead.
     }
 
     jessica.hop();
-
-
-Self-Check
-~~~~~~~~~~
-.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz2Summ.html ka
-    :long_name: Working with If-Then Statements
 
 
 Syntax Practice 3b: If-Then
@@ -329,13 +316,6 @@ turn left.
         louisa.hop();
         louisa.turn(LEFT);
     }
-
-
-Self-Check
-~~~~~~~~~~
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz3Summ.html ka
-    :long_name: Deciding When to Use Each Type of Structure
 
 
 Syntax Practice 3c: Multi-way If
@@ -462,13 +442,6 @@ This expression is more like a question.  "Does the jeroo see a net ahead of the
      - There is water ahead of Bob or to the right of Bob, or both
    * - ``bob.isFacing(WEST) &&(!bob.seesNet(AHEAD))``
      - Bob is facing west and there is no net ahead
-
-
-Self-Check
-~~~~~~~~~~
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz4Summ.html ka
-   :long_name: AND, OR, and NOT
 
 
 Syntax Practice 3d: Compound Conditions
@@ -604,13 +577,6 @@ should turn to the left.
     kim.turn(LEFT);
 
 
-Self-Check
-~~~~~~~~~~
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz5Summ.html ka
-    :long_name: Working with While Loops
-
-
 Syntax Practice 3e: While Loops
 -------------------------------
 
@@ -623,13 +589,6 @@ Programming Practice 3
 
 .. extrtoolembed:: 'Programming Practice 3'
    :workout_id: 1378
-
-
-Check Your Understanding
-------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week3ReadingQuizSumm.html ka
-   :long_name: Programming Concepts
 
 
 .. raw:: html
