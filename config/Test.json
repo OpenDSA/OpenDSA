@@ -69,12 +69,8 @@
   },
   "chapters": {
     "Stuff": {
-      "General/GenTreeIntro": {},
-      "Sorting/SortOpt": {
-        "insertionSortWithoutSwapPRO": {
-          "points": 0.0
-        }
-      }
+      "Tutorials/parameters": {},
+      "Test/Reduct": {}
     }
   }
 }
