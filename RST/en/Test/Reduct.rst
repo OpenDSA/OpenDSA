@@ -25,14 +25,12 @@ A List ADT
 .. extrtoolembed:: 'List ADT Programming Exercise'
    :workout_id: 62
 
-                
+
 Code Workout Dev Test
 ---------------------
 
-.. extrtoolembed:: 'Reduction of SORTING to SIMPLE POLYGON'
+.. extrtoolembed:: 'General reduction proof template'
    :long_name: Dumbo
    :learning_tool: code-workout-dev
-   :workout_id: 524
-   :launch_url: https://codeworkoutdev.cs.vt.edu/gym/exercises/507/practice
-   :frame_width: 1350
-   :frame_height: 1200
+   :workout_id: 90
+   :launch_url: https://codeworkoutdev.cs.vt.edu/gym/exercises/507/practice?workout_id=90

@@ -33,8 +33,8 @@ external_tools_urls = {
     },
   "code-workout-dev": {
           "url": "https://codeworkoutdev.cs.vt.edu/gym/workouts/embed",
-          "frame_width": 1500,
-          "frame_height": 900,
+          "frame_width": 1000,
+          "frame_height": 1100,
           "enable_scrolling": False
     },
     "code-workout-jhavepop": {
