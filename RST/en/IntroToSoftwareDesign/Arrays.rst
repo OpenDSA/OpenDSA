@@ -315,13 +315,6 @@ an ``ArrayIndexOutOfBoundsException``.
    </div>
 
 
-Check Your Understanding: Arrays
---------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week10Quiz1Summ.html ka
-   :long_name: Arrays
-
-
 Syntax Practice 10a
 -------------------
 
@@ -428,13 +421,6 @@ index/position or condition, making it nearly impossible to write infinite
 loops. However, these advantages do come with limitations. Fortunately,
 Arrays naturally support either style of for loop, so use the style that
 best fits your needs.
-
-
-Check Your Understanding: Iterating with Arrays
------------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week10Quiz2Summ.html ka
-   :long_name: Iterating with Arrays
 
 
 Syntax Practice 10b
@@ -777,13 +763,6 @@ Syntax Practice 10c
 
 .. extrtoolembed:: 'Syntax Practice 10c'
    :workout_id: 1881
-
-
-Check Your Understanding
-------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week10ReadingQuizSumm.html ka
-   :long_name: Arrays Review
 
 
 Programming Practice 10a

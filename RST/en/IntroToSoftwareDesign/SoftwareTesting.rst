@@ -827,13 +827,6 @@ you intend to occur in a test case, but these methods will get you
 started with writing your first tests.
 
 
-Check Your Understanding: Software Testing Concepts
----------------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz1Summ.html ka
-   :long_name: Software Testing Concepts
-
-
 More About Methods
 ------------------
 
@@ -874,13 +867,6 @@ name follows the method's return type. This is the name that is used when the
 method is called. We could call the method anything we wanted, but spaces cannot
 be included.  Following the method's name is the method's **parameter list**
 which we'll talk about in the next section.
-
-
-Check Your Understanding: Method Signatures
--------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz2Summ.html ka
-   :long_name: Understanding Method Signatures
 
 
 Passing Information using Parameters
@@ -935,13 +921,6 @@ as arguments:
     turnThenHop(RIGHT, 7);
 
 This would cause the jeroo to turn right and then hop seven times.
-
-
-Check Your Understanding: Methods with Parameters
--------------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz3Summ.html ka
-   :long_name: Methods with Parameters
 
 
 Good Habits for Conditionals
@@ -1316,13 +1295,6 @@ OR expression will also be true, and so it will not evaluate
    </div>
 
 
-Check Your Understanding: Logical Equivalence
----------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz4Summ.html ka
-   :long_name: Logical Equivalence
-
-
 Relational Operators with Primitive Data Types
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1401,12 +1373,5 @@ Programming Practice 4
 
 .. extrtoolembed:: 'Programming Practice 4'
    :workout_id: 1404
-
-
-Module Review
--------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week4ReadingQuizSumm.html ka
-   :long_name: Module Review
 
 

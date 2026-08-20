@@ -112,13 +112,6 @@ grid positions--i.e., we always start counting from zero at the origin (top
 left), rather than starting with one.
 
 
-Self Check: Micro-Worlds
-------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz1Summ.html ka
-   :long_name: Micro-Worlds
-
-
 A Bit More LightBot
 -------------------
 
@@ -146,7 +139,6 @@ the later levels.
     Continue to play through
     Level 7. Once you have completed Level 7, stop. You'll return to finish
     Level 8 in the next exercise.
-
 
 
 Textually Representing Programs
@@ -200,7 +192,6 @@ One solution to this level is:
     andy.turnLightOn();
 
 
-
 .. admonition:: Try It Yourself
 
     Return to the LightBot game--hopefully, still visible in a separate
@@ -215,13 +206,6 @@ One solution to this level is:
     After writing down your solution, then run it. If it does not work the way
     you planned, revise it and revise your textual version, too before running
     it again. This will help you practice writing down program steps.
-
-
-Self-Check: Turning Micro-Worlds into Code
-------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz2Summ.html ka
-    :long_name: Turning Micro-Worlds into Code
 
 
 What Does LightBot Say About Programming?
@@ -1001,7 +985,6 @@ the start will significantly improve the quality and maintainability of your
 code as you progress in your programming journey.
 
 
-
 Comparing Visual and Textual Programming
 ----------------------------------------
 
@@ -1074,13 +1057,6 @@ simple problems using the concepts in this module.
 .. extrtoolembed:: 'Programming Practice 1'
    :workout_id: 1323
 
-
-Check Your Understanding
-------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week1ReadingQuizSumm.html ka
-   :long_name: Programming Concepts
-   
 
 .. raw:: html
 

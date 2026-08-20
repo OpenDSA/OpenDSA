@@ -394,13 +394,6 @@ is pressed.
    from (3, 4) to (5, 4).
 
 
-Self-Check
-~~~~~~~~~~
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week2Quiz1Summ.html ka
-   :long_name: Working with Jeroos
-
-
 Your Opinions on Course Grading Policies 
 ----------------------------------------
 
@@ -425,10 +418,6 @@ answer some or all of the questions.
 
 Please answer below and your submission of the survey will be verified
 for credit.
-
-.. avembed:: Exercises/IntroToSoftwareDesign/EGPSurvey.html ka
-   :long_name: Survey Completed
-
 
 Class Hierarchy and Inheritance
 -------------------------------
@@ -551,14 +540,6 @@ Creating the ``King`` class would then look like this:
 
 This ``extends`` keyword tells java that the ``King`` class is a subclass
 of ``ChessPiece``.
-
-
-Self-Check
-~~~~~~~~~~
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week2Quiz2Summ.html ka
-   :long_name: Working class hierarchy and inheritance
-
 
 
 Creating Smarter Jeroos
@@ -1338,14 +1319,6 @@ turn South.
        andy.turn(RIGHT);
 
    }   // ===== end of method myProgram() =====
-
-
-Self-Check
-~~~~~~~~~~
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week2Quiz3Summ.html ka
-   :long_name: Developing Algorithms
-
 
 
 Creating and Using Jeroo Methods
@@ -2160,12 +2133,6 @@ In the ``ClearNetsAndPick`` class:
    }
 
 
-Self-Check
-~~~~~~~~~~
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week2Quiz4Summ.html ka
-   :long_name: Writing Methods
-
 What is Polymorphism?
 ---------------------
 
@@ -2219,12 +2186,6 @@ Programming Practice 2
 .. extrtoolembed:: 'Programming Practice 2'
    :workout_id: 1344
 
-
-Check Your Understanding
-------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week2ReadingQuizSumm.html ka
-   :long_name: Programming Concepts
 
 .. raw:: html
    

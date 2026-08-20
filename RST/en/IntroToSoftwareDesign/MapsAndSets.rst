@@ -284,13 +284,6 @@ time without having to look up anything in the map, it is much more
 efficient when both the key and value are needed inside the loop.
 
 
-Check Your Understanding: Maps
-------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week13Quiz2Summ.html ka
-   :long_name: Maps
-
-
 Your Opinions on Course Grading Policies 
 ----------------------------------------
 
@@ -315,10 +308,6 @@ answer some or all of the questions.
 
 Please answer below and your submission of the survey will be verified
 for credit.
-
-.. avembed:: Exercises/IntroToSoftwareDesign/EGPSurvey.html ka
-   :long_name: Survey Completed
-
 
 The Set Interface
 -----------------
@@ -471,7 +460,6 @@ Syntax Practice: Adding to a Set
    :workout_id: 1585
 
 
-
 Checking Values in a Set
 ------------------------
 
@@ -596,13 +584,6 @@ identical to using a for-each loop over a list.
 
 This method would print out the entire contents of the set by using a
 for-each loop over all of the elements in the set.
-
-
-Check Your Understanding: Sets
-------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week13Quiz1Summ.html ka
-   :long_name: Sets
 
 
 Programming Practice: Maps

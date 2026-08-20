@@ -351,7 +351,6 @@ distinct names like we did initially:
     }
 
 
-
 Alternately, if for some reason you *must* use the same variable name at two
 different scope levels, using the modifier ``this`` will help clarify which
 variable you are referring to:
@@ -383,14 +382,6 @@ Summarizing Scope Concepts
    <div class="align-center" style="margin-top:1em;">
    <iframe width="560" height="315" src="https://www.youtube.com/embed/2nTjUAeD5WE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
    </div>
-
-
-Check Your Understanding: Scope
--------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week12Quiz4Summ.html ka
-   :long_name: Scope
-
 
 
 Syntax Practice: Scoping
@@ -660,13 +651,6 @@ string representation first by calling its ``toString()`` method.
   machine!).
 
 
-Check Your Understanding: Output
---------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week12Quiz1Summ.html ka
-   :long_name: Output
-
-
 Input Using Scanners
 --------------------
 
@@ -877,13 +861,6 @@ all the ``read()`` calls in one or more other methods. Then you can pass a
    }
 
 
-Check Your Understanding: Input
--------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week12Quiz2Summ.html ka
-   :long_name: Input
-
-
 A Complete Input/Output Example
 -------------------------------
 
@@ -1020,13 +997,6 @@ The ``TestCase`` base class provides similar methods for setting ``System.in``
 or retrieving the history from ``System.out``. See the javadoc for
 `TestCase <https://courses.cs.vt.edu/~cs1114/api/student/TestCase.html>`_
 for more details.
-
-
-Check Your Understanding: Testing
----------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week12Quiz3Summ.html ka
-   :long_name: Testing
 
 
 .. raw:: html
