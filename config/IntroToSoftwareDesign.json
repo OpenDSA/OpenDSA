@@ -65,111 +65,115 @@
   },
   "chapters": {
     "Course Policies": {
-      "IntroToSoftwareDesign/CoursePolicies": {}
+      "IntroToSoftwareDesign/CoursePolicies": {
+        "No Exercises": {
+          "points": 0
+        }
+      }
     },
     "Objects, Classes, and Micro-Worlds": {
       "IntroToSoftwareDesign/GettingStarted": {
         "Programming Practice 1": {
-          "points": 100
+          "points": 7
         }
       }
     },
     "Methods, Selection, and Repeating Actions": {
       "IntroToSoftwareDesign/ConditionalActions": {
         "EGPSurvey": {
-          "points": 5,
+          "points": 1,
           "threshold": 1
         },
         "Programming Practice 2": {
-          "points": 95
+          "points": 6
         }
       }
     },
     "Software Testing": {
       "IntroToSoftwareDesign/SoftwareTesting": {
         "Programming Practice 3": {
-          "points": 100
+          "points": 7
         }
       }
     },
     "Variables, Primitive Types, Parameters, and Logic": {
       "IntroToSoftwareDesign/VariablesPrimitivesAndParameters": {
         "Programming Practice 4": {
-          "points": 100
+          "points": 7
         }
       }
     },
     "Fields, Encapsulation, and 2D Pixel Grids": {
       "IntroToSoftwareDesign/FieldsEncapsulationAndImages": {
         "Programming Practice 5": {
-          "points": 100
+          "points": 7
         }
       }
     },
     "Reactive Agent Simulations and Delegation": {
       "IntroToSoftwareDesign/ReactiveSimulationsAndDelegation": {
         "Programming Practice 6": {
-          "points": 100
+          "points": 7
         }
       }
     },
     "Object-Oriented Inheritance, Overriding, and Interfaces": {
       "IntroToSoftwareDesign/InheritanceAndPolymorphism": {
         "Programming Practice 7": {
-          "points": 100
+          "points": 7
         }
       }
     },
     "Grouping Objects: Lists, Aggregation, and Strings": {
       "IntroToSoftwareDesign/ListsAndAggregation": {
         "Programming Practice 8": {
-          "points": 100
+          "points": 7
         }
       }
     },
     "Fixed-Size 1D Arrays and Array Idioms": {
       "IntroToSoftwareDesign/Arrays": {
         "Programming Practice 9": {
-          "points": 100
+          "points": 7
         }
       }
     },
     "Multi-Dimensional Arrays and Matrix Algorithms": {
       "IntroToSoftwareDesign/MultiDimensionalArrays": {
         "Programming Practice 10": {
-          "points": 100
+          "points": 7
         }
       }
     },
     "Abstract Classes, Frameworks, and Command Patterns": {
       "IntroToSoftwareDesign/AbstractClassesAndCommandPatterns": {
         "Programming Practice 11": {
-          "points": 100
+          "points": 7
         }
       }
     },
     "Maps, Sets, and Associative Data Modeling": {
       "IntroToSoftwareDesign/MapsAndSets": {
         "Programming Practice 12": {
-          "points": 100
+          "points": 7
         }
       }
     },
     "Variable Scoping, File Input/Output, and Streams": {
       "IntroToSoftwareDesign/FileIO": {
         "EGPSurvey": {
-          "points": 5,
+          "points": 1,
           "threshold": 1
         },
         "Programming Practice 13": {
-          "points": 100
+          "points": 6
         }
       }
     },
     "Static Members, Main Method, and Exception Handling": {
       "IntroToSoftwareDesign/StaticMainAndExceptions": {
         "Programming Practice 14": {
-          "points": 100
+          "points": 7
         }
       }
     }
