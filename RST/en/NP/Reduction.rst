@@ -136,7 +136,7 @@ Thus, an upper bound for **PAIRING** is in :math:`O(n \log n)`.
 
 
 Reduction and Finding a Lower Bound
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------
 
 It is important to note that the pairing problem does **not**
 require that elements of the two sequences be sorted.
@@ -208,7 +208,7 @@ for **PAIRING**.
 
 
 The Reduction Template
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 Before showing the example in detail for the reduction of **SORTING**
 to **PAIRING**, let's step back for a moment and make sure that we
@@ -250,6 +250,21 @@ We can define reduction more formally as a three-step process:
    A graphical representation of the general reduction process,
    showing the role of the two problems, and the two transformations.
 
+The following exercise gives you a chance to reproduce the basic
+reduction proof process.
+This will help to confirm whether you understand the process.
+
+.. extrtoolembed:: 'General reduction proof template'
+   :long_name: Dumbo1
+   :learning_tool: code-workout-dev
+   :workout_id: 90
+   :frame_height: 1200
+   :launch_url: https://codeworkoutdev.cs.vt.edu/gym/exercises/507/practice?workout_id=90
+
+
+PAIRING Lower Bound
+-------------------
+
 Next is a slideshow that shows the steps for 
 the reduction of **SORTING** to **PAIRING**.
 
@@ -276,9 +291,20 @@ None of this involves knowing the actual solution to either problem.
 This is especially helpful since we often use reductions to prove that
 something cannot exist (or at least, cannot run fast).
 
+The following exercise gives you a chance to reproduce the SORTING to
+PAIRING reduction.
+This will help to confirm whether you understand the process.
 
+.. extrtoolembed:: 'Reduction of SORTING to PAIRING'
+   :long_name: Dumbo2
+   :learning_tool: code-workout-dev
+   :workout_id: 92
+   :frame_height: 1400
+   :launch_url: https://codeworkoutdev.cs.vt.edu/gym/exercises/529/practice?workout_id=92
+
+                
 Two Multiplication Examples
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------
 
 As a second example of reduction, consider the simple problem of
 multiplying two :math:`n`-digit numbers.
@@ -418,7 +444,7 @@ The following slideshow illustrates this reduction process.
 
 
 Bounds Theorems
-~~~~~~~~~~~~~~~
+---------------
 
 The notation
 :math:`\leq_{O(g(n))}` means that a reduction can be done
@@ -450,7 +476,7 @@ So, given good transformations, both problems take at least
 
 
 The Cost of Making a Simple Polygon
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------
 
 **SIMPLE POLYGON**: Given a set of :math:`n` points in the plane,
 find a simple polygon with those points as vertices.
@@ -485,3 +511,14 @@ the only simple polygon having all of its points on :math:`C` as
 vertices is the convex one.
 Therefore, by the Lower Bound Theorem, **SIMPLE POLYGON** is in
 :math:`\Omega(n \log n)`.
+
+The following exercise gives you a chance to reproduce the proof that
+SIMPLE POLYGON is at least as expensive as SORTING.
+This will help to confirm whether you understand the process.
+
+.. extrtoolembed:: 'Reduction of SORTING to SIMPLE POLYGON'
+   :long_name: Dumbo3
+   :learning_tool: code-workout-dev
+   :workout_id: 93
+   :frame_height: 1400
+   :launch_url: https://codeworkoutdev.cs.vt.edu/gym/exercises/524/practice?workout_id=93
