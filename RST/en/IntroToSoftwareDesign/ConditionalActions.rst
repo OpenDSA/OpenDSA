@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Conditional and Repeating Actions
+   :title: Methods, Selection, and Repeating Actions
    :author: Molly Domino; Steve Edwards
    :institution: Virginia Tech
    :keyword: Conditional Statement; While Loop
@@ -177,13 +177,6 @@ simply turns right, Timmy must move one space forward.
     timmy.hop();
 
 
-Syntax Practice 3a: If-Then-Else
---------------------------------
-
-.. extrtoolembed:: 'Syntax Practice 3a: If-Then-Else'
-   :workout_id: 1373
-
-
 Creating Optional Statements With If-then
 -----------------------------------------
 
@@ -244,13 +237,6 @@ disables a net, Jessica should hop one space ahead.
     }
 
     jessica.hop();
-
-
-Syntax Practice 3b: If-Then
----------------------------
-
-.. extrtoolembed:: 'Syntax Practice 3b: If-Then'
-   :workout_id: 1374
 
 
 Java's Syntax for the Multi-way Selection Structure (a cascaded if)
@@ -318,11 +304,33 @@ turn left.
     }
 
 
-Syntax Practice 3c: Multi-way If
---------------------------------
+Your Opinions on Course Grading Policies 
+----------------------------------------
 
-.. extrtoolembed:: 'Syntax Practice 3c: Multi-way If'
-   :workout_id: 1375
+Please Complete the following survey. The survey includes questions regarding your
+opinions on the grading policies in this course and how you approach learning
+in this course. We will use this information to understand better how you are
+affected by these policies so that we can improve the course.
+
+Towards the end of the survey you will be asked if you consent for your answers
+and course data to be used in a study about grading policies.  There is no
+additional work on your part if you provide consent for your data to
+be used in the study.  Completing the survey should take less than 30 minutes.
+Your course instructor will not know whether you agree to
+participate until after you have completed the course and final
+grades have been turned in. You will earn assignment credit for submitting this
+survey, whether or not you agree to participate in the study or decline to
+answer some or all of the questions.
+
+.. raw:: html
+
+    <a href="https://virginiatech.questionpro.com/t/AYIrDZ6vmW" target="_blank">CS 1114 Grading Policies Survey 1</a>
+
+Please answer below and your submission of the survey will be verified
+for credit.
+
+.. avembed:: Exercises/IntroToSoftwareDesign/EGPSurvey.html ka
+   :long_name: Survey Completed
 
 
 Compound Conditions
@@ -442,13 +450,6 @@ This expression is more like a question.  "Does the jeroo see a net ahead of the
      - There is water ahead of Bob or to the right of Bob, or both
    * - ``bob.isFacing(WEST) &&(!bob.seesNet(AHEAD))``
      - Bob is facing west and there is no net ahead
-
-
-Syntax Practice 3d: Compound Conditions
----------------------------------------
-
-.. extrtoolembed:: 'Syntax Practice 3d: Compound Conditions'
-   :workout_id: 1376
 
 
 Repeating Actions
@@ -577,17 +578,10 @@ should turn to the left.
     kim.turn(LEFT);
 
 
-Syntax Practice 3e: While Loops
--------------------------------
-
-.. extrtoolembed:: 'Syntax Practice 3e: While Loops'
-   :workout_id: 1377
-
-
-Programming Practice 3
+Programming Practice 2
 ----------------------
 
-.. extrtoolembed:: 'Programming Practice 3'
+.. extrtoolembed:: 'Programming Practice 2'
    :workout_id: 1378
 
 

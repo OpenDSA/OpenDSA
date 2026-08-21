@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :title: Software Testing
-   :author: Steve Edwards
+   :author: Stephen Edwards
    :institution: Virginia Tech
    :keyword: Software Testing; Method; Unit Testing
    :naturallanguage: en
@@ -1354,24 +1354,10 @@ followed by the equal sign second.
    </div>
 
 
-Syntax Practice 4a: Compound Conditionals
------------------------------------------
-
-.. extrtoolembed:: 'Syntax Practice 4a: Compound Conditionals'
-   :workout_id: 1403
-
-
-Syntax Practice 4b: Conditionals and Relational Operators
----------------------------------------------------------
-
-.. extrtoolembed:: 'Syntax Practice 4b: Conditionals and Relational Operators'
-   :workout_id: 1768
-
-
-Programming Practice 4
+Programming Practice 3
 ----------------------
 
-.. extrtoolembed:: 'Programming Practice 4'
+.. extrtoolembed:: 'Programming Practice 3'
    :workout_id: 1404
 
 

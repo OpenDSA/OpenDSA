@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Introduction to Software Design: Getting Started
+   :title: Objects, Classes, and Micro-Worlds
    :author: Molly Domino; Steve Edwards
    :institution: Virginia Tech
    :keyword: Software Design
@@ -576,13 +576,6 @@ This method has the following structure:
    :align: center
 
 
-Syntax Practice 1a
-------------------
-
-.. extrtoolembed:: 'Syntax Practice 1a'
-   :workout_id: 1722
-
-
 Creating New Objects
 --------------------
 
@@ -1039,13 +1032,6 @@ computational thinking--sequencing, use of methods or functions (through f1/f2),
 and problem-solving. Textual Java then builds on this by introducing the
 precise language and structure needed for real-world software development,
 giving you greater control and power over your programs.
-
-
-Syntax Practice 1b
-------------------
-
-.. extrtoolembed:: 'Syntax Practice 1b'
-   :workout_id: 1723
 
 
 Programming Practice 1

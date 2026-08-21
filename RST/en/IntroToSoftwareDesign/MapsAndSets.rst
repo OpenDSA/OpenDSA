@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Maps and Sets
+   :title: Maps, Sets, and Associative Data Modeling
    :author: Molly Domino
    :institution: Virginia Tech
    :keyword: Map; Set
@@ -111,14 +111,6 @@ names (keys) with phone numbers (values) in pairs.
    }
 
 
-Syntax Practice: Making Maps
-----------------------------
-
-.. 3 CW exercises practicing making Maps of different type combinations
-.. extrtoolembed:: 'Syntax Practice: Making Maps'
-   :workout_id: 1588
-
-
 Adding and Accessing Pairs in a Map
 -----------------------------------
 
@@ -158,14 +150,6 @@ When we run the code above, the following message would be printed out:
 .. raw:: html
 
    <pre>"Jane Q's number is: 999-777-1234"</pre>
-
-
-Syntax Practice: Adding to Maps
--------------------------------
-
-.. 3 CW exercises practicing adding values to a map
-.. extrtoolembed:: 'Syntax Practice: Adding to Maps'
-   :workout_id: 1589
 
 
 Checking for and Removing Pairs in a Map
@@ -211,14 +195,6 @@ A Visual Summary of Using Map and HashMap
    <div class="align-center" style="margin-top:1em;">
    <iframe width="560" height="315" src="https://www.youtube.com/embed/H62Jfv1DJlU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
    </div>
-
-
-Syntax Practice: Map Contains and Remove
-----------------------------------------
-
-.. 3 CW exercises practicing using contains and remove
-.. extrtoolembed:: 'Syntax Practice: Map Contains and Remove'
-   :workout_id: 1590
 
 
 Looping Over Map Contents
@@ -283,31 +259,6 @@ because it provides access to both the key and the value at the same
 time without having to look up anything in the map, it is much more
 efficient when both the key and value are needed inside the loop.
 
-
-Your Opinions on Course Grading Policies 
-----------------------------------------
-
-Please Complete the following survey. The survey includes questions regarding your
-opinions on the grading policies in this course and how you approach learning
-in this course. We will use this information to understand better how you are
-affected by these policies so that we can improve the course.
-
-Towards the end of the survey you will be asked if you consent for your answers
-and course data to be used in a study about grading policies.  There is no
-additional work on your part if you provide consent for your data to
-be used in the study.  Completing the survey should take less than 30 minutes.
-Your course instructor will not know whether you agree to
-participate until after you have completed the course and final
-grades have been turned in. You will earn assignment credit for submitting this
-survey, whether or not you agree to participate in the study or decline to
-answer some or all of the questions.
-
-.. raw:: html
-
-    <a href="https://virginiatech.questionpro.com/t/AYIrDZ65ya" target="_blank">CS 1114 Grading Policies Survey 2</a>
-
-Please answer below and your submission of the survey will be verified
-for credit.
 
 The Set Interface
 -----------------
@@ -397,14 +348,6 @@ our ``PhoneRecord`` objects:
    }
 
 
-Syntax Practice: Making A Set
------------------------------
-
-.. 3 CW exercises making sets of different types
-.. extrtoolembed:: 'Syntax Practice: Making A Set'
-   :workout_id: 1584
-
-
 Adding Values to a Set
 ----------------------
 
@@ -450,14 +393,6 @@ set, however.
 Just as with lists, you must make sure the item added is the same type as the
 type in your angle brackets(``<>``).  For example we could not simply add the
 number ``1`` to the set ``noCall``.
-
-
-Syntax Practice: Adding to a Set
---------------------------------
-
-.. 3 CW exercises adding values to existing sets
-.. extrtoolembed:: 'Syntax Practice: Adding to a Set'
-   :workout_id: 1585
 
 
 Checking Values in a Set
@@ -508,14 +443,6 @@ This method would output the following message:
    <pre>"It is false that Jane is in the set</pre>
 
 
-Syntax Practice: Set Contains
------------------------------
-
-.. 3 CW exercises practicing contains
-.. extrtoolembed:: 'Syntax Practice: Set Contains'
-   :workout_id: 1586
-
-
 Removing Values from a Set
 --------------------------
 
@@ -553,14 +480,6 @@ We then remove ``roger``` from the set and then print out:
    <pre>"It is false that Roger is in the set"</pre>
 
 
-Syntax Practice: Set Remove
----------------------------
-
-.. 3 CW exercises practicing remove
-.. extrtoolembed:: 'Syntax Practice: Set Remove'
-   :workout_id: 1587
-
-
 Looping Over Sets
 -----------------
 
@@ -586,10 +505,10 @@ This method would print out the entire contents of the set by using a
 for-each loop over all of the elements in the set.
 
 
-Programming Practice: Maps
---------------------------
+Programming Practice 12
+-----------------------
 
-.. extrtoolembed:: 'Programming Practice: Maps'
+.. extrtoolembed:: 'Programming Practice 12'
    :workout_id: 1594
 
 

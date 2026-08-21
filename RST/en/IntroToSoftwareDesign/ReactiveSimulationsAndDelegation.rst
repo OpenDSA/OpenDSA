@@ -4,8 +4,8 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Object-Oriented Inheritance, Overriding, and Interfaces
-   :author: Molly Domino; Stephen Edwards
+   :title: Reactive Agent Simulations and Delegation
+   :author: Stephen Edwards
    :institution: Virginia Tech
    :keyword: Inheritance; Polymorphism; Subclass; Method
    :naturallanguage: en
@@ -2134,10 +2134,10 @@ practice.
    </div>
 
 
-Programming Practice 7
+Programming Practice 6
 ----------------------
 
-.. extrtoolembed:: 'Programming Practice 7'
+.. extrtoolembed:: 'Programming Practice 6'
    :workout_id: 1344
 
 
