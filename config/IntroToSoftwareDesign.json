@@ -66,8 +66,9 @@
   "chapters": {
     "Course Policies": {
       "IntroToSoftwareDesign/CoursePolicies": {
-        "No Exercises": {
-          "points": 0
+        "NoExercises": {
+          "points": 0,
+          "threshold": 0
         }
       }
     },
