@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: CS1-level introduction to variable scoping and file I/O.
 
-Variable Scoping, Input, and Output
-===================================
+Variable Scoping, File Input/Output, and Streams
+================================================
 
 Variable Scoping
 ----------------

@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: First semester programming course introduction to conditional statements and while loops.
 
-Conditional and Repeating Actions
-=================================
+Methods, Selection, and Repeating Actions
+=========================================
 
 Selection
 ---------

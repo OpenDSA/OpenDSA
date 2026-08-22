@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: First semester programming course introduction to image representations and for-each loops.
 
-Pictures and For-each Loops
-===========================
+Fields, Encapsulation, and 2D Pixel Grids
+=========================================
 
 In this chapter, you will learn the basics of computer image representations
 and how simple image manipulation can be accomplished.

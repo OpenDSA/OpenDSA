@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: First semester programming course introduction to variables, fields, and parameters.
 
-Variables, Fields, and Parameters
-=================================
+Variables, Primitive Types, Parameters, and Logic
+=================================================
 
 .. raw:: html
 

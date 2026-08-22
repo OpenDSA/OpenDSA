@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: Introduction to Inheritance and Polymorphism
 
-Inheritance and Polymorphism: Subclasses and Methods
-====================================================
+Object-Oriented Inheritance, Overriding, and Interfaces
+=======================================================
 
    “Computer Science is not programming. Rather, programming is the medium
    for our art, just as writing is the medium for English and other majors.

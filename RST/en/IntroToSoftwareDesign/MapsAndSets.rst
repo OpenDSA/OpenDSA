@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: CS1-level introduction to maps and sets.
 
-Maps and Sets
-=============
+Maps, Sets, and Associative Data Modeling
+=========================================
 
 The Map and Set Interfaces
 --------------------------

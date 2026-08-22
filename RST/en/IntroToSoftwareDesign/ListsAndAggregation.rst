@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: CS1-level more advanced presentation on loops and introduction to generics.
 
-Lists, Loop Idioms, Generics, and the Null Keyword
-==================================================
+Grouping Objects: Lists, Aggregation, and Strings
+=================================================
 
 Last week we talked about what ``List``\ s are and how they work.  This week,
 we'll focus more on why they can be useful in more complicated programming tasks.

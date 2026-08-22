@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: CS1-level presentation on arrays.
 
-Arrays
-======
+Fixed-Size 1D Arrays and Array Idioms
+=====================================
 
 So far in this class, we have used ``List``\ s  when we need to store many
 pieces of data in a single object. Lists provide many advantages for this,

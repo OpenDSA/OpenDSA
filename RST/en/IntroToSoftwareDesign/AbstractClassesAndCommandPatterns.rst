@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: CS1-level introduction to the static keyword, main method, and exception handling.
 
-Static, Main, and Exceptions
-============================
+Abstract Classes, Frameworks, and Command Patterns
+==================================================
 
 The Main Method
 ---------------

@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: Introduction to the course module for an introductory CS course.
 
-Getting Started
-===============
+Objects, Classes, and Micro-Worlds
+==================================
 
 Installing BlueJ
 ----------------
