@@ -11,6 +11,12 @@
 Methods, Selection, and Repeating Actions
 =========================================
 
+   “Computer Science is not programming. Rather, programming is the medium
+   for our art, just as writing is the medium for English and other majors.
+   And, like all writing, it is refined by rewriting. The trick is to do
+   the rewriting in your head before your fingers hit the keys.”
+   -- Nick Parlante
+
 In the previous chapter, you learned how to create instances of existing
 classes and invoke their methods. In this chapter, you will take the next step
 as a software designer: creating your own custom subclasses, defining new
@@ -1409,6 +1415,7 @@ Programming Practice 2
 
 .. raw:: html
 
+   <p>&nbsp;</p>
    <footer style="border-top: 1px solid #777;"><div class="footer">
      Selected content adapted from:<br/>
      <a href="http://www.cs.trincoll.edu/~ram/jjj/">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde,

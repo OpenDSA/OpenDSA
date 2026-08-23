@@ -1,7 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://opendsa.org for more details.
-.. Copyright (c) 2012-2026 by the OpenDSA Project Contributors, and
-.. distributed under an MIT open source license.
+.. Copyright (c) 2012-2026 by the OpenDSA Project Contributors.
 
 .. avmetadata::
    :author: Stephen Edwards
@@ -10,10 +9,27 @@
 Understanding this Course
 =========================
 
+Welcome to CS 1114! Learning to program is one of the most empowering,
+creative, and deeply satisfying journeys you will ever undertake. At its
+heart, computer science is not about memorizing mechanical rules or staring at
+endless lines of cryptic text; it is about the thrill of creation. With nothing
+more than logic and imagination, you will learn how to breathe life into abstract
+ideas, construct intricate digital worlds, and build software that can solve
+meaningful problems. Whether you have never written a single line of code or have
+experimented with programming before, this course is designed as an open
+invitation to experience the pure joy of bringing your own ideas to life.
+
+As you step into this craft, remember that software design is an art of iterative
+discovery. The excitement comes not just from the final working program, but from
+the process itself: exploring possibilities, tackling intriguing puzzles, and
+experiencing that unbeatable "aha!" moment when your code runs for the first time.
+To help you make the most of this creative journey, let's explore how our course is
+structured, how you will learn, and the policies designed to support your growth
+every step of the way.
+
+
 Read the Course Syllabus
 ------------------------
-
-Welcome to CS 1114!
 
 To get started, let's go through the course policies described in the course
 syllabus on Canvas to make sure you understand how the course will run, what
@@ -62,6 +78,37 @@ program prior to taking this course.
 Students with extra experience should not set your expectations about what
 is normal or what course staff expect of the bulk of students in this course
 who are learning to program for the first time.
+
+
+Which Introductory CS Course is Right for You?
+----------------------------------------------
+
+We are happy you have chosen to start your CS journey here in this course.
+However, if you are unsure which CS course is the best place for you to
+start, we want to help you find the best path. Our department includes
+multiple introductory courses for different audiences:
+
+- CS 1114 Introduction to Software Design (Introduction to programming and
+  object-oriented design and development using Java; common starting point for
+  students intending to major, double-major, or minor in Computer Science)
+- CS 1014 Introduction to Computational Thinking (A non-programming introduction to computational thinking and problem solving for non-majors)
+- CS 1064 Introduction to Programming in Python (Beginner programming using Python for all majors; covers slightly fewer design and engineering concepts, and so requires CS 2064 to continue pursuing further CS courses)
+- CS 2064 Intermediate Programming in Python (Provides a foundation for more advanced Python usage and entry into other CS courses; requires solid introductory Python experience)
+- CS 2114 Software Design and Data Structures (Second semester object-oriented programming in Java for students who have already mastered introductory Java or CS 2064; gateway for more advanced studies by CS majors, double-majors, and minors)
+
+While CS 1114 may be the perfect fit for your needs, you can use the
+following survey to determine which choices match your background and your
+future goals:
+
+.. admonition:: Introductory CS Course Options
+
+    This survey will ask you questions about your background, goals,
+    and prior experience to help guide you through the choice of which CS course
+    to start your journey:
+
+    .. raw:: html
+     
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://virginiatech.qualtrics.com/jfe/form/SV_0p4tG6D1Q7IT5ki" target="_blank">Introductory CS Course Options</a>
 
 
 Weekly Schedule
@@ -175,16 +222,16 @@ To give you flexibility while upholding rigorous mastery benchmarks, program
 assignments use two specific types of passes:
 
 1. **Program Grace Passes (Deadline Extensions)**:
-   * You begin the semester with **3 Program Grace Passes**.
-   * A Grace Pass extends the submission deadline for a program assignment by **48 hours** past the original Wednesday due date.
-   * Each program assignment's deadline can be extended at most once.
-   * Late submissions are not accepted without a Grace Pass.
+   - You begin the semester with **3 Program Grace Passes**.
+   - A Grace Pass extends the submission deadline for a program assignment by **48 hours** past the original Wednesday due date.
+   - Each program assignment's deadline can be extended at most once.
+   - Late submissions are not accepted without a Grace Pass.
 
 2. **Program Mastery Passes (Revisions for 'R' Grades)**:
-   * You begin the semester with **3 Program Mastery Passes**.
-   * If you receive a grade of **Revision Needed (R)** following your grading interview, you may use a Program Mastery Pass to reopen the assignment for **48 hours** to revise, fix, and resubmit your work.
-   * Resubmitting via a Mastery Pass requires scheduling a **new grading interview** to evaluate your revised submission.
-   * Program Mastery Passes must be used within **2 weeks** of the original assignment due date. Completing your initial grading interview early ensures you have sufficient time to use a Mastery Pass if needed.
+   - You begin the semester with **3 Program Mastery Passes**.
+   - If you receive a grade of **Revision Needed (R)** following your grading interview, you may use a Program Mastery Pass to reopen the assignment for **48 hours** to revise, fix, and resubmit your work.
+   - Resubmitting via a Mastery Pass requires scheduling a **new grading interview** to evaluate your revised submission.
+   - Program Mastery Passes must be used within **2 weeks** of the original assignment due date. Completing your initial grading interview early ensures you have sufficient time to use a Mastery Pass if needed.
 
 
 Quizzes
@@ -198,9 +245,9 @@ proctored quizzes** given approximately every other week. Each quiz is worth
 * **Scheduling Your Quiz**: You will schedule your own testing appointment at the facility during the designated multi-day window for each quiz.
 * **Testing Environment**: Quizzes are strictly **closed-book and closed-notes**. No personal laptops, phones, smartwatches, or outside materials are permitted in the testing facility. (If the testing facility is unavailable for a specific quiz, it will be administered in class using LockDown Browser with advance notice.)
 * **Quiz Mastery Passes (Retakes)**:
-  * Students begin the semester with **3 Quiz Mastery Passes**.
-  * If you miss a quiz or score lower than you hoped, you can use a Quiz Mastery Pass to schedule **one retake** of that quiz in the testing facility during the week after quiz results are released.
-  * Each individual quiz can be retaken at most once.
+  - Students begin the semester with **3 Quiz Mastery Passes**.
+  - If you miss a quiz or score lower than you hoped, you can use a Quiz Mastery Pass to schedule **one retake** of that quiz in the testing facility during the week after quiz results are released.
+  - Each individual quiz can be retaken at most once.
 
 
 Programming Language and Environment
@@ -328,6 +375,11 @@ may significantly impact change-of-major applications and graduation timelines.
 AI and Long-Term Learning
 -------------------------
 
+Generative AI tools like ChatGPT, Microsoft Copilot, Gemini, Claude, Github
+Copilot, and any many others, are extremely common and their use is becoming
+a regular occurrence for many. In this class, we want to make sure you
+understand when and how we expect you to use generative AI.
+
 Your goal in CS 1114 is not simply to produce working code, but to develop the
 ability to analyze problems, design solutions, and debug software independently.
 Generative AI tools (such as ChatGPT, Claude, Gemini, Copilot, and Hokie AI)
@@ -339,6 +391,29 @@ If you cannot independently explain, reproduce, and defend your code during your
 **in-person TA grading interviews**, you have not done the learning. Future
 computer science courses, technical interviews, and your professional career
 depend entirely on your foundational ability to reason through code independently.
+
+At the same time, there are two very powerful things you can use generative AI for
+that you should really consider: studying and becoming a better student.
+On the studying side, there is a lot of benefit to studying in a group with
+other students, asking each other questions by referring to your notes or
+the reading assignments, and helping each other understand the material. Turning
+studying, particularly if you are reviewing before a quiz or a test, into a
+social activity is a powerful technique. But there is also a lot of potential
+to use generative AI prompts to create self-study quizzes for you (and your
+study group) to check your own knowledge on concepts we are teaching.
+Occasionally during this course, we will suggest possible prompts you can
+use in this way, whether it is about creating self-test questions you can
+use to study, or creating flash cards, or trying to identify possible
+misconceptions you might have, or whatever.
+
+Second, generative AI tools can big help in learning how to be a better student.
+Whether you want an AI-generated work schedule for how to regularly spend
+time on all your assignments, or AI coaching on better note taking skills, or
+AI advice on how to prioritize work across different classes so you know
+what to focus on while also knowing how you'll complete many assignments all
+by their deadlines without crushing yourself, there are many practical ways
+you can use generative AI. Again, we will occasionally look at some of these
+ways throughout the course.
 
 
 Video: What Everyone Gets Wrong About AI and Learning
@@ -356,6 +431,24 @@ AI Use Policy: Learning Support Only
 
 Students may use university-approved generative AI tools solely as a **conceptual
 learning aid**.
+For the purposes of this course, you should consider **generative AI tools**
+just as if they were "other people" outside the classroom, or even
+"fellow students". As stated in the syllabus, you may freely offer and
+receive verbal assistance with your classmates on many topics, including:
+how to use the programming language, what library classes or methods do,
+what errors mean, or how to interpret assignment instructions. These same rules
+apply to generative AI tools--you can ask questions or consult generative
+AI resources for any of these purposes, just like you can your peers.
+
+However, treating generative AI tools is the same way as other people
+with respect to the Honor Code means that, as with fellow students,
+you may not **use them to receive help** while working on your program code
+or any graded assignments. You may not **show your code to others** or
+**view code written by others**, including generative AI tools, when working
+on assignments to turn in for this course. In the same
+way, you cannot **copy code** from them (or another person) for any graded
+work.
+
 
 .. list-table:: Acceptable vs. Prohibited AI Uses in CS 1114
    :widths: 50 50
@@ -381,9 +474,53 @@ instructor before proceeding.
 Why Over-Reliance on AI Undercuts Your Future
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. **Loss of Critical Problem-Solving Ability**: Relying on AI for solutions prevents the formation of neural pathways required for analytical thinking. When faced with novel problems, students who over-rely on AI struggle to know where to begin.
-2. **Shallow Understanding and Poor Retention**: Mastery requires wrestling with bugs and learning from mistakes. Bypassing this struggle leads to fragile knowledge that disappears quickly.
-3. **Severe Impact on Internship and Job Interviews**: Tech companies already have access to AI; they hire human software engineers who can solve problems, reason under pressure, and articulate trade-offs. Technical interviews frequently require live whiteboard coding and deep architectural explanations without AI access. If you rely on AI to write your code now, you will struggle in technical interviews.
+Relying on generative AI to solve programming problems can significantly
+undermine your development of critical skills and negatively affect your
+performance in internship interviews--especially as a college student still
+building foundational knowledge.
+
+**Loss of Critical Thinking and Problem-Solving Skills**
+
+- Research shows that heavy dependence on AI tools for programming tasks leads to "cognitive offloading," where you let the AI do the thinking for you. This reduces your engagement in analytical tasks and weakens your ability to think critically and solve problems independently.
+- Beginners who frequently use AI for code generation and debugging struggle to develop the foundational skills needed to solve similar problems on their own. This means you might be able to complete assignments with AI help, but when faced with a new or slightly different challenge, you may not know where to start or how to solve the new problem.
+
+**Shallow Learning and Poor Skill Retention**
+
+- When you let AI do the work, you miss out on the iterative process of making mistakes, debugging, and learning from them. This process is essential for deep understanding and long-term retention of programming concepts.
+- Studies show that using AI for direct solutions, rather than as a tool for explanations or feedback, leads to weaker problem-solving skills and poorer performance on independent tasks.
+
+**Increased Frustration for Beginners**
+
+- For students new to programming, relying on AI can actually increase frustration. If you haven't built up confidence and understanding through hands-on practice, you may feel lost when the AI's output doesn't work as expected or when you're asked to explain your code.
+
+
+Negative Impact on Internship Interview Experiences
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In short, companies hiring interns (or full-time employees) already have
+access to all the AI resources they need. They don't need new employees
+who can only feed problems into AI systems. It is imperative that you
+build your foundational skills so that you can read and write code fluently
+before you can use AI tools effectively on coding tasks.
+
+**Inability to Solve Problems Without AI**:
+Many technical interviews, especially for internships, still require you to solve problems on a whiteboard or in a live coding environment--without access to AI tools. If you've relied on AI up to this point, you may freeze or struggle to solve even basic problems independently.
+
+**Difficulty Explaining Your Thought Process**:
+Interviewers often ask you to explain your reasoning, discuss trade-offs, and walk through your solution step by step. If you haven't practiced solving problems yourself, you'll find it hard to articulate your approach or debug under pressure.
+
+**Suspicion from Recruiters**:
+As AI-generated solutions become more common, recruiters are increasingly wary of candidates who submit "too perfect" code or can't explain their solutions in detail. Some companies are implementing AI-detection tools or shifting to interview formats that require real-time problem-solving and explanation.
+
+**Changing Interview Expectations**:
+While the industry is evolving--some companies are moving toward project-based assessments, live coding with explanation, or system design interviews--the expectation remains that you can reason through problems and communicate your approach, not just produce code.
+
+The bottom line is that generative AI is a powerful tool, but if you rely on
+it to do the hard work for you, you risk missing out on the critical thinking,
+problem-solving, and communication skills that employers value--and that you'll
+need to master in order to succeed in interviews and on the job. The impact goes
+far beyond this course, and that is the reason for the course policy regarding
+generative AI use.
 
 
 Video: AI is Destroying Basic Human Skills

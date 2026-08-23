@@ -1,7 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://opendsa.org for more details.
-.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
-.. distributed under an MIT open source license.
+.. Copyright (c) 2012-2026 by the OpenDSA Project Contributors.
 
 .. avmetadata::
    :title: Objects, Classes, and Micro-Worlds
@@ -15,6 +14,30 @@
 
 Objects, Classes, and Micro-Worlds
 ==================================
+
+   “Computer Science is not programming. Rather, programming is the medium
+   for our art, just as writing is the medium for English and other majors.
+   First, we teach you how to express your problem-solving through this
+   medium, and then you practice artful problem-solving in many delightful
+   subdisciplines.  In this class, it will be as if you learn to think and
+   write in a new way.  Learning to program is transformative and empowering.”
+   -- Todd Neller
+
+There is a unique kind of wonder in writing a set of instructions, pressing
+"Run," and watching a virtual world spring into motion before your eyes. In this
+chapter, your journey as a software creator begins. You are not just learning a
+programming language; you are stepping into a digital sandbox where you will
+design autonomous actors, give them senses and behaviors, and choreograph how
+they interact with their environment.
+
+Programming in an object-oriented world is fundamentally about creative
+modeling. You will start by exploring interactive micro-worlds—directing
+playful robots in LightBot and guiding whimsical creatures on Santong Island
+in Jeroo. As you experiment with these micro-worlds, you will discover the
+elegance of breaking complex challenges into delightful, bite-sized puzzles and
+experience the exhilarating feeling of watching your digital creations carry out
+your commands with flawless precision.
+
 
 Installing BlueJ
 ----------------
@@ -32,7 +55,7 @@ your web browser, and looks like this:
 
 .. sidebar:: Learning Objectives
 
-    **Estimated Time**: ~96 minutes (~87 min reading + ~9 min video at 100 WPM)
+    **Estimated Time**: ~99 minutes (~90 min reading + ~9 min video at 100 WPM)
 
     * **Define** basic LightBot actions and their corresponding icons.
     * **Apply** LightBot commands to solve simple LightBot levels (1-7).
@@ -428,7 +451,7 @@ it's a philosophy for designing robust and efficient software.
 .. raw:: html
 
    <div class="align-center" style="margin-top:1em;">
-   <iframe width="560" height="315" src="https://youtu.be/m_MQYyJpIjg?si=JdsBbTp_Pn6SZ9dG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/m_MQYyJpIjg?si=vjIoKUkJO8cjdduM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
    </div>
 
 
@@ -1051,6 +1074,9 @@ apply directly to commanding Jeroos on their island grid.
 Welcome to Santong Island
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. odsafig:: Images/jeroo.png
+   :align: center
+
 Santong island is an uninhabited speck of land in the South
 Pacific Ocean.  In the late 1980's, naturalist Jessica Tong discovered
 two previously unknown species that are unique to this island.  One
@@ -1393,8 +1419,8 @@ is pressed.
    from (3, 4) to (5, 4).
 
 
-Supplemental Self-Study & Practice
------------------------------------
+Building Your Skills Through Practice
+-------------------------------------
 
 Learning to program is a skill built through deliberate practice and experimentation.
 The following **optional, ungraded resources** are designed to help you reinforce
@@ -1418,6 +1444,7 @@ simple problems using the concepts in this module.
 
 .. raw:: html
 
+   <p>&nbsp;</p>
    <footer style="border-top: 1px solid #777;"><div class="footer">
      Selected content adapted from:<br/>
      <a href="https://www.jeroo.org/docs/JerooDocJava.pdf">Introduction to Jeroo</a> by D. Sanders and B. Dorn,

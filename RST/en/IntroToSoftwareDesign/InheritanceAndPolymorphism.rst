@@ -11,12 +11,6 @@
 Object-Oriented Inheritance, Overriding, and Interfaces
 =======================================================
 
-   “Computer Science is not programming. Rather, programming is the medium
-   for our art, just as writing is the medium for English and other majors.
-   And, like all writing, it is refined by rewriting. The trick is to do
-   the rewriting in your head before your fingers hit the keys.”
-   -- Nick Parlante
-
 In earlier chapters, you learned how to create subclasses and define custom
 methods. In this chapter, you will explore the full power of object-oriented
 inheritance: navigating class hierarchies rooted at Java's universal base class

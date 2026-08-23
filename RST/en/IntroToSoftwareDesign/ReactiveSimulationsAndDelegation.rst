@@ -15,14 +15,6 @@
 Reactive Agent Simulations and Delegation
 =========================================
 
-   “Computer Science is not programming. Rather, programming is the medium
-   for our art, just as writing is the medium for English and other majors.
-   First, we teach you how to express your problem-solving through this
-   medium, and then you practice artful problem-solving in many delightful
-   subdisciplines.  In this class, it will be as if you learn to think and
-   write in a new way.  Learning to program is transformative and empowering.”
-   -- Todd Neller
-
 .. |br| raw:: html
 
    <br />
