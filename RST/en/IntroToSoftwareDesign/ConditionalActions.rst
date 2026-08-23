@@ -18,6 +18,11 @@ methods to give actors specialized behaviors, using sensor queries to make
 decisions with ``if`` and ``if-else`` statements, and repeating actions using
 ``while`` loops.
 
+.. |br| raw:: html
+
+   <br />
+
+
 .. sidebar:: Learning Objectives
 
     **Estimated Time**: ~90 minutes (~70 min reading + ~20 min video at 100 WPM)

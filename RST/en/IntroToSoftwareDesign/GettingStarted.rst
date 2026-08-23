@@ -1393,6 +1393,19 @@ is pressed.
    from (3, 4) to (5, 4).
 
 
+Supplemental Self-Study & Practice
+-----------------------------------
+
+Learning to program is a skill built through deliberate practice and experimentation.
+The following **optional, ungraded resources** are designed to help you reinforce
+key concepts, build fluency, and prepare for upcoming
+quizzes, labs, and programming assignments.
+
+* `Java Syntax Practice 1 <https://codeworkout.cs.vt.edu/gym/workouts/1307>`__ : Build
+  confidence and muscle memory with rapid, bite-sized drills focused on syntax
+  rules and basic language mechanics. *Especially recommended if you are new to programming.*
+ 
+
 Programming Practice 1
 ----------------------
 

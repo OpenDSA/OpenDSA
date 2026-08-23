@@ -1,14 +1,12 @@
-.. _InheritanceAndPolymorphism:
+.. avmetadata::
+   :title: Object-Oriented Inheritance, Overriding, and Interfaces
+   :author: Molly Domino; Stephen Edwards
+   :institution: Virginia Tech
+   :keyword: Jeroo; Inheritance; Polymorphism; class hierarchy; dynamic dispatch
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduction to class hierarchies, method overriding, and polymorphism.
 
-.. sectionauthor:: Stephen Edwards, Cliff Shaffer, Dennis Kafura
-
-.. index::
-   single: Jeroo; Inheritance and Polymorphism
-   inheritance; class hierarchy
-   polymorphism; dynamic dispatch
-
-.. module:: InheritanceAndPolymorphism
-   :synopsis: Introduction to class hierarchies, method overriding, and polymorphism.
 
 Object-Oriented Inheritance, Overriding, and Interfaces
 =======================================================
