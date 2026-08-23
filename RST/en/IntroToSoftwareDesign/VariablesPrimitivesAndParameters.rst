@@ -374,6 +374,47 @@ variable using the keywords ``true`` or ``false``.
    boolean y = false;
 
 
+
+Boolean Operators: AND, OR, NOT & Short-Circuiting
+--------------------------------------------------
+
+Conditions come in two forms: *simple* and *compound*. A simple condition is
+a ``boolean`` expression that does not contain any other ``boolean``
+expression (such as a single sensor method call like ``jeroo.isWater(AHEAD)``).
+A **compound condition** is formed by joining two or more simple conditions
+using Java logical operators: AND (``&&``), OR (``||``), and NOT (``!``).
+
+Java's Logical Operators
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. list-table:: Java Logical Operators
+   :widths: 20 40 40
+   :header-rows: 1
+
+   * - Operator
+     - Meaning
+     - Example
+   * - ``&&``
+     - Logical AND (both conditions must be true)
+     - ``isClear(AHEAD) && hasFlower()``
+   * - ``||``
+     - Logical OR (at least one condition must be true)
+     - ``isWater(AHEAD) || seesNet(AHEAD)``
+   * - ``!``
+     - Logical NOT (inverts truth value)
+     - ``!isWater(AHEAD)``
+
+Short-Circuit Evaluation
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Java evaluates compound conditions from left to right using **short-circuit evaluation**:
+
+* For ``&&`` (AND): If the first operand evaluates to ``false``, the entire condition is guaranteed to be ``false``, so Java skips evaluating the second operand.
+* For ``||`` (OR): If the first operand evaluates to ``true``, the entire condition is guaranteed to be ``true``, so Java skips evaluating the second operand.
+
+Short-circuit evaluation is essential for preventing errors, such as checking whether a condition is safe before attempting an action.
+
+
 The Scope of a Local Variable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1235,6 +1276,640 @@ Also, inside ``setUp()`` you'll notice that there is no type at the beginning
 of each line. We aren't *declaring* local variables inside that method.
 Whenever you specify a type in front of a name, you are declaring a new
 name in some way.
+
+
+
+
+
+Constructors in Subclasses & super(...)
+---------------------------------------
+
+We know
+that when we create a **subclass**
+that it **inherits** all of the
+methods and attributes from the class that it
+**extends**.  If you create a
+subclass of ``Jeroo`` called ``PlantingJeroo``, then
+any ``PlantingJeroo`` object can perform all of the methods
+that any ``Jeroo`` knows--because a ``PlantingJeroo``
+is a special kind of ``Jeroo``. The ``PlantingJeroo``
+class inherits all of
+the methods and attributes from the class ``Jeroo``, and also
+understands any new ones you write, such as the
+``platRowsOfFour()`` method.  Computer scientists sometimes
+call this an **is-a** relationship,
+because every ``PlantingJeroo`` object *is a*
+``Jeroo`` at the same time--just a Jeroo that can do more.
+
+.. note::
+   An **is-a** relationship exists
+   between a subclass and its superclass, since every instance of the
+   subclass is also an instance of the superclass at the same time.
+
+Also, as we have already read above, a **constructor** is a special
+kind of method that is used to initialize a brand new object.  But,
+while a subclass automatically inherits all of the (plain) methods
+and attributes from its superclass, *it does not inherit
+constructors*.  That means that the object instantiation for
+Ali in the previous example will not actually compile--*unless we
+provide an appropriate constructor* for our
+``PlantingJeroo`` subclass.
+
+One reason that subclasses do not automatically inherit constructors
+is because subclasses can add new attributes in addition to new methods,
+and those attributes *must be initialized*, no matter what.
+But any constructor from a superclass won't know anything about the
+subclass' new attributes and can't initialize them appropriately.  So
+subclasses have to explicitly define every constructor they support,
+all the time.
+
+.. note::
+   Every time you create a subclass, you are responsible for defining
+   *all* of the constructors it supports.  Constructors are not
+   inherited from superclasses.
+
+
+Fortunately, while constructors are not inherited, there is a
+simple pattern for defining them.  In our ``PlantingJeroo``,
+we can add the following constructor:
+
+.. code-block:: java
+
+   // ----------------------------------------------------------
+   /**
+    * Create a new Jeroo facing east.
+    * @param flowers   The number of flowers the Jeroo is holding.
+    */
+   public PlantingJeroo(int flowers)
+   {
+       super(flowers);
+   }
+
+
+While we have not yet covered all of the features in this small
+piece of code, the gist is straightforward.  A constructor is
+declared like a regular method, except that
+we *omit the word void*
+and its name is *exactly the same as the class name*.
+Here, we are defining a constructor for our
+``PlantingJeroo`` subclass that takes one number (integer)
+as an argument, representing the number of flowers in its pouch.
+
+The body of this constructor contains only a single line that uses
+the special Java keyword ``super``.  This word can only
+be used as the first word inside a subclass constructor, and it allows
+us to invoke a superclass constructor, passing it any information it
+might need.  So here, we are saying that the first (and only) action
+in our ``PlantingJeroo`` constructor is to call the
+constructor for its superclass (``Jeroo``), passing the
+number of flowers.  This allows the superclass
+to initialize all of its attributes correctly with the given information.
+If our subclass needed more initialization, we would perform that in
+following statements in the subclass constructor's body.
+
+But for now, this constructor is enough for our
+``PlantingJeroo`` class.  It will allow us to create a
+``PlantingJeroo`` object by specifying its location and
+number of flowers.  That will in turn allow us to instantiate the
+Ali Jeroo in the previous example without problems.
+
+.. note::
+    Inheritance adds a new layer of complexity to constructors. A common
+    mistake is forgetting that a subclass constructor must call a superclass
+    constructor. If you don't explicitly call super(), the Java compiler tries
+    to insert a no-argument call for you, which will fail if the superclass
+    doesn't have a default constructor. Learning about pitfalls like this is
+    just as important as learning the correct syntax; it's a critical part of
+    becoming a good programmer.
+
+
+
+
+More About Methods
+------------------
+
+A **method**, which corresponds to an action or a behavior, is a named chunk of
+code that can be called upon or *invoked* to perform a certain pre-defined set
+of actions.
+
+A method definition consists of two parts: the method header and the method
+body.  In general, a method header takes the following form, including some
+parts which are optional:
+
+*Modifiers*\ :sub:`optional` *ReturnType*  *MethodName*\ (*ParameterList*\ :sub:`optional`)
+
+Put together, a method definition may look like this:
+
+.. code-block:: java
+
+   public int addHops()
+
+Above, this method starts with the access modifier, ``public``, to declare
+that this method can be accessed or referred to by other classes. The next part
+of the method header is the method's return type. This is the type of value, if
+any, that the method returns. In the method declaration above, we specify that
+the method returns an ``int`` value as its result.  When we've been writing
+methods so far, we've written methods like this:
+
+.. code-block:: java
+
+   public void pickFlowersAndDisableNets()
+
+Instead of an ``int`` here we see the keyword ``void`` which means the method
+does not return anything and is only being called for the action it performs,
+without expecting it to return an answer of some kind.  We'll get more into
+return types later.
+
+In the method declaration, the method's
+name follows the method's return type. This is the name that is used when the
+method is called. We could call the method anything we wanted, but spaces cannot
+be included.  Following the method's name is the method's **parameter list**
+which we'll talk about in the next section.
+
+
+Passing Information using Parameters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some of the methods we have used require arguments, which are the values you
+provide when you invoke the method.  For example, a ``Jeroo`` has two methods
+with the name 'hop'.  Calling ``hop()`` will cause the jeroo to hop one space
+ahead.  However if you specify a number inside the parentheses like this:
+``hop(4)``, the jeroo will hop four spaces ahead.
+
+When you use a method, you provide the arguments. When you *write* a method, you
+name the parameters. The parameter list indicates what arguments are required.
+
+For example:
+
+.. code-block:: java
+
+   public void turnAndDisable(RelativeDirection direction)
+   {
+       this.turn(direction);
+       this.toss();
+   }
+
+To invoke this method, we have to provide a relative direction as an argument:
+
+.. code-block:: java
+
+    turnAndDisable(RIGHT);
+
+This will cause the jeroo to turn right and disable a net.
+
+
+Using Multiple Parameters
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Here is an example of a method that takes two parameters:
+
+.. code-block:: java
+
+   public void turnThenHop(RelativeDirection direction, int hops)
+   {
+       this.turn(direction);
+       this.hop(numHops);
+   }
+
+To invoke this method, we have to provide an integer and a relative direction
+as arguments:
+
+.. code-block:: java
+
+    turnThenHop(RIGHT, 7);
+
+This would cause the jeroo to turn right and then hop seven times.
+
+
+Good Habits for Conditionals
+----------------------------
+
+Just like with commenting, readability is an important factor when writing
+conditionals.
+
+
+Logical NOT and the If-Else Structure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+One thing to consider is that when writing  if/else statements,
+starting with a ! usually makes code harder to read.
+
+.. code-block:: java
+
+   if (!this.isClear(AHEAD))
+   {
+       this.toss();
+   }
+   else
+   {
+       this.hop();
+   }
+
+It's easy to miss the ``!`` above and misread what this conditional does.
+Instead, it's preferable to phrase the same condition like this:
+
+.. code-block:: java
+
+   if (this.isClear(AHEAD))
+   {
+       this.hop();
+   }
+   else
+   {
+       this.toss();
+   }
+
+You can see that logically these two if-then-else structures achieve the same
+thing, but one is easier to read.
+
+.. note::
+
+   Keep in mind, this may not always be possible for you to write the right
+   condition without using the ``!`` operator.  Especially if you have no
+   ``else`` clause, you may need to use it, but it is good practice if you can
+   get around it.
+
+
+Too Many Conditionals
+~~~~~~~~~~~~~~~~~~~~~
+
+Another thing to keep in mind is writing too many conditions.  When solving a
+complex problem it can be tempting to just keep adding new conditions for
+every new scenario you find yourself in.  However, this is both harder to read
+and can introduce bugs into your code that could be hard to find later.
+
+Take for example:
+
+
+.. code-block:: java
+
+   if (this.isClear(AHEAD))
+   {
+       this.hop();
+   }
+   else if (!this.isClear(AHEAD))
+   {
+       this.toss();
+   }
+   else
+   {
+       this.turn(RIGHT);
+   }
+
+Logically, the if and else-if branch of this conditional do the same things as
+we saw above.  However, there is a third branch here that will never execute.
+This is because the area ahead of the jeroo will always be either clear or
+not clear.
+The code will always find a branch to execute between the first two choices,
+and there is never any situation where the ``else`` branch will ever be
+applicable.
+
+In computer terms, code that you write that can never be executed under
+any possible circumstances, is called **unreachable code**. Such code is
+usually a programming problem, since the reason it can never be executed is
+often due to improperly constructed programming logic, as in the example
+here. The first two branches cover all possible situations, so the third
+option is useless.
+
+If you're not entirely sure if two boolean statements are equivalent, it can
+be helpful to write out a truth table.  For example, we can see below that
+writing ``b`` and ``!!b`` are equivalent.
+
+.. list-table:: Truth Table
+   :header-rows: 1
+
+   * - ``b``
+     - ``!b``
+     - ``!!b``
+   * - True
+     - False
+     - True
+   * - False
+     - True
+     - False
+
+Whatever value ``b`` has, we can see that ``!!b`` matches it!
+
+
+Empty Condition Branches
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is also good practice not to leave empty conditions in your code.
+
+.. code-block:: java
+
+   if (this.isClear(AHEAD))
+   {
+       // do nothing
+   }
+   else
+   {
+       this.turn(RIGHT);
+   }
+
+It is always preferred to have just one if statement rather than an empty
+if-else.
+
+.. code-block:: java
+
+   if (this.isClear(AHEAD))
+   {
+       // do nothing
+   }
+   else
+   {
+       this.turn(RIGHT);
+   }
+
+Here, it would be preferred to use the ``!`` operator rather than to have empty
+conditions:
+
+.. code-block:: java
+
+   if (!this.isClear(AHEAD))
+   {
+       this.turn(RIGHT);
+   }
+
+
+Many Conditions vs Compound Conditions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Taking a look at the following code snippet:
+
+.. code-block:: java
+
+   if (this.isClear(AHEAD))
+   {
+       if (this.seesNet(RIGHT))
+       {
+           this.turn(RIGHT);
+       }
+   }
+
+Here we see one condition nested within another.  It is generally preferable to
+instead write the same condition like this:
+
+.. code-block:: java
+
+   if (this.isClear(AHEAD) && this.seesNet(RIGHT))
+   {
+       this.turn(RIGHT);
+   }
+
+
+More Complex Conditionals
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sometimes you want to check related conditions and choose one of several
+actions. One way to do this is our cascaded if structure:
+
+.. code-block:: java
+
+   if (molly.isFacing(NORTH))
+   {
+       molly.hop();
+   }
+   else if (molly.isFacing(SOUTH))
+   {
+       molly.hop(2);
+   }
+   else if (molly.isFacing(EAST))
+   {
+       molly.hop(3);
+   }
+   else
+   {
+       molly.hop();
+       molly.toss();
+   }
+
+These chains can be as long as you want, although they can be difficult to
+read if they get out of hand.
+
+You can also make complex decisions by nesting one conditional statement inside
+another. We could have written the previous example as:
+
+.. code-block:: java
+
+   if (molly.isFacing(WEST))
+   {
+       molly.hop();
+       molly.toss();
+   }
+   else
+   {
+       if (molly.isFacing(NORTH))
+       {
+           molly.hop();
+       }
+       else if (molly.isFacing(SOUTH))
+       {
+           molly.hop(2);
+       }
+       else
+       {
+           molly.hop(3);
+       }
+   }
+
+The outer conditional has two branches. The first branch tells the jeroo to hop
+once and toss, and the second branch contains another conditional statement,
+which has three branches of its own.
+
+These kinds of structures are common, but they get difficult to read
+very quickly. Good indentation is essential to make the structure (or intended
+structure) apparent to the reader.
+
+
+A Different Type of Complex If-Statement
+----------------------------------------
+
+Another way if statements can get more complex is by creating longer compound
+conditionals.
+
+For example,
+
+.. code-block:: java
+
+    if ((caroline.isFacing(NORTH) && caroline.hasFlower())
+        || caroline.seesNet(AHEAD))
+
+This statement could be generalized to ``if (A || B)`` where:
+
+* ``A = caroline.isFacing(NORTH) && caroline.hasFlower()``
+* ``B = caroline.seesNet(AHEAD)``
+
+If the jeroo has a flower while facing north OR sees a net ahead of it, this if
+statement will trigger.  Notably, if the jeroo only has a flower the logical AND
+will force the statement ``caroline.isFacing(NORTH) && caroline.hasFlower()``
+to be false.  Thus, the jeroo would have to see a net ahead for this if
+statement to trigger.
+
+Logical NOT can also negate a compound statement.
+
+ .. code-block:: java
+
+   if (!(caroline.isFacing(NORTH) && caroline.hasFlower()))
+
+Remember, for ``caroline.isFacing(NORTH) && caroline.hasFlower()`` to be true,
+the jeroo must have a flower and be facing North.
+Writing ``!(caroline.isFacing(NORTH) && caroline.hasFlower())`` will be true
+as long as the compound condition within the parentheses is false.
+
+When looking at these sort of complex operations, it is easy to get mixed up.
+When considering negated compound conditions re-writing them  according
+**De Morgan's laws** may be helpful to you:
+
+* ``!(A && B)`` is the same as ``!A || !B``
+* ``!(A || B)`` is the same as ``!A && !B``
+
+Using this, instead of writing
+
+.. code-block:: java
+
+   if (!(caroline.isFacing(NORTH) && caroline.hasFlower()))
+
+It is be logically equivalent to write:
+
+.. code-block:: java
+
+   if (!caroline.isFacing(NORTH) || !caroline.hasFlower())
+
+Again, if we use a truth table we can see these two columns match:
+
+.. list-table:: Truth Table: DeMorgan's Law
+   :header-rows: 1
+
+   * - ``A``
+     - ``B``
+     - ``(A && B)``
+     - ``!(A && B)``
+     - ``!A``
+     - ``!B``
+     - ``!A || !B``
+   * - True
+     - True
+     - True
+     - **False**
+     - False
+     - False
+     - **False**
+   * - True
+     - False
+     - False
+     - **True**
+     - False
+     - True
+     - **True**
+   * - False
+     - True
+     - False
+     - **True**
+     - True
+     - False
+     - **True**
+   * - False
+     - False
+     - False
+     - **True**
+     - True
+     - True
+     - **True**
+
+
+Short Circuit Evaluation
+------------------------
+
+Another important feature of the boolean operators is that they utilize a
+form of evaluation known as short-circuit evaluation. In **short-circuit
+evaluation**, a boolean expression is evaluated from left to right, and the
+evaluation is discontinued as soon as the expression's value can be determined,
+regardless of whether it contains additional operators and operands. For
+example, in the expression
+
+.. code-block:: java
+
+   basil.isFacing(WEST) && basil.seesNet(AHEAD)
+
+if ``basil.isFacing(WEST)`` is false, then the AND expression must be false.
+Because the computer already knows the whole AND expression is false, it
+will not evaluate ``basil.seesNet(AHEAD)``, since there is no need.
+
+Similarly, in the expression:
+
+.. code-block:: java
+
+   basil.isFacing(NORTH) || basil.seesNet(AHEAD)
+
+if ``basil.isFacing(NORTH)`` is true, then the computer knows the whole
+OR expression will also be true, and so it will not evaluate
+``basil.seesNet(AHEAD)``, since it is unnecessary.
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/ui_PM-woLsE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
+
+Relational Operators with Primitive Data Types
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Relational operators are used to check conditions like whether two values
+are equal, or whether one is greater than the other. These kinds of operators
+do not work on objects at all, so you cannot use them on jeroos. However,
+they work on numeric values such as ``int``\ s. The following expressions
+show how they are used.
+
+.. list-table:: Relational Operators
+   :header-rows: 1
+
+   * - Operator
+     - Example
+     - Meaning
+   * - ``==``
+     - ``x == y``
+     - x *is equal to* y
+   * - ``!=``
+     - ``x != y``
+     - x *is not equal to* y
+   * - ``>``
+     - ``x > y``
+     - x *is greater than* y
+   * - ``<``
+     - ``x < y``
+     - x *is less than* y
+   * - ``>=``
+     - ``x >= y``
+     - x *is greater than or equal to* y
+   * - ``<=``
+     - ``x <=  y``
+     - x *is less than or equal to* y
+
+
+The result of a relational operator is one of the two Boolean values: ``true``
+or ``false``.  These values belong to the data type ``boolean``; in fact, they
+are the only ``boolean`` values.
+
+You are probably familiar with these operations, but notice that the Java
+operators compare program values. They behave similar to the mathematical
+operators you are familiar with, but are not written the same way
+as mathematical symbols like =, ≤, and ≠.
+
+A common error is to use a single = instead of a double == when you wish
+to compare two values. Remember that = is
+the assignment operator, and == is a comparison operator. Also, writing
+=< or => by accident will produce a compiler error.  The equals sign always
+comes after the `<` or `>`, just like when you say the names of those
+comparisons in English: "less than or equal" has the less than symbol first,
+followed by the equal sign second.
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/rYX6AQo9YsU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 
 Programming Practice 4

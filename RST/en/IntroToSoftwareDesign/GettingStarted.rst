@@ -7,10 +7,11 @@
    :title: Objects, Classes, and Micro-Worlds
    :author: Molly Domino; Steve Edwards
    :institution: Virginia Tech
-   :keyword: Software Design
+   :keyword: Software Design; LightBot; Jeroo; Micro-world
    :naturallanguage: en
    :programminglanguage: Java
    :description: Introduction to the course module for an introductory CS course.
+
 
 Objects, Classes, and Micro-Worlds
 ==================================
@@ -31,15 +32,18 @@ your web browser, and looks like this:
 
 .. sidebar:: Learning Objectives
 
+    **Estimated Time**: ~96 minutes (~87 min reading + ~9 min video at 100 WPM)
+
     * **Define** basic LightBot actions and their corresponding icons.
     * **Apply** LightBot commands to solve simple LightBot levels (1-7).
-    * **Define** key programming concepts: object, program, algorithm, micro-world, source code, compiler, interpreter, behavior, method, precondition, postcondition, message, method call, instantiation, declaration, identifier, variable, class, constructor.
-    * **Describe** the characteristics of a micro-world, using LightBot as an example.
+    * **Define** key programming concepts: object, program, algorithm, micro-world, source code, compiler, interpreter, behavior, method, message, method call, instantiation, declaration, identifier, reference variable, class, constructor, attribute.
+    * **Describe** the characteristics of a micro-world, using LightBot and Jeroo as examples.
     * **Explain** the use of a left-handed Cartesian plane with zero-based indexing for coordinates in a micro-world grid.
-    * **Translate** LightBot icon-based programs into textual Java-like method calls.
+    * **Translate** visual icon-based programs into textual Java-like method calls.
     * **Differentiate** between a compiler and an interpreter.
-    * **Write** Java statements to declare a LightBot object, instantiate it, and add it to the world at a specified coordinate.
-    * **Write** Java statements to call methods on a LightBot object to control its actions.
+    * **Write** Java statements to declare object reference variables, instantiate objects with ``new``, and place them on a grid at specified coordinates.
+    * **Write** Java statements to call methods on ``LightBot`` and ``Jeroo`` objects to alter their state.
+    * **Describe** the Santong Island environment, Jeroo attributes, directions, and action methods.
     * **Explain** the importance of code readability practices, including meaningful identifiers, commenting, and indentation.
     * **Apply** proper Java commenting (single-line, multi-line, Javadoc) and indentation rules to source code.
 
@@ -1032,6 +1036,361 @@ computational thinking--sequencing, use of methods or functions (through f1/f2),
 and problem-solving. Textual Java then builds on this by introducing the
 precise language and structure needed for real-world software development,
 giving you greater control and power over your programs.
+
+
+
+The Jeroos of Santong Island
+----------------------------
+
+Now that you have explored fundamental computational thinking and textual Java
+using LightBot, you are ready to transition to our primary micro-world:
+**Santong Island** and the **Jeroo** simulation. The concepts of classes,
+objects, instantiation with ``new``, and method invocation using dot notation
+apply directly to commanding Jeroos on their island grid.
+
+Welcome to Santong Island
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Santong island is an uninhabited speck of land in the South
+Pacific Ocean.  In the late 1980's, naturalist Jessica Tong discovered
+two previously unknown species that are unique to this island.  One
+is the **jeroo**, a rare mammal
+similar to the wallabies of Australia.  The other is the large
+**winsum flower** that is the
+jeroo's primary food source.
+
+Like its distant Australian relative, the jeroo moves by hopping,
+but its movements are unique in all of nature.  Each jeroo only
+moves in one of the four main compass directions, and only turns in
+90 degree increments.  This unusual behavior continues to mystify
+Jessica and the few other researchers who have observed jeroos in
+the wild.  Some believe that this behavior is somehow related to
+geomagnetic forces, but others think that this is just a bizarre
+learned behavior.
+
+Every jeroo has a pouch, but the male's pouch is somewhat smaller.
+While the female uses her pouch to protect and nuture her offspring,
+both sexes use their pouches to carry winsum flowers that they have
+picked.
+
+During the rainy season, January through December, sudden storms
+can create temporary lakes and rivers, or even alter the shape of the
+island itself.  Despite living on Santong island for uncounted
+millennia, the jeroos are extremely poor swimmers.  While they are
+keenly aware of their immediate surroundings, jeroos can be careless.
+If one happens to hop into the ocean, its fur becomes waterlogged and
+it must rest in the sun for a few hours before resuming its normal
+activity.  In what can only be described as a telepathic connection,
+all other jeroos also cease their activities until the wet jeroo
+has recovered.
+
+Until recently, the jeroos were safe from human interference because
+they were only known to a handful of researchers and because Santong
+island is very small, very remote, and missing from most maps.  The
+jeroo's idyllic world was interrupted in 2001, when Brian arrived at
+the island.  Brian is a renowned collector who was hired to capture
+a jeroo for the extreme animal exhibit at Missouri's C. A. Baret zoo.
+Having studied the jeroos' unique patterns of movement, Brian
+periodically sets nets in the locations that a jeroo is likely to
+visit.  Fortunately, the sensitive jeroos can detect his nets, and
+have learned that tossing a winsum flower onto a net will disable the
+net and make that location safe for future travel.  Brian can only
+catch a careless jeroo that leaps before it looks.
+
+
+A Jeroo Simulator
+~~~~~~~~~~~~~~~~~
+
+After returning from a recent trip to Santong island, Jessica asked
+her colleague, Deanna, to develop a simulator that could be used to
+demonstrate the jeroos and their relationship with their island.
+The result of Deanna's work is a computer program written in Java
+to help Jessica with her research.  The program provides a micro-world
+representation of Santong island and shows the behavior of one or
+more jeroos on the island.
+
+When Deanna designed the simulator, she used the jeroo's unique
+movements to model the island as a grid, where the x-axis runs
+from West to East along lines of lattitude, and the y-axis runs
+from North to South along lines of longitude.  Each element (cell)
+of this model corresponds to a location where a jeroo might land
+when it hops.
+
+Deanna chose to number both the x-coordinates and y-coordinates
+by starting with zero at the northwest corner of the map containing
+the island (her maps included the water immediately surrounding the
+island).  When asked why she started at zero, Deanna said that she was
+counting the
+number of safe hops from any location to the northwest corner.
+We will use the notation (*x*, *y*) to indicate a
+specific cell, where *x* represents the horizontal position of
+the cell and *y* represents the vertical position of the
+cell.
+
+
+Jeroo Action Methods
+~~~~~~~~~~~~~~~~~~~~
+
+Two of the Java classes in Deanna's simulation are ``Island``
+and ``Jeroo``.  The ``Island`` class is a world
+subclass that represents the island map, while the ``Jeroo``
+class is an actor subclass.  There are also ``Flower``,
+``Net`` and ``Water`` classes to represent other
+objects on the island.
+There as seven action methods that a ``Jeroo`` understands
+(three of them require an argument value):
+
+.. raw:: html
+
+   <table class="table docutils align-default">
+   <tr><th>Method</th><th>Purpose</th><th>Example</th></tr>
+   <tr><td><code>hop()</code></td><td>Hop one space ahead.
+   The program terminates with a logic error if the hopping Jeroo
+   lands in the water, lands on another Jeroo, or hops onto a net.
+   A Jeroo can hop onto a flower.</td>
+   <td><code>jessica.hop();</code></td></tr>
+   <tr><td><code>hop(<i>number</i>)</code></td><td>Hop <i>number</i> times
+   in a row, where <i>number</i> is a positive integer.</td>
+   <td><code>jessica.hop(3);</code><br/>
+   <code>jessica.hop(12);</code></td></tr>
+   <tr><td><code>pick()</code></td><td>Pick a flower from the current
+   location. Nothing happens if there is no flower at the current
+   location.</td><td><code>jessica.pick();</code></td></tr>
+   <tr><td><code>plant()</code></td><td>Plant a flower at the current
+   location. Nothing happens if the jeroo does not have a flower to
+   plant.</td><td><code>jessica.plant();</code></td></tr>
+   <tr><td><code>toss()</code></td><td>Toss a flower one space ahead.
+   The tossed flower is lost forever.
+   If the flower lands on a net, the net is disabled.</td>
+   <td><code>jessica.toss();</code></td></tr>
+   <tr><td><code>turn(<i>relativeDirection</i>)</code></td><td>Turn in the
+   indicated direction [&nbsp;<code>turn(AHEAD)</code> and
+   <code>turn(HERE)</code> are meaningless&nbsp;]</td>
+   <td><code>jessica.turn(LEFT);</code><br/>
+   <code>jessica.turn(RIGHT);</code></td></tr>
+   <tr><td><code>give(<i>relativeDirection</i>)</code></td><td>Give a flower
+   to a neighboring Jeroo in the indicated direction.   Nothing happens
+   if the giving Jeroo has no flowers, or if there is no neighboring
+   Jeroo in the indicated direction.  [&nbsp;<code>give(HERE)</code> is
+   meaningless&nbsp;]</td>
+   <td><code>jessica.give(LEFT);</code><br/>
+   <code>jessica.give(RIGHT);</code><br/>
+   <code>jessica.give(AHEAD);</code></td></tr>
+   </table>
+
+
+Direction
+"""""""""
+
+Each Jeroo knows four relative directions and four compass
+directions as shown in the following table.  Each direction must be
+written in UPPER CASE (In Java, constant values that never change are
+usually written this way).  The relative direction ``HERE``
+refers to the Jeroo's current location, so it isn't useful with the
+action methods in the previous section (we'll see other methods later
+where ``HERE`` makes sense).
+
+.. raw:: html
+
+   <table class="table docutils align-default">
+   <tr><th>Relative Directions</th><th>Compass Directions</th></tr>
+   <tr><td><code>LEFT</code></td><td><code>NORTH</code></td></tr>
+   <tr><td><code>RIGHT</code></td><td><code>EAST</code></td></tr>
+   <tr><td><code>AHEAD</code></td><td><code>SOUTH</code></td></tr>
+   <tr><td><code>HERE</code></td><td><code>WEST</code></td></tr>
+   </table>
+
+
+Attributes
+""""""""""
+
+When designing an object to represent something, we must select
+facts about that thing that are relevant to the problem we are trying
+to solve.  For example, the title of a book would be important to a
+bookstore, but not to the company that shipped the book from the
+publisher's warehouse.  On the other hand, the weight of the book
+would be important to the shipper, but not to the bookstore.  Facts
+such as the title or weight of a book are called attributes.
+
+
+.. note::
+
+   An **attribute** is a fact
+   associated with a specific object.
+
+The attributes of a ``Jeroo`` object include its location,
+the number of flowers in its pouch, and the direction it's facing.
+When we instantiate a class, the class'
+**constructor** is responsible for
+initializing the new object's attributes.  So when we create a
+``Jeroo`` object, its constructor is responsible for
+initializing the number of flowers in its pouch and
+the direction it's facing--it' position is set when you add it to the world.
+If we do not specify a value
+for one (or more) of the attributes when we create the jeroo, the
+constructor provides defaults for us.
+
+As a convenience, the ``Jeroo`` class provides
+**multiple constructors** so that we can omit (or provide)
+values we want for any of these attributes.  All but one of the
+constructors allow us to provide values for just some of the
+attributes.  The constructors are summarized in the following
+table:
+
+.. raw:: html
+
+   <table class="table docutils align-default">
+   <tr><th>Example</th><th>Attributes</th></tr>
+   <tr><td>
+   <pre>
+   // Accept all defaults
+   Jeroo jessica = new Jeroo();
+   </pre></td><td><table>
+   <tr><td class="r">Direction:</td><td><code>EAST</code></td></tr>
+   <tr><td class="r">Flowers:</td><td>0</td></tr>
+   </table></td></tr>
+   <tr><td>
+   <pre>
+   // Specify just the flowers
+   Jeroo jessica = new Jeroo(8);
+   </pre></td><td><table>
+   <tr><td class="r">Direction:</td><td><code>EAST</code></td></tr>
+   <tr><td class="r">Flowers:</td><td>8</td></tr>
+   </table></td></tr>
+   <tr><td>
+   <pre>
+   // Specify just the direction
+   Jeroo jessica = new Jeroo(WEST);
+   </pre></td><td><table>
+   <tr><td class="r">Direction:</td><td><code>WEST</code></td></tr>
+   <tr><td class="r">Flowers:</td><td>0</td></tr>
+   </table></td></tr>
+   <tr><td>
+   <pre>
+   // Specify both attributes
+   Jeroo jessica = new Jeroo(WEST, 8);
+   </pre></td><td><table>
+   <tr><td class="r">Direction:</td><td><code>WEST</code></td></tr>
+   <tr><td class="r">Flowers:</td><td>8</td></tr>
+   </table></td></tr>
+   </table>
+
+The equal sign between the declaration and instantiation portions
+indicates that the newly created Jeroo object is to be associated with
+the identifier in the declaration portion.
+
+
+Creating Jeroos on an Island
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+An instance of the ``Island`` class is pretty plain:
+
+.. odsafig:: Images/island.png
+   :align: center
+
+This island is completely bare, with no jeroos, no flowers, and a
+pretty basic shape.  But to **change the behavior of a library
+class**, we need to **create our own version of the
+class**.  We do this by defining a
+**subclass**.  A subclass
+**inherits** all the features of
+the class it is based on.  That means it understands all of the
+methods of the original class, and may add more of its own.  We
+create a subclass using this basic pattern:
+
+.. code-block:: java
+
+    public class NewClassName
+        extends ExistingClassName
+    {
+        ...
+    }
+
+
+The keywords ``public class`` indicate that we are
+introducing a brand new *class* that can be used anywhere
+in our code (i.e., it is "public"ly available for use elsewhere).
+The *NewClassName* is the name of the new class we are defining,
+and the *ExistingClassName* is the name of the class we want
+to build on.  The keyword ``extends`` is what indicates that
+our new class is a *subclass*.  Whenever you use
+``extends``, you are saying that the class you are declaring
+*inherits* all the features from another existing class.
+
+.. note::
+
+   A **subclass** is a class that
+   **inherits** all the methods and
+   attributes of another class, called its
+   **superclass**.
+
+.. note::
+   The terms **derived class**
+   and **child class** are different
+   names for **subclass**.
+
+.. note::
+   The terms **base class**
+   and **parent class** are different
+   names for **superclass**.
+
+In BlueJ, we can create a new subclass from the
+``Island`` class by clicking the "New Class..." button in BlueJ's
+main window.  In the resulting new class dialog, enter the name for your
+new class, select "Island subclass", and click the "OK" button.
+This action will create a new class and an
+associated source file for you, and fill it with the required
+starting content (including  some comments and placeholders).
+
+.. note::
+   In Java, the source code for a given class is stored in a plain text
+   file that has **the same name as the class** with ".java"
+   added on the end. The file name must be capitalized exactly the same
+   way as the class name.
+
+When you create a new subclass in BlueJ, the generated
+class will already have a
+**constructor**. a constructor is
+a special kind of method that is used only to initialize a brand new
+object.
+
+.. note::
+   A **constructor** is
+   a special kind of method that is used to initialize a brand new
+   object.
+
+In the constructor for our island subclass, you can define the island's
+dimensions and put any
+actions you would like to perform when the island is created--such
+as populating it with some flowers, or placing water in new
+locations.
+
+We can also say what we wish to happen when the **Run button
+is pressed** by adding a ``myProgram()`` method.  You
+can add this to your island subclass:
+
+.. code-block:: java
+
+   public void myProgram()
+   {
+       Jeroo jessica = new Jeroo(8);
+       this.addObject(jessica, 3, 4);
+
+       //  Give instructions to your jeroo to carry out here
+   }
+
+
+Any actions you place in ``myProgram()`` will be executed
+when the "Run" (or the "Act") button
+is pressed.
+
+.. admonition:: Try It Yourself
+
+   Create an ``Island`` subclass and add the
+   ``myProgram()`` method sketched above to it.  Replace
+   the comment in ``myProgram()`` with instructions to
+   have the jeroo ``jessica`` plant a row of three flowers
+   from (3, 4) to (5, 4).
 
 
 Programming Practice 1

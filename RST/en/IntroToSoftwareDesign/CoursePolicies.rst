@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Molly, Stephen Edwards
+   :author: Stephen Edwards
 
 
 Understanding this Course
@@ -69,9 +69,10 @@ Weekly Schedule
 
 This course runs on a weekly rhythm, and learning the schedule will help
 you develop a routine, anticipate deadlines, and stay on track. It is
-extremely important to stay on schedule and turn your assignments in. The
-single biggest reason for falling behind in this course is missing early
-milestones and letting work accumulate.
+extremely important to stay on schedule and turn your assignments in on time
+every week. The single biggest reason for falling behind in this course is
+not starting to work on assignments in advance, missing deadlines, and letting
+work accumulate.
 
 In particular, while the semester starts out with introductory topics, please
 do not allow yourself to be lulled into believing you can cut corners on
@@ -100,6 +101,16 @@ promptly on time.
 * **Lab Meetings**: Attendance in your officially enrolled lab section is **mandatory**. You must be physically present in the lab room to submit lab work. If an unavoidable illness or emergency prevents attendance, you must use a Lab Grace Pass to complete and submit the lab on your own time.
 * **Final Examination**: The final exam date and time are set by the university. Only the Dean's office can grant permission to reschedule a final exam (e.g., in cases of direct exam conflicts or having 3+ exams in a 24-hour window).
 
+**Note:** If you have an **evening lab session** that goes past 5pm and are also
+taking a math or physical science course, you should immediately double-check with your
+instructor in your math or science course to find out if they schedule
+required, proctored exams or other obligations during your scheduled lab period later
+in the semester. Out of class exams from other courses are **not an excuse to miss your
+mandatory lab meeting time**. To avoid this situation, you can switch to a different section
+of this course during the first week of classes to change your lab meeting time. Alternatively,
+if you discover such a conflict later in the semester, you must work with your math or science
+instructor to arrange an alternate time to take their exam.
+
 
 Reading Activities
 ------------------
@@ -108,10 +119,9 @@ There is no physical paper textbook to purchase for this course. Instead, all
 reading materials and interactive modules are presented through weekly online
 Reading Activities on Canvas, which are due on **Sunday nights at 11:59 PM**.
 
-* **Flipped Classroom Preparation**: This course uses a flipped classroom model. Lecture sessions are dedicated to interactive exercises, live coding, and collaborative problem solving rather than passive lecturing. It is your responsibility to complete the reading and practice exercises beforehand so that you are prepared for class.
-* **Preparation for Labs and Quizzes**: In addition to Sunday deadlines, you should always complete the week's reading before your scheduled lab meeting. The concepts introduced in reading activities are also directly assessed on upcoming quizzes and programming assignments.
-* **Unlimited Practice for Full Credit**: Reading activities contain interactive visualizations, self-check questions, and CodeWorkout coding challenges. You can repeat these exercises as many times as you like before the deadline until you earn full credit (7 points per weekly reading assignment, for a total of **98 points** across the semester).
-* **Strict Due Dates**: Reading activities must be completed by the posted deadline. **No late submissions are accepted on Reading Activities.**
+* **Preparation for Labs and Quizzes**: In addition to Sunday deadlines, you should always complete the week's reading before your scheduled lab meeting to be prepared for the required pre-lab and to be prepared for the lab work itself. The concepts introduced in reading activities are also directly assessed on upcoming quizzes and programming assignments.
+* **Unlimited Practice for Full Credit**: Reading activities contain interactive coding questions to help you practice. They also include supplementary syntax practice resources for those new to programming, as well as addiitonal exercises for self-study and exam preparation. You can repeat these exercises as many times as you like before the deadline until you earn full credit.
+* **Strict Due Dates**: Reading activities must be completed by the posted deadline. **No late submissions are accepted on Reading Activities.** You can continue to review or complete all exercises (both graded and supplemental) for self-study purposes after the deadline (not for grade credit).
 
 
 Lab Assignments
@@ -125,12 +135,12 @@ Key lab policies and workflows include:
 
 * **Mandatory Pre-Lab Assessment**: Every lab includes a pre-lab assessment on Canvas covering the required background and instructions. You **must complete the pre-lab with 100% accuracy (no errors)** before your lab period starts. You may repeat the pre-lab as many times as needed, but you will not be allowed to begin the lab assignment until you have achieved a perfect score.
 * **In-Person Attendance and Pair Collaboration**: You must attend your enrolled lab section in person. Each week, you will be paired with a lab partner to collaborate, discuss approaches, and troubleshoot code.
-* **Individual Accountability & Lab Oral Interviews**: While you work in pairs during lab meetings, **all lab submissions are strictly individual work** and must be submitted under your own account. Every student is individually accountable for understanding every line of code they submit. Course staff may randomly call in any student for a brief **oral grading interview** on any lab assignment to assess their code comprehension, ability to trace execution, and design justification. Demonstrating satisfactory understanding of your submitted solution is required to confirm your mastery credit.
 * **Punctuality**: You must arrive on time so that you and your partner can begin immediately. Students who arrive **more than 15 minutes late** will have their partner reassigned, will not be permitted to submit work during the lab period, and will need to complete the lab independently using a **Lab Grace Pass**.
-* **Check-Out Requirement**: You and your partner are working as a team. You **may not leave the lab early** until both you and your partner have completed all programming tasks, submitted your work, and officially checked out with a lab TA.
 * **Immediate Feedback & Resubmission**: You may submit your lab code to the autograder as many times as you like during your lab period to receive feedback, fix errors, and improve your score. Only your most recent submission is evaluated.
 * **TAs as Coaches, Not Hand-Holders**: Lab TAs are available to answer conceptual questions and steer you past roadblocks. However, they expect you to have read the assignment and completed the pre-lab beforehand. If you arrive unprepared, you will struggle to complete the work in time.
 * **Specifications Grading (EMRN)**: Labs are evaluated on the EMRN scale. Achieving a rating of **Meets Expectations (M)** earns full credit (9 points per lab, **126 points total** for 14 labs), while **Excellent (E)** earns 110% extra credit.
+* **Check-Out Requirement**: You and your partner are working as a team. You **may not leave the lab early** until both you and your partner have completed all programming tasks, submitted your work, and officially checked out with a lab TA.
+* **Individual Accountability & Lab Oral Interviews**: While you work in pairs during lab meetings, **all lab submissions are strictly individual work** and must be submitted under your own account. Every student is individually accountable for understanding every line of code they submit. Course staff may randomly call in any student for a brief **oral grading interview** on any lab assignment to assess their code comprehension, ability to trace execution, and design justification. Demonstrating satisfactory understanding of your submitted solution is required to confirm your mastery credit.
 * **Lab Late Policy & Grace Passes**: Lab submissions close at the end of your scheduled lab period. Late work is not accepted without using a **Lab Grace Pass**. You begin the semester with **3 Lab Grace Passes**, each of which grants a **48-hour deadline extension** past the end of your scheduled lab meeting. Each lab assignment may only be extended once.
 
 
@@ -146,6 +156,7 @@ object-oriented software solutions, and write comprehensive automated test suite
 * **Submissions & Automated Feedback**: You submit your code electronically to Web-CAT, where it is evaluated against automated test suites for correctness, code style, and test coverage. You can submit as many times as you like prior to the deadline to review feedback and refine your code. Only your last submission is graded.
 * **Specifications Grading (40 Points Each)**: Each programming assignment is worth **40 points** (total of **240 points** across 6 projects) and is evaluated on the EMRN scale. Earning an **M (Meets Expectations)** awards 100% (40 points), while an **E (Excellent)** awards 110% (44 points).
 
+
 Mandatory In-Person Grading Interviews
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -155,6 +166,7 @@ grading interview** with a course TA:
 * **Format and Timing**: Grading interviews take approximately **5 minutes** and must be completed within **2 weeks** of the assignment's due date.
 * **Purpose**: The interview assesses your genuine understanding of the code you turned in. You will be asked to explain how your code works, walk through specific algorithms, justify your design and data structure decisions, and explain your testing strategy.
 * **Prerequisite for Grade**: **You cannot receive a grade for a programming assignment until you have completed your grading interview.** If you cannot explain or defend your code during the interview, it indicates that you did not do the underlying learning.
+
 
 Program Grace Passes and Mastery Passes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -199,77 +211,6 @@ This course teaches object-oriented programming using **Java**.
 * **BlueJ Development Environment**: We will use the **BlueJ IDE** for code development, interactive object visualization, and lecture examples.
 * **Download Directly from Canvas**: Please install BlueJ using the installer link provided on the course Canvas homepage rather than downloading from the generic BlueJ website. The Canvas installer includes specialized support libraries and testing tools pre-configured for CS 1114.
 * **Web-CAT & CodeWorkout**: Automated grading and code feedback are provided through Web-CAT (for lab and program assignments) and CodeWorkout (for interactive practice exercises).
-
-
-Grading System: Specifications and Mastery
-------------------------------------------
-
-Grading in CS 1114 is based on a cumulative **1000-point scale**. Rather than
-losing points on minor deductions or worrying about grade curves, your grade is
-determined directly by the total number of points you earn across all completed
-activities.
-
-No scores are dropped; every assignment contributes directly to your total:
-
-.. list-table:: CS 1114 Course Point Breakdown
-   :widths: 50 25 25
-   :header-rows: 1
-
-   * - Activity
-     - Points Each
-     - Total Points
-   * - In-Class Participation (iClicker)
-     - Cumulative
-     - 90 pts
-   * - 14 Weekly Reading Activities
-     - 7 pts each
-     - 98 pts
-   * - 14 Weekly Lab Assignments
-     - 9 pts each
-     - 126 pts
-   * - 6 Program Assignments
-     - 40 pts each
-     - 240 pts
-   * - 7 Quizzes
-     - 35 pts each
-     - 245 pts
-   * - Final Examination
-     - Comprehensive
-     - 201 pts
-   * - **Total Possible Points**
-     - 
-     - **1000 pts**
-
-Final letter grades are assigned according to the following point thresholds:
-
-.. list-table:: Final Grade Scale (out of 1000 points)
-   :widths: 8 8 8 8 8 8 8 8 8 8 8 8
-   :header-rows: 1
-
-   * - A
-     - A-
-     - B+
-     - B
-     - B-
-     - C+
-     - C
-     - C-
-     - D+
-     - D
-     - D-
-     - F
-   * - ≥ 930
-     - ≥ 900
-     - ≥ 870
-     - ≥ 830
-     - ≥ 800
-     - ≥ 770
-     - ≥ 730
-     - ≥ 700
-     - ≥ 670
-     - ≥ 630
-     - ≥ 600
-     - < 600
 
 
 Understanding Specifications Grading (The EMRN Rubric)
@@ -340,12 +281,14 @@ coursework in CS 1114 is considered graded work covered by the Honor Code. All
 program assignments, reading exercises, pre-labs, and quizzes must be completed
 individually.
 
+
 Academic Integrity Module
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 All students must complete the following Canvas module during the first week of class:
 
 * Enroll in and earn the badge for the: `Academic Integrity Success Module <https://canvas.vt.edu/enroll/3TYLTY>`_
+
 
 Collaboration Boundaries: What Is and Is Not Permitted
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -368,17 +311,18 @@ collaboration:
 * You may not copy code from any source.
 * **No Resubmission of Prior Semester Work**: If you are repeating CS 1114, you **may not resubmit work from a previous semester**. All assignments must be written from scratch to develop current skills.
 
+
 Automated Analysis and Sanctions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 All electronic submissions are archived and analyzed with automated plagiarism
-detection tools.
+detection and generative AI detection tools.
 
 If an academic integrity violation occurs, course policy is to recommend the
 **F* sanction** as the final course grade. The ``F*`` notation appears on your
 transcript as *"FAILURE DUE TO ACADEMIC HONOR CODE VIOLATION"*. An F in CS 1114
 prevents you from taking subsequent CS courses until successfully repeated and
-severely impacts change-of-major applications and graduation timelines.
+may significantly impact change-of-major applications and graduation timelines.
 
 
 AI and Long-Term Learning
@@ -395,6 +339,16 @@ If you cannot independently explain, reproduce, and defend your code during your
 **in-person TA grading interviews**, you have not done the learning. Future
 computer science courses, technical interviews, and your professional career
 depend entirely on your foundational ability to reason through code independently.
+
+
+Video: What Everyone Gets Wrong About AI and Learning
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/0xS68sl2D70?si=gDL5Nsv1vfvyRpye" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+   </div>
 
 
 AI Use Policy: Learning Support Only
@@ -430,3 +384,15 @@ Why Over-Reliance on AI Undercuts Your Future
 1. **Loss of Critical Problem-Solving Ability**: Relying on AI for solutions prevents the formation of neural pathways required for analytical thinking. When faced with novel problems, students who over-rely on AI struggle to know where to begin.
 2. **Shallow Understanding and Poor Retention**: Mastery requires wrestling with bugs and learning from mistakes. Bypassing this struggle leads to fragile knowledge that disappears quickly.
 3. **Severe Impact on Internship and Job Interviews**: Tech companies already have access to AI; they hire human software engineers who can solve problems, reason under pressure, and articulate trade-offs. Technical interviews frequently require live whiteboard coding and deep architectural explanations without AI access. If you rely on AI to write your code now, you will struggle in technical interviews.
+
+
+Video: AI is Destroying Basic Human Skills
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/XTkxckAG01o?si=U8o-zQCl4WYsO4-w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+   </div>
+
+
