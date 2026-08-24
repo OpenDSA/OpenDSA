@@ -1427,7 +1427,7 @@ The following **optional, ungraded resources** are designed to help you reinforc
 key concepts, build fluency, and prepare for upcoming
 quizzes, labs, and programming assignments.
 
-* `Java Syntax Practice 1 <https://codeworkout.cs.vt.edu/gym/workouts/1307>`__ : Build
+* `Java Syntax Practice 1 <https://codeworkout.cs.vt.edu/courses/vt/cs1114/fall-2026/14391>`__ : Build
   confidence and muscle memory with rapid, bite-sized drills focused on syntax
   rules and basic language mechanics. *Especially recommended if you are new to programming.*
  
