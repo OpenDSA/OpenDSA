@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Variable Scoping, Input, and Output 
+   :title: Variable Scoping, File Input/Output, and Streams 
    :author: Molly Domino
    :institution: Virginia Tech
    :keyword: Variable Scope; File Processing; Scanner
@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: CS1-level introduction to variable scoping and file I/O.
 
-Variable Scoping, Input, and Output
-===================================
+Variable Scoping, File Input/Output, and Streams
+================================================
 
 Variable Scoping
 ----------------
@@ -384,11 +384,33 @@ Summarizing Scope Concepts
    </div>
 
 
-Syntax Practice: Scoping
-------------------------
+Your Opinions on Course Grading Policies 
+----------------------------------------
 
-.. extrtoolembed:: 'Syntax Practice: Scoping'
-   :workout_id: 1572
+Please Complete the following survey. The survey includes questions regarding your
+opinions on the grading policies in this course and how you approach learning
+in this course. We will use this information to understand better how you are
+affected by these policies so that we can improve the course.
+
+Towards the end of the survey you will be asked if you consent for your answers
+and course data to be used in a study about grading policies.  There is no
+additional work on your part if you provide consent for your data to
+be used in the study.  Completing the survey should take less than 30 minutes.
+Your course instructor will not know whether you agree to
+participate until after you have completed the course and final
+grades have been turned in. You will earn assignment credit for submitting this
+survey, whether or not you agree to participate in the study or decline to
+answer some or all of the questions.
+
+.. raw:: html
+
+    <a href="https://virginiatech.questionpro.com/t/AYIrDZ65ya" target="_blank">CS 1114 Grading Policies Survey 2</a>
+
+Please answer below and your submission of the survey will be verified
+for credit.
+
+.. avembed:: Exercises/IntroToSoftwareDesign/EGPSurvey.html ka
+   :long_name: Survey Completed
 
 
 Java Input and Output
@@ -997,6 +1019,13 @@ The ``TestCase`` base class provides similar methods for setting ``System.in``
 or retrieving the history from ``System.out``. See the javadoc for
 `TestCase <https://courses.cs.vt.edu/~cs1114/api/student/TestCase.html>`_
 for more details.
+
+
+Programming Practice 13
+-----------------------
+
+.. extrtoolembed:: 'Programming Practice 13'
+   :workout_id: 1572
 
 
 .. raw:: html

@@ -1,19 +1,824 @@
-.. This file is part of the OpenDSA eTextbook project. See
-.. http://opendsa.org for more details.
-.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
-.. distributed under an MIT open source license.
-
 .. avmetadata::
-   :title: Conditional and Repeating Actions
-   :author: Molly Domino; Steve Edwards
+   :title: Methods, Selection, and Repeating Actions
+   :author: Molly Domino; Stephen Edwards
    :institution: Virginia Tech
-   :keyword: Conditional Statement; While Loop
+   :keyword: Jeroo; Methods; Selection; Repeating Actions; Loops; if; if-else; while
    :naturallanguage: en
    :programminglanguage: Java
-   :description: First semester programming course introduction to conditional statements and while loops.
+   :description: First semester programming course introduction to subclass methods, conditional statements, and while loops.
 
-Conditional and Repeating Actions
-=================================
+
+Methods, Selection, and Repeating Actions
+=========================================
+
+   “Computer Science is not programming. Rather, programming is the medium
+   for our art, just as writing is the medium for English and other majors.
+   And, like all writing, it is refined by rewriting. The trick is to do
+   the rewriting in your head before your fingers hit the keys.”
+   -- Nick Parlante
+
+In the previous chapter, you learned how to create instances of existing
+classes and invoke their methods. In this chapter, you will take the next step
+as a software designer: creating your own custom subclasses, defining new
+methods to give actors specialized behaviors, using sensor queries to make
+decisions with ``if`` and ``if-else`` statements, and repeating actions using
+``while`` loops.
+
+.. |br| raw:: html
+
+   <br />
+
+
+.. sidebar:: Learning Objectives
+
+    **Estimated Time**: ~90 minutes (~70 min reading + ~20 min video at 100 WPM)
+
+    * **Define** a custom subclass extending an existing parent class (``Jeroo``) to create specialized actors.
+    * **Declare** and **invoke** parameterless helper methods (``public void methodName()``) to encapsulate reusable behaviors.
+    * **Write** clear method contracts specifying preconditions and postconditions with Javadoc comments.
+    * **Decompose** complex multi-step tasks into focused helper methods adhering to stepwise refinement (at most 10 lines per method).
+    * **Explain** how sensor methods query environmental state and return boolean values (``true`` or ``false``).
+    * **Apply** one-way selection (``if``), two-way selection (``if-else``), and cascaded multi-way selection structures to alter control flow.
+    * **Construct** indefinite ``while`` loops driven by sensory guard conditions to safely navigate dynamic micro-world grids without collisions.
+    * **Write** basic automated unit tests extending ``student.TestCase`` with ``setUp()`` fixtures and AssertJ assertions to verify postconditions on Jeroo coordinates, heading, and sensor state.
+
+
+Creating Smarter Jeroos (Subclassing Basics)
+--------------------------------------------
+
+Creating Subclasses
+~~~~~~~~~~~~~~~~~~~
+
+Let's consider the Chess example from the previous section.  If we wanted to
+create a ``ChessPiece`` class, it might look like this. For now, let's not
+worry about the attributes or methods, just the class definition.
+
+.. code-block:: java
+
+   public class ChessPiece
+   {
+
+   }
+
+
+Creating the ``King`` class would then look like this:
+
+.. code-block:: java
+
+    public class King
+        extends ChessPiece
+    {
+
+    }
+
+
+This ``extends`` keyword tells java that the ``King`` class is a subclass
+of ``ChessPiece``.
+
+
+Creating Smarter Jeroos
+~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to creating subclasses of ``Island`` to
+provide different maps, we can also create our own subclass(es) of
+``Jeroo``.  If you create a subclass of ``Jeroo``,
+you can add new methods to it so that your personal jeroo understands
+a larger vocabulary of actions.  You can then use these new methods
+to solve problems.
+
+As an example, suppose we wanted our jeroo to know how to hop
+and plant flowers at the same time--that is, each time it takes a
+hop forward, it also plants a flower (if it has one).  We can do
+this by adding a ``hopAndPlant()`` method of our own.  But
+to add a method, we need to a class of our own to write it in.
+
+.. admonition:: Try It Yourself
+
+   Create a ``Jeroo`` subclass with the name of your
+   choice (remember to capitalize the first letter of the name).
+   Write a method called ``hopAndPlant()`` that hops one
+   square and then plants a flower.
+
+
+Summarizing: What is Inheritance?
+---------------------------------
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/Zs342ePFvRI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
+
+Creating and Using Jeroo Methods
+--------------------------------
+
+For some problems, it would be convenient if we could extend
+the basic behaviors of Jeroos (or other objects).  Java allows us
+to write programmer-defined methods that extend the behavior of
+every object created from a given class.
+
+
+Creating and Using a Jeroo Method
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The concepts of behavior and method were defined
+earlier and are repeated here.  A
+**behavior** is an action that an object can take or a
+task that it can perform in response to a request from an external
+source.  A **method** is a collection of statements that
+are written in some programming language to describe a specific
+behavior.
+
+These definitions imply that the creation of a method is a two-part
+process. First, we need to define and name the new behavior.  Second,
+we need to write the source code for the method.
+
+
+Defining a Behavior
+"""""""""""""""""""
+
+The first question we must ask is "How do I decide on a good
+behavior?"  There is no fixed answer to this question, but there are
+some guidelines to follow.
+
+1. Examine the high-level algorithm.  Any complex, but
+   well-defined, step is a candidate for a new behavior, especially
+   if two or more Jeroos need to perform that step.
+2. Examine the detailed-algorithm.  Any sequence of steps that
+   occur several times is a candidate for a new behavior.
+
+
+These guidelines serve as a starting point, but experience is a
+good teacher.  Examine your own programs and those of others.  A good
+behavior has a very clear definition and is used more than once in the
+program.
+
+Writing a Jeroo Method
+""""""""""""""""""""""
+
+A Jeroo method contains the source code that describes what an
+arbitrary Jeroo needs to do to carry out the corresponding behavior.
+The form of a Jeroo method is:
+
+.. odsafig:: Images/method_structure1.png
+   :align: center
+
+
+The *methodIdentifier* on the first line (the header line) is
+a name that the programmer chooses for the method.  The name should
+indicate the corresponding behavior.  The rules for creating an
+identifier for a method are the same as those given in
+**Module 1**--but remember that we always start
+method names with a **lowercase letter**.  In every method,
+we should indent every line between the opening and closing braces.
+
+.. note::
+   The name of a method should be a
+   **verb** or a short
+   **verb phrase** that describes what
+   the method does.
+
+Since a Jeroo method defines a behavior that applies to every Jeroo,
+we cannot send a message to a specific Jeroo.  Instead, we use the
+special Java name **this**, which
+is like a pronoun that refers to the Jeroo that is performing the
+entire method.
+
+
+Example: Turn Around
+""""""""""""""""""""
+
+If we wanted to add a method to cause a Jeroo to turn around, we
+need a class to place it in.  We have to create our own subclass of
+``Jeroo`` to hold our code.  In BlueJ, you can use the "New Class..."
+button to create a new subclass of `Jeroo`
+with a name of your own choosing.  In that new subclass, you could add
+a method to turn the jeroo around:
+
+.. code-block:: java
+
+   // ----------------------------------------------------------
+   /**
+    * Turn the jeroo around 180 degrees so it faces the opposite
+    * direction.
+    */
+   public void turnAround()
+   {
+       this.turn(LEFT);
+       this.turn(LEFT);
+   }
+
+
+Example: One Method Can Use Another, or Even Itself
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+This example introduces two new behaviors: planting four flowers
+in a row, and planting two adjacent rows with four flowers per row.
+
+.. code-block:: java
+
+   // ----------------------------------------------------------
+   /**
+    * Plant four flowers in a row, starting at the current location.
+    */
+   public void plantFour()
+   {
+       this.plant();   // -- one ---
+
+       this.hop();
+       this.plant();   // -- two ---
+
+       this.hop();
+       this.plant();   // -- three ---
+
+       this.hop();
+       this.plant();   // -- four ---
+   }
+
+
+   // ----------------------------------------------------------
+   /**
+    * Plant two adjacent rows of flowers.
+    */
+   public void plantRowsOfFour()
+   {
+       // --- Plant first row ---
+       this.plantFour();
+
+       // --- Move into position for next row ---
+       this.turn(RIGHT);
+       this.hop();
+       this.turn(RIGHT);
+
+       // --- Plant second row (in opposite direction) ---
+       this.plantFour();
+   }
+
+
+Using a Jeroo Method
+""""""""""""""""""""
+
+.. sidebar:: What is This Error?
+
+    As you type, you will frequently encounter *syntax errors*, where
+    your code is not grammatically correct. These kinds of errors happen
+    all the time as we type, in part because most of us are not perfectly
+    accurate at typing. The previous chapter mentioned some common issues
+    you will encounter, including omitting the semicolon at the end of
+    a statement, not providing matching pairs of parentheses or brackets,
+    or misspelling or miscapitalizing names. BlueJ will usually highlight
+    the line where it discovers the problem and include an appropriate
+    message at the bottom of the editor window.
+    
+    But what do you do if BlueJ shows an error but you do not know what
+    the error message it provides means? Two common techniques are:
+    
+    + Copy the error message text and paste it into a google search.
+    + Use a generative AI tool (like Microsoft Copilot, ChatGPT, Gemini,
+      Claude, etc.).
+      
+    If you want a generative AI tool to explain an error message you
+    don't understand, try asking it something like this:
+    
+        ``I am a beginning programmer learning Java. Explain what this
+        error message means in beginner-friendly terms:`` *[insert error
+        message here]*. ``Provide a simple 1-line example illustrating
+        the error, alone with a version of the example where the error
+        is fixed.``
+
+
+A Jeroo method is used just like any other method.  In our island's
+``myProgram()`` method, we just have to be sure to create
+a jeroo from our special subclass that contains the new methods we
+want to use.  Then we send a message to a specific Jeroo object,
+requesting that Jeroo to perform the task associated with the method.
+
+As an example, suppose we had created our own ``Jeroo``
+subclass called ``PlantingJeroo``, and added the
+``plantFour()`` and ``plantRowsOfFour()`` methods
+to it.  Then in our island subclass, we could have a new Jeroo named
+Ali plant two rows of flowers, south and east of (5, 5):
+
+.. code-block:: java
+
+   public void myProgram()
+   {
+       PlantingJeroo ali = new PlantingJeroo(8);
+       this.addObject(ali, 5, 5);
+
+       ali.plantRowsOfFour();
+   }
+
+
+Preconditions and Postconditions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We should always define a behavior carefully before we write the
+code for the corresponding method.  A complete definition for a
+behavior must include a statement of the preconditions and the
+postconditions.
+A **precondition** for a method is
+something that is assumed to be true before the method is invoked.  The
+portion of the code that invokes the method is responsible for ensuring
+that all preconditions are satisfied before the method is invoked.
+A **postcondition** for a method is
+something that is true after the method has been executed.  The code
+within the method is responsible for ensuring that all postconditions
+are met.
+The process of determining good preconditions and postconditions can
+be difficult, but it is easier if we remember a few characteristics of
+objects and methods.
+
+1. All work is done by sending messages to objects.
+2. Exactly one object executes a method in response to a
+   message.
+3. A method can modify the attributes of the object that
+   executes the method, but cannot directly modify the attributes of
+   any other object.
+4. One method can send messages to several different objects,
+   and those messages can lead to modifications in their
+   receivers.
+
+Using the previous list of characteristics as a guide, we can use
+the following questions as a basis for writing preconditions and
+postconditions.  When we are working with Jeroos, we need to consider
+how a method can change the attributes of the Jeroo object that executes
+the method.  In some cases, Jeroo actions like ``pick()``,
+``plant()``, and ``toss()`` can change the attributes
+of the world by adding or removing objects, although we normally don't
+send messages to these other objects directly.  Behind the scenes,
+the ``pick()``, ``plant()``, and
+``toss()`` methods send appropriate messages to the island in
+order to add or remove objects corresponding to the desired behavior.
+
+.. raw:: html
+
+   <table class="table docutils align-default">
+   <thead>
+   <tr><th>Precondition Questions</th><th>Postcondition Questions</th></tr>
+   </thead>
+   <tbody>
+   <tr><td>Do any of the attributes of the receiving object need
+   to have special values?
+   <blockquote>
+   Location<br/>
+   Direction<br/>
+   Flowers
+   </blockquote></td>
+   <td>How does this method affect the attributes of the receiving
+   object?
+   <blockquote>
+   Location<br/>
+   Direction<br/>
+   Flowers
+   </blockquote></td></tr>
+   <tr><td>Are the contents of certain island cells important?</td>
+   <td>Have the contents of any island cells changed?</td></tr>
+   </tbody>
+   </table>
+
+The preconditions and postconditions can be created rather
+informally, but the final versions should be stated in a comment block
+at the beginning of the source code for the method.  As an example,
+consider the method from the previous section to plant four flowers
+in a row:
+
+.. code-block:: java
+
+   // ----------------------------------------------------------
+   /**
+    * Plant four flowers in a row, starting at the current location.
+    *
+    * @precondition The three spaces directly ahead of the Jeroo are clear.
+    * @precondition The Jeroo has at least four flowers.
+    * @postcondition The Jeroo has planted four flowers, starting at its
+    *     current location and proceeding straight ahead.
+    * @postcondition The Jeroo is standing on the last flower, and facing in
+    *     its original direction.
+    */
+   public void plantFour()
+   {
+      this.plant();   // -- one ---
+
+      this.hop();
+      this.plant();   // -- two ---
+
+      this.hop();
+      this.plant();   // -- three ---
+
+
+      this.hop();
+      this.plant();   // -- four ---
+   }
+
+
+Example: Clear Nets and Pick
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The section contains an extended example that demonstrates the
+algorithm development process, and shows a recommended process for
+developing source code that contains Jeroo methods.
+
+
+Problem Statement (Step 1)
+""""""""""""""""""""""""""
+
+A Jeroo starts at (4, 1) facing North with 5 flowers in its pouch.
+There are two nets immediately South of the Jeroo at locations (4, 2)
+and (4, 3).  There is a flower directly South of the second net.  Write
+a program that directs the Jeroo to disable the nets and pick the flower.
+After picking the flower, the Jeroo should return to its starting
+location and face South.
+
+**Start**
+
+.. odsafig:: Images/5.1-start.png
+
+**Finish**
+
+.. odsafig:: Images/5.1-finish.png
+
+
+Analysis of the Problem (Step 2)
+""""""""""""""""""""""""""""""""
+
+1. The Jeroo must turn around to locate the first net
+2. Each net is directly South of the previous one
+3. The first net is directly South of the Jeroo
+4. The flower is at location (4, 4)
+5. The Jeroo must finish facing South at location (4, 1)
+6. The Jeroo should finish with 5 - 2 + 1 = 4 flowers
+
+
+Detailed Algorithm (Steps 3 and 4)
+""""""""""""""""""""""""""""""""""
+
+Let's name the Jeroo Kim.  Kim should do the following:
+
+   Turn around   // now at (4, 1) facing South|br|
+   Disable two nets in a row
+
+      Toss |br|
+      Hop once   // now at (4, 2) facing South |br|
+      Toss |br|
+      Hop once   // now at (4, 3) facing South
+
+   Get the flower
+
+      Hop once  // now on flower at (4, 4) facing South |br|
+      Pick
+
+   Go back to (4, 1) and turn around
+
+      Turn around   // now at (4, 4) facing North |br|
+      Hop 3 times   // now at (4, 1) facing North |br|
+      Turn around   // now at (4, 1) facing South
+
+
+Review the Algorithm (Step 5)
+"""""""""""""""""""""""""""""
+
+1. The high-level algorithm helps manage the details.
+2. We used a "turn around" step in example 4.2.  We can use the
+   same logic here.
+3. The act of turning around appears as a step in the high-level
+   algorithm and as part of the "Go back to (4, 1) and turn around"
+   step.  Interesting!
+
+
+Possible Behaviors
+""""""""""""""""""
+
+1. "Turn around" is used three times
+2. The sequence "Toss, Hop" is used two times in the "Disable
+    nets" step.
+
+We will create a custom ``Jeroo`` subclass and write a
+Jeroo method for each of these behaviors, but first, we need to define
+a purpose, preconditions, and postconditions for each method.  This can
+be done informally, because we will write these things in a comment
+block at the beginning of each method.
+
+.. note::
+
+   Method: ``turnAround()`` |br|
+   Purpose: Make the Jeroo turn 180 degrees |br|
+   Preconditions:
+
+      none
+
+   Postconditions:
+
+      The Jeroo has turned 180 degrees |br|
+      The Jeroo is at the same location
+
+
+.. note::
+
+   Method: ``tossAndHop()`` |br|
+   Purpose: Disable a net and move to the newly cleared location |br|
+   Preconditions:
+
+      There is a net ahead |br|
+      The Jeroo has at least one flower
+
+   Postconditions:
+
+      The net has been disabled |br|
+      The Jeroo has one less flower |br|
+      The Jeroo is at the location originally occupied by the net |br|
+      The Jeroo has not changed direction
+
+
+The last postcondition of the ``tossAndHop()`` method simply
+says that the Jeroo is facing the direction it was facing at the start
+of the method.  It does not prohibit the Jeroo from changing direction
+during the course of the method as long as the Jeroo returns to its
+original direction at the end.
+
+
+Java Code for "Clear Nets and Pick"
+"""""""""""""""""""""""""""""""""""
+
+As before, we should develop the code as a series of builds.  To
+start this process, create a new project using BlueJ
+use the "New Class..." button to create a new subclass of `Island` called
+``ClearNetsAndPick`` for this example.  Also, create a
+new subclass of ``Jeroo`` called ``ClearingJeroo``
+to hold your Jeroo methods.
+Once you have these classes created, make sure they are compiled.
+Edit the constructor provided in your ``ClearNetsAndPick`` class
+to create and add flowers and nets at the appropriate starting
+locations on the island.
+Then right-click on your ``ClearNetsAndPick`` class and
+create an instance of it, which will then fill the world view.
+
+
+FIRST BUILD
+"""""""""""
+
+The recommended first build contains three things:
+
+1. The ``myProgram()`` method in your island subclass
+   that creates and sends messages to the Jeroo.
+2. Declaration and instantiation of every Jeroo that will be
+   used.  This implies adding an appropriate constructor to our
+   ``Jeroo`` subclass.
+3. The high-level algorithm in the form of comments.
+4. Skeletons for each of the Jeroo methods in your Jeroo
+   subclass.  These skeletons are often called stubs.
+
+
+.. note::
+
+   A **method stub**, or just a
+   **stub**, is a bare skeleton of
+   a method that will compile, but is really just a placeholder for
+   the real method definition that will come later.
+
+
+The ``myProgram()`` method goes inside your
+``ClearNetsAndPick`` class:
+
+.. code-block:: java
+
+   public void myProgram()
+   {
+       Jeroo kim = new Jeroo(NORTH, 5);
+       this.addObject(kim, 4, 1);
+
+       // --- Turn around ---
+
+       // --- Disable nets ---
+
+       // --- Get the flower ---
+
+       // --- Go back to (4, 1) and turn around ---
+
+   }
+
+
+An appropriate constructor and the new Jeroo methods go inside your
+``ClearingJeroo`` class:
+
+.. code-block:: java
+
+   // ----------------------------------------------------------
+   /**
+    * Create a new Jeroo.
+    * @param direction The direction the Jeroo is facing.
+    * @param flowers   The number of flowers the Jeroo is holding.
+    */
+   public Jeroo(CompassDirection direction, int flowers)
+   {
+       super(direction, flowers);    // Let the superclass initialize these
+   }
+
+
+   // ----------------------------------------------------------
+   /**
+    * Turn the jeroo around 180 degrees so it faces the opposite
+    * direction.
+    *
+    * @precondition  None.
+    *
+    * @postcondition The Jeroo has turned 180 degrees.
+    * @postcondition The Jeroo is at the same location.
+    */
+   public void turnAround()
+   {
+   }
+
+
+   // ----------------------------------------------------------
+   /**
+    * Disable a net and move to the newly cleared location.
+    *
+    * @precondition  There is a net ahead.
+    * @precondition  The Jeroo has at least one flower.
+    *
+    * @postcondition The net has been disabled.
+    * @postcondition The Jeroo has one less flower.
+    * @postcondition The Jeroo is at the location originally occupied by the net.
+    * @postcondition The Jeroo has not changed direction.
+    */
+   public void tossAndHop()
+   {
+   }
+
+
+SECOND BUILD
+""""""""""""
+
+This build finishes the ``turnAround()`` method and uses it
+in the ``myProgram()`` method.  It would be wise to test this
+method four times, each time start with Kim facing in a different
+direction.  Once we are comfortable that this method works correctly, we
+can proceed with the next build.
+
+In the ``ClearNetsAndPick`` class:
+
+.. code-block:: java
+
+   public void myProgram()
+   {
+       Jeroo kim = new Jeroo(NORTH, 5);
+       this.addObject(kim, 4, 1);
+
+       // --- Turn around ---
+       kim.turnAround();                 // new code
+
+       // --- Disable nets ---
+
+       // --- Get the flower ---
+
+       // --- Go back to (4, 1) and turn around ---
+
+   }
+
+
+In the ``ClearingJeroo`` class:
+
+.. code-block:: java
+
+   // ----------------------------------------------------------
+   /**
+    * Turn the jeroo around 180 degrees so it faces the opposite
+    * direction.
+    *
+    * @precondition  None.
+    *
+    * @postcondition The Jeroo has turned 180 degrees.
+    * @postcondition The Jeroo is at the same location.
+    */
+   public void turnAround()
+   {
+       this.turn(LEFT);                  // new code
+       this.turn(LEFT);                  // new code
+   }
+
+
+   // ----------------------------------------------------------
+   /**
+    * Disable a net and move to the newly cleared location.
+    *
+    * @precondition  There is a net ahead.
+    * @precondition  The Jeroo has at least one flower.
+    *
+    * @postcondition The net has been disabled.
+    * @postcondition The Jeroo has one less flower.
+    * @postcondition The Jeroo is at the location originally occupied by the net.
+    * @postcondition The Jeroo has not changed direction.
+    */
+   public void tossAndHop()
+   {
+   }
+
+
+THIRD BUILD
+"""""""""""
+
+This build finishes the ``tossAndHop()`` method and uses it
+in the ``myProgram()`` method.  Our focus is on destroying the
+two nets.
+
+In the ``ClearNetsAndPick`` class:
+
+.. code-block:: java
+
+   public void myProgram()
+   {
+       Jeroo kim = new Jeroo(NORTH, 5);
+       this.addObject(kim, 4, 1);
+
+       // --- Turn around ---
+       kim.turnAround();
+
+       // --- Disable nets ---
+       kim.tossAndHop();                 // new code
+       kim.tossAndHop();                 // new code
+
+       // --- Get the flower ---
+
+       // --- Go back to (4, 1) and turn around ---
+
+   }
+
+
+In the ``ClearingJeroo`` class:
+
+.. code-block:: java
+
+   // ----------------------------------------------------------
+   /**
+    * Turn the jeroo around 180 degrees so it faces the opposite
+    * direction.
+    *
+    * @precondition  None.
+    *
+    * @postcondition The Jeroo has turned 180 degrees.
+    * @postcondition The Jeroo is at the same location.
+    */
+   public void turnAround()
+   {
+       this.turn(LEFT);
+       this.turn(LEFT);
+   }
+
+
+   // ----------------------------------------------------------
+   /**
+    * Disable a net and move to the newly cleared location.
+    *
+    * @precondition  There is a net ahead.
+    * @precondition  The Jeroo has at least one flower.
+    *
+    * @postcondition The net has been disabled.
+    * @postcondition The Jeroo has one less flower.
+    * @postcondition The Jeroo is at the location originally occupied by the net.
+    * @postcondition The Jeroo has not changed direction.
+    */
+   public void tossAndHop()
+   {
+       this.toss();          // new code
+       this.hop();           // new code
+   }
+
+
+FOURTH BUILD (final)
+""""""""""""""""""""
+
+This build finishes the ``myProgram()`` method.  We need
+to check to see that Kim has the correct number of flowers at the
+end.
+
+In the ``ClearNetsAndPick`` class:
+
+.. code-block:: java
+
+   public void myProgram()
+   {
+       Jeroo kim = new Jeroo(NORTH, 5);
+       this.addObject(kim, 4, 1);
+
+       // --- Turn around ---
+       kim.turnAround();
+
+       // --- Disable nets ---
+       kim.tossAndHop();
+       kim.tossAndHop();
+
+       // --- Get the flower ---
+       kim.hop();            // new code
+       kim.pick();           // new code
+
+       // --- Go back to (4, 1) and turn around ---
+       kim.turnAround();     // new code
+       kim.hop(3);           // new code
+       kim.turnAround();     // new code
+   }
+
 
 Selection
 ---------
@@ -177,13 +982,6 @@ simply turns right, Timmy must move one space forward.
     timmy.hop();
 
 
-Syntax Practice 3a: If-Then-Else
---------------------------------
-
-.. extrtoolembed:: 'Syntax Practice 3a: If-Then-Else'
-   :workout_id: 1373
-
-
 Creating Optional Statements With If-then
 -----------------------------------------
 
@@ -244,13 +1042,6 @@ disables a net, Jessica should hop one space ahead.
     }
 
     jessica.hop();
-
-
-Syntax Practice 3b: If-Then
----------------------------
-
-.. extrtoolembed:: 'Syntax Practice 3b: If-Then'
-   :workout_id: 1374
 
 
 Java's Syntax for the Multi-way Selection Structure (a cascaded if)
@@ -318,137 +1109,33 @@ turn left.
     }
 
 
-Syntax Practice 3c: Multi-way If
---------------------------------
+Your Opinions on Course Grading Policies 
+----------------------------------------
 
-.. extrtoolembed:: 'Syntax Practice 3c: Multi-way If'
-   :workout_id: 1375
+Please Complete the following survey. The survey includes questions regarding your
+opinions on the grading policies in this course and how you approach learning
+in this course. We will use this information to understand better how you are
+affected by these policies so that we can improve the course.
 
-
-Compound Conditions
--------------------
-
-Conditions come in two forms, *simple* and *compound*. A simple condition is
-a ``boolean`` expression that does not contain any other ``boolean``
-expression. With Jeroos, a simple condition is formed by invoking a single
-sensor method. A **compound condition** is created by using logical operators
-to combine conditions. The three most commonly used logical operators in Java
-are: negation (not), conjunction (and), and disjunction (or). Java uses
-special keystrokes for each of these as shown in the following table.
-
-.. list-table:: Operators for conditions
-   :header-rows: 1
-
-   * - Operator
-     - Java Symbol
-     - Meaning
-   * - Negation
-     - ``!`` (exclamation point)
-     - NOT
-   * - Conjunction
-     - ``&&`` (2 keystrokes; no space between)
-     - AND
-   * - Disjunction
-     - ``||`` (2 keystrokes; no space between)
-     - OR
+Towards the end of the survey you will be asked if you consent for your answers
+and course data to be used in a study about grading policies.  There is no
+additional work on your part if you provide consent for your data to
+be used in the study.  Completing the survey should take less than 30 minutes.
+Your course instructor will not know whether you agree to
+participate until after you have completed the course and final
+grades have been turned in. You will earn assignment credit for submitting this
+survey, whether or not you agree to participate in the study or decline to
+answer some or all of the questions.
 
 .. raw:: html
 
-   <div class="align-center" style="margin-top:1em;">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/yW8IShT12yQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-   </div>
+    <a href="https://virginiatech.questionpro.com/t/AYIrDZ6vmW" target="_blank">CS 1114 Grading Policies Survey 1</a>
 
+Please answer below and your submission of the survey will be verified
+for credit.
 
-Notably, java recognizes single ``&`` and ``|`` as separate operators (they
-have to do with binary math) from ``&&`` and ``||``.  No errors will
-be thrown if you mistake one for the other and your code will simply behave
-oddly.  Also, ``!`` is a unary operator.  It can modify a single if
-statement but not combine two together.
-
-The negation reverses the value of a **boolean** expression, changing true to
-false and false to true, as shown in this table:
-
-.. odsafig:: Images/TruthTable1.png
-   :align: center
-
-In this table, **P** represents an arbitrary boolean expression. The two rows
-underneath **P** show its possible values. The second column shows the
-corresponding values for the expression **!P**, where the negation operator
-is applied to the boolean expression.
-
-The conjunction operator (``&&``, representing logical AND) combines two
-boolean expressions to create a third that is only true when both of the
-original expressions are true:
-
-.. odsafig:: Images/TruthTable2.png
-   :align: center
-
-In this table, **P** and **Q** represent arbitrary boolean expressions. The
-rows underneath **P** and **Q** show all possible combinations of their
-values. The third column shows the corresponding values for ``P && Q``.
-
-The disjunction operator (``||``, representing logical OR) combines two
-boolean expressions to create a third that is only false when both of the
-original expressions are false:
-
-.. odsafig:: Images/TruthTable3.png
-   :align: center
-
-In this table, **P** and **Q** once again represent arbitrary boolean
-expressions. The rows underneath **P** and **Q** show all possible combinations
-of their values. The third column shows the corresponding values for the
-expression ``P || Q``.
-
-.. raw:: html
-
-   <div class="align-center" style="margin-top:1em;">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/NamXVn34QDI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-   </div>
-
-
-Examples (compound conditions)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Remember that these are expressions that could be either true or false.
-The statement:
-
-.. code-block:: java
-
-    boolean x = false;
-
-definitively sets the boolean variable x to false.  It is similar to the
-English statement "the variable x is false".  It is a statement of a fact.
-
-If statements are more like a question:
-
-.. code-block:: java
-
-    martha.seesNet(AHEAD)
-
-This expression is more like a question.  "Does the jeroo see a net ahead of them?"  It could be answered yes or no, but it's not a statement of a fact in the same way.
-
-
-.. list-table:: Operators for conditions
-   :header-rows: 1
-
-   * - Boolean Expression (Java-style)
-     - English Translation (if true)
-   * - ``!bob.seesNet(AHEAD)``
-     - There is not a net ahead of Bob
-   * - ``bob.hasFlower() && bob.isClear(LEFT)``
-     - Bob has at least one flower and there is nothing in the cell
-       immediately to the left of Bob.
-   * - ``bob.seesWater(AHEAD) || bob.seesWater(RIGHT)``
-     - There is water ahead of Bob or to the right of Bob, or both
-   * - ``bob.isFacing(WEST) &&(!bob.seesNet(AHEAD))``
-     - Bob is facing west and there is no net ahead
-
-
-Syntax Practice 3d: Compound Conditions
----------------------------------------
-
-.. extrtoolembed:: 'Syntax Practice 3d: Compound Conditions'
-   :workout_id: 1376
+.. avembed:: Exercises/IntroToSoftwareDesign/EGPSurvey.html ka
+   :long_name: Survey Completed
 
 
 Repeating Actions
@@ -577,22 +1264,158 @@ should turn to the left.
     kim.turn(LEFT);
 
 
-Syntax Practice 3e: While Loops
--------------------------------
+A First Taste of Testing: Verifying Jeroo Behavior
+--------------------------------------------------
 
-.. extrtoolembed:: 'Syntax Practice 3e: While Loops'
-   :workout_id: 1377
+When you write a program or create a new method for a Jeroo, how do you know
+that it actually works?
+
+So far, you have probably run your programs visually in BlueJ, watching the Jeroo
+hop across the island grid and checking whether it ended up in the right place.
+While visual inspection is helpful when getting started, it has serious
+limitations:
+
+1. It is **slow** and requires manual effort every time you change your code.
+2. It is **easy to miss subtle bugs** (such as turning one too many times or stopping one cell too early).
+3. As programs grow larger, you cannot manually check every possible scenario.
+
+In professional software development, programmers write **automated unit tests**--small,
+dedicated pieces of code whose sole job is to execute a specific method or action
+and verify that the result matches expectations.
 
 
-Programming Practice 3
+The Anatomy of a Test Class
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In Java, unit tests are organized into a separate class that extends
+student.TestCase. By convention, if you are testing a class named
+NetRemover, your test class is named NetRemoverTest.
+
+Here is a complete, working example of a test class:
+
+.. code-block:: java
+
+    import student.TestCase;
+    import static org.assertj.core.api.Assertions.*;
+
+    // -------------------------------------------------------------------------
+    /**
+     * Unit tests for the NetRemover class.
+     */
+    public class NetRemoverTest extends TestCase
+    {
+        // 1. Declare fields to hold the objects you will test
+        private Island island;
+        private NetRemover jeroo;
+
+        // ----------------------------------------------------------
+        /**
+         * The setUp() method runs automatically BEFORE every single test method.
+         * It creates a fresh island and actor so each test starts from a clean slate.
+         */
+        public void setUp()
+        {
+            island = new Island();
+            jeroo = new NetRemover();
+            island.addObject(jeroo, 3, 1);
+        }
+
+        // ----------------------------------------------------------
+        /**
+         * Test that turnAround() correctly faces the Jeroo in the opposite direction
+         * without changing its (x, y) coordinates.
+         */
+        public void testTurnAround()
+        {
+            // 1. Execute the action to test
+            jeroo.turnAround();
+
+            // 2. Assert (verify) that the postconditions match expectations
+            assertThat(jeroo.getX()).isEqualTo(3);
+            assertThat(jeroo.getY()).isEqualTo(1);
+            assertThat(jeroo.getHeading()).isEqualTo(WEST);
+        }
+
+        // ----------------------------------------------------------
+        /**
+         * Test that a jeroo correctly picks a flower and clears a net.
+         */
+        public void testPickAndClear()
+        {
+            // Place a flower on the island for testing
+            island.addObject(new Flower(), 4, 1);
+
+            // Execute the action
+            jeroo.hop();
+            jeroo.pick();
+
+            // Assert that the jeroo now holds a flower in its pouch
+            assertThat(jeroo.hasFlower()).isTrue();
+            assertThat(jeroo.getX()).isEqualTo(4);
+        }
+    }
+
+
+Understanding the Key Parts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. **The Test Fixture (setUp)**:
+   The setUp() method is special. Before JUnit runs *any* test method, it
+   executes setUp() first. This guarantees that each test method runs with a
+   brand-new, independent island and actor, preventing one test from interfering
+   with another.
+
+2. **Test Methods (public void test...())**:
+   Every test method must be public void and its name **must start with
+   test** (such as testTurnAround or testPickAndClear). When you run
+   the test class in BlueJ, JUnit automatically finds and runs every method starting
+   with test.
+
+3. **Assertions with assertThat(...)**:
+   An **assertion** is a statement that checks whether a condition is true. If the
+   assertion succeeds, the test passes (showing a green bar). If the assertion fails
+   (for example, if jeroo.getX() was 2 instead of 3), the test stops immediately
+   and reports an error (showing a red bar).
+
+
+Common Assertions for Jeroos
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When testing Jeroo methods, you will most frequently use three categories of assertions:
+
+.. list-table:: Common Jeroo Assertions
+   :widths: 45 55
+   :header-rows: 1
+
+   * - Assertion Syntax
+     - What It Checks
+   * - assertThat(jeroo.getX()).isEqualTo(expectedX);
+     - Verifies the Jeroo's horizontal x-coordinate.
+   * - assertThat(jeroo.getY()).isEqualTo(expectedY);
+     - Verifies the Jeroo's vertical y-coordinate.
+   * - assertThat(jeroo.getHeading()).isEqualTo(EAST);
+     - Verifies the Jeroo's compass direction (EAST, SOUTH, WEST, or NORTH).
+   * - assertThat(jeroo.hasFlower()).isTrue();
+     - Verifies that the Jeroo is holding at least one flower.
+   * - assertThat(jeroo.isWater(AHEAD)).isFalse();
+     - Verifies that there is no water directly ahead.
+
+In Chapter 3, you will explore testing much more deeply--learning how to design
+comprehensive test suites, test all branches of if-else statements and loops,
+and practice Test-Driven Development (TDD). But for now, you already have the
+power to write automated checks for your Jeroo methods!
+
+
+Programming Practice 2
 ----------------------
 
-.. extrtoolembed:: 'Programming Practice 3'
+.. extrtoolembed:: 'Programming Practice 2'
    :workout_id: 1378
 
 
 .. raw:: html
 
+   <p>&nbsp;</p>
    <footer style="border-top: 1px solid #777;"><div class="footer">
      Selected content adapted from:<br/>
      <a href="http://www.cs.trincoll.edu/~ram/jjj/">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde,
@@ -600,5 +1423,3 @@ Programming Practice 3
      <a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
      licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
    </div></footer>
-
-

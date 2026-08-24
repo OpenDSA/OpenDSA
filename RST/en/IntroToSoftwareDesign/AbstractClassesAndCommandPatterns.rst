@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Static Members, Main Method, and Exception Handling
+   :title: Abstract Classes, Frameworks, and Command Patterns
    :author: Molly Domino
    :institution: Virginia Tech
    :keyword: Static; Exception
@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: CS1-level introduction to the static keyword, main method, and exception handling.
 
-Static Members, Main Method, and Exception Handling
-===================================================
+Abstract Classes, Frameworks, and Command Patterns
+==================================================
 
 The Main Method
 ---------------
@@ -700,10 +700,10 @@ followed by one or my catch clauses and a catch clause can only follow a try blo
    </div>
 
 
-Programming Practice 14
+Programming Practice 11
 -----------------------
 
-.. extrtoolembed:: 'Programming Practice 14'
+.. extrtoolembed:: 'Programming Practice 11'
    :workout_id: 1613
 
 
