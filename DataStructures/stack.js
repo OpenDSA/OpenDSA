@@ -4,7 +4,7 @@
 
   var Stack = function (jsav, values, options) {
     this.jsav = jsav;
-    if (!$.isArray(values)) {
+    if (!Array.isArray(values)) {
       options = values;
       values = [];
     }
