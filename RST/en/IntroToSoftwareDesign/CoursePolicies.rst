@@ -334,7 +334,7 @@ Academic Integrity Module
 
 All students must complete the following Canvas module during the first week of class:
 
-* Enroll in and earn the badge for the: `Academic Integrity Success Module <https://canvas.vt.edu/enroll/3TYLTY>`_
+* Enroll in and earn the badge for the: `Academic Integrity Success Module <https://canvas.vt.edu/enroll/JWMLRC>`_
 
 
 Collaboration Boundaries: What Is and Is Not Permitted
