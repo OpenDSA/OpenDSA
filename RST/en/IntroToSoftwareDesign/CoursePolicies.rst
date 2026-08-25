@@ -100,7 +100,7 @@ While CS 1114 may be the perfect fit for your needs, you can use the
 following survey to determine which choices match your background and your
 future goals:
 
-.. admonition:: Introductory CS Course Options
+.. admonition:: Guided Self-Placement Survey for Introductory CS Courses
 
     This survey will ask you questions about your background, goals,
     and prior experience to help guide you through the choice of which CS course
@@ -108,7 +108,7 @@ future goals:
 
     .. raw:: html
      
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://virginiatech.qualtrics.com/jfe/form/SV_0p4tG6D1Q7IT5ki" target="_blank">Introductory CS Course Options</a>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://virginiatech.qualtrics.com/jfe/form/SV_0p4tG6D1Q7IT5ki" target="_blank">Guided Self-Placement Survey for Introductory CS Courses</a>
 
 
 Weekly Schedule
