@@ -80,37 +80,6 @@ is normal or what course staff expect of the bulk of students in this course
 who are learning to program for the first time.
 
 
-Which Introductory CS Course is Right for You?
-----------------------------------------------
-
-We are happy you have chosen to start your CS journey here in this course.
-However, if you are unsure which CS course is the best place for you to
-start, we want to help you find the best path. Our department includes
-multiple introductory courses for different audiences:
-
-- CS 1114 Introduction to Software Design (Introduction to programming and
-  object-oriented design and development using Java; common starting point for
-  students intending to major, double-major, or minor in Computer Science)
-- CS 1014 Introduction to Computational Thinking (A non-programming introduction to computational thinking and problem solving for non-majors)
-- CS 1064 Introduction to Programming in Python (Beginner programming using Python for all majors; covers slightly fewer design and engineering concepts, and so requires CS 2064 to continue pursuing further CS courses)
-- CS 2064 Intermediate Programming in Python (Provides a foundation for more advanced Python usage and entry into other CS courses; requires solid introductory Python experience)
-- CS 2114 Software Design and Data Structures (Second semester object-oriented programming in Java for students who have already mastered introductory Java or CS 2064; gateway for more advanced studies by CS majors, double-majors, and minors)
-
-While CS 1114 may be the perfect fit for your needs, you can use the
-following survey to determine which choices match your background and your
-future goals:
-
-.. admonition:: Introductory CS Course Options
-
-    This survey will ask you questions about your background, goals,
-    and prior experience to help guide you through the choice of which CS course
-    to start your journey:
-
-    .. raw:: html
-     
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://virginiatech.qualtrics.com/jfe/form/SV_0p4tG6D1Q7IT5ki" target="_blank">Introductory CS Course Options</a>
-
-
 Weekly Schedule
 ---------------
 
