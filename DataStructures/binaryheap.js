@@ -45,7 +45,7 @@
       this.options.template = JSAV._types.ds.AVArray._templates[tmplName];
     }
     this._indices = [];
-    if ($.isArray(element)) {
+    if (Array.isArray(element)) {
       var arrsize = element.length;
       if ('size' in options) {
         element.length = options.size;
@@ -133,7 +133,7 @@
       if (this.options.tree && typeof arguments[0] === "number") {
         node = this._treenodes[arguments[0]];
         node[name].apply(node, [].slice.call(arguments, 1));
-      } else if (this.options.tree && $.isArray(arguments[0])) {
+      } else if (this.options.tree && Array.isArray(arguments[0])) {
         for (var i = arguments[0].length; i--;) {
           node = this._treenodes[arguments[0][i]];
           node[name].apply(node, [].slice.call(arguments, 1));
