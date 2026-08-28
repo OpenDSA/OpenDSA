@@ -696,7 +696,7 @@
     this.arr = null
     this.max_length = max_length
     
-    if ($.isArray(element)) {
+    if (Array.isArray(element)) {
   
       //default position of array's top center and call JSAV array constructor
       var left_arr = String(x_coord) + "px";

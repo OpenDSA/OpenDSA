@@ -4734,7 +4734,7 @@ function getRandomInt(max) {
     this.leftPoly = null;
     this.rightPoly = null;
 
-    if ($.isArray(element)) {
+    if (Array.isArray(element)) {
       // x & y control
       var right = x_coord + element.length * cell_size; //topright
 

@@ -157,7 +157,7 @@
           data.call(elem, index, e);
         } else if ($.isFunction(handler)) { // if custom data is passed
           // ..bind this to the array and call handler
-          var params = $.isArray(data) ? data.slice(0) : [data]; // get a cloned array or data as array
+          var params = Array.isArray(data) ? data.slice(0) : [data]; // get a cloned array or data as array
           params.unshift(index); // add index to first parameter
           params.push(e); // jQuery event as the last
           handler.apply(self, params); // apply the function
@@ -263,7 +263,7 @@
       value = [];
     }
     // If value is not an array, convert it to an array
-    if (!$.isArray(value)) {
+    if (!Array.isArray(value)) {
       value = [value];
     }
     // Truncate value array if it's too long
@@ -291,7 +291,7 @@
     if (typeof index === "undefined") {
       // return a copy of all values in the array
       return this.node_array._values.slice(0);
-    } else if ($.isArray(index)) {
+    } else if (Array.isArray(index)) {
       // replace all values in the array with the new array
       var value = this._fixvalue(index);
       for (var i = 0; i < value.length; i++) {
