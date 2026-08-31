@@ -31,7 +31,7 @@ decisions with ``if`` and ``if-else`` statements, and repeating actions using
 
 .. sidebar:: Learning Objectives
 
-    **Estimated Time**: ~90 minutes (~70 min reading + ~20 min video at 100 WPM)
+    **Estimated Time**: ~91 minutes (~71 min reading + ~20 min video at 100 WPM)
 
     * **Define** a custom subclass extending an existing parent class (``Jeroo``) to create specialized actors.
     * **Declare** and **invoke** parameterless helper methods (``public void methodName()``) to encapsulate reusable behaviors.
@@ -40,64 +40,55 @@ decisions with ``if`` and ``if-else`` statements, and repeating actions using
     * **Explain** how sensor methods query environmental state and return boolean values (``true`` or ``false``).
     * **Apply** one-way selection (``if``), two-way selection (``if-else``), and cascaded multi-way selection structures to alter control flow.
     * **Construct** indefinite ``while`` loops driven by sensory guard conditions to safely navigate dynamic micro-world grids without collisions.
-    * **Write** basic automated unit tests extending ``student.TestCase`` with ``setUp()`` fixtures and AssertJ assertions to verify postconditions on Jeroo coordinates, heading, and sensor state.
+    * **Write** basic automated unit tests extending ``student.TestCase`` with local test object setup and AssertJ assertions to verify postconditions on Jeroo coordinates, heading, and sensor state.
 
 
 Creating Smarter Jeroos (Subclassing Basics)
 --------------------------------------------
 
-Creating Subclasses
-~~~~~~~~~~~~~~~~~~~
-
-Let's consider the Chess example from the previous section.  If we wanted to
-create a ``ChessPiece`` class, it might look like this. For now, let's not
-worry about the attributes or methods, just the class definition.
+In Chapter 1, you learned how to customize an island environment by creating
+a subclass of ``Island``:
 
 .. code-block:: java
 
-   public class ChessPiece
+   public class MyIsland
+       extends Island
    {
 
    }
 
+The ``extends`` keyword tells Java that ``MyIsland`` is a subclass of ``Island``,
+inheriting all the features of the parent class while allowing us to customize its
+setup.
 
-Creating the ``King`` class would then look like this:
+Just as we created subclasses of ``Island`` to define custom maps, we can also
+create our own subclasses of ``Jeroo``. A standard ``Jeroo`` only knows a fixed
+set of basic actions: ``hop()``, ``turn()``, ``pick()``, ``plant()``, and
+``toss()``. If you create a subclass of ``Jeroo``, you can add new methods
+to it so that your personal jeroo understands a richer vocabulary of actions to
+solve more complex problems.
+
+For example, if we want to create a specialized Jeroo called ``ClearingJeroo``,
+we define it as a subclass of ``Jeroo``:
 
 .. code-block:: java
 
-    public class King
-        extends ChessPiece
+    public class ClearingJeroo
+        extends Jeroo
     {
 
     }
 
-
-This ``extends`` keyword tells java that the ``King`` class is a subclass
-of ``ChessPiece``.
-
-
-Creating Smarter Jeroos
-~~~~~~~~~~~~~~~~~~~~~~~
-
-In addition to creating subclasses of ``Island`` to
-provide different maps, we can also create our own subclass(es) of
-``Jeroo``.  If you create a subclass of ``Jeroo``,
+By creating a subclass of ``Jeroo``,
 you can add new methods to it so that your personal jeroo understands
-a larger vocabulary of actions.  You can then use these new methods
+a larger vocabulary of actions. You can then use these new methods
 to solve problems.
 
 As an example, suppose we wanted our jeroo to know how to hop
 and plant flowers at the same time--that is, each time it takes a
 hop forward, it also plants a flower (if it has one).  We can do
 this by adding a ``hopAndPlant()`` method of our own.  But
-to add a method, we need to a class of our own to write it in.
-
-.. admonition:: Try It Yourself
-
-   Create a ``Jeroo`` subclass with the name of your
-   choice (remember to capitalize the first letter of the name).
-   Write a method called ``hopAndPlant()`` that hops one
-   square and then plants a flower.
+to add a method, we need a class of our own to write it in.
 
 
 Summarizing: What is Inheritance?
@@ -119,8 +110,8 @@ to write programmer-defined methods that extend the behavior of
 every object created from a given class.
 
 
-Creating and Using a Jeroo Method
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+What is a Method?
+~~~~~~~~~~~~~~~~~
 
 The concepts of behavior and method were defined
 earlier and are repeated here.  A
@@ -154,6 +145,7 @@ good teacher.  Examine your own programs and those of others.  A good
 behavior has a very clear definition and is used more than once in the
 program.
 
+
 Writing a Jeroo Method
 """"""""""""""""""""""
 
@@ -169,7 +161,7 @@ The *methodIdentifier* on the first line (the header line) is
 a name that the programmer chooses for the method.  The name should
 indicate the corresponding behavior.  The rules for creating an
 identifier for a method are the same as those given in
-**Module 1**--but remember that we always start
+**Chapter 1**--but remember that we always start
 method names with a **lowercase letter**.  In every method,
 we should indent every line between the opening and closing braces.
 
@@ -192,7 +184,7 @@ Example: Turn Around
 If we wanted to add a method to cause a Jeroo to turn around, we
 need a class to place it in.  We have to create our own subclass of
 ``Jeroo`` to hold our code.  In BlueJ, you can use the "New Class..."
-button to create a new subclass of `Jeroo`
+button to create a new subclass of ``Jeroo``
 with a name of your own choosing.  In that new subclass, you could add
 a method to turn the jeroo around:
 
@@ -210,8 +202,8 @@ a method to turn the jeroo around:
    }
 
 
-Example: One Method Can Use Another, or Even Itself
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+Example: One Method Can Use Another
+"""""""""""""""""""""""""""""""""""
 
 This example introduces two new behaviors: planting four flowers
 in a row, and planting two adjacent rows with four flowers per row.
@@ -284,7 +276,7 @@ Using a Jeroo Method
         ``I am a beginning programmer learning Java. Explain what this
         error message means in beginner-friendly terms:`` *[insert error
         message here]*. ``Provide a simple 1-line example illustrating
-        the error, alone with a version of the example where the error
+        the error, along with a version of the example where the error
         is fixed.``
 
 
@@ -1288,7 +1280,7 @@ The Anatomy of a Test Class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In Java, unit tests are organized into a separate class that extends
-student.TestCase. By convention, if you are testing a class named
+``student.TestCase``. By convention, if you are testing a class named
 NetRemover, your test class is named NetRemoverTest.
 
 Here is a complete, working example of a test class:
@@ -1304,22 +1296,6 @@ Here is a complete, working example of a test class:
      */
     public class NetRemoverTest extends TestCase
     {
-        // 1. Declare fields to hold the objects you will test
-        private Island island;
-        private NetRemover jeroo;
-
-        // ----------------------------------------------------------
-        /**
-         * The setUp() method runs automatically BEFORE every single test method.
-         * It creates a fresh island and actor so each test starts from a clean slate.
-         */
-        public void setUp()
-        {
-            island = new Island();
-            jeroo = new NetRemover();
-            island.addObject(jeroo, 3, 1);
-        }
-
         // ----------------------------------------------------------
         /**
          * Test that turnAround() correctly faces the Jeroo in the opposite direction
@@ -1327,10 +1303,15 @@ Here is a complete, working example of a test class:
          */
         public void testTurnAround()
         {
-            // 1. Execute the action to test
+            // 1. Set up the objects needed for this test
+            Island island = new Island();
+            NetRemover jeroo = new NetRemover();
+            island.addObject(jeroo, 3, 1);
+
+            // 2. Execute the action to test
             jeroo.turnAround();
 
-            // 2. Assert (verify) that the postconditions match expectations
+            // 3. Assert (verify) that the postconditions match expectations
             assertThat(jeroo.getX()).isEqualTo(3);
             assertThat(jeroo.getY()).isEqualTo(1);
             assertThat(jeroo.getHeading()).isEqualTo(WEST);
@@ -1342,14 +1323,17 @@ Here is a complete, working example of a test class:
          */
         public void testPickAndClear()
         {
-            // Place a flower on the island for testing
+            // 1. Set up the objects needed for this test
+            Island island = new Island();
+            NetRemover jeroo = new NetRemover();
+            island.addObject(jeroo, 3, 1);
             island.addObject(new Flower(), 4, 1);
 
-            // Execute the action
+            // 2. Execute the action
             jeroo.hop();
             jeroo.pick();
 
-            // Assert that the jeroo now holds a flower in its pouch
+            // 3. Assert that the jeroo now holds a flower in its pouch
             assertThat(jeroo.hasFlower()).isTrue();
             assertThat(jeroo.getX()).isEqualTo(4);
         }
@@ -1359,19 +1343,19 @@ Here is a complete, working example of a test class:
 Understanding the Key Parts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. **The Test Fixture (setUp)**:
-   The setUp() method is special. Before JUnit runs *any* test method, it
-   executes setUp() first. This guarantees that each test method runs with a
-   brand-new, independent island and actor, preventing one test from interfering
-   with another.
+1. **Local Test Setup**:
+   Each test method begins by creating the fresh island and actor objects it
+   needs using ``new``. Because each test method runs independently from start
+   to finish with its own local variables, one test cannot interfere with or
+   affect another.
 
-2. **Test Methods (public void test...())**:
+2. **Test Methods (``public void test...()``)**:
    Every test method must be public void and its name **must start with
-   test** (such as testTurnAround or testPickAndClear). When you run
+   ``test``** (such as testTurnAround or testPickAndClear). When you run
    the test class in BlueJ, JUnit automatically finds and runs every method starting
    with test.
 
-3. **Assertions with assertThat(...)**:
+3. **Assertions with ``assertThat(...)``**:
    An **assertion** is a statement that checks whether a condition is true. If the
    assertion succeeds, the test passes (showing a green bar). If the assertion fails
    (for example, if jeroo.getX() was 2 instead of 3), the test stops immediately
@@ -1389,15 +1373,15 @@ When testing Jeroo methods, you will most frequently use three categories of ass
 
    * - Assertion Syntax
      - What It Checks
-   * - assertThat(jeroo.getX()).isEqualTo(expectedX);
+   * - ``assertThat(jeroo.getX()).isEqualTo(expectedX);``
      - Verifies the Jeroo's horizontal x-coordinate.
-   * - assertThat(jeroo.getY()).isEqualTo(expectedY);
+   * - ``assertThat(jeroo.getY()).isEqualTo(expectedY);``
      - Verifies the Jeroo's vertical y-coordinate.
-   * - assertThat(jeroo.getHeading()).isEqualTo(EAST);
+   * - ``assertThat(jeroo.getHeading()).isEqualTo(EAST);``
      - Verifies the Jeroo's compass direction (EAST, SOUTH, WEST, or NORTH).
-   * - assertThat(jeroo.hasFlower()).isTrue();
+   * - ``assertThat(jeroo.hasFlower()).isTrue();``
      - Verifies that the Jeroo is holding at least one flower.
-   * - assertThat(jeroo.isWater(AHEAD)).isFalse();
+   * - ``assertThat(jeroo.isWater(AHEAD)).isFalse();``
      - Verifies that there is no water directly ahead.
 
 In Chapter 3, you will explore testing much more deeply--learning how to design
@@ -1406,11 +1390,24 @@ and practice Test-Driven Development (TDD). But for now, you already have the
 power to write automated checks for your Jeroo methods!
 
 
+Building Your Skills Through Practice
+-------------------------------------
+
+Learning to program is a skill built through deliberate practice and experimentation.
+The following **optional, ungraded resources** are designed to help you reinforce
+key concepts, build fluency, and prepare for upcoming
+quizzes, labs, and programming assignments.
+
+* `Java Syntax Practice 2 <https://codeworkout.cs.vt.edu/courses/vt/cs1114/fall-2026/workouts/3793>`__ : Build
+  confidence and muscle memory with rapid, bite-sized drills focused on syntax
+  rules and basic language mechanics. *Especially recommended if you are new to programming.*
+ 
+
 Programming Practice 2
 ----------------------
 
 .. extrtoolembed:: 'Programming Practice 2'
-   :workout_id: 1378
+   :workout_id: 3805
 
 
 .. raw:: html

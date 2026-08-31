@@ -2,10 +2,10 @@
    :title: Software Testing Fundamentals & TDD
    :author: Molly Domino; Stephen Edwards
    :institution: Virginia Tech
-   :keyword: software testing; unit testing; test fixture; assertion; test-driven development
+   :keyword: software testing; unit testing; assertion; test-driven development; code coverage
    :naturallanguage: en
    :programminglanguage: Java
-   :description: Introduction to automated software testing, JUnit, test fixtures, assertions, and Test-Driven Development.
+   :description: Introduction to automated software testing, JUnit, test method structure, assertions, Test-Driven Development, and code coverage.
 
 
 Software Testing Fundamentals & TDD
@@ -20,7 +20,7 @@ methods, and control execution flow using ``if`` statements and ``while`` loops.
 You also got a first taste of automated testing by writing basic checks for
 your Jeroo methods. In this chapter, we take a deep dive into **software testing**
 as a fundamental engineering discipline. You will learn how to design
-comprehensive unit test suites, use test fixtures (``setUp``), write fluent
+comprehensive unit test suites, structure test methods with local fixtures, write fluent
 assertions with AssertJ, practice **Test-Driven Development (TDD)**, and evaluate
 your tests using **code coverage**.
 
@@ -29,7 +29,7 @@ your tests using **code coverage**.
     **Estimated Time**: ~71 minutes (~71 min reading at 100 WPM)
 
     * **Explain** the benefits of automated unit testing and the phases of the Test-Driven Development (TDD) cycle (Red-Green-Refactor).
-    * **Construct** automated test classes extending ``student.TestCase`` with ``setUp()`` test fixtures.
+    * **Construct** automated test classes extending ``student.TestCase`` with focused test methods using local test object instantiation.
     * **Author** focused test methods using AssertJ assertions (``assertThat(...)``) to verify object coordinates, headings, and state postconditions.
     * **Design** test cases that systematically test loop boundaries (0 iterations, 1 iteration, and multiple iterations) and branch outcomes.
     * **Differentiate** between statement coverage and condition/branch coverage, and interpret test failures and stack traces in Web-CAT and BlueJ.
