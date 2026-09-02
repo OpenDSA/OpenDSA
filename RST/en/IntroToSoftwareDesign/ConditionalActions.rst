@@ -1390,11 +1390,24 @@ and practice Test-Driven Development (TDD). But for now, you already have the
 power to write automated checks for your Jeroo methods!
 
 
+Building Your Skills Through Practice
+-------------------------------------
+
+Learning to program is a skill built through deliberate practice and experimentation.
+The following **optional, ungraded resources** are designed to help you reinforce
+key concepts, build fluency, and prepare for upcoming
+quizzes, labs, and programming assignments.
+
+* `Java Syntax Practice 2 <https://codeworkout.cs.vt.edu/courses/vt/cs1114/fall-2026/workouts/3793https://codeworkout.cs.vt.edu/courses/vt/cs1114/fall-2026/workouts/3810>`__ : Build
+  confidence and muscle memory with rapid, bite-sized drills focused on syntax
+  rules and basic language mechanics. *Especially recommended if you are new to programming.*
+
+
 Programming Practice 2
 ----------------------
 
 .. extrtoolembed:: 'Programming Practice 2'
-   :workout_id: 3805
+   :workout_id: 1378
 
 
 .. raw:: html
