@@ -40,7 +40,7 @@ decisions with ``if`` and ``if-else`` statements, and repeating actions using
     * **Explain** how sensor methods query environmental state and return boolean values (``true`` or ``false``).
     * **Apply** one-way selection (``if``), two-way selection (``if-else``), and cascaded multi-way selection structures to alter control flow.
     * **Construct** indefinite ``while`` loops driven by sensory guard conditions to safely navigate dynamic micro-world grids without collisions.
-    * **Write** basic automated unit tests extending ``student.TestCase`` with local test object setup and AssertJ assertions to verify postconditions on Jeroo coordinates, heading, and sensor state.
+    * **Write** basic automated unit tests extending ``student.micro.TestCase`` with local test object setup and fluent domain assertions to verify postconditions on Jeroo position, heading, inventory, and environment state.
 
 
 Creating Smarter Jeroos (Subclassing Basics)
@@ -1275,26 +1275,47 @@ In professional software development, programmers write **automated unit tests**
 dedicated pieces of code whose sole job is to execute a specific method or action
 and verify that the result matches expectations.
 
+.. note::
+
+   Testing is how we **check our work** as we go, so we can find and fix
+   errors as early as possible.
+
+   A common mistake is to write all the code first, and then test it by running
+   it. However, this only works for small examples--the larger the code is,
+   the harder it is to find the problems unless you double-check yourself as you go.
+
 
 The Anatomy of a Test Class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In Java, unit tests are organized into a separate class that extends
-``student.TestCase``. By convention, if you are testing a class named
-NetRemover, your test class is named NetRemoverTest.
+``TestCase``. By convention, if you are testing a class named
+``NetRemover``, your test class is named ``NetRemoverTest``.
+
+Each separate test you want to perform is then written in its own method.
+These methods have names that start with ``test`` to indicate they are
+your actual test. Each test has three parts:
+
+1. **Set up** the objects needed for this test
+2. **Execute** the action to test
+3. **Assert** (verify) that the postconditions match expectations
 
 Here is a complete, working example of a test class:
 
 .. code-block:: java
 
-    import student.TestCase;
+    import student.micro.jeroo.*;
+    import static student.micro.jeroo.Assertions.*;
+    import static student.micro.jeroo.CompassDirection.*;
+    import static student.micro.jeroo.RelativeDirection.*;
     import static org.assertj.core.api.Assertions.*;
 
     // -------------------------------------------------------------------------
     /**
      * Unit tests for the NetRemover class.
      */
-    public class NetRemoverTest extends TestCase
+    public class NetRemoverTest
+        extends TestCase
     {
         // ----------------------------------------------------------
         /**
@@ -1312,16 +1333,16 @@ Here is a complete, working example of a test class:
             jeroo.turnAround();
 
             // 3. Assert (verify) that the postconditions match expectations
-            assertThat(jeroo.getX()).isEqualTo(3);
-            assertThat(jeroo.getY()).isEqualTo(1);
-            assertThat(jeroo.getHeading()).isEqualTo(WEST);
+            assertThat(jeroo)
+                .isAt(3, 1)
+                .isFacing(WEST);
         }
 
         // ----------------------------------------------------------
         /**
          * Test that a jeroo correctly picks a flower and clears a net.
          */
-        public void testPickAndClear()
+        public void testHopAndPick()
         {
             // 1. Set up the objects needed for this test
             Island island = new Island();
@@ -1330,12 +1351,12 @@ Here is a complete, working example of a test class:
             island.addObject(new Flower(), 4, 1);
 
             // 2. Execute the action
-            jeroo.hop();
-            jeroo.pick();
+            jeroo.hopAndPick();
 
-            // 3. Assert that the jeroo now holds a flower in its pouch
-            assertThat(jeroo.hasFlower()).isTrue();
-            assertThat(jeroo.getX()).isEqualTo(4);
+            // 3. Assert that the jeroo moved and now holds a flower in its pouch
+            assertThat(jeroo)
+                .isAt(4, 1)
+                .hasFlowerCount(1);
         }
     }
 
@@ -1351,21 +1372,52 @@ Understanding the Key Parts
 
 2. **Test Methods (``public void test...()``)**:
    Every test method must be public void and its name **must start with
-   ``test``** (such as testTurnAround or testPickAndClear). When you run
-   the test class in BlueJ, JUnit automatically finds and runs every method starting
-   with test.
+   ``test``** (such as ``testTurnAround`` or ``testPickAndClear``). When you run
+   all the tests in BlueJ, it finds and runs every method starting
+   with ``test``.
 
-3. **Assertions with ``assertThat(...)``**:
-   An **assertion** is a statement that checks whether a condition is true. If the
-   assertion succeeds, the test passes (showing a green bar). If the assertion fails
-   (for example, if jeroo.getX() was 2 instead of 3), the test stops immediately
-   and reports an error (showing a red bar).
+3. **Using ``assertThat(...)``**:
+   An **assertion** is a statement that checks whether a condition is true. This is
+   how we write *claims* about what we expect to happen in a test. Our micro-world
+   testing framework provides assertions for you to check your jeroo's properties directly.
+   Notice how naturally the check reads:
+
+   .. code-block:: java
+
+       assertThat(jeroo)
+           .isAt(3, 1)
+           .isFacing(WEST);
+
+   This reads like standard English: *"Assert that jeroo is at (3, 1) and is facing WEST."*
+   If the assertion succeeds, the test passes (showing a green bar). If it fails, the test stops
+   immediately and reports a clear, descriptive error message (for example,
+   ``Expected Jeroo to be at (3, 1) but was at (2, 1)``).
+
+
+Method Chaining and the Semicolon Trap
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can chain multiple checks together onto the same actor by adding dots (``.``).
+Because this chained method call is **one single Java statement spread across multiple lines**,
+you must place the semicolon (``;``) **only at the very end** of the chain!
+
+.. code-block:: java
+
+    // ❌ INCORRECT (A very common beginner mistake):
+    assertThat(jeroo);    // Semicolon here ends the statement prematurely!
+        .isAt(3, 1)       // Error: Java does not expect a dot after the statement ended
+        .isFacing(WEST);
+
+    // ✅ CORRECT:
+    assertThat(jeroo)
+        .isAt(3, 1)
+        .isFacing(WEST);  // Only one semicolon at the very end of the chain!
 
 
 Common Assertions for Jeroos
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When testing Jeroo methods, you will most frequently use three categories of assertions:
+When testing Jeroo methods, you will most frequently use the following domain assertions:
 
 .. list-table:: Common Jeroo Assertions
    :widths: 45 55
@@ -1373,16 +1425,42 @@ When testing Jeroo methods, you will most frequently use three categories of ass
 
    * - Assertion Syntax
      - What It Checks
-   * - ``assertThat(jeroo.getX()).isEqualTo(expectedX);``
-     - Verifies the Jeroo's horizontal x-coordinate.
-   * - ``assertThat(jeroo.getY()).isEqualTo(expectedY);``
-     - Verifies the Jeroo's vertical y-coordinate.
-   * - ``assertThat(jeroo.getHeading()).isEqualTo(EAST);``
-     - Verifies the Jeroo's compass direction (EAST, SOUTH, WEST, or NORTH).
-   * - ``assertThat(jeroo.hasFlower()).isTrue();``
-     - Verifies that the Jeroo is holding at least one flower.
-   * - ``assertThat(jeroo.isWater(AHEAD)).isFalse();``
-     - Verifies that there is no water directly ahead.
+   * - ``assertThat(jeroo).isAt(3, 1);``
+     - Verifies the Jeroo's horizontal and vertical coordinates.
+   * - ``assertThat(jeroo).isFacing(EAST);``
+     - Verifies the compass direction (EAST, SOUTH, WEST, or NORTH).
+   * - ``assertThat(jeroo).hasFlowerCount(1);``
+     - Verifies the exact number of flowers in the pouch.
+   * - ``assertThat(jeroo).hasFlower();``
+     - Verifies that the pouch has at least one flower (not empty).
+   * - ``assertThat(jeroo).hasNoFlowers();``
+     - Verifies that the pouch is completely empty (0 flowers).
+   * - ``assertThat(jeroo).isClear(AHEAD);``
+     - Verifies that the cell ahead has no water, net, flower, or Jeroo.
+   * - ``assertThat(jeroo).seesFlower(HERE);``
+     - Verifies that the Jeroo is currently standing on a flower.
+   * - ``assertThat(jeroo).doesNotSeeWater(AHEAD);``
+     - Verifies that the cell ahead does not contain water.
+   * - ``assertThat(island).hasFlowerAt(x, y);``
+     - Verifies that a flower exists on the island grid at (x, y).
+   * - ``assertThat(island).hasNoFlowerAt(x, y);``
+     - Verifies that no flower is present at (x, y) (e.g., after being picked).
+   * - ``assertThat(island).isClearOfNets();``
+     - Verifies that all nets on the island have been cleared.
+
+As you can imagine, ``see...()`` and ``doesNotSee...()`` exist for all the kinds of
+things a jeroo can see, and that every ``is...()``, ``has...()``, and ``sees...()`` has
+a corresponding ``not`` version. That goes for islands, too.
+
+.. tip::
+
+   **Testing LightBots Too!** This same fluent AssertJ style applies across all micro-worlds.
+   When testing LightBot solutions, you can assert:
+
+   .. code-block:: java
+
+       assertThat(bot).isAt(2, 1).isAtHeight(1).isOnLitTile();
+       assertThat(level).isSolved();
 
 In Chapter 3, you will explore testing much more deeply--learning how to design
 comprehensive test suites, test all branches of if-else statements and loops,

@@ -155,7 +155,7 @@ debugging*, and *makes code much easier to maintain*.
 
 
 Accessor and Mutator Methods (Getters and Setters)
--------------------------------------------------
+--------------------------------------------------
 
 While outside classes cannot access private fields directly, classes often need
 to provide controlled ways for clients to inspect or modify an object's attributes.

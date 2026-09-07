@@ -649,8 +649,10 @@ can't use them. Add the following at the top:
 .. code-block:: java
 
    import student.micro.jeroo.*;
+   import static student.micro.jeroo.Assertions.*;
    import static student.micro.jeroo.CompassDirection.*;
    import static student.micro.jeroo.RelativeDirection.*;
+   import static org.assertj.core.api.Assertions.*;
 
 Each test case that we write will come in the form of a single
 test method. We name our test methods using a name that starts with ``test``,
@@ -730,23 +732,20 @@ following will be true:
 
 How can we write this in code? We write our expectations in our test
 case methods using a special structure that consists of regular Java
-methods, but we're using them in a very stylized way. Our
-expectations will use a form designed to make them clearly readable.
-To start, we will use this basic form, which we will build on as
-our programs grow:
+methods, but we're using them in a very stylized, fluent way. Our
+expectations use a form designed to make them read like natural English.
+Instead of retrieving raw numbers with getters, we pass the actor directly
+to ``assertThat(...)`` and chain our checks:
 
 .. code-block:: java
 
-   assertThat(<something we want to check>).isEqualTo(<expected value>);
+   assertThat(picker)
+       .isAt(6, 2)
+       .isFacing(EAST)
+       .hasFlowerCount(5);
 
-So, we can translate our jeroo expectations into the following code:
-
-.. code-block:: java
-
-   assertThat(picker.getX()).isEqualTo(6);
-   assertThat(picker.getY()).isEqualTo(2);
-   assertThat(picker.getFlowers()).isEqualTo(5);
-   assertThat(picker.getHeading()).isEqualTo(EAST);
+Notice how naturally this reads: *"Assert that picker is at (6, 2), is facing EAST,
+and has a flower count of 5."*
 
 We can add these to our test case method:
 
@@ -763,11 +762,19 @@ We can add these to our test case method:
        picker.pickFlowers();
 
        // 3. check expected results
-       assertThat(picker.getX()).isEqualTo(6);
-       assertThat(picker.getY()).isEqualTo(2);
-       assertThat(picker.getFlowers()).isEqualTo(5);
-       assertThat(picker.getHeading()).isEqualTo(EAST);
+       assertThat(picker)
+           .isAt(6, 2)
+           .isFacing(EAST)
+           .hasFlowerCount(5);
    }
+
+.. note::
+
+   **Watch Out for the Semicolon Trap!**
+   Because fluent chained assertions are a single statement spread across
+   multiple lines, put a semicolon (``;``) **only at the very end** of the chain.
+   Placing a semicolon after ``assertThat(picker);`` ends the statement prematurely
+   and causes a syntax error on the next line.
 
 Now we can actually compile and run our code. Actually, it may fail to
 compile, because we haven't even written our ``pickFlowers()`` method
@@ -823,25 +830,23 @@ Your initial conditions will be different, and in fact your expected
 results may also be different. But if you don't write tests, you won't
 know whether or not problems exist.
 
-When testing with jeroos, Remember the following examples of
-methods you can mix and match to express conditions and fill in your
-own values (be sure to use your own jeroo name, of course):
+When testing with Jeroos, remember the following domain assertions that
+you can mix and match to express conditions and fill in your own values:
 
-* ``assertThat(jeroo.getX()).isEqualTo(...);``
-* ``assertThat(jeroo.getY()).isEqualTo(...);``
-* ``assertThat(jeroo.getFlowers()).isEqualTo(...);``
-* ``assertThat(jeroo.getHeading()).isEqualTo(...);``
-* ``assertThat(jeroo.hasFlower()).isTrue();``
-* ``assertThat(jeroo.seesJeroo(AHEAD)).isFalse();``
-* ``assertThat(jeroo.seesWater(LEFT)).isTrue();``
+* ``assertThat(jeroo).isAt(expectedX, expectedY);``
+* ``assertThat(jeroo).isFacing(EAST);``
+* ``assertThat(jeroo).hasFlowerCount(5);``
+* ``assertThat(jeroo).hasFlower();``
+* ``assertThat(jeroo).hasNoFlowers();``
+* ``assertThat(jeroo).isClear(AHEAD);``
+* ``assertThat(jeroo).seesFlower(HERE);``
+* ``assertThat(jeroo).doesNotSeeWater(AHEAD);``
 
-You can also express your expectations about the island (remember to
-choose your own values and use your own island name):
+You can also express your expectations about the island directly:
 
-* ``assertThat(island.countFlowers()).isEqualTo(...);``
-* ``assertThat(island.countNets()).isEqualTo(...);``
-* ``assertThat(island.hasFlowerAt(3, 7)).isTrue();``
-* ``assertThat(island.hasNetAt(4, 2)).isFalse();``
+* ``assertThat(island).hasFlowerAt(3, 7);``
+* ``assertThat(island).hasNoFlowerAt(3, 7);``
+* ``assertThat(island).isClearOfNets();``
 
 There are virtually unlimited options for how to express what behavior
 you intend to occur in a test case, but these methods will get you
