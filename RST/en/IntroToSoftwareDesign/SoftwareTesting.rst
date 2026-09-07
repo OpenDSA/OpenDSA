@@ -734,7 +734,7 @@ How can we write this in code? We write our expectations in our test
 case methods using a special structure that consists of regular Java
 methods, but we're using them in a very stylized, fluent way. Our
 expectations use a form designed to make them read like natural English.
-Instead of retrieving raw numbers with getters, we pass the actor directly
+Instead of retrieving raw numbers from the jeroo to check, we pass the actor directly
 to ``assertThat(...)`` and chain our checks:
 
 .. code-block:: java
@@ -771,7 +771,7 @@ We can add these to our test case method:
 .. note::
 
    **Watch Out for the Semicolon Trap!**
-   Because fluent chained assertions are a single statement spread across
+   Because these chained assertions are a single statement spread across
    multiple lines, put a semicolon (``;``) **only at the very end** of the chain.
    Placing a semicolon after ``assertThat(picker);`` ends the statement prematurely
    and causes a syntax error on the next line.
@@ -787,6 +787,12 @@ class so our test will compile:
    {
        // To be filled in later
    }
+
+.. note::
+
+   A **method stub** is an empty method declaration that we use as a placeholder.
+   It allows us to write and compile method calls and work on other code or software
+   tests, and then come back to fill in the method's implementation later.
 
 Now our test class will compile. By right-clicking on the test class
 after everything is compiled, we can choose "Run All Tests" to execute
@@ -833,20 +839,41 @@ know whether or not problems exist.
 When testing with Jeroos, remember the following domain assertions that
 you can mix and match to express conditions and fill in your own values:
 
-* ``assertThat(jeroo).isAt(expectedX, expectedY);``
+* ``assertThat(jeroo).isAt(6, 2);``
 * ``assertThat(jeroo).isFacing(EAST);``
+* ``assertThat(jeroo).isNotFacing(WEST);``
 * ``assertThat(jeroo).hasFlowerCount(5);``
 * ``assertThat(jeroo).hasFlower();``
 * ``assertThat(jeroo).hasNoFlowers();``
 * ``assertThat(jeroo).isClear(AHEAD);``
+* ``assertThat(jeroo).isNotClear(AHEAD);``
 * ``assertThat(jeroo).seesFlower(HERE);``
+* ``assertThat(jeroo).doesNotSeeFlower(HERE);``
+* ``assertThat(jeroo).seesWater(LEFT);``
 * ``assertThat(jeroo).doesNotSeeWater(AHEAD);``
+* ``assertThat(jeroo).seesNet(RIGHT);``
+* ``assertThat(jeroo).doesNotSeeNet(AHEAD);``
 
 You can also express your expectations about the island directly:
 
+* ``assertThat(island).isClearOfNets();``
+* ``assertThat(island).isClearOfFlowers();``
+* ``assertThat(island).hasFlower();``
+* ``assertThat(island).hasNoFlowers();``
 * ``assertThat(island).hasFlowerAt(3, 7);``
 * ``assertThat(island).hasNoFlowerAt(3, 7);``
-* ``assertThat(island).isClearOfNets();``
+* ``assertThat(island).hasFlowerCount(5);``
+* ``assertThat(island).hasJeroo();``
+* ``assertThat(island).hasNoJeroos();``
+* ``assertThat(island).hasJerooAt(3, 7);``
+* ``assertThat(island).hasNoJerooAt(3, 7);``
+* ``assertThat(island).hasJerooCount(2);``
+* ``assertThat(island).hasNet();``
+* ``assertThat(island).hasNoNets();``
+* ``assertThat(island).hasNetAt(3, 7);``
+* ``assertThat(island).hasNoNetAt(3, 7);``
+* ``assertThat(island).hasNetCount(4);``
+* ``assertThat(island).hasWaterAt(4, 5);``
 
 There are virtually unlimited options for how to express what behavior
 you intend to occur in a test case, but these methods will get you
