@@ -1476,9 +1476,13 @@ The following **optional, ungraded resources** are designed to help you reinforc
 key concepts, build fluency, and prepare for upcoming
 quizzes, labs, and programming assignments.
 
-* `Java Syntax Practice 2 <https://codeworkout.cs.vt.edu/courses/vt/cs1114/fall-2026/workouts/3793https://codeworkout.cs.vt.edu/courses/vt/cs1114/fall-2026/workouts/3810>`__ : Build
+* `Java Syntax Practice 2 <https://codeworkout.cs.vt.edu/courses/vt/cs1114/fall-2026/workouts/3810>`__ : Build
   confidence and muscle memory with rapid, bite-sized drills focused on syntax
   rules and basic language mechanics. *Especially recommended if you are new to programming.*
+
+* `Quiz 1 AI Study Tutor (Chapters 1 & 2) <https://hokie.ai.vt.edu/chat/71148e0f-a9a3-43bd-917a-5208100b45e1>`__ : Study
+  for Quiz 1 using a custom AI chat designed to gauge your understanding and identify any
+  key misconceptions or gaps to help you best prepare.  
 
 
 Programming Practice 2
