@@ -158,6 +158,17 @@ sometimes can be confusing.
    To do so, we reduce **TO** problem X **FROM** known NP-complete
    problem A.
 
+The following exercise gives you a chance to reproduce the
+NP-completeness proof standard template.
+This will help to confirm whether you understand the process.
+
+.. extrtoolembed:: 'NP-completenes proof template'
+   :long_name: Dumbo4
+   :learning_tool: code-workout-dev
+   :workout_id: 94
+   :frame_height: 1200
+   :launch_url: https://codeworkoutdev.cs.vt.edu/gym/exercises/528/practice?workout_id=94
+
 The following modules show a number of known NP-complete problems, and
 also some proofs that they are NP-complete.
 The various proofs will link the problems together as shown here:

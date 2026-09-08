@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html data-require="codemirror math" lang="en">
+<html data-require="math" lang="en">
   <head>
     <title> Recursion Tracing Exercise: Error in print</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <script src="../../lib/splice-iframe.js"></script> 
-  </head>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+</head>
 
   <body  data-height="700" data-width="950">
     <div class="exercise">
@@ -15,8 +16,8 @@
             its input value with commas properly inserted (every three
             digits, starting at the right). But "writeWithCommas"
             doesn’t always work as intended. Which of the following
-            arguments will not be printed correctly?
-            <textarea id="codeTextarea" name="codeTextarea">
+            arguments will not be printed correctly?</p>
+            <pre class="prettyprint">
 public static void writeThreeDigits(int n) {
   System.out.print(n / 100);	
   System.out.print((n / 10) % 10);		
@@ -31,8 +32,7 @@ public static void writeWithCommas(int n) {
     System.out.print(",");	
     writeWithCommas(n/1000);
   }
-}</textarea><br/>
-          </p>
+}</pre>
           <div class="solution">365051</div>
           <ul class="choices" >
 	    <li>896</li>	  	 

@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Multi-dimensional Arrays
+   :title: Multi-Dimensional Arrays and Matrix Algorithms
    :author: Molly Domino
    :institution: Virginia Tech
    :keyword: Array
@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: CS1-level introduction to multi-dimensional arrays.
 
-Multi-dimensional Arrays
-========================
+Multi-Dimensional Arrays and Matrix Algorithms
+==============================================
 
 Dimensions in an Array
 ----------------------
@@ -131,20 +131,6 @@ examples would cause an ``IndexOutOfBoundsException`` when executed:
    </div>
 
 
-Check Your Understanding: 2D Arrays
------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week11Quiz1Summ.html ka
-   :long_name: 2D Arrays
-
-
-Syntax Practice: 2D Array Basics 
---------------------------------
-
-.. extrtoolembed:: 'Syntax Practice: 2D Array Basics'
-   :workout_id: 1549
-
-
 Iterating through a 2D Array
 ----------------------------
 
@@ -191,20 +177,6 @@ month, is given by ``rainfall[month].length``.
 The outer loop of the nested for loop iterates through months 1 through
 12, and the inner for loop iterates through days 1 through 31. In this way,
 372 = 12 × 31 elements of the array are set to 0.0.
-
-
-Check Your Understanding: Iterating with 2D Arrays
---------------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week11Quiz2Summ.html ka
-   :long_name: Iterating with 2D Arrays
-
-
-Syntax Practice: Looping Over 2D Arrays 
----------------------------------------
-
-.. extrtoolembed:: 'Syntax Practice: Looping Over 2D Arrays'
-   :workout_id: 1550
 
 
 Multi-Dimensional Arrays
@@ -337,13 +309,6 @@ and so arrays initialized this way are often used to provide tabular
 data literals in Java programs.
 
 
-Syntax Practice: 3D Arrays 
---------------------------
-
-.. extrtoolembed:: 'Syntax Practice: 3D Arrays'
-   :workout_id: 1551
-
-
 But Can You Have Multi-dimensional Lists?
 -----------------------------------------
 
@@ -430,32 +395,11 @@ modulo arithmetic as well:
    </div>
 
 
-Check Your Understanding: Modulus
----------------------------------
+Programming Practice 10
+-----------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/Week11Quiz3Summ.html ka
-   :long_name: Modulus
-
-
-Syntax Practice: Modulus
-------------------------
-
-.. extrtoolembed:: 'Syntax Practice: Modulus'
-   :workout_id: 1552
-
-
-Programming Practice: Multi-dimensional Arrays
-----------------------------------------------
-
-.. extrtoolembed:: 'Programming Practice: Multi-dimensional Arrays'
+.. extrtoolembed:: 'Programming Practice 10'
    :workout_id: 1553
-
-
-Programming Practice: Mod
--------------------------
-
-.. extrtoolembed:: 'Programming Practice: Mod'
-   :workout_id: 1554
 
 
 .. raw:: html

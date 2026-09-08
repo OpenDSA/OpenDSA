@@ -33,4 +33,13 @@ in polynomial time.
 This reduction can help in providing an NP Completeness proof for 
 the Independent Set problem.
 
+The following exercise gives you a chance to reproduce the
+proof that INDEPENDENT SET is NP-Complete.
+This will help to confirm whether you understand the process.
 
+.. extrtoolembed:: 'Clique to Independent Set (Simplified)'
+   :long_name: Dumbo6
+   :learning_tool: code-workout-dev
+   :workout_id: 91
+   :frame_height: 2100
+   :launch_url: https://codeworkoutdev.cs.vt.edu/gym/exercises/523/practice?workout_id=91

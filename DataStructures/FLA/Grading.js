@@ -474,7 +474,7 @@
       oldFx = $.fx.off || false;
     $.fx.off = true;
     var getstate = function () {
-      if ($.isArray(initial)) {
+      if (Array.isArray(initial)) {
         var state = [];
         for (var i = 0, l = initial.length; i < l; i++) {
           state.push(initial[i].state());

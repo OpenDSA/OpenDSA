@@ -521,14 +521,6 @@ This can be useful when we have many items that fulfill the criteria in our
 if statement.
 
 
-Check Your Understanding: Loop Idioms
--------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week9Quiz2Summ.html ka
-   :long_name: Loop Idioms
-
-
-
 Syntax Practice 9a: Loop Idioms
 -------------------------------
 
@@ -622,13 +614,6 @@ makes programs safer and more robust. At the same time, it allows us to
 create more reusable classes, since we can create types that work with a
 variety of other classes without having to know in advance what those
 classes are.
-
-
-Check Your Understanding: Generics
------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week9Quiz1Summ.html ka
-   :long_name: Generics
 
 
 Syntax Practice 9b: Generics
@@ -770,13 +755,6 @@ message and stack trace as a follow-up here for more info. If you find the
 line where the problem is occurring but cannot determine why/how after
 trying the advice above, post the line where the NPE occurs along with
 the stack trace so we can coach you through it.
-
-
-Check Your Understanding: Null
-------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week9Quiz3Summ.html ka
-   :long_name: Null
 
 
 Using BlueJ's Debugger

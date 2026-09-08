@@ -240,7 +240,6 @@ but at least now it’s approximately correct.
    </div>
 
 
-
 A New Type: Double
 ~~~~~~~~~~~~~~~~~~
 
@@ -457,13 +456,6 @@ is declared.
 Variables are not visible, and cannot be used, outside of their scope. Their
 scope is the region of text where they are visible. In Java, scopes are
 typically marked by pairs of braces (``{ }``).
-
-
-Check Your Understanding: Variables
------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week5Quiz1Summ.html ka
-   :long_name: Variables
 
 
 Fields Versus Local Variables
@@ -728,13 +720,6 @@ In summary:
   the end of that block of code.
 
 
-Check your Understanding: Scope
--------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week5Quiz2Summ.html ka
-   :long_name: Variables
-
-
 Accessor Methods
 ----------------
 
@@ -785,13 +770,6 @@ method must also have ``int`` as its return type.
    <div class="align-center" style="margin-top:1em;">
    <iframe width="560" height="315" src="https://www.youtube.com/embed/D3Arfy77Vok" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
    </div>
-
-
-Check Your Understanding: Fields, Getters and Setters
------------------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week5Quiz3Summ.html ka
-   :long_name: Variables
 
 
 Syntax Practice 5a: Fields and Accessors
@@ -1091,14 +1069,6 @@ things can get a bit more complex.
    <div class="align-center" style="margin-top:1em;">
    <iframe width="560" height="315" src="https://www.youtube.com/embed/44aqtrh3SLQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
    </div>
-
-
-
-Check your Understanding: Typed Methods and Return Statements
--------------------------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week5Quiz4Summ.html ka
-   :long_name: Variables
 
 
 Syntax Practice 5b: Mutators and Return Statements

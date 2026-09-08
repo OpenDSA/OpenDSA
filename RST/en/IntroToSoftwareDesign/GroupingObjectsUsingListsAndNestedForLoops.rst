@@ -187,13 +187,6 @@ between programmers.
    </div>
 
 
-Check Your Understanding: Interfaces
-------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week8Quiz3Summ.html ka
-   :long_name: Interfaces
-
-
 Syntax Practice 8a: Strings
 ---------------------------
 
@@ -515,13 +508,6 @@ you're trying to access a location in the list that does not exist.
    </div>
 
 
-Check Your Understanding: ArrayLists
-------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week8Quiz1Summ.html ka
-   :long_name: ArrayLists
-
-
 Syntax Practice 8b: Lists
 -------------------------
 
@@ -618,25 +604,11 @@ pixels in an image.
    </div>
 
 
-Check Your Understanding: Nested For Loops
-------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week8Quiz2Summ.html ka
-   :long_name: Nested For Loops
-
-
 Syntax Practice 8c: Nested Loops
 --------------------------------
 
 .. extrtoolembed:: 'Syntax Practice 8c: Nested Loops'
    :workout_id: 1860
-
-
-Check Your Understanding
-------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week8ReadingQuizSumm.html ka
-   :long_name: Programming Concepts
 
 
 Programming Practice 8a

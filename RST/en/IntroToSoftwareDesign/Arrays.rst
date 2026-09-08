@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Arrays
+   :title: Fixed-Size 1D Arrays and Array Idioms
    :author: Molly Domino
    :institution: Virginia Tech
    :keyword: Array
@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: CS1-level presentation on arrays.
 
-Arrays
-======
+Fixed-Size 1D Arrays and Array Idioms
+=====================================
 
 So far in this class, we have used ``List``\ s  when we need to store many
 pieces of data in a single object. Lists provide many advantages for this,
@@ -315,20 +315,6 @@ an ``ArrayIndexOutOfBoundsException``.
    </div>
 
 
-Check Your Understanding: Arrays
---------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week10Quiz1Summ.html ka
-   :long_name: Arrays
-
-
-Syntax Practice 10a
--------------------
-
-.. extrtoolembed:: 'Syntax Practice 10a'
-   :workout_id: 1525
-
-
 Iterating Over Arrays
 ---------------------
 
@@ -428,20 +414,6 @@ index/position or condition, making it nearly impossible to write infinite
 loops. However, these advantages do come with limitations. Fortunately,
 Arrays naturally support either style of for loop, so use the style that
 best fits your needs.
-
-
-Check Your Understanding: Iterating with Arrays
------------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week10Quiz2Summ.html ka
-   :long_name: Iterating with Arrays
-
-
-Syntax Practice 10b
--------------------
-
-.. extrtoolembed:: 'Syntax Practice 10b'
-   :workout_id: 1880
 
 
 Initializing Array Contents
@@ -772,32 +744,11 @@ explain arrays and how they might be used in a problem.
    </div>
 
 
-Syntax Practice 10c
--------------------
+Programming Practice 9
+----------------------
 
-.. extrtoolembed:: 'Syntax Practice 10c'
-   :workout_id: 1881
-
-
-Check Your Understanding
-------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week10ReadingQuizSumm.html ka
-   :long_name: Arrays Review
-
-
-Programming Practice 10a
-------------------------
-
-.. extrtoolembed:: 'Programming Practice 10a'
+.. extrtoolembed:: 'Programming Practice 9'
    :workout_id: 1526
-
-
-Programming Practice 10b
-------------------------
-
-.. extrtoolembed:: 'Programming Practice 10b'
-   :workout_id: 1879
 
 
 .. raw:: html

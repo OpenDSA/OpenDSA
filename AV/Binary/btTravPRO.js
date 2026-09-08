@@ -35,7 +35,7 @@ $(document).ready(function() {
         }
       }
     };
-    if ($.isArray(value)) { // array of values
+    if (Array.isArray(value)) { // array of values
       for (var i = 0, l = value.length; i < l; i++) {
         ins(this.root(), value[i]);
       }

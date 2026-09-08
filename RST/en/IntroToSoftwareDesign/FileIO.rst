@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Variable Scoping, Input, and Output 
+   :title: Variable Scoping, File Input/Output, and Streams 
    :author: Molly Domino
    :institution: Virginia Tech
    :keyword: Variable Scope; File Processing; Scanner
@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: CS1-level introduction to variable scoping and file I/O.
 
-Variable Scoping, Input, and Output
-===================================
+Variable Scoping, File Input/Output, and Streams
+================================================
 
 Variable Scoping
 ----------------
@@ -351,7 +351,6 @@ distinct names like we did initially:
     }
 
 
-
 Alternately, if for some reason you *must* use the same variable name at two
 different scope levels, using the modifier ``this`` will help clarify which
 variable you are referring to:
@@ -385,19 +384,33 @@ Summarizing Scope Concepts
    </div>
 
 
-Check Your Understanding: Scope
--------------------------------
+Your Opinions on Course Grading Policies 
+----------------------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/Week12Quiz4Summ.html ka
-   :long_name: Scope
+Please Complete the following survey. The survey includes questions regarding your
+opinions on the grading policies in this course and how you approach learning
+in this course. We will use this information to understand better how you are
+affected by these policies so that we can improve the course.
 
+Towards the end of the survey you will be asked if you consent for your answers
+and course data to be used in a study about grading policies.  There is no
+additional work on your part if you provide consent for your data to
+be used in the study.  Completing the survey should take less than 30 minutes.
+Your course instructor will not know whether you agree to
+participate until after you have completed the course and final
+grades have been turned in. You will earn assignment credit for submitting this
+survey, whether or not you agree to participate in the study or decline to
+answer some or all of the questions.
 
+.. raw:: html
 
-Syntax Practice: Scoping
-------------------------
+    <a href="https://virginiatech.questionpro.com/t/AYIrDZ65ya" target="_blank">CS 1114 Grading Policies Survey 2</a>
 
-.. extrtoolembed:: 'Syntax Practice: Scoping'
-   :workout_id: 1572
+Please answer below and your submission of the survey will be verified
+for credit.
+
+.. avembed:: Exercises/IntroToSoftwareDesign/EGPSurvey.html ka
+   :long_name: Survey Completed
 
 
 Java Input and Output
@@ -660,13 +673,6 @@ string representation first by calling its ``toString()`` method.
   machine!).
 
 
-Check Your Understanding: Output
---------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week12Quiz1Summ.html ka
-   :long_name: Output
-
-
 Input Using Scanners
 --------------------
 
@@ -877,13 +883,6 @@ all the ``read()`` calls in one or more other methods. Then you can pass a
    }
 
 
-Check Your Understanding: Input
--------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week12Quiz2Summ.html ka
-   :long_name: Input
-
-
 A Complete Input/Output Example
 -------------------------------
 
@@ -1022,11 +1021,11 @@ or retrieving the history from ``System.out``. See the javadoc for
 for more details.
 
 
-Check Your Understanding: Testing
----------------------------------
+Programming Practice 13
+-----------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/Week12Quiz3Summ.html ka
-   :long_name: Testing
+.. extrtoolembed:: 'Programming Practice 13'
+   :workout_id: 1572
 
 
 .. raw:: html

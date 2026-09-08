@@ -530,14 +530,6 @@ write:
    String result = fruit.substring(i, i + len);
 
 
-Check Your Understanding: Strings
----------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week7Quiz1Summ.html ka
-   :long_name: Strings
-
-
-
 Counter-controlled Loops
 ------------------------
 
@@ -755,13 +747,6 @@ from ``s`` in reverse order. So the result
 of ``reverse("banana")`` is ``"ananab"``.
 
 
-Check Your Understanding: Counter Controlled Loops
---------------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week7Quiz2Summ.html ka
-   :long_name: Counter Controlled Loops
-
-
 Tips on Random Numbers
 ----------------------
 
@@ -855,13 +840,6 @@ produce. Outside of test cases, the generator will produce a truly (pseudo-)rand
 inside your test cases, the numbers will be completely determined by you.
 
 
-Check Your Understanding: Random Numbers
-----------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week7Quiz3Summ.html ka
-   :long_name: Random Numbers
-
-
 Method Overriding
 -----------------
 
@@ -903,7 +881,6 @@ automatically called when you call ``println()`` on an object directly.
 
    Jeroo anna = new Jeroo();
    System.out.println(anna);  // calls toString() automatically
-
 
 
 Overriding the toString() Method
@@ -1030,13 +1007,6 @@ While this new method may not play an important role in the ``ATM`` class,
 it does provide a very brief, understandable description of the state of
 the object. This is the reason that the ``toString()`` method was included
 in the ``Object`` class.
-
-
-Check Your Understanding: Method Overriding
--------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week7Quiz4Summ.html ka
-   :long_name: Method Overriding
 
 
 Syntax Practice 7a: For Loops and OO Design

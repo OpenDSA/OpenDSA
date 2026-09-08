@@ -105,13 +105,6 @@ examples would cause Java to raise an ``IndexOutOfBoundsException``:
    rainfall[14][2] = 1.15; // no such row
 
 
-Check Your Understanding: 2D Arrays
------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week10Quiz3Summ.html ka
-   :long_name: 2D Arrays
-
-
 Iterating through a 2D array
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -157,13 +150,6 @@ The outer loop of the nested for loop iterates through months 1 through
 372 = 12 × 31 elements of the array are set to 0.0.
 
 
-Check Your Understanding: Iterating with 2D Arrays
---------------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week10Quiz4Summ.html ka
-   :long_name: Iterating with 2D Arrays
-
-
 Syntax Practice 10
 ------------------
 
@@ -176,12 +162,5 @@ Programming Practice 10
 
 .. extrtoolembed:: 'Programming Practice 10'
    :workout_id: 1514
-
-
-Check Your Understanding
---------------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week10ReadingQuizSumm.html ka
-   :long_name: Programming Concepts
 
 

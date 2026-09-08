@@ -391,7 +391,6 @@ if-else.
     }
 
 
-
 Here, it would be preferred to use the ``!`` operator rather than to have empty
 conditions:
 
@@ -428,7 +427,6 @@ instead write the same condition like this:
     {
         this.turn(RIGHT);
     }
-
 
 
 More Complex Conditionals
@@ -588,8 +586,6 @@ Again, if we use a truth table we can see these two columns match:
      - **True**
 
 
-
-
 Short Circuit Evaluation (Think Java)
 -------------------------------------
 
@@ -618,18 +614,14 @@ if ``basil.isFacing(WEST)`` is true, then java will not evaluate
 ``basil.seesNet(AHEAD)`` as we know the OR expression is already true.
 
 
-
-
 Syntax Review
 -------------
-
 
 
 Syntax Practice
 ---------------
 
 Codeworkout exercises
-
 
 
 changePointeeDataDirect
@@ -640,17 +632,9 @@ Molly is practicing adding a CW style question (still in progress)
 .. extrtoolembed:: 'changePointeeDataDirect'
 
 
-
 Programming Practice
 --------------------
 
 Codeworkout exercises
 ---------------------
-
-Check Your Understanding
-------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week4ReadingQuizSumm.html ka
-   :long_name: Programming Concepts
-
 

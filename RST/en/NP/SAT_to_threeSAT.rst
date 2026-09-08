@@ -31,4 +31,13 @@ Satisfiability (**3-SAT**) problem in polynomial time.
 
 This reduction can help in providing an NP Completeness proof for 3-SAT.
 
+The following exercise gives you a chance to reproduce the
+proof that 3SAT is NP-complete.
+This will help to confirm whether you understand the process.
 
+.. extrtoolembed:: 'Prove that 3-Satisfiability is NP-Complete'
+   :long_name: Dumbo5
+   :learning_tool: code-workout-dev
+   :workout_id: 95
+   :frame_height: 1400
+   :launch_url: https://codeworkoutdev.cs.vt.edu/gym/exercises/530/practice?workout_id=95

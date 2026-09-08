@@ -67,7 +67,7 @@ Let's see how it works.
    <a href="http://pastebin.com/gwSH2cEa" target="_blank">download it</a>
 
 
-.. codeinclude:: Java/Tutorials/MainParameters.java
+.. codeinclude:: Tutorials/MainParameters
 
 We have our main function take an array of Strings (named args).
 If that array is empty then we may or may not want to exit as we have

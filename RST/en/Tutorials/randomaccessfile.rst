@@ -71,7 +71,7 @@ characters whose numeric values range from 0 to 255 (or the maximum value of one
 byte). The capital letters in ASCII range from values 65 to 90, thus when I
 write a value of 65-90 to a file it will be interpreted as a letter.
 
-.. codeinclude:: Java/Tutorials/RAFWrite.java
+.. codeinclude:: Tutorials/RAFWrite
 
 So we have generated a file and filled it with bytes that are randomly created.
 How do we read the file? The RandomAccessFile class has a number of read
@@ -93,8 +93,5 @@ a file from the above code), produced the following output.
    Set pos to 111, value 85, character U
    Tried reading at position 112, read 4 bytes, array was size 116
 
-.. codeinclude:: Java/Tutorials/RAFRead.java
-
-There you go, reading and writing using bytes!
-
+.. codeinclude:: Tutorials/RAFRead
 

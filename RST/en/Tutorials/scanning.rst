@@ -55,7 +55,7 @@ Take a look at the |external_link2|.
 
 Consider the following code snippet.
 
-.. codeinclude:: Java/Tutorials/ScannerPt1.java
+.. codeinclude:: Tutorials/ScannerPt1
 
 This code will parse through a command file, read in each command and each of
 their parameters (if the command has one). It is important to note, however,
@@ -83,17 +83,16 @@ provided in the fields
 out either a complete listing of the artists contained in the database, or the
 songs, or else the free block list for the memory manager
 
-So this time we have less commands to support, but more options for each command
-, no worries! We simply need to change our code just a little bit. We see this
-time that the insert command has no spacing between artist/song tokens. Rather it
-uses the seperator <SEP>.
+So this time we have less commands to support, but more options for
+each command , no worries!
+We simply need to change our code just a little bit.
+We see this time that the insert command has no spacing between
+artist/song tokens. Rather it uses the seperator `<SEP>`.
 
-.. codeinclude:: Java/Tutorials/ScannerPt2.java
+.. codeinclude:: Tutorials/ScannerPt2
 
-Seperating artists and song name on the same line can prove to be rather difficult
-due to the fact that either name might include a space or other
-traditional deliminator.
-By seperating these fields using <SEP>, we drastically
+Seperating artists and song name on the same line can prove to be
+rather difficult due to the fact that either name might include a
+space or other traditional deliminator.
+By seperating these fields using `<SEP>`, we drastically
 reduce the possibilty of a valid name containing the delimeter.
-
-

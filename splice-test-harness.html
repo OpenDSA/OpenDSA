@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+  SPLICE Test Harness (dev tool, not part of the book build)
+
+  Acts as a stand-in "learning system" (like Canvas/OpenDSA-LTI) so SPLICE
+  behavior can be tested locally without any server:
+    - iframes any OpenDSA page (exercise, AV, or compiled module page)
+    - logs every postMessage the page sends (SPLICE.*, lti.frameResize)
+    - answers SPLICE.getState with a state you control, to test restore
+
+  Usage:
+    cd <OpenDSA repo> && python3 -m http.server 8000
+    open http://localhost:8000/splice-test-harness.html
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SPLICE Test Harness</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, sans-serif; margin: 0; display: flex; height: 100vh; }
+  #left { flex: 1 1 60%; display: flex; flex-direction: column; border-right: 2px solid #ccc; }
+  #right { flex: 1 1 40%; display: flex; flex-direction: column; min-width: 380px; }
+  #controls { padding: 8px; background: #f2f2f2; border-bottom: 1px solid #ccc; }
+  #controls input[type=text] { width: 62%; padding: 4px; }
+  #controls button { padding: 4px 10px; margin-left: 4px; }
+  #frame { flex: 1; border: 0; width: 100%; }
+  #statebox { padding: 8px; background: #fafafa; border-bottom: 1px solid #ddd; }
+  #statebox textarea { width: 98%; height: 70px; font-family: monospace; font-size: 11px; }
+  #log { flex: 1; overflow-y: auto; padding: 8px; font-family: monospace; font-size: 11px; background: #1e1e1e; color: #ddd; }
+  .msg { border-bottom: 1px solid #333; padding: 4px 0; white-space: pre-wrap; word-break: break-all; }
+  .subj { font-weight: bold; }
+  .score { color: #7cd67c; }
+  .event { color: #7cb8d6; }
+  .state { color: #d6c77c; }
+  .resize { color: #888; }
+  .info  { color: #d67c7c; }
+  h3 { margin: 6px 8px; }
+</style>
+</head>
+<body>
+  <div id="left">
+    <div id="controls">
+      <input type="text" id="url" value="AV/Graph/DijkstraPE.html">
+      <button onclick="loadPage()">Load</button>
+      <button onclick="document.getElementById('log').innerHTML=''">Clear log</button>
+      <label><input type="checkbox" id="hideResize" checked> hide frameResize</label>
+    </div>
+    <iframe id="frame" src=""></iframe>
+  </div>
+  <div id="right">
+    <h3>SPLICE message log</h3>
+    <div id="statebox">
+      state returned to <b>SPLICE.getState</b> (JSON, {} = nothing saved):
+      <textarea id="stateJson">{}</textarea>
+    </div>
+    <div id="log"></div>
+  </div>
+
+<script>
+  const logEl = document.getElementById("log");
+
+  function loadPage() {
+    const url = document.getElementById("url").value.trim();
+    document.getElementById("frame").src = url;
+    addLog("info", "harness", "loading " + url);
+  }
+
+  function addLog(cls, subj, body) {
+    const div = document.createElement("div");
+    div.className = "msg " + cls;
+    const time = new Date().toLocaleTimeString();
+    div.innerHTML = "<span class='subj'>[" + time + "] " + subj + "</span>\n" + body;
+    logEl.appendChild(div);
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+
+  window.addEventListener("message", function (e) {
+    let data = e.data;
+    if (typeof data === "string") {
+      try { data = JSON.parse(data); } catch (err) { /* leave as string */ }
+    }
+    if (typeof data !== "object" || data === null) {
+      addLog("info", "(non-JSON message)", String(e.data).slice(0, 300));
+      return;
+    }
+
+    const subj = data.subject || "(no subject)";
+
+    if (subj === "lti.frameResize") {
+      if (!document.getElementById("hideResize").checked) {
+        addLog("resize", subj, "height: " + data.height);
+      }
+      return;
+    }
+
+    let cls = "info";
+    if (subj === "SPLICE.reportScoreAndState") cls = "score";
+    else if (subj === "SPLICE.sendEvent") cls = "event";
+    else if (subj === "SPLICE.getState") cls = "state";
+
+    addLog(cls, subj, JSON.stringify(data, null, 1).slice(0, 1500));
+
+    // Play the learning-system role: answer getState with the configured state
+    if (subj === "SPLICE.getState") {
+      let state = {};
+      try { state = JSON.parse(document.getElementById("stateJson").value); }
+      catch (err) { addLog("info", "harness", "state JSON invalid, sending {}"); }
+      const response = {
+        subject: "SPLICE.getState.response",
+        message_id: data.message_id,
+        state: state
+      };
+      e.source.postMessage(response, "*");
+      addLog("state", "harness → SPLICE.getState.response", JSON.stringify(response, null, 1));
+    }
+  }, false);
+
+  loadPage();
+</script>
+</body>
+</html>

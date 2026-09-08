@@ -1,19 +1,40 @@
-.. This file is part of the OpenDSA eTextbook project. See
-.. http://opendsa.org for more details.
-.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
-.. distributed under an MIT open source license.
-
 .. avmetadata::
-   :title: Software Testing
-   :author: Steve Edwards
+   :title: Software Testing Fundamentals & TDD
+   :author: Molly Domino; Stephen Edwards
    :institution: Virginia Tech
-   :keyword: Software Testing; Method; Unit Testing
+   :keyword: software testing; unit testing; assertion; test-driven development; code coverage
    :naturallanguage: en
    :programminglanguage: Java
-   :description: First semester programming course introduction to software testing.
+   :description: Introduction to automated software testing, JUnit, test method structure, assertions, Test-Driven Development, and code coverage.
 
-Software Testing
-================
+
+Software Testing Fundamentals & TDD
+===================================
+
+   “Program testing can be a very effective way to show the presence of bugs,
+   but it is hopelessly inadequate for showing their absence.”
+   -- Edsger W. Dijkstra
+
+In the previous chapter, you learned how to create subclasses, declare custom
+methods, and control execution flow using ``if`` statements and ``while`` loops.
+You also got a first taste of automated testing by writing basic checks for
+your Jeroo methods. In this chapter, we take a deep dive into **software testing**
+as a fundamental engineering discipline. You will learn how to design
+comprehensive unit test suites, structure test methods with local fixtures, write fluent
+assertions with AssertJ, practice **Test-Driven Development (TDD)**, and evaluate
+your tests using **code coverage**.
+
+.. sidebar:: Learning Objectives
+
+    **Estimated Time**: ~71 minutes (~71 min reading at 100 WPM)
+
+    * **Explain** the benefits of automated unit testing and the phases of the Test-Driven Development (TDD) cycle (Red-Green-Refactor).
+    * **Construct** automated test classes extending ``student.TestCase`` with focused test methods using local test object instantiation.
+    * **Author** focused test methods using AssertJ assertions (``assertThat(...)``) to verify object coordinates, headings, and state postconditions.
+    * **Design** test cases that systematically test loop boundaries (0 iterations, 1 iteration, and multiple iterations) and branch outcomes.
+    * **Differentiate** between statement coverage and condition/branch coverage, and interpret test failures and stack traces in Web-CAT and BlueJ.
+
+
 
 What Is Software Testing?
 -------------------------
@@ -628,8 +649,10 @@ can't use them. Add the following at the top:
 .. code-block:: java
 
    import student.micro.jeroo.*;
+   import static student.micro.jeroo.Assertions.*;
    import static student.micro.jeroo.CompassDirection.*;
    import static student.micro.jeroo.RelativeDirection.*;
+   import static org.assertj.core.api.Assertions.*;
 
 Each test case that we write will come in the form of a single
 test method. We name our test methods using a name that starts with ``test``,
@@ -709,23 +732,20 @@ following will be true:
 
 How can we write this in code? We write our expectations in our test
 case methods using a special structure that consists of regular Java
-methods, but we're using them in a very stylized way. Our
-expectations will use a form designed to make them clearly readable.
-To start, we will use this basic form, which we will build on as
-our programs grow:
+methods, but we're using them in a very stylized, fluent way. Our
+expectations use a form designed to make them read like natural English.
+Instead of retrieving raw numbers from the jeroo to check, we pass the actor directly
+to ``assertThat(...)`` and chain our checks:
 
 .. code-block:: java
 
-   assertThat(<something we want to check>).isEqualTo(<expected value>);
+   assertThat(picker)
+       .isAt(6, 2)
+       .isFacing(EAST)
+       .hasFlowerCount(5);
 
-So, we can translate our jeroo expectations into the following code:
-
-.. code-block:: java
-
-   assertThat(picker.getX()).isEqualTo(6);
-   assertThat(picker.getY()).isEqualTo(2);
-   assertThat(picker.getFlowers()).isEqualTo(5);
-   assertThat(picker.getHeading()).isEqualTo(EAST);
+Notice how naturally this reads: *"Assert that picker is at (6, 2), is facing EAST,
+and has a flower count of 5."*
 
 We can add these to our test case method:
 
@@ -742,11 +762,19 @@ We can add these to our test case method:
        picker.pickFlowers();
 
        // 3. check expected results
-       assertThat(picker.getX()).isEqualTo(6);
-       assertThat(picker.getY()).isEqualTo(2);
-       assertThat(picker.getFlowers()).isEqualTo(5);
-       assertThat(picker.getHeading()).isEqualTo(EAST);
+       assertThat(picker)
+           .isAt(6, 2)
+           .isFacing(EAST)
+           .hasFlowerCount(5);
    }
+
+.. note::
+
+   **Watch Out for the Semicolon Trap!**
+   Because these chained assertions are a single statement spread across
+   multiple lines, put a semicolon (``;``) **only at the very end** of the chain.
+   Placing a semicolon after ``assertThat(picker);`` ends the statement prematurely
+   and causes a syntax error on the next line.
 
 Now we can actually compile and run our code. Actually, it may fail to
 compile, because we haven't even written our ``pickFlowers()`` method
@@ -759,6 +787,12 @@ class so our test will compile:
    {
        // To be filled in later
    }
+
+.. note::
+
+   A **method stub** is an empty method declaration that we use as a placeholder.
+   It allows us to write and compile method calls and work on other code or software
+   tests, and then come back to fill in the method's implementation later.
 
 Now our test class will compile. By right-clicking on the test class
 after everything is compiled, we can choose "Run All Tests" to execute
@@ -802,611 +836,201 @@ Your initial conditions will be different, and in fact your expected
 results may also be different. But if you don't write tests, you won't
 know whether or not problems exist.
 
-When testing with jeroos, Remember the following examples of
-methods you can mix and match to express conditions and fill in your
-own values (be sure to use your own jeroo name, of course):
+When testing with Jeroos, remember the following domain assertions that
+you can mix and match to express conditions and fill in your own values:
 
-* ``assertThat(jeroo.getX()).isEqualTo(...);``
-* ``assertThat(jeroo.getY()).isEqualTo(...);``
-* ``assertThat(jeroo.getFlowers()).isEqualTo(...);``
-* ``assertThat(jeroo.getHeading()).isEqualTo(...);``
-* ``assertThat(jeroo.hasFlower()).isTrue();``
-* ``assertThat(jeroo.seesJeroo(AHEAD)).isFalse();``
-* ``assertThat(jeroo.seesWater(LEFT)).isTrue();``
+* ``assertThat(jeroo).isAt(6, 2);``
+* ``assertThat(jeroo).isFacing(EAST);``
+* ``assertThat(jeroo).isNotFacing(WEST);``
+* ``assertThat(jeroo).hasFlowerCount(5);``
+* ``assertThat(jeroo).hasFlower();``
+* ``assertThat(jeroo).hasNoFlowers();``
+* ``assertThat(jeroo).isClear(AHEAD);``
+* ``assertThat(jeroo).isNotClear(AHEAD);``
+* ``assertThat(jeroo).seesFlower(HERE);``
+* ``assertThat(jeroo).doesNotSeeFlower(HERE);``
+* ``assertThat(jeroo).seesWater(LEFT);``
+* ``assertThat(jeroo).doesNotSeeWater(AHEAD);``
+* ``assertThat(jeroo).seesNet(RIGHT);``
+* ``assertThat(jeroo).doesNotSeeNet(AHEAD);``
 
-You can also express your expectations about the island (remember to
-choose your own values and use your own island name):
+You can also express your expectations about the island directly:
 
-* ``assertThat(island.countFlowers()).isEqualTo(...);``
-* ``assertThat(island.countNets()).isEqualTo(...);``
-* ``assertThat(island.hasFlowerAt(3, 7)).isTrue();``
-* ``assertThat(island.hasNetAt(4, 2)).isFalse();``
+* ``assertThat(island).isClearOfNets();``
+* ``assertThat(island).isClearOfFlowers();``
+* ``assertThat(island).hasFlower();``
+* ``assertThat(island).hasNoFlowers();``
+* ``assertThat(island).hasFlowerAt(3, 7);``
+* ``assertThat(island).hasNoFlowerAt(3, 7);``
+* ``assertThat(island).hasFlowerCount(5);``
+* ``assertThat(island).hasJeroo();``
+* ``assertThat(island).hasNoJeroos();``
+* ``assertThat(island).hasJerooAt(3, 7);``
+* ``assertThat(island).hasNoJerooAt(3, 7);``
+* ``assertThat(island).hasJerooCount(2);``
+* ``assertThat(island).hasNet();``
+* ``assertThat(island).hasNoNets();``
+* ``assertThat(island).hasNetAt(3, 7);``
+* ``assertThat(island).hasNoNetAt(3, 7);``
+* ``assertThat(island).hasNetCount(4);``
+* ``assertThat(island).hasWaterAt(4, 5);``
 
 There are virtually unlimited options for how to express what behavior
 you intend to occur in a test case, but these methods will get you
 started with writing your first tests.
 
 
-Check Your Understanding: Software Testing Concepts
----------------------------------------------------
+Code Coverage: Statement and Condition Coverage
+-----------------------------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz1Summ.html ka
-   :long_name: Software Testing Concepts
+Once you have written a unit test suite and all your tests pass with green bars,
+a natural question arises: **Have you written enough tests?**
 
+Even if all of your existing test cases pass, your test suite might only be
+exercising a small fraction of the code you wrote. If there are methods,
+branches, or error-handling statements that none of your tests ever execute,
+critical defects can easily hide in that unexecuted code.
 
-More About Methods
-------------------
-
-A **method**, which corresponds to an action or a behavior, is a named chunk of
-code that can be called upon or *invoked* to perform a certain pre-defined set
-of actions.
-
-A method definition consists of two parts: the method header and the method
-body.  In general, a method header takes the following form, including some
-parts which are optional:
-
-*Modifiers*\ :sub:`optional` *ReturnType*  *MethodName*\ (*ParameterList*\ :sub:`optional`)
-
-Put together, a method definition may look like this:
-
-.. code-block:: java
-
-   public int addHops()
-
-Above, this method starts with the access modifier, ``public``, to declare
-that this method can be accessed or referred to by other classes. The next part
-of the method header is the method's return type. This is the type of value, if
-any, that the method returns. In the method declaration above, we specify that
-the method returns an ``int`` value as its result.  When we've been writing
-methods so far, we've written methods like this:
-
-.. code-block:: java
-
-   public void pickFlowersAndDisableNets()
-
-Instead of an ``int`` here we see the keyword ``void`` which means the method
-does not return anything and is only being called for the action it performs,
-without expecting it to return an answer of some kind.  We'll get more into
-return types later.
-
-In the method declaration, the method's
-name follows the method's return type. This is the name that is used when the
-method is called. We could call the method anything we wanted, but spaces cannot
-be included.  Following the method's name is the method's **parameter list**
-which we'll talk about in the next section.
+To measure how thoroughly a test suite exercises a program, software engineers
+use an automated metric called **code coverage**.
 
 
-Check Your Understanding: Method Signatures
--------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz2Summ.html ka
-   :long_name: Understanding Method Signatures
-
-
-Passing Information using Parameters
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Some of the methods we have used require arguments, which are the values you
-provide when you invoke the method.  For example, a ``Jeroo`` has two methods
-with the name 'hop'.  Calling ``hop()`` will cause the jeroo to hop one space
-ahead.  However if you specify a number inside the parentheses like this:
-``hop(4)``, the jeroo will hop four spaces ahead.
-
-When you use a method, you provide the arguments. When you *write* a method, you
-name the parameters. The parameter list indicates what arguments are required.
-
-For example:
-
-.. code-block:: java
-
-   public void turnAndDisable(RelativeDirection direction)
-   {
-       this.turn(direction);
-       this.toss();
-   }
-
-To invoke this method, we have to provide a relative direction as an argument:
-
-.. code-block:: java
-
-    turnAndDisable(RIGHT);
-
-This will cause the jeroo to turn right and disable a net.
-
-
-Using Multiple Parameters
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Here is an example of a method that takes two parameters:
-
-.. code-block:: java
-
-   public void turnThenHop(RelativeDirection direction, int hops)
-   {
-       this.turn(direction);
-       this.hop(numHops);
-   }
-
-To invoke this method, we have to provide an integer and a relative direction
-as arguments:
-
-.. code-block:: java
-
-    turnThenHop(RIGHT, 7);
-
-This would cause the jeroo to turn right and then hop seven times.
-
-
-Check Your Understanding: Methods with Parameters
--------------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz3Summ.html ka
-   :long_name: Methods with Parameters
-
-
-Good Habits for Conditionals
-----------------------------
-
-Just like with commenting, readability is an important factor when writing
-conditionals.
-
-
-Logical NOT and the If-Else Structure
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-One thing to consider is that when writing  if/else statements,
-starting with a ! usually makes code harder to read.
-
-.. code-block:: java
-
-   if (!this.isClear(AHEAD))
-   {
-       this.toss();
-   }
-   else
-   {
-       this.hop();
-   }
-
-It's easy to miss the ``!`` above and misread what this conditional does.
-Instead, it's preferable to phrase the same condition like this:
-
-.. code-block:: java
-
-   if (this.isClear(AHEAD))
-   {
-       this.hop();
-   }
-   else
-   {
-       this.toss();
-   }
-
-You can see that logically these two if-then-else structures achieve the same
-thing, but one is easier to read.
+What is Code Coverage?
+~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
 
-   Keep in mind, this may not always be possible for you to write the right
-   condition without using the ``!`` operator.  Especially if you have no
-   ``else`` clause, you may need to use it, but it is good practice if you can
-   get around it.
+   **Code Coverage** is a measure of the proportion of source code that is
+   executed when an automated test suite runs. It is typically expressed as a
+   percentage from 0% to 100%.
+
+Coverage tools (such as JaCoCo, which is integrated into Web-CAT and modern Java
+development tools) monitor program execution while your tests run. By recording
+which specific lines and decisions were reached, the tool calculates coverage
+reports.
+
+There are two primary forms of code coverage you will encounter in CS 1114:
+**statement coverage** and **condition (branch) coverage**.
 
 
-Too Many Conditionals
-~~~~~~~~~~~~~~~~~~~~~
+Statement Coverage (Line Coverage)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Another thing to keep in mind is writing too many conditions.  When solving a
-complex problem it can be tempting to just keep adding new conditions for
-every new scenario you find yourself in.  However, this is both harder to read
-and can introduce bugs into your code that could be hard to find later.
+**Statement coverage** measures the percentage of executable statements in your
+program that were executed at least once during the test run.
 
-Take for example:
-
+For example, consider the following method:
 
 .. code-block:: java
 
-   if (this.isClear(AHEAD))
+   public void clearObstacle()
    {
+       if (this.seesNet(AHEAD))
+       {
+           this.toss();
+       }
        this.hop();
    }
-   else if (!this.isClear(AHEAD))
-   {
-       this.toss();
-   }
-   else
-   {
-       this.turn(RIGHT);
-   }
 
-Logically, the if and else-if branch of this conditional do the same things as
-we saw above.  However, there is a third branch here that will never execute.
-This is because the area ahead of the jeroo will always be either clear or
-not clear.
-The code will always find a branch to execute between the first two choices,
-and there is never any situation where the ``else`` branch will ever be
-applicable.
+If your test suite only tests this method in a scenario where there is a net
+ahead, the condition ``this.seesNet(AHEAD)`` is ``true``, so lines 5 (``this.toss()``)
+and 7 (``this.hop()``) both execute. In this scenario, you have achieved
+**100% statement coverage** because every line ran at least once.
 
-In computer terms, code that you write that can never be executed under
-any possible circumstances, is called **unreachable code**. Such code is
-usually a programming problem, since the reason it can never be executed is
-often due to improperly constructed programming logic, as in the example
-here. The first two branches cover all possible situations, so the third
-option is useless.
+However, having 100% statement coverage does **not** mean you have thoroughly
+tested the method! What happens when there is *no* net ahead?
 
-If you're not entirely sure if two boolean statements are equivalent, it can
-be helpful to write out a truth table.  For example, we can see below that
-writing ``b`` and ``!!b`` are equivalent.
 
-.. list-table:: Truth Table
+Condition Coverage (Branch Coverage)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Condition coverage** (also called **branch coverage**) is a more rigorous
+metric. It measures whether every decision point in your code (such as an ``if``
+statement, an ``if-else`` ladder, or a ``while`` loop) has been evaluated to
+**both ``true`` and ``false``** across your test cases.
+
+In the ``clearObstacle()`` example above:
+
+* To achieve 100% condition coverage, you need **two distinct test cases**:
+
+  1. A test case where ``seesNet(AHEAD)`` is **true** (verifying that the net is tossed and the Jeroo hops).
+  2. A test case where ``seesNet(AHEAD)`` is **false** (verifying that the Jeroo hops without tossing a flower).
+
+If you only test the ``true`` branch, your condition coverage is only **50%**,
+even though your statement coverage was 100%!
+
+
+Testing Loops: The 0, 1, Many Rule
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Testing repetition structures (``while`` loops) requires special care to achieve
+both high coverage and robust defect detection. A comprehensive test suite should
+test a loop under three boundary conditions:
+
+.. list-table:: The 0, 1, Many Loop Testing Strategy
+   :widths: 20 40 40
    :header-rows: 1
 
-   * - ``b``
-     - ``!b``
-     - ``!!b``
-   * - True
-     - False
-     - True
-   * - False
-     - True
-     - False
-
-Whatever value ``b`` has, we can see that ``!!b`` matches it!
-
+   * - Scenario
+     - What It Tests
+     - Example Scenario
+   * - **0 Iterations** (Skipped)
+     - Condition is initially ``false``; the loop body never executes.
+     - Jeroo starts facing water or with zero flowers in row.
+   * - **1 Iteration** (Single Step)
+     - Loop condition is ``true`` once, then becomes ``false`` on the next check.
+     - A row containing exactly one flower.
+   * - **Many Iterations** (General Case)
+     - Loop condition is ``true`` multiple times before terminating.
+     - A row containing 4 or 5 flowers.
 
-Empty Condition Branches
-~~~~~~~~~~~~~~~~~~~~~~~~
+Testing the **0 iterations** scenario is especially critical: it ensures your
+program does not crash or perform invalid actions when given an empty task.
 
-It is also good practice not to leave empty conditions in your code.
-
-.. code-block:: java
-
-   if (this.isClear(AHEAD))
-   {
-       // do nothing
-   }
-   else
-   {
-       this.turn(RIGHT);
-   }
-
-It is always preferred to have just one if statement rather than an empty
-if-else.
-
-.. code-block:: java
-
-   if (this.isClear(AHEAD))
-   {
-       // do nothing
-   }
-   else
-   {
-       this.turn(RIGHT);
-   }
-
-Here, it would be preferred to use the ``!`` operator rather than to have empty
-conditions:
-
-.. code-block:: java
-
-   if (!this.isClear(AHEAD))
-   {
-       this.turn(RIGHT);
-   }
-
-
-Many Conditions vs Compound Conditions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Taking a look at the following code snippet:
-
-.. code-block:: java
-
-   if (this.isClear(AHEAD))
-   {
-       if (this.seesNet(RIGHT))
-       {
-           this.turn(RIGHT);
-       }
-   }
-
-Here we see one condition nested within another.  It is generally preferable to
-instead write the same condition like this:
-
-.. code-block:: java
-
-   if (this.isClear(AHEAD) && this.seesNet(RIGHT))
-   {
-       this.turn(RIGHT);
-   }
-
 
-More Complex Conditionals
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Sometimes you want to check related conditions and choose one of several
-actions. One way to do this is our cascaded if structure:
-
-.. code-block:: java
+Interpreting Test Failures and Diagnostics
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   if (molly.isFacing(NORTH))
-   {
-       molly.hop();
-   }
-   else if (molly.isFacing(SOUTH))
-   {
-       molly.hop(2);
-   }
-   else if (molly.isFacing(EAST))
-   {
-       molly.hop(3);
-   }
-   else
-   {
-       molly.hop();
-       molly.toss();
-   }
+When a test fails, JUnit and AssertJ provide detailed diagnostic feedback to help
+you locate the defect:
 
-These chains can be as long as you want, although they can be difficult to
-read if they get out of hand.
+.. code-block:: text
 
-You can also make complex decisions by nesting one conditional statement inside
-another. We could have written the previous example as:
+   org.opentest4j.AssertionFailedError:
+   expected: 5
+    but was: 4
+      at FlowerSweeperTest.testSweepRow(FlowerSweeperTest.java:42)
 
-.. code-block:: java
+This diagnostic message provides three vital clues:
 
-   if (molly.isFacing(WEST))
-   {
-       molly.hop();
-       molly.toss();
-   }
-   else
-   {
-       if (molly.isFacing(NORTH))
-       {
-           molly.hop();
-       }
-       else if (molly.isFacing(SOUTH))
-       {
-           molly.hop(2);
-       }
-       else
-       {
-           molly.hop(3);
-       }
-   }
-
-The outer conditional has two branches. The first branch tells the jeroo to hop
-once and toss, and the second branch contains another conditional statement,
-which has three branches of its own.
-
-These kinds of structures are common, but they get difficult to read
-very quickly. Good indentation is essential to make the structure (or intended
-structure) apparent to the reader.
-
-
-A Different Type of Complex If-Statement
-----------------------------------------
-
-Another way if statements can get more complex is by creating longer compound
-conditionals.
-
-For example,
-
-.. code-block:: java
-
-    if ((caroline.isFacing(NORTH) && caroline.hasFlower())
-        || caroline.seesNet(AHEAD))
-
-This statement could be generalized to ``if (A || B)`` where:
-
-* ``A = caroline.isFacing(NORTH) && caroline.hasFlower()``
-* ``B = caroline.seesNet(AHEAD)``
-
-If the jeroo has a flower while facing north OR sees a net ahead of it, this if
-statement will trigger.  Notably, if the jeroo only has a flower the logical AND
-will force the statement ``caroline.isFacing(NORTH) && caroline.hasFlower()``
-to be false.  Thus, the jeroo would have to see a net ahead for this if
-statement to trigger.
-
-Logical NOT can also negate a compound statement.
-
- .. code-block:: java
-
-   if (!(caroline.isFacing(NORTH) && caroline.hasFlower()))
-
-Remember, for ``caroline.isFacing(NORTH) && caroline.hasFlower()`` to be true,
-the jeroo must have a flower and be facing North.
-Writing ``!(caroline.isFacing(NORTH) && caroline.hasFlower())`` will be true
-as long as the compound condition within the parentheses is false.
+1. **Expected vs. Actual Value**: The test expected the Jeroo's x-coordinate to be ``5``, but it was actually ``4``.
+2. **Failing Test Method**: The failure occurred inside ``testSweepRow()``.
+3. **Exact Line Number**: Line 42 in ``FlowerSweeperTest.java`` is where the failing assertion was made.
 
-When looking at these sort of complex operations, it is easy to get mixed up.
-When considering negated compound conditions re-writing them  according
-**De Morgan's laws** may be helpful to you:
+.. tip::
 
-* ``!(A && B)`` is the same as ``!A || !B``
-* ``!(A || B)`` is the same as ``!A && !B``
+   When diagnosing test failures, read the stack trace from top to bottom. Find
+   the first line in the trace that references your own test class file. Click on
+   that line in BlueJ to jump directly to the assertion that failed.
 
-Using this, instead of writing
 
-.. code-block:: java
+Coverage Expectations in CS 1114
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   if (!(caroline.isFacing(NORTH) && caroline.hasFlower()))
+In CS 1114, assignments submitted to Web-CAT are automatically analyzed for both
+**statement coverage** and **condition coverage**. To earn full credit on testing
+specifications (`SPEC-6` in programming assignments), your test suite must achieve:
 
-It is be logically equivalent to write:
+* **100% Statement Coverage**: Every line of code in your solution must be executed by your test cases.
+* **100% Condition Coverage**: Every ``if``, ``if-else``, and ``while`` loop condition must be tested under both ``true`` and ``false`` outcomes.
 
-.. code-block:: java
+By practicing Test-Driven Development (TDD) and writing test cases as you build
+each method, achieving 100% code coverage becomes a natural part of your design
+workflow!
 
-   if (!caroline.isFacing(NORTH) || !caroline.hasFlower())
 
-Again, if we use a truth table we can see these two columns match:
-
-.. list-table:: Truth Table: DeMorgan's Law
-   :header-rows: 1
-
-   * - ``A``
-     - ``B``
-     - ``(A && B)``
-     - ``!(A && B)``
-     - ``!A``
-     - ``!B``
-     - ``!A || !B``
-   * - True
-     - True
-     - True
-     - **False**
-     - False
-     - False
-     - **False**
-   * - True
-     - False
-     - False
-     - **True**
-     - False
-     - True
-     - **True**
-   * - False
-     - True
-     - False
-     - **True**
-     - True
-     - False
-     - **True**
-   * - False
-     - False
-     - False
-     - **True**
-     - True
-     - True
-     - **True**
-
-
-Short Circuit Evaluation
-------------------------
-
-Another important feature of the boolean operators is that they utilize a
-form of evaluation known as short-circuit evaluation. In **short-circuit
-evaluation**, a boolean expression is evaluated from left to right, and the
-evaluation is discontinued as soon as the expression's value can be determined,
-regardless of whether it contains additional operators and operands. For
-example, in the expression
-
-.. code-block:: java
-
-   basil.isFacing(WEST) && basil.seesNet(AHEAD)
-
-if ``basil.isFacing(WEST)`` is false, then the AND expression must be false.
-Because the computer already knows the whole AND expression is false, it
-will not evaluate ``basil.seesNet(AHEAD)``, since there is no need.
-
-Similarly, in the expression:
-
-.. code-block:: java
-
-   basil.isFacing(NORTH) || basil.seesNet(AHEAD)
-
-if ``basil.isFacing(NORTH)`` is true, then the computer knows the whole
-OR expression will also be true, and so it will not evaluate
-``basil.seesNet(AHEAD)``, since it is unnecessary.
-
-.. raw:: html
-
-   <div class="align-center" style="margin-top:1em;">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/ui_PM-woLsE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-   </div>
-
-
-Check Your Understanding: Logical Equivalence
----------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz4Summ.html ka
-   :long_name: Logical Equivalence
-
-
-Relational Operators with Primitive Data Types
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Relational operators are used to check conditions like whether two values
-are equal, or whether one is greater than the other. These kinds of operators
-do not work on objects at all, so you cannot use them on jeroos. However,
-they work on numeric values such as ``int``\ s. The following expressions
-show how they are used.
-
-.. list-table:: Relational Operators
-   :header-rows: 1
-
-   * - Operator
-     - Example
-     - Meaning
-   * - ``==``
-     - ``x == y``
-     - x *is equal to* y
-   * - ``!=``
-     - ``x != y``
-     - x *is not equal to* y
-   * - ``>``
-     - ``x > y``
-     - x *is greater than* y
-   * - ``<``
-     - ``x < y``
-     - x *is less than* y
-   * - ``>=``
-     - ``x >= y``
-     - x *is greater than or equal to* y
-   * - ``<=``
-     - ``x <=  y``
-     - x *is less than or equal to* y
-
-
-The result of a relational operator is one of the two Boolean values: ``true``
-or ``false``.  These values belong to the data type ``boolean``; in fact, they
-are the only ``boolean`` values.
-
-You are probably familiar with these operations, but notice that the Java
-operators compare program values. They behave similar to the mathematical
-operators you are familiar with, but are not written the same way
-as mathematical symbols like =, ≤, and ≠.
-
-A common error is to use a single = instead of a double == when you wish
-to compare two values. Remember that = is
-the assignment operator, and == is a comparison operator. Also, writing
-=< or => by accident will produce a compiler error.  The equals sign always
-comes after the `<` or `>`, just like when you say the names of those
-comparisons in English: "less than or equal" has the less than symbol first,
-followed by the equal sign second.
-
-.. raw:: html
-
-   <div class="align-center" style="margin-top:1em;">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/rYX6AQo9YsU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-   </div>
-
-
-Syntax Practice 4a: Compound Conditionals
------------------------------------------
-
-.. extrtoolembed:: 'Syntax Practice 4a: Compound Conditionals'
-   :workout_id: 1403
-
-
-Syntax Practice 4b: Conditionals and Relational Operators
----------------------------------------------------------
-
-.. extrtoolembed:: 'Syntax Practice 4b: Conditionals and Relational Operators'
-   :workout_id: 1768
-
-
-Programming Practice 4
+Programming Practice 3
 ----------------------
 
-.. extrtoolembed:: 'Programming Practice 4'
+.. extrtoolembed:: 'Programming Practice 3'
    :workout_id: 1404
-
-
-Module Review
--------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week4ReadingQuizSumm.html ka
-   :long_name: Module Review
-
-

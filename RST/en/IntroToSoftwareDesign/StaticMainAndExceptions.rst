@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Static, Main, and Exceptions
+   :title: Static Members, Main Method, and Exception Handling
    :author: Molly Domino
    :institution: Virginia Tech
    :keyword: Static; Exception
@@ -12,8 +12,8 @@
    :programminglanguage: Java
    :description: CS1-level introduction to the static keyword, main method, and exception handling.
 
-Static, Main, and Exceptions
-============================
+Static Members, Main Method, and Exception Handling
+===================================================
 
 The Main Method
 ---------------
@@ -89,13 +89,6 @@ they are accessible inside ``main()``.
    <div class="align-center" style="margin-top:1em;">
    <iframe width="560" height="315" src="https://www.youtube.com/embed/P-_Nzi_mCRo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
    </div>
-
-
-Check Your Understanding: Main Methods
---------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week14Quiz1Summ.html ka
-   :long_name: Main Methods
 
 
 The Static Keyword
@@ -312,13 +305,6 @@ In short, be aware of what you reference when writing code in a static method!
    </div>
 
 
-Check Your Understanding: The Static Keyword
---------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week14Quiz2Summ.html ka
-   :long_name: The Static Keyword
-
-
 Errors
 ------
 
@@ -520,20 +506,6 @@ these lines to the method signature, which indicate to the caller that an
 exception might be thrown.
 
 
-Check Your Understanding: Throwing Exceptions
----------------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week14Quiz3Summ.html ka
-   :long_name: Throwing Exceptions
-
-
-Syntax Practice: Throwing Exceptions
-------------------------------------
-
-.. extrtoolembed:: 'Syntax Practice: Throwing Exceptions'
-   :workout_id: 1614
-
-
 Try/Catch Blocks
 ----------------
 
@@ -728,17 +700,10 @@ followed by one or my catch clauses and a catch clause can only follow a try blo
    </div>
 
 
-Check Your Understanding: Try/Catch Blocks
----------------------------------------------
+Programming Practice 14
+-----------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/Week14Quiz4Summ.html ka
-   :long_name: Try/Catch Blocks
-
-
-Syntax Practice: Try-Catch Blocks
----------------------------------
-
-.. extrtoolembed:: 'Syntax Practice: Try-Catch Blocks'
+.. extrtoolembed:: 'Programming Practice 14'
    :workout_id: 1613
 
 

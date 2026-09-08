@@ -41,7 +41,7 @@ Before you start, be sure you have familiarized yourself with the basics of the
 
 While this class contains many methods this tutorial will only be testing a few.
 
-.. codeinclude:: Java/Tutorials/TestBST.java
+.. codeinclude:: Tutorials/TestBST
 
 The above source code shows a possible approach to testing the BST class add and
 delete methods. Given that a binary search tree is a well documented data

@@ -1,0 +1,16 @@
+#problemarea code, #problemarea tt, #problemarea pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+    background-color: #f0f0f0;
+}
+#problemarea pre {
+    overflow: auto;
+    line-height: 125%;
+    border-color: #0c3762;
+    border-style: dotted;
+    border-width: thin;
+    margin: 0 0 12px 0;
+    padding: 0.8em;
+    font-size: 15px;
+    line-height: 1.3;
+}

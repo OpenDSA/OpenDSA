@@ -4,7 +4,7 @@ JAVA= java
 CFLAGS= -Xlint
 RFLAGS= 
 
-all: Analysis Demo Misc Lists Design Binary Sorting Searching Randomized BufferPool Memman Indexing General Graphs
+all: Tutorial Analysis Demo Misc Lists Design Binary Sorting Searching Randomized BufferPool Memman Indexing General Graphs
 
 build:
 	@mkdir build
@@ -12,6 +12,18 @@ build:
 clean:
 	-rm -rf build
 	mkdir build
+
+Tutorial: Parameters
+
+Parameters: Tutorials/MainParameters.java
+	@echo "Parameters Test"
+	-@rm -rf build/Parameters
+	@mkdir build/Parameters
+	cp Tutorials/MainParameters.java build/Parameters
+	cd build/Parameters; \
+	javac $(CFLAGS) MainParameters.java; \
+	$(JAVA) $(RFLAGS) MainParameters
+
 
 Analysis: Increment
 

@@ -95,7 +95,7 @@ Doing so can be difficult due to a combination of factors.
 So how do we meaningfully analyze a chunk of bytes?
 Consider the following code.
 
-.. codeinclude:: Java/Tutorials/MainByteArrayDebug.java
+.. codeinclude:: Tutorials/MainByteArrayDebug
 
 This program spawns a 1000 byte array and then places 1 of
 27 characters chosen randomly in a position randomly chosen in one of the 1000

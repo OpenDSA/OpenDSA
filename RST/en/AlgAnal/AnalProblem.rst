@@ -47,7 +47,7 @@ In other words, we should define the upper bound for a problem to be
 the **best** algorithm that we know for the problem.
 Of course, whenever we talk about bounds, we have to say when they
 apply.
-We we really should say something like the best algorithm that we know
+We really should say something like the best algorithm that we know
 in the worst case, or the best algorithm that we know in the average
 case.
 
