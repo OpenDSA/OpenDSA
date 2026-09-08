@@ -357,6 +357,10 @@ All are required unless otherwise specified.
   in the built book instance. The filepaths should relative to the 
   ``<opendsa>/RST/_static`` directory 
 
+* **max_toc_depth** - (optional) Specifies the maximum nesting depth of
+  the table-of-contents.
+  Defaults to 3 if omitted.
+
 * **suppress_todo** - (optional) A boolean controlling whether or not
   TODO directives are removed from the RST source files.
   Defaults to ``false`` if omitted.
