@@ -1889,7 +1889,7 @@ var lambda = String.fromCharCode(955),
     var data = serialize(this);
     this.redoStack.push(data);
     data = this.undoStack.pop();
-    data = jQuery.parseJSON(data);
+    data = JSON.parse(data);
     this.initFromParsedJSONSource(data);
     document.getElementById("redoButton").disabled = false;
     if (this.undoStack.length == 0) {
@@ -1904,7 +1904,7 @@ var lambda = String.fromCharCode(955),
     var data = serialize(this);
     this.undoStack.push(data);
     data = this.redoStack.pop();
-    data = jQuery.parseJSON(data);
+    data = JSON.parse(data);
     this.initFromParsedJSONSource(data);
     document.getElementById("undoButton").disabled = false;
     if (this.redoStack.length == 0) {
@@ -2469,7 +2469,7 @@ var lambda = String.fromCharCode(955),
     }
 
     // update the edge label position
-    if ($.isFunction(this._labelPositionUpdate)) {
+    if (typeof this._labelPositionUpdate === "function") {
       var bbtop = Math.min(fromPoint[1], toPoint[1]),
         bbleft = Math.min(fromPoint[0], toPoint[0]),
         bbwidth = Math.abs(fromPoint[0] - toPoint[0]),

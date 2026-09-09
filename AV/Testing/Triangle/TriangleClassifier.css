@@ -1,7 +1,7 @@
 #container {
   height: 600px;
-  width: 570px;
-  margin-right: 400px;
+  width: 550px;
+  margin-right: 450px;
 }
 
 #inputInfo {
@@ -17,7 +17,7 @@
 
 #bar{
 	float: right;
-	margin-right: 50px;
+	margin-right: 20px;
 	width: 330px;
 }
 
@@ -56,10 +56,83 @@
 	margin-left: 225px;
 }
 
-.codeBlock {
-	width: 325px;
-	height: 1000px;
-	float: left;
-	margin-left: -0.1px;
-	margin-right: 40px;
+/* ************************************ */
+/* CSS to replace use of Bootstrap */
+
+/* Container replacing .progress */
+.custom-progress {
+  display: flex;
+  height: 1rem;
+  overflow: hidden;
+  font-size: 0.75rem;
+  background-color: #e9ecef;
+  border-radius: 0.25rem;
+}
+
+/* Inner bar replacing .progress-bar */
+.custom-progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #0d6efd; /* Adjust color as needed */
+  transition: width 0.6s ease;
+}
+
+.custom-codeBlock {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: #212529;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  padding: 0;
+  float: left;
+  width: 415px;
+  height: 600px;
+  margin: 0 15px 0 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+figure.custom-codeBlock pre,
+figure.custom-codeBlock code {
+  padding: 0;
+}
+
+/* Base Bootstrap 3 Typography & Reset */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333333;
+  background-color: #ffffff;
+  margin: 0;
+}
+
+h4 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Reset browser defaults for figure, pre, and code */
+figure, pre, code {
+  margin: 0;
+  padding: 0;
+}
+
+label {
+  font-weight: 700;
 }

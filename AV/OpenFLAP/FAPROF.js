@@ -82,7 +82,7 @@ var exerciseLocation;
   var initGraph = function(opts) {
     // Remove the old graph, parse JSON, and initialize the new graph.
     $('.jsavgraph').remove();
-    var source = opts.graph ? opts.graph : jQuery.parseJSON(g);
+    var source = opts.graph ? opts.graph : JSON.parse(g);
     g = jsav.ds.FA($.extend({width: '750px', height: 440, editable: true}, opts));
     var ratio = 1;
     g.initFromParsedJSONSource(source, ratio);

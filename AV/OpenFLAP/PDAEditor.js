@@ -153,7 +153,7 @@
   };
   // initialize graph. Modified to allow the editor from reading the stored graph
   var initGraph = function(opts) {
-    var source = opts.graph ? opts.graph : jQuery.parseJSON(g);
+    var source = opts.graph ? opts.graph : JSON.parse(g);
     g =  jsav.ds.PDA($.extend({width: '750px', height: 440, emptystring: lambda, editable: true}, opts))
     var ratio = 1;
     g.initFromParsedJSONSource(source, ratio);
