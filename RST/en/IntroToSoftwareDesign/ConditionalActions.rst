@@ -1304,6 +1304,7 @@ Here is a complete, working example of a test class:
 
 .. code-block:: java
 
+    import student.micro.*;
     import student.micro.jeroo.*;
     import static student.micro.jeroo.Assertions.*;
     import static student.micro.jeroo.CompassDirection.*;
@@ -1480,9 +1481,11 @@ quizzes, labs, and programming assignments.
   confidence and muscle memory with rapid, bite-sized drills focused on syntax
   rules and basic language mechanics. *Especially recommended if you are new to programming.*
 
-* `Quiz 1 AI Study Tutor (Chapters 1 & 2) <https://hokie.ai.vt.edu/chat/71148e0f-a9a3-43bd-917a-5208100b45e1>`__ : Study
-  for Quiz 1 using a custom AI chat designed to gauge your understanding and identify any
-  key misconceptions or gaps to help you best prepare.  
+* `Quiz 1 AI Study Tutor (Chapters 1 & 2) <https://llm.arc.vt.edu/?model=cs-1114-quiz-1-study-tutor>`__ (or the
+  `Hokie AI version <https://hokie.ai.vt.edu/chat/71148e0f-a9a3-43bd-917a-5208100b45e1>`__): Study
+  for Quiz 1 using a custom AI tutor designed to gauge your understanding and
+  identify and help you work through any key misconceptions or gaps in your knowledge.
+
 
 
 Programming Practice 2
