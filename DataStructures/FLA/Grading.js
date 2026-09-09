@@ -205,7 +205,7 @@
     }
 
     // if custom showGrade function is given
-    if (this.options.showGrade && $.isFunction(this.options.showGrade)) {
+    if (this.options.showGrade && (typeof this.options.showGrade === "function)) {
       this.showGrade = this.options.showGrade;
     }
 
@@ -306,7 +306,7 @@
     }
     var prevFx = $.fx.off || false;
     $.fx.off = true;
-    if ($.isFunction(this.options.grader)) {
+    if (typeof this.options.grader === "function") {
       this.options.grader.call(this);
     } else {
       graders[this.options.grader + (continuousMode ? "-continuous" : "")].call(this);
@@ -364,7 +364,7 @@
       eventData.type = eventData.type.replace("jsav-", "jsav-exercise-model-");
       $("body").trigger("jsav-log-event", eventData);
     };
-    if ($.isFunction(model)) {
+    if (typeof model === "function") {
       // behavior in a nutshell:
       // 1. create a new JSAV (and the HTML required for it)
       modelav = new JSAV($("<div><span class='jsavcounter'/><div class='jsavcontrols'/><p class='jsavoutput jsavline'></p></div>").addClass("jsavmodelanswer"), {
