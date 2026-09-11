@@ -116,7 +116,7 @@ information about some object.
 For example, consider if we want to store a database about reviewer
 ratings of movies.
 If there are a lot of movies and a lot of reviewers in the database,
-then no reviewer will have reviewed a signficant fraction of the
+then no reviewer will have reviewed a significant fraction of the
 movies, and no movie will have been reviewed by a significant fraction
 of reviewers.
 So a sparse matrix representation might be ideal, where each column

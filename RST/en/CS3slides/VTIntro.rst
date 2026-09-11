@@ -34,7 +34,7 @@ Role of CS3114/5040 in the Curriculum
 
    Most graduates from our department will tell you that this is one
    of the two hardest courses, and also one of the two most important
-   for job preparation. So its both high effort and high value.
+   for job preparation. So it's both high effort and high value.
 
 
 Introduction

@@ -58,7 +58,7 @@ Project 1 Day 3
      not expect to fail, it represents **YOUR failure** to properly
      test.
 
-   * I am not your testing service. Nor is Web-CAT. We don't share our
+   * Web-CAT, TAs, and professors are **not** your personal testing service. We will not share our
      test cases.
 
    * Real problem: How to correct a mis-understanding.
@@ -79,7 +79,7 @@ Project 1 Day 3
    
 .. slide:: Testing vs. Anti-Testing (2)
                 
-   * Why Anit-testing is disasterous:
+   * Why Anti-testing is disastrous:
   
       * If you have real tests, then you can expect that your bugs are
         in the uncovered lines. So you know where to look.
