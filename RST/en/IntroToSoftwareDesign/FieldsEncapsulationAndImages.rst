@@ -969,6 +969,19 @@ any location in the image to see its coordinates and color value. The
 details.
 
 
+Building Your Skills Through Practice
+-------------------------------------
+
+Learning to program is a skill built through deliberate practice and experimentation.
+The following **optional, ungraded resources** are designed to help you reinforce
+key concepts, build fluency, and prepare for upcoming
+quizzes, labs, and programming assignments.
+
+* `Java Syntax Practice 5 <https://codeworkout.cs.vt.edu/courses/vt/cs1114/fall-2026/workouts/3813>`__ : Build
+  confidence and muscle memory with rapid, bite-sized drills focused on syntax
+  rules and basic language mechanics. *Especially recommended if you are new to programming.*
+ 
+
 Programming Practice 5
 ----------------------
 
