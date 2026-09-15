@@ -42,9 +42,11 @@ requirejs([
       "../../khan-exercises/interface.js"
     ], function () {
       requirejs(["../../khan-exercises/khan-exercise.js"], function () {
-        requirejs(["../../lib/timeme.js"], function () {
-          requirejs(["../../lib/odsaKA.js"], function () {
-            Khan.odsaLoadExercises();
+        requirejs(["../../lib/splice-iframe.js"], function () {
+          requirejs(["../../lib/timeme.js"], function () {
+            requirejs(["../../lib/odsaKA.js"], function () {
+              Khan.odsaLoadExercises();
+            });
           });
         });
       });

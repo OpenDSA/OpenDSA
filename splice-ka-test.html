@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--
+  SPLICE KA Test (dev tool, not part of the book build)
+
+  Automated assertion test for the KA SPLICE implementation.
+  Plays the "learning system" role like splice-test-harness.html, but
+  additionally DRIVES a real attempt in the exercise iframe and then
+  asserts that the expected SPLICE messages arrived:
+
+    PASS criteria (per SPLICE iframe protocol):
+      1. SPLICE.getState          sent on load (ignore .response, restore is optional)
+      2. SPLICE.reportScoreAndState after an attempt, with
+         - score 0 or 1
+         - state.<exercise>.type === "ka-exercise-attempt"
+      3. SPLICE.sendEvent          with name "attemptData"
+
+  It answers getState with {} (nothing saved) like a fresh system.
+
+  Usage:
+    cd <OpenDSA repo> && python3 -m http.server 8000
+    open http://localhost:8000/splice-ka-test.html
+      (default exercise: Exercises/IntroToSoftwareDesign/Week10Quiz1Summ.html
+       in localMode with module KAspliceTest — pass ?ex=... to change)
+    Results print in the "ASSERTIONS" panel; exit message at the bottom.
+
+  The exercise is driven by scripting the same-origin iframe directly
+  (fill answer / check first radio, click Check Answer). Radio exercises
+  are deliberately checked (a wrong value), so score:0 and the attempt
+  still goes through the normal handleAttempt -> buildAttemptData path.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SPLICE KA Test</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, sans-serif; margin: 0; height: 100vh; }
+  #frame { position: absolute; left: 0; top: 0; width: 55%; height: 100%; border: 0; }
+  #panel { position: absolute; right: 0; top: 0; width: 45%; height: 100%; overflow-y: auto; background: #1e1e1e; color: #ddd; padding: 10px; font-family: monospace; font-size: 12px; }
+  .ok { color: #7cd67c; } .fail { color: #e06c6c; } .info { color: #7cb8d6; }
+</style>
+</head>
+<body>
+  <iframe id="frame" src=""></iframe>
+  <div id="panel"></div>
+<script>
+  const params = new URLSearchParams(location.search);
+  const defaultEx = "Exercises/IntroToSoftwareDesign/Week10Quiz1Summ.html?localMode=true&module=KAspliceTest&selfLoggingEnabled=false";
+  const exerciseUrl = params.get("ex") || defaultEx;
+
+  const frame = document.getElementById("frame");
+  frame.src = exerciseUrl;
+
+  const panel = document.getElementById("panel");
+  function out(cls, text) {
+    const d = document.createElement("div");
+    d.className = cls;
+    d.textContent = text;
+    panel.appendChild(d);
+    panel.scrollTop = panel.scrollHeight;
+  }
+
+  const messages = [];           // every parsed postMessage
+  let got = { getState: false, report: null, sendAttemptData: false };
+
+  window.addEventListener("message", function (e) {
+    let data = e.data;
+    if (typeof data === "string") { try { data = JSON.parse(data); } catch (err) {} }
+    if (typeof data !== "object" || data === null || !data.subject) return;
+    messages.push(data);
+
+    if (data.subject === "SPLICE.getState") {
+      got.getState = true;
+      // play learning system: nothing saved
+      e.source.postMessage({ subject: "SPLICE.getState.response", message_id: data.message_id, state: {} }, "*");
+      out("info", "getState → answered {}");
+    } else if (data.subject === "SPLICE.reportScoreAndState") {
+      got.report = data;
+      out("info", "reportScoreAndState score=" + data.score);
+    } else if (data.subject === "SPLICE.sendEvent" && data.name === "attemptData") {
+      got.sendAttemptData = true;
+      out("info", "sendEvent attemptData");
+    }
+  }, false);
+
+  // ---- drive the exercise: wait for readiness, answer, click ----
+  const MAX_TRIES = 60;
+  async function drive() {
+    let tries = 0;
+    let doc;
+    // wait for iframe to load and khan to be ready (check button enabled)
+    while (tries++ < MAX_TRIES) {
+      try { doc = frame.contentDocument; } catch (err) { doc = null; }
+      if (doc && doc.getElementById && doc.getElementById("check-answer-button")) {
+        const btn = doc.getElementById("check-answer-button");
+        if (!btn.disabled) break;
+      }
+      await new Promise(r => setTimeout(r, 500));
+    }
+    if (tries >= MAX_TRIES) { out("fail", "FATAL: exercise never became ready (check-answer-button not enabled)"); return; }
+
+    const input = doc.querySelector("#solutionarea input, #answerform input");
+    if (input && input.type === "radio") {
+      input.checked = true;             // deliberate wrong answer
+    } else if (input && input.value === "") {
+      input.value = "0";                // text/number exercises
+    }
+    out("info", "answered exercise (input: " + (input ? input.type : "none") + ")");
+
+    doc.getElementById("check-answer-button").click();
+    out("info", "clicked Check Answer");
+
+    // give the attempt pipeline time to emit
+    tries = 0;
+    while (tries++ < 20 && !got.report) await new Promise(r => setTimeout(r, 500));
+
+    // ---- assertions ----
+    out("", ""); out("info", "==== ASSERTIONS ====");
+    const pass = [];
+    if (got.getState) pass.push("getState sent on load");
+    else out("fail", "FAIL getState was never sent");
+
+    if (got.report) {
+      const subj = Object.keys(got.report.state || {})[0];
+      const st = (got.report.state || {})[subj];
+      pass.push("reportScoreAndState score in {0,1} = " + (got.report.score === 0 || got.report.score === 1));
+      pass.push("state." + subj + " type = " + (st ? st.type : "MISSING") + " (expect ka-exercise-attempt)" + (st && st.type === "ka-exercise-attempt" ? " OK" : " FAIL"));
+    } else {
+      out("fail", "FAIL reportScoreAndState was never sent");
+    }
+    if (got.sendAttemptData) pass.push("sendEvent attemptData sent");
+
+    if (got.getState && got.report && (got.report.score === 0 || got.report.score === 1) &&
+        Object.keys(got.report.state || {}).length && Object.values(got.report.state)[0].type === "ka-exercise-attempt" &&
+        got.sendAttemptData) {
+      out("ok", "RESULT: PASS — all KA SPLICE assertions met");
+    } else {
+      out("fail", "RESULT: FAIL — see assertion details above");
+    }
+  }
+  drive();
+</script>
+</body>
+</html>
