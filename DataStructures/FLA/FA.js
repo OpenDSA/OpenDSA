@@ -3812,6 +3812,8 @@ var lambda = String.fromCharCode(955),
   FiniteAutomaton.complement = complement;
   FiniteAutomaton.combine = combine
   FiniteAutomaton.completeDFA = completeDFA;
+  FiniteAutomaton.findMissingTransitions = findMissingTransitions;
+  FiniteAutomaton.isComplete = isComplete;
   FiniteAutomaton.union = union;
 }(jQuery));
 /*
