@@ -3218,6 +3218,35 @@ var lambda = String.fromCharCode(955),
     }
   };
 
+  /*
+    Find the states that have no transition on some symbol of the alphabet.
+    Returns an array of {node, missing}, one entry per incomplete state.
+  */
+  var findMissingTransitions = function (graph, alphabet) {
+    if (!alphabet) {
+      graph.updateAlphabet();
+      alphabet = Object.keys(graph.alphabet);
+    }
+    var incomplete = [];
+    var nodes = graph.nodes();
+    for (var node = nodes.next(); node; node = nodes.next()) {
+      var missing = [];
+      for (var i = 0; i < alphabet.length; i++) {
+        if (graph.transitionFunction(node, alphabet[i]).length === 0) {
+          missing.push(alphabet[i]);
+        }
+      }
+      if (missing.length > 0) {
+        incomplete.push({node: node, missing: missing});
+      }
+    }
+    return incomplete;
+  };
+
+  var isComplete = function (graph, alphabet) {
+    return findMissingTransitions(graph, alphabet).length === 0;
+  };
+
 
   //Complete the DFA by adding missing edges from each nodes to a new node. 
   var completeDFA = function(jsav, graph){
