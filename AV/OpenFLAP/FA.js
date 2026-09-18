@@ -571,6 +571,22 @@ var exerciseLocation;
     return report.length === 0;
   };
 
+  // Adds a trap state and sends every missing transition to it.
+  // Triggered after clicking the "Complete with Trap State" button.
+  var completeFA = function() {
+    removeModeClasses();
+    removeND();
+    if (FiniteAutomaton.isComplete(g)) {
+      jsav.umsg("This FA is already complete.");
+      return;
+    }
+    g.saveFAState();
+    FiniteAutomaton.completeDFA(jsav, g);
+    $('.jsavgraph').click(graphClickHandler);
+    $('.jsavedgelabel').click(labelClickHandler);
+  };
+
+
   // Undoes the effects of testND and testLambda, unhighlighting all nodes and edges.
   var removeND = function() {
     var nodes = g.nodes();
@@ -1373,6 +1389,7 @@ var exerciseLocation;
   $('#ndButton').click(testND);
   $('#lambdaButton').click(testLambda);
   $('#completeButton').click(testComplete);
+  $('#autoCompleteButton').click(completeFA);
   $('#epsilonButton').click(switchEmptyString);
   $('#shorthandButton').click(switchShorthand);
   $('#toDFAButton').click(convertToDFA);
