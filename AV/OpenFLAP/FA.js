@@ -557,11 +557,26 @@ var exerciseLocation;
     }
   };
 
+  var testComplete = function()
+  {
+    removeModeClasses();
+    var incomplete = FiniteAutomaton.findMissingTransitions(g);
+    var report = [];
+    for(var i =0; i<incomplete.length; i++)
+    {
+      incomplete[i].node.toggleClass('testingIncomplete');
+      report.push(incomplete[i].node.value() + " (missing " + incomplete[i].missing.join(", ") + ")");
+    }
+    jsav.umsg(report.length ? "Incomplete: " + report.join("; ") : "Every state has a transition on every input symbol.");
+    return report.length === 0;
+  };
+
   // Undoes the effects of testND and testLambda, unhighlighting all nodes and edges.
   var removeND = function() {
     var nodes = g.nodes();
     for(var next = nodes.next(); next; next = nodes.next()) {
       next.removeClass("testingND");
+      next.removeClass("testingIncomplete");
     }
     var edges = g.edges();
     for (var next = edges.next(); next; next = edges.next()) {
@@ -1357,6 +1372,7 @@ var exerciseLocation;
   $('#randomButton').click(randomLayout);
   $('#ndButton').click(testND);
   $('#lambdaButton').click(testLambda);
+  $('#completeButton').click(testComplete);
   $('#epsilonButton').click(switchEmptyString);
   $('#shorthandButton').click(switchShorthand);
   $('#toDFAButton').click(convertToDFA);
