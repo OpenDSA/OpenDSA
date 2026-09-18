@@ -560,6 +560,7 @@ var exerciseLocation;
   var testComplete = function()
   {
     removeModeClasses();
+    removeND();
     var incomplete = FiniteAutomaton.findMissingTransitions(g);
     var report = [];
     for(var i =0; i<incomplete.length; i++)
