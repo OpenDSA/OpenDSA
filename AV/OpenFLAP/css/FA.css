@@ -36,8 +36,16 @@
 	font-size: 1em;
 	z-index: 700;
 	position: absolute;
-	display: inline-block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	box-sizing: border-box;
 	margin: 0;
+	pointer-events: none;
+	overflow: hidden;
+	background-color: white;
+	border-radius: 50%;
 }
 .jsavmooreoutput {
 	font-size: 1em;
@@ -107,7 +115,12 @@
 }
 
 .label_css {
-    width: auto;
-    border: 1px solid black;
-    background-color: white;
+    width: 100%;
+    margin: 0;
+    padding: 0 7px;
+    box-sizing: border-box;
+    font-size: 0.85em;
+    line-height: 1.1;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
