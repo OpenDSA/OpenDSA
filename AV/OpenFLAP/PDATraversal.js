@@ -31,7 +31,7 @@
 
   // Function to create a graph out of a serialized representation.
   var initGraph = function (opts) {
-    var gg = jQuery.parseJSON(g);
+    var gg = JSON.parse(g);
     var graph = jsav.ds.PDA($.extend({
       width: '90%',
       height: 440

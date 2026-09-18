@@ -25,7 +25,7 @@ image processing, manipulating 2D RGB pixel grids using **for-each loops**.
 
 .. sidebar:: Learning Objectives
 
-    **Estimated Time**: ~49 minutes (~49 min reading at 100 WPM)
+    **Estimated Time**: ~57 minutes (~51 min reading + ~6 min video at 100 WPM)
 
     * **Declare** private instance fields to maintain persistent object state across method calls.
     * **Implement** accessor (getter) and mutator (setter) methods to enforce encapsulation.
@@ -155,7 +155,7 @@ debugging*, and *makes code much easier to maintain*.
 
 
 Accessor and Mutator Methods (Getters and Setters)
--------------------------------------------------
+--------------------------------------------------
 
 While outside classes cannot access private fields directly, classes often need
 to provide controlled ways for clients to inspect or modify an object's attributes.
@@ -491,7 +491,7 @@ by changing pixels:
 .. raw:: html
 
    <div class="align-center" style="margin-top:1em;">
-   <iframe src="https://www.youtube-nocookie.com/embed/15aqFQQVBWU" width="560" height="315" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/15aqFQQVBWU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
    </div>
 
 
@@ -849,6 +849,51 @@ will have repeated over all possible pixels in the image, and ``maxRed``
 will then equal the largest red value from any pixel in the entire picture.
 
 
+Modifying Pixel Channels and Value Clamping
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to querying pixels, you can write methods that modify pixels across an entire picture.
+For example, to make an image brighter, you might increase the intensity of each color channel
+(red, green, blue) by a specified amount.
+
+However, RGB channel values must strictly remain between **0 and 255**. If increasing a channel's
+value exceeds 255, the value must be **clamped** to 255 to prevent invalid color states:
+
+.. code-block:: java
+
+   public void brighten(Picture image, int amount)
+   {
+       for (Pixel pix : image.getPixels())
+       {
+           int newRed = pix.getRed() + amount;
+           if (newRed > 255)
+           {
+               newRed = 255;
+           }
+           pix.setRed(newRed);
+
+           int newGreen = pix.getGreen() + amount;
+           if (newGreen > 255)
+           {
+               newGreen = 255;
+           }
+           pix.setGreen(newGreen);
+
+           int newBlue = pix.getBlue() + amount;
+           if (newBlue > 255)
+           {
+               newBlue = 255;
+           }
+           pix.setBlue(newBlue);
+       }
+   }
+
+This pattern--reading an attribute with a getter, performing an arithmetic adjustment, checking
+threshold boundaries with an ``if`` statement, and writing back the clamped value with a setter--is
+a fundamental idiom in software development. You will practice this directly in Lab 05 and rely on
+similar state-checking patterns in Program 03.
+
+
 Methods on Pictures
 ~~~~~~~~~~~~~~~~~~~
 
@@ -923,6 +968,19 @@ any location in the image to see its coordinates and color value. The
 ``explore()`` method can be useful when you need to inspect an image's
 details.
 
+
+Building Your Skills Through Practice
+-------------------------------------
+
+Learning to program is a skill built through deliberate practice and experimentation.
+The following **optional, ungraded resources** are designed to help you reinforce
+key concepts, build fluency, and prepare for upcoming
+quizzes, labs, and programming assignments.
+
+* `Java Syntax Practice 5 <https://codeworkout.cs.vt.edu/courses/vt/cs1114/fall-2026/workouts/3813>`__ : Build
+  confidence and muscle memory with rapid, bite-sized drills focused on syntax
+  rules and basic language mechanics. *Especially recommended if you are new to programming.*
+ 
 
 Programming Practice 5
 ----------------------

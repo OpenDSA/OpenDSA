@@ -375,11 +375,11 @@
                             matrixid: self.id(),
                             row: row,
                             column: col});
-        if ($.isFunction(data)) { // if no custom data..
+        if (typeof data === "function") { // if no custom data..
           // ..bind this to the matrix and call handler
           // with params row and column and the event
           data.call(self, row, col, e);
-        } else if ($.isFunction(handler)) { // if custom data is passed
+        } else if (typeof handler === "function") { // if custom data is passed
           var params = Array.isArray(data)?data.slice(0):[data]; // get a cloned array or data as array
           params.unshift(col); // add index to first parameter
           params.unshift(row); // add index to first parameter

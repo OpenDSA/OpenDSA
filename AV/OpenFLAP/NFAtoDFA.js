@@ -85,7 +85,7 @@
 		}
 		else if(type == 'Exercise')
 		{
-			var source = opts.graph ? opts.graph : jQuery.parseJSON(g);
+			var source = opts.graph ? opts.graph : JSON.parse(g);
 			referenceGraph = jsav.ds.FA({width: "45%", height: 440, layout: "manual", element: $("#reference")});
 			referenceGraph.initFromParsedJSONSource(source, 0.5);
 			referenceGraph.updateAlphabet();
@@ -100,7 +100,7 @@
 	}
 
   	function deserialize(data) {
-		var gg = jQuery.parseJSON(data);
+		var gg = JSON.parse(data);
 		var graph = jsav.ds.FA({width: "45%", height: 440, layout: "manual", element: $("#reference")});
 		graph.initFromParsedJSONSource(gg, 0.5);
 		graph.updateAlphabet();
