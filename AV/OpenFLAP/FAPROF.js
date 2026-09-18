@@ -453,11 +453,12 @@ var exerciseLocation;
   var testComplete = function()
   {
     removeModeClasses();
+    removeND();
     var incomplete = FiniteAutomaton.findMissingTransitions(g);
     var report = [];
     for(var i =0; i<incomplete.length; i++)
     {
-      incomplete[i].node.toggleClass('testingIncomplete');
+      incomplete[i].node.addClass('testingIncomplete');
       report.push(incomplete[i].node.value() + " (missing " + incomplete[i].missing.join(", ") + ")");
     }
     jsav.umsg(report.length ? "Incomplete: " + report.join("; ") : "Every state has a transition on every input symbol.");
