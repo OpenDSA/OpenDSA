@@ -13,7 +13,7 @@
     if(initialData){
       this.productions = initialData;
       var i;
-      if ($.isArray(initialData)) { // initialData contains an array of data
+      if (Array.isArray(initialData)) { // initialData contains an array of data
         this.options = $.extend({}, defaultOptions, options);
         options = this.options;
       } else if (typeof initialData === "object") { // initialData is options
@@ -380,12 +380,12 @@
                             matrixid: self.id(),
                             row: row,
                             column: col});
-        if ($.isFunction(data)) { // if no custom data..
+        if (typeof data === "function") { // if no custom data..
           // ..bind this to the matrix and call handler
           // with params row and column and the event
           data.call(self, row, col, e);
-        } else if ($.isFunction(handler)) { // if custom data is passed
-          var params = $.isArray(data)?data.slice(0):[data]; // get a cloned array or data as array
+        } else if (typeof handler === "function") { // if custom data is passed
+          var params = Array.isArray(data)?data.slice(0):[data]; // get a cloned array or data as array
           params.unshift(col); // add index to first parameter
           params.unshift(row); // add index to first parameter
           params.push(e); // jQuery event as the last

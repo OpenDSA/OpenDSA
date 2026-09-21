@@ -27,7 +27,7 @@ module.exports = function (cy, $, options) {
       var opt = options[type][attr];
       if (!opt)
         result[attr] = {};
-      else if ($.isArray(opt)) {
+      else if (Array.isArray(opt)) {
         result[attr] = {};
         for (var j = 0; j < opt.length; j++) {
           var el = opt[i];

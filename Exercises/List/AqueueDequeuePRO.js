@@ -23,7 +23,7 @@
     // pointer click handler
     pclick: function(pointer) {
       if (Xstatus === 1) { // Highlight the queue cell
-        jsavCir.path[selected_index].rObj.attr({fill: "none", opacity: 1});
+        jsavCir.path[selected_index]._setattrs({fill: "none", opacity: 1});
         pointer.label.element.toggleClass("highlight");
         selected_pointer = pointer;
         Xstatus = 2;
@@ -89,17 +89,17 @@
         copyFrom = index;
       } else if (Xstatus === 1) {
         if (selected_index === index) {
-          jsavCir.path[selected_index].rObj.attr({
+          jsavCir.path[selected_index]._setattrs({
             fill: "none",
             opacity: 1
           });
           Xstatus = 0;
         } else {
-          jsavCir.path[selected_index].rObj.attr({
+          jsavCir.path[selected_index]._setattrs({
             fill: "none",
             opacity: 1
           });
-          jsavCir.path[index].rObj.attr({
+          jsavCir.path[index]._setattrs({
             fill: "yellow",
             opacity: 0.5
           });
@@ -118,7 +118,7 @@
     copy: function() {
       var val;
       if ((Xstatus === 1) && (selected_index > -1)) {
-        jsavCir.path[selected_index].rObj.attr({fill: "none", opacity: 1});
+        jsavCir.path[selected_index]._setattrs({fill: "none", opacity: 1});
         val = jsavCir.value(selected_index);
         arrReturn.value(0, val);
         copyFrom = selected_index;
@@ -201,10 +201,11 @@
     av.recorded();
 
     for (i = 0; i < maxSize; i++) {
-      jsavCir.path[i].rObj.node.onclick =
+      jsavCir.path[i].click(
         (function(j) {
           return function() { aqueueDequeuePRO.clickHandler(j); };
-        }(i));
+        }(i))
+      );
     }
     arrReturn.element.css({"z-index": 100});
     arrReturn.click(aqueueDequeuePRO.copy);

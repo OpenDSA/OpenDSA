@@ -21,7 +21,7 @@
     // pointer click handler
     pclick: function(pointer) {
       if (Xstatus === 1) {
-        jsavCir.path[selected_index].rObj.attr({fill: "none", opacity: 1});
+        jsavCir.path[selected_index]._setattrs({fill: "none", opacity: 1});
         pointer.label.element.toggleClass("highlight");
         selected_pointer = pointer;
         Xstatus = 2;
@@ -81,16 +81,16 @@
     // JSAV Circular click handler
     clickHandler: function(index) {
       if (Xstatus === 0) {
-        jsavCir.path[index].rObj.attr({fill: "yellow", opacity: 0.5});
+        jsavCir.path[index]._setattrs({fill: "yellow", opacity: 0.5});
         selected_index = index;
         Xstatus = 1;
       } else if (Xstatus === 1) {
         if (selected_index === index) {
-          jsavCir.path[selected_index].rObj.attr({fill: "none", opacity: 1});
+          jsavCir.path[selected_index]._setattrs({fill: "none", opacity: 1});
           Xstatus = 0;
         } else {
-          jsavCir.path[selected_index].rObj.attr({fill: "none", opacity: 1});
-          jsavCir.path[index].rObj.attr({fill: "yellow", opacity: 0.5});
+          jsavCir.path[selected_index]._setattrs({fill: "none", opacity: 1});
+          jsavCir.path[index]._setattrs({fill: "yellow", opacity: 0.5});
           selected_index = index;
         }
       } else if (Xstatus === 2) {
@@ -198,12 +198,13 @@
     av.recorded();
 
     for (i = 0; i < maxSize; i++) {
-      jsavCir.path[i].rObj.node.onclick =
+      jsavCir.path[i].click(
         (function(j) {
           return function() {
             aqueueEnqueuePRO.clickHandler(j);
           };
-        }(i));
+        }(i))
+      );
     }
 
     aqueueEnqueuePRO.bindPointerClick(front_pointer);
