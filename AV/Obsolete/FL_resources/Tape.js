@@ -26,7 +26,7 @@ $(document).ready(function() {
     this.current = index; //the location to highlight
     this.arr = null;
 
-    if ($.isArray(element)) {
+    if (Array.isArray(element)) {
       // x & y control
       var right = x_coord + element.length * cell_size; //topright
 
