@@ -131,12 +131,10 @@ def generate_html(av_name, title, links, scripts, is_dgm, output_path):
   <script type="text/javascript" src="{relative_prefix}lib/timeme.js"></script>
   <script type="text/javascript" src="{relative_prefix}lib/jquery.ui.min.js"></script>
   <script type="text/javascript" src="{relative_prefix}lib/jquery.transit.js"></script>
-  <script type="text/javascript" src="{relative_prefix}lib/raphael.js"></script>
+  <script type="text/javascript" src="{relative_prefix}lib/d3.v7.min.js"></script>
   <script type="text/javascript" src="{relative_prefix}lib/JSAV.js"></script>
   <script type="text/javascript" src="{relative_prefix}lib/odsaUtils.js"></script>
   <script type="text/javascript" src="{relative_prefix}lib/odsaMOD.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
-  <script type="text/javascript" src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
   <script type="text/javascript" src="{relative_prefix}lib/dataStructures.js"></script>
   <script type="text/javascript" src="{relative_prefix}lib/conceptMap.js"></script>
   <script type="text/javascript" src="{relative_prefix}lib/splice-iframe.js"></script>
