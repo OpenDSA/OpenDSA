@@ -112,7 +112,7 @@ $(document).ready(function () {
     "This is the same tree as the previous slide show. Lets try to find the key 9.",
     "First we look at the root. First disk access",
     "Since 10 is more than 9 we follow the left child.",
-    "Since 5 if less than 9 we follow the right child. Second disk access",
+    "Since 5 is less than 9 we follow the right child. Second disk access",
     "Since 8 is less than 9 we follow the right child. Third disk access",
     "We found the node.",
     "This search could be made more efficient if we rearranged the layout of node on disk.",
