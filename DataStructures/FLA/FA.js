@@ -3218,54 +3218,52 @@ var lambda = String.fromCharCode(955),
     }
   };
 
+  /*
+    Find the states that have no transition on some symbol of the alphabet.
+    Returns an array of {node, missing}, one entry per incomplete state.
+  */
+  var findMissingTransitions = function (graph, alphabet) {
+    if (!alphabet) {
+      graph.updateAlphabet();
+      alphabet = Object.keys(graph.alphabet);
+    }
+    var incomplete = [];
+    var nodes = graph.nodes();
+    for (var node = nodes.next(); node; node = nodes.next()) {
+      var missing = [];
+      for (var i = 0; i < alphabet.length; i++) {
+        if (graph.transitionFunction(node, alphabet[i]).length === 0) {
+          missing.push(alphabet[i]);
+        }
+      }
+      if (missing.length > 0) {
+        incomplete.push({node: node, missing: missing});
+      }
+    }
+    return incomplete;
+  };
+
+  var isComplete = function (graph, alphabet) {
+    return findMissingTransitions(graph, alphabet).length === 0;
+  };
+
 
   //Complete the DFA by adding missing edges from each nodes to a new node. 
   var completeDFA = function(jsav, graph){
 
     graph.options = $.extend({layout: 'automatic'}, graph.options);
-    nodes = graph.nodes();
-    edges = graph.edges();
-    alp = graph.alphabet;
-    alphabet = [];
-    missing = {};
-    hasMissing = false;
-    for (const key in alp) {
-      alphabet.push(key);
+    var alphabet = Object.keys(graph.updateAlphabet());
+    var incomplete = findMissingTransitions(graph, alphabet);
+    if(incomplete.length == 0)
+    {
+      return graph;
     }
-    for (var next = nodes.next(); next; next = nodes.next()) {
-      var edgesFromNext = next.container._edges[next.container._nodes.indexOf(next)];
-      if (edgesFromNext.length != alphabet.length){
-        if (edgesFromNext.length == 0){
-          missing[next.container._nodes.indexOf(next)] = [];
-          for (i in alphabet){
-            missing[next.container._nodes.indexOf(next)].push(alphabet[i]);
-          }
-        }
-        else {
-          for (edge in edgesFromNext){
-            var weights = edgesFromNext[edge]._weight.split('<br>');
-            if (weights.length != alphabet.length){
-              hasMissing =true;
-              missing[next.container._nodes.indexOf(next)] = [];
-              for (i in alphabet){
-                if (weights.indexOf(alphabet[i]) == -1){
-                  missing[next.container._nodes.indexOf(next)].push(alphabet[i]);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    if (hasMissing){
-      var newNode = graph.addNode();
-      var newLabel = alphabet.toString().replace(',', '<br>');
-      graph.addEdge(newNode, newNode, {weight: newLabel});
-      for (i in missing){
-        var label = missing[i].toString().replace(',', '<br>');
-        graph.addEdge(nodes[i], newNode, {weight: label});
-      }
+    
+    var trapNode = graph.addNode();
+    graph.addEdge(trapNode, trapNode, {weight: alphabet.join('<br>')});
+    for(var i = 0; i<incomplete.length; i++)
+    {
+      graph.addEdge(incomplete[i].node, trapNode, {weight: incomplete[i].missing.join('<br>')});
     }
     graph.layout();
     return graph;
@@ -3783,6 +3781,8 @@ var lambda = String.fromCharCode(955),
   FiniteAutomaton.complement = complement;
   FiniteAutomaton.combine = combine
   FiniteAutomaton.completeDFA = completeDFA;
+  FiniteAutomaton.findMissingTransitions = findMissingTransitions;
+  FiniteAutomaton.isComplete = isComplete;
   FiniteAutomaton.union = union;
 }(jQuery));
 /*

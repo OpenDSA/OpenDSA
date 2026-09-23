@@ -557,11 +557,43 @@ var exerciseLocation;
     }
   };
 
+  var testComplete = function()
+  {
+    removeModeClasses();
+    removeND();
+    var incomplete = FiniteAutomaton.findMissingTransitions(g);
+    var report = [];
+    for(var i =0; i<incomplete.length; i++)
+    {
+      incomplete[i].node.addClass('testingIncomplete');
+      report.push(incomplete[i].node.value() + " (missing " + incomplete[i].missing.join(", ") + ")");
+    }
+    jsav.umsg(report.length ? "Incomplete: " + report.join("; ") : "Every state has a transition on every input symbol.");
+    return report.length === 0;
+  };
+
+  // Adds a trap state and sends every missing transition to it.
+  // Triggered after clicking the "Complete with Trap State" button.
+  var completeFA = function() {
+    removeModeClasses();
+    removeND();
+    if (FiniteAutomaton.isComplete(g)) {
+      jsav.umsg("This FA is already complete.");
+      return;
+    }
+    g.saveFAState();
+    FiniteAutomaton.completeDFA(jsav, g);
+    $('.jsavgraph').click(graphClickHandler);
+    $('.jsavedgelabel').click(labelClickHandler);
+  };
+
+
   // Undoes the effects of testND and testLambda, unhighlighting all nodes and edges.
   var removeND = function() {
     var nodes = g.nodes();
     for(var next = nodes.next(); next; next = nodes.next()) {
       next.removeClass("testingND");
+      next.removeClass("testingIncomplete");
     }
     var edges = g.edges();
     for (var next = edges.next(); next; next = edges.next()) {
@@ -1357,6 +1389,8 @@ var exerciseLocation;
   $('#randomButton').click(randomLayout);
   $('#ndButton').click(testND);
   $('#lambdaButton').click(testLambda);
+  $('#completeButton').click(testComplete);
+  $('#autoCompleteButton').click(completeFA);
   $('#epsilonButton').click(switchEmptyString);
   $('#shorthandButton').click(switchShorthand);
   $('#toDFAButton').click(convertToDFA);
