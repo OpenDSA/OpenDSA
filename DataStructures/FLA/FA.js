@@ -1970,6 +1970,57 @@ var lambda = String.fromCharCode(955),
     }
     return edges;
   };
+  var DEFAULT_NODE_SIZE = 45,
+    MAX_LABEL_WIDTH = 100,
+    LABEL_PADDING = 8;
+
+  // Measures how a state label's text would actually render (using the real
+  // label_css font/metrics via a hidden probe element), so a node knows
+  // whether it needs to grow into an oval to fit the label.
+  var measureLabelSize = function (text, styleAttr) {
+    var $probe = $('<p class="label_css"></p>')
+      .attr("style", styleAttr || "")
+      .css({ position: "absolute", visibility: "hidden", top: "-9999px", left: "-9999px", whiteSpace: "nowrap", width: "auto" })
+      .text(text)
+      .appendTo("body");
+    var naturalWidth = $probe.outerWidth(),
+      size;
+    if (naturalWidth + LABEL_PADDING <= MAX_LABEL_WIDTH) {
+      size = { width: Math.max(DEFAULT_NODE_SIZE, naturalWidth + LABEL_PADDING), height: DEFAULT_NODE_SIZE, wrapped: false };
+    } else {
+      $probe.css({ whiteSpace: "normal", wordBreak: "break-word", width: MAX_LABEL_WIDTH });
+      // Multi-line text needs more vertical clearance than a plain ellipse
+      // gives near its top/bottom edges, so pad extra beyond the measured height.
+      size = { width: MAX_LABEL_WIDTH, height: Math.max(DEFAULT_NODE_SIZE, $probe.outerHeight() + LABEL_PADDING * 2), wrapped: true };
+    }
+    $probe.remove();
+    return size;
+  };
+
+  // Grows or shrinks this node to fit its current state label, turning the
+  // circle into an oval when the label doesn't fit at the default size.
+  // Keeps connected edges and the label overlay in sync with the new size.
+  stateproto._fitNodeToLabel = function (options) {
+    // Note: _stateLabel.text() (JSAV's label API) actually returns raw HTML,
+    // not the visible text - read the underlying <p class="label_css">
+    // directly to get both the plain text and its style (bold/italic/size
+    // all affect how much room the text actually needs).
+    var $p = this._stateLabel ? this._stateLabel.element.find(".label_css") : null,
+      text = $p && $p.length ? $.trim($p.text()) : "",
+      styleAttr = $p && $p.length ? $p.attr("style") : "",
+      size = text ? measureLabelSize(text, styleAttr) : { width: DEFAULT_NODE_SIZE, height: DEFAULT_NODE_SIZE, wrapped: false };
+    if (this.element.outerWidth() !== size.width || this.element.outerHeight() !== size.height) {
+      // A full ellipse clips multi-line text near the top/bottom edges, so
+      // wrapped labels get a pill-shaped (fixed radius) node instead.
+      this.css({ width: size.width, height: size.height, borderRadius: size.wrapped ? "16px" : "50%" }, options);
+      var edges = this.automaton.edges();
+      for (var next = edges.next(); next; next = edges.next()) {
+        if (next.start().equals(this) || next.end().equals(this)) { next.layout(); }
+      }
+    }
+    this.stateLabelPositionUpdate(options);
+  };
+
   /*
      Function to set the state label or get the current value of the state label.
      "node.stateLabel()" does not return the state label if the node is hidden!
@@ -1978,7 +2029,7 @@ var lambda = String.fromCharCode(955),
   stateproto.stateLabel = function (newLabel, options) {
     // the editable labels that go underneath the states
     if (typeof newLabel === "undefined") {
-      if (this._stateLabel && this._stateLabel.element.filter(":visible").size() > 0) {
+      if (this._stateLabel && this._stateLabel.element.filter(":visible").length > 0) {
         return this._stateLabel.text();
       } else {
         return undefined;
@@ -1990,6 +2041,7 @@ var lambda = String.fromCharCode(955),
       } else {
         this._stateLabel.text(newLabel, options);
       }
+      this._fitNodeToLabel(options);
     }
   };
 
@@ -2044,7 +2096,7 @@ var lambda = String.fromCharCode(955),
   stateproto.mooreOutput = function (newOutput, options) {
     // the editable labels that go underneath the states
     if (typeof newOutput === "undefined") {
-      if (this._mooreOutput && this._mooreOutput.element.filter(":visible").size() > 0) {
+      if (this._mooreOutput && this._mooreOutput.element.filter(":visible").length > 0) {
         return this._mooreOutput.text();
       } else {
         return undefined;
@@ -2073,14 +2125,16 @@ var lambda = String.fromCharCode(955),
       ], options);
     }
     if (this._stateLabel) {
+      // Center the label directly over the node so it reads as being inside
+      // the state circle, rather than floating below-left of it.
       var bbox = this.position(),
         lbbox = this._stateLabel.bounds(),
         nWidth = this.element.outerWidth(),
         nHeight = this.element.outerHeight(),
-        newTop = bbox.top + nHeight,
-        newLeft = bbox.left - 30;
-      if (newTop !== lbbox.top || newLeft || lbbox.left) {
-        this._stateLabel.css({ top: newTop, left: newLeft /*, width: nWidth*/ }, options);
+        newTop = bbox.top,
+        newLeft = bbox.left;
+      if (newTop !== lbbox.top || newLeft !== lbbox.left || nWidth !== this._stateLabel.element.outerWidth() || nHeight !== this._stateLabel.element.outerHeight()) {
+        this._stateLabel.css({ top: newTop, left: newLeft, width: nWidth, height: nHeight }, options);
       }
     }
     if (this._mooreOutput) {
@@ -2301,6 +2355,10 @@ var lambda = String.fromCharCode(955),
     if (typeof this.options.weight !== "undefined") {
       this._weight = this.options.weight;
       this.label(this._weight);
+      // Same back-reference as transitionproto.weight() below - needed here
+      // too since the constructor calls .label() directly rather than going
+      // through weight().
+      if (this._label) { this._label.element.data("edge", this); }
     }
     if (visible) {
       this.g.show();
@@ -2318,6 +2376,33 @@ var lambda = String.fromCharCode(955),
     }
     this._setweight(newWeight);
     this.label(newWeight);
+    // Back-reference from the label's own DOM element to this edge, so a
+    // click on the label (labelClickHandler in AV/OpenFLAP/FA.js) can find
+    // its edge object directly instead of searching every edge. Set here
+    // (rather than only at construction) so it's in place regardless of
+    // which path first creates the label.
+    if (this._label) { this._label.element.data("edge", this); }
+  };
+
+  // Sets or gets this edge's label style (bold/italic/font size). Applied as
+  // plain CSS directly on the label element - deliberately never mixed into
+  // the label's HTML/text, since transitionproto.layout() (below) re-reads
+  // weight() straight from that HTML, and traversal, grading and save/load
+  // all rely on weight() being exactly the transition characters, with no
+  // markup mixed in.
+  transitionproto.labelStyle = function (newStyle, options) {
+    if (typeof newStyle === "undefined") {
+      return this._labelStyle || { bold: false, italic: false, fontSize: "normal" };
+    }
+    this._labelStyle = newStyle;
+    if (this._label) {
+      this._label.css({
+        fontWeight: newStyle.bold ? "bold" : "normal",
+        fontStyle: newStyle.italic ? "italic" : "normal",
+        fontSize: (newStyle.fontSize && newStyle.fontSize !== "normal") ? newStyle.fontSize : ""
+      }, options);
+    }
+    return this;
   };
 
   /*
@@ -2718,8 +2803,17 @@ var lambda = String.fromCharCode(955),
 
   // function to change the customized label of a node
   // an option in right click menu
+  // If the hosting editor page has registered a richer label-editing dialog
+  // (window.jsavOpenNodeLabelDialog - see AV/OpenFLAP/FA.js), use that
+  // instead, so double-click and right-click "Change Label" open the same
+  // dialog. Pages that don't register it (this file is shared by several
+  // other editors) keep the plain prompt() fallback.
   var changeLabel = function (node) {
     $("#rmenu").hide();
+    if (typeof window.jsavOpenNodeLabelDialog === "function") {
+      window.jsavOpenNodeLabelDialog(node);
+      return;
+    }
     var nodeLabel = prompt("How do you want to label it?");
     if (!nodeLabel || nodeLabel == "null") {
       nodeLabel = "";

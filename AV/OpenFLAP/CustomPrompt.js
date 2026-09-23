@@ -109,15 +109,28 @@ function FANodePrompt(func, wasInitial, wasFinal, lab) {
         document.getElementById('dialogueboxbody').innerHTML += 'Initial State:<input type="checkbox" id="initial_state">';
         document.getElementById('dialogueboxbody').innerHTML += '<br>Final State:<input type="checkbox" id="final_state">';
         document.getElementById('dialogueboxbody').innerHTML += '<br>State Label: <input id="label">';
+        document.getElementById('dialogueboxbody').innerHTML +=
+            '<br>Label Style: ' +
+            '<label><input type="checkbox" id="label_bold"> Bold</label> ' +
+            '<label><input type="checkbox" id="label_italic"> Italic</label> ' +
+            '<select id="label_fontsize">' +
+                '<option value="normal">Normal size</option>' +
+                '<option value="0.7em">Small</option>' +
+                '<option value="1.1em">Large</option>' +
+                '<option value="1.4em">X-Large</option>' +
+            '</select>';
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="ok()">OK</button> <button onclick="terminate()">Cancel</button>';
         if(wasFinal)
             document.getElementById('final_state').checked = true;
         if(wasInitial)
             document.getElementById('initial_state').checked = true;
-        // If the node being edited has a state label, display this text in the "State Label" text field.
-        if (lab) {
-            document.getElementById('label').value = lab.split(">")[1].split("<")[0];
-        }
+        // If the node being edited has a state label, pre-populate the text
+        // field and style controls from its current text/bold/italic/size.
+        var labelInfo = parseStyledLabelHtml(lab);
+        document.getElementById('label').value = labelInfo.text;
+        document.getElementById('label_bold').checked = labelInfo.bold;
+        document.getElementById('label_italic').checked = labelInfo.italic;
+        document.getElementById('label_fontsize').value = labelInfo.fontSize;
         // Place the cursor in the state label text field by default (since this is the only text field in the prompt box).
         document.getElementById('label').focus();
 
@@ -136,8 +149,13 @@ function FANodePrompt(func, wasInitial, wasFinal, lab) {
     ok = function() {
         // Check every field in the prompt box and update the node accordingly.
         var node_label = document.getElementById('label').value.trim();
-        if(node_label !== "")
-            var node_label = '<p class = "label_css"> ' + node_label + '</p>';
+        if (node_label !== "") {
+            node_label = buildStyledLabelHtml(node_label, {
+                bold: document.getElementById('label_bold').checked,
+                italic: document.getElementById('label_italic').checked,
+                fontSize: document.getElementById('label_fontsize').value
+            });
+        }
         var initial_state = document.getElementById('initial_state').checked;
         var final_state = document.getElementById('final_state').checked;
         // Call the node function on these values, then exit out of the prompt box.
@@ -273,11 +291,12 @@ function MooreNodePrompt(func, cancelFunc, nostr) {
 }
 
 // Custom prompt box for adding and editing edges in the Finite Automaton Editor and Moore Machine Editor.
-function EdgePrompt(func, nostr) {
+function EdgePrompt(func, nostr, style) {
     var edgeFunction = func;
     var emptystr = nostr;
     // Prompt box needs a reference to the function to run upon clicking "Done". This could be the function to create a new edge or the function to edit an existing edge.
     // Prompt box also needs a reference to which empty string representation is being used (lambda or epsilon).
+    // Prompt box also needs the edge's current label style (bold/italic/font size), if editing an existing edge.
 
     // Render function is used to initialize the prompt box in the view.
     this.render = function(values) {
@@ -289,7 +308,24 @@ function EdgePrompt(func, nostr) {
 					}
 				});
         document.getElementById('dialogueboxbody').innerHTML = 'Transition: <input class="newedge" id="transition"> <button onclick="deleteWeight(0)">Delete Transition</button>';
-        document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="addEdge()">Done</button> <button onclick="terminate()">Cancel</button>';
+        // Style controls live in the foot (not the body), since addNewWeight()
+        // and deleteWeight() below fully rewrite the body's innerHTML and
+        // would otherwise wipe them out along with the transition fields.
+        document.getElementById('dialogueboxfoot').innerHTML =
+            'Label Style: ' +
+            '<label><input type="checkbox" id="edge_label_bold"> Bold</label> ' +
+            '<label><input type="checkbox" id="edge_label_italic"> Italic</label> ' +
+            '<select id="edge_label_fontsize">' +
+                '<option value="normal">Normal size</option>' +
+                '<option value="0.7em">Small</option>' +
+                '<option value="1.1em">Large</option>' +
+                '<option value="1.4em">X-Large</option>' +
+            '</select><br>' +
+            '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="addEdge()">Done</button> <button onclick="terminate()">Cancel</button>';
+        var currentStyle = style || { bold: false, italic: false, fontSize: "normal" };
+        document.getElementById('edge_label_bold').checked = currentStyle.bold;
+        document.getElementById('edge_label_italic').checked = currentStyle.italic;
+        document.getElementById('edge_label_fontsize').value = currentStyle.fontSize;
         // If render function was passed an empty string, it means this prompt is creating a new edge.
         if (!values) {
             // Update the prompt box to reflect this information.
@@ -333,9 +369,14 @@ function EdgePrompt(func, nostr) {
             }
         }
         // The array should be joined into a single string with each distinct transition separated by line breaks.
-        // Call the edge function (either create edge or update edge) on the edge label, then exit out of the prompt box.
+        // Call the edge function (either create edge or update edge) on the edge label and its style, then exit out of the prompt box.
         var edge_label = values.join("<br>");
-        edgeFunction(edge_label);
+        var newStyle = {
+            bold: document.getElementById('edge_label_bold').checked,
+            italic: document.getElementById('edge_label_italic').checked,
+            fontSize: document.getElementById('edge_label_fontsize').value
+        };
+        edgeFunction(edge_label, newStyle);
         terminate();
     }
 

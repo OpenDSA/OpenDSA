@@ -111,7 +111,9 @@ var exerciseLocation;
       // If in "Edit Nodes" mode (which also serves to edit edges), open the custom prompt box to edit the edge.
       label = this;
       var values = $(label).html().split('<br>');
-      var Prompt = new EdgePrompt(updateEdge, emptystring);
+      var clickedEdge = $(label).data("edge");
+      var currentStyle = clickedEdge ? clickedEdge.labelStyle() : undefined;
+      var Prompt = new EdgePrompt(updateEdge, emptystring, currentStyle);
       Prompt.render(values);
     }
     else if ($(".jsavgraph").hasClass("deleteNodes")) {
@@ -202,20 +204,36 @@ var exerciseLocation;
       var node = executeAddNode(g, e.pageY, e.pageX);
       g.saveFAState();
       //executeEditFANode(g, g.selected, initial_state, final_state, node_label);
-      executeEditNode(g, node, false, false, "Trap State");
+      // executeEditNode's signature is (graph, node, wasInitialState, initial_state,
+      // wasFinalState, final_state, node_label) - this call was previously missing two
+      // arguments, so the label string landed in the wasFinalState slot instead of
+      // node_label and no label was ever actually applied to the trap state.
+      executeEditNode(g, node, false, false, false, false, buildStyledLabelHtml("Trap State"));
     }
   };
+
+  // Opens the same styled node-edit dialog used by double-click, for a given
+  // node. Shared by nodeClickHandler (double-click, in "Edit Nodes" mode) and
+  // by the right-click context menu's "Change Label" (registered below as
+  // window.jsavOpenNodeLabelDialog), so both entry points produce identical UI.
+  var openNodeEditDialog = function(node) {
+    g.saveFAState();
+    g.selected = node;
+    g.selected.highlight();
+    var Prompt = new FANodePrompt(updateNode, g.selected.hasClass('start'), g.selected.hasClass('final'), g.selected.stateLabel());
+    Prompt.render(g.selected.value());
+    g.selected.unhighlight();
+  };
+  // Let the shared FA data model (DataStructures/FLA/FA.js, used by several
+  // other editor pages too) route its right-click "Change Label" through this
+  // editor's richer dialog instead of a plain prompt().
+  window.jsavOpenNodeLabelDialog = openNodeEditDialog;
 
   // Sets click handlers for when the user clicks on a JSAV node.
   var nodeClickHandler = function(e) {
     if ($(".jsavgraph").hasClass("editNodes") && !$(".jsavgraph").hasClass("RE")) {
       // If in "Edit Nodes" mode, open the custom prompt box to edit the selected node.
-      g.saveFAState();
-      g.selected = this;
-      g.selected.highlight();
-      var Prompt = new FANodePrompt(updateNode, g.selected.hasClass('start'), g.selected.hasClass('final'), g.selected.stateLabel());
-      Prompt.render(g.selected.value());
-      g.selected.unhighlight();
+      openNodeEditDialog(this);
     }
     else if ($('.jsavgraph').hasClass('deleteNodes')) {
       // If in "Delete Nodes" mode, save the graph and delete the node.
@@ -251,10 +269,11 @@ var exerciseLocation;
   };
 
   // Called by the add edge custom prompt box to save the graph and create the edge upon clicking "Done".
-  function createEdge(edge_label) {
+  function createEdge(edge_label, style) {
     if (!g.first || !g.selected) return;
     g.saveFAState();
     var edge = g.addEdge(g.first, g.selected, {weight: edge_label});
+    if (style) { edge.labelStyle(style); }
     $(edge._label.element).click(labelClickHandler);
     // This new edge does need its edge label click handler to be set individually.
     checkEdge(edge);
@@ -322,9 +341,13 @@ var exerciseLocation;
   }
 
   // Called by the edit edge custom prompt box to save the graph and update the edge upon clicking "Done".
-  function updateEdge(edge_label) {
+  function updateEdge(edge_label, style) {
     g.saveFAState();
     executeEditEdge(g, label, edge_label);
+    if (style) {
+      var editedEdge = $(label).data("edge");
+      if (editedEdge) { editedEdge.labelStyle(style); }
+    }
     checkAllEdges();
     // Check to see if shorthand notation is disabled, and whether the transitions on this edge are therefore allowed (i.e. only one character long).
     if (!g.shorthand) {
@@ -864,9 +887,18 @@ var exerciseLocation;
         if (isFinal) {
           newNode.addClass('final');
         }
-        if (isLabel) {
-          label_val = '<p class = "label_css">' + isLabel.childNodes[0].nodeValue + '</p>';
-          newNode.stateLabel(label_val);
+        if (isLabel && isLabel.childNodes[0]) {
+          // The new save format stores label text as plain (escaped) XML
+          // text content plus bold/italic/fontsize attributes - rebuild the
+          // same styled HTML that buildStyledLabelHtml() produces when a
+          // label is set via the editor, so loaded labels render and
+          // auto-resize identically to freshly-typed ones.
+          var labelStyle = {
+            bold: isLabel.getAttribute("bold") === "true",
+            italic: isLabel.getAttribute("italic") === "true",
+            fontSize: isLabel.getAttribute("fontsize") || "normal"
+          };
+          newNode.stateLabel(buildStyledLabelHtml(isLabel.childNodes[0].nodeValue, labelStyle));
         }
         nodeMap[xmlStates[i].id] = newNode;
         newNode.stateLabelPositionUpdate();
@@ -884,6 +916,11 @@ var exerciseLocation;
           read = read.nodeValue;
         }
         var edge = g.addEdge(nodeMap[from], nodeMap[to], {weight: read});
+        edge.labelStyle({
+          bold: xmlTrans[i].getAttribute("bold") === "true",
+          italic: xmlTrans[i].getAttribute("italic") === "true",
+          fontSize: xmlTrans[i].getAttribute("fontsize") || "normal"
+        });
         edge.layout();
       }
       finalize();
