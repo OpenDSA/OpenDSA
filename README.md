@@ -15,11 +15,11 @@ System documentation can be found at http://opendsa.readthedocs.io/.
 2. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 3. Clone this repository
     - For reading only: `git clone https://github.com/OpenDSA/OpenDSA.git`
-    - For read/write: `git clone https://YOURGITHUBID@github.com/OpenDSA/OpenDSA.git`
+    - For read/write: We recommend using an SSH key. `git clone git@github.com:OpenDSA/OpenDSA.git`
 4. Start the service: `docker compose up` (and leave this running)
-    - The first build of images takes under 5 minutes.  Running them later takes under 10 seconds.
+    - The first build of images might take 5 minutes.  Running them later takes only a few seconds.
     - The service is ready when you see `opendsa-1 | [INFO] Listening at: http://0.0.0.0:8080`
-    - This terminal will not be usable at this point since it is a console for the web server.
+    - This terminal will not be usable at this point since it is a console for the web server. See Step 5.
     - You can stop the containers by sending an interrupt signal (Press CTRL + C) or using the `docker compose down` command.
 5. Build any books from within the container:
     - In order to interact with OpenDSA, you must access a shell in the running container with `docker compose exec opendsa bash` in another console in the root of the OpenDSA directory.
