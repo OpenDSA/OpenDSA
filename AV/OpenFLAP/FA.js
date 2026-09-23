@@ -204,7 +204,11 @@ var exerciseLocation;
       var node = executeAddNode(g, e.pageY, e.pageX);
       g.saveFAState();
       //executeEditFANode(g, g.selected, initial_state, final_state, node_label);
-      executeEditNode(g, node, false, false, "Trap State");
+      // executeEditNode's signature is (graph, node, wasInitialState, initial_state,
+      // wasFinalState, final_state, node_label) - this call was previously missing two
+      // arguments, so the label string landed in the wasFinalState slot instead of
+      // node_label and no label was ever actually applied to the trap state.
+      executeEditNode(g, node, false, false, false, false, buildStyledLabelHtml("Trap State"));
     }
   };
 
