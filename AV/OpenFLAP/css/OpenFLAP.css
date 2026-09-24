@@ -148,14 +148,6 @@
     font-weight: 600;
   }
   
-  .tool-description {
-    display: block;
-    margin-top: 3px;
-    color: #555;
-    font-size: 13px;
-    font-weight: 400;
-  }
-  
   .tool-arrow {
     color: #000033;
     font-size: 23px;
