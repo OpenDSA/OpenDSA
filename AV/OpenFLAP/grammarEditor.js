@@ -3533,8 +3533,10 @@ $(document).ready(function () {
   }
 
   onLoadHandler();
-  if (window.inCanvas())
+  // Standalone editors do not load the optional Canvas progress helpers.
+  if (typeof window.inCanvas === "function" && window.inCanvas()) {
     initGraphFromServer();
+  }
 
   /////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////
