@@ -205,7 +205,7 @@
     }
 
     // if custom showGrade function is given
-    if (this.options.showGrade && (typeof this.options.showGrade === "function)) {
+    if (this.options.showGrade && typeof this.options.showGrade === "function") {
       this.showGrade = this.options.showGrade;
     }
 
