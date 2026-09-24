@@ -19,7 +19,7 @@
                               '<span class="jsavrighticon">&equiv;</span>' +
                             '</div>';
     this._indices = [];
-    if ($.isArray(element)) {
+    if (Array.isArray(element)) {
       this.initialize(element);
     } else if (element) { // assume it's a DOM element
       this.element = $(element);
@@ -49,7 +49,7 @@
         onEnd: function (event) {
           var ind = getIndex(event.item);
           that._shift(onStartIndex, ind);
-          if ($.isFunction(that.options.dropCallback)){
+          if (typeof that.options.dropCallback === "function"){
             that.options.dropCallback();
           }
         }
