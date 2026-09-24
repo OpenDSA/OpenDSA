@@ -1,0 +1,219 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 48px 20px;
+    background: #eee;
+    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+  }
+  
+  a {
+    color: #000033;
+  }
+  
+  a:focus-visible {
+    outline: 3px solid #000033;
+    outline-offset: 4px;
+  }
+  
+  .skip-link {
+    position: absolute;
+    left: 20px;
+    top: -100px;
+    padding: 8px 16px;
+    background: #fff;
+  }
+  
+  .skip-link:focus {
+    top: 8px;
+  }
+  
+  .launcher {
+    max-width: 650px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #F5F5EA;
+    border: 1px solid #B6C0B2;
+    border-radius: 16px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.07);
+  }
+  
+  .masthead {
+    padding: 30px 32px 26px;
+  }
+  
+  .eyebrow {
+    margin: 0 0 8px;
+    color: #555;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 38px;
+    letter-spacing: -1.5px;
+    line-height: 1.2;
+  }
+  
+  .brand-dot {
+    color: #000033;
+  }
+  
+  .tagline {
+    margin: 10px 0 0;
+    color: #555;
+    font-size: 15px;
+  }
+  
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 12px 32px;
+    background: #F5F5EA;
+    border-top: 1px solid #B6C0B2;
+    border-bottom: 1px solid #B6C0B2;
+  }
+  
+  .toolbar a {
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .toolbar a:hover,
+  .help-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .tool-section {
+    padding: 24px 32px;
+  }
+  
+  .section-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4px 16px;
+    margin-bottom: 14px;
+  }
+  
+  h2 {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .section-heading > span {
+    color: #555;
+    font-size: 12px;
+  }
+  
+  .tool-list {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .tool {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 15px 18px;
+    background: #fff;
+    border: 1px solid #B6C0B2;
+    border-radius: 9px;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .tool:hover,
+  .tool:focus-visible {
+    background: #eed;
+    border-color: #666;
+  }
+  
+  .tool-label {
+    font-size: 17px;
+    font-weight: 600;
+  }
+  
+  .tool-description {
+    display: block;
+    margin-top: 3px;
+    color: #555;
+    font-size: 13px;
+    font-weight: 400;
+  }
+  
+  .tool-arrow {
+    color: #000033;
+    font-size: 23px;
+  }
+  
+  .getting-started {
+    margin: 0 32px;
+    padding: 20px 0;
+    border-bottom: 1px solid #B6C0B2;
+  }
+  
+  .getting-started p {
+    margin: 8px 0 12px;
+    color: #555;
+    font-size: 13px;
+  }
+  
+  .help-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    font-size: 13px;
+  }
+  
+  footer {
+    padding: 16px 32px;
+    background: #F5F5EA;
+    border-top: 1px solid #B6C0B2;
+    color: #555;
+    font-size: 12px;
+  }
+  
+  footer span {
+    margin: 0 5px;
+  }
+  
+  @media (max-width: 480px) {
+    body {
+      padding: 16px 12px;
+    }
+  
+    .masthead,
+    .tool-section {
+      padding: 24px 20px;
+    }
+  
+    .toolbar,
+    footer {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+  
+    .getting-started {
+      margin-right: 20px;
+      margin-left: 20px;
+    }
+  
+    .tool {
+      padding: 14px;
+    }
+  }

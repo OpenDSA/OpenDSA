@@ -1,20 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>OpenFLAP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="OpenFLAP editors and tools for formal languages and automata.">
+    <title>OpenFLAP | Editors and Tools</title>
+    <link rel="stylesheet" href="../../lib/normalize.css">
+    <link rel="stylesheet" href="css/OpenFLAP.css">
   </head>
   <body>
-    <h1>OpenFLAP Editors and Tools</h1>
+    <a class="skip-link" href="#tools">Skip to tools</a>
+    <main class="launcher">
+      <header class="masthead">
+        <p class="eyebrow">Formal languages &amp; automata</p>
+        <h1>OpenFLAP<span class="brand-dot" aria-hidden="true">.</span></h1>
+      </header>
 
-    <ul>
-      <li> <a href="FA.html">Finite Automata Editor</a> (This is often
-      where you want to start, to access some of the conversion
-        tools.)
-      <li> <a href="PDAEditor.html">Push-Down Automata Editor</a>
-      <li><a href="REtoFA.html">Convert a regular expression to a
-          finite automata</a>
-      <li><a href="TMEditor">Turing Machine Editor</a>
-      <li><a href="grammarEditor.html">Grammar Editor</a>
-    </ul>
+      <nav class="toolbar" aria-label="Main navigation">
+        <a href="#getting-started">Getting started</a>
+        <a href="#tools">Tools</a>
+      </nav>
+
+      <aside class="getting-started" aria-labelledby="getting-started">
+        <h2 id="getting-started" tabindex="-1">Getting started</h2>
+        <p>Choose a tool to open its workspace. For finite automata conversions,
+          start in the Finite Automaton editor. Use your browser's Back button to
+          return here.</p>
+        <div class="help-links">
+          <a href="FAHelp.html">Finite automata help</a>
+          <a href="GrammarHelp.html">Grammar help</a>
+        </div>
+      </aside>
+
+      <section class="tool-section" aria-labelledby="tools">
+        <div class="section-heading">
+          <h2 id="tools" tabindex="-1">Choose a tool</h2>
+        </div>
+        <ul class="tool-list">
+          <li>
+            <a class="tool" href="FA.html">
+              <span class="tool-label">Finite Automaton<span class="tool-description">Build a DFA or NFA and explore conversions.</span></span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li>
+            <a class="tool" href="PDAEditor.html">
+              <span class="tool-label">Pushdown Automaton<span class="tool-description">Create and explore machines with a stack.</span></span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li>
+            <a class="tool" href="TMEditor.html">
+              <span class="tool-label">Turing Machine<span class="tool-description">Build a machine with states, transitions, and a tape.</span></span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li>
+            <a class="tool" href="grammarEditor.html">
+              <span class="tool-label">Grammar<span class="tool-description">Write production rules and explore transformations.</span></span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li>
+            <a class="tool" href="REtoFA.html">
+              <span class="tool-label">Regular Expression<span class="tool-description">Convert a regular expression to a finite automaton.</span></span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <footer>OpenFLAP</footer>
+    </main>
   </body>
 </html>
