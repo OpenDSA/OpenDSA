@@ -121,7 +121,7 @@
     // initialize controls
     var cont = $(this.options.controls),
       self = this;
-    if (cont.size() === 0) {
+    if (cont.length === 0) {
       cont = this.jsav.container.find(".jsavexercisecontrols");
     }
     // function to handle the reset event
@@ -145,7 +145,7 @@
       "jsav-exercise-reset": resetHandler,
       "jsav-exercise-model": modelHandler
     });
-    if (cont.size()) {
+    if (cont.length) {
       var $reset = $('<input type="button" name="reset" value="' + this.options.resetButtonTitle + '" />')
         .click(resetHandler),
         $model = $('<input type="button" name="answer" value="' + "Show Test Cases" + '" />')
@@ -195,7 +195,7 @@
 
     // if jsavscore element is present and empty, add default structure
     var $jsavscore = this.jsav.container.find(".jsavscore");
-    if ($jsavscore.size() === 1 && $jsavscore.children().size() === 0 &&
+    if ($jsavscore.length === 1 && $jsavscore.children().length === 0 &&
       this.options.feedback === "continuous") {
       $jsavscore.html(this.jsav._translate("scoreLabel") + ' <span class="jsavcurrentscore"></span> / ' +
         '<span class="jsavmaxscore" ></span>, <span class="jsavamidone">' + this.jsav._translate("remainingLabel") +
