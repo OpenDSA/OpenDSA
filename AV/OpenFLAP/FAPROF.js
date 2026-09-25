@@ -450,6 +450,7 @@ var exerciseLocation;
     }
   };
 
+  /*
   var testComplete = function()
   {
     removeModeClasses();
@@ -479,6 +480,7 @@ var exerciseLocation;
     $('.jsavgraph').click(graphClickHandler);
     $('.jsavedgelabel').click(labelClickHandler);
   };
+  */
 
   // Undoes the effects of testND and testLambda, unhighlighting all nodes and edges.
   var removeND = function() {
@@ -1017,8 +1019,8 @@ var exerciseLocation;
   $('#deleteButton').click(deleteNodes);
   $('#layoutButton').click(layoutGraph);
   $('#ndButton').click(testND);
-  $('#completeButton').click(testComplete);
-  $('#autoCompleteButton').click(completeFA);
+  // $('#completeButton').click(testComplete);
+  // $('#autoCompleteButton').click(completeFA);
   $('#lambdaButton').click(testLambda);
   $('#epsilonButton').click(switchEmptyString);
   $('#shorthandButton').click(switchShorthand);
