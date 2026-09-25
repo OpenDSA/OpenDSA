@@ -141,7 +141,7 @@
       cont.removeClass("active");
     };
     // allow reset and model answer through an event triggered on container
-    this.jsav.container.bind({
+    this.jsav.container.on({
       "jsav-exercise-reset": resetHandler,
       "jsav-exercise-model": modelHandler
     });
