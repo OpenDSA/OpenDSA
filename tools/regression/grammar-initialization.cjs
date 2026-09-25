@@ -35,7 +35,8 @@ const server = http.createServer((req, res) => {
   const results = [];
   try {
     const context = await browser.newContext();
-    context.setDefaultTimeout(8000);
+    context.setDefaultTimeout(15000);
+    context.setDefaultNavigationTimeout(30000);
     // Keep all requests on the private fixture server.
     await context.route('**/*', route => route.request().url().startsWith(base) ? route.continue() : route.abort());
     for (const mode of ['absent', 'outsideCanvas', 'insideCanvas']) {
@@ -47,9 +48,10 @@ const server = http.createServer((req, res) => {
         window.inCanvas=() => inside;
         window.FetchStoredProgress=() => {window.progressFetchCount++; return Promise.resolve(null);};
       }, mode === 'insideCanvas');
-      await page.goto(base+'/AV/OpenFLAP/grammarEditor.html');
+      console.error('Checking editor: '+mode);
+      await page.goto(base+'/AV/OpenFLAP/grammarEditor.html', {waitUntil:'domcontentloaded'});
       await page.waitForSelector('.jsavmatrix');
-      await page.waitForTimeout(250);
+      await page.evaluate(() => new Promise(resolve => jQuery(() => setTimeout(resolve, 0))));
       const fetches=await page.evaluate(() => window.progressFetchCount || 0);
       results.push({test:'editor '+mode,errors,fetches});
       if (!baseline) {assert.deepEqual(errors, []);assert.equal(fetches, mode === 'insideCanvas' ? 1 : 0);}
@@ -59,10 +61,13 @@ const server = http.createServer((req, res) => {
     const errors=[], dialogs=[];
     page.on('pageerror',e=>errors.push(e.message));
     page.on('dialog',async d=>{dialogs.push(d.message());await d.accept();});
-    await page.goto(base+'/test-frame.html');
-    const frame=await page.waitForEvent('framenavigated', {predicate:f=>f.url().endsWith('GramIntro3str.html'),timeout:1000}).catch(()=>page.frames().find(f=>f.url().endsWith('GramIntro3str.html')));
+    console.error('Checking embedded exercise');
+    const frameReady=page.waitForEvent('framenavigated', {predicate:f=>f.url().endsWith('GramIntro3str.html')});
+    await page.goto(base+'/test-frame.html', {waitUntil:'domcontentloaded'});
+    const frame=await frameReady;
     await frame.waitForSelector('#description');
-    await frame.waitForTimeout(350);
+    if (!baseline) await frame.locator('input[name=grade]').waitFor({state:'visible'});
+    else await frame.waitForFunction(() => typeof arr !== 'undefined');
     const gradeCount=await frame.locator('input[name=grade]').count();
     results.push({test:'embedded exercise initialization',errors,gradeCount});
     if (!baseline) {

@@ -13,3 +13,5 @@ The runner serves the checkout on an ephemeral loopback port and runs a headless
 For diagnostic output against the two original source files, add --baseline. Baseline files come from origin/master, or the ref supplied by BASELINE_REF; other assets still come from the checkout. This mode records failures rather than asserting success.
 
 Validated against base a3924fdfb: before the fix, the standalone editor raised window.inCanvas is not a function; the exercise raised a script syntax error followed by jsav.flexercise is not a function, and had no grading button. After the fix: no page exceptions, one grading button, correct grammar 7/7 (100%), incomplete grammar 6/7 (85.71%), reset succeeds, and the simulated Canvas progress loader is called only in the Canvas case.
+
+Revalidated after merging master e02a27449 on 2026-09-25: all checks pass. Navigation has a separate 30-second timeout; initialization uses DOM/jQuery readiness and visible grading controls instead of fixed sleeps. This addresses test-runner timing, not the unresolved historical textbook loading delay.
