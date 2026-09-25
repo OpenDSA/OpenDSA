@@ -172,7 +172,7 @@
             return '"' + varValue + '"';
         } else if (varType === "boolean") { // Python booleans with capital first letter
             return varValue ? "True" : "False";
-        } else if ($.isArray(varValue)) { // JavaScript arrays
+        } else if (Array.isArray(varValue)) { // JavaScript arrays
             return '[' + varValue.join(', ') + ']';
         } else if (varType === "object" && varValue.tp$name === "number") { // Python numbers
             return varValue.v;
@@ -782,12 +782,12 @@
             if (!type) { return; }
             var handler = handlers[type],
                 jspOptions;
-            if ($.isFunction(handler)) {
+            if (typeof handler === "function") {
                 jspOptions = handler($(item));
             } else {
                 jspOptions = handler;
             }
-            if (jspOptions && $.isArray(jspOptions)) {
+            if (jspOptions && Array.isArray(jspOptions)) {
                 $(item).attr("data-jsp-options", JSON.stringify(jspOptions));
             }
         });
@@ -1192,7 +1192,7 @@
             this.state_path.push(state);
         }
         // callback for reacting to actions
-        if ($.isFunction(this.options.action_cb)) {
+        if (typeof this.options.action_cb === "function") {
             this.options.action_cb.call(this, logData);
         }
     };
