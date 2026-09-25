@@ -123,7 +123,7 @@ var exerciseLocation;
   };
   
   function deserialize(data) {
-    var gg = jQuery.parseJSON(data);
+    var gg = JSON.parse(data);
     var graph = jsav.ds.FA({width: "55%", height: 440, layout: "manual", editable: true, element: $("#reference")});
     graph.initFromParsedJSONSource(gg, 0.5);
     graph.updateAlphabet();
@@ -158,7 +158,7 @@ var exerciseLocation;
       finalize();
       fatoreController.checkForTransitions();
     } else {
-      var source = opts.graph ? opts.graph : jQuery.parseJSON(g);
+      var source = opts.graph ? opts.graph : JSON.parse(g);
       g = jsav.ds.FA($.extend({width: '750px', height: 440, editable: true}, opts));
       var ratio = 1;
       if (localStorage['toConvert'] == "true" || localStorage['toMinimize'] == "true") {

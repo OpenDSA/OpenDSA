@@ -54,7 +54,7 @@
 				_case[testString] = result;
 				problem.testCases.push(_case);
 			});
-			problem.graph = jQuery.parseJSON(localStorage['problem' + index]);
+			problem.graph = JSON.parse(localStorage['problem' + index]);
 			problems.push(problem);
 		} else {
 			$(this).find(".testCase").each(function()
@@ -66,7 +66,7 @@
 				_case[testString] = result;
 				problem.testCases.push(_case);
 			});
-			problem.graph = jQuery.parseJSON(localStorage['problem' + index]);
+			problem.graph = JSON.parse(localStorage['problem' + index]);
 			problems.push(problem);
 		}
 	}

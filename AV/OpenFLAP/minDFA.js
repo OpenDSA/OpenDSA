@@ -52,7 +52,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 			$("#alphabet").html(String(alphabet));
 			jsav.umsg('Select a leaf node in the tree to split. Then click on set terminals button.');
 			initializeBT();
-			$('#reference').unbind('click');//remove any attached on click events.
+			$('#reference').on('click');//remove any attached on click events.
 
 			referenceGraph.click(refClickHandlers);
 		}
@@ -63,7 +63,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 	};
 
 	function deserialize (data) {
-		var gg = jQuery.parseJSON(data);
+		var gg = JSON.parse(data);
 		var graph = jsav.ds.FA({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
 		graph.initFromParsedJSONSource(gg, 0.5);
 		graph.updateAlphabet();

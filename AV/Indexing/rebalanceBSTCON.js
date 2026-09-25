@@ -112,7 +112,7 @@ $(document).ready(function () {
     "This is the same tree as the previous slide show. Lets try to find the key 9.",
     "First we look at the root. First disk access",
     "Since 10 is more than 9 we follow the left child.",
-    "Since 5 if less than 9 we follow the right child. Second disk access",
+    "Since 5 is less than 9 we follow the right child. Second disk access",
     "Since 8 is less than 9 we follow the right child. Third disk access",
     "We found the node.",
     "This search could be made more efficient if we rearranged the layout of node on disk.",
@@ -121,7 +121,7 @@ $(document).ready(function () {
     "This time it only takes 2 disk accesses.",
     "The problem with this layout is that it is difficult to maintain, especially when trying to maintain a complete tree. For example, lets try to remove the root node.",
     "Next we need to rearrange the remaining nodes.",
-    "As you can see a simple node removal may require access to several nodes. But even so, its not good enough. We have now restored the correct shape... but this isn't a BST anymore! We would still need to totally reorganize the right subtree, requiring many more node accesses."
+    "As you can see a simple node removal may require access to several nodes. But even so, it's not good enough. We have now restored the correct shape... but this isn't a BST anymore! We would still need to totally reorganize the right subtree, requiring many more node accesses."
   ];
 
   jsav.label("Disk Accesses:", {visible: true, left: 0, top: 0});

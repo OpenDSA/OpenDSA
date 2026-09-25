@@ -648,6 +648,7 @@ can't use them. Add the following at the top:
 
 .. code-block:: java
 
+   import student.micro.*;
    import student.micro.jeroo.*;
    import static student.micro.jeroo.Assertions.*;
    import static student.micro.jeroo.CompassDirection.*;
