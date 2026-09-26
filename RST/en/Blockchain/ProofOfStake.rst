@@ -43,7 +43,7 @@ For more information, see
 
 
 Why do we need proof of anything?
-------------------------------
+---------------------------------
 
 Previously we presented the Proof of Work mechanism,
 popularized by the Bitcoin protocol.
