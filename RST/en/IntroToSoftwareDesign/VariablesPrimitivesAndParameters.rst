@@ -744,7 +744,7 @@ The same :math:`N + 1` rule applies to compound ``||`` expressions:
 
 
 The "Lining Up Preceding Conditions" Trap
-""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""
 
 A very common mistake students make when writing unit tests for compound conditions is trying to
 test a specific sub-condition without setting up the environment so that execution actually reaches it.
