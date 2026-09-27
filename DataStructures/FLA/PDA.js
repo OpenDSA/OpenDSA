@@ -69,18 +69,36 @@
     }
   };
   
-  // toggles highlighting lambda transitions
+  // toggles highlighting lambda transitions (any transition that reads λ/ε on input)
   pda.toggleLambda = function() {
     var edges = this.edges();
     for (var next = edges.next(); next; next = edges.next()) {
       var wSplit = toColonForm(next.weight()).split('<br>');
       for (var i = 0; i < wSplit.length; i++) {
-        if (_.every(wSplit[i].split(':'), function(x) {return x == emptystring})) {
+        var parts = wSplit[i].split(':');
+        // Highlight if the input symbol is λ (matches jFLAP "λ-transitions"),
+        // including common PDA forms like λ,Z;AZ — not only λ,λ;λ.
+        if (parts[0] === emptystring) {
           next.g.element.toggleClass('testingLambda');
           break;
         }
       }
     }
+  };
+
+  // Shared accept check used by Multiple Run and step visualization.
+  // Empty-stack mode: accept when only the bottom marker Z/z remains.
+  // Final-state mode: accept in a final state with input exhausted.
+  pda.acceptsConfiguration = function(config) {
+    if (localStorage['empty'] === "true" || localStorage['empty'] === true) {
+      var stack = config.stack;
+      if (!stack || stack.length !== 1) {
+        return false;
+      }
+      var bottom = stack[0];
+      return bottom === "Z" || bottom === "z";
+    }
+    return config.state.hasClass('final');
   };
   
   //====================
@@ -312,7 +330,7 @@
       this.configurations = $("<ul>");
       for (var j = 0; j < currentStates.length; j++) {
         if (currentStates[j].curIndex === inputString.length) {
-          if (currentStates[j].state.hasClass('final')) {
+          if (this.acceptsConfiguration(currentStates[j])) {
             currentStates[j].state.addClass('accepted');
             stringAccepted = true;
           }
@@ -326,30 +344,68 @@
     return stringAccepted;
   }
   
-  pda.addLambdaClosure = function(nextStates) {
+  pda.addLambdaClosure = function(nextStates, depth) {
+    depth = depth || 0;
+    if (depth > 40 || !nextStates || nextStates.length === 0) {
+      return nextStates || [];
+    }
     lambdaStates = [];
     for (var i = 0; i < nextStates.length; i++) {
       var successors = nextStates[i].state.neighbors();
+      var curStack = nextStates[i].stack.slice(0);
+      var topOfStack = emptystring;
+      if (curStack.length !== 0) {
+        topOfStack = curStack[curStack.length - 1];
+      }
       for (var next = successors.next(); next; next = successors.next()) {
         var weight = toColonForm(this.getEdge(nextStates[i].state, next).weight());
         weight = weight.split("<br>");
         for (var j = 0; j < weight.length; j++) {
-          if (!next.hasClass('current') && _.every(weight[j].split(':'), function(x) {return x === emptystring})) {
+          var parts = weight[j].split(':');
+          var expectedInput = parts[0];
+          var expectedStack = parts[1];
+          var pushOnTo = parts[2];
+          // λ-closure: transitions that consume no input and whose pop matches
+          // (or is λ). Full λ,λ;λ is included as a special case of this.
+          if (expectedInput === emptystring &&
+              (expectedStack === emptystring || expectedStack === topOfStack) &&
+              !next.hasClass('current')) {
             next.addClass('current');
-            var nextConfig = new Configuration(this.configurations, next, nextStates[i].stack, nextStates[i].inputString, nextStates[i].curIndex)
-              lambdaStates.push(nextConfig);
+            var newStack = curStack.slice(0);
+            if (expectedStack !== emptystring) {
+              newStack = newStack.slice(0, -1);
+            }
+            if (pushOnTo && pushOnTo !== emptystring) {
+              for (var k = pushOnTo.length - 1; k >= 0; k--) {
+                if (pushOnTo[k] !== emptystring) {
+                  newStack.push(pushOnTo[k]);
+                }
+              }
+            }
+            var nextConfig = new Configuration(this.configurations, next, newStack, nextStates[i].inputString, nextStates[i].curIndex);
+            lambdaStates.push(nextConfig);
           }
         }
       }
     }
     if(lambdaStates.length > 0) {
-      lambdaStates = this.addLambdaClosure(lambdaStates);
+      lambdaStates = this.addLambdaClosure(lambdaStates, depth + 1);
     }
     for (var k = 0; k < lambdaStates.length; k++) {
       nextStates.push(lambdaStates[k]);
     }
-    nextStates = _.each(nextStates, function(x) {return x.toString();});
-    return nextStates;
+    // Deduplicate by configuration identity when available.
+    var seen = {};
+    var unique = [];
+    for (var u = 0; u < nextStates.length; u++) {
+      var key = nextStates[u].toString ? nextStates[u].toString() :
+        (nextStates[u].state.value() + "|" + nextStates[u].inputString + "|" + (nextStates[u].stack || []).join(""));
+      if (!seen[key]) {
+        seen[key] = true;
+        unique.push(nextStates[u]);
+      }
+    }
+    return unique;
   };
   
   pda.cancelTraverse = function() {
@@ -1835,17 +1891,9 @@
         tconfigurations = $("<ul>");
         for (var j = 0; j < currentStates.length; j++) {
           if (currentStates[j].curIndex === inputString.length) {
-            if(localStorage['empty'] === "true"){ //Used to check if empty stack acceptance button has been clicked
-              if ((currentStates[j].stack[0] === "Z" || currentStates[j].stack[0] === "z") && currentStates[j].stack.length === 1){ //Checks if it is at the Z/z in the stack and there there is only one thing left in it
-                currentStates[j].state.addClass('accepted');
-                stringAccepted = true;
-              }
-            }
-            else{
-              if (currentStates[j].state.hasClass('final')) { 
-                currentStates[j].state.addClass('accepted');
-                stringAccepted = true;
-              }
+            if (graph.acceptsConfiguration(currentStates[j])) {
+              currentStates[j].state.addClass('accepted');
+              stringAccepted = true;
             }
           }
           currentStates[j].update();
@@ -1888,6 +1936,9 @@
       /*this.toString = function() {
         return this.state.value() + ' ' + this.inputString.substring(0, this.curIndex) + ' ' + this.stack.join();
       }*/
+      this.toString = function() {
+        return this.state.value() + "|" + this.inputString + "|" + this.stack.join("");
+      };
     };
     var statesViz = [],
     jsav;

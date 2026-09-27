@@ -342,22 +342,10 @@
 
 
   var toggleND = function() {
-    $('#changeButton').toggleClass("highlightingND");
-    if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
-      $('#changeButton').hide();
-    } else{
-      $('#changeButton').show();
-    }
     g.toggleND();
   };
 
   var toggleLambda = function() {
-    $('#changeButton').toggleClass("highlightingL");
-    if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
-      $('#changeButton').hide();
-    } else{
-      $('#changeButton').show();
-    }
     g.toggleLambda();
   };
 
@@ -841,8 +829,8 @@
 
 
   $('#layoutbutton').click(function() {g.layout()});
-  $('#testNDbutton').click(toggleND);
-  $('#testlambdabutton').click(toggleLambda);
+  $('#ndButton').click(toggleND);
+  $('#lambdaButton').click(toggleLambda);
   $('#cancelButton').click(cancel);
   $('#nodeButton').click(addNodesMode);
   $('#edgeButton').click(addEdgesMode);

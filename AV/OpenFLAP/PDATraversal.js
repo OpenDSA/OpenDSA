@@ -8,7 +8,62 @@
     currentStates,
     stepBy;
   var statesViz = [];
-  var endflag = 0
+  var endflag = 0;
+  var MAX_CONFIGS = 50;
+
+  // Keep stack as an array of symbols (bottom → top). Never coerce with +.
+  var normalizeStack = function (stack) {
+    if (Array.isArray(stack)) {
+      return stack.slice(0);
+    }
+    if (typeof stack === "string") {
+      return stack === "" ? [] : stack.split("");
+    }
+    return ['Z'];
+  };
+
+  var stackForDisplay = function (stack) {
+    var s = normalizeStack(stack);
+    if (s.length === 0) {
+      return [''];
+    }
+    // Visual stack shows top first (index 0 is highlighted yellow).
+    return s.slice(0).reverse();
+  };
+
+  // Empty-stack mode: accept when only bottom marker remains.
+  // Final-state mode: accept in a final state.
+  var acceptsConfig = function (config) {
+    if (localStorage['empty'] === "true" || localStorage['empty'] === true) {
+      var stack = normalizeStack(config.stack);
+      if (stack.length !== 1) {
+        return false;
+      }
+      var bottom = stack[0];
+      return bottom === "Z" || bottom === "z";
+    }
+    return config.state.hasClass('final');
+  };
+
+  var highlightConsumedInput = function (inputString) {
+    if (!arr || !currentStates || currentStates.length === 0) {
+      return;
+    }
+    var minConsumed = inputString.length;
+    for (var i = 0; i < currentStates.length; i++) {
+      var remaining = currentStates[i].inputString || "";
+      var consumed = inputString.length - remaining.length;
+      if (consumed < minConsumed) {
+        minConsumed = consumed;
+      }
+    }
+    for (var j = 0; j < minConsumed; j++) {
+      arr.css(j, {
+        "background-color": "yellow"
+      });
+    }
+  };
+
   // Initializes a new graph and runs a traversal input. Called whenever the page is loaded.
   var initialize = function () {
     g = localStorage['graph']; // The graph was saved to local storage by the FAEditor.
@@ -17,7 +72,7 @@
       return;
     }
     var traversal = localStorage['traversal']; // The input string was saved to local storage by the FAEditor.
-    stepBy = localStorage['stepBy']
+    stepBy = localStorage['stepBy'];
     var runFunction = initGraph({
       layout: "automatic"
     }); // Run function may or may not have shorthand enabled.
@@ -70,17 +125,14 @@
       edge.layout();
     }
     g = graph;
-    // If shorthand is noted as enabled in the JSON, make a note to run the shorthand version of the traversal algorithm.
-    if (gg.shorthand) {
-      return runShorthand;
-    }
+    // Shorthand traversal is not implemented for PDA; always use the standard runner.
     return run;
   };
 
   var first_stack = 0;
   var run = function (inputString) {
     // Start with the closure of the initial state.
-    var reducedInput = inputString
+    var reducedInput = inputString;
     g.initial.addClass('current');
     currentStates = [new Configuration(g.configurations, g.initial, ['Z'], inputString, 0)];
 
@@ -90,7 +142,6 @@
     var nextStates = currentStates;
     this.configurations = $("<ul>");
 
-    // stackViz.update(['Z'])
     var textArray = [];
     for (var i = 0; i < inputString.length; i++) {
       textArray.push(inputString[i]);
@@ -100,32 +151,39 @@
       element: $('.arrayPlace')
     });
 
-    var tempViz = jsav.ds.PDAState(30, 470, 150, 100, reducedInput, ['z'], 'q0')
-    statesViz.push(tempViz)
+    var tempViz = jsav.ds.PDAState(30, 470, 150, 100, reducedInput, stackForDisplay(['Z']), 'q0');
+    statesViz.push(tempViz);
     jsav.displayInit();
-    inputStringLength = inputString.length
+    inputStringLength = inputString.length;
+    var steps = 0;
     while (true) {
+      steps++;
+      if (steps > 500) {
+        jsav.umsg("Stopped: too many steps (possible infinite λ-loop).");
+        break;
+      }
       for (var j = 0; j < currentStates.length; j++) {
         currentStates[j].state.removeClass('current');
       }
 
-      nextStates = traverse(g, currentStates.slice(0))
+      nextStates = traverse(g, currentStates.slice(0));
       if (nextStates.length == 0) {
         jsav.step();
-        break
+        break;
       }
-      first_stack = first_stack + 1
-      currentStates = nextStates
-      showStatesViz()
+      first_stack = first_stack + 1;
+      currentStates = nextStates;
+      showStatesViz();
+      highlightConsumedInput(inputString);
       jsav.step();
     }
 
     first_stack = 0;
-    clearStates()
+    clearStates();
     var rejected = true;
     for (var k = 0; k < currentStates.length; k++) {
       if (currentStates[k].state.hasClass('accepted')) {
-        rejected = false
+        rejected = false;
       }
     }
 
@@ -158,46 +216,26 @@
     jsav.step();
     jsav.recorded();
     arr.click(arrayClickHandler);
-  }
+  };
 
   var inputStringLength = 0;
   var lastEdgeCheck = "";
   var traverse = function (graph, currentStates) {
-    var nextStates = []
+    var nextStates = [];
     for (var i = 0; i < currentStates.length; i++) {
       var successors = currentStates[i].state.neighbors();
-      var letter = emptystring;
-      var inputString = currentStates[i].inputString
+      var inputString = currentStates[i].inputString;
       if (inputString.length === 0 && endflag == 1) {
-        var last = currentStates[i].stack[currentStates[i].stack.length - 1];
-        if (localStorage['empty'] === "true"){ //Checks if the empty stack acceptance button was clicked. If it has not been clicked, that value will be false
-
-        
-          if (currentStates[i].stack.length === 1){ //Checks stack length 
-            currentStates[i].state.addClass('accepted');
-            //localStorage['emptystack'] = currentStates[i].stack.length; //Used to get a look at the stack for testing purposes. Uncomment or delete as warranted
-            //localStorage['emptystackacceptance'] = 1; //Used to check if the string is getting accepted or rejected. 1 is accepted, 0 is rejected
-          }
-          else{
-            currentStates[i].state.addClass('rejected');
-            //localStorage['emptystack'] = currentStates[i].stack.length;
-            //localStorage['emptystackacceptance'] = 0; 
-          }
-        }
-        else{
-          if (currentStates[i].state.hasClass('final')) {
-            currentStates[i].state.addClass('accepted') 
-          } else {
-            currentStates[i].state.addClass('rejected')
-          }
+        if (acceptsConfig(currentStates[i])) {
+          currentStates[i].state.addClass('accepted');
+        } else {
+          currentStates[i].state.addClass('rejected');
         }
         continue;
-
       }
-      var letter = inputString[0]
-      // var reducedInput = inputString.substring(1)
-      var curStack = currentStates[i].stack;
-      var topOfStack = emptystring
+      var letter = inputString[0];
+      var curStack = normalizeStack(currentStates[i].stack);
+      var topOfStack = emptystring;
       if (curStack.length != 0) {
         topOfStack = curStack[curStack.length - 1];
         curStack = curStack.slice(0, -1);
@@ -206,47 +244,45 @@
         var weight = graph.getEdge(currentStates[i].state, next).weight().split('<br>');
         //Iterate though transitions
         for (var j = 0; j < weight.length; j++) {
-          var a = weight[j]
-          var b = a.split(',')
-          var c = b[1].split(';')
-          var expectedInput = b[0]
-          var expectedStack = c[0]
-          var pushOnTo = c[1]
+          var a = weight[j];
+          var b = a.split(',');
+          var c = b[1].split(';');
+          var expectedInput = b[0];
+          var expectedStack = c[0];
+          var pushOnTo = c[1];
           if (first_stack == 0 && (expectedStack == "z" || expectedStack == "Z")) {
-            expectedStack = "Z"
+            expectedStack = "Z";
             if (pushOnTo.charAt(pushOnTo.length - 1) == "z" || pushOnTo.charAt(pushOnTo.length - 1) == "Z") {
-              lastEdgeCheck = pushOnTo.charAt(pushOnTo.length - 1)
+              lastEdgeCheck = pushOnTo.charAt(pushOnTo.length - 1);
             }
           }
           if (first_stack == inputStringLength && (expectedStack == "z" || expectedStack == "Z") && (topOfStack == "z" || topOfStack == "Z")) {
-            topOfStack = expectedStack
+            topOfStack = expectedStack;
             if (lastEdgeCheck != "") {
-              topOfStack = lastEdgeCheck
+              topOfStack = lastEdgeCheck;
             }
           }
           if ((expectedInput == emptystring || expectedInput == letter) &&
             (expectedStack == emptystring || expectedStack == topOfStack)) {
-            next.addClass('current')
-            var newStack = curStack
+            next.addClass('current');
+            var newStack = curStack.slice(0);
 
+            // λ-pop: put the top symbol back (we did not actually pop it).
             if (expectedStack == emptystring) {
-              newStack = newStack + topOfStack
+              newStack.push(topOfStack);
             }
 
             for (var k = pushOnTo.length - 1; k >= 0; k--) {
               if (pushOnTo[k] != emptystring) {
-                newStack = newStack + pushOnTo[k]
+                newStack.push(pushOnTo[k]);
               }
             }
+            var reducedInput;
             if (expectedInput != emptystring) {
-              var reducedInput = inputString.substring(1)
+              reducedInput = inputString.substring(1);
             } else {
-              var reducedInput = inputString
+              reducedInput = inputString;
             }
-            //             if (reducedInput == "") {
-            // //               reducedInput = curStack
-            //               endflag++
-            //             }
             var nextConfig = new Configuration(this.configurations, next, newStack, reducedInput, 0);
             nextStates.push(nextConfig);
           }
@@ -255,13 +291,27 @@
       }
     }
     if (inputString.length === 0) {
-      endflag++
+      endflag++;
     }
     if (stepBy == 'closure') {
-      nextStates = g.addLambdaClosure(nextStates)
+      nextStates = g.addLambdaClosure(nextStates);
     }
-    return nextStates
-  }
+    // Deduplicate identical configurations and cap explosion for nondeterminism.
+    var seen = {};
+    var unique = [];
+    for (var u = 0; u < nextStates.length; u++) {
+      var key = nextStates[u].toString();
+      if (!seen[key]) {
+        seen[key] = true;
+        unique.push(nextStates[u]);
+      }
+    }
+    if (unique.length > MAX_CONFIGS) {
+      jsav.umsg("Too many configurations (" + unique.length + "); showing first " + MAX_CONFIGS + ".");
+      unique = unique.slice(0, MAX_CONFIGS);
+    }
+    return unique;
+  };
 
   /*
     Display visualizations for all states that have a current designation
@@ -276,40 +326,40 @@
     var height = 100; // Height of the outline of the state vizualitions
     var width_spacer = 40; // space between columns
     var height_spacer = 10; // space between rows
-    var num_in_row = 5 // number of state vizualizations in a row
+    var num_in_row = 5; // number of state vizualizations in a row
 
     for (var i = 0; i < currentStates.length; i++) {
       var config = currentStates[i];
       if (config.state.hasClass('current')) {
-        var updatedStack = [''];
-        if (config.stack.length > 0) {
-          updatedStack = config.stack.slice(0).split('')
-          updatedStack = updatedStack.slice(0, updatedStack.length).reverse();
-        }
+        var updatedStack = stackForDisplay(config.stack);
 
         var width_shift = statesViz.length % num_in_row;
         var height_shift = Math.floor(statesViz.length / num_in_row);
         var x_coord = xBase + (width + width_spacer) * width_shift;
-        var y_coord = yBase + (height + height_spacer) * height_shift
-        var tempViz = jsav.ds.PDAState(x_coord, y_coord, width, height, config.inputString, updatedStack, config.state.value())
-        statesViz.push(tempViz)
+        var y_coord = yBase + (height + height_spacer) * height_shift;
+        var tempViz = jsav.ds.PDAState(x_coord, y_coord, width, height, config.inputString, updatedStack, config.state.value());
+        statesViz.push(tempViz);
       }
     }
-  }
+  };
 
   var clearStates = function () {
     while (statesViz.length != 0) {
       var temp = statesViz.pop();
-      temp.hide()
+      temp.hide();
     }
-  }
+  };
 
   // Configuration object
   var Configuration = function (configurations, state, stack, input, index) {
     this.state = state;
     this.inputString = input;
     this.curIndex = index;
-    this.stack = stack.slice(0);
+    this.stack = normalizeStack(stack);
+  };
+
+  Configuration.prototype.toString = function () {
+    return this.state.value() + "|" + this.inputString + "|" + this.stack.join("");
   };
 
   // Function to handle click events on the JSAV array (take you to the corresponding step in the traversal).
@@ -331,7 +381,7 @@
     }
     // If animation was originally on, turn it back on again now.
     $.fx.off = oldFx;
-  };
+  }
 
   initialize();
 }(jQuery));
