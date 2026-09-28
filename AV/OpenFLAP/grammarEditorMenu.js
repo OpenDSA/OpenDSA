@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (button) {
       const group = button.closest('details');
       closeMenus();
-      if (group) group.querySelector('summary').focus();
+      if (group && document.activeElement.id !== 'firstinput') group.querySelector('summary').focus();
     }
   });
   document.addEventListener('click', function (event) { if (!nav.contains(event.target)) closeMenus(); });

@@ -255,9 +255,9 @@ $(document).ready(function () {
   function addRow(index){
     var newProduction = addProduction(index);
     layoutTable(m);
-    // if (newProduction) {
-    //   focus(index + 1, 0);
-    // }
+    if (newProduction) {
+      focus(index + 1, 0);
+    }
   }
 
   function focus(index, index2) {
@@ -267,6 +267,7 @@ $(document).ready(function () {
     $('#firstinput').remove();
     var createInput = "<input type='text' id='firstinput' onfocus='this.value = this.value;' value=" + prev + ">";
     $('body').append(createInput);
+    m._arrays[index]._indices[index2].element[0].scrollIntoView({block: "nearest", inline: "nearest"});
     var offset = m._arrays[index]._indices[index2].element.offset();
     var topOffset = offset.top;
     var leftOffset = offset.left;
@@ -275,6 +276,15 @@ $(document).ready(function () {
     fi.outerHeight($('.jsavvalue').height());
     fi.width($(m._arrays[index]._indices[index2].element).width());
     fi.focus();
+    // Keep the body-positioned cell editor aligned with the scrolling matrix.
+    $('#av .jsavcanvas').off('scroll.grammarInput').on('scroll.grammarInput', function () {
+      if (!fi || !fi.length || !m._arrays[row]) return;
+      var cell = m._arrays[row]._indices[col].element;
+      fi.offset(cell.offset());
+      var bounds = this.getBoundingClientRect();
+      var cellBounds = cell[0].getBoundingClientRect();
+      fi.css('visibility', cellBounds.top >= bounds.top && cellBounds.bottom <= bounds.bottom ? 'visible' : 'hidden');
+    });
     // finalize the changes to the grammar when the enter key is pressed
     var validKeys = [13, 9, 37, 38, 39, 40];
     // keys for functions
@@ -345,6 +355,8 @@ $(document).ready(function () {
   // fired when document is clicked
   // saves current fi input value
   function defocus(e) {
+    // Add Row has just opened the new cell; do not close it as the click bubbles.
+    if ($(e.target).closest("#addrowbutton").length) return;
     if ($(e.target).hasClass("jsavvaluelabel")) return;
     if ($(e.target).hasClass("jsavvalue")) return;
     if ($(e.target).attr('id') == "firstinput") return;
@@ -1512,6 +1524,7 @@ $(document).ready(function () {
     $('.jsavmatrix').addClass("editMode");
     $('.jsavmatrix').removeClass("deleteMode");
     $('.jsavmatrix').removeClass("addrowMode");
+    focus(lastRow, 0);
   }
 
   //=================================

@@ -15,9 +15,8 @@
   flex-wrap: wrap;
   gap: 2px;
   padding: 4px 8px;
-  background: #edf0f3;
-  border-top: 1px solid #c4c9cf;
-  border-bottom: 1px solid #b7bdc4;
+  background: transparent;
+  border: 0;
   position: relative;
   z-index: 20;
   text-align: left;
@@ -32,7 +31,7 @@
 }
 .grammar-menu summary::-webkit-details-marker { display: none; }
 .grammar-menu summary::after { content: ' ▾'; font-size: 11px; }
-.grammar-menu summary:hover, .grammar-menu details[open] > summary { background: #dbe5ef; }
+.grammar-menu summary:hover, .grammar-menu details[open] > summary { background: transparent; text-decoration: underline; }
 .grammar-menu summary[aria-disabled="true"] { color: #777; cursor: default; background: transparent; }
 .grammar-menu summary:focus-visible, .grammar-menu button:focus-visible {
   outline: 2px solid #205b93;
@@ -81,3 +80,6 @@
   .grammar-menu details:nth-last-child(-n+2) .grammar-menu-panel { left: auto; right: 0; }
 }
 .grammar-menu [hidden] { display: none !important; }
+
+/* Grow with small grammars; scroll only when the content exceeds the limit. */
+.grammar-editor-page #av .jsavcanvas { overflow-y: auto; max-height: 60vh; }
