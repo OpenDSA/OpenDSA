@@ -17,7 +17,7 @@ Reactive Agent Simulations and Delegation
 
 .. sidebar:: Learning Objectives
 
-    **Estimated Time**: ~50 minutes (~50 min reading at 100 WPM)
+    **Estimated Time**: ~52 minutes (~52 min reading at 100 WPM)
 
     * **Implement** autonomous reactive behaviors in an ``act()`` method driven by sensory inputs and internal state flags.
     * **Explain** the delegation design pattern and how objects collaborate by forwarding tasks to companion objects.
@@ -75,25 +75,23 @@ Greenfoot micro-world framework, every visible entity in the world is an instanc
 ``Actor`` (or a subclass of ``Actor``). The world engine repeatedly calls a special method
 named ``act()`` on every actor currently present in the world.
 
-The Greenfoot Environment & Execution Controls
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When you open a Greenfoot simulation, the main graphical window presents three primary areas:
+The Micro-world Execution Controls
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When you run a Greenfoot-based micro-world simulation, the main graphical window presents
+two primary areas:
 
 1. **The World**: The large visual grid covering most of the screen. This is the virtual
    environment where actors live, move, and interact.
-2. **The Class Diagram**: The panel on the right displaying the classes in the scenario
-   (such as ``World``, ``Actor``, and your custom subclasses).
-3. **The Execution Controls**: The control panel at the bottom featuring the **Act** button,
+2. **The Execution Controls**: The control panel at the bottom featuring the **Act** button,
    the **Run** button, and the **Execution Speed Slider**.
 
-.. file = Images/greenfoot-orchard-scenario.png
-
-.. odsafig:: Images/island.png
+.. odsafig:: Images/hedgehog-orchard.png
    :align: center
    :capalign: justify
 
-   Figure 6.1: The Greenfoot main window showing an Orchard micro-world with a Hedgehog actor, Apples to collect, the class diagram on the right, and the execution controls (Act, Run, and Speed slider) along the bottom.
+   Figure 6.1: The Greenfoot main window showing an Orchard micro-world with Hedgehog actors, Apples to collect, and the execution controls (Act, Run, and Speed slider) along the bottom.
 
 To understand how Greenfoot runs your program, consider what happens when you interact with
 these execution controls:
@@ -109,6 +107,14 @@ these execution controls:
   allowing you to slow down the action to observe fine details or speed it up to watch long-term
   behaviors unfold.
 
+In prior chapters, the ``Jeroo`` and ``LightBot`` classes were specially designed so that
+the ``act()`` method executed *just one step* of the logic described in the world's ``myProgram()``
+method. When the "Run" button was clicked, the steps in the ``myProgram()`` method were executed 
+repeatedly. This approach worked well for the simple, linear behavior of the Jeroos and LightBots,
+but it becomes cumbersome for more complex simulations where actors need to react dynamically
+to their environment.
+
+
 The Meaning of the ``act()`` Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -120,7 +126,7 @@ instruction:
 
 .. note::
 
-   **The Meaning of ``act()``**: *"Do whatever you want to do now for your current turn."*
+   **The Meaning of act()**: *"Do whatever you want to do now for your current turn."*
 
 What an actor does during its turn depends on its current surroundings and its internal rules:
 
@@ -128,7 +134,8 @@ What an actor does during its turn depends on its current surroundings and its i
 * Make a decision based on those observations.
 * Perform **one small action** (such as taking a single step forward, turning to face a new direction,
   or picking up an object).
-* Return control immediately to the simulation engine so that other actors can take their turns.
+* Return control immediately to the simulation engine (when ``act()`` returns) so that other actors can take their turns.
+
 
 The Contract of the ``act()`` Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -138,24 +145,66 @@ the ``act()`` method carries a strict contract:
 
 .. important::
 
-   **The ``act()`` Contract**: An actor's ``act()`` method must execute a single, discrete
+   **The act() Contract**: An actor's ``act()`` method must execute a single, discrete
    unit of work and **return immediately**. An actor should take at most **one movement step**
    per turn and must never block execution.
 
-Just as in our earlier work with Jeroos and Lightbot, we continue to restrict our actor's turns
-to relative left and right directions: ``turn(LEFT)`` and ``turn(RIGHT)``. Rather than turning
-by arbitrary fractional angles, our actors navigate grid environments using cardinal compass
-headings (``NORTH``, ``SOUTH``, ``EAST``, ``WEST``) and relative rotations (``LEFT``, ``RIGHT``).
+The GridActor Base Class
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Consider an autonomous ``Hedgehog`` exploring an ``Orchard`` grid. In each simulation turn,
-the hedgehog inspects whether the path ahead is clear; if blocked by a garden wall or rock,
-it turns left; otherwise, it advances one step forward:
+While standard Greenfoot ``Actor`` objects navigate using continuous coordinates and
+arbitrary 360-degree rotation angles, our simulation agents inherit from **``GridActor``**.
+A ``GridActor`` is a specialized subclass of ``Actor`` that simplifies movement, turning,
+and sensing to a discrete grid using cardinal compass directions (``NORTH``, ``SOUTH``,
+``EAST``, ``WEST``) and relative directions (``AHEAD``, ``LEFT``, ``RIGHT``, ``HERE``).
+
+The primary action and sensory methods supported by ``GridActor`` are summarized in the
+following table:
+
+.. raw:: html
+
+   <table class="table docutils align-default">
+   <tr><th>Method</th><th>Purpose</th><th>Example</th></tr>
+   <tr><td><code>move()</code></td><td>Move one space ahead in the direction this actor
+   is facing.</td>
+   <td><code>hedgehog.move();</code></td></tr>
+   <tr><td><code>move(<i>distance</i>)</code></td><td>Move forward <i>distance</i> spaces
+   in the direction this actor is facing.</td>
+   <td><code>hedgehog.move(3);</code></td></tr>
+   <tr><td><code>turn(<i>relativeDirection</i>)</code></td><td>Turn 90 degrees in the
+   indicated relative direction [<code>turn(LEFT)</code> or <code>turn(RIGHT)</code>].</td>
+   <td><code>hedgehog.turn(LEFT);</code><br/>
+   <code>hedgehog.turn(RIGHT);</code></td></tr>
+   <tr><td><code>sees(<i>class</i>, <i>relativeDirection</i>)</code></td><td>Checks whether
+   an object of the specified class is located in the indicated relative direction
+   (<code>HERE</code>, <code>AHEAD</code>, <code>LEFT</code>, or <code>RIGHT</code>).
+   Returns <code>true</code> if present; <code>false</code> otherwise.</td>
+   <td><code>hedgehog.sees(Apple.class, HERE);</code><br/>
+   <code>hedgehog.sees(Burrow.class, AHEAD);</code></td></tr>
+   <tr><td><code>isClear(<i>relativeDirection</i>)</code></td><td>Checks whether the cell
+   in the indicated relative direction is within world bounds and clear of obstacles.
+   Returns <code>true</code> if passable; <code>false</code> otherwise.</td>
+   <td><code>hedgehog.isClear(AHEAD);</code></td></tr>
+   <tr><td><code>isFacing(<i>compassDirection</i>)</code></td><td>Checks whether this actor
+   is facing the specified compass direction (<code>NORTH</code>, <code>SOUTH</code>,
+   <code>EAST</code>, or <code>WEST</code>). Returns <code>true</code> or <code>false</code>.</td>
+   <td><code>hedgehog.isFacing(EAST);</code></td></tr>
+   <tr><td><code>pick(<i>class</i>)</code></td><td>Removes an intersecting object of the
+   specified class from the world at the actor's current location (<code>HERE</code>)
+   and returns it. Requires that <code>sees(class, HERE)</code> is true.</td>
+   <td><code>Apple food = hedgehog.pick(Apple.class);</code><br/>
+   <code>hedgehog.pick(Apple.class);</code></td></tr>
+   </table>
+
+Consider an autonomous ``Hedgehog`` exploring an ``Orchard`` grid. Because ``Hedgehog``
+extends ``GridActor``, it inherits all of these discrete movement and sensory methods.
+In each simulation turn, the hedgehog inspects whether the path ahead is clear; if blocked
+by a garden wall or rock, it turns left; otherwise, it advances one step forward:
 
 .. code-block:: java
 
-   public class Hedgehog extends Actor
+   public class Hedgehog extends GridActor
    {
-       @Override
        public void act()
        {
            if (!this.isClear(AHEAD))
@@ -164,13 +213,13 @@ it turns left; otherwise, it advances one step forward:
            }
            else
            {
-               this.hop();
+               this.move();
            }
        }
    }
 
 When you click the **Act** button, the hedgehog checks the cell ahead, executes either a single
-turn or a single hop, and finishes. When you click **Run**, Greenfoot repeatedly calls ``act()``,
+turn or a single move, and finishes. When you click **Run**, Greenfoot repeatedly calls ``act()``,
 causing the hedgehog to march forward across the orchard and navigate around boundary walls smoothly.
 
 The Infinite Loop Anti-Pattern
@@ -187,7 +236,7 @@ loop inside ``act()`` to complete a task:
        // Flawed attempt to walk until an obstacle is reached
        while (this.isClear(AHEAD))
        {
-           this.hop(); // Freezes the entire simulation!
+           this.move(); // keeps running for one "Act" press!
        }
    }
 
@@ -195,9 +244,9 @@ Why is this loop catastrophic? Because the micro-world engine relies on each act
 its turn promptly. If an actor enters a ``while`` loop that takes many iterations (or runs
 infinitely):
 
-* The actor **never returns** from its ``act()`` call.
+* The actor **never returns** from its ``act()`` call if the loop never ends, or it performs too many actions.
 * No other actors in the world ever get a turn to act.
-* The simulation engine cannot reach its display refresh step, causing the graphical user
+* The simulation engine cannot reach its display refresh step if ``act()`` doesn't return, causing the graphical user
   interface to freeze completely.
 * User clicks on the **Pause** or **Reset** buttons cannot be processed.
 
@@ -222,9 +271,8 @@ track its progress:
 
 .. code-block:: java
 
-   public class FlawedHedgehog extends Actor
+   public class FlawedHedgehog extends GridActor
    {
-       @Override
        public void act()
        {
            int stepsTaken = 0; // LOCAL VARIABLE: Re-initialized every tick!
@@ -236,7 +284,7 @@ track its progress:
            }
            else
            {
-               this.hop();
+               this.move();
            }
        }
    }
@@ -262,18 +310,19 @@ currently searching for an apple or carrying an apple back to its burrow:
 
 .. code-block:: java
 
-   public class ForagingHedgehog extends Actor
+   public class ForagingHedgehog extends GridActor
    {
-       // State flag: persists across all simulation turns
+       // State flag belongs to the object: persists across all simulation turns
        private boolean hasApple;
 
+       // ----------------------------------------
        public ForagingHedgehog()
        {
            super();
            this.hasApple = false;
        }
 
-       @Override
+       // ----------------------------------------
        public void act()
        {
            if (this.hasApple)
@@ -286,11 +335,12 @@ currently searching for an apple or carrying an apple back to its burrow:
            }
        }
 
+       // ----------------------------------------
        private void searchForApple()
        {
-           if (this.getOneIntersectingObject(Apple.class) != null)
+           if (this.sees(Apple.class, HERE))
            {
-               this.removeTouching(Apple.class);
+               this.pick(Apple.class);
                this.hasApple = true; // State transition!
            }
            else if (!this.isClear(AHEAD))
@@ -299,15 +349,18 @@ currently searching for an apple or carrying an apple back to its burrow:
            }
            else
            {
-               this.hop();
+               this.move();
            }
        }
 
+       // ----------------------------------------
        private void returnToBurrow()
        {
-           if (this.getOneIntersectingObject(Burrow.class) != null)
+           if (this.sees(Burrow.class, HERE))
            {
+               // drop the apple in the burrow
                this.hasApple = false; // State transition back to searching!
+               this.turn(RIGHT);      // Turn around to head back out
            }
            else if (!this.isClear(AHEAD))
            {
@@ -315,7 +368,7 @@ currently searching for an apple or carrying an apple back to its burrow:
            }
            else
            {
-               this.hop();
+               this.move();
            }
        }
    }
@@ -325,6 +378,7 @@ sub-behavior executes during any given turn. When a transition condition is met
 (such as finding an apple), the flag flips to ``true``. On subsequent turns, the hedgehog
 automatically executes the delivery behavior until it reaches its burrow, where it deposits
 the apple and flips the flag back to ``false``.
+
 
 Accumulator Timers and Counters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -337,17 +391,18 @@ An **accumulator counter** is an integer instance field that counts simulation t
 
 .. code-block:: java
 
-   public class WanderingHedgehog extends Actor
+   public class WanderingHedgehog extends GridActor
    {
        private int stepCount;
 
+       // ----------------------------------------
        public WanderingHedgehog()
        {
            super();
            this.stepCount = 0;
        }
 
-       @Override
+       // ----------------------------------------
        public void act()
        {
            this.stepCount++;
@@ -365,13 +420,17 @@ An **accumulator counter** is an integer instance field that counts simulation t
            }
            else
            {
-               this.hop();
+               this.move();
            }
        }
    }
 
+Note that the counter is a field that stores information belonging to the object. Also, a
+**constructor** is provided to initialize the field (see Chapter 5 Fields, Encapsulation, and Images).
+
 Each invocation of ``act()`` increments ``stepCount`` by 1. When the counter reaches the
 target threshold, the actor performs the periodic action and resets the counter to zero.
+
 
 Finite State Machines (FSM)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -390,7 +449,7 @@ Consider our foraging agent with two primary states:
 
 .. file = Images/hedgehog-state-diagram.png
 
-.. odsafig:: Images/island.png
+.. odsafig:: Images/hedgehog-fsm.png
    :align: center
    :capalign: justify
 
@@ -401,20 +460,21 @@ storing the agent's current state in a private field:
 
 .. code-block:: java
 
-   public class ForagingAgent extends Actor
+   public class ForagingAgent extends GridActor
    {
        public static final int SEARCHING = 0;
        public static final int RETURNING = 1;
 
        private int currentState;
 
+       // ----------------------------------------
        public ForagingAgent()
        {
            super();
            this.currentState = SEARCHING;
        }
 
-       @Override
+       // ----------------------------------------
        public void act()
        {
            if (this.currentState == SEARCHING)
@@ -427,11 +487,12 @@ storing the agent's current state in a private field:
            }
        }
 
+       // ----------------------------------------
        private void performSearch()
        {
-           if (this.getOneIntersectingObject(Apple.class) != null)
+           if (this.sees(Apple.class, HERE))
            {
-               this.removeTouching(Apple.class);
+               this.pick(Apple.class);
                this.currentState = RETURNING; // State transition
            }
            else if (!this.isClear(AHEAD))
@@ -440,15 +501,17 @@ storing the agent's current state in a private field:
            }
            else
            {
-               this.hop();
+               this.move();
            }
        }
 
+       // ----------------------------------------
        private void performReturn()
        {
-           if (this.getOneIntersectingObject(Burrow.class) != null)
+           if (this.sees(Burrow.class, HERE))
            {
                this.currentState = SEARCHING; // State transition
+               this.turn(RIGHT);
            }
            else if (!this.isClear(AHEAD))
            {
@@ -456,7 +519,7 @@ storing the agent's current state in a private field:
            }
            else
            {
-               this.hop();
+               this.move();
            }
        }
    }
@@ -465,6 +528,12 @@ By structuring simulation actors as finite state machines, each operational stat
 is isolated in its own helper method. The main ``act()`` method simply dispatches to the
 appropriate behavior based on the current state, keeping the overall architecture clean
 and maintainable.
+
+.. note::
+   
+   By convention in Java, constants are given ALL_UPPER_CASE names with words separated
+   by underscores, and are declared as ``public static final`` fields. Programmers who
+   see names declared this way know immediately that they are read-only constants.
 
 
 Testing Autonomous Reactive Entities in JUnit
@@ -475,29 +544,32 @@ underlying simulation engine, students often wonder: *How can we write automated
 for an actor without launching a graphical window and waiting for it to run in real time?*
 
 The key insight is that ``act()`` is simply a regular Java instance method. In a unit test,
-we do not need the graphical Greenfoot engine running in real time. Instead,
-**our test method becomes the simulation engine**. We instantiate an actor, place it in a
-test world, call ``act()`` directly, and immediately assert whether the actor moved to the
+we do not need the graphical Greenfoot engine running in real time. Instead, we focus
+on **testing individual single-turn actions performed act ``act()`` or one of its helper methods**.
+We instantiate an actor, place it in a
+test world, call ``act()`` directly--or, even better, call the individual methods that provide
+the pieces of its behavior--and immediately assert whether the actor moved to the
 expected coordinates or transitioned into the expected state.
 
 Deterministic Single-Tick Assertions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Testing an actor's behavior for a single turn is straightforward. You configure the
-actor's initial position and sensory conditions in a test world, call ``act()`` once, and
-check the results using AssertJ assertions:
+actor's initial position and sensory conditions in a test world, call the target method once,
+and immediately check the results:
 
 .. code-block:: java
 
    import student.micro.*;
-   import static org.assertj.core.api.Assertions.*;
+   import static student.micro.Assertions.*;
 
-   public class HedgehogTest extends TestCase
+   public class HedgehogTest
+       extends TestCase
    {
        private Orchard orchard;
        private ForagingHedgehog hedgehog;
 
-       @Override
+       // ----------------------------------------
        public void setUp()
        {
            // Create a clean, predictable test world fixture
@@ -506,64 +578,46 @@ check the results using AssertJ assertions:
            this.orchard.add(this.hedgehog, 2, 2);
        }
 
+       // ----------------------------------------
        public void testSingleTickAdvance()
        {
-           // Verify initial position
-           assertThat(this.hedgehog.getX()).isEqualTo(2);
-           assertThat(this.hedgehog.getY()).isEqualTo(2);
-
            // Manually trigger one simulation turn
-           this.hedgehog.act();
+           this.hedgehog.performSearch();
 
-           // Assert that the hedgehog hopped forward one space
-           assertThat(this.hedgehog.getX()).isEqualTo(3);
-           assertThat(this.hedgehog.getY()).isEqualTo(2);
+           // Assert that the hedgehog moveped forward one space
+           assertThat(this.hedgehog).isAt(3, 2);
        }
    }
 
-Notice that our test class inherits from ``TestCase``:
-
-.. code-block:: java
-
-   public class HedgehogTest extends TestCase
-
-In accordance with our course development environment, test classes always extend
-``TestCase`` directly, with the import statement ``import student.micro.*;`` supplying
-the appropriate framework base class. The ``setUp()`` method runs before every single
-test method, providing a pristine, isolated test fixture.
 
 Testing Multi-Tick Behaviors and State Transitions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Many behaviors require several simulation turns to unfold. For instance, an actor might
-need to count 4 steps before turning, or it might take several hops to reach an apple.
+need to count 4 steps before turning, or it might take several moves to reach an apple.
 
-Instead of writing repetitive manual calls to ``act()``, use a standard ``for`` loop in your
-test method to advance the simulation clock by an exact, deterministic number of turns:
+However, you should **always** strive to test single method calls from well-defined
+states, and avoid constructing tests that perform complex sequences of method calls.
 
-.. code-block:: java
+If it makes your testing easier, you can add **getter methods** or **setter methods**
+(see Chapter 5 Fields, Encapsulation, and Images) to access the values of fields
+for use in assertions, or to change the values of fields to set the situation you
+need.
 
-   public void testWanderCounterCausesTurn()
-   {
-       // Advance the simulation by 3 turns: counter should not yet trigger turn
-       for (int tick = 0; tick < 3; tick++)
-       {
-           this.hedgehog.act();
-       }
-       assertThat(this.hedgehog.isFacing(EAST)).isTrue();
-
-       // The 4th turn reaches the counter threshold and triggers the turn
-       this.hedgehog.act();
-       assertThat(this.hedgehog.isFacing(SOUTH)).isTrue();
-   }
+For example, instead of writing a loop to call ``act()`` for times to get the counter to
+change value, you can write a setter method that sets the counter to a specific value
+and simply call it at the start of your test method as part of setting up the initial
+condition. Or, if you want to test what happens when the hedgehog is in RETURNING state,
+you can write a setter method for that, too (e.g., ``this.hedgehog.setState(RETURNING);``)
+.
 
 This approach provides several powerful testing benefits:
 
-1. **Instantaneous Execution**: Running hundreds of turns in a ``for`` loop takes less than
-   a single millisecond, allowing large test suites to finish instantly.
-2. **100% Determinism**: There are no race conditions or animation delays. You control
-   the simulation clock with microsecond precision.
-3. **Boundary Condition Verification**: You can verify the exact turn where a transition
+1. **Instantaneous Execution**: Every test is still just one action to perform--the setUp
+   gets you into the correct situation without executing a bunch of unrelated actions first.
+2. **100% Determinism**: You create exactly the situation you want without having to plan a
+   series of actions to walk through in order to manipulate the object into a specific situation.
+3. **Boundary Condition Verification**: You can verify the exact situation where a transition
    occurs (e.g., verifying that the actor maintains its heading on turn 3, but turns on turn 4).
 
 
@@ -603,11 +657,12 @@ To do this, the guide needs a private field that refers to its companion:
 Here, ``companion`` is not a primitive value; it is a reference variable capable of holding
 the memory address of any ``Hedgehog`` instance (or subclass instance).
 
-Constructor Reference Injection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Initializing Associations in a Constructor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 How does the companion reference get into the field? While a setter method could be used,
-the most robust technique is **constructor dependency injection**: passing the companion
+the most robust technique is **using a constructor**: passing the companion
 object as a parameter when the primary object is instantiated:
 
 .. code-block:: java
@@ -616,16 +671,18 @@ object as a parameter when the primary object is instantiated:
    {
        private Hedgehog companion;
 
+       // ----------------------------------------
        /**
         * Constructs a GuideHedgehog associated with a companion Hedgehog.
-        * @param companion the companion Hedgehog to coordinate with
+        * @param aCompanion the companion Hedgehog to coordinate with
         */
-       public GuideHedgehog(Hedgehog companion)
+       public GuideHedgehog(Hedgehog aCompanion)
        {
-           super();                    // Initialize the superclass (Hedgehog)
-           this.companion = companion; // Store the reference in our private field
+           super();                     // Initialize the superclass (Hedgehog)
+           this.companion = aCompanion; // Store the reference in our private field
        }
 
+       // ----------------------------------------
        /**
         * Accessor method for the companion Hedgehog.
         * @return the companion Hedgehog
@@ -661,12 +718,7 @@ When the code above executes, two objects are allocated on the heap:
                                    +-----------------------+
 
 .. file = Images/object-association-memory.png
-
-.. odsafig:: Images/island.png
-   :align: center
-   :capalign: justify
-
-   Figure 6.3: Memory diagram illustrating object association and aliasing: the reference variable buddy and the instance field leader.companion point to the exact same Hedgehog object in heap memory.
+.. Figure 6.3: Memory diagram illustrating object association and aliasing: the reference variable buddy and the instance field leader.companion point to the exact same Hedgehog object in heap memory.
 
 Both the variable ``buddy`` in the calling method and the internal field ``this.companion``
 inside ``leader`` point to the **exact same Hedgehog object in memory**. This is known as
@@ -681,6 +733,7 @@ Once an object stores a reference to a companion in an instance field, how does 
 that connection to work? The answer lies in one of the most foundational architectural
 patterns in software design: the **Delegation pattern**.
 
+
 Understanding Delegation
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -693,6 +746,7 @@ to schedule an appointment, the executive does not personally update the calenda
 the executive turns to the assistant and delegates the task: *"Please schedule this meeting."*
 The client interacts with the executive, but the assistant performs the work.
 
+
 Delegation vs. Inheritance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -700,7 +754,7 @@ Students frequently confuse inheritance with delegation:
 
 * **Inheritance ("IS-A")**: Reuses behavior through a parent class hierarchy. A
   ``GuideHedgehog`` *is a* ``Hedgehog``, so it automatically inherits basic abilities like
-  ``hop()``, ``turn(RelativeDirection direction)``, and sensory methods.
+  ``move()``, ``turn(RelativeDirection direction)``, and sensory methods.
 * **Delegation ("HAS-A")**: Cooperates by forwarding requests to an associated object.
   A ``GuideHedgehog`` *has a* companion ``Hedgehog``, and asks that companion to perform
   matching actions.
@@ -708,74 +762,100 @@ Students frequently confuse inheritance with delegation:
 Delegation provides enormous flexibility because the companion can be swapped or modified
 without altering class hierarchies.
 
+
 Overriding Methods with ``super`` and Delegation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To implement delegation, an actor overrides a method inherited from its superclass. Inside
-the overridden method, the actor typically does two things:
+To implement delegation in a method that has been provided by a parent class, an actor overrides that method to redefine it. Inside
+the overridden method, the actor can do either or both of these things:
 
-1. Calls ``super.method()`` so that it performs its own normal action.
-2. Invokes the matching method on its companion field (``this.companion.method()``) to delegate
-   the action.
+1. Call ``super.method()`` so that it performs its own normal action.
+2. Invoke some method on its companion field (``this.companion.method()``) to delegate
+   part (or all) of the action.
+
+
+As an example, the ``GuideHedgehog`` wants to implement moving by moving itself and
+at the same time telling its companion to move as well. In this case, it would perform
+both of the actions above.
 
 Here is the complete implementation of delegated movement and turning in ``GuideHedgehog``:
 
 .. code-block:: java
 
-   public class GuideHedgehog extends Hedgehog
+   public class GuideHedgehog
+       extends Hedgehog
    {
        private Hedgehog companion;
 
+       // ----------------------------------------
        public GuideHedgehog(Hedgehog companion)
        {
            super();
            this.companion = companion;
        }
 
+       // ----------------------------------------
        @Override
-       public void hop()
+       public void move()
        {
-           super.hop();                  // 1. Move myself forward
-           if (this.companion != null)   // 2. Defensive check
-           {
-               this.companion.hop();     // 3. Delegate to companion
-           }
+           super.move();                  // 1. Move myself forward
+           this.companion.move();         // 2. Delegate to companion
        }
 
+       // ----------------------------------------
        @Override
        public void turn(RelativeDirection direction)
        {
            super.turn(direction);        // 1. Turn myself
-           if (this.companion != null)   // 2. Defensive check
-           {
-               this.companion.turn(direction); // 3. Delegate to companion
-           }
+           this.companion.turn(direction); // 2. Delegate to companion
        }
    }
 
-Notice the critical check: ``if (this.companion != null)``. This is **defensive programming**.
-If a ``GuideHedgehog`` is instantiated with a ``null`` companion (or without an assigned
-partner), calling ``this.companion.hop()`` would cause a catastrophic ``NullPointerException``.
-The null check ensures that the actor continues to function safely even when operating solo.
+Here, you can see the class redeclares both the ``move()`` and ``turn()`` methods
+so that it can pass those requests on to its companion. Note the use of the
+``@Override`` tag, which indicates that these methods are intended to override
+(or **redefine**) the corresponding methods in the parent class ``Hedgehog``.
+This notation expresses our intention to replace or extend those inherited methods,
+and allows the compiler to double-check to see we have declared them correctly.
+
+In both methods, the guide uses ``super`` to call the original parent method that
+is being replaced, and then uses ``this.companion`` to delegate the remainder
+of the action to its companion. In other situations or problems, you as the
+programmer must decide whether you are completely replacing the behavior with
+the other object's, adding to your own behavior, and whether or where either of
+these steps must happen in the new method body you are defining.
+
+
+Constructor Invariants and Delegation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Because the companion object is supplied and assigned directly during construction:
+
+.. code-block:: java
+
+   Hedgehog buddy = new Hedgehog();
+   GuideHedgehog leader = new GuideHedgehog(buddy);
+
+the ``leader`` object can rely on ``this.companion`` being fully initialized and ready.
+Whenever ``leader.move()`` or ``leader.turn(...)`` is invoked, the guide performs its
+own action using ``super`` and immediately forwards the matching operation to its
+companion.
 
 Delegating Overloaded Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In Java, methods can be *overloaded*—meaning multiple methods share the same name but have
 different parameter lists. If an actor class provides multiple overloaded versions of a method,
-such as ``hop()`` and ``hop(int distance)``, you must be careful to override and delegate
+such as ``move()`` and ``move(int distance)``, you must be careful to override and delegate
 **each overloaded variant** that callers might invoke:
 
 .. code-block:: java
 
    @Override
-   public void hop(int distance)
+   public void move(int distance)
    {
-       super.hop(distance);
-       if (this.companion != null)
-       {
-           this.companion.hop(distance);
-       }
+       super.move(distance);
+       this.companion.move(distance);
    }
 
 By delegating every variant, you ensure that no matter how an external caller commands the
@@ -788,6 +868,7 @@ Synchronized Multi-Actor Coordination Algorithms
 Now that we understand how an actor delegates individual actions to a companion, let us
 examine how to build higher-level algorithms where multiple actors coordinate their movements
 in synchronized harmony.
+
 
 Synchronized Orchard Patrol: Parallel Track Navigation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -815,26 +896,30 @@ When the ``GuideHedgehog`` executes its patrol algorithm along the outer lane, e
 and turn it performs is delegated to its companion on the inner lane. As a consequence,
 the two actors traverse their respective tracks in perfect synchronized lockstep!
 
+
 Perimeter Navigation: The ``patrolPerimeter()`` Algorithm
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A classic coordination task is perimeter navigation. An actor must traverse the boundary of
-an orchard lane, hopping along the edge, until it returns to its exact starting coordinates.
+an orchard lane, moveping along the edge, until it returns to its exact starting coordinates.
 
 Here is the algorithm implemented as a method on ``GuideHedgehog``:
 
 .. code-block:: java
 
-   public class GuideHedgehog extends Hedgehog
+   public class GuideHedgehog
+       extends Hedgehog
    {
        private Hedgehog companion;
 
+       // ----------------------------------------
        public GuideHedgehog(Hedgehog companion)
        {
            super();
            this.companion = companion;
        }
 
+       // ----------------------------------------
        /**
         * Traverses the perimeter of the orchard track until returning to the
         * starting position, mirroring all actions on the companion hedgehog.
@@ -851,6 +936,7 @@ Here is the algorithm implemented as a method on ``GuideHedgehog``:
            } while (this.getX() != startX || this.getY() != startY);
        }
 
+       // ----------------------------------------
        /**
         * Helper method: takes one navigation step keeping the boundary to the right.
         */
@@ -858,7 +944,7 @@ Here is the algorithm implemented as a method on ``GuideHedgehog``:
        {
            if (this.isClear(AHEAD))
            {
-               this.hop();
+               this.move();
            }
            else
            {
@@ -871,12 +957,13 @@ Notice why this method is so elegant:
 
 * The ``patrolPerimeter()`` method does not write a single line of explicit code directing the
   companion!
-* Because ``patrolPerimeter()`` calls ``this.hop()`` and ``this.turn(RIGHT)``, Java's dynamic
+* Because ``patrolPerimeter()`` calls ``this.move()`` and ``this.turn(RIGHT)``, Java's dynamic
   method dispatch invokes ``GuideHedgehog``'s overridden versions of those methods.
-* Those overridden methods call ``super.hop()`` (moving the guide) and
-  ``this.companion.hop()`` (moving the companion).
+* Those overridden methods call ``super.move()`` (moving the guide) and
+  ``this.companion.move()`` (moving the companion).
 * As a result, simply commanding ``leader.patrolPerimeter()`` causes **both** actors to complete
   a full synchronized circuit of their tracks.
+
 
 Testing Dual-Actor Coordination in JUnit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -887,15 +974,16 @@ and verifies that both reached the expected terminal state:
 .. code-block:: java
 
    import student.micro.*;
-   import static org.assertj.core.api.Assertions.*;
+   import static student.micro.Assertions.*;
 
-   public class GuideHedgehogTest extends TestCase
+   public class GuideHedgehogTest
+       extends TestCase
    {
        private Orchard orchard;
        private GuideHedgehog leader;
        private Hedgehog companion;
 
-       @Override
+       // ----------------------------------------
        public void setUp()
        {
            this.orchard = new Orchard();
@@ -909,28 +997,24 @@ and verifies that both reached the expected terminal state:
            this.orchard.add(this.leader, 1, 1);
        }
 
-       public void testSynchronizedHop()
+       // ----------------------------------------
+       public void testSynchronizedmove()
        {
-           this.leader.hop();
+           this.leader.move();
 
            // Both actors must have moved forward by 1 unit
-           assertThat(this.leader.getX()).isEqualTo(2);
-           assertThat(this.leader.getY()).isEqualTo(1);
-
-           assertThat(this.companion.getX()).isEqualTo(3);
-           assertThat(this.companion.getY()).isEqualTo(2);
+           assertThat(this.leader).isAt(2, 1);
+           assertThat(this.companion).isAt(3, 2);
        }
 
+       // ----------------------------------------
        public void testSynchronizedPerimeterPatrol()
        {
            this.leader.patrolPerimeter();
 
            // Both actors must have completed the perimeter circuit and returned home
-           assertThat(this.leader.getX()).isEqualTo(1);
-           assertThat(this.leader.getY()).isEqualTo(1);
-
-           assertThat(this.companion.getX()).isEqualTo(2);
-           assertThat(this.companion.getY()).isEqualTo(2);
+           assertThat(this.leader).isAt(1, 1);
+           assertThat(this.companion).isAt(2, 2);
        }
    }
 
@@ -950,6 +1034,7 @@ or test.
 In this section, we review the software engineering principles of **stepwise refinement**
 and **method length control** that keep reactive simulations clean and maintainable.
 
+
 The Dangers of Monolithic Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -968,26 +1053,26 @@ Consider this poorly structured implementation of a reactive foraging actor:
        {
            if (this.hasApple)
            {
-               if (this.getOneIntersectingObject(Burrow.class) != null)
+               if (this.sees(Burrow.class, HERE))
                {
                    this.hasApple = false;
                    this.turn(RIGHT);
                }
                else
                {
-                   this.hop();
+                   this.move();
                }
            }
            else
            {
-               if (this.getOneIntersectingObject(Apple.class) != null)
+               if (this.sees(Apple.class, HERE))
                {
-                   this.removeTouching(Apple.class);
+                   this.pick(Apple.class);
                    this.hasApple = true;
                }
                else
                {
-                   this.hop();
+                   this.move();
                }
            }
        }
@@ -1000,6 +1085,7 @@ While this method might run, it suffers from severe design flaws:
 2. **Poor Reusability**: Logic like avoiding obstacles or delivering food is locked inside
    ``act()`` and cannot be called or tested independently.
 3. **Difficult Testing**: You cannot test "returning to burrow" independently from "searching for apples".
+
 
 Stepwise Refinement: Breaking Problems into Sub-Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1015,6 +1101,7 @@ When applying stepwise refinement to an ``act()`` method:
 * Each helper method should do exactly **one thing** and do it well (the Single Responsibility
   Principle).
 
+
 Refactoring with Stepwise Refinement
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1022,11 +1109,11 @@ Let us refactor the cluttered agent above using stepwise refinement:
 
 .. code-block:: java
 
-   public class CleanHedgehog extends Actor
+   public class CleanHedgehog extends GridActor
    {
        private boolean hasApple;
 
-       @Override
+       // ----------------------------------------
        public void act()
        {
            if (!this.isClear(AHEAD))
@@ -1043,34 +1130,37 @@ Let us refactor the cluttered agent above using stepwise refinement:
            }
        }
 
-       private void avoidObstacle()
+       // ----------------------------------------
+       public void avoidObstacle()
        {
            this.turn(LEFT);
        }
 
-       private void deliverCargo()
+       // ----------------------------------------
+       public void deliverCargo()
        {
-           if (this.getOneIntersectingObject(Burrow.class) != null)
+           if (this.sees(Burrow.class, HERE))
            {
                this.hasApple = false;
                this.turn(RIGHT);
            }
            else
            {
-               this.hop();
+               this.move();
            }
        }
 
-       private void forageForFood()
+       // ----------------------------------------
+       public void forageForFood()
        {
-           if (this.getOneIntersectingObject(Apple.class) != null)
+           if (this.sees(Apple.class, HERE))
            {
-               this.removeTouching(Apple.class);
+               this.pick(Apple.class);
                this.hasApple = true;
            }
            else
            {
-               this.hop();
+               this.move();
            }
        }
    }
@@ -1078,6 +1168,7 @@ Let us refactor the cluttered agent above using stepwise refinement:
 Look at how readable this code has become! Anyone reading ``act()`` can immediately
 understand the agent's high-level strategy in five seconds: *If blocked, avoid the obstacle;
 if carrying an apple, deliver it; otherwise, forage.*
+
 
 Method Length Bounds ($\le 10$ Lines)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

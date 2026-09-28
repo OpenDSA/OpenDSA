@@ -485,7 +485,7 @@ Methods can be categorized by whether they produce a result:
 2. **non-void methods**: Compute and produce a value (an answer) that is returned to the caller.
 
 The return Keyword and Non-Void Return Types
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To write a method that returns a value, you replace the keyword ``void`` in the method header with the
 **return type** of the value being produced:
