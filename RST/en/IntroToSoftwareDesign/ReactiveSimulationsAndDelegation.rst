@@ -885,9 +885,9 @@ As shown in Figure 6.1.3, the orchard features two identical garden plots stacke
 shared row of trees dividing them across the center:
 
 1. **Upper Plot**: Contains our primary actor, an instance of ``GuideHedgehog``, placed at
-   the upper-left corner at $(1, 1)$ facing ``EAST``.
+   the upper-left corner at (1, 1) facing ``EAST``.
 2. **Lower Plot**: Contains the companion actor, a standard ``Hedgehog``, placed at the
-   corresponding upper-left corner at $(1, 6)$ facing ``EAST``.
+   corresponding upper-left corner at (1, 6) facing ``EAST``.
 
 The companion hedgehog in the lower plot does not possess autonomous pathfinding or
 obstacle-avoidance logic of its own. It relies entirely on the ``GuideHedgehog`` in the
@@ -899,7 +899,7 @@ upper plot to navigate.
 
    Coordinated patrol in twin orchard plots. The GuideHedgehog in the upper plot delegates its movements to the companion Hedgehog in the identical lower plot, allowing both to patrol their tree-lined perimeters in synchronized lockstep.
 
-Because both plots have identical interior dimensions ($6 \times 4$ clear cells) and boundary
+Because both plots have identical interior dimensions (6x4 clear cells) and boundary
 layouts, every step and turn the ``GuideHedgehog`` takes along its perimeter translates into an
 identical, collision-free movement for the companion in the lower plot. As a consequence,
 the two actors traverse their respective plots in perfect synchronized lockstep!
@@ -1178,7 +1178,7 @@ understand the agent's high-level strategy in five seconds: *If blocked, avoid t
 if carrying an apple, deliver it; otherwise, forage.*
 
 
-Method Length Bounds ($\le 10$ Lines)
+Method Length Bounds (<= 10 Lines)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In CS 1114, we enforce clean code standards to foster disciplined software habits. A key
