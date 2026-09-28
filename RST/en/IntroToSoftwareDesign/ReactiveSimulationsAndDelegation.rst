@@ -17,7 +17,7 @@ Reactive Agent Simulations and Delegation
 
 .. sidebar:: Learning Objectives
 
-    **Estimated Time**: ~52 minutes (~52 min reading at 100 WPM)
+    **Estimated Time**: ~56 minutes (~56 min reading at 100 WPM)
 
     * **Implement** autonomous reactive behaviors in an ``act()`` method driven by sensory inputs and internal state flags.
     * **Explain** the delegation design pattern and how objects collaborate by forwarding tasks to companion objects.
@@ -91,7 +91,7 @@ two primary areas:
    :align: center
    :capalign: justify
 
-   Figure 6.1: The Greenfoot main window showing an Orchard micro-world with Hedgehog actors, Apples to collect, and the execution controls (Act, Run, and Speed slider) along the bottom.
+   The Greenfoot main window showing an Orchard micro-world with Hedgehog actors, Apples to collect, and the execution controls (Act, Run, and Speed slider) along the bottom.
 
 To understand how Greenfoot runs your program, consider what happens when you interact with
 these execution controls:
@@ -271,7 +271,8 @@ track its progress:
 
 .. code-block:: java
 
-   public class FlawedHedgehog extends GridActor
+   public class FlawedHedgehog
+       extends GridActor
    {
        public void act()
        {
@@ -310,7 +311,8 @@ currently searching for an apple or carrying an apple back to its burrow:
 
 .. code-block:: java
 
-   public class ForagingHedgehog extends GridActor
+   public class ForagingHedgehog
+       extends GridActor
    {
        // State flag belongs to the object: persists across all simulation turns
        private boolean hasApple;
@@ -391,7 +393,8 @@ An **accumulator counter** is an integer instance field that counts simulation t
 
 .. code-block:: java
 
-   public class WanderingHedgehog extends GridActor
+   public class WanderingHedgehog
+       extends GridActor
    {
        private int stepCount;
 
@@ -453,14 +456,15 @@ Consider our foraging agent with two primary states:
    :align: center
    :capalign: justify
 
-   Figure 6.2: State transition diagram for the foraging Hedgehog, transitioning between SEARCHING and RETURNING based on whether food has been collected or delivered.
+   State transition diagram for the foraging Hedgehog, transitioning between SEARCHING and RETURNING based on whether food has been collected or delivered.
 
 In Java, we can represent these states using named integer constants or an enumeration,
 storing the agent's current state in a private field:
 
 .. code-block:: java
 
-   public class ForagingAgent extends GridActor
+   public class ForagingHedgehog
+       extends GridActor
    {
        public static final int SEARCHING = 0;
        public static final int RETURNING = 1;
@@ -468,7 +472,7 @@ storing the agent's current state in a private field:
        private int currentState;
 
        // ----------------------------------------
-       public ForagingAgent()
+       public ForagingHedgehog()
        {
            super();
            this.currentState = SEARCHING;
@@ -646,7 +650,8 @@ To do this, the guide needs a private field that refers to its companion:
 
 .. code-block:: java
 
-   public class GuideHedgehog extends Hedgehog
+   public class GuideHedgehog
+       extends Hedgehog
    {
        // Association: A reference to another Hedgehog object
        private Hedgehog companion;
@@ -667,7 +672,8 @@ object as a parameter when the primary object is instantiated:
 
 .. code-block:: java
 
-   public class GuideHedgehog extends Hedgehog
+   public class GuideHedgehog
+       extends Hedgehog
    {
        private Hedgehog companion;
 
@@ -870,38 +876,40 @@ examine how to build higher-level algorithms where multiple actors coordinate th
 in synchronized harmony.
 
 
-Synchronized Orchard Patrol: Parallel Track Navigation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Synchronized Orchard Patrol: Twin Garden Plots
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Consider an orchard environment where two hedgehogs perform a synchronized perimeter patrol.
-The orchard features two concentric tracks: an outer perimeter lane and an inner lane separated
-by low garden hedges:
+As shown in Figure 6.1.3, the orchard features two identical garden plots stacked vertically: an
+**upper plot** and a **lower plot**, each completely enclosed by a border of trees, with a
+shared row of trees dividing them across the center:
 
-1. **Outer Lane**: Contains our primary actor, an instance of ``GuideHedgehog``.
-2. **Inner Lane**: Contains the companion actor, a standard ``Hedgehog``.
+1. **Upper Plot**: Contains our primary actor, an instance of ``GuideHedgehog``, placed at
+   the upper-left corner at $(1, 1)$ facing ``EAST``.
+2. **Lower Plot**: Contains the companion actor, a standard ``Hedgehog``, placed at the
+   corresponding upper-left corner at $(1, 6)$ facing ``EAST``.
 
-The companion hedgehog on the inner track does not possess autonomous pathfinding or
-obstacle-avoidance logic of its own. It relies entirely on the ``GuideHedgehog`` on the
-outer track to navigate.
+The companion hedgehog in the lower plot does not possess autonomous pathfinding or
+obstacle-avoidance logic of its own. It relies entirely on the ``GuideHedgehog`` in the
+upper plot to navigate.
 
-.. file = Images/orchard-tandem-patrol.png
-
-.. odsafig:: Images/island.png
+.. odsafig:: Images/orchard-tandem-patrol.png
    :align: center
    :capalign: justify
 
-   Figure 6.4: Coordinated tandem patrol in the Orchard. The GuideHedgehog navigates the outer track while delegating its movements to its companion on an inner parallel track.
+   Coordinated patrol in twin orchard plots. The GuideHedgehog in the upper plot delegates its movements to the companion Hedgehog in the identical lower plot, allowing both to patrol their tree-lined perimeters in synchronized lockstep.
 
-When the ``GuideHedgehog`` executes its patrol algorithm along the outer lane, every step
-and turn it performs is delegated to its companion on the inner lane. As a consequence,
-the two actors traverse their respective tracks in perfect synchronized lockstep!
+Because both plots have identical interior dimensions ($6 \times 4$ clear cells) and boundary
+layouts, every step and turn the ``GuideHedgehog`` takes along its perimeter translates into an
+identical, collision-free movement for the companion in the lower plot. As a consequence,
+the two actors traverse their respective plots in perfect synchronized lockstep!
 
 
 Perimeter Navigation: The ``patrolPerimeter()`` Algorithm
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A classic coordination task is perimeter navigation. An actor must traverse the boundary of
-an orchard lane, moveping along the edge, until it returns to its exact starting coordinates.
+a garden plot, moving along the edge of the surrounding trees, until it returns to its exact starting coordinates.
 
 Here is the algorithm implemented as a method on ``GuideHedgehog``:
 
@@ -921,7 +929,7 @@ Here is the algorithm implemented as a method on ``GuideHedgehog``:
 
        // ----------------------------------------
        /**
-        * Traverses the perimeter of the orchard track until returning to the
+        * Traverses the perimeter of the orchard plot until returning to the
         * starting position, mirroring all actions on the companion hedgehog.
         */
        public void patrolPerimeter()
@@ -962,7 +970,7 @@ Notice why this method is so elegant:
 * Those overridden methods call ``super.move()`` (moving the guide) and
   ``this.companion.move()`` (moving the companion).
 * As a result, simply commanding ``leader.patrolPerimeter()`` causes **both** actors to complete
-  a full synchronized circuit of their tracks.
+  a full synchronized circuit of their respective plots.
 
 
 Testing Dual-Actor Coordination in JUnit
@@ -990,21 +998,21 @@ and verifies that both reached the expected terminal state:
            this.companion = new Hedgehog();
            this.leader = new GuideHedgehog(this.companion);
 
-           // Place companion on the inner track at (2, 2) facing EAST
-           this.orchard.add(this.companion, 2, 2);
+           // Place companion in the lower plot at (1, 6) facing EAST
+           this.orchard.add(this.companion, 1, 6);
 
-           // Place leader on the outer track at (1, 1) facing EAST
+           // Place leader in the upper plot at (1, 1) facing EAST
            this.orchard.add(this.leader, 1, 1);
        }
 
        // ----------------------------------------
-       public void testSynchronizedmove()
+       public void testSynchronizedMove()
        {
            this.leader.move();
 
            // Both actors must have moved forward by 1 unit
            assertThat(this.leader).isAt(2, 1);
-           assertThat(this.companion).isAt(3, 2);
+           assertThat(this.companion).isAt(2, 6);
        }
 
        // ----------------------------------------
@@ -1014,7 +1022,7 @@ and verifies that both reached the expected terminal state:
 
            // Both actors must have completed the perimeter circuit and returned home
            assertThat(this.leader).isAt(1, 1);
-           assertThat(this.companion).isAt(2, 2);
+           assertThat(this.companion).isAt(1, 6);
        }
    }
 
