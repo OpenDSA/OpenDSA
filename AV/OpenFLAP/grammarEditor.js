@@ -288,8 +288,16 @@ $(document).ready(function () {
     // finalize the changes to the grammar when the enter key is pressed
     var validKeys = [13, 9, 37, 38, 39, 40];
     // keys for functions
-    fi.keyup(function(event){
+    fi.on('keydown keyup', function(event){
       var keyCode = event.keyCode;
+      // Tab must be handled before the browser moves focus. Ignore its keyup
+      // on the newly focused input so one press advances exactly one cell.
+      if (keyCode === 9) {
+        if (event.type !== 'keydown') return;
+        event.preventDefault();
+      } else if (event.type !== 'keyup') {
+        return;
+      }
       if (validKeys.indexOf(keyCode) !== -1) {
         var input = $(this).val();
         var regex = new RegExp(emptystring, g);
@@ -311,6 +319,23 @@ $(document).ready(function () {
         arr[index][index2] = input;
         layoutTable(m, 2);
         switch (keyCode) {
+        case 9:
+          if (event.shiftKey) {
+            if (index2 === 2) focus(index, 0);
+            else if (index > 0) focus(index - 1, 2);
+            else $('.grammar-menu summary, #addrowbutton').filter(':visible').first().focus();
+          } else if (index2 === 0) {
+            focus(index, 2);
+          } else if (index < lastRow) {
+            focus(index + 1, 0);
+          } else if (addProduction(index)) {
+            layoutTable(m);
+            focus(index + 1, 0);
+          } else {
+            // Leave an empty final row without generating endless blank rows.
+            $('.grammar-menu summary, #addrowbutton').filter(':visible').first().focus();
+          }
+          break;
         case 13:
           if (index2 == 0) {
             focus(index, 2);
