@@ -626,36 +626,26 @@ var exerciseLocation;
 
   // Saves the graph, then reconfigures the layout automatically.
   // Triggered by clicking the "Layout" button.
+  // Applying a layout algorithm is generic across all graph editors - see GraphEditor.js.
   var layoutGraph = function() {
-    removeModeClasses();
-    removeND();
-    g.layout();
+    GraphEditor.applyLayout(g, function(g) { g.layout(); }, removeModeClasses, removeND);
   };
   //Apply a random layout algorithm to the graph
   var randomLayout = function() {
-    removeModeClasses();
-    removeND();
-    g.randomLayoutAlg();
+    GraphEditor.applyLayout(g, function(g) { g.randomLayoutAlg(); }, removeModeClasses, removeND);
   };
   // Triggered by clicking the "Circle" button.
   var circleLayout = function() {
-    removeModeClasses();
-    removeND();
-    g.circleLayoutAlg();
-    //layoutCircle(100, Math.PI, 2*Math.PI);
+    GraphEditor.applyLayout(g, function(g) { g.circleLayoutAlg(); }, removeModeClasses, removeND);
   };
   // Triggered by clicking the "GEM" button.
   var gemLayout = function() {
-    removeModeClasses();
-    removeND();
-    g.gemLayoutAlg();
+    GraphEditor.applyLayout(g, function(g) { g.gemLayoutAlg(); }, removeModeClasses, removeND);
   };
 
   // Triggered by clicking the "Spiral" button.
   var spiralLayout = function() {
-    removeModeClasses();
-    removeND();
-    g.spiralLayoutAlg();
+    GraphEditor.applyLayout(g, function(g) { g.spiralLayoutAlg(); }, removeModeClasses, removeND);
   };
 
   // Exit out of all editing modes and prepare the view for the input string JSAV array.
@@ -665,19 +655,13 @@ var exerciseLocation;
   };
 
   var twoCircleLayout = function() {
-    removeModeClasses();
-    removeND();
-    g.twoCircleLayoutAlg();
+    GraphEditor.applyLayout(g, function(g) { g.twoCircleLayoutAlg(); }, removeModeClasses, removeND);
   };
   var treeLayoutDegree = function() {
-    removeModeClasses();
-    removeND();
-    g.treeLayoutAlg(false);
+    GraphEditor.applyLayout(g, function(g) { g.treeLayoutAlg(false); }, removeModeClasses, removeND);
   };
   var treeLayoutHierarchy = function() {
-    removeModeClasses();
-    removeND();
-    g.treeLayoutAlg(true);
+    GraphEditor.applyLayout(g, function(g) { g.treeLayoutAlg(true); }, removeModeClasses, removeND);
   };
 
   // Exit out of all editing modes and prepare the view for the input string JSAV array.
@@ -809,20 +793,12 @@ var exerciseLocation;
   // Since both of them are empty, both buttons are also disabled.
   // Called whenever the user loads a new graph.
   function resetUndoButtons () {
-    document.getElementById("undoButton").disabled = true;
-    document.getElementById("redoButton").disabled = true;
+    GraphEditor.resetUndoButtons();
   };
 
-  //cancel all current options
+
   function cancel() {
-    $(".jsavgraph").removeClass("addNodes").removeClass("addEdges").removeClass("moveNodes").removeClass("editNodes").removeClass("deleteNodes").removeClass("working");
-    jsav.umsg("");
-    var nodes = g.nodes();
-    _.each(nodes, function(x) {x.unhighlight();});
-    g.selected = null;
-    g.hideRMenu();
-    collapseEdges();
-    g.enableDragging();
+    GraphEditor.cancel(jsav, g, collapseEdges);
   }
 
   function finishExercise() {
@@ -1229,31 +1205,7 @@ var exerciseLocation;
   // Disable all editing modes so that click handlers do not fire.
   // Called when the user switches editing modes, or otherwise presses a button that changes the view.
   var removeModeClasses = function() {
-    // Clear all superfluous or otherwise outdated information on the page.
-    $('.arrayPlace').empty();
-    $('#download').html('');
-    jsav.umsg('');
-    // Unselect and unhighlight any selected nodes or edges.
-    if (g.first) {
-      g.first.unhighlight();
-      g.first = null;
-    }
-    if (g.selected) {
-      g.selected.unhighlight();
-      g.selected = null;
-    }
-    if ($(".jsavgraph").hasClass("deleteNodes")) {
-      $(".jsavgraph").removeClass("deleteNodes");
-      // Return edges to normal size.
-      collapseEdges();
-    }
-    else {
-      $(".jsavgraph").removeClass("addNodes");
-      $(".jsavgraph").removeClass("addEdges");
-      $(".jsavgraph").removeClass("editNodes");
-      $(".jsavgraph").removeClass("moveNodes");
-      $(".jsavgraph").removeClass("working");
-    }
+    GraphEditor.removeModeClasses(jsav, g, collapseEdges);
   };
 
   function clearLabels() {
@@ -1336,73 +1288,11 @@ var exerciseLocation;
   }
 
   function savePDF(){
-    html2canvas(document.querySelector("#av")).then(canvas => {
-      /*var imgData = canvas.toDataURL(
-        'image/png');              
-        var doc = new jsPDF('p', 'mm');
-        doc.addImage(imgData, 'PNG', 10, 10);
-        doc.save('sample-file.pdf');*/
-      var a = document.createElement('a');
-      // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
-      a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
-      a.download = 'image.jpg';
-      a.click();
-
-
-    });
-    //Get svg markup as string
-    /*var svg = $('div.jsavgraph.jsavfiniteautomaton.jsavautoresize.jsavcenter');
-      var svg = svg.html();
-      var svg1 = svg.innerHTML;
-      if (svg){
-      svg = svg.replace(/\r?\n|\r/g, '').trim();
-      }
-
-      var canvas = document.createElement('canvas');
-      var context = canvas.getContext('2d');
-
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      canvg(canvas, svg);
-
-
-      var imgData = canvas.toDataURL('image/png');
-
-      // Generate PDF
-      var doc = new jsPDF('p', 'pt', 'a4');
-      doc.addImage(imgData, 'PNG', 40, 40, 75, 75);
-      doc.save('test.pdf');*/
-    /*var doc = new jsPDF();
-      var specialElementHandlers = {
-      '#editor': function (element, renderer) {
-      return true;
-      }
-      };
-      var ht = $('svg').html();
-      doc.fromHTML(ht, 150, 150, {
-      'width': 170,
-      'elementHandlers': specialElementHandlers
-      });
-      doc.save('sample-file.pdf');*/
+    GraphEditor.saveCanvasAsImage();
   }
 
   function highlight_select_button(){
-    // Add active class to the current button (highlight it)
-    /*var header = document.getElementById("menu_options");
-      var btns = header.getElementsByClassName("icon_btn");
-      for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function() {
-      var current = document.getElementsByClassName("active");
-      current[0].className = current[0].className.replace(" active", "");
-      this.className += " active";
-      });
-      }*/
-    $('#undoButton').removeClass("active");
-    $('#redoButton').removeClass("active");
-    $('#deleteButton').removeClass("active");
-    $('#editButton').removeClass("active");
-    $('#nodeButton').removeClass("active");
-    $('#edgeButton').removeClass("active");
-    $('#collapseButton').removeClass("active");
+    GraphEditor.highlightSelectButton();
   }
   // Button click handlers.
   $('#trapState').click(addTrapState);
