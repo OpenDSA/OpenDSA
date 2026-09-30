@@ -42,7 +42,8 @@ $(document).ready(function () {
   This is used to import grammars from certain proofs.
   */
    //do not look at the storage if the editor is for an exercise
-  if (type == null && localStorage["grammar"]) {
+  var importKey = type === "editor" ? "transformedGrammar" : "grammar";
+  if ((type == null || type === "editor") && localStorage[importKey]) {
     // the grammar is saved as a string of a list of strings:
     // turn each production into an array containing the left side, arrow, and right side
     // arr = _.map(localStorage['grammar'].split(','), function(x) {
@@ -50,13 +51,13 @@ $(document).ready(function () {
     //   d.splice(1, 0, arrow);
     //   return d;
     // });
-    arr = JSON.parse(localStorage.getItem("grammar"));
+    arr = JSON.parse(localStorage.getItem(importKey));
     lastRow = arr.length;
     // add an empty row for editing purposes (clicking the empty row allows the user to add productions)
     //arr.push(["S", arrow, "jZ"]);
     arr.push(["", arrow, ""]);
     // clear the grammar from local storage to prevent it from being loaded by other grammar tests
-    localStorage.removeItem('grammar');
+    localStorage.removeItem(importKey);
   } else {
     arr = new Array(20);    // arbitrary array size
     for (var i = 0; i < arr.length; i++) {
@@ -1577,23 +1578,23 @@ $(document).ready(function () {
     transformed = transformed.concat(productions);
     for (var i = 0; i < productions.length; i++) {
       var p = productions[i];
-      // find lambda deriving variables in right hand side
-      var v = _.filter(p[2], function(x) { return x in derivers;});
-      if (v.length > 0) {
-        v = v.join('');
-        for (var j = v.length - 1; j >= 0; j--) {
-          // remove all combinations of lambda-deriving variables
-          var n = getCombinations(v, j + 1);
-          for (var next = n.next(); next.value; next = n.next()) {
-            var replaced = p[2];
-            for (var k = 0; k < next.value.length; k++) {
-              replaced = replaced.replace(next.value[k], "");
-            }
-            // if not a lambda production
-            if (replaced && !_.find(transformed, function(x) {return x[0] === p[0] && x[2] === replaced})) {
-              transformed.push([p[0], arrow, replaced]);
-            }
-          }
+      // Keep or omit each nullable occurrence independently. Replacing by
+      // character value loses alternatives when the same variable repeats.
+      var variants = [''];
+      for (var position = 0; position < p[2].length; position++) {
+        var symbol = p[2][position];
+        var expanded = [];
+        for (var candidate = 0; candidate < variants.length; candidate++) {
+          expanded.push(variants[candidate] + symbol);
+          if (symbol in derivers) expanded.push(variants[candidate]);
+        }
+        variants = _.uniq(expanded);
+      }
+      for (var j = 0; j < variants.length; j++) {
+        var replaced = variants[j];
+        // Preserve the existing convention of excluding empty productions.
+        if (replaced && !_.find(transformed, function(x) { return x[0] === p[0] && x[2] === replaced; })) {
+          transformed.push([p[0], arrow, replaced]);
         }
       }
     }
@@ -1842,6 +1843,16 @@ $(document).ready(function () {
   // Transformations (interactive)
 
   // Function to check to see if a step should be skipped
+  // Use the same JSON row format consumed by the standalone editor.
+  function exportTransformedGrammar(productions) {
+    var rows = _.map(productions, function(production) {
+      var separator = production.indexOf(arrow);
+      return [production.slice(0, separator), arrow, production.slice(separator + arrow.length)];
+    });
+    localStorage.setItem('transformedGrammar', JSON.stringify(rows));
+    window.open('grammarEditor.html', '');
+  }
+
   var checkTransform = function (strP, g) {
     var inter = _.intersection(strP, g);
     if (inter.length === strP.length && inter.length === g.length) {
@@ -1974,8 +1985,7 @@ $(document).ready(function () {
         var confirmed = confirm('Grammar completed; export?');
         // if export, open the completed grammar in a new tab
         if (confirmed) {
-          localStorage['grammar'] = transformed;
-          window.open('grammarTest.html', '');
+          exportTransformedGrammar(transformed);
         }
         arr = tArr;
         lastRow = arr.length - 1;
@@ -2123,8 +2133,7 @@ $(document).ready(function () {
       if (tArr.length - 1 === noUnit.length && !_.find(tArr, function(x){return x[2].length === 1 && variables.indexOf(x[2]) !== -1})) {
         var confirmed = confirm('Grammar completed; export?');
         if (confirmed) {
-          localStorage['grammar'] = noUnit;
-          window.open('grammarTest.html', '');
+          exportTransformedGrammar(noUnit);
         }
         arr = tArr;
         lastRow = arr.length - 1;
@@ -2220,8 +2229,7 @@ $(document).ready(function () {
       if (tArr.length - 1 === noUseless.length && !_.find(tArr, function(x){return x[2].length === 1 && variables.indexOf(x[2]) !== -1})) {
         var confirmed = confirm('Grammar completed; export?');
         if (confirmed) {
-          localStorage['grammar'] = noUseless;
-          window.open('grammarTest.html', '');
+          exportTransformedGrammar(noUseless);
         }
         arr = tArr;
         lastRow = arr.length - 1;
@@ -2458,8 +2466,7 @@ $(document).ready(function () {
           tArr[j][2] = tArr[j][2].replace(regex, newVariables[i]);
         }
       }
-      localStorage['grammar'] = _.map(tArr, function(x) {return x.join(''); });
-      window.open('grammarTest.html', '');
+      exportTransformedGrammar(_.map(tArr, function(x) {return x.join(''); }));
     };
 
     tGrammar = jsav.ds.matrix(_.map(tArr, function(x){return [x[0], x[1], x[2].join('')]; }));
