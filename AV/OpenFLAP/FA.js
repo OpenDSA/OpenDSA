@@ -106,22 +106,24 @@ var exerciseLocation;
   };
 
   // Sets click handler for when the user clicks a JSAV edge label.
+  // Mode-dispatch on click is generic across all graph editors - see GraphEditor.js.
   var labelClickHandler = function(e) {
-    if ($(".jsavgraph").hasClass("editNodes")) {
-      // If in "Edit Nodes" mode (which also serves to edit edges), open the custom prompt box to edit the edge.
-      label = this;
-      var values = $(label).html().split('<br>');
-      var clickedEdge = $(label).data("edge");
-      var currentStyle = clickedEdge ? clickedEdge.labelStyle() : undefined;
-      var Prompt = new EdgePrompt(updateEdge, emptystring, currentStyle);
-      Prompt.render(values);
-    }
-    else if ($(".jsavgraph").hasClass("deleteNodes")) {
-      console.log("click on label");
-      g.saveFAState();
-      $(this).html("");
-      g.layout({layout:"manual"});
-    }
+    GraphEditor.dispatchModeClick.call(this, {
+      editNodes: function() {
+        // "Edit Nodes" mode also serves to edit edges.
+        label = this;
+        var values = $(label).html().split('<br>');
+        var clickedEdge = $(label).data("edge");
+        var currentStyle = clickedEdge ? clickedEdge.labelStyle() : undefined;
+        var Prompt = new EdgePrompt(updateEdge, emptystring, currentStyle);
+        Prompt.render(values);
+      },
+      deleteNodes: function() {
+        g.saveFAState();
+        $(this).html("");
+        g.layout({layout:"manual"});
+      }
+    });
   };
   
   function deserialize(data) {
@@ -188,28 +190,25 @@ var exerciseLocation;
   };
 
   // Sets click handlers for when the user clicks on the JSAV graph.
+  // Closing an open right-click menu, and mode-dispatch on click
   var graphClickHandler = function(e) {
-    if ($("#rmenu").is(":visible")) {
-      g.hideRMenu();
-    }
-    
-    else if ($(".jsavgraph").hasClass("addNodes") && !$(".jsavgraph").hasClass("addTrapState")) {
-      // If in "Add Nodes" mode, save the graph and add a node.
-      g.saveFAState();
-      executeAddNode(g, e.pageY, e.pageX);
-    }
-    else if ($(".jsavgraph").hasClass("addNodes") && $(".jsavgraph").hasClass("addTrapState")) {
-      // If in "Add Nodes" and "trap state" mode, save the graph and add a node.
-      g.saveFAState();
-      var node = executeAddNode(g, e.pageY, e.pageX);
-      g.saveFAState();
-      //executeEditFANode(g, g.selected, initial_state, final_state, node_label);
-      // executeEditNode's signature is (graph, node, wasInitialState, initial_state,
-      // wasFinalState, final_state, node_label) - this call was previously missing two
-      // arguments, so the label string landed in the wasFinalState slot instead of
-      // node_label and no label was ever actually applied to the trap state.
-      executeEditNode(g, node, false, false, false, false, buildStyledLabelHtml("Trap State"));
-    }
+    if (GraphEditor.closeContextMenuIfOpen(g)) { return; }
+    GraphEditor.dispatchModeClick({
+      addNodes: function() {
+        g.saveFAState();
+        var node = executeAddNode(g, e.pageY, e.pageX);
+        if ($(".jsavgraph").hasClass("addTrapState")) {
+          // A second saveFAState() here (matching the original code) gives
+          // "add the node" and "label it as a trap state" separate undo steps.
+          g.saveFAState();
+          // executeEditNode's signature is (graph, node, wasInitialState,
+          // initial_state, wasFinalState, final_state, node_label) - this
+          // call was previously missing two arguments, so the label string
+          // landed in the wasFinalState slot and no label was ever applied.
+          executeEditNode(g, node, false, false, false, false, buildStyledLabelHtml("Trap State"));
+        }
+      }
+    });
   };
 
   // Opens the same styled node-edit dialog used by double-click, for a given
@@ -229,36 +228,41 @@ var exerciseLocation;
   // editor's richer dialog instead of a plain prompt().
   window.jsavOpenNodeLabelDialog = openNodeEditDialog;
 
-  // Sets click handlers for when the user clicks on a JSAV node.
+  // Mode-dispatch on click is generic across all graph editors - see GraphEditor.js.
   var nodeClickHandler = function(e) {
-    if ($(".jsavgraph").hasClass("editNodes") && !$(".jsavgraph").hasClass("RE")) {
-      // If in "Edit Nodes" mode, open the custom prompt box to edit the selected node.
-      openNodeEditDialog(this);
-    }
-    else if ($('.jsavgraph').hasClass('deleteNodes')) {
-      // If in "Delete Nodes" mode, save the graph and delete the node.
-      g.saveFAState();
-      executeDeleteNode(g, this);
-      checkAllEdges();
-    }
-    else if ($('.jsavgraph').hasClass('collapse2')) {
-      g.selected = this;
-      if (g.selected == g.initial || g.selected.hasClass('final')) {
-        alert("You need to click on a noninitial, nonfinal node.")
-        return;
+    GraphEditor.dispatchModeClick.call(this, {
+      editNodes: function() {
+        // Editing is handled by the FA-to-RE conversion flow instead while in "RE" mode.
+        if (!$(".jsavgraph").hasClass("RE")) {
+          openNodeEditDialog(this);
+        }
+      },
+      deleteNodes: function() {
+        g.saveFAState();
+        executeDeleteNode(g, this);
+        checkAllEdges();
+      },
+      collapse2: function() {
+        g.selected = this;
+        if (g.selected == g.initial || g.selected.hasClass('final')) {
+          alert("You need to click on a noninitial, nonfinal node.")
+          return;
+        }
+        fatoreController.collapseState(g.selected);
       }
-      fatoreController.collapseState(g.selected);
-    }
+    });
   };
 
   // Sets click handler for when the user clicks a JSAV edge.
   var edgeClickHandler = function(e) {
-    if ($('.jsavgraph').hasClass('deleteNodes')) {
-      // If in "Delete Nodes" mode (which also serves to delete edges), save the graph and delete the edge.
-      g.saveFAState();
-      executeDeleteEdge(g, this);
-      checkAllEdges();
-    }
+    GraphEditor.dispatchModeClick.call(this, {
+      deleteNodes: function() {
+        // "Delete Nodes" mode also serves to delete edges.
+        g.saveFAState();
+        executeDeleteEdge(g, this);
+        checkAllEdges();
+      }
+    });
   };
 
   // Called by the edit node custom prompt box to save the graph and update the node upon clicking "OK".
@@ -398,15 +402,16 @@ var exerciseLocation;
     }
   };
 
-  // Function to switch to "Add Nodes" mode.
+  // Entering a toolbar mode is generic across all graph editors - see GraphEditor.js.
   // Triggered by clicking the "Add Nodes" button.
   var addNodes = function() {
-    highlight_select_button();
-    removeModeClasses();
-    removeND();
-    $('.jsavgraph').addClass("addNodes");
-    jsav.umsg('Click to add nodes.');
-    $('#nodeButton').addClass("active");
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      modeClass: 'addNodes',
+      message: 'Click to add nodes.',
+      buttonSelector: '#nodeButton'
+    });
   };
 
   // Function to switch to "Add Edges" mode.
@@ -424,40 +429,41 @@ var exerciseLocation;
     $('#edgeButton').addClass("active");
   };
 
-  // Function to switch to "Move Nodes" mode.
   // Triggered by clicking the "Move Nodes" button.
   var moveNodes = function() {
-    highlight_select_button();
-    removeModeClasses();
-    removeND();
-    g.enableDragging();
-    jsav.umsg('Drag to Move.');
-    $('#moveButton').addClass("active");
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      setup: function() { g.enableDragging(); },
+      message: 'Drag to Move.',
+      buttonSelector: '#moveButton'
+    });
   };
 
-  // Function to switch to "Edit Nodes" mode.
-  // Triggered by clicking the "Edit Nodes/Edges" button.
+  // Triggered by clicking the "Edit Nodes/Edges" button. Dragging stays
+  // enabled in this mode too (same as Move Nodes), so nodes can still be
+  // repositioned while editing.
   var editNodes = function() {
-    highlight_select_button();
-    removeModeClasses();
-    removeND();
-    moveNodes();
-    $('.jsavgraph').addClass('editNodes');
-    jsav.umsg('Click a node or edge label.');
-    $('#editButton').addClass("active");
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      setup: function() { g.enableDragging(); },
+      modeClass: 'editNodes',
+      message: 'Click a node or edge label.',
+      buttonSelector: '#editButton'
+    });
   };
 
-  // Function to switch to "Delete Nodes" mode.
   // Triggered by clicking the "Delete Nodes/Edges" button.
   var deleteNodes = function() {
-    highlight_select_button();
-    $('#deleteButton').addClass("active");
-    removeModeClasses();
-    removeND();
-    $('.jsavgraph').addClass('deleteNodes');
-    jsav.umsg('Click a node or edge to delete it.');
-    // Expand the edges to make them easier to click.
-    expandEdges();
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      setup: expandEdges, // Expand the edges to make them easier to click.
+      modeClass: 'deleteNodes',
+      message: 'Click a node or edge to delete it.',
+      buttonSelector: '#deleteButton'
+    });
   };
   
   var stateCollapser = function() {

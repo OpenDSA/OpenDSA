@@ -141,6 +141,53 @@ var GraphEditor = (function ($) {
     runAlgorithmFn(g);
   }
 
+  // Generic click dispatcher for a node or edge: checks which editing mode is active and invokes the matching handler with the clicked node/edge as `this`.
+  // Takes an object keyed by the calling editor's own mode class names (since these differ per editor), and only the first matching class's handler runs.
+  function dispatchModeClick(modeHandlers) {
+    for (var className in modeHandlers) {
+      if (Object.prototype.hasOwnProperty.call(modeHandlers, className) && $(".jsavgraph").hasClass(className)) {
+        modeHandlers[className].call(this);
+        return;
+      }
+    }
+  }
+
+  // Closes the right-click context menu if it's open, reporting whether it
+  // did so, so callers can skip the rest of their own click handling for
+  // this click (a click meant to dismiss the menu shouldn't also act on
+  // whatever's underneath it).
+  function closeContextMenuIfOpen(g) {
+    if ($("#rmenu").is(":visible")) {
+      g.hideRMenu();
+      return true;
+    }
+    return false;
+  }
+
+  // Switches the editor into a toolbar tool/edit mode: highlights the active
+  // toolbar button, clears previous mode state and test highlights, runs
+  // any mode-specific setup (e.g. enabling dragging), marks the canvas with
+  // this mode's CSS class (if it has one - not every mode does), and shows
+  // a status message.
+  // options: {
+  //   removeModeClassesFn, removeTestHighlightsFn: each editor's own (what
+  //     counts as a "test highlight" is machine-specific),
+  //   setup: optional function() run after clearing state, before the mode
+  //     class/message/button are set,
+  //   modeClass: optional CSS class to add to .jsavgraph,
+  //   message: status text shown via jsav.umsg(),
+  //   buttonSelector: the toolbar button to mark active, e.g. '#nodeButton'
+  // }
+  function enterMode(jsav, options) {
+    highlightSelectButton();
+    options.removeModeClassesFn();
+    options.removeTestHighlightsFn();
+    if (options.setup) { options.setup(); }
+    if (options.modeClass) { $('.jsavgraph').addClass(options.modeClass); }
+    jsav.umsg(options.message);
+    $(options.buttonSelector).addClass('active');
+  }
+
   return {
     removeModeClasses: removeModeClasses,
     cancel: cancel,
@@ -149,6 +196,9 @@ var GraphEditor = (function ($) {
     getTranslateY: getTranslateY,
     avoidOverFlow: avoidOverFlow,
     saveCanvasAsImage: saveCanvasAsImage,
-    applyLayout: applyLayout
+    applyLayout: applyLayout,
+    dispatchModeClick: dispatchModeClick,
+    closeContextMenuIfOpen: closeContextMenuIfOpen,
+    enterMode: enterMode
   };
 })(jQuery);
