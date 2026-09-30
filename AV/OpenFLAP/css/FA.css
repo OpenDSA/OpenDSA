@@ -2,6 +2,15 @@
 	width: 100%;
 	position: relative;
 }
+/* FAtoRE.css sets p.jsavoutput.jsavline to a fixed 10px height (shared by
+   several other pages, so left alone there), but this page's status text
+   has a 20px line-height and was overflowing into the canvas border below
+   it, making the border look like it struck through the text. Higher
+   specificity here overrides it for just this page. */
+#av > p.jsavoutput.jsavline {
+	height: auto;
+	min-height: 20px;
+}
 .arrayPlace {
 	max-width: 100%;
 	overflow: initial;
