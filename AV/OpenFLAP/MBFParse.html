@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brute Force Parse</title>
+<style>
+body{font:16px Arial,sans-serif;background:#f5f5e9;color:#161616;margin:24px auto;max-width:1000px;padding:0 16px}h1{font-size:26px}button,input{font:inherit;padding:6px 10px}button{cursor:pointer}nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}table{border-collapse:collapse;margin:16px 0;background:white}th,td{border:1px solid #bbb;padding:8px 12px;text-align:left}input{width:min(45vw,360px);box-sizing:border-box}output button{border:0;background:none;color:#14548c;text-decoration:underline}#trace{overflow:auto}svg{background:white;max-width:none}#message{min-height:24px}caption{text-align:left;font-weight:bold;margin-bottom:8px}[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<h1>Brute Force Parse</h1>
+<p>Enter input strings, then select Run Inputs. Use ! or λ for the empty string. Select an accepted result to view its derivation.</p>
+<p id="message" role="status"></p>
+<table id="grammar"><caption>Grammar</caption><thead><tr><th>Left</th><th></th><th>Right</th></tr></thead><tbody></tbody></table>
+<nav aria-label="Input commands"><button id="addinputbutton">Add Input</button><button id="deleterowbutton">Delete Row</button><button id="runinputsbutton">Run Inputs</button><button id="clearbutton">Clear All</button><button id="backbutton">Back to Grammar Editor</button></nav>
+<table id="table"><thead><tr><th>Input</th><th>Result</th></tr></thead><tbody></tbody></table>
+<section id="trace" hidden><h2>Derivation</h2><p id="traceInput"></p><nav aria-label="Derivation steps"><button id="firstStep">First</button><button id="previousStep">Previous</button><button id="nextStep">Next</button><button id="lastStep">Last</button></nav><p id="stepStatus" aria-live="polite"></p><div id="tree"></div><table id="derivation"><thead><tr><th>Production</th><th>Result</th></tr></thead><tbody></tbody></table></section>
+<script src="BruteForceParser.js"></script>
+<script src="MBFParse.js"></script>
+</body></html>
