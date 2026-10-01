@@ -4838,10 +4838,10 @@ function getRandomInt(max) {
       this.arr = jsav.ds.array(element, { left: left_arr, top: top_arr });
 
       //unhighlights everything
-      for (var i = 0; i < this.arr.size(); i++) {
+      for (var i = 0; i < this.arr.length; i++) {
         this.arr.unhighlight(i);
       }
-      if (this.current > -1 && this.current < this.arr.size()) {
+      if (this.current > -1 && this.current < this.arr.length) {
         this.arr.highlight(this.current); //highlights the current position
       }
 
@@ -4869,7 +4869,7 @@ function getRandomInt(max) {
 
 
       var highlightLeft = (this.current === -1);
-      var highlightRight = (this.current >= this.arr.size());
+      var highlightRight = (this.current >= this.arr.length);
 
       if (direction === "right") { this.plot_right(jsav, right, y_coord, points, highlightRight); }
       if (direction === "left") { this.plot_left(jsav, x_coord, y_coord, points_l, highlightLeft); }
@@ -4924,7 +4924,7 @@ function getRandomInt(max) {
   // unhighlights everything and highlights the necessary position
   proto.highlightPosition = function (loc) {
     if (this.current !== "undefined") {
-      for (var i = 0; i < this.arr.size(); i++) {
+      for (var i = 0; i < this.arr.length; i++) {
         this.arr.unhighlight(i);
       }
     }
@@ -4961,7 +4961,7 @@ function getRandomInt(max) {
       this.arr.unhighlight(this.current);
     }
 
-    if(this.current < this.arr.size() - 1)
+    if(this.current < this.arr.length - 1)
       this.current++;
       if(highlightIndex){
         this.arr.highlight(this.current);
@@ -4985,7 +4985,7 @@ function getRandomInt(max) {
   }
 
   proto.clearTapeContent = function(){
-    for(var i = 0; i< this.arr.size(); i++){
+    for(var i = 0; i< this.arr.length; i++){
       this.arr.value(i, "#");
     }
     this.unhighlightCurrent();

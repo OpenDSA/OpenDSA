@@ -141,7 +141,11 @@ programming langauges.
 One popular language one being Solidity.
 Here is an example Solidity code snippet. 
 
-.. image:: https://arpitmathur.files.wordpress.com/2018/04/solidity.png
+.. .. Taken from:
+.. .. https://arpitonline.com/wp-content/uploads/2018/04/solidity.png
+
+
+.. image:: /Images/solidity.png
 
 This code snippet is an example smart contract with a function that
 lets a user set a local variable and retrieve it.
@@ -322,7 +326,8 @@ included gas is 15M gwei.
 If the included gas is completely filled, the base fee will increase
 by a maximum of 12.5% per block and the block number will increase.
 
-.. image:: https://i.gyazo.com/ed985a9f020ea31379ef0901dbbb9249.png
+[Image unavailable]
+.. .. image:: https://i.gyazo.com/ed985a9f020ea31379ef0901dbbb9249.png
 
 This growth is compounding and can lead to very high base fees when
 there is high network congestion for extended periods of time.
@@ -361,7 +366,8 @@ Let's assume a tip of 0 and 21000 gas units for a regular
 transaction.
 This is what the gas price would be, depending on the base fee:
 
-.. image:: https://i.gyazo.com/b5a61de74c49f9a66e78ff599577cf99.png
+[Image unavailable]
+.. .. image:: https://i.gyazo.com/b5a61de74c49f9a66e78ff599577cf99.png
 
 Recall that a higher base fee comes with higher network congestion.
 So you might end up paying a substantial amount of money in ETH just

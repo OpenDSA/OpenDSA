@@ -1,0 +1,85 @@
+/* Standalone editor only: exercise pages retain their existing controls. */
+.grammar-editor-page #container {
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+  max-width: 1100px;
+  min-height: 650px;
+  height: auto;
+  margin: 16px auto;
+  overflow: visible;
+  border: 1px solid #b7bdc4;
+}
+.grammar-editor-page h1 { font-size: 24px; margin: 0; padding: 16px; }
+.grammar-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 4px 8px;
+  background: transparent;
+  border: 0;
+  position: relative;
+  z-index: 20;
+  text-align: left;
+}
+.grammar-menu details { position: relative; }
+.grammar-menu summary {
+  cursor: pointer;
+  font: 15px Arial, sans-serif;
+  padding: 8px 12px;
+  border-radius: 3px;
+  list-style: none;
+}
+.grammar-menu summary::-webkit-details-marker { display: none; }
+.grammar-menu summary::after { content: ' ▾'; font-size: 11px; }
+.grammar-menu summary:hover, .grammar-menu details[open] > summary { background: transparent; text-decoration: underline; }
+.grammar-menu summary[aria-disabled="true"] { color: #777; cursor: default; background: transparent; }
+.grammar-menu summary:focus-visible, .grammar-menu button:focus-visible {
+  outline: 2px solid #205b93;
+  outline-offset: -2px;
+}
+.grammar-menu-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 235px;
+  padding: 5px;
+  border: 1px solid #a9afb6;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 4px 12px #0002;
+}
+.grammar-menu details:last-child .grammar-menu-panel { left: auto; right: 0; }
+.grammar-menu .grammar-menu-panel button, .grammar-editor-page #helpbutton {
+  display: block;
+  box-sizing: border-box;
+  position: static;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  color: #20242a;
+  text-align: left;
+  font: 14px Arial, sans-serif;
+  cursor: pointer;
+}
+.grammar-menu .grammar-menu-panel button:hover { background: #e9f0f7; }
+.grammar-menu button[aria-pressed="true"]::after { content: ' ✓'; }
+.grammar-menu hr { margin: 5px; border: 0; border-top: 1px solid #ddd; }
+/* Inline display changes still control availability; the picker itself is opened by its button. */
+.grammar-editor-page #loadfile { position: fixed; left: -10000px; width: 1px; height: 1px; }
+.grammar-editor-page #buttons { margin: 0; padding: 12px 16px; min-height: 20px; text-align: center; }
+.grammar-editor-page #buttons button { padding: 5px 12px; margin: 0 3px; font-size: 14px; }
+.grammar-editor-page #mode:not(:empty) { display: block; margin-bottom: 8px; }
+.grammar-editor-page #av { margin-top: 0; }
+@media (max-width: 580px) {
+  .grammar-editor-page #container { width: calc(100% - 12px); margin: 6px; }
+  .grammar-menu summary { padding: 8px; font-size: 14px; }
+  .grammar-menu details:nth-last-child(-n+2) .grammar-menu-panel { left: auto; right: 0; }
+}
+.grammar-menu [hidden] { display: none !important; }
+
+/* Grow with small grammars; scroll only when the content exceeds the limit. */
+.grammar-editor-page #av .jsavcanvas { overflow-y: auto; max-height: 60vh; }

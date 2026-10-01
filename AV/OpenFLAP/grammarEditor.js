@@ -42,7 +42,8 @@ $(document).ready(function () {
   This is used to import grammars from certain proofs.
   */
    //do not look at the storage if the editor is for an exercise
-  if (type == null && localStorage["grammar"]) {
+  var importKey = type === "editor" ? "transformedGrammar" : "grammar";
+  if ((type == null || type === "editor") && localStorage[importKey]) {
     // the grammar is saved as a string of a list of strings:
     // turn each production into an array containing the left side, arrow, and right side
     // arr = _.map(localStorage['grammar'].split(','), function(x) {
@@ -50,13 +51,13 @@ $(document).ready(function () {
     //   d.splice(1, 0, arrow);
     //   return d;
     // });
-    arr = JSON.parse(localStorage.getItem("grammar"));
+    arr = JSON.parse(localStorage.getItem(importKey));
     lastRow = arr.length;
     // add an empty row for editing purposes (clicking the empty row allows the user to add productions)
     //arr.push(["S", arrow, "jZ"]);
     arr.push(["", arrow, ""]);
     // clear the grammar from local storage to prevent it from being loaded by other grammar tests
-    localStorage.removeItem('grammar');
+    localStorage.removeItem(importKey);
   } else {
     arr = new Array(20);    // arbitrary array size
     for (var i = 0; i < arr.length; i++) {
@@ -255,9 +256,9 @@ $(document).ready(function () {
   function addRow(index){
     var newProduction = addProduction(index);
     layoutTable(m);
-    // if (newProduction) {
-    //   focus(index + 1, 0);
-    // }
+    if (newProduction) {
+      focus(index + 1, 0);
+    }
   }
 
   function focus(index, index2) {
@@ -267,6 +268,7 @@ $(document).ready(function () {
     $('#firstinput').remove();
     var createInput = "<input type='text' id='firstinput' onfocus='this.value = this.value;' value=" + prev + ">";
     $('body').append(createInput);
+    m._arrays[index]._indices[index2].element[0].scrollIntoView({block: "nearest", inline: "nearest"});
     var offset = m._arrays[index]._indices[index2].element.offset();
     var topOffset = offset.top;
     var leftOffset = offset.left;
@@ -275,11 +277,28 @@ $(document).ready(function () {
     fi.outerHeight($('.jsavvalue').height());
     fi.width($(m._arrays[index]._indices[index2].element).width());
     fi.focus();
+    // Keep the body-positioned cell editor aligned with the scrolling matrix.
+    $('#av .jsavcanvas').off('scroll.grammarInput').on('scroll.grammarInput', function () {
+      if (!fi || !fi.length || !m._arrays[row]) return;
+      var cell = m._arrays[row]._indices[col].element;
+      fi.offset(cell.offset());
+      var bounds = this.getBoundingClientRect();
+      var cellBounds = cell[0].getBoundingClientRect();
+      fi.css('visibility', cellBounds.top >= bounds.top && cellBounds.bottom <= bounds.bottom ? 'visible' : 'hidden');
+    });
     // finalize the changes to the grammar when the enter key is pressed
     var validKeys = [13, 9, 37, 38, 39, 40];
     // keys for functions
-    fi.keyup(function(event){
+    fi.on('keydown keyup', function(event){
       var keyCode = event.keyCode;
+      // Tab must be handled before the browser moves focus. Ignore its keyup
+      // on the newly focused input so one press advances exactly one cell.
+      if (keyCode === 9) {
+        if (event.type !== 'keydown') return;
+        event.preventDefault();
+      } else if (event.type !== 'keyup') {
+        return;
+      }
       if (validKeys.indexOf(keyCode) !== -1) {
         var input = $(this).val();
         var regex = new RegExp(emptystring, g);
@@ -301,6 +320,23 @@ $(document).ready(function () {
         arr[index][index2] = input;
         layoutTable(m, 2);
         switch (keyCode) {
+        case 9:
+          if (event.shiftKey) {
+            if (index2 === 2) focus(index, 0);
+            else if (index > 0) focus(index - 1, 2);
+            else $('.grammar-menu summary, #addrowbutton').filter(':visible').first().focus();
+          } else if (index2 === 0) {
+            focus(index, 2);
+          } else if (index < lastRow) {
+            focus(index + 1, 0);
+          } else if (addProduction(index)) {
+            layoutTable(m);
+            focus(index + 1, 0);
+          } else {
+            // Leave an empty final row without generating endless blank rows.
+            $('.grammar-menu summary, #addrowbutton').filter(':visible').first().focus();
+          }
+          break;
         case 13:
           if (index2 == 0) {
             focus(index, 2);
@@ -345,6 +381,8 @@ $(document).ready(function () {
   // fired when document is clicked
   // saves current fi input value
   function defocus(e) {
+    // Add Row has just opened the new cell; do not close it as the click bubbles.
+    if ($(e.target).closest("#addrowbutton").length) return;
     if ($(e.target).hasClass("jsavvaluelabel")) return;
     if ($(e.target).hasClass("jsavvalue")) return;
     if ($(e.target).attr('id') == "firstinput") return;
@@ -1512,6 +1550,7 @@ $(document).ready(function () {
     $('.jsavmatrix').addClass("editMode");
     $('.jsavmatrix').removeClass("deleteMode");
     $('.jsavmatrix').removeClass("addrowMode");
+    focus(lastRow, 0);
   }
 
   //=================================
@@ -1539,23 +1578,23 @@ $(document).ready(function () {
     transformed = transformed.concat(productions);
     for (var i = 0; i < productions.length; i++) {
       var p = productions[i];
-      // find lambda deriving variables in right hand side
-      var v = _.filter(p[2], function(x) { return x in derivers;});
-      if (v.length > 0) {
-        v = v.join('');
-        for (var j = v.length - 1; j >= 0; j--) {
-          // remove all combinations of lambda-deriving variables
-          var n = getCombinations(v, j + 1);
-          for (var next = n.next(); next.value; next = n.next()) {
-            var replaced = p[2];
-            for (var k = 0; k < next.value.length; k++) {
-              replaced = replaced.replace(next.value[k], "");
-            }
-            // if not a lambda production
-            if (replaced && !_.find(transformed, function(x) {return x[0] === p[0] && x[2] === replaced})) {
-              transformed.push([p[0], arrow, replaced]);
-            }
-          }
+      // Keep or omit each nullable occurrence independently. Replacing by
+      // character value loses alternatives when the same variable repeats.
+      var variants = [''];
+      for (var position = 0; position < p[2].length; position++) {
+        var symbol = p[2][position];
+        var expanded = [];
+        for (var candidate = 0; candidate < variants.length; candidate++) {
+          expanded.push(variants[candidate] + symbol);
+          if (symbol in derivers) expanded.push(variants[candidate]);
+        }
+        variants = _.uniq(expanded);
+      }
+      for (var j = 0; j < variants.length; j++) {
+        var replaced = variants[j];
+        // Preserve the existing convention of excluding empty productions.
+        if (replaced && !_.find(transformed, function(x) { return x[0] === p[0] && x[2] === replaced; })) {
+          transformed.push([p[0], arrow, replaced]);
         }
       }
     }
@@ -1804,6 +1843,16 @@ $(document).ready(function () {
   // Transformations (interactive)
 
   // Function to check to see if a step should be skipped
+  // Use the same JSON row format consumed by the standalone editor.
+  function exportTransformedGrammar(productions) {
+    var rows = _.map(productions, function(production) {
+      var separator = production.indexOf(arrow);
+      return [production.slice(0, separator), arrow, production.slice(separator + arrow.length)];
+    });
+    localStorage.setItem('transformedGrammar', JSON.stringify(rows));
+    window.open('grammarEditor.html', '');
+  }
+
   var checkTransform = function (strP, g) {
     var inter = _.intersection(strP, g);
     if (inter.length === strP.length && inter.length === g.length) {
@@ -1936,8 +1985,7 @@ $(document).ready(function () {
         var confirmed = confirm('Grammar completed; export?');
         // if export, open the completed grammar in a new tab
         if (confirmed) {
-          localStorage['grammar'] = transformed;
-          window.open('grammarTest.html', '');
+          exportTransformedGrammar(transformed);
         }
         arr = tArr;
         lastRow = arr.length - 1;
@@ -2085,8 +2133,7 @@ $(document).ready(function () {
       if (tArr.length - 1 === noUnit.length && !_.find(tArr, function(x){return x[2].length === 1 && variables.indexOf(x[2]) !== -1})) {
         var confirmed = confirm('Grammar completed; export?');
         if (confirmed) {
-          localStorage['grammar'] = noUnit;
-          window.open('grammarTest.html', '');
+          exportTransformedGrammar(noUnit);
         }
         arr = tArr;
         lastRow = arr.length - 1;
@@ -2182,8 +2229,7 @@ $(document).ready(function () {
       if (tArr.length - 1 === noUseless.length && !_.find(tArr, function(x){return x[2].length === 1 && variables.indexOf(x[2]) !== -1})) {
         var confirmed = confirm('Grammar completed; export?');
         if (confirmed) {
-          localStorage['grammar'] = noUseless;
-          window.open('grammarTest.html', '');
+          exportTransformedGrammar(noUseless);
         }
         arr = tArr;
         lastRow = arr.length - 1;
@@ -2420,8 +2466,7 @@ $(document).ready(function () {
           tArr[j][2] = tArr[j][2].replace(regex, newVariables[i]);
         }
       }
-      localStorage['grammar'] = _.map(tArr, function(x) {return x.join(''); });
-      window.open('grammarTest.html', '');
+      exportTransformedGrammar(_.map(tArr, function(x) {return x.join(''); }));
     };
 
     tGrammar = jsav.ds.matrix(_.map(tArr, function(x){return [x[0], x[1], x[2].join('')]; }));
@@ -3422,7 +3467,6 @@ $(document).ready(function () {
     if (type == "grammarexercise") {
       var exerciseLocation = getExerciseLocation();
 		  m = init();
-      //var exercisePath = (exerciseLocation == null)? "./Formal_Languages_Automated_Exerciese/exercises/Sheet_3/sheet3P2.json": exerciseLocation;
   		exerController = new GrammarExerciseController(jsav, m, exerciseLocation, "json");
       exerController.load();
 
@@ -3446,7 +3490,9 @@ $(document).ready(function () {
     }
     else{//this part loads a grammar from xml file. We may use it when we need to provide an exercise that requires loading grammars
       $.ajax({
-        url: "./Formal_Languages_Automated_Exerciese/exercises/grammarTests.jff",
+        //        url: "./exercises/grammarTests.jff",
+        // The above file does not exist, try this one
+        url: "./exercises/grammarTests.xml",
         dataType: 'xml',
         async: true,
         success: function(data) {
@@ -3533,8 +3579,10 @@ $(document).ready(function () {
   }
 
   onLoadHandler();
-  if (window.inCanvas())
+  // Standalone editors do not load the optional Canvas progress helpers.
+  if (typeof window.inCanvas === "function" && window.inCanvas()) {
     initGraphFromServer();
+  }
 
   /////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////

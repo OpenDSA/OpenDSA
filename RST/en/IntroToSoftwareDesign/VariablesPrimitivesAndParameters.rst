@@ -485,7 +485,7 @@ Methods can be categorized by whether they produce a result:
 2. **non-void methods**: Compute and produce a value (an answer) that is returned to the caller.
 
 The return Keyword and Non-Void Return Types
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To write a method that returns a value, you replace the keyword ``void`` in the method header with the
 **return type** of the value being produced:
@@ -744,7 +744,7 @@ The same :math:`N + 1` rule applies to compound ``||`` expressions:
 
 
 The "Lining Up Preceding Conditions" Trap
-""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""
 
 A very common mistake students make when writing unit tests for compound conditions is trying to
 test a specific sub-condition without setting up the environment so that execution actually reaches it.

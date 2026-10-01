@@ -35,12 +35,12 @@ var exerciseLocation;
       document.getElementById("finish").hidden = true;
       switch (type) {
       case 'fixer':
-        var exercisePath = (exerciseLocation == null)? "./Formal Languages Automated Exerciese/exercises/fixerTests.json": exerciseLocation;
+        var exercisePath = (exerciseLocation == null)? "./exercises/fixerTests.json": exerciseLocation;
         exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph});
         exerController.load();
         break;
       case 'tester':
-        var exercisePath = (exerciseLocation == null)? "./Formal Languages Automated Exerciese/exercises/FAwithExpression.json": exerciseLocation;
+        var exercisePath = (exerciseLocation == null)? "./exercises/FAwithExpression.json": exerciseLocation;
         exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph});
         exerController.load();
         break;

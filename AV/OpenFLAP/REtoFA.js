@@ -62,11 +62,10 @@ var jsav,
 
 		$('#testSolution').click(testSolution);
     
-        if (window.inCanvas())
-		    initAnsFromServer();
-	}
-
-	
+          if (typeof window.inCanvas === "function" && window.inCanvas()) {
+	    initAnsFromServer();
+	  }
+        }
 
 	var testSolution = function(){
 		//we need to write the code to test the entered RE

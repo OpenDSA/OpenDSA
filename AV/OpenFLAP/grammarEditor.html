@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Grammar Editor</title>
 	<link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 	<link rel="stylesheet" href="../../lib/odsaAV.css" type="text/css" />
@@ -13,47 +14,75 @@
 	<link rel="stylesheet" href="./css/parsing.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
   <link rel="stylesheet" href="./css/help.css" type="text/css" />
   <link rel="stylesheet" href="./css/grammarEditor.css" type="text/css" />
+  <link rel="stylesheet" href="./css/grammarEditorMenu.css" type="text/css" />
 </head>
 
-<body>
+<body class="grammar-editor-page">
   <div id="container">
     <h1 id="editor">Grammar Editor</h1>
-    <button id="helpbutton"><img src="./help.png" alt="Help" /></button>
-    <div id="help" title="Help" style="display:none">
-      <div id="helpInfo">
-        Help:
-        To delete, click on "Delete" and click on the row you want to delete. Only one row can be deleted at a time!
-        To add, click on "Add Row" and a new empty row will show up at the bottom.
-      </div>
-    </div>
-		<div align="left">
-			<button type="button" id="multipleButton">Multiple</button>
-			<button type="button" id="addExerciseButton">Add</button>
-		</div>
-		<h2 class="multiple">Grammars</h2>
-		<p class="multiple" id="exerciseLinks"></p>
-    <div id="buttons" align="center">
-      <span id='mode'></span><br>
-<!--      <button type="button" id="editbutton">Edit</button>-->
-      <button type="button" id="addrowbutton">Add Row</button>
-      <button type="button" id="deletebutton">Delete</button>
-      <!-- <button type="button" class="function" id="bfpbutton">Brute Force Parse</button> -->
-      <button type="button" class="function" id="mbfpbutton">Brute Force Parse</button>
-      <button type="button" class="function" id="llbutton">LL(1) Parse</button>
-      <button type="button" class="function" id="slrbutton">SLR(1) Parse</button>
-      <button type="button" class="function" id="cykbutton">CYK Parse</button>
+    <nav class="grammar-menu" aria-label="Grammar editor commands">
+      <details>
+        <summary>File</summary>
+        <div class="grammar-menu-panel">
+          <div id="files">
+            <button type="button" id="openGrammarFile">Open Grammar…</button>
+            <input id="loadfile" type="file" tabindex="-1" aria-label="Open grammar file">
+            <button type="button" id="savefile">Save Grammar</button>
+          </div>
+          <button type="button" class="function" id="clearbutton">Clear All</button>
+          <hr>
+          <button type="button" id="multipleButton" aria-pressed="false">Multiple Grammars</button>
+          <button type="button" id="addExerciseButton">Add Grammar</button>
+        </div>
+      </details>
+      <details>
+        <summary>Edit</summary>
+        <div class="grammar-menu-panel">
+          <button type="button" id="addrowbutton">Add Row</button>
+          <button type="button" id="deletebutton">Delete Row</button>
+        </div>
+      </details>
+      <details>
+        <summary>Input</summary>
+        <div class="grammar-menu-panel">
+          <button type="button" class="function" id="mbfpbutton">Brute Force Parse</button>
+          <button type="button" class="function" id="llbutton">LL(1) Parse</button>
+          <button type="button" class="function" id="slrbutton">SLR(1) Parse</button>
+          <button type="button" class="function" id="cykbutton">CYK Parse</button>
+        </div>
+      </details>
+      <details>
+        <summary>Test</summary>
+        <div class="grammar-menu-panel">
+          <button type="button" class="function" id="identifybutton">Identify Grammar</button>
+        </div>
+      </details>
+      <details>
+        <summary>Convert</summary>
+        <div class="grammar-menu-panel">
+          <button type="button" class="function" id="convertRLGbutton">Convert RLG to FA</button>
+          <button type="button" class="function" id="convertCFGbuttonLL">Convert CFG to PDA (LL)</button>
+          <button type="button" class="function" id="convertCFGbuttonLR">Convert CFG to PDA (LR1)</button>
+          <button type="button" class="function" id="transformbutton">Transform Grammar</button>
+        </div>
+      </details>
+      <details>
+        <summary>Help</summary>
+        <div class="grammar-menu-panel">
+          <button type="button" id="helpbutton">Grammar Editor Help</button>
+        </div>
+      </details>
+    </nav>
+    <h2 class="multiple">Grammars</h2>
+    <p class="multiple" id="exerciseLinks"></p>
+    <div id="buttons" class="grammar-workflow" aria-label="Current operation">
+      <span id="mode" aria-live="polite"></span>
       <button type="button" class="parsingbutton" id="followbutton">Next</button>
       <button type="button" class="parsingbutton" id="slrdfabutton">Next</button>
       <button type="button" class="parsingbutton" id="parsetablebutton">Next</button>
       <button type="button" class="parsingbutton" id="parsereadybutton">Next</button>
       <button type="button" class="parsingbutton" id="parsebutton">Parse</button>
-      <button type="button" id="backbutton">Back</button><br>
-      <button type="button" class="function" id="convertRLGbutton">Convert RLG to FA</button>
-      <button type="button" class="function" id="convertCFGbuttonLL">Convert CFG to PDA (LL)</button>
-      <button type="button" class="function" id="convertCFGbuttonLR">Convert CFG to PDA (LR1)</button>
-      <button type="button" class="function" id="transformbutton">Transform Grammar</button>
-      <button type="button" class="function" id="identifybutton">Identify Grammar</button>
-      <button type="button" class="function" id="clearbutton">Clear All</button>
+      <button type="button" id="backbutton">Back</button>
       <button type="button" class="function" id="completeallbutton">Complete All</button>
       <div id="dfabuttons">
         <button type="button" id="finalbutton">Make final</button>
@@ -66,11 +95,8 @@
       </div>
       <p align="center" class="jsavoutput jsavline"></p>
     </div>
-    <div id="files">
-      <input id="savefile" type="button" value="Save">
-      <input id="loadfile" type="file">
-      <div style='display: none;'id='download'></div>
-    </div>
+    <div id="download" style="display: none;"></div>
+
   </div>
 
 	<script src="../../lib/jquery-3.7.1.min.js"></script>
@@ -87,5 +113,6 @@
   <script src="../../DataStructures/FLA/FA.js"></script>
   <script src="./CustomPrompt.js"></script>
   <script src="./grammarEditor.js"></script>
+  <script src="./grammarEditorMenu.js"></script>
 </body>
 </html>
