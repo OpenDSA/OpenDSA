@@ -3342,11 +3342,14 @@ var lambda = String.fromCharCode(955),
   };
 
 
-  //Complete the DFA by adding missing edges from each nodes to a new node. 
-  var completeDFA = function(jsav, graph){
+  //Complete the DFA by adding missing edges from each nodes to a new node.
+  //alphabet is optional; without it, the alphabet is inferred from the graph's edges.
+  var completeDFA = function(jsav, graph, alphabet){
 
     graph.options = $.extend({layout: 'automatic'}, graph.options);
-    var alphabet = Object.keys(graph.updateAlphabet());
+    if (!alphabet) {
+      alphabet = Object.keys(graph.updateAlphabet());
+    }
     var incomplete = findMissingTransitions(graph, alphabet);
     if(incomplete.length == 0)
     {

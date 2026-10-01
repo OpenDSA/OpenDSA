@@ -267,6 +267,10 @@ controllerProto.updateExercise = function (id) {
 			layout: "automatic"
 		});
 	}
+	// Editors that support per-exercise toolbar tools pass applyTools; the others are unaffected.
+	if (this.options.applyTools) {
+		this.options.applyTools(exercise["tools"]);
+	}
 	$("#testResults").hide();
 	$("#percentage").hide();
 	var exNum = parseInt(this.currentExercise) + 1;
