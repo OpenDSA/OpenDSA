@@ -68,6 +68,7 @@
 }
 .jsavcanvas {
 	height: 500px;
+	overflow: hidden;
 }
 .jsavgraph {
 	outline: 1px black solid;

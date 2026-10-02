@@ -188,6 +188,117 @@ var GraphEditor = (function ($) {
     $(options.buttonSelector).addClass('active');
   }
 
+  // Registers keyboard shortcuts: array of { test(e), action(e) }, first match wins.
+  // Skipped while a text input/textarea/contenteditable has focus, so typing is never hijacked.
+  function registerKeybindings(bindings) {
+    $(document).on('keydown', function (e) {
+      var tag = (e.target.tagName || '').toLowerCase();
+      if (tag === 'input' || tag === 'textarea' || e.target.isContentEditable) {
+        return;
+      }
+      for (var i = 0; i < bindings.length; i++) {
+        if (bindings[i].test(e)) {
+          e.preventDefault();
+          bindings[i].action(e);
+          return;
+        }
+      }
+    });
+  }
+
+  // Clicks a toolbar button via its own handler, unless it's disabled (jQuery's .click() otherwise ignores that).
+  function clickButtonUnlessDisabled(buttonSelector) {
+    var $button = $(buttonSelector);
+    if (!$button.prop('disabled')) {
+      $button.click();
+    }
+  }
+
+  // Re-attaches the canvas-click and edge-label-click handlers, unbinding any previous instance first to avoid stacking duplicates.
+  function rebindClickHandlers(graphClickHandler, labelClickHandler) {
+    $('.jsavgraph').off('click', graphClickHandler).click(graphClickHandler);
+    $('.jsavedgelabel').off('click', labelClickHandler).click(labelClickHandler);
+  }
+
+  // Creates a zoom/pan controller for a canvas element (applies a CSS
+  // transform directly to it, transform-origin 0 0). screenToLocal converts
+  // a raw page coordinate (e.g. a mouse event's pageX/pageY) into the
+  // canvas's own local coordinate system - the same system node/edge
+  // top/left positions already use - so existing "where on the canvas did I
+  // click" code keeps working at any zoom/pan level, not just 100%/(0,0).
+  function createZoomPan(canvasSelector, options) {
+    options = options || {};
+    var minZoom = options.minZoom || 0.25,
+      maxZoom = options.maxZoom || 3,
+      state = { zoom: 1, panX: 0, panY: 0 };
+
+    function apply() {
+      $(canvasSelector).css({
+        transform: 'translate(' + state.panX + 'px,' + state.panY + 'px) scale(' + state.zoom + ')',
+        transformOrigin: '0 0'
+      });
+    }
+
+    // The canvas element's own border is part of what gets scaled, so a
+    // local (child) coordinate has to be measured inside that border.
+    function borderWidth() {
+      return parseFloat($(canvasSelector).css('border-left-width')) || 0;
+    }
+
+    function screenToLocal(pageX, pageY) {
+      // $(canvasSelector).offset() already reflects the current pan (the
+      // transform-origin corner doesn't move under scale alone), so no
+      // separate pan bookkeeping is needed here.
+      var graphOffset = $(canvasSelector).offset();
+      return {
+        x: (pageX - graphOffset.left) / state.zoom - borderWidth(),
+        y: (pageY - graphOffset.top) / state.zoom - borderWidth()
+      };
+    }
+
+    function setZoom(newZoom, aroundPageX, aroundPageY) {
+      newZoom = Math.min(maxZoom, Math.max(minZoom, newZoom));
+      if (typeof aroundPageX === 'number') {
+        // Keep the local point under (aroundPageX, aroundPageY) visually
+        // fixed across the zoom change (standard "zoom to cursor").
+        var graphOffset = $(canvasSelector).offset();
+        var localBefore = screenToLocal(aroundPageX, aroundPageY);
+        state.zoom = newZoom;
+        // graphOffset.left/top = jsavcanvasOffset + jsavgraph's own local
+        // position + panX/panY (unaffected by scale - see screenToLocal).
+        // Solve for the new pan that keeps localBefore under the cursor.
+        var fixedScreenX = aroundPageX - (graphOffset.left - state.panX);
+        var fixedScreenY = aroundPageY - (graphOffset.top - state.panY);
+        state.panX = fixedScreenX - (localBefore.x + borderWidth()) * newZoom;
+        state.panY = fixedScreenY - (localBefore.y + borderWidth()) * newZoom;
+      } else {
+        state.zoom = newZoom;
+      }
+      apply();
+    }
+
+    function panBy(dx, dy) {
+      state.panX += dx;
+      state.panY += dy;
+      apply();
+    }
+
+    function reset() {
+      state.zoom = 1;
+      state.panX = 0;
+      state.panY = 0;
+      apply();
+    }
+
+    return {
+      getZoom: function () { return state.zoom; },
+      setZoom: setZoom,
+      panBy: panBy,
+      reset: reset,
+      screenToLocal: screenToLocal
+    };
+  }
+
   return {
     removeModeClasses: removeModeClasses,
     cancel: cancel,
@@ -199,6 +310,10 @@ var GraphEditor = (function ($) {
     applyLayout: applyLayout,
     dispatchModeClick: dispatchModeClick,
     closeContextMenuIfOpen: closeContextMenuIfOpen,
-    enterMode: enterMode
+    enterMode: enterMode,
+    registerKeybindings: registerKeybindings,
+    clickButtonUnlessDisabled: clickButtonUnlessDisabled,
+    rebindClickHandlers: rebindClickHandlers,
+    createZoomPan: createZoomPan
   };
 })(jQuery);
