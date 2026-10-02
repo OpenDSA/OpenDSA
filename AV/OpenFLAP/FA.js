@@ -15,7 +15,9 @@ var exerciseLocation;
       exerciseIndex,//for creating exercises
       type,//type of editor: fixer, tester or editor
       fatoreController,
-      exerController;
+      exerController,
+      wasPanning = false, // true for one click right after a canvas drag-to-pan, so that click doesn't also add a node
+      zoomPan = GraphEditor.createZoomPan('.jsavgraph', { minZoom: 0.25, maxZoom: 3 });
       $("#rmenu").load("./rmenu.html");
       $("#rmenu").hide();
   // Handler for initializing graph upon loading the web page.
@@ -85,15 +87,13 @@ var exerciseLocation;
       highlight_select_button();
       //$('#undoButton').addClass("active");
       g.undo();
-      $('.jsavgraph').click(graphClickHandler);
-      $('.jsavedgelabel').click(labelClickHandler);
+      GraphEditor.rebindClickHandlers(graphClickHandler, labelClickHandler);
     });
     $('#redoButton').click(function(){
       highlight_select_button()
       //$('#redoButton').addClass("active");
       g.redo();
-      $('.jsavgraph').click(graphClickHandler);
-      $('.jsavedgelabel').click(labelClickHandler);
+      GraphEditor.rebindClickHandlers(graphClickHandler, labelClickHandler);
     });
     resetUndoButtons();
   };
@@ -185,18 +185,19 @@ var exerciseLocation;
     jsav.displayInit();
     g.click(nodeClickHandler);
     g.click(edgeClickHandler, {edge: true});
-    $('.jsavgraph').click(graphClickHandler);
-    $('.jsavedgelabel').click(labelClickHandler);
+    GraphEditor.rebindClickHandlers(graphClickHandler, labelClickHandler);
   };
 
   // Sets click handlers for when the user clicks on the JSAV graph.
   // Closing an open right-click menu, and mode-dispatch on click
   var graphClickHandler = function(e) {
+    if (wasPanning) { wasPanning = false; return; } // this click ended a drag-to-pan, not a real click
     if (GraphEditor.closeContextMenuIfOpen(g)) { return; }
     GraphEditor.dispatchModeClick({
       addNodes: function() {
         g.saveFAState();
-        var node = executeAddNode(g, e.pageY, e.pageX);
+        var local = zoomPan.screenToLocal(e.pageX, e.pageY);
+        var node = executeAddNode(g, local.y, local.x);
         if ($(".jsavgraph").hasClass("addTrapState")) {
           // A second saveFAState() here (matching the original code) gives
           // "add the node" and "label it as a trap state" separate undo steps.
@@ -612,8 +613,7 @@ var exerciseLocation;
     }
     g.saveFAState();
     FiniteAutomaton.completeDFA(jsav, g);
-    $('.jsavgraph').click(graphClickHandler);
-    $('.jsavedgelabel').click(labelClickHandler);
+    GraphEditor.rebindClickHandlers(graphClickHandler, labelClickHandler);
   };
 
 
@@ -1221,7 +1221,7 @@ var exerciseLocation;
     }
   }
 
-  var startX, startY, endX, endY, offset, offset2; // start position of dragging edge line
+  var startX, startY, endX, endY, offset; // start position of dragging edge line
   function mouseDown(e) {
     if (!$('.jsavgraph').hasClass('addEdges')) return;
     var targetClass = $(e.target).attr('class');
@@ -1229,15 +1229,17 @@ var exerciseLocation;
     var node = $(e.target);
     g.first = g.getNodeWithValue(node.text());
     g.first.highlight();
-    offset = $('.jsavgraph').offset(),
-    offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
     if ($('.jsavgraph').hasClass("RE")) {
+      // RE (FA-to-regex) mode doesn't support zoom/pan, so its coordinate
+      // math is left exactly as it always was.
+      offset = $('.jsavgraph').offset();
       startX = e.pageX - offset.left;
       startY = e.pageY - offset.top;
     } else {
-      startX = e.pageX - offset.left + offset2;
-      startY = e.pageY - offset.top + offset2;
-    }      
+      var local = zoomPan.screenToLocal(e.pageX, e.pageY);
+      startX = local.x;
+      startY = local.y;
+    }
   }
 
   function mouseUp(e) {
@@ -1276,12 +1278,12 @@ var exerciseLocation;
       endX = e.pageX - offset.left;
       endY = e.pageY - offset.top;
     } else {
-      endX = e.pageX - offset.left + offset2;
-      endY = e.pageY - offset.top + offset2;
+      var local = zoomPan.screenToLocal(e.pageX, e.pageY);
+      endX = local.x;
+      endY = local.y;
     }
     $('path[opacity="1.5"]').remove();
     jsav.g.line(startX, startY, endX, endY, {"opacity": 1.5});
-    //jsav.g.line(startX, startY, e.pageX, e.pageY, {"opacity": 1.5});
   }
   function addTrapState(){
     if (g.initial == null) {
@@ -1337,10 +1339,77 @@ var exerciseLocation;
   $('#clearLabelButton').hide();
   $( "#dialog" ).dialog({ autoOpen: false });
   $("#helpButton").click(displayHelp);
-  $(document).keyup(function(e) {
-    if (e.keyCode === 27) cancel();   // esc
-  });
+  // Keyboard shortcuts: Escape, Ctrl/Cmd+Z and Ctrl/Cmd+Y (or Shift+Z) for undo/redo
+  GraphEditor.registerKeybindings([
+    { test: function(e) { return e.key === 'Escape'; }, action: cancel },
+    { test: function(e) { return (e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'z'; },
+      action: function() { GraphEditor.clickButtonUnlessDisabled('#undoButton'); } },
+    { test: function(e) { return (e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 'y' || (e.shiftKey && e.key.toLowerCase() === 'z')); },
+      action: function() { GraphEditor.clickButtonUnlessDisabled('#redoButton'); } },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 'a'; }, action: editNodes },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 's'; }, action: addNodes },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 't'; }, action: addEdges },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 'd'; }, action: deleteNodes },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 'u'; },
+      action: function() { GraphEditor.clickButtonUnlessDisabled('#undoButton'); } }
+  ]);
   $('#download').hide();
+
+  // --- Zoom / pan ---
+  function updateZoomDisplay() {
+    $('#zoomLevelDisplay').text(Math.round(zoomPan.getZoom() * 100) + '%');
+  }
+  function zoomAroundCanvasCenter(factor) {
+    var canvasOffset = $('.jsavcanvas').offset();
+    zoomPan.setZoom(zoomPan.getZoom() * factor,
+      canvasOffset.left + $('.jsavcanvas').width() / 2,
+      canvasOffset.top + $('.jsavcanvas').height() / 2);
+    updateZoomDisplay();
+  }
+  $('#zoomInButton').click(function() { zoomAroundCanvasCenter(1.2); });
+  $('#zoomOutButton').click(function() { zoomAroundCanvasCenter(1 / 1.2); });
+  $('#zoomResetButton').click(function() { zoomPan.reset(); updateZoomDisplay(); });
+
+  // Scroll/trackpad wheel zooms, centered on the cursor. Bound natively
+  // (not via jQuery) with { passive: false } so preventDefault() reliably
+  // stops the page itself from scrolling.
+  var zoomCanvasEl = document.querySelector('.jsavcanvas');
+  if (zoomCanvasEl) {
+    zoomCanvasEl.addEventListener('wheel', function(e) {
+      e.preventDefault();
+      zoomPan.setZoom(zoomPan.getZoom() * (e.deltaY > 0 ? 0.9 : 1.1), e.pageX, e.pageY);
+      updateZoomDisplay();
+    }, { passive: false });
+  }
+
+  // Drag-to-pan: starting a drag on empty canvas background (not on a
+  // node/edge/label) pans the view. Bound to .jsavcanvas (the stable
+  // viewport, not .jsavgraph) since addEdges() repeatedly clears/rebinds
+  // .jsavgraph's own mousedown/mousemove/mouseup for edge-drawing.
+  (function() {
+    var panning = false, panStartX, panStartY, panMoved = false;
+    var PAN_THRESHOLD = 4; // px of movement before this counts as a pan, not a click
+    $('.jsavcanvas').on('mousedown', function(e) {
+      if ($(e.target).closest('.jsavnode, .jsavedge, .jsavedgelabel, .jsavgraphnode').length) { return; }
+      panning = true;
+      panMoved = false;
+      panStartX = e.pageX;
+      panStartY = e.pageY;
+    });
+    $(document).on('mousemove', function(e) {
+      if (!panning) { return; }
+      var dx = e.pageX - panStartX, dy = e.pageY - panStartY;
+      if (!panMoved && Math.abs(dx) < PAN_THRESHOLD && Math.abs(dy) < PAN_THRESHOLD) { return; }
+      panMoved = true;
+      zoomPan.panBy(dx, dy);
+      panStartX = e.pageX;
+      panStartY = e.pageY;
+    });
+    $(document).on('mouseup', function() {
+      if (panning && panMoved) { wasPanning = true; }
+      panning = false;
+    });
+  })();
 
   function displayHelp(){
     window.open("FAHelp.html", "helpwindow");
