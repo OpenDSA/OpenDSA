@@ -29,12 +29,12 @@ var exerciseLocation;
     switch (type) {
     case 'fixer':
       var exercisePath = (exerciseLocation == null)? "./exercises/fixerTests.json": exerciseLocation;
-      exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph});
+      exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph, applyTools: applyTools});
       exerController.load();
       break;
     case 'tester':
       var exercisePath = getExerciseLocation();//(exerciseLocation == null)? "./exercises/FAwithExpression.json": exerciseLocation;
-      exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph});
+      exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph, applyTools: applyTools});
       exerController.load();
       break;
     default:
@@ -450,40 +450,53 @@ var exerciseLocation;
     }
   };
 
-  /*
+  // The exercise's declared alphabet (containLetters). Without it, completeness would only be judged against symbols the student has already drawn.
+  var exerciseAlphabet = function() {
+    var exercise = exerController && exerController.tests && exerController.tests[exerController.currentExercise];
+    return exercise ? exercise["containLetters"] : undefined;
+  };
+
+  // The exercise template has no JSAV message line, so optional tools report here instead.
+  var toolMessage = function(msg) {
+    $('#toolOutput').text(msg);
+  };
+
+  // Highlights states missing a transition on some symbol of the alphabet.
+  // Triggered by the optional "highlightIncomplete" tool.
   var testComplete = function()
   {
     removeModeClasses();
     removeND();
-    var incomplete = FiniteAutomaton.findMissingTransitions(g);
+    var incomplete = FiniteAutomaton.findMissingTransitions(g, exerciseAlphabet());
     var report = [];
     for(var i =0; i<incomplete.length; i++)
     {
       incomplete[i].node.addClass('testingIncomplete');
       report.push(incomplete[i].node.value() + " (missing " + incomplete[i].missing.join(", ") + ")");
     }
-    jsav.umsg(report.length ? "Incomplete: " + report.join("; ") : "Every state has a transition on every input symbol.");
+    toolMessage(report.length ? "Incomplete: " + report.join("; ") : "Every state has a transition on every input symbol.");
     return report.length === 0;
   };
 
   // Adds a trap state and sends every missing transition to it.
-  // Triggered after clicking the "Complete with Trap State" button.
+  // Triggered by the optional "completeWithTrap" tool.
   var completeFA = function() {
     removeModeClasses();
     removeND();
-    if (FiniteAutomaton.isComplete(g)) {
-      jsav.umsg("This FA is already complete.");
+    var alphabet = exerciseAlphabet();
+    if (FiniteAutomaton.isComplete(g, alphabet)) {
+      toolMessage("This FA is already complete.");
       return;
     }
     g.saveFAState();
-    FiniteAutomaton.completeDFA(jsav, g);
+    FiniteAutomaton.completeDFA(jsav, g, alphabet);
     $('.jsavgraph').click(graphClickHandler);
     $('.jsavedgelabel').click(labelClickHandler);
   };
-  */
 
   // Undoes the effects of testND and testLambda, unhighlighting all nodes and edges.
   var removeND = function() {
+    toolMessage('');
     var nodes = g.nodes();
     for(var next = nodes.next(); next; next = nodes.next()) {
       next.removeClass("testingND");
@@ -893,6 +906,7 @@ var exerciseLocation;
     }
     else {
       $(".jsavgraph").removeClass("addNodes");
+      $(".jsavgraph").removeClass("addTrapState");
       $(".jsavgraph").removeClass("addEdges");
       $(".jsavgraph").removeClass("editNodes");
       $(".jsavgraph").removeClass("moveNodes");
@@ -1019,8 +1033,6 @@ var exerciseLocation;
   $('#deleteButton').click(deleteNodes);
   $('#layoutButton').click(layoutGraph);
   $('#ndButton').click(testND);
-  // $('#completeButton').click(testComplete);
-  // $('#autoCompleteButton').click(completeFA);
   $('#lambdaButton').click(testLambda);
   $('#epsilonButton').click(switchEmptyString);
   $('#shorthandButton').click(switchShorthand);
@@ -1039,6 +1051,39 @@ var exerciseLocation;
     if (e.keyCode === 27) cancel();   // esc
   });
   $('#download').hide();
+
+  // Toolbar buttons an exercise can opt into by listing their names in its JSON "tools" array.
+  // Anything not listed stays off, so a tool added here never appears in existing exercises.
+  var OPTIONAL_TOOLS = {
+    addTrapState:        {icon: "fa-ban",                  title: "Add trap state",              handler: addTrapState},
+    highlightIncomplete: {icon: "fa-exclamation-triangle", title: "Highlight incomplete states", handler: testComplete},
+    completeWithTrap:    {icon: "fa-magic",                title: "Complete with trap state",    handler: completeFA},
+    highlightND:         {icon: "fa-code-fork",            title: "Highlight nondeterminism",    handler: testND}
+  };
+
+  // Adds the toolbar buttons an exercise allows. Called by ExerciseController each time an exercise loads
+  // (including on reset), so buttons from the previous load are removed first.
+  // Handlers are bound here because the buttons don't exist yet when the click bindings above run.
+  function applyTools(allowed) {
+    $('.optionalTool').remove();
+    var added = 0;
+    (allowed || []).forEach(function(name) {
+      var tool = OPTIONAL_TOOLS[name];
+      if (!tool) {
+        console.warn("Unknown exercise tool: " + name);
+        return;
+      }
+      $('<button class="icon_btn optionalTool">')
+        .attr({title: tool.title, 'data-tool': name})
+        .append($('<i class="fa">').addClass(tool.icon))
+        .click(function() { tool.handler(); })
+        .appendTo('#menu_options');
+      added++;
+    });
+    if (added > 0) {
+      $('<p id="toolOutput" class="optionalTool">').insertAfter('.jsavscore');
+    }
+  }
 
   // magic happens here
   onLoadHandler();
