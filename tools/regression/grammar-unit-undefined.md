@@ -33,3 +33,9 @@ The unit workflow runner now closes its context first and gives Playwright up to
 Run `node tools/regression/grammar-unit-browser-cleanup-test.cjs` for slow graceful shutdown, forced fallback, cleanup failure, context failure and live-process detection. Both actual Chrome workflow reruns passed with `graceful; process exited`, exit code 0 and no cleanup warnings on 2026-10-02. This cleanup change is local to this independent unit-removal worktree; other pending repairs are untouched.
 
 Submission rerun after rebasing onto e5a71b4d8: functional assertions passed, but the first browser run timed out during both graceful and forced shutdown and correctly exited nonzero. Earlier clean exits do not establish that this intermittent local cleanup problem is fully resolved.
+
+### Follow-up: disconnect the WebSocket client
+
+The launchServer/connect runner also owns a remote Browser client. Shutdown now closes the context, explicitly disconnects that client and checks isConnected(), then closes the browser server and checks the child exit status. Failure to disconnect still fails the run, while server shutdown is attempted even after context/client errors.
+
+Validation after this change: two consecutive rounds, each containing both ordinary and empty-language transformation/export workflows (four browser processes total), all completed with `graceful; process exited`, no page exceptions, no forced cleanup and exit code 0. Cleanup unit tests also verify context/client/server ordering and rejection of a client that remains connected. The preceding submission-time failures are retained above as history; this validation supersedes them for the updated runner, without claiming universal browser/environment coverage.

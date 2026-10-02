@@ -25,6 +25,17 @@ async function closeTestBrowser(context, browserServer, options = {}) {
       contextError = error;
     }
   }
+  // launchServer/connect creates a separate client connection. Disconnect it
+  // before stopping its server, even when closing the context failed.
+  let clientError;
+  if (options.client) {
+    try {
+      await bounded(() => options.client.close(), contextMs, 'Browser client disconnect');
+      if (options.client.isConnected()) throw new Error('Browser client is still connected');
+    } catch (error) {
+      clientError = error;
+    }
+  }
   let mode = 'graceful';
   if (browserServer) {
     try {
@@ -34,7 +45,7 @@ async function closeTestBrowser(context, browserServer, options = {}) {
       try {
         await bounded(() => browserServer.kill(), forcedMs, 'Forced browser shutdown');
       } catch (killError) {
-        throw new AggregateError([contextError, closeError, killError].filter(Boolean),
+        throw new AggregateError([contextError, clientError, closeError, killError].filter(Boolean),
           'Test browser cleanup failed');
       }
     }
@@ -43,7 +54,9 @@ async function closeTestBrowser(context, browserServer, options = {}) {
       throw new Error('Test browser cleanup returned while its process is still running');
     }
   }
-  if (contextError) throw contextError;
+  if (contextError || clientError) {
+    throw new AggregateError([contextError, clientError].filter(Boolean), "Browser context/client cleanup failed");
+  }
   return mode;
 }
 

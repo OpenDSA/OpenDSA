@@ -12,10 +12,10 @@ const {closeTestBrowser}=require('./grammar-unit-browser-cleanup.cjs');
 console.log('Starting browser regression');
 await new Promise(r=>server.listen(0,'127.0.0.1',r));
 const base='http://127.0.0.1:'+server.address().port;
-let browserServer, context;
+let browserServer, browser, context;
 try {
 browserServer=await chromium.launchServer({channel:process.env.BROWSER_CHANNEL || 'msedge',headless:true,timeout:60000});
-const browser=await chromium.connect(browserServer.wsEndpoint());
+browser=await chromium.connect(browserServer.wsEndpoint());
 console.log('Browser launched');
 context=await browser.newContext({viewport:{width:1200,height:850},acceptDownloads:true});
 await context.route('**/*',r=>r.request().url().startsWith(base)?r.continue():r.abort());
@@ -48,7 +48,7 @@ console.log('PASS undefined-variable graph, unit removal and export; empty langu
 } finally {
   console.log('Closing test browser');
   try {
-    const mode = await closeTestBrowser(context, browserServer);
+    const mode = await closeTestBrowser(context, browserServer, {client: browser});
     console.log('PASS browser cleanup: ' + mode + '; process exited');
   } finally {
     server.closeAllConnections();

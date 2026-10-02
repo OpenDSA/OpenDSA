@@ -18,6 +18,15 @@ function fixture(close, kill) {
   let f = fixture(() => new Promise(resolve => setTimeout(resolve, 25)), async () => {});
   assert.equal(await closeTestBrowser(f.context, f.server, {gracefulMs: 200}), 'graceful');
   assert.deepEqual(f.calls, ['context', 'close']);
+  f = fixture(async () => {}, async () => {});
+  const client = {close: async () => {f.calls.push('disconnect');}, isConnected: () => false};
+  assert.equal(await closeTestBrowser(f.context, f.server, {client}), 'graceful');
+  assert.deepEqual(f.calls, ['context', 'disconnect', 'close']);
+  f = fixture(async () => {}, async () => {});
+  await assert.rejects(closeTestBrowser(f.context, f.server, {
+    client: {close: async () => {}, isConnected: () => true}
+  }), /context\/client cleanup failed/);
+
   f = fixture(never, async () => {});
   assert.equal(await closeTestBrowser(f.context, f.server, {gracefulMs: 10, forcedMs: 100}), 'forced');
   assert.deepEqual(f.calls, ['context', 'close', 'kill']);
@@ -25,7 +34,7 @@ function fixture(close, kill) {
   await assert.rejects(closeTestBrowser(f.context, f.server, {gracefulMs: 10, forcedMs: 10}), /cleanup failed/);
   f = fixture(async () => {}, async () => {});
   f.context.close = async () => {throw new Error('Context failed');};
-  await assert.rejects(closeTestBrowser(f.context, f.server), /Context failed/);
+  await assert.rejects(closeTestBrowser(f.context, f.server), /context\/client cleanup failed/);
   assert.deepEqual(f.calls, ['close']);
   f = fixture(async () => {}, async () => {});
   f.server.close = async () => {};
