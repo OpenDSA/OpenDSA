@@ -163,10 +163,12 @@ controllerProto.startTesting = function () {
       if (firstTestcase.indexOf("regular") >= 0) {
         correctGrammarType = (grammarType === 'RLG' || grammarType === 'LLG');
       } else {
+        // A grammar can be both left- and right-linear (for example S -> b).
+        // Test the requested property, not identifyGrammar's preferred label.
         if (firstTestcase.indexOf("right") >= 0)
-          correctGrammarType = (grammarType === 'RLG');
+          correctGrammarType = this.checkRightLinear();
         else if (firstTestcase.indexOf("left") >= 0)
-          correctGrammarType = (grammarType === 'LLG');
+          correctGrammarType = this.checkLeftLinear();
       }
       if (correctGrammarType) {
         $("#testResults").append("<tr><td>" + firstTestcase + "</td><td>" + "Satisfied" + "</td><td class='correct'>" + (correctGrammarType ? "Yes" : "No") + "</td></tr>");
