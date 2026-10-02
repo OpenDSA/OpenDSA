@@ -799,6 +799,10 @@
     
       controllerProto.stringAccepted = function(){
           var inputString = this.inputString;
+        // A queued form must stay visited after it is processed, or unit cycles
+        // can re-enqueue it forever. Reset both search and trace state per input.
+        var visited = new Set([this.productions[0][0]]);
+        this.derivationTree = {};
         if(inputString === "!"){
           inputString = "";
         }
@@ -857,11 +861,13 @@
           if(this.removeLambda(next) === inputString){
             return [true, next, table];
           }
-          for(var i = 0; i < this.replaceLHS(productions, next).length; i++){
-            var newString = this.replaceLHS(productions, next)[i];
-            if(!shouldSkipString(inputString, newString)){
+          var replacements = this.replaceLHS(productions, next, visited);
+          for(var i = 0; i < replacements.length; i++){
+            var newString = replacements[i];
+            if(!visited.has(newString) && !shouldSkipString(inputString, newString)){
+              visited.add(newString);
               queue.add(newString);
-              table[this.replaceLHS(productions, next)[i]] = next;
+              table[newString] = next;
             }
           }
           counter++;
@@ -889,13 +895,15 @@
           if(this.removeLambda(next) === inputString){
             return [true, next, table];
           }
-          for(var i = 0; i < this.replaceLHS(productions, next).length; i++){
-            var newValue = this.replaceLHS(productions, next)[i];
-            if(!shouldSkipString(inputString, newValue))
+          var replacements = this.replaceLHS(productions, next, visited);
+          for(var i = 0; i < replacements.length; i++){
+            var newValue = replacements[i];
+            if(!visited.has(newValue) && !shouldSkipString(inputString, newValue))
               if(newValue.length <= inputString.length)
                 {
+                  visited.add(newValue);
                   queue.add(newValue);
-                  table[this.replaceLHS(productions, next)[i]] = next;
+                  table[newValue] = next;
                 }
           }
           counter++;
@@ -903,8 +911,8 @@
         return [false, next, table];
         }
       }
-      controllerProto.replaceLHS = function(productions, sentential){
-        result = [];
+      controllerProto.replaceLHS = function(productions, sentential, visited){
+        var result = [];
         for (var i = 0; i < productions.length; i++) {
           for (var j = 0; j < sentential.length; j++) {
             for (var k = 1; k < sentential.length + 1 - j; k++) {
@@ -913,8 +921,13 @@
                 var newString = sentential.substring(0, j) + productions[i][2]
                       + sentential.substring(j + k, sentential.length);
     
+                            if (visited && visited.has(newString)) continue;
                             result.push(newString);
-                            this.derivationTree[newString] = [productions[i], sentential];
+                            // Keep the first predecessor so a later cyclic path
+                            // cannot overwrite the accepted derivation.
+                            if (!Object.prototype.hasOwnProperty.call(this.derivationTree, newString)) {
+                              this.derivationTree[newString] = [productions[i], sentential];
+                            }
               }
             }
           }
