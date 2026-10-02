@@ -1681,7 +1681,8 @@ $(document).ready(function () {
   var removeUnitHelper = function (productions, pDict) {
     for (var i = 0; i < productions.length; i++) {
       if (productions[i][2].length === 1 && variables.indexOf(productions[i][2]) !== -1) {
-        var p = pDict[productions[i][2]];
+        // An undefined variable has no replacement productions.
+        var p = pDict[productions[i][2]] || [];
         var n;
         for (var j = 0; j < p.length; j++) {
           if (p[j].length === 1 && variables.indexOf(p[j]) !== -1) {
@@ -1720,6 +1721,8 @@ $(document).ready(function () {
         transformed.push(productions[i]);
       }
     }
+    // No productive rules means the language is empty; there is no graph to traverse.
+    if (transformed.length === 0) return [];
     var pDict = {};   // dictionary to hold reachable variables
     //var start = transformed[0][0];//IT SHOULD BE S
     var start = 'S';//I changed this to S.
@@ -2036,6 +2039,15 @@ $(document).ready(function () {
     for (var i = 0; i < productions.length; i++) {
       if (v.indexOf(productions[i][0]) === -1) {
         v.push(productions[i][0]);
+      }
+    }
+    // Include RHS-only variables so every unit-production edge can be drawn.
+    for (var ruleIndex = 0; ruleIndex < productions.length; ruleIndex++) {
+      var rhs = productions[ruleIndex][2];
+      for (var symbolIndex = 0; symbolIndex < rhs.length; symbolIndex++) {
+        if (variables.indexOf(rhs[symbolIndex]) !== -1 && v.indexOf(rhs[symbolIndex]) === -1) {
+          v.push(rhs[symbolIndex]);
+        }
       }
     }
     $(m.element).css("margin-left", "auto");
