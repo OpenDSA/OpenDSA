@@ -1513,6 +1513,8 @@ var removeUnitHelper = function (productions, pDict) {
 var removeUseless = function (productions) {
   var derivers = {}; // variables that derive a string of terminals
   //var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+  if (!productions.length) return [];
+  var start = productions[0][0];
   var counter = 0;
   while (findDerivable(derivers, productions)) {
     counter++;
@@ -1521,7 +1523,9 @@ var removeUseless = function (productions) {
       break;
     }
   };
-  var transformed = [];
+  // Preserve the original start, even if its rules are all nonproductive.
+    if (!(start in derivers)) return [];
+    var transformed = [];
   // remove productions which do not derive a string of terminals
   for (var i = 0; i < productions.length; i++) {
     if (_.every(productions[i][2], function (x) {
@@ -1533,7 +1537,6 @@ var removeUseless = function (productions) {
   // No productive rules means the language is empty; there is no graph to traverse.
   if (transformed.length === 0) return [];
   var pDict = {}; // dictionary to hold reachable variables
-  var start = "S"; //transformed[0][0];
   for (var i = 0; i < transformed.length; i++) {
     if (!(transformed[i][0] in pDict)) {
       pDict[transformed[i][0]] = [];
