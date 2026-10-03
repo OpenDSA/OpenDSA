@@ -68,6 +68,18 @@ for(let attempt=0;attempt<2;attempt++) {
  await editor.waitForSelector('.jsavmatrix');
  const rules=await editor.evaluate(()=>arr.filter(r=>r[0]).map(r=>[r[0],r[2]]));
  assert.equal(rules[0][0],'S');
+ let frontier=['S'];
+ for(let step=0;step<15;step++) {
+  const next=[];
+  for(const form of frontier) {
+   const at=form.search(/[A-Z]/);
+   if(at<0) { assert.equal(form,'abcd'); next.push(form); }
+   else for(const [lhs,rhs] of rules) if(lhs===form[at]) next.push(form.slice(0,at)+rhs+form.slice(at+1));
+  }
+  frontier=Array.from(new Set(next));
+ }
+ assert.deepEqual(frontier,['abcd']);
+
  assert.ok(rules.every(([l,r])=>/^[A-Z]$/.test(l) && (/^[a-z]$/.test(r)||/^[A-Z]{2}$/.test(r))));
  if(firstRules) assert.deepEqual(rules,firstRules); else firstRules=rules;
  await editor.close();
