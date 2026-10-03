@@ -833,7 +833,7 @@ var exerciseLocation;
           newNode.addClass('final');
         }
         if (isLabel) {
-          label_val = '<p class = "label_css">' + isLabel.childNodes[0].nodeValue + '</p>';
+          var label_val = '<p class = "label_css">' + isLabel.childNodes[0].nodeValue + '</p>';
           newNode.stateLabel(label_val);
         }
         nodeMap[xmlStates[i].id] = newNode;
