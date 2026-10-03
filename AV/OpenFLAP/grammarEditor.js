@@ -2380,6 +2380,19 @@ $(document).ready(function () {
     // Right sides are arrays (unlike the matrix, where RHS is a string)
     _.each(tArr, function(x) { x[2] = x[2].split('');});
     var varCounter = 1;
+    $('#cnfExportButton').remove();
+    var exportButton = $('<button type="button" id="cnfExportButton" disabled>Export Grammar</button>');
+    $('#backbutton').after(exportButton);
+    $('#backbutton').one('click.cnfExport', function () { exportButton.remove(); });
+    var isComplete = function () {
+      return _.every(tArr, function (rule) {
+        var rhs = rule[2];
+        return (rhs.length === 1 && variables.indexOf(rhs[0][0]) === -1) ||
+          (rhs.length === 2 && _.every(rhs, function (symbol) {
+            return variables.indexOf(symbol[0]) !== -1;
+          }));
+      });
+    };
 
     // handler for the table for converting productions
     var chomskyHandler = function (index) {
@@ -2439,13 +2452,10 @@ $(document).ready(function () {
         }
       }
       jsav.umsg('Converted.');
-      if (tArr.length === fullChomsky.length) {
+      if (isComplete()) {
         jsav.umsg('All productions completed.');
         tGrammar.element.off();
-        // var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
-        // if (c) {
-        //   attemptExport();
-        // }
+        exportButton.prop('disabled', false);
         for (var i = 0; i < tGrammar._arrays.length; i++) {
           tGrammar.unhighlight(i);
         }
@@ -2453,32 +2463,23 @@ $(document).ready(function () {
     };
     // attempts to convert and export the completed CNF grammar
     var attemptExport = function () {
-      var tempVars = [];
-      for (var i = 0; i < tArr.length; i++) {
-        if (tArr[i][0].length > 1 && tArr[i][0][0] === 'B') {
-          tempVars.push(tArr[i][0]);
-        }
-      }
-      var newVariables = _.difference(variables.split(""), _.map(tArr, function(x) {return x[0]; }));
-      if (tempVars.length + varCounter > newVariables.length) {
+      // Map complete symbol tokens, without mutating the interactive table.
+      var allSymbols = _.uniq(_.flatten(_.map(tArr, function (rule) {
+        return [rule[0]].concat(rule[2]);
+      })));
+      var tempVars = _.filter(allSymbols, function (symbol) { return symbol.length > 1; });
+      var newVariables = _.difference(variables.split(''), allSymbols);
+      if (tempVars.length > newVariables.length) {
         alert('Too large to export!');
         return;
       }
-      tempVars.sort();
-      var iOffset = tempVars.length;
-      for (var i = 1; i < varCounter + 1; i++) {
-        tempVars.push("D(" + i + ")");
-      }
-      _.each(tArr, function(x) {x[2] = x[2].join(''); });
-      for (var i = 0; i < tempVars.length; i++) {
-        var re = tempVars[i].replace(/[\(\)]/g, "\\$&");
-        var regex = new RegExp(re, 'g');
-        for (var j = 0; j < tArr.length; j++) {
-          tArr[j][0] = tArr[j][0].replace(regex, newVariables[i]);
-          tArr[j][2] = tArr[j][2].replace(regex, newVariables[i]);
-        }
-      }
-      exportTransformedGrammar(_.map(tArr, function(x) {return x.join(''); }));
+      var names = {};
+      _.each(tempVars, function (symbol, i) { names[symbol] = newVariables[i]; });
+      exportTransformedGrammar(_.map(tArr, function (rule) {
+        return (names[rule[0]] || rule[0]) + arrow + _.map(rule[2], function (symbol) {
+          return names[symbol] || symbol;
+        }).join('');
+      }));
     };
 
     tGrammar = jsav.ds.matrix(_.map(tArr, function(x){return [x[0], x[1], x[2].join('')]; }));
@@ -2486,6 +2487,8 @@ $(document).ready(function () {
     //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
     tGrammar.click(chomskyHandler);
 
+    exportButton.on('click', attemptExport);
+    exportButton.prop('disabled', !isComplete());
     jsav.umsg('Converting to Chomsky Normal Form: convert productions of the grammar on the right by clicking on them.');
   };
 
