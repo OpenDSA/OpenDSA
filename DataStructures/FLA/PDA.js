@@ -787,6 +787,7 @@
       
       controllerProto.removeLambdaHelper = function (set, productions) {
         for (var i = 0; i < productions.length; i++) {
+          this.checkSearchBudget(0, productions[i][2].length);
           if (productions[i][2] === emptystring || _.every(productions[i][2], function(x) { return x in set;})) {
             if (!(productions[i][0] in set)) {
               set[productions[i][0]] = true;
@@ -797,7 +798,36 @@
         return false;
       };
     
-      controllerProto.stringAccepted = function(){
+      // Bound work as well as queue size: a single expansion can be expensive.
+      controllerProto.stringAccepted = function () {
+        var limits = ParseTreeController.searchLimits;
+        this.searchBudget = {started: Date.now(), work: 0, limits: limits};
+        this.searchLimitReached = false;
+        try {
+          return this.searchWithBudget();
+        } catch (error) {
+          if (error.code !== "GRAMMAR_SEARCH_LIMIT") throw error;
+          this.searchLimitReached = true;
+          this.derivationTree = {};
+          return [null, null, {}]; // Unknown, not a proven rejection.
+        } finally {
+          this.searchBudget = null;
+        }
+      };
+      ParseTreeController.searchLimits = {maxWork: 200000, maxStates: 10000,
+        maxLength: 2048, maxMilliseconds: 250};
+      controllerProto.checkSearchBudget = function (size, length) {
+        var budget = this.searchBudget;
+        if (!budget) return;
+        if (++budget.work > budget.limits.maxWork || size > budget.limits.maxStates ||
+            length > budget.limits.maxLength ||
+            Date.now() - budget.started >= budget.limits.maxMilliseconds) {
+          var error = new Error("Grammar search limit reached");
+          error.code = "GRAMMAR_SEARCH_LIMIT";
+          throw error;
+        }
+      };
+      controllerProto.searchWithBudget = function(){
           var inputString = this.inputString;
         // A queued form must stay visited after it is processed, or unit cycles
         // can re-enqueue it forever. Reset both search and trace state per input.
@@ -826,17 +856,8 @@
         var counter = 0;
         // find lambda deriving variables
         while (this.removeLambdaHelper(derivers, productions)) {
-          counter++;
-          if (counter > 5000) {
-            console.warn(counter);
-            var confirmed = confirm('This is taking a while. Continue?');
-            if (confirmed) {
-              counter = 0;
-            } else {
-              break;
-            }
-          }
-        };
+          this.checkSearchBudget(0, 0);
+        }
         var hasLambda = function(productions){
             for (var i = 0; i < productions.length; i++)
               if (productions[i][2] === emptystring)
@@ -852,9 +873,7 @@
         //queue.push(productions[0][0]);
         queue.add(productions[0][0]);
         for(let nextValue = queue.values().next(); nextValue.done !== true; nextValue = queue.values().next()){
-          if(counter > 10000){
-            break;
-          }
+          this.checkSearchBudget(visited.size, nextValue.value.length);
           var next = nextValue.value;
           queue.delete(next);
   
@@ -882,6 +901,7 @@
         var queue = new Set();
         queue.add(productions[0][0]);
         for(let nextValue = queue.values().next(); nextValue.done !== true; nextValue = queue.values().next()){
+          this.checkSearchBudget(visited.size, nextValue.value.length);
           var next = nextValue.value;
           if(next === undefined)
             return [false, null, table];//I added this line to reject a string not in the grammar. For grammar exercise controller
@@ -916,12 +936,14 @@
         for (var i = 0; i < productions.length; i++) {
           for (var j = 0; j < sentential.length; j++) {
             for (var k = 1; k < sentential.length + 1 - j; k++) {
+              this.checkSearchBudget(result.length, sentential.length);
               var subString = sentential.substring(j, j + k);
               if (subString === (productions[i][0])) {
                 var newString = sentential.substring(0, j) + productions[i][2]
                       + sentential.substring(j + k, sentential.length);
     
                             if (visited && visited.has(newString)) continue;
+                            this.checkSearchBudget(result.length + 1, newString.length);
                             result.push(newString);
                             // Keep the first predecessor so a later cyclic path
                             // cannot overwrite the accepted derivation.
@@ -950,6 +972,10 @@
         var table = {};   // maps each sentential form to the rule that produces it
         var next;
         var accepted = this.stringAccepted(inputString);
+        if (accepted[0] === null) {
+          this.jsav.umsg("Search limit reached. The result is undetermined. Try simplifying the grammar.");
+          return;
+        }
         if (accepted[0]) {
           table = this.derivationTree;
           //this.jsav.umsg('"' + inputString + '" accepted');

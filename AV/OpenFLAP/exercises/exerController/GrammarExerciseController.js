@@ -206,6 +206,13 @@ controllerProto.startTesting = function () {
           //inputResult = pda.traverseOneInput(input);
           parser.inputString = input;
           inputResult = parser.stringAccepted()[0];
+          if (inputResult === null) {
+            var message = "Search limit reached. Grading could not be completed; no score was submitted. Try simplifying the grammar.";
+            $("#testResults").empty().hide();
+            $("#percentage").text(message).show();
+            $("#check_mark").hide();
+            return {undetermined: true, message: message};
+          }
         } else {
   
           inputResult = !FiniteAutomaton.willReject(parser, input.split("").reverse().join(""));
