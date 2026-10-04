@@ -44,7 +44,7 @@ const nonSPopup=p.waitForEvent('popup');
 await p.locator('.jsavmatrix').last().locator('.jsavarray').nth(1).locator('li').first().click();
 const nonS=await nonSPopup;
 await nonS.waitForSelector('.jsavmatrix');
-assert.deepEqual(await nonS.evaluate(()=>arr.filter(r=>r[0]).map(r=>r.join(''))), ['A鈫抋']);
+assert.deepEqual(await nonS.evaluate(()=>arr.filter(r=>r[0]).map(r=>r.join(''))), ['A→a']);
 await nonS.close();
 console.log('PASS non-S useless removal through GUI and export');
 assert.deepEqual(errors,[]);
