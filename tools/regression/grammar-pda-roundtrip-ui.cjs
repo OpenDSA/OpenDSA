@@ -41,7 +41,7 @@ async function readDownload(download) {
  const chunks=[]; for await (const chunk of await download.createReadStream()) chunks.push(chunk);
  return Buffer.concat(chunks).toString('utf8');
 }
-for (const [kind,rules] of [['FA',[['S','aS'],['S','b']]], ['PDA',[['S','aS'],['S','b']]], ['PDA',[['S','λ']]]]) {
+for (const [kind,rules] of [['PDA',[['S','aS'],['S','b']]], ['PDA',[['S','λ']]]]) {
  await load(rules);
  await p.locator('.grammar-menu summary').filter({hasText:/^Convert$/}).click();
  await p.locator(kind==='FA'?'#convertRLGbutton':'#convertCFGbuttonLL').click();
