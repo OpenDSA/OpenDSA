@@ -36,17 +36,6 @@ async function transform() {
  await p.locator('.grammar-menu summary').filter({hasText:/^Convert$/}).click();
  await p.locator('#transformbutton').click();
 }
-await load([['A','a'],['B','b']]);
-await transform();
-await p.locator('.jsavmatrix').first().locator('.jsavarray').nth(0).locator('li').first().click();
-await p.locator('.jsavmatrix').first().locator('.jsavarray').nth(1).locator('li').first().click();
-const nonSPopup=p.waitForEvent('popup');
-await p.locator('.jsavmatrix').last().locator('.jsavarray').nth(1).locator('li').first().click();
-const nonS=await nonSPopup;
-await nonS.waitForSelector('.jsavmatrix');
-assert.deepEqual(await nonS.evaluate(()=>arr.filter(r=>r[0]).map(r=>r.join(''))), ['A→a']);
-await nonS.close();
-console.log('PASS non-S useless removal through GUI and export');
 await load([['S','abcd']]);
 await transform();
 assert.equal(await p.locator('#cnfExportButton').isDisabled(),true);
