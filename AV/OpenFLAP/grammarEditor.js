@@ -2822,11 +2822,11 @@ $(document).ready(function () {
       }
     }
     var bEdge = builtDFA.getEdge(b, b);
-    $(bEdge._label.element[0]).css('font-size', '1.4em');
+    if (bEdge) $(bEdge._label.element[0]).css('font-size', '1.4em');
     builtDFA.layout();
 
     var pCount = 0;
-    var labelHeight = $(bEdge._label.element[0]).height();
+    var labelHeight = bEdge ? $(bEdge._label.element[0]).height() : 0;
     // handler for the grammar table
     var convertGrammarHandler = function (index) {
       this.highlight(index);
