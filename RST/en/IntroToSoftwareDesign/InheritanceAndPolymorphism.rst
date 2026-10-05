@@ -232,7 +232,7 @@ relationship tests:
 1. **Inheritance models an "IS-A" relationship**:
    A subclass *is a specialized version* of its superclass.
    * A ``Square`` **is a** ``Rectangle``.
-   * A ``PlantingJeroo`` **is a** ``Jeroo``.
+   * A ``ForagingHedgehog`` **is a** ``Hedgehog``.
    * A ``Bishop`` **is a** ``ChessPiece``.
    * An ``ArmoredCombatant`` **is a** ``Combatant``.
 
@@ -242,7 +242,7 @@ relationship tests:
 2. **Composition and Aggregation model a "HAS-A" relationship**:
    An object *holds a reference to* one or more companion objects as fields.
    * A ``Car`` **has an** ``Engine``. (A car is *not* an engine!)
-   * An ``Island`` **has** ``Jeroo`` objects. (An island is *not* a jeroo!)
+   * An ``Orchard`` **has** ``Hedgehog`` actors. (An orchard is *not* a hedgehog!)
    * A ``TabletopHero`` **has an** ``Inventory``. (A hero is *not* an inventory!)
    * A ``ChessBoard`` **has** ``ChessPiece`` objects.
 
@@ -270,75 +270,96 @@ ownership and lifecycles:
 The Liskov Substitution Principle and Design Pitfalls
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A common beginner mistake is using inheritance simply to share code when no genuine
-IS-A relationship exists. For example, imagine modeling a ``Stack`` data structure.
-Because an ``ArrayList`` already provides dynamic storage and indexed access, one
-might be tempted to write:
+A common beginner mistake is using inheritance simply to share or reuse code when no
+genuine IS-A relationship exists. For example, imagine designing a tabletop roleplaying
+game with a ``Shield`` class that encapsulates armor defense and damage blocking:
 
 .. code-block:: java
 
-   // Flawed design: Violates IS-A relationship
-   public class BadStack extends ArrayList<String>
+   public class Shield
    {
-       public void push(String item)
+       private int defenseRating;
+
+       public Shield(int defenseRating)
        {
-           add(item);
+           this.defenseRating = Math.max(0, defenseRating);
        }
 
-       public String pop()
+       public int block(int incomingDamage)
        {
-           return remove(size() - 1);
+           return Math.max(0, incomingDamage - defenseRating);
+       }
+
+       public int getDefenseRating()
+       {
+           return defenseRating;
        }
    }
 
-While this code compiles and runs, it introduces severe architectural flaws. Because
-``BadStack extends ArrayList``, it inherits all of ``ArrayList``'s public methods:
-external callers can invoke ``badStack.add(0, "oops")`` or ``badStack.clear()``,
-violating the fundamental Last-In, First-Out (LIFO) contract of a stack! A stack
-**is not an** array list; rather, a stack **has an** internal list used for storage.
+Now, suppose you want to create a ``Knight`` class that can block incoming damage.
+Because ``Shield`` already provides a working ``block()`` method, you might be tempted
+to write:
+
+.. code-block:: java
+
+   // Flawed design: Violates IS-A relationship!
+   public class Knight extends Shield
+   {
+       private String name;
+
+       public Knight(String name, int defenseRating)
+       {
+           super(defenseRating);
+           this.name = name;
+       }
+
+       // ...
+   }
+
+While this code compiles, it introduces severe architectural and conceptual flaws.
+Because ``Knight extends Shield``, Java treats every ``Knight`` as an actual ``Shield``!
+Any client code expecting a ``Shield``—such as ``blacksmith.polish(Shield s)`` or
+``warrior.equip(Shield s)``—would legally accept a ``Knight`` object. A warrior could
+literally equip a knight as a piece of armor!
 
 The formal design rule governing valid inheritance is known as the **Liskov
 Substitution Principle (LSP)**: *Subtypes must be substitutable for their base types
-without altering any of the desirable properties of the program*. If a proposed
-subclass cannot honor all guarantees made by the superclass, inheritance is
-inappropriate.
+without altering any of the desirable properties or guarantees of the program*. If a
+proposed subclass cannot legitimately substitute for the superclass in every valid
+context, inheritance is inappropriate. A knight **is not a** shield; rather, a knight
+**has a** shield.
 
 Instead, favor **Composition**:
 
 .. code-block:: java
 
    // Clean design: Composition with Delegation
-   public class GoodStack
+   public class Knight
    {
-       private List<String> storage;
+       private String name;
+       private Shield shield;
 
-       public GoodStack()
+       public Knight(String name, Shield shield)
        {
-           this.storage = new ArrayList<String>();
+           this.name = name;
+           this.shield = shield;
        }
 
-       public void push(String item)
+       public int defend(int incomingDamage)
        {
-           storage.add(item);
+           // Delegate defense calculation to the encapsulated Shield
+           return shield.block(incomingDamage);
        }
 
-       public String pop()
+       public Shield getShield()
        {
-           if (storage.isEmpty())
-           {
-               throw new IllegalStateException("Cannot pop from an empty stack");
-           }
-           return storage.remove(storage.size() - 1);
-       }
-
-       public int size()
-       {
-           return storage.size();
+           return shield;
        }
    }
 
-By encapsulating ``List<String> storage`` as a private field, ``GoodStack`` delegates
-storage tasks to the list while exposing only the legitimate stack operations.
+By encapsulating ``Shield`` as a private instance variable, ``Knight`` delegates
+defensive calculations to its companion shield while maintaining a clean, realistic
+conceptual model.
 
 .. list-table:: Summary: Inheritance vs. Composition
    :widths: 20 40 40
@@ -475,6 +496,12 @@ base ``Combatant`` class:
            this.health = Math.max(0, health);
        }
 
+       // Secondary constructor defaulting health to 100 using same-class chaining
+       public Combatant(String name)
+       {
+           this(name, 100);
+       }
+
        public String getName()
        {
            return name;
@@ -524,6 +551,12 @@ health. It overrides ``takeDamage`` to incorporate this protection:
            this.armorRating = Math.max(0, armorRating);
        }
 
+       // Secondary constructor defaulting health to 100 using same-class chaining
+       public ArmoredCombatant(String name, int armorRating)
+       {
+           this(name, 100, armorRating);
+       }
+
        public int getArmorRating()
        {
            return armorRating;
@@ -544,6 +577,64 @@ Notice how ``ArmoredCombatant`` calls ``super.takeDamage(effectiveDamage)``. The
 ``super`` keyword allows a subclass to invoke the parent class's version of an
 overridden method. This preserves the parent's encapsulation and logic (such as
 preventing health from dropping below zero) while adding custom specialization.
+
+Constructor Chaining: Initializing State with super() and this()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When designing classes, constructors play a special role: **constructors are not inherited**.
+A subclass cannot simply use a superclass constructor as its own because constructors
+are responsible for initializing the exact fields declared in their own class.
+
+To ensure every object is properly initialized from the top of the hierarchy downward,
+Java provides two forms of **constructor chaining**:
+
+1. **Superclass Constructor Chaining (``super(...)``)**:
+   Before a subclass constructor can initialize any of its own fields, the superclass
+   portion of the object must be initialized. In ``ArmoredCombatant``:
+
+   .. code-block:: java
+
+      public ArmoredCombatant(String name, int health, int armorRating)
+      {
+          super(name, health); // 1. Must be the FIRST statement
+          this.armorRating = Math.max(0, armorRating); // 2. Initialize subclass fields
+      }
+
+   * The call to ``super(...)`` invokes the matching constructor in the direct superclass
+     (``Combatant``).
+   * **Rule**: If present, ``super(...)`` *must be the very first statement* inside the
+     subclass constructor body.
+   * **Default Behavior**: If you do not explicitly write ``super(...)``, the Java
+     compiler automatically inserts a parameterless ``super();`` call as the first line.
+     If the superclass does not have a no-argument constructor, a compile-time error occurs.
+
+2. **Same-Class Constructor Chaining (``this(...)``)**:
+   Classes frequently provide multiple overloaded constructors to offer convenient default
+   parameter values. Rather than copying and pasting field assignment code across every
+   constructor, a constructor can delegate to another constructor within the **same class**
+   using ``this(...)``:
+
+   .. code-block:: java
+
+      // Primary constructor
+      public Combatant(String name, int health)
+      {
+          this.name = name;
+          this.health = Math.max(0, health);
+      }
+
+      // Secondary constructor: delegates to the primary constructor with default health
+      public Combatant(String name)
+      {
+          this(name, 100); // Calls the 2-parameter constructor above!
+      }
+
+   * Just like ``super(...)``, a ``this(...)`` call *must be the very first statement*
+     in the constructor body.
+   * **Mutual Exclusivity**: A constructor can call ``this(...)`` OR ``super(...)``, but
+     **never both** in the same constructor. When ``this(...)`` is called, the constructor
+     delegates to a peer constructor, which will in turn invoke ``super(...)`` to initialize
+     the superclass. This ensures the superclass initialization happens exactly once.
 
 Testing Overridden Methods with AssertJ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -594,25 +685,42 @@ subclasses correctly specialize parent behaviors:
 Polymorphism & Dynamic Method Dispatch
 --------------------------------------
 
-All jeroos understand the same set of messages--that is, they respond to the
-same method invocations. But now that you've seen how to define custom methods,
-it is also possible for a subclass to *redefine* a method to do something more
-or to alter its behavior. It turns out that different jeroos might respond to
-the *same method call* in different ways, depending on which subclass they
-belong to. We use the term *receiver* to refer to the object on which a method
-is called. Each time you call a method, the receiver determines how to respond,
-so the exact behavior depends on how the method is defined in the specific
-subclass used to create the receiver.
+In Chapter 6, you created autonomous actors in the Orchard micro-world. Every actor
+placed in the world understands the same foundational message: ``act()``. Each
+simulation cycle, the Greenfoot engine asks every actor to take its turn. But how each
+actor responds depends on its specific class:
+
+* A basic ``Hedgehog`` takes a simple step forward.
+* A ``ForagingHedgehog`` scans for nearby apples, harvests them, and carries them back to its burrow.
+* A ``WanderingHedgehog`` checks for obstacles and wanders along tree perimeters.
+* A ``GuideHedgehog`` steps forward and delegates its movement to a companion in another plot.
+
+Even though the engine simply sends the uniform message ``actor.act()`` to every
+entity, each actor responds with its own specialized behavior! We use the term
+*receiver* to refer to the object on which a method is called. Each time you call a
+method, the receiver determines how to respond, so the exact behavior depends on the
+receiver's specific class:
+
+.. code-block:: java
+
+   Hedgehog h1 = new Hedgehog();
+   Hedgehog h2 = new ForagingHedgehog();
+   Hedgehog h3 = new WanderingHedgehog();
+
+   // Identical method call syntax on each receiver:
+   h1.act(); // executes base Hedgehog movement
+   h2.act(); // executes specialized apple foraging logic!
+   h3.act(); // executes obstacle-avoidance wandering!
 
 **Polymorphism** means that different receivers can respond to the same method
 call in different ways. Polymorphism is not just a theoretical concept; it's a
 powerful tool for writing clean, flexible, and maintainable code. In essence,
 it allows a single interface to represent multiple underlying forms. For
-example, if you have a ``Vehicle`` superclass and subclasses like ``Car``, ``Bicycle``,
-and ``Truck``, a function that takes a ``Vehicle`` as an argument can work with any
-of these subclasses, without needing to know their specific type at compile
+example, if you have a ``Combatant`` superclass and subclasses like ``ArmoredCombatant``,
+a function that takes a ``Combatant`` as an argument can work with any
+subclass, without needing to know their specific type at compile
 time. This is incredibly useful for building extensible systems. You can add
-a new subclass, like ``Motorcycle``, and your existing code that works with ``Vehicle``
+a new subclass, like ``MountedCombatant``, and your existing code that works with ``Combatant``
 objects will still function correctly without any changes. This concept of *single
 interface, multiple implementations* is the core benefit of polymorphism in
 practice.
@@ -758,42 +866,74 @@ the static type ``Combatant``, and ``Combatant`` does not have a ``getArmorRatin
 method. The compiler does not know—and cannot assume—that ``hero`` will point to an
 ``ArmoredCombatant`` at runtime.
 
-Heterogeneous Collections
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Polymorphic Aggregation: Modeling a Squad
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The true practical power of polymorphic references emerges when storing collections
-of objects. In a complex video game or simulation, you rarely manage individual
-variables for every entity. Instead, you maintain lists or arrays of entities:
+The true practical power of polymorphic references emerges when composing complex
+objects from simpler ones. In a simulation or game, you often group related entities
+together into larger units. In Chapter 8, we will learn how to store arbitrary numbers
+of objects in dynamic collections like lists. Even with the tools we have right now,
+we can combine polymorphic objects using **object aggregation** with named fields.
 
-.. code-block:: java
-
-   Combatant[] squad = new Combatant[] {
-       new Combatant("Standard Archer", 70),
-       new ArmoredCombatant("Vanguard Knight", 120, 15),
-       new ArmoredCombatant("Shield Bearer", 100, 20),
-       new Combatant("Militia", 50)
-   };
-
-Notice that this array is **heterogeneous**: it contains both regular ``Combatant``
-objects and specialized ``ArmoredCombatant`` objects. Yet, because all elements share
-the superclass ``Combatant``, we can process the entire group uniformly:
+Consider a ``Squad`` composed of two combatants assigned to different tactical positions:
+a front line combatant and a back line combatant:
 
 .. code-block:: java
 
-   // Apply area-of-effect damage to the entire squad
-   for (Combatant member : squad)
+   public class Squad
    {
-       member.takeDamage(25);
-       System.out.println(member);
+       private Combatant frontLine;
+       private Combatant backLine;
+
+       public Squad(Combatant frontLine, Combatant backLine)
+       {
+           this.frontLine = frontLine;
+           this.backLine = backLine;
+       }
+
+       public Combatant getFrontLine()
+       {
+           return frontLine;
+       }
+
+       public Combatant getBackLine()
+       {
+           return backLine;
+       }
+
+       /**
+        * Applies area-of-effect damage to both squad positions.
+        * @param amount the raw damage incoming to each squad member
+        */
+       public void takeAreaDamage(int amount)
+       {
+           frontLine.takeDamage(amount);
+           backLine.takeDamage(amount);
+       }
    }
 
-When this loop runs:
-* When ``member`` refers to the ``Standard Archer``, standard damage logic executes,
-  reducing health by 25.
-* When ``member`` refers to the ``Vanguard Knight``, overridden armor logic executes,
-  reducing damage by 15 so health drops by only 10!
-* The loop code does not require complex ``if-else`` checks checking what kind of
-  combatant each element is.
+Notice how ``Squad`` uses generalized ``Combatant`` references for both of its fields.
+This makes the squad **heterogeneous**: we can assemble a squad containing any combination
+of regular ``Combatant`` and specialized ``ArmoredCombatant`` instances:
+
+.. code-block:: java
+
+   Combatant archer = new Combatant("Archer", 70);
+   Combatant knight = new ArmoredCombatant("Vanguard Knight", 120, 15);
+
+   Squad squad = new Squad(knight, archer);
+
+   // Apply area-of-effect damage to the entire squad
+   squad.takeAreaDamage(25);
+
+When ``squad.takeAreaDamage(25)`` executes:
+* When ``frontLine.takeDamage(25)`` is called, dynamic dispatch invokes
+  ``ArmoredCombatant``'s overridden version because ``frontLine`` refers to a knight!
+  Armor absorbs 15, reducing health by only 10.
+* When ``backLine.takeDamage(25)`` is called, standard ``Combatant`` damage logic
+  executes because ``backLine`` refers to an archer. Health drops by the full 25.
+* The ``Squad`` class does not need any ``if-else`` checks to inspect what kind of
+  combatant is in each position.
 
 This is the essence of object-oriented design: client code sends messages to
 generalized references, and individual objects specialize their responses
@@ -813,29 +953,26 @@ polymorphically assigned objects:
    class PolymorphicAssignmentTest
    {
        @Test
-       void testPolymorphicDispatchInHeterogeneousArray()
+       void testPolymorphicDispatchInSquad()
        {
-           Combatant c1 = new Combatant("Scout", 100);
-           Combatant c2 = new ArmoredCombatant("Knight", 100, 10);
+           Combatant scout = new Combatant("Scout", 100);
+           Combatant knight = new ArmoredCombatant("Knight", 100, 10);
 
-           Combatant[] team = new Combatant[] { c1, c2 };
+           Squad team = new Squad(knight, scout);
 
-           // Hit both team members with 20 damage
-           for (Combatant warrior : team)
-           {
-               warrior.takeDamage(20);
-           }
+           // Hit both team positions with 20 area-of-effect damage
+           team.takeAreaDamage(20);
 
-           // Scout took full 20 damage: 100 - 20 = 80
-           assertThat(c1.getHealth()).isEqualTo(80);
+           // Knight in front line absorbed 10 via armor: 100 - (20 - 10) = 90
+           assertThat(knight.getHealth()).isEqualTo(90);
 
-           // Knight absorbed 10 via armor: 100 - (20 - 10) = 90
-           assertThat(c2.getHealth()).isEqualTo(90);
+           // Scout in back line took full 20 damage: 100 - 20 = 80
+           assertThat(scout.getHealth()).isEqualTo(80);
 
            // AssertJ can inspect the dynamic type of reference variables
-           assertThat(c1).isExactlyInstanceOf(Combatant.class);
-           assertThat(c2).isInstanceOf(Combatant.class);
-           assertThat(c2).isExactlyInstanceOf(ArmoredCombatant.class);
+           assertThat(scout).isExactlyInstanceOf(Combatant.class);
+           assertThat(knight).isInstanceOf(Combatant.class);
+           assertThat(knight).isExactlyInstanceOf(ArmoredCombatant.class);
        }
    }
 
@@ -983,13 +1120,34 @@ is allowed in languages like C++) can create tricky structural ambiguities, such
 famous "Diamond Problem," where two parent classes define conflicting versions of the
 same method or state.
 
-However, a class in Java may implement **as many interfaces as needed**:
+However, a class in Java may implement **as many interfaces as needed**.
+
+Suppose our game environment also needs entities capable of producing audio effects.
+We can define a second interface, ``Audible``:
+
+.. code-block:: java
+
+   public interface Audible
+   {
+       /**
+        * Plays the audio effect associated with this entity.
+        */
+       void playSound();
+   }
+
+Now, a class can inherit core state and implementation from a superclass while simultaneously
+fulfilling both independent interface contracts:
 
 .. code-block:: java
 
    public class ArmoredCombatant extends Combatant
        implements Drawable, Audible
    {
+       public ArmoredCombatant(String name, int health, int armorRating)
+       {
+           super(name, health, armorRating);
+       }
+
        @Override
        public void draw()
        {
@@ -1007,32 +1165,26 @@ Here, ``ArmoredCombatant`` inherits state and default behaviors from ``Combatant
 while simultaneously fulfilling the behavioral contracts of both ``Drawable`` and
 ``Audible``.
 
-.. list-table:: Summary: Concrete Classes vs. Abstract Classes vs. Interfaces
-   :widths: 25 25 25 25
+.. list-table:: Summary: Class vs. Interface
+   :widths: 30 35 35
    :header-rows: 1
 
    * - Feature
-     - Concrete Class
-     - Abstract Class
+     - Class
      - Interface
    * - **Keyword**
      - ``class``
-     - ``abstract class``
      - ``interface``
    * - **Can Instantiate?**
      - Yes (via ``new``)
-     - No
-     - No
+     - No (must be implemented by a class)
    * - **Method Bodies?**
-     - All methods must have bodies
-     - Can mix concrete and abstract methods
-     - Abstract methods only (or ``default``)
+     - Methods must have complete bodies
+     - Method declarations only (no bodies)
    * - **Instance Variables?**
-     - Yes (any access modifier)
-     - Yes (any access modifier)
-     - No (constants only: ``public static final``)
-   * - **Inheritance Limit**
-     - Can extend 1 class
+     - Yes (declares state)
+     - No (cannot declare instance variables)
+   * - **Usage Limit**
      - Can extend 1 class
      - A class can implement many interfaces
 
@@ -1078,7 +1230,7 @@ Now we can implement specialized classes conforming to ``Rollable``:
 
 .. code-block:: java
 
-   import java.util.Random;
+   import student.util.Random;
 
    public class StandardDie implements Rollable
    {
@@ -1087,15 +1239,11 @@ Now we can implement specialized classes conforming to ``Rollable``:
 
        public StandardDie(int sides)
        {
-           if (sides < 1)
-           {
-               throw new IllegalArgumentException("A die must have at least 1 side");
-           }
-           this.sides = sides;
-           this.generator = new Random();
+           this.sides = Math.max(1, sides);
+           this.generator = Random.generator();
        }
 
-       // Secondary constructor defaulting to standard 6-sided die
+       // Secondary constructor defaulting to standard 6-sided die via same-class chaining
        public StandardDie()
        {
            this(6);
@@ -1114,6 +1262,15 @@ Now we can implement specialized classes conforming to ``Rollable``:
        }
    }
 
+.. note::
+
+   In this example, ``StandardDie`` generates random numbers using Virginia Tech's
+   built-in ``student.util.Random`` utility class. A reference to the generator is obtained
+   via ``Random.generator()``, and ``generator.nextInt(sides)`` generates a random integer
+   from ``0`` up to ``sides - 1``. Random number generation—along with testing techniques
+   for controlling pseudo-random sequences during automated testing—is covered in much
+   greater detail in Chapter 8.
+
 Next, consider an ``AdvantageDie``, a common mechanic in tabletop gaming where a player
 rolls twice and keeps the superior result:
 
@@ -1125,10 +1282,6 @@ rolls twice and keeps the superior result:
 
        public AdvantageDie(Rollable baseDie)
        {
-           if (baseDie == null)
-           {
-               throw new IllegalArgumentException("Base die cannot be null");
-           }
            this.baseDie = baseDie;
        }
 
@@ -1154,40 +1307,35 @@ to its encapsulated ``Rollable`` instance and computes the maximum.
 Polymorphic Dice Rolling in Game Engines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now, imagine constructing a ``DiceCup`` used by a tabletop referee to roll a pool of
-dice:
+Now, imagine constructing a ``DicePair`` used in tabletop games to roll two dice together:
 
 .. code-block:: java
 
-   public class DiceCup
+   public class DicePair
    {
-       private Rollable[] dice;
+       private Rollable firstDie;
+       private Rollable secondDie;
 
-       public DiceCup(Rollable[] dice)
+       public DicePair(Rollable firstDie, Rollable secondDie)
        {
-           this.dice = dice;
+           this.firstDie = firstDie;
+           this.secondDie = secondDie;
        }
 
        /**
-        * Rolls all dice in the cup and sums their total value.
+        * Rolls both dice and sums their total value.
         * @return aggregate roll total.
         */
        public int rollTotal()
        {
-           int sum = 0;
-           for (Rollable die : dice)
-           {
-               sum += die.roll();
-           }
-           return sum;
+           return firstDie.roll() + secondDie.roll();
        }
    }
 
-Because ``DiceCup`` depends strictly on the ``Rollable`` interface rather than
-concrete classes, players can place any combination of ``StandardDie`` and
-``AdvantageDie`` into the cup. The referee logic never changes, demonstrating the
-open/closed principle: software should be open for extension, but closed for
-modification.
+Because ``DicePair`` depends strictly on the ``Rollable`` interface rather than
+concrete classes, players can combine any pairing of ``StandardDie`` and
+``AdvantageDie``. The rolling logic never changes, demonstrating the open/closed
+principle: software should be open for extension, but closed for modification.
 
 Testing Game Entities with AssertJ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1197,70 +1345,82 @@ substitutions (stubs) that implement ``Rollable``:
 
 .. code-block:: java
 
+   // A deterministic die stub for automated testing
+   class DeterministicDie implements Rollable
+   {
+       private int fixedValue;
+
+       public DeterministicDie(int fixedValue)
+       {
+           this.fixedValue = fixedValue;
+       }
+
+       @Override
+       public int getSides()
+       {
+           return 6;
+       }
+
+       @Override
+       public int roll()
+       {
+           return fixedValue;
+       }
+   }
+
+   // A test stub that alternates between two values
+   class AlternatingDie implements Rollable
+   {
+       private int count = 0;
+
+       @Override
+       public int getSides()
+       {
+           return 6;
+       }
+
+       @Override
+       public int roll()
+       {
+           count++;
+           return (count % 2 == 1) ? 2 : 5;
+       }
+   }
+
+.. code-block:: java
+
    import org.junit.jupiter.api.Test;
    import static org.assertj.core.api.Assertions.*;
 
    class DiceFrameworkTest
    {
-       // A deterministic die stub for automated testing
-       private static class DeterministicDie implements Rollable
-       {
-           private int fixedValue;
-
-           public DeterministicDie(int fixedValue)
-           {
-               this.fixedValue = fixedValue;
-           }
-
-           @Override
-           public int getSides()
-           {
-               return 6;
-           }
-
-           @Override
-           public int roll()
-           {
-               return fixedValue;
-           }
-       }
-
        @Test
        void testStandardDieBounds()
        {
            StandardDie d6 = new StandardDie(6);
-           for (int i = 0; i < 50; i++)
+           int rolls = 0;
+           while (rolls < 50)
            {
                int value = d6.roll();
                assertThat(value).isBetween(1, 6);
+               rolls++;
            }
        }
 
        @Test
-       void testDiceCupPolymorphicSum()
+       void testDicePairPolymorphicSum()
        {
            Rollable die1 = new DeterministicDie(4);
            Rollable die2 = new DeterministicDie(5);
 
-           DiceCup cup = new DiceCup(new Rollable[] { die1, die2 });
-           assertThat(cup.rollTotal()).isEqualTo(9);
+           DicePair pair = new DicePair(die1, die2);
+           assertThat(pair.rollTotal()).isEqualTo(9);
        }
 
        @Test
        void testAdvantageDieSelectsMaxRoll()
        {
-           // Alternates between 2 and 5
-           Rollable alternatingDie = new Rollable() {
-               private int count = 0;
-               @Override
-               public int getSides() { return 6; }
-               @Override
-               public int roll() {
-                   count++;
-                   return (count % 2 == 1) ? 2 : 5;
-               }
-           };
-
+           Rollable alternatingDie = new AlternatingDie();
            AdvantageDie advantage = new AdvantageDie(alternatingDie);
            assertThat(advantage.roll()).isEqualTo(5);
        }

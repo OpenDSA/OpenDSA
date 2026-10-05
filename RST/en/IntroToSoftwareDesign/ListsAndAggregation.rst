@@ -44,6 +44,47 @@ might store a player's starting hand using separate variables:
    Card card2 = new Card("Knight", "Steel", 5);
    Card card3 = new Card("Cleric", "Light", 4);
 
+Throughout this chapter, we will use a simple domain class modeling a tabletop
+playing card. Each card encapsulates a ``name``, an ``element`` type, and an
+integer ``power`` value:
+
+.. code-block:: java
+
+   public class Card
+   {
+       private String name;
+       private String element;
+       private int power;
+
+       public Card(String name, String element, int power)
+       {
+           this.name = name;
+           this.element = element;
+           this.power = power;
+       }
+
+       public String getName()
+       {
+           return name;
+       }
+
+       public String getElement()
+       {
+           return element;
+       }
+
+       public int getPower()
+       {
+           return power;
+       }
+
+       @Override
+       public String toString()
+       {
+           return name + " [" + element + "] (Power: " + power + ")";
+       }
+   }
+
 While this approach works for small, fixed scenarios, it breaks down quickly as
 programs grow. What happens when a player draws five more cards? Or what if a
 player discards three cards and trades two others? You would need dozens of
@@ -88,6 +129,23 @@ Notice that we declare the variable ``hand`` using the interface type ``List<Car
 but we instantiate it using ``new ArrayList<Card>()``. This is an application of
 **polymorphism**: any valid ``List`` implementation can be assigned to a ``List``
 reference variable.
+
+The Diamond Operator (<>)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In Java 7 and later, you do not need to repeat the type parameter on the right-hand
+side when instantiating a collection. Instead, you can write the empty angle brackets
+``<>``, known as the **diamond operator**:
+
+.. code-block:: java
+
+   // Modern, idiomatic Java instantiation:
+   List<Card> hand = new ArrayList<>();
+
+The Java compiler automatically infers the element type (``Card``) from the variable's
+declared type on the left. Both ``new ArrayList<Card>()`` and ``new ArrayList<>()``
+produce identical objects at runtime, but the diamond operator is preferred because
+it avoids redundant typing.
 
 How ArrayList Works in Memory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -488,9 +546,10 @@ Once a collection holds objects, we frequently need to examine every element:
 searching for a specific card, counting elements that match a criterion, or
 calculating a total score.
 
-While you can iterate over a list using an indexed numeric counter
-(``for (int i = 0; i < list.size(); i++)``), Java provides a cleaner, more
-readable loop syntax specifically designed for collections: the **enhanced for-each loop**.
+While you could iterate over a list using a ``while`` loop with an index counter
+(such as ``int i = 0; while (i < list.size()) { ... i++; }``), Java provides a
+cleaner, more readable loop syntax specifically designed for collections: the
+**enhanced for-each loop**.
 
 Enhanced For-Each Syntax
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -598,6 +657,118 @@ Suppose you want to retrieve all cards belonging to a specific element type (e.g
        }
        return matches;
    }
+
+
+Generating and Testing Random Behaviors
+---------------------------------------
+
+In games, simulations, and interactive software, programs often need to introduce
+chance or unpredictability—such as shuffling a deck, dealing a random card, or
+selecting a random encounter.
+
+Generating Random Numbers with student.util.Random
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Java provides a standard random number generator, and Virginia Tech's ``student``
+library provides a special version: ``student.util.Random``. To use it, add the
+import statement at the top of your class:
+
+.. code-block:: java
+
+   import student.util.Random;
+
+The ``Random`` class provides a static method called ``Random.generator()`` to obtain a
+generator instance. You can then invoke ``nextInt(limit)`` to produce a random
+integer:
+
+.. code-block:: java
+
+   Random generator = Random.generator();
+   int value = generator.nextInt(4); // Generates a random number from 0 through 3
+
+The ``generator.nextInt(limit)`` method takes an upper limit and returns a random
+integer from ``0`` (inclusive) up to (but not including) ``limit``. For example,
+``generator.nextInt(100)`` produces 100 possible values from ``0`` to ``99``.
+
+Drawing a Random Card from an Aggregated Collection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Because an ``ArrayList`` uses zero-based indexing from ``0`` to ``size() - 1``,
+passing ``this.cards.size()`` to ``nextInt()`` generates a random index matching
+a valid position in the list:
+
+.. code-block:: java
+
+   public class CardHand
+   {
+       private List<Card> cards;
+       private Random generator;
+
+       public CardHand(int capacity)
+       {
+           this.cards = new ArrayList<>();
+           this.generator = Random.generator();
+       }
+
+       /**
+        * Draws and removes a random card from this hand.
+        * Returns null if the hand is empty.
+        */
+       public Card drawRandomCard()
+       {
+           if (this.cards.isEmpty())
+           {
+               return null;
+           }
+           int randomIndex = this.generator.nextInt(this.cards.size());
+           return this.cards.remove(randomIndex);
+       }
+   }
+
+Deterministic Testing with Random.setNextInts()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Random behaviors make games exciting, but they make automated software testing difficult.
+If your code draws a random card, how can an automated test assert what was drawn?
+If a test passes on one run and fails on another because different cards were chosen,
+the test is flaky and unreliable.
+
+The ``student.util.Random`` class solves this problem through **deterministic testing**.
+In a unit test, you can call **Random.setNextInts(...)** to predetermine the exact
+sequence of integers the generator will produce:
+
+.. code-block:: java
+
+   import org.junit.jupiter.api.Test;
+   import static org.assertj.core.api.Assertions.*;
+   import student.util.Random;
+
+   public class CardHandRandomTest
+   {
+       @Test
+       public void testDrawRandomCardDeterministic()
+       {
+           CardHand hand = new CardHand(5);
+           hand.addCard(new Card("Dragon", "Fire", 8));  // index 0
+           hand.addCard(new Card("Knight", "Steel", 5)); // index 1
+           hand.addCard(new Card("Cleric", "Light", 4)); // index 2
+
+           // In your unit test, force the generator to return index 1 next:
+           Random.setNextInts(1);
+
+           Card drawn = hand.drawRandomCard();
+
+           // Assert with 100% confidence: index 1 was the Knight!
+           assertThat(drawn.getName()).isEqualTo("Knight");
+           assertThat(hand.getCardCount()).isEqualTo(2);
+       }
+   }
+
+When ``Random.setNextInts(...)`` is called, the generator enters replay mode and
+delivers the specified integers in order. Once those values have been consumed, it
+reverts to normal pseudorandom generation. This technique gives you the best of both
+worlds: realistic random choices in production code, and 100% reproducible results in
+automated test suites.
 
 
 The null Keyword & Diagnosing NullPointerExceptions
@@ -873,31 +1044,15 @@ prints the class name followed by the object's internal hash code:
 Overriding toString()
 ~~~~~~~~~~~~~~~~~~~~~
 
-To make ``toString()`` useful, domain classes should **override** it to return a
-formatted string summarizing the object's state:
+Recall the ``Card`` class introduced earlier. In that class, we **overrode** the
+default ``toString()`` method to return a formatted summary of the card's state:
 
 .. code-block:: java
 
-   public class Card
+   @Override
+   public String toString()
    {
-       private String name;
-       private String element;
-       private int power;
-
-       public Card(String name, String element, int power)
-       {
-           this.name = name;
-           this.element = element;
-           this.power = power;
-       }
-
-       // Getters omitted for brevity...
-
-       @Override
-       public String toString()
-       {
-           return this.name + " [" + this.element + "] (Power: " + this.power + ")";
-       }
+       return this.name + " [" + this.element + "] (Power: " + this.power + ")";
    }
 
 Now, printing the card produces clear, readable output:
@@ -940,9 +1095,11 @@ iterate through its internal collection to build a composite description:
            }
 
            String result = "Hand (" + this.cards.size() + " cards):\n";
-           for (int i = 0; i < this.cards.size(); i++)
+           int number = 1;
+           for (Card card : this.cards)
            {
-               result = result + "  " + (i + 1) + ". " + this.cards.get(i).toString() + "\n";
+               result = result + "  " + number + ". " + card.toString() + "\n";
+               number++;
            }
            return result;
        }
