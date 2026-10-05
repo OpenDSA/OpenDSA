@@ -41,7 +41,7 @@
   function Calculate() {
     var i;
     ODSA.AV.logExerciseInit({'user_key': keyValue});
-    var output = sfold($.trim(keyValue));
+    var output = sfold(keyValue.trim());
     tell('<br/>' + output);
     ODSA.AV.awardCompletionCredit();
   }

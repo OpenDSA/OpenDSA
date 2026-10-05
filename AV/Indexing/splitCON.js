@@ -35,7 +35,7 @@ $(document).ready(function() {
     "Example of inserting a record that causes the 2-3 tree root to split. We want to insert the key 19 into the tree.",
     "The key is first compared against the root node. Since 19 is more than the left key and less than the right key of the root node, the center child node is followed next.",
     "This node has only two elements, and 19 is less than 23 so the left child is followed next.",
-    "A leaf node has being reached. Since the leaf node has no empty spaces it will have to be split.",
+    "A leaf node has been reached. Since the leaf node has no empty spaces it will have to be split.",
     "Next we have to rearrange the keys. First the largest key (21) goes in the new node.",
     "The middle key (20) has to be promoted.",
     "The smallest key (19) goes is the old node",

@@ -249,7 +249,7 @@ $(document).ready(function() {
         // highlight the node
         curr.highlight();
         // add a label next to the just highlighted node
-        var pos = curr.jsav.canvas.find(".jsavlabel:visible").size();
+        var pos = curr.jsav.canvas.find(".jsavlabel:visible").length;
         curr.jsav.label(pos + 1, {
           relativeTo: curr,
           anchor: "right top"
@@ -330,7 +330,7 @@ $(document).ready(function() {
         return;
       }
       this.highlight();
-      var pos = exercise.jsav.canvas.find(".jsavlabel:visible").size();
+      var pos = exercise.jsav.canvas.find(".jsavlabel:visible").length;
       exercise.jsav.label(pos + 1, {
         relativeTo: this,
         anchor: "right top"

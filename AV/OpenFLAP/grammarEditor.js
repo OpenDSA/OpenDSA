@@ -42,7 +42,8 @@ $(document).ready(function () {
   This is used to import grammars from certain proofs.
   */
    //do not look at the storage if the editor is for an exercise
-  if (type == null && localStorage["grammar"]) {
+  var importKey = type === "editor" ? "transformedGrammar" : "grammar";
+  if ((type == null || type === "editor") && localStorage[importKey]) {
     // the grammar is saved as a string of a list of strings:
     // turn each production into an array containing the left side, arrow, and right side
     // arr = _.map(localStorage['grammar'].split(','), function(x) {
@@ -50,13 +51,13 @@ $(document).ready(function () {
     //   d.splice(1, 0, arrow);
     //   return d;
     // });
-    arr = JSON.parse(localStorage.getItem("grammar"));
+    arr = JSON.parse(localStorage.getItem(importKey));
     lastRow = arr.length;
     // add an empty row for editing purposes (clicking the empty row allows the user to add productions)
     //arr.push(["S", arrow, "jZ"]);
     arr.push(["", arrow, ""]);
     // clear the grammar from local storage to prevent it from being loaded by other grammar tests
-    localStorage.removeItem('grammar');
+    localStorage.removeItem(importKey);
   } else {
     arr = new Array(20);    // arbitrary array size
     for (var i = 0; i < arr.length; i++) {
@@ -255,9 +256,9 @@ $(document).ready(function () {
   function addRow(index){
     var newProduction = addProduction(index);
     layoutTable(m);
-    // if (newProduction) {
-    //   focus(index + 1, 0);
-    // }
+    if (newProduction) {
+      focus(index + 1, 0);
+    }
   }
 
   function focus(index, index2) {
@@ -267,6 +268,7 @@ $(document).ready(function () {
     $('#firstinput').remove();
     var createInput = "<input type='text' id='firstinput' onfocus='this.value = this.value;' value=" + prev + ">";
     $('body').append(createInput);
+    m._arrays[index]._indices[index2].element[0].scrollIntoView({block: "nearest", inline: "nearest"});
     var offset = m._arrays[index]._indices[index2].element.offset();
     var topOffset = offset.top;
     var leftOffset = offset.left;
@@ -275,11 +277,28 @@ $(document).ready(function () {
     fi.outerHeight($('.jsavvalue').height());
     fi.width($(m._arrays[index]._indices[index2].element).width());
     fi.focus();
+    // Keep the body-positioned cell editor aligned with the scrolling matrix.
+    $('#av .jsavcanvas').off('scroll.grammarInput').on('scroll.grammarInput', function () {
+      if (!fi || !fi.length || !m._arrays[row]) return;
+      var cell = m._arrays[row]._indices[col].element;
+      fi.offset(cell.offset());
+      var bounds = this.getBoundingClientRect();
+      var cellBounds = cell[0].getBoundingClientRect();
+      fi.css('visibility', cellBounds.top >= bounds.top && cellBounds.bottom <= bounds.bottom ? 'visible' : 'hidden');
+    });
     // finalize the changes to the grammar when the enter key is pressed
     var validKeys = [13, 9, 37, 38, 39, 40];
     // keys for functions
-    fi.keyup(function(event){
+    fi.on('keydown keyup', function(event){
       var keyCode = event.keyCode;
+      // Tab must be handled before the browser moves focus. Ignore its keyup
+      // on the newly focused input so one press advances exactly one cell.
+      if (keyCode === 9) {
+        if (event.type !== 'keydown') return;
+        event.preventDefault();
+      } else if (event.type !== 'keyup') {
+        return;
+      }
       if (validKeys.indexOf(keyCode) !== -1) {
         var input = $(this).val();
         var regex = new RegExp(emptystring, g);
@@ -301,6 +320,23 @@ $(document).ready(function () {
         arr[index][index2] = input;
         layoutTable(m, 2);
         switch (keyCode) {
+        case 9:
+          if (event.shiftKey) {
+            if (index2 === 2) focus(index, 0);
+            else if (index > 0) focus(index - 1, 2);
+            else $('.grammar-menu summary, #addrowbutton').filter(':visible').first().focus();
+          } else if (index2 === 0) {
+            focus(index, 2);
+          } else if (index < lastRow) {
+            focus(index + 1, 0);
+          } else if (addProduction(index)) {
+            layoutTable(m);
+            focus(index + 1, 0);
+          } else {
+            // Leave an empty final row without generating endless blank rows.
+            $('.grammar-menu summary, #addrowbutton').filter(':visible').first().focus();
+          }
+          break;
         case 13:
           if (index2 == 0) {
             focus(index, 2);
@@ -345,6 +381,8 @@ $(document).ready(function () {
   // fired when document is clicked
   // saves current fi input value
   function defocus(e) {
+    // Add Row has just opened the new cell; do not close it as the click bubbles.
+    if ($(e.target).closest("#addrowbutton").length) return;
     if ($(e.target).hasClass("jsavvaluelabel")) return;
     if ($(e.target).hasClass("jsavvalue")) return;
     if ($(e.target).attr('id') == "firstinput") return;
@@ -1512,6 +1550,7 @@ $(document).ready(function () {
     $('.jsavmatrix').addClass("editMode");
     $('.jsavmatrix').removeClass("deleteMode");
     $('.jsavmatrix').removeClass("addrowMode");
+    focus(lastRow, 0);
   }
 
   //=================================
@@ -1539,23 +1578,23 @@ $(document).ready(function () {
     transformed = transformed.concat(productions);
     for (var i = 0; i < productions.length; i++) {
       var p = productions[i];
-      // find lambda deriving variables in right hand side
-      var v = _.filter(p[2], function(x) { return x in derivers;});
-      if (v.length > 0) {
-        v = v.join('');
-        for (var j = v.length - 1; j >= 0; j--) {
-          // remove all combinations of lambda-deriving variables
-          var n = getCombinations(v, j + 1);
-          for (var next = n.next(); next.value; next = n.next()) {
-            var replaced = p[2];
-            for (var k = 0; k < next.value.length; k++) {
-              replaced = replaced.replace(next.value[k], "");
-            }
-            // if not a lambda production
-            if (replaced && !_.find(transformed, function(x) {return x[0] === p[0] && x[2] === replaced})) {
-              transformed.push([p[0], arrow, replaced]);
-            }
-          }
+      // Keep or omit each nullable occurrence independently. Replacing by
+      // character value loses alternatives when the same variable repeats.
+      var variants = [''];
+      for (var position = 0; position < p[2].length; position++) {
+        var symbol = p[2][position];
+        var expanded = [];
+        for (var candidate = 0; candidate < variants.length; candidate++) {
+          expanded.push(variants[candidate] + symbol);
+          if (symbol in derivers) expanded.push(variants[candidate]);
+        }
+        variants = _.uniq(expanded);
+      }
+      for (var j = 0; j < variants.length; j++) {
+        var replaced = variants[j];
+        // Preserve the existing convention of excluding empty productions.
+        if (replaced && !_.find(transformed, function(x) { return x[0] === p[0] && x[2] === replaced; })) {
+          transformed.push([p[0], arrow, replaced]);
         }
       }
     }
@@ -1642,7 +1681,8 @@ $(document).ready(function () {
   var removeUnitHelper = function (productions, pDict) {
     for (var i = 0; i < productions.length; i++) {
       if (productions[i][2].length === 1 && variables.indexOf(productions[i][2]) !== -1) {
-        var p = pDict[productions[i][2]];
+        // An undefined variable has no replacement productions.
+        var p = pDict[productions[i][2]] || [];
         var n;
         for (var j = 0; j < p.length; j++) {
           if (p[j].length === 1 && variables.indexOf(p[j]) !== -1) {
@@ -1666,6 +1706,8 @@ $(document).ready(function () {
   var removeUseless = function () {
     var derivers = {};  // variables that derive a string of terminals
     var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+    if (!productions.length) return [];
+    var start = productions[0][0];
     var counter = 0;
     while (findDerivable(derivers, productions)) {
       counter++;
@@ -1674,6 +1716,8 @@ $(document).ready(function () {
         break;
       }
     };
+    // Preserve the original start, even if its rules are all nonproductive.
+    if (!(start in derivers)) return [];
     var transformed = [];
     // remove productions which do not derive a string of terminals
     for (var i = 0; i < productions.length; i++) {
@@ -1681,9 +1725,9 @@ $(document).ready(function () {
         transformed.push(productions[i]);
       }
     }
+    // No productive rules means the language is empty; there is no graph to traverse.
+    if (transformed.length === 0) return [];
     var pDict = {};   // dictionary to hold reachable variables
-    //var start = transformed[0][0];//IT SHOULD BE S
-    var start = 'S';//I changed this to S.
     for (var i = 0; i < transformed.length; i++) {
       if (!(transformed[i][0] in pDict)) {
         pDict[transformed[i][0]] = [];
@@ -1804,6 +1848,16 @@ $(document).ready(function () {
   // Transformations (interactive)
 
   // Function to check to see if a step should be skipped
+  // Use the same JSON row format consumed by the standalone editor.
+  function exportTransformedGrammar(productions) {
+    var rows = _.map(productions, function(production) {
+      var separator = production.indexOf(arrow);
+      return [production.slice(0, separator), arrow, production.slice(separator + arrow.length)];
+    });
+    localStorage.setItem('transformedGrammar', JSON.stringify(rows));
+    window.open('grammarEditor.html', '');
+  }
+
   var checkTransform = function (strP, g) {
     var inter = _.intersection(strP, g);
     if (inter.length === strP.length && inter.length === g.length) {
@@ -1936,8 +1990,7 @@ $(document).ready(function () {
         var confirmed = confirm('Grammar completed; export?');
         // if export, open the completed grammar in a new tab
         if (confirmed) {
-          localStorage['grammar'] = transformed;
-          window.open('grammarTest.html', '');
+          exportTransformedGrammar(transformed);
         }
         arr = tArr;
         lastRow = arr.length - 1;
@@ -1988,6 +2041,15 @@ $(document).ready(function () {
     for (var i = 0; i < productions.length; i++) {
       if (v.indexOf(productions[i][0]) === -1) {
         v.push(productions[i][0]);
+      }
+    }
+    // Include RHS-only variables so every unit-production edge can be drawn.
+    for (var ruleIndex = 0; ruleIndex < productions.length; ruleIndex++) {
+      var rhs = productions[ruleIndex][2];
+      for (var symbolIndex = 0; symbolIndex < rhs.length; symbolIndex++) {
+        if (variables.indexOf(rhs[symbolIndex]) !== -1 && v.indexOf(rhs[symbolIndex]) === -1) {
+          v.push(rhs[symbolIndex]);
+        }
       }
     }
     $(m.element).css("margin-left", "auto");
@@ -2085,8 +2147,7 @@ $(document).ready(function () {
       if (tArr.length - 1 === noUnit.length && !_.find(tArr, function(x){return x[2].length === 1 && variables.indexOf(x[2]) !== -1})) {
         var confirmed = confirm('Grammar completed; export?');
         if (confirmed) {
-          localStorage['grammar'] = noUnit;
-          window.open('grammarTest.html', '');
+          exportTransformedGrammar(noUnit);
         }
         arr = tArr;
         lastRow = arr.length - 1;
@@ -2182,8 +2243,7 @@ $(document).ready(function () {
       if (tArr.length - 1 === noUseless.length && !_.find(tArr, function(x){return x[2].length === 1 && variables.indexOf(x[2]) !== -1})) {
         var confirmed = confirm('Grammar completed; export?');
         if (confirmed) {
-          localStorage['grammar'] = noUseless;
-          window.open('grammarTest.html', '');
+          exportTransformedGrammar(noUseless);
         }
         arr = tArr;
         lastRow = arr.length - 1;
@@ -2322,6 +2382,19 @@ $(document).ready(function () {
     // Right sides are arrays (unlike the matrix, where RHS is a string)
     _.each(tArr, function(x) { x[2] = x[2].split('');});
     var varCounter = 1;
+    $('#cnfExportButton').remove();
+    var exportButton = $('<button type="button" id="cnfExportButton" disabled>Export Grammar</button>');
+    $('#backbutton').after(exportButton);
+    $('#backbutton').one('click.cnfExport', function () { exportButton.remove(); });
+    var isComplete = function () {
+      return _.every(tArr, function (rule) {
+        var rhs = rule[2];
+        return (rhs.length === 1 && variables.indexOf(rhs[0][0]) === -1) ||
+          (rhs.length === 2 && _.every(rhs, function (symbol) {
+            return variables.indexOf(symbol[0]) !== -1;
+          }));
+      });
+    };
 
     // handler for the table for converting productions
     var chomskyHandler = function (index) {
@@ -2381,13 +2454,10 @@ $(document).ready(function () {
         }
       }
       jsav.umsg('Converted.');
-      if (tArr.length === fullChomsky.length) {
+      if (isComplete()) {
         jsav.umsg('All productions completed.');
         tGrammar.element.off();
-        // var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
-        // if (c) {
-        //   attemptExport();
-        // }
+        exportButton.prop('disabled', false);
         for (var i = 0; i < tGrammar._arrays.length; i++) {
           tGrammar.unhighlight(i);
         }
@@ -2395,33 +2465,23 @@ $(document).ready(function () {
     };
     // attempts to convert and export the completed CNF grammar
     var attemptExport = function () {
-      var tempVars = [];
-      for (var i = 0; i < tArr.length; i++) {
-        if (tArr[i][0].length > 1 && tArr[i][0][0] === 'B') {
-          tempVars.push(tArr[i][0]);
-        }
-      }
-      var newVariables = _.difference(variables.split(""), _.map(tArr, function(x) {return x[0]; }));
-      if (tempVars.length + varCounter > newVariables.length) {
+      // Map complete symbol tokens, without mutating the interactive table.
+      var allSymbols = _.uniq(_.flatten(_.map(tArr, function (rule) {
+        return [rule[0]].concat(rule[2]);
+      })));
+      var tempVars = _.filter(allSymbols, function (symbol) { return symbol.length > 1; });
+      var newVariables = _.difference(variables.split(''), allSymbols);
+      if (tempVars.length > newVariables.length) {
         alert('Too large to export!');
         return;
       }
-      tempVars.sort();
-      var iOffset = tempVars.length;
-      for (var i = 1; i < varCounter + 1; i++) {
-        tempVars.push("D(" + i + ")");
-      }
-      _.each(tArr, function(x) {x[2] = x[2].join(''); });
-      for (var i = 0; i < tempVars.length; i++) {
-        var re = tempVars[i].replace(/[\(\)]/g, "\\$&");
-        var regex = new RegExp(re, 'g');
-        for (var j = 0; j < tArr.length; j++) {
-          tArr[j][0] = tArr[j][0].replace(regex, newVariables[i]);
-          tArr[j][2] = tArr[j][2].replace(regex, newVariables[i]);
-        }
-      }
-      localStorage['grammar'] = _.map(tArr, function(x) {return x.join(''); });
-      window.open('grammarTest.html', '');
+      var names = {};
+      _.each(tempVars, function (symbol, i) { names[symbol] = newVariables[i]; });
+      exportTransformedGrammar(_.map(tArr, function (rule) {
+        return (names[rule[0]] || rule[0]) + arrow + _.map(rule[2], function (symbol) {
+          return names[symbol] || symbol;
+        }).join('');
+      }));
     };
 
     tGrammar = jsav.ds.matrix(_.map(tArr, function(x){return [x[0], x[1], x[2].join('')]; }));
@@ -2429,6 +2489,8 @@ $(document).ready(function () {
     //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
     tGrammar.click(chomskyHandler);
 
+    exportButton.on('click', attemptExport);
+    exportButton.prop('disabled', !isComplete());
     jsav.umsg('Converting to Chomsky Normal Form: convert productions of the grammar on the right by clicking on them.');
   };
 
@@ -2760,11 +2822,11 @@ $(document).ready(function () {
       }
     }
     var bEdge = builtDFA.getEdge(b, b);
-    $(bEdge._label.element[0]).css('font-size', '1.4em');
+    if (bEdge) $(bEdge._label.element[0]).css('font-size', '1.4em');
     builtDFA.layout();
 
     var pCount = 0;
-    var labelHeight = $(bEdge._label.element[0]).height();
+    var labelHeight = bEdge ? $(bEdge._label.element[0]).height() : 0;
     // handler for the grammar table
     var convertGrammarHandler = function (index) {
       this.highlight(index);
@@ -3310,13 +3372,15 @@ $(document).ready(function () {
   }
 
   function cykParse() {
-    if(!transformGrammar()){
-      alert("The grammar must be in CNF form to be parsed!");
+    var productions = _.map(_.filter(arr, function(x) { return x[0]; }), function(x) { return x.slice(); });
+    var error = CYK.validate(productions);
+    if (error) {
+      alert(error);
       return;
     }
-    var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
-    localStorage['grammars'] = JSON.stringify(productions);
-    window.open("./CYKParser.html");
+    localStorage.setItem('cykGrammar', JSON.stringify(productions));
+    var editorScript = document.querySelector('script[src$="grammarEditor.js"]');
+    window.open(new URL('CYKParser.html', editorScript.src).href);
   }
 
   //=================================
@@ -3422,7 +3486,6 @@ $(document).ready(function () {
     if (type == "grammarexercise") {
       var exerciseLocation = getExerciseLocation();
 		  m = init();
-      //var exercisePath = (exerciseLocation == null)? "./Formal_Languages_Automated_Exerciese/exercises/Sheet_3/sheet3P2.json": exerciseLocation;
   		exerController = new GrammarExerciseController(jsav, m, exerciseLocation, "json");
       exerController.load();
 
@@ -3446,7 +3509,9 @@ $(document).ready(function () {
     }
     else{//this part loads a grammar from xml file. We may use it when we need to provide an exercise that requires loading grammars
       $.ajax({
-        url: "./Formal_Languages_Automated_Exerciese/exercises/grammarTests.jff",
+        //        url: "./exercises/grammarTests.jff",
+        // The above file does not exist, try this one
+        url: "./exercises/grammarTests.xml",
         dataType: 'xml',
         async: true,
         success: function(data) {
@@ -3533,8 +3598,10 @@ $(document).ready(function () {
   }
 
   onLoadHandler();
-  if (window.inCanvas())
+  // Standalone editors do not load the optional Canvas progress helpers.
+  if (typeof window.inCanvas === "function" && window.inCanvas()) {
     initGraphFromServer();
+  }
 
   /////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////

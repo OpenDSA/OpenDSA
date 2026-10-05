@@ -747,15 +747,6 @@
     inUnload = true;
   });
 
-  // If there are any requests left in the queue when the window unloads then we
-  // will have permanently lost their answers and will need to clear the session
-  // cache, to make sure we don't override what is passed down from the servers
-  $(window).unload(function() {
-    if (Khan.attemptOrHintQueue.queue().length) {
-      $(Exercises).trigger("attemptError");
-    }
-  });
-
   function fullUrl(method, useMultithreadedModule) {
     // The multithreaded module is slower but cheaper.  We use it for
     // all hints, and problem-attempts that we know are not the last

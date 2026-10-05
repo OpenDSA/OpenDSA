@@ -3379,7 +3379,9 @@ $(document).ready(function () {
     }
     else{//this part loads a grammar from xml file. We may use it when we need to provide an exercise that requires loading grammars
       $.ajax({
-        url: "./Formal_Languages_Automated_Exerciese/exercises/grammarTests.jff",
+        // url: "./Formal_Languages_Automated_Exerciese/exercises/grammarTests.jff",
+        // The above file does not exist, try this one
+        url: "./exercises/grammarTests.xml",
         dataType: 'xml',
         async: true,
         success: function(data) {

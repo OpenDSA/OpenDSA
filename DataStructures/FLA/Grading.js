@@ -121,7 +121,7 @@
     // initialize controls
     var cont = $(this.options.controls),
       self = this;
-    if (cont.size() === 0) {
+    if (cont.length === 0) {
       cont = this.jsav.container.find(".jsavexercisecontrols");
     }
     // function to handle the reset event
@@ -141,11 +141,11 @@
       cont.removeClass("active");
     };
     // allow reset and model answer through an event triggered on container
-    this.jsav.container.bind({
+    this.jsav.container.on({
       "jsav-exercise-reset": resetHandler,
       "jsav-exercise-model": modelHandler
     });
-    if (cont.size()) {
+    if (cont.length) {
       var $reset = $('<input type="button" name="reset" value="' + this.options.resetButtonTitle + '" />')
         .click(resetHandler),
         $model = $('<input type="button" name="answer" value="' + "Show Test Cases" + '" />')
@@ -195,7 +195,7 @@
 
     // if jsavscore element is present and empty, add default structure
     var $jsavscore = this.jsav.container.find(".jsavscore");
-    if ($jsavscore.size() === 1 && $jsavscore.children().size() === 0 &&
+    if ($jsavscore.length === 1 && $jsavscore.children().length === 0 &&
       this.options.feedback === "continuous") {
       $jsavscore.html(this.jsav._translate("scoreLabel") + ' <span class="jsavcurrentscore"></span> / ' +
         '<span class="jsavmaxscore" ></span>, <span class="jsavamidone">' + this.jsav._translate("remainingLabel") +
@@ -205,7 +205,7 @@
     }
 
     // if custom showGrade function is given
-    if (this.options.showGrade && (typeof this.options.showGrade === "function)) {
+    if (this.options.showGrade && typeof this.options.showGrade === "function") {
       this.showGrade = this.options.showGrade;
     }
 
@@ -223,6 +223,8 @@
     // step of both animation sequences. Useful in exercises where only the final state is relevant
     // instead of the process how student got there.
     finalStep: function () {
+      this.score.undetermined = false;
+      this.score.message = "";
       this.score.correct = 0;
       this.score.student = 1;
       this.score.total = 1;
@@ -240,6 +242,11 @@
       }
       else {
         var obj = this.options.exerciseController.startTesting();
+        if (obj && obj.undetermined) {
+          this.score.undetermined = true;
+          this.score.message = obj.message;
+          return;
+        }
         if (typeof obj == "number"){
           this.score.correct = obj;
         }
@@ -322,6 +329,10 @@
   exerproto.showGrade = function () {
     // shows an alert box of the grade
     this.grade();
+    if (this.score.undetermined) {
+      window.alert(this.score.message);
+      return;
+    }
     var grade = this.score,
       msg = this.jsav._translate("yourScore") + " " + (grade.correct * 100).toFixed(2) + "%";
     if (grade.fix > 0) {
