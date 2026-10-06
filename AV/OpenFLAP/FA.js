@@ -17,7 +17,10 @@ var exerciseLocation;
       fatoreController,
       exerController,
       wasPanning = false, // true for one click right after a canvas drag-to-pan, so that click doesn't also add a node
-      zoomPan = GraphEditor.createZoomPan('.jsavgraph', { minZoom: 0.25, maxZoom: 3 });
+      // The edges/preview-line SVG is a sibling of .jsavgraph (not a child
+      // of it), so it needs the same transform applied explicitly to stay
+      // visually in sync - see alsoTransform in GraphEditor.createZoomPan.
+      zoomPan = GraphEditor.createZoomPan('.jsavgraph', { minZoom: 0.25, maxZoom: 3, alsoTransform: '.jsavcanvas > svg' });
       $("#rmenu").load("./rmenu.html");
       $("#rmenu").hide();
   // Handler for initializing graph upon loading the web page.
@@ -217,6 +220,7 @@ var exerciseLocation;
   // by the right-click context menu's "Change Label" (registered below as
   // window.jsavOpenNodeLabelDialog), so both entry points produce identical UI.
   var openNodeEditDialog = function(node) {
+    clearSelection();
     g.saveFAState();
     g.selected = node;
     g.selected.highlight();
@@ -668,6 +672,85 @@ var exerciseLocation;
   };
   var treeLayoutHierarchy = function() {
     GraphEditor.applyLayout(g, function(g) { g.treeLayoutAlg(true); }, removeModeClasses, removeND);
+  };
+
+  // Reads every node's current position/size (raw CSS, independent of any
+  // zoom transform - see GraphEditor.createZoomPan's screenToLocal comments
+  // for why that distinction matters), as parallel arrays so the rects can
+  // be handed to GraphEditor.transformNodeRects and the results matched
+  // back up to their node by array index.
+  function getNodeRects(automaton) {
+    var nodeList = [], rects = [], nodes = automaton.nodes();
+    for (var node = nodes.next(); node; node = nodes.next()) {
+      nodeList.push(node);
+      rects.push({
+        left: parseFloat(node.element.css('left')) || 0,
+        top: parseFloat(node.element.css('top')) || 0,
+        width: node.element.outerWidth(),
+        height: node.element.outerHeight()
+      });
+    }
+    return { nodes: nodeList, rects: rects };
+  }
+
+  // Applies a rigid group transform (flip/rotate/fill-screen) to every
+  // node's position at once. One undo step for the whole operation.
+  function transformLayout(transformName) {
+    g.saveFAState();
+    var nodeRects = getNodeRects(g),
+      targetSize = { width: g.element.width(), height: g.element.height() },
+      newPositions = GraphEditor.transformNodeRects(nodeRects.rects, transformName, targetSize);
+    for (var i = 0; i < nodeRects.nodes.length; i++) {
+      nodeRects.nodes[i].element.css({ left: newPositions[i].left, top: newPositions[i].top });
+      nodeRects.nodes[i].stateLabelPositionUpdate();
+    }
+    g.updateEdgePositions();
+  }
+  var flipHorizontal = function() {
+    GraphEditor.applyLayout(g, function() { transformLayout('flipHorizontal'); }, removeModeClasses, removeND);
+  };
+  var flipVertical = function() {
+    GraphEditor.applyLayout(g, function() { transformLayout('flipVertical'); }, removeModeClasses, removeND);
+  };
+  var rotate90 = function() {
+    GraphEditor.applyLayout(g, function() { transformLayout('rotate90'); }, removeModeClasses, removeND);
+  };
+  var fillScreen = function() {
+    GraphEditor.applyLayout(g, function() { transformLayout('fillScreen'); }, removeModeClasses, removeND);
+  };
+
+  // Bookmarks the current node positions (keyed by each node's own stable
+  // id, not its editable state name) so they can be restored later even if
+  // labels/structure change in the meantime - narrower than the regular
+  // undo stack, which would also revert those other edits.
+  var layoutSnapshot = null;
+  var saveLayout = function() {
+    layoutSnapshot = {};
+    var nodes = g.nodes();
+    for (var node = nodes.next(); node; node = nodes.next()) {
+      layoutSnapshot[node.id()] = {
+        left: parseFloat(node.element.css('left')) || 0,
+        top: parseFloat(node.element.css('top')) || 0
+      };
+    }
+    jsav.umsg('Layout saved.');
+  };
+  var restoreLayout = function() {
+    if (!layoutSnapshot) {
+      jsav.umsg('No saved layout yet.');
+      return;
+    }
+    g.saveFAState();
+    var nodes = g.nodes();
+    for (var node = nodes.next(); node; node = nodes.next()) {
+      var pos = layoutSnapshot[node.id()];
+      if (pos) {
+        node.element.css({ left: pos.left, top: pos.top });
+        node.stateLabelPositionUpdate();
+      }
+    }
+    g.updateEdgePositions();
+    jsav.umsg('Layout restored.');
   };
 
   // Exit out of all editing modes and prepare the view for the input string JSAV array.
@@ -1236,7 +1319,10 @@ var exerciseLocation;
       startX = e.pageX - offset.left;
       startY = e.pageY - offset.top;
     } else {
-      var local = zoomPan.screenToLocal(e.pageX, e.pageY);
+      // The preview line is drawn on the edges' SVG, which has a different
+      // local origin than node top/left positions - screenToDrawingLocal
+      // (not screenToLocal) is the correct conversion for it.
+      var local = zoomPan.screenToDrawingLocal(e.pageX, e.pageY);
       startX = local.x;
       startY = local.y;
     }
@@ -1278,7 +1364,7 @@ var exerciseLocation;
       endX = e.pageX - offset.left;
       endY = e.pageY - offset.top;
     } else {
-      var local = zoomPan.screenToLocal(e.pageX, e.pageY);
+      var local = zoomPan.screenToDrawingLocal(e.pageX, e.pageY);
       endX = local.x;
       endY = local.y;
     }
@@ -1322,6 +1408,12 @@ var exerciseLocation;
   $('#treeHieButton').click(treeLayoutHierarchy);
   $('#twoCircleButton').click(twoCircleLayout);
   $('#randomButton').click(randomLayout);
+  $('#flipHorizontalButton').click(flipHorizontal);
+  $('#flipVerticalButton').click(flipVertical);
+  $('#rotate90Button').click(rotate90);
+  $('#fillScreenButton').click(fillScreen);
+  $('#saveLayoutButton').click(saveLayout);
+  $('#restoreLayoutButton').click(restoreLayout);
   $('#ndButton').click(testND);
   $('#lambdaButton').click(testLambda);
   $('#completeButton').click(testComplete);
@@ -1351,7 +1443,9 @@ var exerciseLocation;
     { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 't'; }, action: addEdges },
     { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 'd'; }, action: deleteNodes },
     { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 'u'; },
-      action: function() { GraphEditor.clickButtonUnlessDisabled('#undoButton'); } }
+      action: function() { GraphEditor.clickButtonUnlessDisabled('#undoButton'); } },
+    { test: function(e) { return (e.key === 'Delete' || e.key === 'Backspace') && g.selectedNodes && g.selectedNodes.length > 0; },
+      action: deleteSelectedNodes }
   ]);
   $('#download').hide();
 
@@ -1382,32 +1476,87 @@ var exerciseLocation;
     }, { passive: false });
   }
 
-  // Drag-to-pan: starting a drag on empty canvas background (not on a
-  // node/edge/label) pans the view. Bound to .jsavcanvas (the stable
-  // viewport, not .jsavgraph) since addEdges() repeatedly clears/rebinds
-  // .jsavgraph's own mousedown/mousemove/mouseup for edge-drawing.
+  // Multi-select: g.selectedNodes holds the current rubber-band selection
+  // (separate from g.selected, the pre-existing single-node reference used
+  // by edit/delete click handling, which stays untouched).
+  function clearSelection() {
+    if (g.selectedNodes) {
+      for (var i = 0; i < g.selectedNodes.length; i++) { g.selectedNodes[i].unhighlight(); }
+    }
+    g.selectedNodes = [];
+  }
+  function setSelectedNodes(nodes) {
+    clearSelection();
+    g.selectedNodes = nodes;
+    for (var i = 0; i < nodes.length; i++) { nodes[i].highlight(); }
+  }
+  function deleteSelectedNodes() {
+    if (!g.selectedNodes || !g.selectedNodes.length) { return; }
+    g.saveFAState();
+    var nodes = g.selectedNodes;
+    clearSelection();
+    for (var i = 0; i < nodes.length; i++) { executeDeleteNode(g, nodes[i]); }
+    checkAllEdges();
+  }
+
+  // Starting a drag on empty canvas background (not on a node/edge/label)
+  // either pans the view, or - in "Edit Nodes" mode specifically - draws a
+  // rubber-band selection rectangle instead. Bound to .jsavcanvas (the
+  // stable viewport, not .jsavgraph) since addEdges() repeatedly
+  // clears/rebinds .jsavgraph's own mousedown/mousemove/mouseup for
+  // edge-drawing.
   (function() {
     var panning = false, panStartX, panStartY, panMoved = false;
-    var PAN_THRESHOLD = 4; // px of movement before this counts as a pan, not a click
+    var selecting = false, selectStartX, selectStartY, selectMoved = false;
+    var DRAG_THRESHOLD = 4; // px of movement before this counts as a drag, not a click
+    var rubberBand = GraphEditor.createRubberBandSelector('.jsavcanvas');
+
     $('.jsavcanvas').on('mousedown', function(e) {
       if ($(e.target).closest('.jsavnode, .jsavedge, .jsavedgelabel, .jsavgraphnode').length) { return; }
-      panning = true;
-      panMoved = false;
-      panStartX = e.pageX;
-      panStartY = e.pageY;
+      if ($('.jsavgraph').hasClass('editNodes')) {
+        selecting = true;
+        selectMoved = false;
+        selectStartX = e.pageX;
+        selectStartY = e.pageY;
+        rubberBand.start();
+      } else {
+        panning = true;
+        panMoved = false;
+        panStartX = e.pageX;
+        panStartY = e.pageY;
+      }
     });
     $(document).on('mousemove', function(e) {
-      if (!panning) { return; }
-      var dx = e.pageX - panStartX, dy = e.pageY - panStartY;
-      if (!panMoved && Math.abs(dx) < PAN_THRESHOLD && Math.abs(dy) < PAN_THRESHOLD) { return; }
-      panMoved = true;
-      zoomPan.panBy(dx, dy);
-      panStartX = e.pageX;
-      panStartY = e.pageY;
+      if (panning) {
+        var dx = e.pageX - panStartX, dy = e.pageY - panStartY;
+        if (!panMoved && Math.abs(dx) < DRAG_THRESHOLD && Math.abs(dy) < DRAG_THRESHOLD) { return; }
+        panMoved = true;
+        zoomPan.panBy(dx, dy);
+        panStartX = e.pageX;
+        panStartY = e.pageY;
+      } else if (selecting) {
+        var dx2 = e.pageX - selectStartX, dy2 = e.pageY - selectStartY;
+        if (!selectMoved && Math.abs(dx2) < DRAG_THRESHOLD && Math.abs(dy2) < DRAG_THRESHOLD) { return; }
+        selectMoved = true;
+        rubberBand.update(selectStartX, selectStartY, e.pageX, e.pageY);
+      }
     });
-    $(document).on('mouseup', function() {
-      if (panning && panMoved) { wasPanning = true; }
-      panning = false;
+    $(document).on('mouseup', function(e) {
+      if (panning) {
+        if (panMoved) { wasPanning = true; }
+        panning = false;
+      } else if (selecting) {
+        if (selectMoved) {
+          var bounds = rubberBand.update(selectStartX, selectStartY, e.pageX, e.pageY);
+          var matched = rubberBand.elementsWithin(bounds, $('.jsavgraphnode'));
+          setSelectedNodes(matched.map(function(el) { return $(el).data('node'); }).filter(Boolean));
+          wasPanning = true; // reuse the same click-suppression flag
+        } else {
+          clearSelection();
+        }
+        rubberBand.end();
+        selecting = false;
+      }
     });
   })();
 

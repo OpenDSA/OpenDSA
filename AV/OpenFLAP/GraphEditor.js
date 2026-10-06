@@ -226,17 +226,43 @@ var GraphEditor = (function ($) {
   // canvas's own local coordinate system - the same system node/edge
   // top/left positions already use - so existing "where on the canvas did I
   // click" code keeps working at any zoom/pan level, not just 100%/(0,0).
+  // options.alsoTransform: an extra selector (e.g. the edges' SVG, which in
+  // this app is a sibling of the node canvas, not a child of it) to apply
+  // the exact same visual transform to, purely for keeping it in sync -
+  // never used for any of the coordinate math below, which stays anchored
+  // to canvasSelector alone.
   function createZoomPan(canvasSelector, options) {
     options = options || {};
     var minZoom = options.minZoom || 0.25,
       maxZoom = options.maxZoom || 3,
       state = { zoom: 1, panX: 0, panY: 0 };
 
+    var alsoTransformObserverAttached = false;
+
+    // alsoTransform (e.g. Raphael's svg) can be created lazily - well after
+    // this controller exists, and even after a later apply() call - so a
+    // freshly-created one would otherwise sit untransformed while
+    // canvasSelector is already zoomed/panned. Watching canvasSelector's
+    // parent for it to appear and re-syncing then keeps it correct without
+    // FA.js having to know when that element gets created. Attaching this
+    // lazily from apply() (rather than at creation time) matters because
+    // canvasSelector itself may not exist yet when createZoomPan runs.
+    function ensureAlsoTransformObserver() {
+      if (alsoTransformObserverAttached || !options.alsoTransform) return;
+      var transformParent = $(canvasSelector).parent()[0];
+      if (transformParent && window.MutationObserver) {
+        new MutationObserver(apply).observe(transformParent, { childList: true });
+        alsoTransformObserverAttached = true;
+      }
+    }
+
     function apply() {
-      $(canvasSelector).css({
-        transform: 'translate(' + state.panX + 'px,' + state.panY + 'px) scale(' + state.zoom + ')',
-        transformOrigin: '0 0'
-      });
+      ensureAlsoTransformObserver();
+      var transform = 'translate(' + state.panX + 'px,' + state.panY + 'px) scale(' + state.zoom + ')';
+      $(canvasSelector).css({ transform: transform, transformOrigin: '0 0' });
+      if (options.alsoTransform) {
+        $(options.alsoTransform).css({ transform: transform, transformOrigin: '0 0' });
+      }
     }
 
     // The canvas element's own border is part of what gets scaled, so a
@@ -253,6 +279,23 @@ var GraphEditor = (function ($) {
       return {
         x: (pageX - graphOffset.left) / state.zoom - borderWidth(),
         y: (pageY - graphOffset.top) / state.zoom - borderWidth()
+      };
+    }
+
+    // Converts a page coordinate into the coordinate system the edges'
+    // drawing surface (e.g. Raphael/SVG, via alsoTransform) expects. That
+    // surface is a sibling of canvasSelector (not a child), untransformed
+    // and positioned flush with their shared, untransformed parent - unlike
+    // canvasSelector itself, which can carry its own margin. The surface is
+    // also created lazily (e.g. on the first edge ever drawn), so this
+    // can't read its offset() directly; instead it derives the surface's
+    // static position from the shared parent (always present) plus the
+    // current pan, which is equivalent once the surface exists.
+    function screenToDrawingLocal(pageX, pageY) {
+      var parentOffset = $(canvasSelector).parent().offset();
+      return {
+        x: (pageX - parentOffset.left - state.panX) / state.zoom,
+        y: (pageY - parentOffset.top - state.panY) / state.zoom
       };
     }
 
@@ -295,8 +338,108 @@ var GraphEditor = (function ($) {
       setZoom: setZoom,
       panBy: panBy,
       reset: reset,
-      screenToLocal: screenToLocal
+      screenToLocal: screenToLocal,
+      screenToDrawingLocal: screenToDrawingLocal
     };
+  }
+
+  // Rubber-band (marquee) selection: draws a dashed rectangle overlay as
+  // the user drags, in screen coordinates (correct regardless of any
+  // zoom/pan transform elsewhere), and reports which elements it overlaps.
+  function createRubberBandSelector(containerSelector) {
+    var $rect = null;
+
+    function start() {
+      $rect = $('<div class="jsav-selection-rect"></div>').appendTo(containerSelector);
+    }
+
+    // x1,y1,x2,y2 are page coordinates (e.g. straight from a mouse event).
+    // Returns the resulting rectangle, also in page coordinates.
+    function update(x1, y1, x2, y2) {
+      var left = Math.min(x1, x2), top = Math.min(y1, y2),
+        width = Math.abs(x2 - x1), height = Math.abs(y2 - y1),
+        containerOffset = $(containerSelector).offset();
+      $rect.css({
+        left: (left - containerOffset.left) + 'px',
+        top: (top - containerOffset.top) + 'px',
+        width: width + 'px',
+        height: height + 'px'
+      });
+      return { left: left, top: top, right: left + width, bottom: top + height };
+    }
+
+    function end() {
+      if ($rect) { $rect.remove(); $rect = null; }
+    }
+
+    // Returns the subset of $elements (a jQuery collection) whose rendered
+    // bounding box intersects the given page-coordinate rectangle.
+    function elementsWithin(rectBounds, $elements) {
+      var matches = [];
+      $elements.each(function () {
+        var r = this.getBoundingClientRect(),
+          pageR = {
+            left: r.left + window.scrollX, top: r.top + window.scrollY,
+            right: r.right + window.scrollX, bottom: r.bottom + window.scrollY
+          },
+          intersects = !(pageR.right < rectBounds.left || pageR.left > rectBounds.right ||
+            pageR.bottom < rectBounds.top || pageR.top > rectBounds.bottom);
+        if (intersects) { matches.push(this); }
+      });
+      return matches;
+    }
+
+    return { start: start, update: update, end: end, elementsWithin: elementsWithin };
+  }
+
+  // Given an array of node rects ({left, top, width, height}, in the same
+  // local units as node positions - zoom-independent), returns new
+  // {left, top} positions with the whole layout flipped/rotated/rescaled
+  // as one rigid group operation around the group's own bounding box.
+  // transformName is one of 'flipHorizontal', 'flipVertical', 'rotate90',
+  // 'fillScreen' (which also needs targetSize: {width, height} to fit into).
+  // Pure geometry - the caller applies the returned positions and re-runs
+  // whatever edge/label layout its graph needs afterward.
+  function transformNodeRects(rects, transformName, targetSize) {
+    if (rects.length === 0) { return []; }
+    var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity, i;
+    for (i = 0; i < rects.length; i++) {
+      minX = Math.min(minX, rects[i].left);
+      minY = Math.min(minY, rects[i].top);
+      maxX = Math.max(maxX, rects[i].left + rects[i].width);
+      maxY = Math.max(maxY, rects[i].top + rects[i].height);
+    }
+    var centerX = (minX + maxX) / 2,
+      centerY = (minY + maxY) / 2,
+      boxWidth = maxX - minX,
+      boxHeight = maxY - minY,
+      scale = 1, targetCenterX = centerX, targetCenterY = centerY;
+    if (transformName === 'fillScreen' && boxWidth > 0 && boxHeight > 0) {
+      var margin = 20,
+        availWidth = Math.max(targetSize.width - 2 * margin, 1),
+        availHeight = Math.max(targetSize.height - 2 * margin, 1);
+      scale = Math.min(availWidth / boxWidth, availHeight / boxHeight);
+      targetCenterX = targetSize.width / 2;
+      targetCenterY = targetSize.height / 2;
+    }
+    return rects.map(function (r) {
+      var cx = r.left + r.width / 2,
+        cy = r.top + r.height / 2,
+        newCx = cx, newCy = cy;
+      if (transformName === 'flipHorizontal') {
+        newCx = 2 * centerX - cx;
+      } else if (transformName === 'flipVertical') {
+        newCy = 2 * centerY - cy;
+      } else if (transformName === 'rotate90') {
+        // 90deg clockwise around the group's own center
+        newCx = centerX - (cy - centerY);
+        newCy = centerY + (cx - centerX);
+      } else if (transformName === 'fillScreen') {
+        newCx = targetCenterX + (cx - centerX) * scale;
+        newCy = targetCenterY + (cy - centerY) * scale;
+      }
+      return { left: newCx - r.width / 2, top: newCy - r.height / 2 };
+    });
   }
 
   return {
@@ -314,6 +457,8 @@ var GraphEditor = (function ($) {
     registerKeybindings: registerKeybindings,
     clickButtonUnlessDisabled: clickButtonUnlessDisabled,
     rebindClickHandlers: rebindClickHandlers,
-    createZoomPan: createZoomPan
+    createZoomPan: createZoomPan,
+    createRubberBandSelector: createRubberBandSelector,
+    transformNodeRects: transformNodeRects
   };
 })(jQuery);
