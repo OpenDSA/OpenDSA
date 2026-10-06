@@ -2281,8 +2281,11 @@ define(function(require) {
       return $.data(this, "name") === currentExerciseId;
     }).children(".problems").children();
 
-    // Generate the initial problem when dependencies are done being loaded
-    $.when.apply($, Khan.currentExercisePromise)
+    // Generate the initial problem when dependencies are done being loaded.
+    // Wait for the saved state (SPLICE.getState via odsaMOD) so the same
+    // sub-question is shown after a reload. ($.when.apply with a single
+    // promise passed no promises at all, so it never actually waited.)
+    $.when(Khan.currentExercisePromise)
       .then(function() {
         if (Khan.currentExercisePromise) {
           var correctExercises = Khan.studentData.correct_exercises,
