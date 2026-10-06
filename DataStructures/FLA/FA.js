@@ -2280,11 +2280,15 @@ var lambda = String.fromCharCode(955),
   // Editor drag handlers. These delegate the shared drag behavior to the
   // automaton prototype methods above (which in turn extend the base graph
   // class), and only add the editor-specific parts: animation stack
-  // backup/restore (Peixuan) and the initial state left-edge clamp.
+  // backup/restore (Peixuan), the initial state left-edge clamp, and (for
+  // multi-select) moving every other selected node by the same delta.
+  var groupDragLastPos = null;
+
   function dragStart(event, node) {
     var dragNode = node.helper.data("node");
     backupAnimStacks(dragNode.automaton.jsav);
     dragNode.automaton.dragStart(dragNode, event, node);
+    groupDragLastPos = { left: node.position.left, top: node.position.top };
   };
 
   function dragStop(event, node) {
@@ -2292,6 +2296,7 @@ var lambda = String.fromCharCode(955),
     dragNode.automaton.dragStop(dragNode, event, node);
     restoreAnimStacks(dragNode.automaton.jsav);
     addLayoutListeners(dragNode.automaton.jsav, dragNode);
+    groupDragLastPos = null;
   };
 
   function dragging(event, node) {
@@ -2303,6 +2308,29 @@ var lambda = String.fromCharCode(955),
     }
     g.drag(dragNode, event, node);
     dragNode.element.draggable('enable');
+
+    // Multi-select group move: if the dragged node is part of a current
+    // rubber-band selection, shift every other selected node by the same
+    // delta, so the whole selection moves together.
+    if (groupDragLastPos && g.selectedNodes && g.selectedNodes.length > 1 &&
+        g.selectedNodes.indexOf(dragNode) !== -1) {
+      var dx = node.position.left - groupDragLastPos.left,
+        dy = node.position.top - groupDragLastPos.top;
+      if (dx !== 0 || dy !== 0) {
+        for (var i = 0; i < g.selectedNodes.length; i++) {
+          var other = g.selectedNodes[i];
+          if (other === dragNode) { continue; }
+          var pos = other.position();
+          other.css({ left: pos.left + dx, top: pos.top + dy });
+          other.stateLabelPositionUpdate();
+          var edges = g.edges();
+          for (var next = edges.next(); next; next = edges.next()) {
+            if (next.start() === other || next.end() === other) { next.layout(); }
+          }
+        }
+      }
+    }
+    groupDragLastPos = { left: node.position.left, top: node.position.top };
   };
 
   //********************************************************************************************************************************* */
@@ -2417,11 +2445,22 @@ var lambda = String.fromCharCode(955),
       return;
     }
     this.weight(this._label.element[0].innerHTML);
+    // node.position() (jQuery, via JSAV.position) derives local coordinates
+    // from offset() differences, which bake in any CSS transform (e.g. the
+    // FA editor's zoom/pan scale) on the shared .jsavgraph ancestor - so
+    // under zoom it returns the raw left/top multiplied by the zoom level
+    // instead of the raw value itself. Edge endpoints need the raw,
+    // transform-independent value, since the edges' own drawing surface
+    // gets that same CSS transform applied separately (see GraphEditor's
+    // alsoTransform) - applying it twice would double-scale the edge.
+    var rawPosition = function (node) {
+      return { top: parseFloat(node.element.css('top')) || 0, left: parseFloat(node.element.css('left')) || 0 };
+    };
     var controlPointX, controlPointY, midX, midY,
       sElem = this.start().element,
       eElem = this.end().element,
-      start = (options && options.start) ? options.start : this.start().position(),
-      end = (options && options.end) ? options.end : this.end().position(),
+      start = (options && options.start) ? options.start : rawPosition(this.start()),
+      end = (options && options.end) ? options.end : rawPosition(this.end()),
       sWidth = sElem.outerWidth() / 2.0,
       sHeight = sElem.outerHeight() / 2.0,
       eWidth = eElem.outerWidth() / 2.0,
@@ -2463,11 +2502,11 @@ var lambda = String.fromCharCode(955),
       /************************This code is added to determine the arc direction for the loop arrow. if the state is in the second half of the
       FA, then the acr will be in the button. */
       var FAnodes = this.container._nodes;
-      var minToplocation = FAnodes[0].position().top,
-        maxTopLocation = FAnodes[0].position().top;
+      var minToplocation = rawPosition(FAnodes[0]).top,
+        maxTopLocation = rawPosition(FAnodes[0]).top;
       for (var n = 1; n < FAnodes.length; n++) {
-        minToplocation = Math.min(minToplocation, FAnodes[n].position().top);
-        maxTopLocation = Math.max(maxTopLocation, FAnodes[n].position().top);
+        minToplocation = Math.min(minToplocation, rawPosition(FAnodes[n]).top);
+        maxTopLocation = Math.max(maxTopLocation, rawPosition(FAnodes[n]).top);
       }
 
       // if (this.end().element.position().top <= 0) {
@@ -2477,7 +2516,7 @@ var lambda = String.fromCharCode(955),
       //   this.end().element.offset({ top: this.end().element.offset().top - 50 });
       //   this.endnode.getIncoming().forEach(edge => edge.layout());
       // }
-      if ((this.end().position().top > this.container.element.height() / 2) && minToplocation !== maxTopLocation) { //this means, draw the arrow at the button
+      if ((rawPosition(this.end()).top > this.container.element.height() / 2) && minToplocation !== maxTopLocation) { //this means, draw the arrow at the button
         fromY = Math.round(fromY + sHeight); //Change the - sign to + in case we need to flip the loop arrow and remove "adjust"
         this.g.path("M" + fromX + ',' + fromY + ' a' + loopR + ',' + loopR + ' -45 1,0 ' //this 1 is to draw it from the top. Make it 0 to flip it.
           +
@@ -2491,7 +2530,13 @@ var lambda = String.fromCharCode(955),
     }
     // If the edge should be an arc (implemented as a quadratic bezier curve)
     else if (this.options.arc) {
-      this.options.arcoffset = 15;
+      // The auto dfa-arc pair (two edges, opposite directions, same two
+      // nodes) always uses a fixed 15px bulge - but a user-dragged control
+      // point (see setControlPoint) owns arcoffset once set, so don't stomp
+      // it back to 15 on every layout().
+      if (!this.options.controlPoint) {
+        this.options.arcoffset = 15;
+      }
       var midX = ((fromPoint[0] + toPoint[0]) / 2.0),
         midY = ((fromPoint[1] + toPoint[1]) / 2.0),
         vectorX = fromPoint[1] - toPoint[1],
@@ -2543,14 +2588,25 @@ var lambda = String.fromCharCode(955),
         }
 
       }
-      var controlPointX = midX + scaling * vectorX,
+      if (this.options.controlPoint) {
+        controlPointX = this.options.controlPoint.x;
+        controlPointY = this.options.controlPoint.y;
+      } else {
+        controlPointX = midX + scaling * vectorX;
         controlPointY = midY + scaling * vectorY;
+      }
       //controlPointY = (controlPointY <= 70)? controlPointY + controlPoint_offset: controlPointY;
       //controlPointY = (controlPointY >= 140)? controlPointY - controlPoint_offset: controlPointY;
       this.g.path('M ' + fromPoint[0] + ',' + fromPoint[1] + ' Q' + controlPointX + ',' +
         controlPointY + ' ' + toPoint[0] + ',' + toPoint[1], options);
+      this._syncControlHandle(midX, midY, vectorX, vectorY, controlPointX, controlPointY);
     } else { //line (same as .movePoints)
       this.g.path(("M" + fromPoint[0] + " " + fromPoint[1] + "L" + toPoint[0] + " " + toPoint[1]), options);
+      var straightMidX = (fromPoint[0] + toPoint[0]) / 2.0,
+        straightMidY = (fromPoint[1] + toPoint[1]) / 2.0,
+        straightVectorX = fromPoint[1] - toPoint[1],
+        straightVectorY = toPoint[0] - fromPoint[0];
+      this._syncControlHandle(straightMidX, straightMidY, straightVectorX, straightVectorY, straightMidX, straightMidY);
     }
 
     // update the edge label position
@@ -2561,14 +2617,14 @@ var lambda = String.fromCharCode(955),
         bbheight = Math.abs(fromPoint[1] - toPoint[1]);
       if (this.start().equals(this.end())) { //in case of loop arrow we need to do the same as we did for the arrow direction.
         var FAnodes = this.container._nodes;
-        var minToplocation = FAnodes[0].position().top,
-          maxTopLocation = FAnodes[0].position().top;
+        var minToplocation = rawPosition(FAnodes[0]).top,
+          maxTopLocation = rawPosition(FAnodes[0]).top;
         for (var n = 1; n < FAnodes.length; n++) {
-          minToplocation = Math.min(minToplocation, FAnodes[n].position().top);
-          maxTopLocation = Math.max(maxTopLocation, FAnodes[n].position().top);
+          minToplocation = Math.min(minToplocation, rawPosition(FAnodes[n]).top);
+          maxTopLocation = Math.max(maxTopLocation, rawPosition(FAnodes[n]).top);
         }
         bbtop = Math.round(start.top - 1.1 * sHeight);
-        if ((this.end().position().top > this.container.element.height() / 2) && minToplocation !== maxTopLocation) {
+        if ((rawPosition(this.end()).top > this.container.element.height() / 2) && minToplocation !== maxTopLocation) {
           var labelCount = this._weight.split("<br>").length;
           bbtop = Math.round(start.top + sHeight * 2 + 2.6 * sHeight + 20 * (labelCount - 1));
         }
@@ -2602,6 +2658,78 @@ var lambda = String.fromCharCode(955),
     } else {
       this.addClass("jsavedge", options).removeClass("jsavnulledge");
     }
+  };
+
+  var CONTROL_HANDLE_SIZE = 10; // px; matches .jsavedge-controlpoint in FA.css
+
+  // jQuery UI's draggable positions elements using page-pixel mouse deltas
+  // with no awareness of an ancestor's CSS transform scale, so under zoom
+  // it moves the handle by the wrong amount (and even jitters, since each
+  // tick re-renders from an already-wrong position). Reading the current
+  // scale straight off .jsavgraph's own transform lets the handle's drag
+  // math divide the raw page-pixel mouse delta back down to the same local
+  // units node positions use, independent of jQuery UI.
+  function ancestorScale(el) {
+    var transform = window.getComputedStyle(el).transform;
+    if (!transform || transform === 'none') { return 1; }
+    var match = /matrix\(([^,]+),/.exec(transform);
+    return match ? parseFloat(match[1]) || 1 : 1;
+  }
+
+  // Creates (once) and repositions the draggable control-point handle, and
+  // stashes the edge's current straight-line midpoint/perpendicular so
+  // setControlPoint can later project a drag position onto it without
+  // redoing the angle/border math layout() already did.
+  transitionproto._syncControlHandle = function (midX, midY, vectorX, vectorY, pointX, pointY) {
+    var vectorLength = Math.sqrt(vectorX * vectorX + vectorY * vectorY);
+    this._curveMid = { x: midX, y: midY };
+    this._curveVector = { x: vectorX, y: vectorY, length: vectorLength };
+    if (!this._controlHandle) {
+      var self = this,
+        graphEl = this.container.element;
+      this._controlHandle = $('<div class="jsavedge-controlpoint"></div>')
+        .data('edge', this)
+        .appendTo(graphEl);
+      this._controlHandle.on('mousedown', function (downEvent) {
+        downEvent.stopPropagation(); // don't also start a canvas pan/rubber-band-select
+        downEvent.preventDefault();
+        var scale = ancestorScale(graphEl[0]),
+          startLeft = parseFloat($(this).css('left')) || 0,
+          startTop = parseFloat($(this).css('top')) || 0,
+          startPageX = downEvent.pageX,
+          startPageY = downEvent.pageY;
+        $(document).on('mousemove.edgecontrolpoint', function (moveEvent) {
+          var left = startLeft + (moveEvent.pageX - startPageX) / scale,
+            top = startTop + (moveEvent.pageY - startPageY) / scale;
+          self.setControlPoint(left + CONTROL_HANDLE_SIZE / 2, top + CONTROL_HANDLE_SIZE / 2);
+        });
+        $(document).on('mouseup.edgecontrolpoint', function () {
+          $(document).off('mousemove.edgecontrolpoint mouseup.edgecontrolpoint');
+        });
+      });
+    }
+    this._controlHandle.css({ left: pointX - CONTROL_HANDLE_SIZE / 2, top: pointY - CONTROL_HANDLE_SIZE / 2 });
+  };
+
+  // Called while dragging the control-point handle. (x, y) is the dragged
+  // point in the same local coordinate space as node positions. Dragging
+  // far enough from the straight-line midpoint curves the edge through
+  // that exact point; dragging back near the midpoint straightens it again.
+  transitionproto.setControlPoint = function (x, y) {
+    if (!this._curveMid || !this._curveVector || !this._curveVector.length) { return; }
+    var dx = x - this._curveMid.x,
+      dy = y - this._curveMid.y,
+      offset = (dx * this._curveVector.x + dy * this._curveVector.y) / this._curveVector.length,
+      SNAP_THRESHOLD = 10;
+    if (Math.abs(offset) <= SNAP_THRESHOLD) {
+      this.options.arc = false;
+      this.options.controlPoint = null;
+    } else {
+      this.options.arc = true;
+      this.options.arcoffset = offset;
+      this.options.controlPoint = { x: x, y: y };
+    }
+    this.layout();
   };
 
   function normalizeAngle(angle) {
@@ -2756,7 +2884,22 @@ var lambda = String.fromCharCode(955),
       return this.options.arc;
     } else if (typeof newBool === 'boolean') {
       this.options.arc = newBool;
+      // This is the auto bidirectional-pair mechanism (see addEdge/removeEdge)
+      // taking over the curve - drop any earlier manual drag (setControlPoint)
+      // so it doesn't reappear with stale geometry next time arc flips back on.
+      this.options.controlPoint = null;
     }
+  };
+
+  // Hide/show the control-point handle along with the rest of the edge
+  // (e.g. on delete/undo), same as the base class already does for _label.
+  transitionproto.hide = function (options) {
+    JSAV._types.ds.Edge.prototype.hide.call(this, options);
+    if (this._controlHandle) { this._controlHandle.hide(); }
+  };
+  transitionproto.show = function (options) {
+    JSAV._types.ds.Edge.prototype.show.call(this, options);
+    if (this._controlHandle) { this._controlHandle.show(); }
   };
 
 
