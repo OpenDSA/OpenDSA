@@ -41,8 +41,6 @@ var exerciseLocation;
       break;
     }
 
-    $('#undoButton').click(undoAction);
-    $('#redoButton').click(redoAction);
     resetUndoButtons();
     
     var exercise = jsav.flexercise(modelSolution, initialize,
@@ -1030,11 +1028,7 @@ var exerciseLocation;
   $("#finish").click(finishExercise);
   $('#loadFile').change(loadXML);
   $('#cancelButton').click(cancel);
-  $('#nodeButton').click(addNodes);
-  $('#edgeButton').click(addEdges);
   $('#moveButton').click(moveNodes);
-  $('#editButton').click(editNodes);
-  $('#deleteButton').click(deleteNodes);
   $('#layoutButton').click(layoutGraph);
   $('#ndButton').click(testND);
   $('#lambdaButton').click(testLambda);

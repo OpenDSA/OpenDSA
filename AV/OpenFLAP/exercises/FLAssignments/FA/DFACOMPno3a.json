@@ -4,7 +4,7 @@
   "totalTrueCases": 10,
   "totalFalseCases": 10,
   "containLetters": ["a", "b"],
-  "tools": ["addTrapState", "highlightIncomplete", "completeWithTrap", "highlightND"],
+  "tools": ["edit", "addState", "addTransition", "delete", "undo", "redo", "addTrapState", "highlightIncomplete", "completeWithTrap", "highlightND"],
   "randomStringLength": [0, 15],
   "description": "Give a DFA that accepts the COMPLEMENT of the language over $\\Sigma = \\{a, b\\}$ of strings that do not have three consecutive a's.",
   "testCases": [
