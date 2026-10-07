@@ -1066,11 +1066,26 @@ var exerciseLocation;
     highlightND:         {icon: "fa-code-fork",            title: "Highlight nondeterminism",    handler: testND}
   };
 
+  // Tools named in the page's "tools" URL parameter (comma-separated), or null if there is none.
+  // Lets a textbook choose an exercise's tools, e.g. through the avembed directive's :url_params: option.
+  function toolsFromUrl() {
+    var param = new URLSearchParams(window.location.search).get('tools');
+    if (param === null) {
+      return null;
+    }
+    return param.split(',').map(function(name) { return name.trim(); }).filter(Boolean);
+  }
+
   // Builds the toolbar from the tools an exercise allows. Called by ExerciseController each time an exercise loads
   // (including on reset), so buttons from the previous load are removed first.
   // Handlers are bound here because the buttons don't exist yet when the click bindings above run.
+  // A "tools" URL parameter, when present, replaces the exercise's JSON "tools" list.
   function applyTools(allowed) {
     $('.exerciseTool').remove();
+    var urlTools = toolsFromUrl();
+    if (urlTools) {
+      allowed = urlTools;
+    }
     // There are no default tools: an exercise without a "tools" list gets an empty toolbar.
     if (!Array.isArray(allowed)) {
       console.warn('Exercise has no "tools" list in its JSON, so no toolbar buttons are shown.');
