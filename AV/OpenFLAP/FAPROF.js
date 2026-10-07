@@ -1071,8 +1071,13 @@ var exerciseLocation;
   // Handlers are bound here because the buttons don't exist yet when the click bindings above run.
   function applyTools(allowed) {
     $('.exerciseTool').remove();
+    // There are no default tools: an exercise without a "tools" list gets an empty toolbar.
+    if (!Array.isArray(allowed)) {
+      console.warn('Exercise has no "tools" list in its JSON, so no toolbar buttons are shown.');
+      allowed = [];
+    }
     var needsOutput = false;
-    (allowed || []).forEach(function(name) {
+    allowed.forEach(function(name) {
       var tool = TOOLS[name];
       if (!tool) {
         console.warn("Unknown exercise tool: " + name);
