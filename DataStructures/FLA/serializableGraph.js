@@ -111,7 +111,7 @@ function parseStyledLabelHtml(html) {
 	var result = { text: "", bold: false, italic: false, fontSize: "normal" };
 	if (!html) { return result; }
 	var match = html.match(/>([^<]*)</);
-	result.text = $.trim(match ? match[1] : html.replace(/<[^>]*>/g, ""));
+	result.text = (match ? match[1] : html.replace(/<[^>]*>/g, "")).trim();
 	result.bold = /font-weight:\s*bold/i.test(html);
 	result.italic = /font-style:\s*italic/i.test(html);
 	var sizeMatch = html.match(/font-size:\s*([\d.]+em)/i);

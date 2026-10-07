@@ -2006,7 +2006,7 @@ var lambda = String.fromCharCode(955),
     // directly to get both the plain text and its style (bold/italic/size
     // all affect how much room the text actually needs).
     var $p = this._stateLabel ? this._stateLabel.element.find(".label_css") : null,
-      text = $p && $p.length ? $.trim($p.text()) : "",
+      text = $p && $p.length ? $p.text().trim() : "",
       styleAttr = $p && $p.length ? $p.attr("style") : "",
       size = text ? measureLabelSize(text, styleAttr) : { width: DEFAULT_NODE_SIZE, height: DEFAULT_NODE_SIZE, wrapped: false };
     if (this.element.outerWidth() !== size.width || this.element.outerHeight() !== size.height) {
