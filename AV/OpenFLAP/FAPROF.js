@@ -363,7 +363,7 @@ var exerciseLocation;
       // If there are no empty strings on the graph, nothing was changed. Remove the saved graph from the undo stack.
       g.undoStack.pop();
       if(g.undoStack.length == 0) {
-        document.getElementById("undoButton").disabled = true;
+        $("#undoButton").prop("disabled", true);
       }
     }
   };
@@ -645,8 +645,8 @@ var exerciseLocation;
   // Since both of them are empty, both buttons are also disabled.
   // Called whenever the user loads a new graph.
   function resetUndoButtons () {
-    document.getElementById("undoButton").disabled = true;
-    document.getElementById("redoButton").disabled = true;
+    $("#undoButton").prop("disabled", true);
+    $("#redoButton").prop("disabled", true);
   };
 
   //cancel all current options
