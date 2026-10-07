@@ -1681,7 +1681,8 @@ $(document).ready(function () {
   var removeUnitHelper = function (productions, pDict) {
     for (var i = 0; i < productions.length; i++) {
       if (productions[i][2].length === 1 && variables.indexOf(productions[i][2]) !== -1) {
-        var p = pDict[productions[i][2]];
+        // An undefined variable has no replacement productions.
+        var p = pDict[productions[i][2]] || [];
         var n;
         for (var j = 0; j < p.length; j++) {
           if (p[j].length === 1 && variables.indexOf(p[j]) !== -1) {
@@ -1705,6 +1706,8 @@ $(document).ready(function () {
   var removeUseless = function () {
     var derivers = {};  // variables that derive a string of terminals
     var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+    if (!productions.length) return [];
+    var start = productions[0][0];
     var counter = 0;
     while (findDerivable(derivers, productions)) {
       counter++;
@@ -1713,6 +1716,8 @@ $(document).ready(function () {
         break;
       }
     };
+    // Preserve the original start, even if its rules are all nonproductive.
+    if (!(start in derivers)) return [];
     var transformed = [];
     // remove productions which do not derive a string of terminals
     for (var i = 0; i < productions.length; i++) {
@@ -1720,9 +1725,9 @@ $(document).ready(function () {
         transformed.push(productions[i]);
       }
     }
+    // No productive rules means the language is empty; there is no graph to traverse.
+    if (transformed.length === 0) return [];
     var pDict = {};   // dictionary to hold reachable variables
-    //var start = transformed[0][0];//IT SHOULD BE S
-    var start = 'S';//I changed this to S.
     for (var i = 0; i < transformed.length; i++) {
       if (!(transformed[i][0] in pDict)) {
         pDict[transformed[i][0]] = [];
@@ -2036,6 +2041,15 @@ $(document).ready(function () {
     for (var i = 0; i < productions.length; i++) {
       if (v.indexOf(productions[i][0]) === -1) {
         v.push(productions[i][0]);
+      }
+    }
+    // Include RHS-only variables so every unit-production edge can be drawn.
+    for (var ruleIndex = 0; ruleIndex < productions.length; ruleIndex++) {
+      var rhs = productions[ruleIndex][2];
+      for (var symbolIndex = 0; symbolIndex < rhs.length; symbolIndex++) {
+        if (variables.indexOf(rhs[symbolIndex]) !== -1 && v.indexOf(rhs[symbolIndex]) === -1) {
+          v.push(rhs[symbolIndex]);
+        }
       }
     }
     $(m.element).css("margin-left", "auto");
@@ -2368,6 +2382,19 @@ $(document).ready(function () {
     // Right sides are arrays (unlike the matrix, where RHS is a string)
     _.each(tArr, function(x) { x[2] = x[2].split('');});
     var varCounter = 1;
+    $('#cnfExportButton').remove();
+    var exportButton = $('<button type="button" id="cnfExportButton" disabled>Export Grammar</button>');
+    $('#backbutton').after(exportButton);
+    $('#backbutton').one('click.cnfExport', function () { exportButton.remove(); });
+    var isComplete = function () {
+      return _.every(tArr, function (rule) {
+        var rhs = rule[2];
+        return (rhs.length === 1 && variables.indexOf(rhs[0][0]) === -1) ||
+          (rhs.length === 2 && _.every(rhs, function (symbol) {
+            return variables.indexOf(symbol[0]) !== -1;
+          }));
+      });
+    };
 
     // handler for the table for converting productions
     var chomskyHandler = function (index) {
@@ -2427,13 +2454,10 @@ $(document).ready(function () {
         }
       }
       jsav.umsg('Converted.');
-      if (tArr.length === fullChomsky.length) {
+      if (isComplete()) {
         jsav.umsg('All productions completed.');
         tGrammar.element.off();
-        // var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
-        // if (c) {
-        //   attemptExport();
-        // }
+        exportButton.prop('disabled', false);
         for (var i = 0; i < tGrammar._arrays.length; i++) {
           tGrammar.unhighlight(i);
         }
@@ -2441,32 +2465,23 @@ $(document).ready(function () {
     };
     // attempts to convert and export the completed CNF grammar
     var attemptExport = function () {
-      var tempVars = [];
-      for (var i = 0; i < tArr.length; i++) {
-        if (tArr[i][0].length > 1 && tArr[i][0][0] === 'B') {
-          tempVars.push(tArr[i][0]);
-        }
-      }
-      var newVariables = _.difference(variables.split(""), _.map(tArr, function(x) {return x[0]; }));
-      if (tempVars.length + varCounter > newVariables.length) {
+      // Map complete symbol tokens, without mutating the interactive table.
+      var allSymbols = _.uniq(_.flatten(_.map(tArr, function (rule) {
+        return [rule[0]].concat(rule[2]);
+      })));
+      var tempVars = _.filter(allSymbols, function (symbol) { return symbol.length > 1; });
+      var newVariables = _.difference(variables.split(''), allSymbols);
+      if (tempVars.length > newVariables.length) {
         alert('Too large to export!');
         return;
       }
-      tempVars.sort();
-      var iOffset = tempVars.length;
-      for (var i = 1; i < varCounter + 1; i++) {
-        tempVars.push("D(" + i + ")");
-      }
-      _.each(tArr, function(x) {x[2] = x[2].join(''); });
-      for (var i = 0; i < tempVars.length; i++) {
-        var re = tempVars[i].replace(/[\(\)]/g, "\\$&");
-        var regex = new RegExp(re, 'g');
-        for (var j = 0; j < tArr.length; j++) {
-          tArr[j][0] = tArr[j][0].replace(regex, newVariables[i]);
-          tArr[j][2] = tArr[j][2].replace(regex, newVariables[i]);
-        }
-      }
-      exportTransformedGrammar(_.map(tArr, function(x) {return x.join(''); }));
+      var names = {};
+      _.each(tempVars, function (symbol, i) { names[symbol] = newVariables[i]; });
+      exportTransformedGrammar(_.map(tArr, function (rule) {
+        return (names[rule[0]] || rule[0]) + arrow + _.map(rule[2], function (symbol) {
+          return names[symbol] || symbol;
+        }).join('');
+      }));
     };
 
     tGrammar = jsav.ds.matrix(_.map(tArr, function(x){return [x[0], x[1], x[2].join('')]; }));
@@ -2474,6 +2489,8 @@ $(document).ready(function () {
     //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
     tGrammar.click(chomskyHandler);
 
+    exportButton.on('click', attemptExport);
+    exportButton.prop('disabled', !isComplete());
     jsav.umsg('Converting to Chomsky Normal Form: convert productions of the grammar on the right by clicking on them.');
   };
 
@@ -2805,11 +2822,11 @@ $(document).ready(function () {
       }
     }
     var bEdge = builtDFA.getEdge(b, b);
-    $(bEdge._label.element[0]).css('font-size', '1.4em');
+    if (bEdge) $(bEdge._label.element[0]).css('font-size', '1.4em');
     builtDFA.layout();
 
     var pCount = 0;
-    var labelHeight = $(bEdge._label.element[0]).height();
+    var labelHeight = bEdge ? $(bEdge._label.element[0]).height() : 0;
     // handler for the grammar table
     var convertGrammarHandler = function (index) {
       this.highlight(index);
@@ -3355,13 +3372,15 @@ $(document).ready(function () {
   }
 
   function cykParse() {
-    if(!transformGrammar()){
-      alert("The grammar must be in CNF form to be parsed!");
+    var productions = _.map(_.filter(arr, function(x) { return x[0]; }), function(x) { return x.slice(); });
+    var error = CYK.validate(productions);
+    if (error) {
+      alert(error);
       return;
     }
-    var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
-    localStorage['grammars'] = JSON.stringify(productions);
-    window.open("./CYKParser.html");
+    localStorage.setItem('cykGrammar', JSON.stringify(productions));
+    var editorScript = document.querySelector('script[src$="grammarEditor.js"]');
+    window.open(new URL('CYKParser.html', editorScript.src).href);
   }
 
   //=================================
