@@ -38,6 +38,7 @@ SYNOPSIS::
        [:required: true|false]
        [:showhide: show|hide|none]
        [:threshold: {number}]
+       [:url_params: {string}]
 
 DESCRIPTION
     ``.. avembed:: {relative_path} {type}``
@@ -97,6 +98,29 @@ DESCRIPTION
 
       Threshold number of points required for credit.
       **Added automatically by the configuration process, do NOT add manually.**
+
+    ``[:url_params: {string}]``
+
+      A query string (for example ``name1=value1&name2=value2``) of
+      extra URL parameters to pass to the embedded page. Use this
+      when the textbook, rather than the exercise, should control
+      some behavior that the embedded page supports.
+      Blank values are dropped, so ``name=`` has no effect.
+
+      For example, the OpenFLAP finite automaton exercises
+      (``AV/OpenFLAP/exercises/FLAssignments/FA/``) take a
+      comma-separated ``tools`` parameter that replaces the
+      ``"tools"`` list in the exercise's JSON file, which sets the
+      toolbar buttons the student gets::
+
+        .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAno3a.html pe
+           :url_params: tools=edit,addState,addTransition,delete,undo,redo,completeWithTrap
+
+      The available tool names are the keys of ``TOOLS`` in
+      ``AV/OpenFLAP/FAPROF.js``: ``edit``, ``addState``,
+      ``addTransition``, ``delete``, ``undo``, ``redo``,
+      ``addTrapState``, ``highlightIncomplete``,
+      ``completeWithTrap`` and ``highlightND``.
 
 NOTES
     The ``.. avembed::`` directive fetches the AV's information
