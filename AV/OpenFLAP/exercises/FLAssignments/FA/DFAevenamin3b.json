@@ -3,6 +3,7 @@
   "totalTrueCases": 5,
   "totalFalseCases": 5,
   "containLetters": ["a", "b"],
+  "tools": ["edit", "addState", "addTransition", "delete", "undo", "redo"],
   "randomStringLength": [0, 15],
   "description": "Give a DFA that accepts the language over $\\Sigma = \\{a, b\\}$ of strings with any even number of a’s and at least three b’s.",
   "testCases": [

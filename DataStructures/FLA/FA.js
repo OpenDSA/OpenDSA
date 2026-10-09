@@ -1871,12 +1871,13 @@ var lambda = String.fromCharCode(955),
   // Function to save the state of the graph and push it to the undo stack.
   // Called whenever any graph manipulation is made.
   // Note that a size restriction of 20 is imposed on both the undo stack and the redo stack.
+  // The undo/redo buttons are looked up with jQuery so this is a no-op on pages (e.g. exercises) that leave them out.
   automatonproto.saveFAState = function () {
     var data = serialize(this);
     this.undoStack.push(data);
     this.redoStack = [];
-    document.getElementById("undoButton").disabled = false;
-    document.getElementById("redoButton").disabled = true;
+    $("#undoButton").prop("disabled", false);
+    $("#redoButton").prop("disabled", true);
     if (this.undoStack.length > 20) {
       this.undoStack.shift();
     }
@@ -1891,9 +1892,9 @@ var lambda = String.fromCharCode(955),
     data = this.undoStack.pop();
     data = JSON.parse(data);
     this.initFromParsedJSONSource(data);
-    document.getElementById("redoButton").disabled = false;
+    $("#redoButton").prop("disabled", false);
     if (this.undoStack.length == 0) {
-      document.getElementById("undoButton").disabled = true;
+      $("#undoButton").prop("disabled", true);
     }
   };
 
@@ -1906,9 +1907,9 @@ var lambda = String.fromCharCode(955),
     data = this.redoStack.pop();
     data = JSON.parse(data);
     this.initFromParsedJSONSource(data);
-    document.getElementById("undoButton").disabled = false;
+    $("#undoButton").prop("disabled", false);
     if (this.redoStack.length == 0) {
-      document.getElementById("redoButton").disabled = true;
+      $("#redoButton").prop("disabled", true);
     }
   };
 
