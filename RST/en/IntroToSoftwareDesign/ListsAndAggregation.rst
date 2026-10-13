@@ -985,7 +985,7 @@ Never compare strings using the ``==`` relational operator. In Java:
 Writing Unit Tests for String Operations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-AssertJ provides built-in assertions for testing string operations:
+The `assertThat()` method provides built-in assertions for testing string operations:
 
 .. code-block:: java
 
@@ -1088,8 +1088,8 @@ iterate through its internal collection to build a composite description:
        }
    }
 
-Testing toString() with AssertJ
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Testing toString()
+~~~~~~~~~~~~~~~~~~
 
 In your unit tests, verify that ``toString()`` formats output according to specification:
 
