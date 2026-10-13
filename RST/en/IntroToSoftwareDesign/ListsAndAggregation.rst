@@ -270,37 +270,29 @@ the gap:
 Writing Unit Tests for List Operations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In CS 1114, we use **AssertJ** assertions to verify list state in our unit tests.
-AssertJ provides expressive methods for checking collections:
+In CS 1114, we use `assertThat()` assertions to verify list state in our unit tests.
+This provides a number of expressive methods for checking collections such as:
 
 .. code-block:: java
-
-   import static org.assertj.core.api.Assertions.*;
-   import org.junit.jupiter.api.Test;
-
-   public class PartyTest
+   public void testPartyLifecycle()
    {
-       @Test
-       public void testPartyLifecycle()
-       {
-           List<String> party = new ArrayList<String>();
-           assertThat(party).isEmpty();
-           assertThat(party).hasSize(0);
+       List<String> party = new ArrayList<String>();
+       assertThat(party).isEmpty();
+       assertThat(party).hasSize(0);
 
-           party.add("Warrior");
-           party.add("Mage");
-           party.add("Rogue");
+       party.add("Warrior");
+       party.add("Mage");
+       party.add("Rogue");
 
-           assertThat(party).hasSize(3);
-           assertThat(party.get(0)).isEqualTo("Warrior");
-           assertThat(party).contains("Mage");
-           assertThat(party).containsExactly("Warrior", "Mage", "Rogue");
+       assertThat(party).hasSize(3);
+       assertThat(party.get(0)).isEqualTo("Warrior");
+       assertThat(party).contains("Mage");
+       assertThat(party).containsExactly("Warrior", "Mage", "Rogue");
 
-           party.remove("Mage");
-           assertThat(party).hasSize(2);
-           assertThat(party).containsExactly("Warrior", "Rogue");
-           assertThat(party).doesNotContain("Mage");
-       }
+       party.remove("Mage");
+       assertThat(party).hasSize(2);
+       assertThat(party).containsExactly("Warrior", "Rogue");
+       assertThat(party).doesNotContain("Mage");
    }
 
 Take a few minutes to watch this video demonstration of common list methods:
@@ -739,29 +731,21 @@ sequence of integers the generator will produce:
 
 .. code-block:: java
 
-   import org.junit.jupiter.api.Test;
-   import static org.assertj.core.api.Assertions.*;
-   import student.util.Random;
-
-   public class CardHandRandomTest
+   public void testDrawRandomCardDeterministic()
    {
-       @Test
-       public void testDrawRandomCardDeterministic()
-       {
-           CardHand hand = new CardHand(5);
-           hand.addCard(new Card("Dragon", "Fire", 8));  // index 0
-           hand.addCard(new Card("Knight", "Steel", 5)); // index 1
-           hand.addCard(new Card("Cleric", "Light", 4)); // index 2
+       CardHand hand = new CardHand(5);
+       hand.addCard(new Card("Dragon", "Fire", 8));  // index 0
+       hand.addCard(new Card("Knight", "Steel", 5)); // index 1
+       hand.addCard(new Card("Cleric", "Light", 4)); // index 2
 
-           // In your unit test, force the generator to return index 1 next:
-           Random.setNextInts(1);
+       // In your unit test, force the generator to return index 1 next:
+       Random.setNextInts(1);
 
-           Card drawn = hand.drawRandomCard();
+       Card drawn = hand.drawRandomCard();
 
-           // Assert with 100% confidence: index 1 was the Knight!
-           assertThat(drawn.getName()).isEqualTo("Knight");
-           assertThat(hand.getCardCount()).isEqualTo(2);
-       }
+       // Assert with 100% confidence: index 1 was the Knight!
+       assertThat(drawn.getName()).isEqualTo("Knight");
+       assertThat(hand.getCardCount()).isEqualTo(2);
    }
 
 When ``Random.setNextInts(...)`` is called, the generator enters replay mode and
@@ -1005,7 +989,6 @@ AssertJ provides built-in assertions for testing string operations:
 
 .. code-block:: java
 
-   @Test
    public void testCardNameFormatting()
    {
        String cardName = "Shadow Dragon";
@@ -1112,7 +1095,6 @@ In your unit tests, verify that ``toString()`` formats output according to speci
 
 .. code-block:: java
 
-   @Test
    public void testCardToString()
    {
        Card card = new Card("Knight", "Steel", 5);
