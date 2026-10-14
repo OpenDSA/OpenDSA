@@ -379,7 +379,13 @@ var nodeClickHandlers = function(e) {
   var nodeSortFunctionOptionsValue = function(a, b) {
     return a.options.value.localeCompare(b.options.value);
   };
-  var equalNodes = function(thisNode, otherNode, options) {
+  // an edge's weight lists its symbols ("a<br>b") in the order they were added,
+  // so compare the symbols themselves rather than the weight strings
+  var sameSymbols = function(edge, otherEdge) {
+    return edge.weight().split("<br>").sort().join() ===
+           otherEdge.weight().split("<br>").sort().join();
+  };
+  var equalNodes = function(thisNode, otherNode) {
     var myNeighbors = thisNode.neighbors().sort(nodeSortFunctionLabel),
         otherNeighbors = otherNode.neighbors().sort(nodeSortFunctionOptionsValue),
         myNeighbor, otherNeighbor;
@@ -391,11 +397,8 @@ var nodeClickHandlers = function(e) {
       myNeighbor = myNeighbors[i];
       otherNeighbor = otherNeighbors[i];
       // if edges differ -> not the same nodes
-      if (!thisNode.container.getEdge(thisNode, myNeighbor)
-                .equals(otherNode.container.getEdge(otherNode, otherNeighbor),
-                        $.extend({}, options, {dontCheckNodes: true})
-                        //options
-                        )) {
+      if (!sameSymbols(thisNode.container.getEdge(thisNode, myNeighbor),
+                       otherNode.container.getEdge(otherNode, otherNeighbor))) {
         return false;
       }
     }
