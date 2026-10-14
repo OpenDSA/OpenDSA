@@ -345,8 +345,9 @@ var nodeClickHandlers = function(e) {
     }
     return 0;
 	}
+	// return the whole {score, solution} so the grader also stores the student's DFA
 	if(exerController)
-		return exerController.startTesting(studentGraph).score;
+		return exerController.startTesting(studentGraph);
   };
   /*
   These function added to compare student solution with the expected solution. Previously, the code was calling the equals method for Grapths, which depend that the 
