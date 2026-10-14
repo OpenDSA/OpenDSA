@@ -20,7 +20,8 @@
 		if (type == 'Exercise') {
 			var exerciseLocation = getExerciseLocation();
 			//var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_2/exercise1_a.json": exerciseLocation;
-			exerController = new NFAtoDFAMinimizationController(jsav, g, exerciseLocation, "json", {initGraph: initGraph});
+			// the controller builds the graph itself through initGraph, so there is no FA to pass in yet
+			exerController = new NFAtoDFAMinimizationController(jsav, null, exerciseLocation, "json", {initGraph: initGraph});
       exerController.load();		
 
       var exercise = jsav.flexercise(modelSolution, initializeExercise,
@@ -85,7 +86,8 @@
 		}
 		else if(type == 'Exercise')
 		{
-			var source = opts.graph ? opts.graph : JSON.parse(g);
+			// updateExercise always passes a graph (an empty one if the JSON has none)
+			var source = opts.graph;
 			referenceGraph = jsav.ds.FA({width: "45%", height: 440, layout: "manual", element: $("#reference")});
 			referenceGraph.initFromParsedJSONSource(source, 0.5);
 			referenceGraph.updateAlphabet();
