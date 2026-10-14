@@ -14,6 +14,10 @@
   	var lambda = String.fromCharCode(955),
     epsilon = String.fromCharCode(949);
 
+	// exerciseLog comes from the exercise controller script, which NFAtoDFA.html
+	// (opened by the FA editor's "Convert to DFA") does not load
+	var hasExerciseLog = typeof exerciseLog !== "undefined";
+
 	// initializes the reference/original NFA
 	function onLoadHandler(){
 		var type = $('h1').attr('id');
@@ -159,7 +163,7 @@ var graphClickHandlers = function(e) {
 			$(".jsavgraph").removeClass("working");
 			selectedNode.unhighlight();
 			jsav.umsg("Choose a state to expand:");
-			if(exerciseLog){
+			if(hasExerciseLog){
 				exerciseLog.errorsCount++;
 				exerciseLog.errorMessages.push(targetS + ": State label is incorrect");
 			}
@@ -174,7 +178,7 @@ var graphClickHandlers = function(e) {
 				$(".jsavgraph").removeClass("working");
 				selectedNode.unhighlight();
 				jsav.umsg("Choose a state to expand:");
-				if(exerciseLog){
+				if(hasExerciseLog){
 					exerciseLog.errorsCount++;
 					exerciseLog.errorMessages.push(targetS + ": State label already exists");
 				}
@@ -204,7 +208,7 @@ var graphClickHandlers = function(e) {
 		selectedNode.unhighlight();
 		newNode.unhighlight();
 		jsav.umsg("Choose a state to expand:");
-		if(exerciseLog)
+		if(hasExerciseLog)
 			exerciseLog.numberOfSteps++;
 	}
 };
@@ -227,7 +231,7 @@ var nodeClickHandlers = function(e) {
 			return;
 		} else if (!_.contains(alphabet, expandT)) {
 			alert("That terminal is not in the alphabet!");
-			if(exerciseLog){
+			if(hasExerciseLog){
 				exerciseLog.errorsCount++;
 				exerciseLog.errorMessages.push(expandT + ": That terminal is not in the alphabet");
 			}
@@ -240,7 +244,7 @@ var nodeClickHandlers = function(e) {
 		for(var edgeNumber = 0; edgeNumber< selectedNodeEdges.length; edgeNumber++){
 			if(selectedNodeEdges[edgeNumber]._weight === expandT){
 				alert("There is an existing transition for the same alpabet");
-				if(exerciseLog){
+				if(hasExerciseLog){
 					exerciseLog.errorsCount++;
 					exerciseLog.errorMessages.push(expandT + ": There is an existing transition for the same alpabet");
 				}
@@ -258,7 +262,7 @@ var nodeClickHandlers = function(e) {
 		var node = next.sort().join();
 		if (!node) {
 			alert("There are no paths on that terminal!");
-			if(exerciseLog){
+			if(hasExerciseLog){
 				exerciseLog.errorsCount++;
 				exerciseLog.errorMessages.push(expandT + ": There are no paths on that terminal");
 			}
@@ -269,7 +273,7 @@ var nodeClickHandlers = function(e) {
 		$(".editButton").hide();
 		$(".jsavgraph").addClass("working");
 		jsav.umsg("Click to place new state");
-		if(exerciseLog)
+		if(hasExerciseLog)
 			exerciseLog.numberOfSteps++;
 		e.stopPropagation();
 	} else {
@@ -279,7 +283,7 @@ var nodeClickHandlers = function(e) {
 			if (newEdge) { newEdge.layout(); }
 		}			 else {
 			alert("State label is incorrect.");
-			if(exerciseLog){
+			if(hasExerciseLog){
 				exerciseLog.errorsCount++;
 				exerciseLog.errorMessages.push(expandT + ": State label is incorrect");
 			}
@@ -290,7 +294,7 @@ var nodeClickHandlers = function(e) {
 		this.unhighlight();
 		jsav.umsg("Choose a state to expand:");
 		e.stopPropagation();
-		if(exerciseLog)
+		if(hasExerciseLog)
 			exerciseLog.numberOfSteps++;
 	}
 };
@@ -335,7 +339,7 @@ var nodeClickHandlers = function(e) {
       $("#exportButton").show();
     }		else {
 	  jsav.umsg("You're not done yet.");
-	  if(exerciseLog){
+	  if(hasExerciseLog){
 		exerciseLog.errorsCount++;
 		exerciseLog.errorMessages.push("You're not done yet");
     }
