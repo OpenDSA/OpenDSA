@@ -31,8 +31,8 @@ Grouping Objects: Lists, Aggregation, and Strings
    * **Override** the ``toString()`` method to provide readable string representations of domain objects.
 
 
-Introduction to Grouping Objects: ArrayList
--------------------------------------------
+Introduction to Grouping Objects: List
+--------------------------------------
 
 In our programs so far, we have stored individual pieces of data in individual
 variables or instance fields. For example, if you were building a card game, you
@@ -168,12 +168,12 @@ grows and shrinks dynamically. When you add elements, the ``ArrayList``
 automatically allocates more memory if needed. When you remove elements, it
 compacts the remaining items to maintain a continuous, zero-indexed sequence.
 
-Take a few minutes to watch the following overview of how ``ArrayList`` works:
+Take a few minutes to watch the following overview of how ``List`` works:
 
 .. raw:: html
 
    <div class="align-center" style="margin-top:1em;">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/XkJD80HmpdI?start=0&end=1156" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/wR3T7WO4TTA?si=gKxkVaZJZXjpl3vE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
    </div>
 
 
