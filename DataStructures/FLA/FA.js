@@ -2531,13 +2531,9 @@ var lambda = String.fromCharCode(955),
     }
     // If the edge should be an arc (implemented as a quadratic bezier curve)
     else if (this.options.arc) {
-      // The auto dfa-arc pair (two edges, opposite directions, same two
-      // nodes) always uses a fixed 15px bulge - but a user-dragged control
-      // point (see setControlPoint) owns arcoffset once set, so don't stomp
-      // it back to 15 on every layout().
-      if (!this.options.controlPoint) {
-        this.options.arcoffset = 15;
-      }
+      // Draggable curve control point is commented out (see setControlPoint
+      // below) - persisting it would mean changing the .jff save format.
+      this.options.arcoffset = 15;
       var midX = ((fromPoint[0] + toPoint[0]) / 2.0),
         midY = ((fromPoint[1] + toPoint[1]) / 2.0),
         vectorX = fromPoint[1] - toPoint[1],
@@ -2589,25 +2585,20 @@ var lambda = String.fromCharCode(955),
         }
 
       }
-      if (this.options.controlPoint) {
-        controlPointX = this.options.controlPoint.x;
-        controlPointY = this.options.controlPoint.y;
-      } else {
-        controlPointX = midX + scaling * vectorX;
-        controlPointY = midY + scaling * vectorY;
-      }
+      controlPointX = midX + scaling * vectorX;
+      controlPointY = midY + scaling * vectorY;
       //controlPointY = (controlPointY <= 70)? controlPointY + controlPoint_offset: controlPointY;
       //controlPointY = (controlPointY >= 140)? controlPointY - controlPoint_offset: controlPointY;
       this.g.path('M ' + fromPoint[0] + ',' + fromPoint[1] + ' Q' + controlPointX + ',' +
         controlPointY + ' ' + toPoint[0] + ',' + toPoint[1], options);
-      this._syncControlHandle(midX, midY, vectorX, vectorY, controlPointX, controlPointY);
+      // this._syncControlHandle(midX, midY, vectorX, vectorY, controlPointX, controlPointY);
     } else { //line (same as .movePoints)
       this.g.path(("M" + fromPoint[0] + " " + fromPoint[1] + "L" + toPoint[0] + " " + toPoint[1]), options);
-      var straightMidX = (fromPoint[0] + toPoint[0]) / 2.0,
-        straightMidY = (fromPoint[1] + toPoint[1]) / 2.0,
-        straightVectorX = fromPoint[1] - toPoint[1],
-        straightVectorY = toPoint[0] - fromPoint[0];
-      this._syncControlHandle(straightMidX, straightMidY, straightVectorX, straightVectorY, straightMidX, straightMidY);
+      // var straightMidX = (fromPoint[0] + toPoint[0]) / 2.0,
+      //   straightMidY = (fromPoint[1] + toPoint[1]) / 2.0,
+      //   straightVectorX = fromPoint[1] - toPoint[1],
+      //   straightVectorY = toPoint[0] - fromPoint[0];
+      // this._syncControlHandle(straightMidX, straightMidY, straightVectorX, straightVectorY, straightMidX, straightMidY);
     }
 
     // update the edge label position
@@ -2661,15 +2652,14 @@ var lambda = String.fromCharCode(955),
     }
   };
 
+  // Draggable edge-curve control point - commented out rather than deleted.
+  // Persisting the dragged shape into saved files would mean adding new
+  // fields to the .jff format, which risks compatibility with JFLAP and
+  // anything else built against the standard schema. See GraphEditor.js
+  // generic-layer work for context on why this existed.
+  /*
   var CONTROL_HANDLE_SIZE = 10; // px; matches .jsavedge-controlpoint in FA.css
 
-  // jQuery UI's draggable positions elements using page-pixel mouse deltas
-  // with no awareness of an ancestor's CSS transform scale, so under zoom
-  // it moves the handle by the wrong amount (and even jitters, since each
-  // tick re-renders from an already-wrong position). Reading the current
-  // scale straight off .jsavgraph's own transform lets the handle's drag
-  // math divide the raw page-pixel mouse delta back down to the same local
-  // units node positions use, independent of jQuery UI.
   function ancestorScale(el) {
     var transform = window.getComputedStyle(el).transform;
     if (!transform || transform === 'none') { return 1; }
@@ -2677,10 +2667,6 @@ var lambda = String.fromCharCode(955),
     return match ? parseFloat(match[1]) || 1 : 1;
   }
 
-  // Creates (once) and repositions the draggable control-point handle, and
-  // stashes the edge's current straight-line midpoint/perpendicular so
-  // setControlPoint can later project a drag position onto it without
-  // redoing the angle/border math layout() already did.
   transitionproto._syncControlHandle = function (midX, midY, vectorX, vectorY, pointX, pointY) {
     var vectorLength = Math.sqrt(vectorX * vectorX + vectorY * vectorY);
     this._curveMid = { x: midX, y: midY };
@@ -2692,7 +2678,7 @@ var lambda = String.fromCharCode(955),
         .data('edge', this)
         .appendTo(graphEl);
       this._controlHandle.on('mousedown', function (downEvent) {
-        downEvent.stopPropagation(); // don't also start a canvas pan/rubber-band-select
+        downEvent.stopPropagation();
         downEvent.preventDefault();
         var scale = ancestorScale(graphEl[0]),
           startLeft = parseFloat($(this).css('left')) || 0,
@@ -2712,10 +2698,6 @@ var lambda = String.fromCharCode(955),
     this._controlHandle.css({ left: pointX - CONTROL_HANDLE_SIZE / 2, top: pointY - CONTROL_HANDLE_SIZE / 2 });
   };
 
-  // Called while dragging the control-point handle. (x, y) is the dragged
-  // point in the same local coordinate space as node positions. Dragging
-  // far enough from the straight-line midpoint curves the edge through
-  // that exact point; dragging back near the midpoint straightens it again.
   transitionproto.setControlPoint = function (x, y) {
     if (!this._curveMid || !this._curveVector || !this._curveVector.length) { return; }
     var dx = x - this._curveMid.x,
@@ -2732,6 +2714,7 @@ var lambda = String.fromCharCode(955),
     }
     this.layout();
   };
+  */
 
   function normalizeAngle(angle) {
     var pi = Math.PI;
@@ -2885,15 +2868,12 @@ var lambda = String.fromCharCode(955),
       return this.options.arc;
     } else if (typeof newBool === 'boolean') {
       this.options.arc = newBool;
-      // This is the auto bidirectional-pair mechanism (see addEdge/removeEdge)
-      // taking over the curve - drop any earlier manual drag (setControlPoint)
-      // so it doesn't reappear with stale geometry next time arc flips back on.
-      this.options.controlPoint = null;
     }
   };
 
-  // Hide/show the control-point handle along with the rest of the edge
-  // (e.g. on delete/undo), same as the base class already does for _label.
+  // Draggable control-point handle hide/show overrides - commented out
+  // along with the rest of that feature above.
+  /*
   transitionproto.hide = function (options) {
     JSAV._types.ds.Edge.prototype.hide.call(this, options);
     if (this._controlHandle) { this._controlHandle.hide(); }
@@ -2902,6 +2882,7 @@ var lambda = String.fromCharCode(955),
     JSAV._types.ds.Edge.prototype.show.call(this, options);
     if (this._controlHandle) { this._controlHandle.show(); }
   };
+  */
 
 
 

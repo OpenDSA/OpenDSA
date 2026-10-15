@@ -81,6 +81,8 @@
 	pointer-events: none;
 	z-index: 900;
 }
+/* Draggable edge-curve control point - commented out along with the JS
+   in DataStructures/FLA/FA.js (.jff save-format compatibility concern).
 .jsavedge-controlpoint {
 	position: absolute;
 	width: 10px;
@@ -95,6 +97,7 @@
 .jsavgraph.editNodes .jsavedge-controlpoint {
 	display: block;
 }
+*/
 .jsavnode {
 	cursor: pointer;
 }
