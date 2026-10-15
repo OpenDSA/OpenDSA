@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Compare Two DFAs</title>
+    <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="../../lib/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaAV.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaStyle.css" type="text/css" />
+    <link rel="stylesheet" href="./css/FA.css" type="text/css" />
+    <link rel="stylesheet" href="./css/compareFA.css" type="text/css" />
+    <script src="../../lib/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="av">
+        <h1>Compare Two DFAs</h1>
+        <p class="instructions">
+          <b>Add Node</b> click the canvas to place a state (the first one becomes the start state).
+          <b>Add Edge</b> click one state then another, then type the symbol.
+          <b>Set Initial</b> / <b>Toggle Final</b> click a state to mark it.
+        </p>
+        <div id="machines">
+          <div class="machine">
+            <h2>Machine A</h2>
+            <div class="toolbar" data-target="A">
+              <button type="button" class="mode active" data-mode="addNode">Add Node</button>
+              <button type="button" class="mode" data-mode="addEdge">Add Edge</button>
+              <button type="button" class="mode" data-mode="setInitial">Set Initial</button>
+              <button type="button" class="mode" data-mode="toggleFinal">Toggle Final</button>
+              <button type="button" class="clearButton">Clear</button>
+              <button type="button" class="exampleButton">Load Example</button>
+            </div>
+            <div id="canvasA" class="jsavcanvas"></div>
+          </div>
+          <div class="machine">
+            <h2>Machine B</h2>
+            <div class="toolbar" data-target="B">
+              <button type="button" class="mode active" data-mode="addNode">Add Node</button>
+              <button type="button" class="mode" data-mode="addEdge">Add Edge</button>
+              <button type="button" class="mode" data-mode="setInitial">Set Initial</button>
+              <button type="button" class="mode" data-mode="toggleFinal">Toggle Final</button>
+              <button type="button" class="clearButton">Clear</button>
+              <button type="button" class="exampleButton">Load Example</button>
+            </div>
+            <div id="canvasB" class="jsavcanvas"></div>
+          </div>
+        </div>
+        <div id="compareRow">
+          <button type="button" id="compareButton">Compare</button>
+          <span id="resultMessage"></span>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../lib/jquery.ui.min.js"></script>
+    <script src="../../lib/timeme.js"></script>
+    <script src="../../lib/jquery.transit.js"></script>
+    <script src="../../lib/raphael.js"></script>
+    <script src="../../lib/dagre.min.js"></script>
+    <script src="../../lib/JSAV.js"></script>
+    <script src="../../lib/odsaUtils.js"></script>
+    <script src="../../lib/odsaAV.js"></script>
+    <script src="../../DataStructures/FLA/serializableGraph.js"></script>
+    <script src="../../lib/underscore.js"></script>
+    <script src="../../DataStructures/FLA/FA.js"></script>
+    <script src="compareFA.js"></script>
+  </body>
+</html>

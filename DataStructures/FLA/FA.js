@@ -3510,6 +3510,183 @@ var lambda = String.fromCharCode(955),
     return graph;
   };
 
+  // Splits a group of states on the first symbol that sends them to
+  // different existing groups. Returns [group] unchanged if none does.
+  var splitGroup = function (group, groups, alphabet, trans) {
+    if (group.length <= 1) { return [group]; }
+    for (var a = 0; a < alphabet.length; a++) {
+      var sym = alphabet[a];
+      var buckets = {};
+      for (var i = 0; i < group.length; i++) {
+        var gi = groupIndexOf(groups, trans[group[i]][sym]);
+        if (!buckets[gi]) { buckets[gi] = []; }
+        buckets[gi].push(group[i]);
+      }
+      var keys = Object.keys(buckets);
+      if (keys.length > 1) {
+        return keys.map(function (k) { return buckets[k]; });
+      }
+    }
+    return [group];
+  };
+
+  var groupIndexOf = function (groups, stateValue) {
+    for (var i = 0; i < groups.length; i++) {
+      if (groups[i].indexOf(stateValue) !== -1) { return i; }
+    }
+    return -1;
+  };
+
+  /*
+    Checks automaton is actually deterministic: has an initial state, no
+    lambda transitions, and no two transitions from the same state on the
+    same symbol. Same check the FA grading code already runs, shared here
+    so minimizeDFA/areIsomorphic aren't run on something they can't handle.
+  */
+  FiniteAutomaton.isDFA = function (automaton) {
+    if (!automaton.initial) { return false; }
+    var alphabet = Object.keys(automaton.updateAlphabet());
+    var nodes = automaton.nodes();
+    for (var node = nodes.next(); node; node = nodes.next()) {
+      if (automaton.transitionFunction(node, automaton.emptystring).length > 0) {
+        return false;
+      }
+      for (var i = 0; i < alphabet.length; i++) {
+        if (automaton.transitionFunctionMultiple(node, alphabet[i]).length > 1) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+
+  /*
+    Minimizes automaton via partition refinement (table-filling): states
+    get merged until no symbol can tell any two of them apart. Assumes a
+    deterministic automaton with an initial state; completes missing
+    transitions with a synthetic trap state first.
+    Returns plain data, not a renderable FA: { states, start, final, alphabet, trans }.
+  */
+  FiniteAutomaton.minimizeDFA = function (automaton) {
+    var alphabet = Object.keys(automaton.updateAlphabet()).sort();
+    var reachable = [automaton.initial];
+    FADepthFirstSearch(reachable, automaton.initial);
+
+    var TRAP = '__trap__';
+    var states = [], finalSet = new Set(), trans = {}, needsTrap = false;
+    for (var i = 0; i < reachable.length; i++) {
+      var node = reachable[i], v = node.value();
+      states.push(v);
+      if (node.hasClass('final')) { finalSet.add(v); }
+      trans[v] = {};
+      for (var a = 0; a < alphabet.length; a++) {
+        var sym = alphabet[a];
+        var dest = automaton.transitionFunction(node, sym)[0];
+        if (!dest) { needsTrap = true; }
+        trans[v][sym] = dest || TRAP;
+      }
+    }
+    if (needsTrap) {
+      states.push(TRAP);
+      trans[TRAP] = {};
+      for (var a2 = 0; a2 < alphabet.length; a2++) { trans[TRAP][alphabet[a2]] = TRAP; }
+    }
+
+    // Start from {finals} vs {non-finals}, then keep splitting until stable.
+    var groups = [
+      states.filter(function (s) { return finalSet.has(s); }),
+      states.filter(function (s) { return !finalSet.has(s); })
+    ].filter(function (g) { return g.length > 0; });
+
+    var changed = true;
+    while (changed) {
+      changed = false;
+      var nextGroups = [];
+      for (var gi = 0; gi < groups.length; gi++) {
+        var split = splitGroup(groups[gi], groups, alphabet, trans);
+        if (split.length > 1) { changed = true; }
+        nextGroups = nextGroups.concat(split);
+      }
+      groups = nextGroups;
+    }
+
+    var groupName = function (g) { return g.slice().sort().join(','); };
+    var nameOf = function (stateValue) {
+      for (var i = 0; i < groups.length; i++) {
+        if (groups[i].indexOf(stateValue) !== -1) { return groupName(groups[i]); }
+      }
+    };
+
+    var minStates = [], minFinal = new Set(), minTrans = {};
+    for (var gi2 = 0; gi2 < groups.length; gi2++) {
+      var name = groupName(groups[gi2]), rep = groups[gi2][0];
+      minStates.push(name);
+      if (finalSet.has(rep)) { minFinal.add(name); }
+      minTrans[name] = {};
+      for (var a3 = 0; a3 < alphabet.length; a3++) {
+        minTrans[name][alphabet[a3]] = nameOf(trans[rep][alphabet[a3]]);
+      }
+    }
+
+    return {
+      states: minStates,
+      start: nameOf(automaton.initial.value()),
+      final: minFinal,
+      alphabet: alphabet,
+      trans: minTrans
+    };
+  };
+
+  // Hypothesizes that s1 (in dfa1) and s2 (in dfa2) are the same state
+  // under some renaming, then recursively checks every transition agrees.
+  // matching is shared across the whole walk so cycles can't recurse forever.
+  var hypothesizeSameState = function (s1, s2, dfa1, dfa2, matching) {
+    if (matching.hasOwnProperty(s1)) { return matching[s1] === s2; }
+    if (dfa1.final.has(s1) !== dfa2.final.has(s2)) { return false; }
+    matching[s1] = s2;
+    for (var i = 0; i < dfa1.alphabet.length; i++) {
+      var sym = dfa1.alphabet[i];
+      if (!hypothesizeSameState(dfa1.trans[s1][sym], dfa2.trans[s2][sym], dfa1, dfa2, matching)) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  /*
+    Checks whether two already-minimized DFAs (the plain-data shape
+    minimizeDFA returns) are identical once you allow renaming states.
+    Two minimal DFAs for the same language are always isomorphic, so this
+    is only meaningful on inputs that have already been through minimizeDFA.
+  */
+  FiniteAutomaton.areIsomorphic = function (dfa1, dfa2) {
+    if (dfa1.states.length !== dfa2.states.length) { return false; }
+    if (dfa1.alphabet.slice().sort().join() !== dfa2.alphabet.slice().sort().join()) { return false; }
+    return hypothesizeSameState(dfa1.start, dfa2.start, dfa1, dfa2, {});
+  };
+
+  /*
+    Validates, minimizes, and compares two automata for language
+    equivalence - the full pipeline, mirroring JFLAP's DFAEqualityAction.
+    error is set (and equivalent left null) if either input isn't a DFA.
+  */
+  FiniteAutomaton.checkEquivalence = function (automaton1, automaton2) {
+    if (!FiniteAutomaton.isDFA(automaton1)) {
+      return { equivalent: null, error: 'The first automaton is not a complete, deterministic FA.' };
+    }
+    if (!FiniteAutomaton.isDFA(automaton2)) {
+      return { equivalent: null, error: 'The second automaton is not a complete, deterministic FA.' };
+    }
+    var min1 = FiniteAutomaton.minimizeDFA(automaton1);
+    var min2 = FiniteAutomaton.minimizeDFA(automaton2);
+    return {
+      equivalent: FiniteAutomaton.areIsomorphic(min1, min2),
+      error: null,
+      minimized1: min1,
+      minimized2: min2
+    };
+  };
+
   /*
     Find the intersection between two DFAs by DeMorgan's Law
   */
