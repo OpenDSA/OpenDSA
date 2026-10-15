@@ -103,10 +103,14 @@ controllerProto.toExercise = function(button) {
 // the function that really changes the problem displayed
 // called by toExercise
 controllerProto.updateExercise = function(id) {
+	var escapeAlt = function(text) {
+		if (!text) return "";
+		return String(text).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+	};
 	var exercise = this.tests[id];
 	var type = exercise["type"];
 	if (type == "expression") {
-		$("#expression").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
+		$("#expression").html("<img src='" + latexit + exercise["expression"] + "' alt='" + escapeAlt(exercise["expression"]) + "' border='0'/>");
 		$("#question").show();
 		$("#description").hide();
 	}
