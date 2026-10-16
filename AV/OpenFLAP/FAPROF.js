@@ -135,21 +135,34 @@ var exerciseLocation;
     $('.jsavedgelabel').click(labelClickHandler);
   };
 
+  // Converts a click's page coordinates into coordinates local to
+  // .jsavgraph, which is what executeAddNode expects.
+  function screenToLocal(pageX, pageY) {
+    var graphOffset = $('.jsavgraph').offset();
+    var borderWidth = parseFloat($('.jsavgraph').css('border-left-width')) || 0;
+    return {
+      x: pageX - graphOffset.left - borderWidth,
+      y: pageY - graphOffset.top - borderWidth
+    };
+  }
+
   // Sets click handlers for when the user clicks on the JSAV graph.
   var graphClickHandler = function(e) {
     if ($("#rmenu").is(":visible")) {
       g.hideRMenu();
     }
-    
+
     else if ($(".jsavgraph").hasClass("addNodes") && !$(".jsavgraph").hasClass("addTrapState")) {
       // If in "Add Nodes" mode, save the graph and add a node.
       g.saveFAState();
-      executeAddNode(g, e.pageY, e.pageX);
+      var local = screenToLocal(e.pageX, e.pageY);
+      executeAddNode(g, local.y, local.x);
     }
     else if ($(".jsavgraph").hasClass("addNodes") && $(".jsavgraph").hasClass("addTrapState")) {
       // If in "Add Nodes" and "trap state" mode, save the graph and add a node.
       g.saveFAState();
-      var node = executeAddNode(g, e.pageY, e.pageX);
+      var local = screenToLocal(e.pageX, e.pageY);
+      var node = executeAddNode(g, local.y, local.x);
       g.saveFAState();
       //executeEditFANode(g, g.selected, initial_state, final_state, node_label);
       executeEditNode(g, node, false, false, "Trap State");
