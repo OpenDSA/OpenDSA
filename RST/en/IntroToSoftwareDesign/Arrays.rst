@@ -884,35 +884,6 @@ in the video; it is provided as a practical synthesis of array principles in act
    </div>
 
 
-Supplemental Self-Study & Practice
------------------------------------
-
-Learning to program is a skill built through deliberate practice and experimentation.
-The following **optional, ungraded resources** are designed to help you reinforce
-key concepts, strengthen your problem-solving habits, and prepare for upcoming
-quizzes, labs, and programming assignments.
-
-.. admonition:: Choose Your Practice Pathway
-
-   Depending on your background and current comfort level with this chapter's topics,
-   we recommend exploring the following self-study tools:
-
-   * **Foundational Syntax Practice**:
-     Build confidence and muscle memory with rapid, bite-sized drills focused on
-     1D array declarations, allocation with ``new``, array initializer literals,
-     and indexing syntax.
-
-   * **Additional Programming Challenges**:
-     Deepen your algorithmic problem-solving skills with additional coding challenges
-     on accumulator loops, linear search, and extrema finding. These exercises
-     provide excellent preparation for **Lab 09 (Tweet Monitoring)** and **Program 05 (Tetris)**.
-
-   * **Interactive AI Unit Tutor**:
-     Engage in an interactive study session with an AI tutor tailored to this chapter.
-     Use it to test your understanding of array aliasing, deterministic tie-breaking,
-     and index-based frequency histograms.
-
-
 Programming Practice 9
 ----------------------
 
