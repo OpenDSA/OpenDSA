@@ -595,8 +595,10 @@ returning the object immediately:
 Notice how this works:
 
 1. The loop examines each card one by one.
+
 2. If ``card.getName().equals(name)`` is ``true``, the ``return card;`` statement
    terminates both the loop and the entire method immediately.
+
 3. If the loop finishes inspecting all cards without executing the ``return``
    inside the loop, execution drops down to ``return null;``, signaling that no
    matching card was found.
@@ -777,6 +779,7 @@ Understanding ``null`` is essential when working with collections:
 1. **Uninitialized Fields Default to null**: When an object is instantiated, all
    its reference fields automatically start with the value ``null`` unless
    explicitly initialized in their declaration or constructor.
+
 2. **Search Sentinels**: As demonstrated in our ``findCardByName()`` method above,
    returning ``null`` is the standard idiom in Java to signal that an object was
    not found.
@@ -861,9 +864,12 @@ To diagnose a NullPointerException from a stack trace:
 
 1. **Locate the topmost line** in the stack trace that belongs to your own code
    (look for your class name and file name in parentheses, such as ``CardHand.java:38``).
+
 2. **Open your source code to that exact line number**.
-3. **Inspect every dot (``.``) on that line**. One of the expressions directly to
+
+3. **Inspect every dot** (``.``) **on that line**. One of the expressions directly to
    the left of a dot was ``null`` when the line executed.
+
 4. Trace backwards to determine *why* that variable was ``null``: was an instance
    field never initialized with ``new``? Did a method call return ``null``? Was
    a parameter passed as ``null``?
@@ -1052,6 +1058,7 @@ In Java, ``toString()`` is called **automatically** in two major situations:
 
 1. **Printing**: Whenever you pass an object to ``System.out.println(obj)`` or
    ``System.out.print(obj)``.
+
 2. **String Concatenation**: Whenever you use the ``+`` operator with a ``String``
    and an object (e.g., ``"Played: " + card``).
 

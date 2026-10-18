@@ -144,7 +144,8 @@ number of elements in the array:
 
 .. important::
 
-   **The ``length`` Field Has No Parentheses**:
+   **The length Field Has No Parentheses**:
+
    * For arrays, ``length`` is a **read-only field**: ``counts.length``
    * For strings, ``length()`` is a **method**: ``str.length()``
    * For lists, ``size()`` is a **method**: ``list.size()``
@@ -211,6 +212,7 @@ comparing arrays directly with lists highlights their key differences:
      - Rich instance methods (``add``, ``remove``, ``contains``)
 
 When should you choose an array over an ``ArrayList``?
+ 
 * **Use an array** when the number of elements is fixed or known in advance (such as 24 hours in a day, 7 days in a week, or 60 minutes in an hour), when maximizing execution speed and memory efficiency is paramount, or when building multi-dimensional grid boards.
 * **Use an ArrayList** when the collection needs to grow or shrink dynamically as elements are added or removed, or when you need built-in search and reordering methods.
 
@@ -233,6 +235,7 @@ convenient shorthand known as an **array initializer literal**:
    int[] primes = {2, 3, 5, 7, 11, 13};
 
 This single statement accomplishes three tasks simultaneously:
+
 1. Allocates an array whose length matches the number of comma-separated items inside the braces.
 2. Initializes each slot in sequence with the specified values.
 3. Assigns the reference to the variable.
@@ -374,6 +377,7 @@ ranging from ``0`` up to ``array.length - 1``:
    }
 
 Use a numeric ``for`` loop whenever:
+
 1. You need to **modify the array elements in place** (e.g., transforming values).
 2. You need access to the **index position** (e.g., searching for the location of an item).
 3. You need to traverse in reverse, step by increments other than 1, or compare adjacent elements (e.g., ``values[i]`` vs. ``values[i + 1]``).
@@ -460,7 +464,7 @@ a single, elegant line of code:
 
 When ``currentPlayerIndex`` is 2, ``(2 + 1) % 4`` evaluates to ``3``. When
 ``currentPlayerIndex`` is 3 (the end of the array), ``(3 + 1) % 4`` evaluates to
-``4 % 4``, which is **``0``**—smoothly cycling back to the start!
+``4 % 4``, which is **0**—smoothly cycling back to the start!
 
 This circular pattern is universal in computer science: it is used for circular
 queues, carousel photo galleries, Tetris piece rotation states (cycling through
@@ -594,6 +598,7 @@ Frequency Histograms & Array Buckets
 A particularly elegant application of arrays is the **frequency histogram** (or
 **bucket tallying**). In many domains, data attributes fall into a small, discrete range
 of integers:
+
 * Hours in a day: integers ``0`` through ``23`` (size 24)
 * Days in a week: integers ``0`` through ``6`` (size 7)
 * Test scores: integers ``0`` through ``100`` (size 101)
@@ -789,10 +794,11 @@ contain 45. Which index should be returned?
 
 The answer depends strictly on the comparison operator used:
 
-* **Strictly Greater (``>``)**: If we test ``if (array[i] > array[bestIndex])``, a tied
+* **Strictly Greater** (``>``): If we test ``if (array[i] > array[bestIndex])``, a tied
   value is *not* greater than the candidate, so ``bestIndex`` is not updated. The method
   deterministically returns the **earliest occurrence** (index 1).
-* **Greater-Than-or-Equal (``>=``)**: If we test ``if (array[i] >= array[bestIndex])``,
+
+* **Greater-Than-or-Equal** (``>=``): If we test ``if (array[i] >= array[bestIndex])``,
   each subsequent tie replaces the candidate, returning the **latest occurrence** (index 3).
 
 .. important::

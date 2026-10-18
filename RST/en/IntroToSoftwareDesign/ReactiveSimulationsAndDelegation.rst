@@ -84,6 +84,7 @@ two primary areas:
 
 1. **The World**: The large visual grid covering most of the screen. This is the virtual
    environment where actors live, move, and interact.
+
 2. **The Execution Controls**: The control panel at the bottom featuring the **Act** button,
    the **Run** button, and the **Execution Speed Slider**.
 
@@ -99,10 +100,12 @@ these execution controls:
 * **Clicking the Act Button**: Clicking **Act** executes exactly **one turn** of the simulation.
   Greenfoot iterates through every actor currently placed in the world and invokes that actor's
   ``act()`` method once.
+
 * **Clicking the Run Button**: Clicking **Run** causes Greenfoot to execute turn after turn
   continuously. It is exactly equivalent to clicking the **Act** button repeatedly in rapid
   succession. The simulation continues to run until you click the button again (which has now
   become **Pause**).
+
 * **The Speed Slider**: The slider controls the delay between successive simulation turns,
   allowing you to slow down the action to observe fine details or speed it up to watch long-term
   behaviors unfold.
@@ -134,6 +137,7 @@ What an actor does during its turn depends on its current surroundings and its i
 * Make a decision based on those observations.
 * Perform **one small action** (such as taking a single step forward, turning to face a new direction,
   or picking up an object).
+
 * Return control immediately to the simulation engine (when ``act()`` returns) so that other actors can take their turns.
 
 
@@ -153,7 +157,7 @@ The GridActor Base Class
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 While standard Greenfoot ``Actor`` objects navigate using continuous coordinates and
-arbitrary 360-degree rotation angles, our simulation agents inherit from **``GridActor``**.
+arbitrary 360-degree rotation angles, our simulation agents inherit from **GridActor**.
 A ``GridActor`` is a specialized subclass of ``Actor`` that simplifies movement, turning,
 and sensing to a discrete grid using cardinal compass directions (``NORTH``, ``SOUTH``,
 ``EAST``, ``WEST``) and relative directions (``AHEAD``, ``LEFT``, ``RIGHT``, ``HERE``).
@@ -248,6 +252,7 @@ infinitely):
 * No other actors in the world ever get a turn to act.
 * The simulation engine cannot reach its display refresh step if ``act()`` doesn't return, causing the graphical user
   interface to freeze completely.
+
 * User clicks on the **Pause** or **Reset** buttons cannot be processed.
 
 In a reactive simulation, **the engine provides the loop**. You do not need a ``while``
@@ -549,7 +554,7 @@ for an actor without launching a graphical window and waiting for it to run in r
 
 The key insight is that ``act()`` is simply a regular Java instance method. In a unit test,
 we do not need the graphical Greenfoot engine running in real time. Instead, we focus
-on **testing individual single-turn actions performed act ``act()`` or one of its helper methods**.
+on **testing individual single-turn actions** performed by ``act()`` or one of its helper methods.
 We instantiate an actor, place it in a
 test world, call ``act()`` directly--or, even better, call the individual methods that provide
 the pieces of its behavior--and immediately assert whether the actor moved to the
@@ -619,8 +624,10 @@ This approach provides several powerful testing benefits:
 
 1. **Instantaneous Execution**: Every test is still just one action to perform--the setUp
    gets you into the correct situation without executing a bunch of unrelated actions first.
+
 2. **100% Determinism**: You create exactly the situation you want without having to plan a
    series of actions to walk through in order to manipulate the object into a specific situation.
+
 3. **Boundary Condition Verification**: You can verify the exact situation where a transition
    occurs (e.g., verifying that the actor maintains its heading on turn 3, but turns on turn 4).
 
@@ -724,6 +731,7 @@ When the code above executes, two objects are allocated on the heap:
                                    +-----------------------+
 
 .. file = Images/object-association-memory.png
+
 .. Figure 6.3: Memory diagram illustrating object association and aliasing: the reference variable buddy and the instance field leader.companion point to the exact same Hedgehog object in heap memory.
 
 Both the variable ``buddy`` in the calling method and the internal field ``this.companion``
@@ -761,6 +769,7 @@ Students frequently confuse inheritance with delegation:
 * **Inheritance ("IS-A")**: Reuses behavior through a parent class hierarchy. A
   ``GuideHedgehog`` *is a* ``Hedgehog``, so it automatically inherits basic abilities like
   ``move()``, ``turn(RelativeDirection direction)``, and sensory methods.
+
 * **Delegation ("HAS-A")**: Cooperates by forwarding requests to an associated object.
   A ``GuideHedgehog`` *has a* companion ``Hedgehog``, and asks that companion to perform
   matching actions.
@@ -886,6 +895,7 @@ shared row of trees dividing them across the center:
 
 1. **Upper Plot**: Contains our primary actor, an instance of ``GuideHedgehog``, placed at
    the upper-left corner at (1, 1) facing ``EAST``.
+
 2. **Lower Plot**: Contains the companion actor, a standard ``Hedgehog``, placed at the
    corresponding upper-left corner at (1, 6) facing ``EAST``.
 
@@ -965,10 +975,13 @@ Notice why this method is so elegant:
 
 * The ``patrolPerimeter()`` method does not write a single line of explicit code directing the
   companion!
+
 * Because ``patrolPerimeter()`` calls ``this.move()`` and ``this.turn(RIGHT)``, Java's dynamic
   method dispatch invokes ``GuideHedgehog``'s overridden versions of those methods.
+
 * Those overridden methods call ``super.move()`` (moving the guide) and
   ``this.companion.move()`` (moving the companion).
+
 * As a result, simply commanding ``leader.patrolPerimeter()`` causes **both** actors to complete
   a full synchronized circuit of their respective plots.
 
@@ -1090,8 +1103,10 @@ While this method might run, it suffers from severe design flaws:
 
 1. **High Cognitive Load**: A reader must trace three levels of nested conditionals to
    understand what the agent does in any given circumstance.
+
 2. **Poor Reusability**: Logic like avoiding obstacles or delivering food is locked inside
    ``act()`` and cannot be called or tested independently.
+
 3. **Difficult Testing**: You cannot test "returning to burrow" independently from "searching for apples".
 
 
@@ -1106,6 +1121,7 @@ When applying stepwise refinement to an ``act()`` method:
 * The ``act()`` method should read like an **executive summary** or table of contents.
 * Each major decision branch delegates to a private helper method whose name clearly
   describes its intent.
+
 * Each helper method should do exactly **one thing** and do it well (the Single Responsibility
   Principle).
 
@@ -1198,9 +1214,11 @@ Enforcing short methods provides immense practical benefits:
 
 * **Eliminates Spaghetti Logic**: When you are constrained to 10 lines, you cannot write
   deeply nested branches; you are forced to extract helper methods.
+
 * **Self-Documenting Code**: Meaningful helper method names like ``avoidObstacle()`` or
   ``deliverCargo()`` eliminate the need for verbose comments explaining what a block
   of code is trying to do.
+
 * **Streamlined Debugging**: When a test fails, Web-CAT stack traces point directly to the
   specific 8-line helper method where the fault occurred, rather than pointing somewhere
   inside a 50-line monster method.
