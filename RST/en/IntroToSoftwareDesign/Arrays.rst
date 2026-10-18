@@ -17,7 +17,7 @@ Fixed-Size 1D Arrays and Array Idioms
 
 .. sidebar:: Learning Objectives
 
-    **Estimated Time**: ~82 minutes (~38 min reading + ~44 min video at 100 WPM)
+    **Estimated Time**: ~89 minutes (~45 min reading + ~44 min video at 100 WPM)
 
    After reading this chapter, you will be able to:
 
@@ -25,6 +25,7 @@ Fixed-Size 1D Arrays and Array Idioms
    * **Contrast** fixed-size 1D arrays with ``ArrayList`` collections in terms of memory layout, resizing capabilities, primitive type storage, and syntax.
    * **Trace** array reference assignments, identify aliasing defects, and implement independent array copies using manual loops and ``Arrays.copyOf()``.
    * **Select** and construct the appropriate loop structure (counter-controlled numeric ``for`` vs. enhanced ``for-each``) based on whether the algorithm requires index manipulation, element modification, or read-only inspection.
+   * **Apply** the modulo operator (``%``) to implement circular array wrap-around, cyclic domain mapping, and periodic loop operations.
    * **Implement** accumulator algorithms to compute sums, averages, and condition-filtered counts across array elements.
    * **Implement** frequency accumulation algorithms mapping discrete domain attributes directly to array bucket indices.
    * **Author** linear search algorithms to locate target values or indices, returning sentinel values (``-1``) on search misses.
@@ -398,6 +399,128 @@ When you only need to inspect or read each element from beginning to end, the en
    (``coffee`` above) is a local variable holding a copy of the current element's
    value. Assigning to ``coffee = "Latte";`` inside the loop only updates the local
    variable—it has **zero effect** on the array itself!
+
+
+Array Index Arithmetic: Circular Wrap-Around & The Modulo Operator
+------------------------------------------------------------------
+
+In Chapter 4, you briefly encountered Java's remainder operator (``%``), also
+known as the **modulo operator**, for testing whether an integer is even
+(``number % 2 == 0``). When working with arrays, the modulo operator becomes
+one of your most powerful algorithmic tools for index arithmetic.
+
+The expression ``a % b`` computes the integer remainder left over when ``a`` is
+divided by ``b``. For any positive integer ``b`` and non-negative integer ``a``,
+the result of ``a % b`` is guaranteed to fall strictly within the range:
+
+.. math::
+
+   0 \le (a \pmod b) < b
+
+Notice that for an array of size ``N`` (where valid indices are ``0`` through
+``N - 1``), computing ``index % array.length`` guarantees that the resulting
+value is **always a valid index** within the bounds of the array!
+
+This mathematical property gives rise to several essential array programming
+patterns:
+
+1. Circular Index Wrap-Around (Ring Buffers & Game Turns)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Suppose you are implementing a turn-based tabletop game with 4 players stored
+in an array:
+
+.. code-block:: java
+
+   Player[] players = new Player[4]; // indices 0, 1, 2, 3
+   int currentPlayerIndex = 0;
+
+When player 0 finishes their turn, the next player is at index ``1``. When player
+1 finishes, player 2 goes next, followed by player 3. But who goes after player 3?
+The turn must **wrap around** back to player 0!
+
+Without the modulo operator, you would need an ``if`` statement every time:
+
+.. code-block:: java
+
+   // Clunky approach with an if statement:
+   currentPlayerIndex++;
+   if (currentPlayerIndex == players.length)
+   {
+       currentPlayerIndex = 0;
+   }
+
+With the modulo operator, you can advance to the next player and wrap around in
+a single, elegant line of code:
+
+.. code-block:: java
+
+   // Elegant circular wrap-around:
+   currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+
+When ``currentPlayerIndex`` is 2, ``(2 + 1) % 4`` evaluates to ``3``. When
+``currentPlayerIndex`` is 3 (the end of the array), ``(3 + 1) % 4`` evaluates to
+``4 % 4``, which is **``0``**—smoothly cycling back to the start!
+
+This circular pattern is universal in computer science: it is used for circular
+queues, carousel photo galleries, Tetris piece rotation states (cycling through
+4 rotation orientations: ``(orientation + 1) % 4``), and round-robin scheduling.
+
+2. Cyclic Domain Mapping (Clock & Calendar Arithmetic)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The modulo operator allows us to map unbounded or elapsed numeric measurements
+into fixed array bins. For example, if an elapsed simulation time in hours is
+given as 53 hours, what hour of the day does that correspond to?
+
+.. code-block:: java
+
+   int elapsedHours = 53;
+   int hourOfDay = elapsedHours % 24; // evaluates to 5 (5:00 AM)
+
+Similarly, in calendar applications where Sunday is day 0 and Saturday is day 6,
+any day offset can be mapped to its day of the week using ``dayOffset % 7``.
+As you will see in the next section, this direct mathematical mapping enables
+arrays to act as high-speed **frequency histograms**.
+
+3. Periodic Formatting & Actions in Loops
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When iterating through a large array, you often need to perform a special action
+every :math:`k` elements—for example, inserting a newline after every 10 values
+when printing a grid, or alternating background shading on alternating rows:
+
+.. code-block:: java
+
+   public void printFormatted(int[] data)
+   {
+       for (int i = 0; i < data.length; i++)
+       {
+           System.out.print(data[i] + "\t");
+
+           // Print a newline every 5 elements:
+           if ((i + 1) % 5 == 0)
+           {
+               System.out.println();
+           }
+       }
+   }
+
+Because ``(i + 1) % 5`` is zero precisely when ``i + 1`` is 5, 10, 15, ..., the
+loop automatically breaks the output into neat rows of 5 columns.
+
+4. 2D Coordinate Flattening Preview
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Finally, the combination of integer division (``/``) and modulo (``%``) forms the
+bridge to multi-dimensional arrays (Chapter 10). If a 2D grid with ``COLS``
+columns is flattened into a 1D array of size ``ROWS * COLS``, any 1D index can be
+converted back to its grid coordinates using:
+
+.. code-block:: java
+
+   int row = index / COLS; // integer division gives row coordinate
+   int col = index % COLS; // modulo gives column coordinate
 
 
 Accumulator Idioms: Summing, Averaging, and Counting
