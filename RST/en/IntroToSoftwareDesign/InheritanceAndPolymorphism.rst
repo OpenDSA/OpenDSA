@@ -166,6 +166,7 @@ intermediate access modifier designed specifically for class hierarchies:
 **protected**.
 
 Members declared with the ``protected`` keyword are accessible to:
+
 1. The class that defines them.
 2. Any subclass that extends that class (even if the subclass resides in a different package).
 3. Any class residing within the same package.
@@ -231,6 +232,7 @@ relationship tests:
 
 1. **Inheritance models an "IS-A" relationship**:
    A subclass *is a specialized version* of its superclass.
+
    * A ``Square`` **is a** ``Rectangle``.
    * A ``ForagingHedgehog`` **is a** ``Hedgehog``.
    * A ``Bishop`` **is a** ``ChessPiece``.
@@ -241,6 +243,7 @@ relationship tests:
 
 2. **Composition and Aggregation model a "HAS-A" relationship**:
    An object *holds a reference to* one or more companion objects as fields.
+
    * A ``Car`` **has an** ``Engine``. (A car is *not* an engine!)
    * An ``Orchard`` **has** ``Hedgehog`` actors. (An orchard is *not* a hedgehog!)
    * A ``TabletopHero`` **has an** ``Inventory``. (A hero is *not* an inventory!)
@@ -588,7 +591,7 @@ are responsible for initializing the exact fields declared in their own class.
 To ensure every object is properly initialized from the top of the hierarchy downward,
 Java provides two forms of **constructor chaining**:
 
-1. **Superclass Constructor Chaining (``super(...)``)**:
+1. **Superclass Constructor Chaining** (``super(...)``):
    Before a subclass constructor can initialize any of its own fields, the superclass
    portion of the object must be initialized. In ``ArmoredCombatant``:
 
@@ -602,13 +605,15 @@ Java provides two forms of **constructor chaining**:
 
    * The call to ``super(...)`` invokes the matching constructor in the direct superclass
      (``Combatant``).
+
    * **Rule**: If present, ``super(...)`` *must be the very first statement* inside the
      subclass constructor body.
+
    * **Default Behavior**: If you do not explicitly write ``super(...)``, the Java
      compiler automatically inserts a parameterless ``super();`` call as the first line.
      If the superclass does not have a no-argument constructor, a compile-time error occurs.
 
-2. **Same-Class Constructor Chaining (``this(...)``)**:
+2. **Same-Class Constructor Chaining** (``this(...)``):
    Classes frequently provide multiple overloaded constructors to offer convenient default
    parameter values. Rather than copying and pasting field assignment code across every
    constructor, a constructor can delegate to another constructor within the **same class**
@@ -631,6 +636,7 @@ Java provides two forms of **constructor chaining**:
 
    * Just like ``super(...)``, a ``this(...)`` call *must be the very first statement*
      in the constructor body.
+
    * **Mutual Exclusivity**: A constructor can call ``this(...)`` OR ``super(...)``, but
      **never both** in the same constructor. When ``this(...)`` is called, the constructor
      delegates to a peer constructor, which will in turn invoke ``super(...)`` to initialize
@@ -740,6 +746,7 @@ two distinct aspects of every reference variable:
 1. **Static Type (Compile-Time Type)**: The type declared in the source code when the
    variable is introduced. The Java compiler consults the static type to verify that
    any method you attempt to call is legally available.
+
 2. **Dynamic Type (Run-Time Type)**: The actual class of the concrete object created in
    computer memory via the ``new`` operator.
 
@@ -761,9 +768,11 @@ how does the Java Virtual Machine decide which version of ``takeDamage`` to run?
 1. **At Compile Time**: The compiler inspects the *static type* of ``soldier``
    (``Combatant``). It confirms that the ``Combatant`` class declares a method named
    ``takeDamage(int)``. If no such method exists in ``Combatant``, compilation fails.
+
 2. **At Run Time**: When execution reaches this statement, the JVM ignores the static
    type of the variable. Instead, it examines the *dynamic type* of the actual receiver
    object stored in heap memory.
+
 3. The JVM locates the method implementation starting at the object's dynamic class
    (``ArmoredCombatant``). Since ``ArmoredCombatant`` provides an overridden version of
    ``takeDamage``, that specialized version executes!
@@ -822,6 +831,7 @@ superclasses. This assignment is called **upcasting**:
    Object c3 = new ArmoredCombatant("Guardian", 200, 25);
 
 All three declarations above are valid:
+
 * An ``ArmoredCombatant`` IS-A ``Combatant``, so assigning it to a ``Combatant`` variable is valid.
 * An ``ArmoredCombatant`` IS-A ``Object``, so assigning it to an ``Object`` variable is valid.
 
@@ -846,6 +856,7 @@ rules:
 1. **What You Can Call (Static Check)**: The lens restricts what you are allowed to
    ask the object to do. The compiler only permits you to call methods defined in the
    static type ``Combatant``.
+
 2. **How It Behaves (Dynamic Dispatch)**: When you invoke an accessible method, the
    object responds using its dynamic type's logic.
 
@@ -927,11 +938,14 @@ of regular ``Combatant`` and specialized ``ArmoredCombatant`` instances:
    squad.takeAreaDamage(25);
 
 When ``squad.takeAreaDamage(25)`` executes:
+
 * When ``frontLine.takeDamage(25)`` is called, dynamic dispatch invokes
   ``ArmoredCombatant``'s overridden version because ``frontLine`` refers to a knight!
   Armor absorbs 15, reducing health by only 10.
+
 * When ``backLine.takeDamage(25)`` is called, standard ``Combatant`` damage logic
   executes because ``backLine`` refers to an archer. Health drops by the full 25.
+
 * The ``Squad`` class does not need any ``if-else`` checks to inspect what kind of
   combatant is in each position.
 
@@ -1009,10 +1023,12 @@ in programming:
    without interfaces, but since any number of classes can implement an
    interface just by providing the required methods, they are useful when there
    are multiple techniques for implementing the same algorithm or data structure.
+
 2. Through an interface, you can capture a common set of methods that you
    expect to appear in multiple classes so that you can give the set of methods
    a name and ensure that classes providing that set of methods all do it
    consistently.
+
 3. By separating the declarations of the methods into an interface, you
    enable programmers who need to *use* the code to build on top of the
    interface, in parallel with other programmers who are writing what is
@@ -1198,6 +1214,7 @@ polymorphic hierarchies provide the architectural foundation for these systems.
 
 Consider the challenge of designing dice mechanics for a tabletop roleplaying game.
 Different games employ different kinds of dice:
+
 * A standard six-sided die (values 1 through 6).
 * An *Advantage Die* (the player rolls twice and takes the higher outcome).
 * A *Loaded Die* (weighted to favor specific outcomes during testing).

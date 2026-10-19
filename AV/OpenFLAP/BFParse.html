@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brute Force Parse</title>
+  <link rel="stylesheet" href="BruteForceParse.css">
+</head>
+<body class="single-parser">
+  <h1>Brute Force Parse</h1>
+  <p>Enter one string and select Start, then Step to build its tree or view the Derivation Table.</p>
+  <nav class="mode-links" aria-label="Editor navigation">
+    <button id="backbutton" type="button">Back to Grammar Editor</button>
+  </nav>
+  <div class="parse-layout">
+    <aside class="grammar-panel" aria-label="Grammar productions">
+      <table id="grammar"><caption>Grammar</caption><thead><tr><th>Left</th><th></th><th>Right</th></tr></thead><tbody></tbody></table>
+      <p class="grammar-note">The first rule defines the start symbol. Leave the input blank or use ! or λ for the empty string.</p>
+    </aside>
+    <main class="parse-workspace">
+      <form id="inputForm"><label for="input">Input string</label><input id="input" autocomplete="off"><button id="startbutton" type="submit">Start</button></form>
+      <p id="message" role="status"></p>
+      <section id="trace" class="derivation-view" hidden aria-label="Derivation playback">
+        <h2 id="derivationTitle">Parse Tree</h2><p id="traceInput"></p>
+        <nav aria-label="Derivation steps"><button id="firstStep" type="button">Reset</button><button id="previousStep" type="button">Previous</button><button id="nextStep" type="button">Step</button><button id="lastStep" type="button">Complete</button><label for="viewmode">View</label><select id="viewmode"><option id="treeOption" value="tree">Noninverted Tree</option><option value="table">Derivation Table</option></select></nav>
+        <p id="stepStatus" aria-live="polite"></p><p id="stepDescription"></p>
+        <div id="tree" class="tree-container" tabindex="0" role="region" aria-label="Derivation visualization"></div>
+        <div id="derivationTable" class="table-container" hidden><table id="derivation"><thead><tr><th>Production</th><th>Sentential form</th></tr></thead><tbody></tbody></table></div>
+        <p id="viewNote" class="view-note"></p>
+      </section>
+    </main>
+  </div>
+  <script src="BruteForceParser.js"></script>
+  <script src="BruteForceDerivation.js"></script>
+  <script src="BruteForceParseUI.js"></script>
+  <script src="BFParse.js"></script>
+</body>
+</html>

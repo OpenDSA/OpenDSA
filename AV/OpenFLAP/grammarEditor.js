@@ -817,12 +817,15 @@ $(document).ready(function () {
     }
   };
 
-  //Multiple Brute Force Parsing
-  function mbfParse(productions){
-    var productions = _.filter(arr, function(x) {return x[0];});
-    localStorage['grammars'] = JSON.stringify(productions);
-    window.open("./MBFParse.html");
-  };
+  // Resolve from this script so nested exercise-authoring pages also work.
+  function openBruteForceParser(page) {
+    var productions = _.map(_.filter(arr, function(x) { return x[0]; }), function(x) { return x.slice(); });
+    if (!productions.length) { alert('No grammar.'); return; }
+    localStorage.setItem('grammars', JSON.stringify(productions));
+    var editorScript = document.querySelector('script[src$="grammarEditor.js"]');
+    window.open(new URL(page, editorScript.src).href);
+  }
+  function mbfParse() { openBruteForceParser('MBFParse.html'); }
 
   /*
   SLR(1) parsing
@@ -3361,14 +3364,7 @@ $(document).ready(function () {
   };
 
   function bruteForceParse() {
-    var serializedGrammar = "";
-    for (var i = 0; i < arr.length && arr[i][0] !== ""; i++) {
-      serializedGrammar = serializedGrammar + arr[i][0] + arrow + arr[i][2] + ",";
-    }
-    serializedGrammar = serializedGrammar.substring(0, serializedGrammar.length - 1);
-    localStorage["grammar"] = serializedGrammar;
-    console.log(localStorage["grammar"]);
-    window.open("./BFParse.html");
+    openBruteForceParser('BFParse.html');
   }
 
   function cykParse() {
@@ -3447,6 +3443,7 @@ $(document).ready(function () {
   $('#editbutton').click(editMode);
   $('#deletebutton').click(deleteMode);
   $('#addrowbutton').click(addrowMode);
+  $('#bfpbutton').click(bruteForceParse);
   $('#mbfpbutton').click(mbfParse);
   $('#llbutton').click(llParse);
   $('#slrbutton').click(slrParse);

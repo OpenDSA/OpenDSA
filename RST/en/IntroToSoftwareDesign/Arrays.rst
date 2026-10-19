@@ -1,43 +1,55 @@
-.. This file is part of the OpenDSA eTextbook project. See
-.. http://opendsa.org for more details.
-.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
-.. distributed under an MIT open source license.
-
 .. avmetadata::
    :title: Fixed-Size 1D Arrays and Array Idioms
-   :author: Molly Domino
+   :author: Molly Domino; Stephen Edwards
    :institution: Virginia Tech
-   :keyword: Array
+   :keyword: Array; 1D Array; Array Indexing; Length; Aliasing; Linear Search; Extrema; Frequency Histogram; AssertJ
    :naturallanguage: en
    :programminglanguage: Java
-   :description: CS1-level presentation on arrays.
+   :description: Introduction to fixed-size 1D arrays, indexing, reference semantics, comparison with lists, array traversal, accumulator idioms, frequency histograms, linear search, and extrema algorithms with tie-breaking.
+
 
 Fixed-Size 1D Arrays and Array Idioms
 =====================================
 
-So far in this class, we have used ``List``\ s  when we need to store many
-pieces of data in a single object. Lists provide many advantages for this,
-but they are not the only way to group many values into one object.
-In this module, we will study another data structure called an **array**.
+.. |br| raw:: html
 
-Arrays are much more primitive than lists, and are one of the principal
-building blocks used to build more sophisticated data structures in many
-programming languages. Although it is often easier to use lists, understanding
-how arrays work constitutes basic programming knowledge that all computer
-scientists are expected to know.
+   <br />
 
-An **array** is a named collection of contiguous storage locations--storage
-locations that are next to each other--that contain data items of the same type.
-However, when working with an array, the size will be fixed from the start.
-You can think of an array as being similar to a series of identical variables
-all declared in a row, where each individual variable is identified with a
-number or position in the group (its **index**).
+.. sidebar:: Learning Objectives
 
-You may have also noticed that the class ``ArrayList`` uses "array" in its
-name. That is because the ``ArrayList`` class uses an array internally to
-store the data in the list. However, there are several differences, as
-we'll see below. You'll often see arrays depicted graphically using
-diagrams like this:
+    **Estimated Time**: ~89 minutes (~45 min reading + ~44 min video at 100 WPM)
+
+   After reading this chapter, you will be able to:
+
+   * **Declare**, instantiate, and initialize fixed-size 1D arrays of primitive types and object references using both ``new`` allocation and array initializer literals.
+   * **Contrast** fixed-size 1D arrays with ``ArrayList`` collections in terms of memory layout, resizing capabilities, primitive type storage, and syntax.
+   * **Trace** array reference assignments, identify aliasing defects, and implement independent array copies using manual loops and ``Arrays.copyOf()``.
+   * **Select** and construct the appropriate loop structure (counter-controlled numeric ``for`` vs. enhanced ``for-each``) based on whether the algorithm requires index manipulation, element modification, or read-only inspection.
+   * **Apply** the modulo operator (``%``) to implement circular array wrap-around, cyclic domain mapping, and periodic loop operations.
+   * **Implement** accumulator algorithms to compute sums, averages, and condition-filtered counts across array elements.
+   * **Implement** frequency accumulation algorithms mapping discrete domain attributes directly to array bucket indices.
+   * **Author** linear search algorithms to locate target values or indices, returning sentinel values (``-1``) on search misses.
+   * **Author** extrema search algorithms to determine maximum and minimum values and their index positions with deterministic tie-breaking.
+   * **Design** automated JUnit unit tests verifying array state and method return values using AssertJ assertions (``containsExactly``, ``hasSize``, ``contains``).
+
+
+So far, we have used ``List`` objects (specifically ``ArrayList``) whenever we
+needed to store and manage multiple pieces of data in a single container. Lists
+provide powerful capabilities, including dynamic resizing and convenient helper
+methods. However, they are not the only container mechanism in Java, nor are they
+the most fundamental.
+
+In this chapter, we will study Java's foundational container structure: the
+**array**. An **array** is a named collection of contiguous storage locations in
+computer memory that hold elements of the same data type. Unlike an ``ArrayList``,
+an array has a **fixed size** established at the moment of creation that can never
+grow or shrink.
+
+Arrays are primitive, low-level building blocks. In fact, classes like ``ArrayList``
+use an array internally to store their data elements! Understanding how arrays work
+is essential for every computer scientist: they offer superior execution performance,
+store primitive types directly without wrapper overhead, and form the basis for
+multi-dimensional grids and matrix algorithms.
 
 .. odsafig:: Images/jjj-array-fig9.1.png
    :align: center
@@ -49,264 +61,116 @@ diagrams like this:
    </div>
 
 
-Creating An Array
------------------
+Introduction to Fixed-Size 1D Arrays
+------------------------------------
 
-An **array** is a sequence of values; the values in the array are
-called **elements**. You can make an array of ``int``\ s, ``double``\ s,
-``String``\ s, or any other type, but all the values in an array must have
-the same type. The type of values stored in the array is called the
+An **array** is a sequence of values; the values stored within the array are called
+its **elements**. An array can store elements of any single type—such as ``int``,
+``double``, ``boolean``, ``String``, or custom objects like ``Pixel`` or ``Card``.
+However, all elements within a given array must share the same type, known as the
 array's **element type**.
 
-To create an array, you have to declare a variable with an array type and
-then create the array itself. Array types look like other Java types, except
-they are followed by square brackets (``[]``). No, there is no special
-"array" keyword in Java; you just add square brackets onto the end of any
-type to turn it into an array type. For example, the following
-lines declare that ``counts`` is an "integer array" and ``values`` is
-a "double array".
+To use an array, you declare a reference variable of an array type and then instantiate
+the array object using the ``new`` operator. In Java, array types are denoted by
+placing square brackets (``[]``) after the element type:
 
 .. code-block:: java
 
    int[] counts = new int[4];
    double[] values = new double[size];
 
-To create the array itself, you have to use the ``new``
-operator, which you have used to create all other objects. The ``new``
-operator **allocates** memory for the array and automatically initializes
-all of its elements to zero.
-The first declaration initializes the variable ``counts`` to refer to a new
-array of four integers. The second initalizes ``values`` to refer to an
-array of ``double``\ s, but the number of elements depends on the value
-of ``size`` (at the time the array is created).
+Notice that Java has no special "array" keyword. Instead, appending ``[]`` to any type
+turns it into an array type. In the example above:
 
-You can use any integer expression for the size of an array, as long as the
-value is non-negative. If you try to create an array with -4 elements, for
-example, you will get a ``NegativeArraySizeException``. An array with zero
-elements is allowed, and there are special uses for such arrays. They
-are often called "empty arrays".
+1. ``int[] counts`` declares a variable named ``counts`` whose type is "array of integers".
+2. ``new int[4]`` instantiates a brand new array object in memory with exactly 4 integer slots.
+3. The assignment operator (``=``) stores the reference to that array in ``counts``.
 
-Importantly, once we establish the size of our array, we can't change it.  If
-we suddenly decide we need an array of a different size, we'll need to create
-a new array object instead.
+When allocating an array, the size expression inside the brackets must evaluate to a
+non-negative integer. If you attempt to allocate an array with a negative size (e.g.,
+``new int[-3]``), Java will throw a ``NegativeArraySizeException``. Allocating an
+array of size zero is permitted and produces an "empty array" (often used to represent
+the absence of data without using ``null``).
 
-Like objects, arrays are instantiated with the ``new`` operator and they have
-fields (for example, ``length``).  Like variables for objects, variables that
-refer to arrays are considered reference variables. When arrays are used as
-parameters, a reference
-to the array is passed rather than a copy of the entire array. The
-primary difference between arrays and full-fledged objects is that arrays
-aren’t defined in terms of an ``Array`` class. Thus, arrays don’t fit into Java’s
-``Object`` hierarchy. They don’t inherit any properties from ``Object`` and
-they cannot be subclassed.
+.. note::
 
-Most importantly, that means that arrays themselves, while they are objects,
-have **no useful methods**. Instead, you need to use library classes to
-access methods that work with arrays.
-
-When creating an array of Strings or any type of object (like Jeroo or Pixel),
-each of the items in our array will be initialized to ``null``.  If we created
-an int (or double) array, each item in the array will be initialized to 0, and
-an array of booleans will have each item initialized to ``false`` when the
-array is created.
-
-There is a second way we can create an array if we know what we want
-to put in the array when we create it.
-
-For example, lets say we wanted to create an array to store the
-numbers: 97, 43, and 2.
-
-.. code-block:: java
-
-   int[] counts = {97, 43, 2};
-
-This will make an array of size 3 that contains these three values. The
-sequence of values in curly braces serves to specify the initial values we
-want to place in each slot of the array we are creating.
+   **Fixed Capacity**: Once an array object is instantiated, its size is immutable.
+   If your program subsequently needs to hold more (or fewer) items, you must allocate
+   a completely new array object and copy the existing elements over.
 
 
-Accessing Items in Arrays
--------------------------
+Array Bounds, Indexing, and Default Values
+------------------------------------------
 
-However, arrays access the values a little bit differently, making use of the square
-brackets again.
+Each individual storage slot in an array is identified by a numeric position called
+its **index** (or **subscript**). Java arrays use **zero-based indexing**, exactly like
+positions in a ``List`` or characters in a ``String``:
 
-When referencing elements in an array, we refer to the position of that
-particular element within the array. For example, if the array is
-named ``values``, then the elements are named ``values[0]``, ``values[1]``,
-``values[2]``, ... ``values[n - 1]``, where *n* gives the number of elements
-in the array. This naming also reflects the fact that
-the array’s data are contained in storage locations that are next to each
-other.
+* The first element is located at index ``0`` (the "zeroth" element).
+* The second element is at index ``1``.
+* The final element is located at index ``array.length - 1``.
 
-Note that this is the same concept as referring to positions in
-a ``List`` or character positions within a ``String``. The item in the
-first "slot" of our array is at index 0 and the last item in the array is
-going to be one less than the size of the array.  For example,
-the first item in an array of size 5 is at index 0, and the last is at
-index 4.  Trying to access the index 5 would cause
-an ``ArrayIndexOutOfBoundsException`` at runtime.
-
-The syntax for referring to elements of an array uses square brackets to
-provide the desired position (index):
-
-.. raw:: html
-
-   <blockquote><i>arrayname</i>[<i>subscript</i>]</blockquote>
-
-Here, *arrayname* is the name of the array (any valid identifier will do) and
-*subscript* is the position of the element within the array.
-
-A **subscript** is an integer quantity contained in square brackets that is
-used to identify an array element by its position or index value. A subscript
-must be either an integer
-value or an integer expression.  For example, all the of the following lines
-of code are valid ways to access a value in an array ``values``
-
-.. code-block:: java
-
-   values[4]
-   values[x]
-   values[x + y]
-
-These examples show that when an expression, such as ``x + y``, is used as a
-subscript, it is evaluated to a specific integer value before the reference
-is made.
-
-It is a syntax error to use a non-integer type as an array subscript. Each
-of the following expressions would be invalid:
-
-
-.. code-block:: java
-
-   // will not work!
-   arr[5.0]
-   arr["5"]
-
-
-Setting Items in an Array
--------------------------
-
-When working in ``List``\ s , if we wanted to change a value, we could use
-the ``set`` method.  For example:
-
-.. code-block:: java
-
-   ArrayList <String> arr = new ArrayList<String>();
-   arr.add("Brazil");
-   arr.add("France");
-   arr.add("Ethiopia");
-
-   arr.set(0, "Columbia"); // changes the item at index 0 from Brazil to Columbia
-
-After this code is executed, the ``List`` would contain the strings: Columbia,
-France, and Ethiopia, in that order.
-
-When working with an array, things are simpler.  We don't need to
-call a method (because arrays have no useful methods). Instead,
-referring to positions within an array uses a subscript in square
-brackets. So when we want to change a value in the array, we can
-treat ``arrayname[<any subscript>]`` just like a variable.
-
-.. code-block:: java
-
-   String[] countries = new String[3];
-   countries[0] = "Brazil";
-   countries[1] = "France";
-   countries[2] = "Ethiopia";
-
-   countries[0] = "Columbia"; // changes the item at index 0 from Brazil to Columbia
-
-
-Arrays Compared to Lists (or ArrayList)
----------------------------------------
-
-.. raw:: html
-
-   <div class="align-center">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/NbYgm0r7u6o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-   </div>
-
-
-Putting It All Together
------------------------
-
-To put this all together, consider a brand new array object:
+To read or write an individual element, specify the array name followed by the index
+enclosed in square brackets:
 
 .. code-block:: java
 
    int[] counts = new int[4];
 
-Remember that when you create an array with the new operator, the elements are
-initialized to zero, as shown in this memory diagram of the counts array so far.
+When an array is allocated with ``new``, Java automatically initializes every element
+to a predictable default value based on the element type:
+
+* Numeric types (``int``, ``long``, ``short``, ``byte``): initialized to ``0``
+* Floating-point types (``double``, ``float``): initialized to ``0.0``
+* Boolean types (``boolean``): initialized to ``false``
+* Reference types (``String``, objects): initialized to ``null``
+
+The following memory diagram illustrates the state of ``counts`` immediately after
+instantiation:
 
 .. odsafig:: Images/thinkjava2_016.png
    :align: center
 
-The arrow indicates that the value of ``counts`` is a **reference** to the array.
-You should think of *the array* and *the variable* that refers to it as two
-different things. As you’ll soon see, we can assign a different variable to
-refer to the same array, and we can change the value of ``counts``` to refer
-to a different array.
+The variable ``counts`` holds a **reference** (indicated by the arrow) to the array
+object in memory. Inside the array, the bold numbers represent the initial element
+values (all ``0``), while the numbers above indicate the valid index positions (0 through 3).
 
-The boldface numbers inside the boxes are the elements of the array. The
-lighter numbers outside the boxes are the indexes used to identify each
-location in the array. As with strings, the index of the first element
-is 0, not 1. For this reason, we sometimes refer to the first element
-as the “zeroth” element.
-
-The ``[]`` operator selects elements from an array:
+Every array has a special, built-in constant field named ``length`` that stores the
+number of elements in the array:
 
 .. code-block:: java
 
-   System.out.println("The zeroth element is " + counts[0]);
+   System.out.println("The array has " + counts.length + " slots."); // prints 4
 
-You can use the ``[]`` operator anywhere in an expression:
+.. important::
+
+   **The length Field Has No Parentheses**:
+
+   * For arrays, ``length`` is a **read-only field**: ``counts.length``
+   * For strings, ``length()`` is a **method**: ``str.length()``
+   * For lists, ``size()`` is a **method**: ``list.size()``
+
+   Because ``length`` is a constant field, you cannot assign a new value to it
+   (e.g., ``counts.length = 10;`` will not compile).
+
+You can use the index operator ``[]`` anywhere a regular variable is permitted—in
+expressions, assignments, or method arguments:
 
 .. code-block:: java
 
    counts[0] = 7;
-   counts[1] = counts[0] * 2;
-   counts[2]++;
-   counts[3] -= 60;
+   counts[1] = counts[0] * 2; // counts[1] becomes 14
+   counts[2]++;               // counts[2] becomes 1
+   counts[3] -= 60;           // counts[3] becomes -60
 
-After executing these lines, the contents of the array will be changed to:
+After executing these statements, the array's contents in memory become:
 
 .. odsafig:: Images/thinkjava2_017.png
    :align: center
 
-You can use any expression as an index, as long as it has type ``int``. One
-of the most common ways to index an array is with a loop variable. For
-example:
-
-.. code-block:: java
-
-   int i = 0;
-   while (i < 4)
-   {
-       System.out.println(counts[i]);
-       i++;
-   }
-
-This ``while`` loop counts up from 0 to 4. When ``i`` is 4, the condition
-fails and the loop terminates. So the body of the loop is executed only
-when ``i`` is 0, 1, 2, or 3. In this context, the variable name ``i`` is
-short for "index".
-
-Each time through the loop, we use ``i`` as an index into the array,
-displaying the *i*\ th element. This type of array processing is usually
-written as a for loop:
-
-.. code-block:: java
-
-   for (int i = 0; i < 4; i++)
-   {
-       System.out.println(counts[i]);
-   }
-
-For the ``counts`` array, the only legal indexes are 0, 1, 2, and 3. If the
-index is negative or greater than 3, the result is
-an ``ArrayIndexOutOfBoundsException``.
+If you attempt to access an index that is negative, or greater than or equal to
+``length`` (such as ``counts[4]`` or ``counts[-1]``), Java immediately throws an
+``ArrayIndexOutOfBoundsException`` and halts execution.
 
 .. raw:: html
 
@@ -315,77 +179,214 @@ an ``ArrayIndexOutOfBoundsException``.
    </div>
 
 
-Iterating Over Arrays
----------------------
+Arrays Compared to Lists (ArrayList)
+------------------------------------
 
-Lets say we wanted to iterate over all values in an array of integers to
-print them all out.
+Because you have already worked with ``List`` and ``ArrayList`` in Chapter 8,
+comparing arrays directly with lists highlights their key differences:
 
-We could do this with a counter-controlled loop or a for-each loop.
+.. list-table::
+   :widths: 25 35 40
+   :header-rows: 1
+
+   * - Feature
+     - Fixed-Size 1D Array (``int[]``)
+     - Generic List (``ArrayList<Integer>``)
+   * - **Capacity**
+     - Fixed at instantiation (cannot resize)
+     - Dynamic (grows and shrinks automatically)
+   * - **Primitive Storage**
+     - Stores primitive types directly (high efficiency)
+     - Requires boxed wrapper classes (e.g., ``Integer``)
+   * - **Element Access**
+     - Subscript syntax: ``arr[i]``
+     - Accessor method: ``list.get(i)``
+   * - **Element Mutation**
+     - Subscript assignment: ``arr[i] = val;``
+     - Mutator method: ``list.set(i, val);``
+   * - **Size Query**
+     - Constant field: ``arr.length`` (no parentheses)
+     - Method call: ``list.size()``
+   * - **Method Richness**
+     - No instance methods; uses ``java.util.Arrays``
+     - Rich instance methods (``add``, ``remove``, ``contains``)
+
+When should you choose an array over an ``ArrayList``?
+ 
+* **Use an array** when the number of elements is fixed or known in advance (such as 24 hours in a day, 7 days in a week, or 60 minutes in an hour), when maximizing execution speed and memory efficiency is paramount, or when building multi-dimensional grid boards.
+* **Use an ArrayList** when the collection needs to grow or shrink dynamically as elements are added or removed, or when you need built-in search and reordering methods.
+
+.. raw:: html
+
+   <div class="align-center">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/NbYgm0r7u6o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 
-Counter-Controlled Loops Over Arrays
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Initializing, Printing, and Naming Arrays
+-----------------------------------------
 
-To create a numeric for loop over an array, we need to know how many slots
-the array has. Fortunately, every array knows its own length, and we can
-access it using its ``length`` field.
-
+When you know the initial values of your array elements in advance, Java provides a
+convenient shorthand known as an **array initializer literal**:
 
 .. code-block:: java
 
-   int[] values = new int[ ... ];
+   String[] coffees = {"Espresso", "Mocha", "Decaf", "Americano"};
+   int[] primes = {2, 3, 5, 7, 11, 13};
+
+This single statement accomplishes three tasks simultaneously:
+
+1. Allocates an array whose length matches the number of comma-separated items inside the braces.
+2. Initializes each slot in sequence with the specified values.
+3. Assigns the reference to the variable.
+
+Initializer literals are ideal for small, known sequences. For larger arrays, you will
+typically allocate the array with ``new`` and use a loop to initialize the contents:
+
+.. code-block:: java
+
+   int[] numbers = new int[100];
+   for (int i = 0; i < numbers.length; i++)
+   {
+       numbers[i] = i * 2; // sets slots to 0, 2, 4, 6, ..., 198
+   }
+
+Printing Arrays
+~~~~~~~~~~~~~~~
+
+If you attempt to print an array directly using ``System.out.println()``:
+
+.. code-block:: java
+
+   int[] values = {1, 2, 3, 4};
+   System.out.println(values);
+
+The console output will display something cryptic:
+
+.. code-block:: text
+
+   [I@bf3f7e0
+
+In Java, ``[I`` indicates an array of ``int``\ s, followed by ``@`` and the hexadecimal
+hash code of the object in memory. Arrays do not override ``toString()`` from ``Object``!
+
+To display the elements of an array, use the utility method ``Arrays.toString()``
+provided by the ``java.util.Arrays`` library:
+
+.. code-block:: java
+
+   import java.util.Arrays;
+
+   // ...
+   System.out.println(Arrays.toString(values)); // prints: [1, 2, 3, 4]
+
+Naming Array Variables
+~~~~~~~~~~~~~~~~~~~~~~
+
+Because an array represents a collection of items, standard Java naming conventions
+dictate using **plural nouns** for array variables:
+
+.. code-block:: java
+
+   double[] scores = new double[10];
+   String[] studentNames = new String[25];
+   Card[] deck = new Card[52]; // or collective singular noun
+
+A plural name clarifies that the identifier refers to the entire collection, which
+reads naturally in loops (e.g., ``for (double score : scores)``). Use a singular name
+only when the array represents a single logical domain entity where you refer almost
+exclusively to indexed properties (e.g., ``grid[row][col]``).
+
+
+Array Reference Semantics, Aliasing, and Copying
+------------------------------------------------
+
+Array variables in Java are **reference variables**. When you assign one array variable
+to another, Java copies only the memory reference—it does **not** create a new array:
+
+.. code-block:: java
+
+   double[] a = new double[3];
+   a[0] = 10.0;
+   double[] b = a; // b and a now refer to the EXACT SAME array!
+
+This creates an **alias**: ``a`` and ``b`` are two names for the same underlying array
+in memory:
+
+.. odsafig:: Images/thinkjava2_018.png
+   :align: center
+
+Any modification made through ``b`` is immediately visible through ``a``:
+
+.. code-block:: java
+
+   b[0] = 42.0;
+   System.out.println(a[0]); // prints 42.0!
+
+If your goal is to create an independent duplicate of an array, you must allocate a
+new array of identical length and copy each element individually:
+
+.. code-block:: java
+
+   double[] copy = new double[a.length];
+   for (int i = 0; i < a.length; i++)
+   {
+       copy[i] = a[i];
+   }
+
+Alternatively, the Java standard library provides ``Arrays.copyOf()`` in ``java.util.Arrays``
+to perform this operation in a single call:
+
+.. code-block:: java
+
+   double[] copy = Arrays.copyOf(a, a.length);
+
+After creating a genuine copy, the memory diagram reflects two distinct objects:
+
+.. odsafig:: Images/thinkjava2_019.png
+   :align: center
+
+Modifying ``copy[0]`` now has no effect on ``a[0]``.
+
+.. raw:: html
+
+   <div class="align-center">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/GQWbUdb4d58?start=46" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
+
+Iterating Over Arrays: Numeric For vs. For-Each Loops
+-----------------------------------------------------
+
+To process all elements in an array, Java offers two primary loop constructs: the
+counter-controlled numeric ``for`` loop and the enhanced ``for-each`` loop.
+
+Counter-Controlled Numeric For Loop
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A counter-controlled ``for`` loop uses an integer index variable (traditionally ``i``)
+ranging from ``0`` up to ``array.length - 1``:
+
+.. code-block:: java
+
+   int[] values = {10, 20, 30, 40};
 
    for (int i = 0; i < values.length; i++)
    {
-       values[i] = 2 * i;
+       values[i] = values[i] * 2; // doubles each element in place
    }
 
-Notice here that we use ``values.length`` to  access the array's length. Unlike
-most other objects where you would use a method, arrays have no useful methods
-and provide their length in a special **read-only** field called ``length``.
-Don't get this confused with the ``length()`` method on strings or the
-``size()`` method on lists--it is just a field, so you never include
-parentheses after the field name.
-Remember that since the size of an array can't be changed once it has been
-created, you cannot assign a value to the ``length`` field of the array--it
-is read-only.
+Use a numeric ``for`` loop whenever:
 
-To summarize this numeric for loop:
+1. You need to **modify the array elements in place** (e.g., transforming values).
+2. You need access to the **index position** (e.g., searching for the location of an item).
+3. You need to traverse in reverse, step by increments other than 1, or compare adjacent elements (e.g., ``values[i]`` vs. ``values[i + 1]``).
 
-* The first subscript we want to use is at postion 0, so we create a new
-  variable called ``i`` and initialize it to 0.
-* Our last subscript position is one less than the length of the array.  This
-  means we should stop when our counter is no longer less than the length of
-  the array.  Thus, our loop condition is ``i < values.length``.
-* We want to go through every index in the array so we write ``i++``
-  for the update step to increment ``i`` by one each time the loop repeats.
+Enhanced For-Each Loop
+~~~~~~~~~~~~~~~~~~~~~~
 
-When working with both ``List``\ s  and arrays, it's very easy to mix up when
-to use the ``size()`` method and when to use ``length``.  Equally tricky is
-that when accessing the length of a String variable, we'd use
-the *method* ``length()``.
-
-.. code-block:: java
-
-   String[] words = new String[3];
-   int x = words.length;   // x is set to 3
-
-   String str = "Hello";
-   int y = str.length();   // y is set to 5
-
-   List<String> moreWords = new ArrayList<>();
-   int z = moreWords.size();  // z is set to 0
-
-Be sure to keep careful track of what type of data you're working with so
-you can access its length correctly.
-
-
-For-Each Loops Over Arrays
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-For-each loops over arrays work exactly the same as with  lists or
-other structures:
+When you only need to inspect or read each element from beginning to end, the enhanced
+``for-each`` loop provides clean, concise syntax without index management:
 
 .. code-block:: java
 
@@ -396,346 +397,485 @@ other structures:
        System.out.println(coffee);
    }
 
-However, there are two critical differences compared to a numeric
-for loop:
+.. warning::
 
-1. You do not have access to the current position or subscript value
-   inside your loop, so you cannot use it in any computations inside
-   the loop.
-2. You can only access each value stored in the array, but cannot change
-   the values stored in the array. The loop variable (for example, ``coffee``
-   in this loop) is a local variable inside the loop. While you can assign
-   a new value to the variable, that will not affect the array itself, or
-   the contents of the array.
-
-For-each loops have many advantages, since they are short to write and
-near bullet-proof in terms of making mistakes with management of the
-index/position or condition, making it nearly impossible to write infinite
-loops. However, these advantages do come with limitations. Fortunately,
-Arrays naturally support either style of for loop, so use the style that
-best fits your needs.
+   **For-Each Cannot Modify Array Slots**: In a ``for-each`` loop, the loop variable
+   (``coffee`` above) is a local variable holding a copy of the current element's
+   value. Assigning to ``coffee = "Latte";`` inside the loop only updates the local
+   variable—it has **zero effect** on the array itself!
 
 
-Initializing Array Contents
----------------------------
+Array Index Arithmetic: Circular Wrap-Around & The Modulo Operator
+------------------------------------------------------------------
 
-As mentioned above, when a new array object is created, it is automatically
-initialized. Normally, values are initialized to zero, false, or ``null``,
-depending on what is appropriate for the array's element type.
+In Chapter 4, you briefly encountered Java's remainder operator (``%``), also
+known as the **modulo operator**, for testing whether an integer is even
+(``number % 2 == 0``). When working with arrays, the modulo operator becomes
+one of your most powerful algorithmic tools for index arithmetic.
 
-However, what if you do not want an array of all zeroes or ``null``\ s?
-As you've seen, you can explicitly list out your own initial values:
+The expression ``a % b`` computes the integer remainder left over when ``a`` is
+divided by ``b``. For any positive integer ``b`` and non-negative integer ``a``,
+the result of ``a % b`` is guaranteed to fall strictly within the range:
 
-.. code-block:: java
+.. math::
 
-   String[] coffees = {"Espresso", "Mocha", "Decaf", "Americano"};
+   0 \le (a \pmod b) < b
 
-This is great for small arrays or situations where it is convenient to
-write out all the values. However, what if you have an array with 100 slots?
-Or 1,000 slots?
+Notice that for an array of size ``N`` (where valid indices are ``0`` through
+``N - 1``), computing ``index % array.length`` guarantees that the resulting
+value is **always a valid index** within the bounds of the array!
 
-For example, what if you want to initialize all of the pixels in a large image
-to be blue?
+This mathematical property gives rise to several essential array programming
+patterns:
 
-If you have an array you want to initialize to something other than
-zeroes or ``null``\ s, just use a numeric for loop to iterate over all
-slots in the array, and use an assignment statement to set values as
-needed. For example, to initialize an array of 100 integers to the values
-0-99:
+1. Circular Index Wrap-Around (Ring Buffers & Game Turns)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Suppose you are implementing a turn-based tabletop game with 4 players stored
+in an array:
 
 .. code-block:: java
 
-   int[] values = new int[100];
+   Player[] players = new Player[4]; // indices 0, 1, 2, 3
+   int currentPlayerIndex = 0;
 
-   for (int i = 0; i < values.length; i++)
+When player 0 finishes their turn, the next player is at index ``1``. When player
+1 finishes, player 2 goes next, followed by player 3. But who goes after player 3?
+The turn must **wrap around** back to player 0!
+
+Without the modulo operator, you would need an ``if`` statement every time:
+
+.. code-block:: java
+
+   // Clunky approach with an if statement:
+   currentPlayerIndex++;
+   if (currentPlayerIndex == players.length)
    {
-       values[i] = i;
+       currentPlayerIndex = 0;
    }
 
-
-Printing Arrays
----------------
-
-You can use ``println()`` to display an array, but it probably doesn’t do what
-you would like. For example, say you print an array like this:
+With the modulo operator, you can advance to the next player and wrap around in
+a single, elegant line of code:
 
 .. code-block:: java
 
-   int[] values = {1, 2, 3, 4};
-   System.out.println(values);
+   // Elegant circular wrap-around:
+   currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
 
-The output is something like this:
+When ``currentPlayerIndex`` is 2, ``(2 + 1) % 4`` evaluates to ``3``. When
+``currentPlayerIndex`` is 3 (the end of the array), ``(3 + 1) % 4`` evaluates to
+``4 % 4``, which is **0**—smoothly cycling back to the start!
 
-.. raw:: html
+This circular pattern is universal in computer science: it is used for circular
+queues, carousel photo galleries, Tetris piece rotation states (cycling through
+4 rotation orientations: ``(orientation + 1) % 4``), and round-robin scheduling.
 
-   <pre>
-   [I@bf3f7e0
-   </pre>
+2. Cyclic Domain Mapping (Clock & Calendar Arithmetic)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The bracket indicates that the value is an array, I stands for "integer", and
-the rest represents the address of the array in memory.
-
-If we want to display the elements of the array, we can do it ourselves:
+The modulo operator allows us to map unbounded or elapsed numeric measurements
+into fixed array bins. For example, if an elapsed simulation time in hours is
+given as 53 hours, what hour of the day does that correspond to?
 
 .. code-block:: java
 
-   public void printArray(int[] values)
+   int elapsedHours = 53;
+   int hourOfDay = elapsedHours % 24; // evaluates to 5 (5:00 AM)
+
+Similarly, in calendar applications where Sunday is day 0 and Saturday is day 6,
+any day offset can be mapped to its day of the week using ``dayOffset % 7``.
+As you will see in the next section, this direct mathematical mapping enables
+arrays to act as high-speed **frequency histograms**.
+
+3. Periodic Formatting & Actions in Loops
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When iterating through a large array, you often need to perform a special action
+every :math:`k` elements—for example, inserting a newline after every 10 values
+when printing a grid, or alternating background shading on alternating rows:
+
+.. code-block:: java
+
+   public void printFormatted(int[] data)
    {
-       System.out.print("[" + values[0]);
-       for (int i = 1; i < values.length; i++)
+       for (int i = 0; i < data.length; i++)
        {
-           System.out.print(", " + values[i]);
+           System.out.print(data[i] + "\t");
+
+           // Print a newline every 5 elements:
+           if ((i + 1) % 5 == 0)
+           {
+               System.out.println();
+           }
        }
-       System.out.println("]");
    }
 
-Given the previous array, the output of ``printArray()`` is as follows:
+Because ``(i + 1) % 5`` is zero precisely when ``i + 1`` is 5, 10, 15, ..., the
+loop automatically breaks the output into neat rows of 5 columns.
 
-.. raw:: html
+4. 2D Coordinate Flattening Preview
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   <pre>
-   [1, 2, 3, 4]
-   </pre>
-
-Fortunately, the Java library already includes a class, ``java.util.Arrays``,
-that provides methods for working with arrays. One of them, ``toString()``,
-returns a string representation of an array. Remember that arrays **do not
-provide useful methods themselves**, but this utility class does provide
-them for you. After importing ``Arrays``, we can invoke ``toString()`` like this:
+Finally, the combination of integer division (``/``) and modulo (``%``) forms the
+bridge to multi-dimensional arrays (Chapter 10). If a 2D grid with ``COLS``
+columns is flattened into a 1D array of size ``ROWS * COLS``, any 1D index can be
+converted back to its grid coordinates using:
 
 .. code-block:: java
 
-   System.out.println(Arrays.toString(values));
-
-And the output is shown here:
-
-.. raw:: html
-
-   <pre>
-   [1, 2, 3, 4]
-   </pre>
-
-Notice that ``Arrays.toString()`` uses square brackets around the elements
-of the array, and produces output that looks the same as the ``toString()``
-method for ``List`` objects.
+   int row = index / COLS; // integer division gives row coordinate
+   int col = index % COLS; // modulo gives column coordinate
 
 
-Copying Array Variables
------------------------
+Accumulator Idioms: Summing, Averaging, and Counting
+----------------------------------------------------
 
-Array variables contain references to arrays. When you make an assignment to
-an array variable, it simply copies the reference. But it doesn’t copy the
-array itself. For example:
+An **accumulator** is a programming pattern where a variable accumulates an answer
+incrementally across loop iterations. Three fundamental accumulator patterns appear
+constantly in array processing:
+
+1. Summing Elements (Running Total)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To compute the sum of an array, initialize a running accumulator to zero and add each
+element during traversal:
 
 .. code-block:: java
 
-   double[] a = new double[3];
-   double[] b = a;
-
-These statements create an array of three ``double``\ s and make two different
-variables refer to it.
-
-.. odsafig:: Images/thinkjava2_018.png
-   :align: center
-
-Any changes made through either variable will be seen by the other. For
-example, if we set ``a[0] = 17.0;``, and then display ``b[0]``, the result
-is ``17.0``. Because ``a`` and ``b`` are different names for the same thing,
-they are sometimes called **aliases**.
-
-If you actually want to copy the array, not just the reference, you have to
-create a new array and copy the elements from one to the other, like this:
-
-.. code-block:: java
-
-   double[] b = new double[3];
-   for (int i = 0; i < 3; i++)
+   public int sum(int[] numbers)
    {
-       b[i] = a[i];
+       int total = 0;
+       for (int n : numbers)
+       {
+           total += n;
+       }
+       return total;
    }
 
-``java.util.Arrays`` provides a method named ``copyOf()`` that performs this
-task for you. So you can replace the previous code with one line:
+2. Calculating an Average
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To compute an average, divide the accumulated sum by the array length. Be sure to
+cast to ``double`` to prevent integer division truncation, and handle empty arrays
+defensively:
 
 .. code-block:: java
 
-   double[] b = Arrays.copyOf(a, 3);
-
-The second parameter is the number of elements you want to copy,
-so ``copyOf()`` can also be used to copy part of an array. After invoking
-``Arrays.copyOf()`` in this way, the two variables would end up in the
-following state:
-
-.. odsafig:: Images/thinkjava2_019.png
-   :align: center
-
-The examples so far work only if the array has three elements. It is better
-to generalize the code to work with arrays of any size. We can do that by
-replacing the magic number, 3, with ``a.length``:
-
-.. code-block:: java
-
-   double[] b = new double[a.length];
-   for (int i = 0; i < a.length; i++)
+   public double average(int[] numbers)
    {
-       b[i] = a[i];
+       if (numbers.length == 0)
+       {
+           return 0.0;
+       }
+       return (double) sum(numbers) / numbers.length;
    }
 
-The last time the loop gets executed, ``i`` is ``a.length - 1``, which is
-the index of the last element. When ``i`` is equal to ``a.length``, the
-condition fails and the body is not executed--which is a good thing, because
-trying to access ``a[a.length]`` would throw an exception.
+3. Filtered Counting
+~~~~~~~~~~~~~~~~~~~~
 
-Of course, we can replace the loop altogether by using ``Arrays.copyOf()``
-and ``a.length`` for the second argument. The following line produces
-the same result shown above:
+To count elements satisfying a specific condition, initialize a counter to zero and
+increment it only when an element passes a conditional test:
 
 .. code-block:: java
 
-   double[] b = Arrays.copyOf(a, a.length);
-
-The ``Arrays`` class provides many other useful methods
-like ``Arrays.compare()``, ``Arrays.equals()``, ``Arrays.fill()``,
-and ``Arrays.sort``. Take a moment to read the documentation by searching
-the web for ``java.util.Arrays``.
-
-.. raw:: html
-
-   <div class="align-center">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/GQWbUdb4d58?start=46" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-   </div>
-
-
-Naming Array Variables
-----------------------
-
-Picking names for array variables can be tricky. For example, consider
-this array.
-
-.. code-block:: java
-
-   String[] words = {"loop", "array", "method", "class"};
-
-Here, we have chosen a plural name, which is the most common pattern
-in naming arrays. Use a plural name when you most often refer to the
-whole array as an object, and want to give it a name that represents
-the entire collection of values as a whole. This aids readability when
-writing loops, passing the array as a parameter to other methods, and
-so on, since the plural name serves as a reminder that the array is
-a whole group of values combined into one object.
-
-However, there are other situations where you may instead primarily
-focus on individual slots within the array, rather than on the array
-itself. If code primarily involves working with just a single array
-slot, then a singular name can be more useful. For example, if we
-have an array of words, but we most often think about referring to
-"word 1" in the array, or "word 3" in the array, or "word 0" in the
-array, then naming the array ``word`` instead of ``words`` would
-allow us to use subscript expressions like ``word[1]`` or ``word[3]``
-or ``word[0]``. Since this pattern exactly matches the natural phrasing
-we would use when talking about a single value within an array, sometimes
-it is a better choice.
-
-In practice, you will make a judgement call about which is a better
-fit for your situation. When in doubt, use a plural name, since that
-is more common and avoids misleading impressions even if there are some
-uses of the name where a singular name would be a better fit.
+   public int countPassingScores(double[] scores, double passingGrade)
+   {
+       int count = 0;
+       for (double score : scores)
+       {
+           if (score >= passingGrade)
+           {
+               count++;
+           }
+       }
+       return count;
+   }
 
 
-Writing Test Assertions Involving Arrays
-----------------------------------------
+Frequency Histograms & Array Buckets
+------------------------------------
 
-When testing with array values, sometimes basic assertions are
-convenient, but other times it can be complicated. You can
-use ``assertThat(...).isEqualTo(...)`` to check that an array
-has an expected value, as you would expect, but there are many
-other options.
+A particularly elegant application of arrays is the **frequency histogram** (or
+**bucket tallying**). In many domains, data attributes fall into a small, discrete range
+of integers:
+
+* Hours in a day: integers ``0`` through ``23`` (size 24)
+* Days in a week: integers ``0`` through ``6`` (size 7)
+* Test scores: integers ``0`` through ``100`` (size 101)
+
+Instead of searching through a list of records every time we want to know how many
+events occurred at a particular hour, we can use the **domain attribute directly as
+an array index**!
+
+Consider a ``Post`` class modeling social media messages, where ``getHour()`` returns
+an integer from 0 to 23. We can track the message frequency for all 24 hours of the day
+using a 24-element integer array:
 
 .. code-block:: java
 
-   // We expect result is {"Espresso", "Mocha", "Decaf", "Americano"}
-   String[] result = someObject.MethodThatReturnsArray();
-   
-   // If you want to check the size
-   assertThat(result.length).isEqualTo(4);
-   
-   // Alternate way of checking the size
-   assertThat(result).hasSize(4);
-   
-   // If you want to check a specific index
-   assertThat(result[1]).isEqualTo("Mocha");
+   public class PostMonitor
+   {
+       private int postCount;
+       private int[] hourCounts;
+       private int[] dayCounts;
 
-   // If you want to check the entire array
-   String[] coffees = {"Espresso", "Mocha", "Decaf", "Americano"};
-   assertThat(result).isEqualTo(words);
+       public PostMonitor()
+       {
+           this.postCount = 0;
+           this.hourCounts = new int[24]; // 24 slots, all initialized to 0
+           this.dayCounts = new int[7];   // 7 slots, all initialized to 0
+       }
 
-However, sometimes an array may be long, or it may not be
-convenient to write out all the values, or you may want to
-avoid declaring/creating/initializing a separate array to
-compare against. Fortunately, there are some additional
-methods you can use when making assertions about arrays.
+       public void recordPost(Post post)
+       {
+           postCount++;
+           
+           // Use the post's hour directly as the array index!
+           int hour = post.getHour();
+           hourCounts[hour]++;
+           
+           // Use the post's day of week directly as the index!
+           int day = post.getDay();
+           dayCounts[day]++;
+       }
 
-The first method is ``containsExactly()``, which allows you
-to directly list out the values you expect to find in the
-array:
+       public int getHourCount(int hour)
+       {
+           return hourCounts[hour];
+       }
+   }
+
+.. tip::
+
+   **Why Direct Indexing Matters**: Direct index mapping executes in constant $O(1)$
+   time. There is no need to write a search loop or compare values against every past
+   post. The hour itself dictates the exact memory location to increment! This pattern
+   directly scaffolds **Lab 09 (Tweet Monitoring)** and the row-occupancy tracking in
+   **Program 05 (Tetris)**.
+
+
+Linear Search: Finding Values and Indices
+-----------------------------------------
+
+When searching for a specific value in an unsorted array, we examine elements one by
+one from the beginning until we either find the target or run out of elements. This
+technique is known as **linear search**.
+
+Searching for Existence (Early Exit)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If we only need to know whether a target exists, we can return ``true`` the moment a
+match is found. If the loop completes without finding a match, we return ``false``:
 
 .. code-block:: java
 
-   // If you want to check the entire array
-   assertThat(result).containsExactly(
+   public boolean contains(int[] array, int target)
+   {
+       for (int value : array)
+       {
+           if (value == target)
+           {
+               return true; // found immediately; terminate early
+           }
+       }
+       return false; // searched the entire array without a match
+   }
+
+Finding the Index of a Match
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Often, we need to know the *location* of the match rather than just whether it exists.
+By convention in Java, search methods return the **index** of the matching element,
+or the sentinel value ``-1`` if the target is not present (since ``-1`` can never be a
+valid array index):
+
+.. code-block:: java
+
+   public int indexOf(int[] array, int target)
+   {
+       for (int i = 0; i < array.length; i++)
+       {
+           if (array[i] == target)
+           {
+               return i; // returns the earliest occurrence
+           }
+       }
+       return -1; // sentinel value: target not found
+   }
+
+To find the *last* occurrence of a target, iterate backward from ``array.length - 1``
+down to ``0``:
+
+.. code-block:: java
+
+   public int lastIndexOf(int[] array, int target)
+   {
+       for (int i = array.length - 1; i >= 0; i--)
+       {
+           if (array[i] == target)
+           {
+               return i; // returns the latest occurrence
+           }
+       }
+       return -1;
+   }
+
+
+Extrema Algorithms: Maximum, Minimum & Deterministic Tie-Breaking
+-----------------------------------------------------------------
+
+Another universal array algorithmic pattern is finding **extrema**—the maximum or
+minimum value in an array, or the index where that extremum occurs.
+
+Finding the Maximum Value
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A common beginner mistake is initializing the maximum variable to ``0``. If all values
+in the array are negative (e.g., ``{-15, -8, -42}``), an initial value of ``0`` will
+incorrectly report ``0`` as the maximum!
+
+The correct algorithm initializes the candidate extremum to the **first element**
+(index ``0``), and then iterates through the remaining elements starting at index ``1``:
+
+.. code-block:: java
+
+   public int findMax(int[] array)
+   {
+       if (array.length == 0)
+       {
+           throw new IllegalArgumentException("Cannot find maximum of empty array");
+       }
+
+       int max = array[0]; // assume first element is maximum
+       for (int i = 1; i < array.length; i++)
+       {
+           if (array[i] > max)
+           {
+               max = array[i]; // found a new maximum
+           }
+       }
+       return max;
+   }
+
+Finding the Index of the Extremum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In assignments like **Lab 09 (Tweet Monitoring)**, you need to find the *index* of the
+busiest or slowest time (e.g., which hour has the highest message count).
+
+To find the index of the extremum, track the **index of the best candidate so far**:
+
+.. code-block:: java
+
+   public int getIndexOfLargest(int[] array)
+   {
+       if (array.length == 0)
+       {
+           return -1;
+       }
+
+       int bestIndex = 0;
+       for (int i = 1; i < array.length; i++)
+       {
+           if (array[i] > array[bestIndex])
+           {
+               bestIndex = i;
+           }
+       }
+       return bestIndex;
+   }
+
+Deterministic Tie-Breaking Semantics
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+What happens if an array contains multiple elements tied for the maximum value?
+For example, in ``int[] counts = {10, 45, 20, 45, 12};``, both index 1 and index 3
+contain 45. Which index should be returned?
+
+The answer depends strictly on the comparison operator used:
+
+* **Strictly Greater** (``>``): If we test ``if (array[i] > array[bestIndex])``, a tied
+  value is *not* greater than the candidate, so ``bestIndex`` is not updated. The method
+  deterministically returns the **earliest occurrence** (index 1).
+
+* **Greater-Than-or-Equal** (``>=``): If we test ``if (array[i] >= array[bestIndex])``,
+  each subsequent tie replaces the candidate, returning the **latest occurrence** (index 3).
+
+.. important::
+
+   **Lab 09 Specification Requirement**: The specifications for Lab 09 (Tweet Monitoring)
+   explicitly require returning the **earliest index** in case of ties. Using strict
+   inequality (``>`` for maximum, ``<`` for minimum) guarantees this deterministic behavior.
+
+
+Writing Test Assertions for Arrays in JUnit
+-------------------------------------------
+
+Testing methods that manipulate arrays requires verifying both individual elements
+and the entire array state. The **AssertJ** library provides comprehensive, fluent
+assertions for testing arrays in JUnit:
+
+Checking Size and Element Values
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: java
+
+   int[] result = monitor.getHourCounts();
+
+   // Check the array length
+   assertThat(result).hasSize(24);
+   assertThat(result.length).isEqualTo(24);
+
+   // Check specific indices
+   assertThat(result[0]).isEqualTo(0);
+   assertThat(result[14]).isEqualTo(5);
+
+Verifying Whole-Array Contents
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+AssertJ provides ``containsExactly()`` to verify that an array contains the exact
+sequence of values in exact order:
+
+.. code-block:: java
+
+   String[] coffees = barista.getMenu();
+
+   assertThat(coffees).containsExactly(
        "Espresso", "Mocha", "Decaf", "Americano");
 
-When you make an assertion using ``containsExactly()``, you list
-*all* of the array's contents in the order you expect, and that's it.
-``containsOnly()`` succeeds if the array contains exactly the values
-you specify, in the order you list them, and nothing else. It is a
-useful shorthand for having to create a separate array object to
-compare against. Even better, it **works for list objects too**!
-
-However, sometimes if you have a really long array, you don't want to
-list all the values. Instead, you can use:
+If you only need to confirm that specific values are present without restricting
+the entire array size or order, use ``contains()``:
 
 .. code-block:: java
 
-   // If you want to check the entire array
-   assertThat(result).contains("Americano", "Mocha");
+   assertThat(coffees).contains("Mocha", "Americano");
 
-The ``contains()`` method allows you to list out
-as many values as necessary. However, ``contains()`` will succeed
-if the array has the specified values anywhere in the array in *any order*,
-mixed in among its slots. The array may be longer, and may have other
-values besides the ones you list, but it must include the values
-you specify. This can be useful when there are a few values in the
-array that matter, but the array is too long to list out all the
-values. Again, this **works for lists too**.
-
-There are also several other methods you can use on **arrays or
-lists** when constructing tests, where you can specify as many or
-few of the values as you need:
+Other Useful AssertJ Array Assertions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: java
 
-   // If you want to check values are not present
-   assertThat(result).doesNotContain("table", "chair");
+   // Verify elements do not appear
+   assertThat(coffees).doesNotContain("Latte", "Cappuccino");
 
-   // To check the first few elements, without worrying about others
-   assertThat(result).startsWith("Espresso", "Mocha");
+   // Verify boundary elements
+   assertThat(coffees).startsWith("Espresso");
+   assertThat(coffees).endsWith("Americano");
 
-   // To check the last few elements, without worrying about others
-   assertThat(result).endsWith("Mocha", "Decaf", "Americano");
+   // Verify no duplicates for key items
+   assertThat(coffees).containsOnlyOnce("Espresso");
 
-   // To check these occur only once in array, are not duplicated
-   assertThat(result).containsOnlyOnce("Mocha", "Americano");
+   // Verify an array is empty
+   int[] empty = new int[0];
+   assertThat(empty).isEmpty();
 
 
 Applying Arrays in a Problem
 ----------------------------
 
-This video discusses a "Web-Analyzer" project and discusses how arrays
-could be used in this type of problem.  You don't need to worry too much
-about what this project does or how it works, or about completing the
-exercise given in the video.  It is just a more detailed example used to
-explain arrays and how they might be used in a problem.
+This video discusses a "Web-Analyzer" project and illustrates how arrays can be
+applied to solve real-world domain problems. You do not need to build the project
+in the video; it is provided as a practical synthesis of array principles in action.
 
 .. raw:: html
 
@@ -760,5 +900,3 @@ Programming Practice 9
      <a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
      licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
    </div></footer>
-
-

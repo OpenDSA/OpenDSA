@@ -136,6 +136,7 @@ some guidelines to follow.
 1. Examine the high-level algorithm.  Any complex, but
    well-defined, step is a candidate for a new behavior, especially
    if two or more Jeroos need to perform that step.
+
 2. Examine the detailed-algorithm.  Any sequence of steps that
    occur several times is a candidate for a new behavior.
 
@@ -325,9 +326,11 @@ objects and methods.
 1. All work is done by sending messages to objects.
 2. Exactly one object executes a method in response to a
    message.
+
 3. A method can modify the attributes of the object that
    executes the method, but cannot directly modify the attributes of
    any other object.
+
 4. One method can send messages to several different objects,
    and those messages can lead to modifications in their
    receivers.
@@ -474,6 +477,7 @@ Review the Algorithm (Step 5)
 1. The high-level algorithm helps manage the details.
 2. We used a "turn around" step in example 4.2.  We can use the
    same logic here.
+
 3. The act of turning around appears as a step in the high-level
    algorithm and as part of the "Go back to (4, 1) and turn around"
    step.  Interesting!
@@ -554,9 +558,11 @@ The recommended first build contains three things:
 
 1. The ``myProgram()`` method in your island subclass
    that creates and sends messages to the Jeroo.
+
 2. Declaration and instantiation of every Jeroo that will be
    used.  This implies adding an appropriate constructor to our
    ``Jeroo`` subclass.
+
 3. The high-level algorithm in the form of comments.
 4. Skeletons for each of the Jeroo methods in your Jeroo
    subclass.  These skeletons are often called stubs.
@@ -947,6 +953,7 @@ There are three important things to observe about the coding style.
 
 1. Braces are used to define the beginning and end of both the true branch
    and the false branch. *Always include them.*
+
 2. The braces are aligned with the start of the words ``if`` and ``else``.
 3. The statements between the braces should be indented (we use 4 spaces).
 
@@ -1013,6 +1020,7 @@ There are three important things to observe about the coding style.
 
 1. Braces are used to define the beginning and end of the true branch.
    *Always include them.*
+
 2. The braces are aligned with the start of the word ``if``.
 3. The statements between the braces should be indented (we use 4 spaces).
 
@@ -1061,6 +1069,7 @@ There are three important things to observe about the coding style.
 
 1. Braces are used to define the beginning and end of the true branch.
    *Always include them.*
+
 2. The braces are aligned with the start of the word ``if`` and ``else``.
 3. The statements between the braces should be indented (we use 4 spaces).
 
@@ -1226,6 +1235,7 @@ are three important things to observe about the syntax.
 1. The condition **must** be in parentheses.
 2. There is **no semicolon** after the parentheses containing the condition
    or after the keyword ``else``.
+
 3. The *while* structure is not a method, which means that we do not send
    it as a message to a Jeroo object.
 
@@ -1233,6 +1243,7 @@ There are three important things to observe about the coding style.
 
 1. Braces are used to define the beginning and end of both the body
    of the while statement. *Always include them.*
+
 2. The braces are aligned with the start of the word ``while``.
 3. The statements between the braces should be indented (we use 4 spaces).
 
@@ -1371,13 +1382,13 @@ Understanding the Key Parts
    to finish with its own local variables, one test cannot interfere with or
    affect another.
 
-2. **Test Methods (``public void test...()``)**:
+2. **Test Methods** (``public void test...()``):
    Every test method must be public void and its name **must start with
    ``test``** (such as ``testTurnAround`` or ``testPickAndClear``). When you run
    all the tests in BlueJ, it finds and runs every method starting
    with ``test``.
 
-3. **Using ``assertThat(...)``**:
+3. **Using** ``assertThat(...)``:
    An **assertion** is a statement that checks whether a condition is true. This is
    how we write *claims* about what we expect to happen in a test. Our micro-world
    testing framework provides assertions for you to check your jeroo's properties directly.

@@ -133,8 +133,7 @@ So the highlighted cell in the grid shown above is at location (4, 2), since
 it is 4 cells horizontally to the right of the origin, and 2 cells vertically
 down from the origin. Also notice that the origin (0, 0) is explicitly
 represented in our grid and is located at the **top left corner**. The grid
-above is 10 by 10 in size, where coordinates run from 0 up to and including
-9. This means we will always used **zero-based indexing** when referring to
+above is 10 by 10 in size, where coordinates run from 0 up to and including 9. This means we will always used **zero-based indexing** when referring to
 grid positions--i.e., we always start counting from zero at the origin (top
 left), rather than starting with one.
 
@@ -180,19 +179,19 @@ At its most basic, a computer program is simply a sequence of instructions for a
     <table class="docutils align-default" style="margin-bottom:1em;">
     <thead><tr><th>Symbol</th><th>Textual Program Statement (Method Call)</th></tr></thead>
     <tbody>
-    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-move.png"/></td>
+    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-move.png" alt="Move"/></td>
     <td><code>andy.move();</code></td></tr>
-     <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-right.png"/></td>
+     <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-right.png" alt="Turn Right"/></td>
     <td><code>andy.turnRight();</code></td></tr>
-    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-left.png"/></td>
+    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-left.png" alt="Turn Left"/></td>
     <td><code>andy.turnLeft();</code></td></tr>
-    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-jump.png"/></td>
+    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-jump.png" alt="Jump"/></td>
     <td><code>andy.jump();</code></td></tr>
-    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-light.png"/></td>
+    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-light.png" alt="Turn Light On"/></td>
     <td><code>andy.turnLightOn();</code></td></tr>
-    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-f1.png"/></td>
+    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-f1.png" alt="Function 1"/></td>
     <td><code>andy.f1();</code></td></tr>
-    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-f2.png"/></td>
+    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-f2.png" alt="Function 2"/></td>
     <td><code>andy.f2();</code></td></tr>
     </tbody>
     </table>
@@ -432,13 +431,16 @@ Similarly, in OOP, objects allow us to:
 * **Modularize our code**: Break down a big problem into smaller,
   self-contained parts (objects), making the code easier to understand,
   write, and debug.
+
 * **Promote reusability**: Once you've created an object (like our LightBot
   object), you can reuse it in different parts of your program or even in 
   entirely new programs without having to rewrite its internal logic. This
   saves time and reduces errors.
+
 * **Simplify maintenance**: If you need to change a specific behavior, you
   only need to modify the code within that object, rather than searching
   through an entire program.
+
 * **Encapsulate data and behavior**: Objects bundle data (attributes like the
   LightBot's position) with the methods that operate on that data
   (like ``move()`` or ``turnLightOn()``). This means that an object controls its
@@ -852,11 +854,14 @@ When you encounter an error:
 
 1. **Read the error message**: Don't just dismiss it. The message often gives
    clues about what went wrong and where.
+
 2. **Look at the highlighted line or line number**: BlueJ usually tells you the
    line where it detected the error. Start your investigation there. But
    remember that the actual problem could be earlier in the code.
+
 3. **Check for common mistakes**: Review the syntax rules for semicolons,
    parentheses, and braces on and around the indicated line.
+
 4. **Work backward**: If the error message isn't clear, look at the code before
    the indicated line, as sometimes an error earlier in the code can cause a
    later line to appear incorrect.
@@ -984,18 +989,22 @@ these conventions serve important purposes:
   makes code instantly recognizable and understandable, even if you're reading
   code written by someone else months or years later. It's like having a
   universal sign language for programmers.
+
 * **Readability at a Glance**: The capitalization helps you immediately
   distinguish between different types of programming elements. For instance,
   seeing ``LightBot`` with a capital "L" tells you it's likely a class (a
   blueprint for objects), while ``andy`` with a lowercase "a" tells you it's
   an instance of that class (a specific object).
+
 * **Reduces Ambiguity**: Consistent naming prevents confusion. If ``Move()``
   and ``move()`` were both allowed for the same action, it would be unclear
   which one to use.
+
 * **Industry Standard**: These conventions (often called "camelCase" for
   variables/methods and "PascalCase" for classes) are widely adopted in the
   Java community and many other programming languages. Adhering to them makes
   your code look professional and facilitates collaboration in team environments.
+
 * **Tooling Support**: Many Integrated Development Environments (IDEs) like
   BlueJ are designed with these conventions in mind, sometimes offering
   auto-completion or error hints based on expected naming patterns.
@@ -1019,9 +1028,11 @@ to programming.
   
     * **Beginner-Friendly**: Very intuitive for new learners, as it removes the
       burden of syntax and typing, allowing focus on logic.
+
     * **Immediate Visual Feedback**: You can see the robot's actions directly
       correspond to the icons you place, making it easy to understand the
       flow of control.
+
     * **Reduced Errors**: Eliminates syntax errors since you're selecting
       pre-defined actions.
 
@@ -1029,8 +1040,10 @@ to programming.
 
     * **Limited Complexity**: Becomes cumbersome for very large or complex
       programs due to the visual space and number of available icons.
+
     * **Less Flexible**: You're limited to the pre-defined actions and
       structures provided by the visual environment.
+
     * **Not Industry Standard**: Real-world programming primarily uses
       textual languages.
 
@@ -1040,8 +1053,10 @@ to programming.
 
     * **Highly Expressive and Flexible**: Allows for much more complex and
       nuanced logic, as you can write almost anything you can imagine.
+
     * **Scalable**: Textual code is easier to manage, read, and organize for
       large-scale projects.
+
     * **Industry Standard**: The skills you learn in textual programming are
       directly transferable to professional software development.
 
@@ -1050,8 +1065,10 @@ to programming.
     * **Steeper Learning Curve**: Requires strict adherence to syntax rules,
       which can be challenging for beginners (e.g., remembering semicolons,
       parentheses, etc.).
+
     * **Abstract**: The connection between the code and the program's behavior
       isn't always immediately visual, requiring more mental modeling.
+
     * **Prone to Typos**: Small errors can lead to compilation issues.
 
 LightBot's iconic interface is an excellent tool for understanding fundamental

@@ -164,6 +164,7 @@ methods:
 
 * **Accessor methods** (or **getters**): Methods that retrieve or read the current
   value of an attribute without modifying it.
+
 * **Mutator methods** (or **setters**): Methods that change or update the value
   of an attribute.
 
@@ -277,8 +278,10 @@ Summary of Scope Rules:
 
 * **Fields** belong to the entire object. They are accessible in every method within
   the class and retain their values between different method calls.
+
 * **Parameters** belong to a single method invocation. They are initialized with the
   argument passed when the method is called and disappear when the method finishes.
+
 * **Local variables** belong to a specific block of code inside a method. They are
   temporary and cannot be accessed outside the pair of braces ``{ }`` where they were declared.
 
@@ -471,8 +474,10 @@ Key Mechanics of ``setUp()``:
 
 1. **Automatic Execution Before Each Test**: If you have 10 test methods, JUnit runs
    ``setUp()`` 10 separate times--immediately before each test method starts.
+
 2. **Fresh Test Fixture**: Every test method begins with a brand-new island and actor,
    guaranteeing total test isolation.
+
 3. **Field Assignment vs. Local Declaration**: Notice that inside ``setUp()``, there
    are no type names at the beginning of each line (we write ``this.island = new Lab04Island();``
    instead of ``Lab04Island island = ...``). Because the fields were already declared
