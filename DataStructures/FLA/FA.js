@@ -2035,6 +2035,12 @@ var lambda = String.fromCharCode(955),
       } else {
         return undefined;
       }
+    } else if (newLabel === "") {
+      if (this._stateLabel) {
+        this._stateLabel.element.remove();
+        this._stateLabel = undefined;
+        this._fitNodeToLabel(options);
+      }
     } else {
       if (!this._stateLabel) {
         this._stateLabel = this.jsav.label(newLabel, { container: this.container.element });
