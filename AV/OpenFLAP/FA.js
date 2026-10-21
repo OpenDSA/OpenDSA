@@ -1251,6 +1251,20 @@ var exerciseLocation;
     window.open("./minDFA.html");
   }
 
+  // Sends the current automaton to the DFA comparison tool as Machine A.
+  // Triggered by clicking "Check DFAs Equivalence".
+  var checkEquivalence = function() {
+    removeND();
+    if (testND()) {
+      testLambda();
+      window.alert("This Finite Automaton is nondeterministic.\nPlease convert to DFA before checking equivalence.");
+      return;
+    }
+    localStorage['checkEquivalence'] = true;
+    localStorage['toCompare'] = serialize(g);
+    window.open("./compareFA.html");
+  }
+
   // transfrom FA to regular expression
   var toRE = function() {
     $("html, body").animate({ scrollTop: 0 }, "slow");
@@ -1422,6 +1436,7 @@ var exerciseLocation;
   $('#shorthandButton').click(switchShorthand);
   $('#toDFAButton').click(convertToDFA);
   $('#minimizeButton').click(minimizeDFA);
+  $('#checkEquivalenceButton').click(checkEquivalence);
   $('#toGrammarButton').click(convertToGrammar);
   $('#toREButton').click(toRE);
   $('#clearLabelButton').click(clearLabels);

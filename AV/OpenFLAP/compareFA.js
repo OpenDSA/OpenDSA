@@ -71,6 +71,12 @@
 
     return {
       get automaton() { return g; },
+      loadFromData: function (source) {
+        clearPending();
+        $(canvasSelector).empty();
+        g = jsav.ds.FA({ width: '100%', height: 340, layout: 'manual', editable: true, element: $(canvasSelector) });
+        g.initFromParsedJSONSource(source, 1);
+      },
       loadExample: function (which) {
         clearPending();
         $(canvasSelector).empty();
@@ -103,6 +109,13 @@
 
   var machineA = createMachine('#canvasA', '.toolbar[data-target="A"]');
   var machineB = createMachine('#canvasB', '.toolbar[data-target="B"]');
+
+  // Picks up the automaton sent from the FA editor's "Check DFAs
+  // Equivalence" button (see FA.js), same handoff pattern minDFA.js uses.
+  if (localStorage['checkEquivalence'] == 'true') {
+    localStorage['checkEquivalence'] = false;
+    machineA.loadFromData(JSON.parse(localStorage['toCompare']));
+  }
 
   $('.toolbar[data-target="A"] .exampleButton').click(function () { machineA.loadExample('redundant'); });
   $('.toolbar[data-target="B"] .exampleButton').click(function () { machineB.loadExample('clean'); });
