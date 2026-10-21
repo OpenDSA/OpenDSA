@@ -420,7 +420,9 @@ var nodeClickHandlers = function(e) {
   }
 
   //this function to save student solution
-  	$("#saveButton").click(function () {
+  	$("#saveButton").click(function (e) {
+		// Save Machine is an href="#" link in the File menu; following it can cancel the download
+		e.preventDefault();
 		$('#download').hide();
 		$('#download').html('');
 		var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGraphToXML(studentGraph));
