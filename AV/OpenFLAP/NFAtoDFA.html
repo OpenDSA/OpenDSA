@@ -40,6 +40,10 @@
     		.jsavmodelanswer {
     			text-align: center;
     		}
+    		/* keep each menu button on one line, so the caret sits beside its text */
+    		.headerTable button {
+    			white-space: nowrap;
+    		}
 		</style>
 	</head>
 	<body>
@@ -71,7 +75,7 @@
 		                </div>
 
 		                <button class="functionality" id="begin">Input</button>
-		                <div class="dropdown" style="height: 20px !important; width: 73px;">
+		                <div class="dropdown" style="height: 20px !important;">
 		                  <button type="button" data-toggle="dropdown">Convert
 		                  <span class="caret"></span></button>
 		                  <ul class="dropdown-menu">
