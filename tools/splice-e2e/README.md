@@ -13,7 +13,8 @@ reloads. The test passes when:
 - every request to the score server comes from the module page, none from the
   exercise iframe;
 - the attempt reaches the server and the exercise shows the score sent back;
-- after a reload, the saved sub-question comes back;
+- after a reload, the saved problem comes back: the same sub-question, seed
+  and question text;
 - no errors occur on the pages.
 
 Grade passback to a real Canvas course is not covered; test that on staging.
@@ -56,6 +57,7 @@ student (`example-2` to `example-51`), for a clean progress record.
 ## Files
 
 - `SpliceRelayTest.json`: the test book (KA `MisSumm` in
-  `AlgAnal/AnalMisunderstanding`, plus `SimpleDemo/Tour`)
+  `AlgAnal/AnalMisunderstanding`, a summary exercise; KA `CompareGrowth` in
+  `AlgAnal/AnalIntro`, a single exercise; plus `SimpleDemo/Tour`)
 - `lti_e2e.mjs`: the headless Chrome driver
 - The rake tasks live in OpenDSA-LTI: `lib/tasks/splice_e2e.rake` (development only)

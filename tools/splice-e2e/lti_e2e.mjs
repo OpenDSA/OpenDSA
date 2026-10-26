@@ -6,11 +6,13 @@
 //   - every request to the score server is made by the module page, none by
 //     the exercise iframe;
 //   - the attempt is saved and the score shown in the exercise is updated;
-//   - after a reload the saved sub-question comes back.
+//   - after a reload the saved problem comes back: the same sub-question,
+//     seed and question text.
 //
 // Usage (after `rake splice_e2e:setup` and `rake splice_e2e:launch` in the
 // opendsa-lti container; see README.md):
 //   node tools/splice-e2e/lti_e2e.mjs [launch_page_url]
+// EXERCISE=<name> checks another KA exercise on the launched module page.
 // Needs Node 18+ (built-in fetch/WebSocket; Node 21+ or --experimental-websocket)
 // and Chrome (set CHROME_PATH if it is not in the default location).
 import { spawn } from 'node:child_process';
@@ -19,7 +21,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 const LAUNCH = process.argv[2] || 'https://opendsa.localhost.devcom.vt.edu/Books/splice-e2e/launch.html';
-const EXERCISE = 'MisSumm';
+const EXERCISE = process.env.EXERCISE || 'MisSumm';
 const PORT = 9333;
 const CHROME = process.env.CHROME_PATH ||
   ['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '/usr/bin/google-chrome', '/usr/bin/chromium']
@@ -70,7 +72,10 @@ const KA_STATUS = `(() => {
   const d = f.contentDocument, w = f.contentWindow;
   const btn = d.getElementById('check-answer-button');
   const p = d.querySelector('#workarea > [id]');
+  const text = id => ((d.getElementById(id) || {}).textContent || '').replace(/\\s+/g, ' ').trim();
   return {ready: !!(btn && !btn.disabled && p), problem: p ? p.id : null,
+          seed: w.Khan && w.Khan.getSeedInfo ? w.Khan.getSeedInfo().seed : null,
+          question: text('workarea') + ' | ' + text('solutionarea'),
           score: (d.getElementById('points-progress') || {}).textContent,
           threshold: (d.getElementById('points-total') || {}).textContent};
 })()`;
@@ -114,7 +119,7 @@ try {
   // Answer (first choice, or 0) and check it
   await evaluate(`(() => {
     const d = document.getElementById('${EXERCISE}_iframe').contentDocument;
-    const input = d.querySelector('#solutionarea input, #answerform input');
+    const input = d.querySelector('#solutionarea input, #answerform input, #workarea textarea, #solutionarea textarea');
     if (input && input.type === 'radio') input.checked = true; else if (input && input.value === '') input.value = '0';
     d.getElementById('check-answer-button').click();
   })()`);
@@ -134,6 +139,8 @@ try {
     ['the attempt was relayed to the server', requests.some(r => r.method === 'POST' && r.url === '/odsa_exercise_attempts')],
     ['the exercise shows the score sent back by the server', !!afterAttempt && /^\d+$/.test(afterAttempt.score || '')],
     ['the saved sub-question came back after a reload', !!(second && third && second.problem && second.problem === third.problem)],
+    ['the same seed and question text came back after a reload',
+     !!(second && third && second.seed !== null && second.seed === third.seed && second.question === third.question)],
     ['no errors on the pages', pageErrors.length === 0],
   ];
   console.log('');
