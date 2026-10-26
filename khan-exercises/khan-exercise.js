@@ -1103,32 +1103,10 @@ define(function(require) {
       // note: it is very important to have a unique id for each indevidual exercise (problem)
       currentProblemType = $(problem).attr("id") || "" + typeNum;
 
-      // save selected exercise in DB so that when user refresh the page the same exercise will be rendered
+      // The summary rules above read current_exercise; odsaKA.js saves the
+      // rendered problem to the server on "newProblem"
       if (currentProblemType !== "undefined" && Khan.currentExercisePromise) {
-        // var url = Khan.odsaFullUrl("updateExercise"); // TODO: to be replaced with OpenDSA-LTI updateExercise end point
         Khan.studentData.current_exercise = currentProblemType;
-        data = {
-          exercise_name: Khan.exerciseName,
-          current_exercise: currentProblemType
-        };
-        if (Khan.instBookId) {
-          data.inst_book_id = Khan.instBookId;
-          if (Khan.instBookSectionExerciseId) {
-            data.inst_book_section_exercise_id = Khan.instBookSectionExerciseId;
-          }
-          else {
-            data.inst_section_id = Khan.instSectionId;
-          }
-        }
-        else if (Khan.instModuleSectionExerciseId) {
-          data.inst_module_section_exercise_id = Khan.instModuleSectionExerciseId;
-        }
-        else {
-          data.inst_course_offering_exercise_id = Khan.instCourseOfferingExerciseId;
-        }
-        var url = "/odsa_exercise_progresses";
-
-        Khan.request(url, data);
       }
     }
 
@@ -1139,7 +1117,11 @@ define(function(require) {
     // This should _never_ happen, and hopefully these autoSubmitIssues will help debug.
     if (!problem.length && problems.length) {
       Khan.autoSubmitIssue("type was for the incorrect problem; failed gracefully");
-      problem = problems.eq(Math.floor(Math.random() * problems.length));
+      typeNum = Math.floor(Math.random() * problems.length);
+      problem = problems.eq(typeNum);
+      // Name the problem actually shown, so the saved state matches it (a
+      // saved sub-question id can be gone after an exercise file is edited)
+      currentProblemType = $(problem).attr("id") || "" + typeNum;
     }
 
     // Find which exercise this problem is from
@@ -2283,14 +2265,16 @@ define(function(require) {
 
     // Generate the initial problem when dependencies are done being loaded.
     // Wait for the saved state (SPLICE.getState via odsaMOD) so the same
-    // sub-question is shown after a reload. ($.when.apply with a single
-    // promise passed no promises at all, so it never actually waited.)
-    $.when(Khan.currentExercisePromise)
+    // problem (sub-question and seed) is shown after a reload. ($.when.apply
+    // with a single promise passed no promises at all, so it never actually
+    // waited.)
+    $.when(Khan.odsaStateLoaded)
       .then(function() {
+        var correctExercises = Khan.studentData.correct_exercises,
+          currentExercise = Khan.studentData.current_exercise,
+          hintedExercise = Khan.studentData.hinted_exercise,
+          seed = Khan.studentData.seed;
         if (Khan.currentExercisePromise) {
-          var correctExercises = Khan.studentData.correct_exercises,
-            currentExercise = Khan.studentData.current_exercise,
-            hintedExercise = Khan.studentData.hinted_exercise;
           if (!Khan.proficiency && correctExercises !== undefined) {
             for (var i = 0; i < correctExercises.length; i++) {
               if (correctExercises[i]) {
@@ -2307,8 +2291,9 @@ define(function(require) {
         // then let KA framework select a new exercise
         if ((correctExercises !== undefined && ($.inArray(currentExercise, correctExercises) > -1)) || Khan.proficiency || (problems.length === 0) || (problems.length === 1 && currentExercise === hintedExercise)) {
           currentExercise = undefined;
+          seed = undefined;
         }
-        makeProblem(currentExerciseId, currentExercise);
+        makeProblem(currentExerciseId, currentExercise, seed);
       }, function() {});
   }
 });
