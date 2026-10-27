@@ -222,6 +222,7 @@ the following:
    of the outer array.
 
 .. odsafig:: Images/TwoDArr.png
+   :width: 80%
    :align: center
 
 Because of this architecture:
