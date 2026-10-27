@@ -108,7 +108,7 @@ A weight of zero for edge :math:`(i, j)` is used to indicate that no
 edge connects Vertices :math:`i` and :math:`j`.
 
 Given a vertex :math:`v`, the ``neighbors`` method scans through row
-``v`` of the matix to locate the positions of the various neighbors.
+``v`` of the matrix to locate the positions of the various neighbors.
 If no edge is incident on :math:`v`, then returned neighbor array will
 have length 0.
 Functions ``addEdge`` and ``removeEdge`` adjust the
