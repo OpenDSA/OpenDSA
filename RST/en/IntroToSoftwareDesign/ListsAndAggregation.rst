@@ -31,8 +31,8 @@ Grouping Objects: Lists, Aggregation, and Strings
    * **Override** the ``toString()`` method to provide readable string representations of domain objects.
 
 
-Introduction to Grouping Objects: ArrayList
--------------------------------------------
+Introduction to Grouping Objects: List
+--------------------------------------
 
 In our programs so far, we have stored individual pieces of data in individual
 variables or instance fields. For example, if you were building a card game, you
@@ -168,12 +168,12 @@ grows and shrinks dynamically. When you add elements, the ``ArrayList``
 automatically allocates more memory if needed. When you remove elements, it
 compacts the remaining items to maintain a continuous, zero-indexed sequence.
 
-Take a few minutes to watch the following overview of how ``ArrayList`` works:
+Take a few minutes to watch the following overview of how ``List`` works:
 
 .. raw:: html
 
    <div class="align-center" style="margin-top:1em;">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/XkJD80HmpdI?start=0&end=1156" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/wR3T7WO4TTA?si=gKxkVaZJZXjpl3vE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
    </div>
 
 
@@ -270,37 +270,29 @@ the gap:
 Writing Unit Tests for List Operations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In CS 1114, we use **AssertJ** assertions to verify list state in our unit tests.
-AssertJ provides expressive methods for checking collections:
+In CS 1114, we use `assertThat()` assertions to verify list state in our unit tests.
+This provides a number of expressive methods for checking collections such as:
 
 .. code-block:: java
-
-   import static org.assertj.core.api.Assertions.*;
-   import org.junit.jupiter.api.Test;
-
-   public class PartyTest
+   public void testPartyLifecycle()
    {
-       @Test
-       public void testPartyLifecycle()
-       {
-           List<String> party = new ArrayList<String>();
-           assertThat(party).isEmpty();
-           assertThat(party).hasSize(0);
+       List<String> party = new ArrayList<String>();
+       assertThat(party).isEmpty();
+       assertThat(party).hasSize(0);
 
-           party.add("Warrior");
-           party.add("Mage");
-           party.add("Rogue");
+       party.add("Warrior");
+       party.add("Mage");
+       party.add("Rogue");
 
-           assertThat(party).hasSize(3);
-           assertThat(party.get(0)).isEqualTo("Warrior");
-           assertThat(party).contains("Mage");
-           assertThat(party).containsExactly("Warrior", "Mage", "Rogue");
+       assertThat(party).hasSize(3);
+       assertThat(party.get(0)).isEqualTo("Warrior");
+       assertThat(party).contains("Mage");
+       assertThat(party).containsExactly("Warrior", "Mage", "Rogue");
 
-           party.remove("Mage");
-           assertThat(party).hasSize(2);
-           assertThat(party).containsExactly("Warrior", "Rogue");
-           assertThat(party).doesNotContain("Mage");
-       }
+       party.remove("Mage");
+       assertThat(party).hasSize(2);
+       assertThat(party).containsExactly("Warrior", "Rogue");
+       assertThat(party).doesNotContain("Mage");
    }
 
 Take a few minutes to watch this video demonstration of common list methods:
@@ -603,8 +595,10 @@ returning the object immediately:
 Notice how this works:
 
 1. The loop examines each card one by one.
+
 2. If ``card.getName().equals(name)`` is ``true``, the ``return card;`` statement
    terminates both the loop and the entire method immediately.
+
 3. If the loop finishes inspecting all cards without executing the ``return``
    inside the loop, execution drops down to ``return null;``, signaling that no
    matching card was found.
@@ -739,29 +733,21 @@ sequence of integers the generator will produce:
 
 .. code-block:: java
 
-   import org.junit.jupiter.api.Test;
-   import static org.assertj.core.api.Assertions.*;
-   import student.util.Random;
-
-   public class CardHandRandomTest
+   public void testDrawRandomCardDeterministic()
    {
-       @Test
-       public void testDrawRandomCardDeterministic()
-       {
-           CardHand hand = new CardHand(5);
-           hand.addCard(new Card("Dragon", "Fire", 8));  // index 0
-           hand.addCard(new Card("Knight", "Steel", 5)); // index 1
-           hand.addCard(new Card("Cleric", "Light", 4)); // index 2
+       CardHand hand = new CardHand(5);
+       hand.addCard(new Card("Dragon", "Fire", 8));  // index 0
+       hand.addCard(new Card("Knight", "Steel", 5)); // index 1
+       hand.addCard(new Card("Cleric", "Light", 4)); // index 2
 
-           // In your unit test, force the generator to return index 1 next:
-           Random.setNextInts(1);
+       // In your unit test, force the generator to return index 1 next:
+       Random.setNextInts(1);
 
-           Card drawn = hand.drawRandomCard();
+       Card drawn = hand.drawRandomCard();
 
-           // Assert with 100% confidence: index 1 was the Knight!
-           assertThat(drawn.getName()).isEqualTo("Knight");
-           assertThat(hand.getCardCount()).isEqualTo(2);
-       }
+       // Assert with 100% confidence: index 1 was the Knight!
+       assertThat(drawn.getName()).isEqualTo("Knight");
+       assertThat(hand.getCardCount()).isEqualTo(2);
    }
 
 When ``Random.setNextInts(...)`` is called, the generator enters replay mode and
@@ -793,6 +779,7 @@ Understanding ``null`` is essential when working with collections:
 1. **Uninitialized Fields Default to null**: When an object is instantiated, all
    its reference fields automatically start with the value ``null`` unless
    explicitly initialized in their declaration or constructor.
+
 2. **Search Sentinels**: As demonstrated in our ``findCardByName()`` method above,
    returning ``null`` is the standard idiom in Java to signal that an object was
    not found.
@@ -877,9 +864,12 @@ To diagnose a NullPointerException from a stack trace:
 
 1. **Locate the topmost line** in the stack trace that belongs to your own code
    (look for your class name and file name in parentheses, such as ``CardHand.java:38``).
+
 2. **Open your source code to that exact line number**.
-3. **Inspect every dot (``.``) on that line**. One of the expressions directly to
+
+3. **Inspect every dot** (``.``) **on that line**. One of the expressions directly to
    the left of a dot was ``null`` when the line executed.
+
 4. Trace backwards to determine *why* that variable was ``null``: was an instance
    field never initialized with ``new``? Did a method call return ``null``? Was
    a parameter passed as ``null``?
@@ -1001,11 +991,10 @@ Never compare strings using the ``==`` relational operator. In Java:
 Writing Unit Tests for String Operations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-AssertJ provides built-in assertions for testing string operations:
+The `assertThat()` method provides built-in assertions for testing string operations:
 
 .. code-block:: java
 
-   @Test
    public void testCardNameFormatting()
    {
        String cardName = "Shadow Dragon";
@@ -1069,6 +1058,7 @@ In Java, ``toString()`` is called **automatically** in two major situations:
 
 1. **Printing**: Whenever you pass an object to ``System.out.println(obj)`` or
    ``System.out.print(obj)``.
+
 2. **String Concatenation**: Whenever you use the ``+`` operator with a ``String``
    and an object (e.g., ``"Played: " + card``).
 
@@ -1105,14 +1095,13 @@ iterate through its internal collection to build a composite description:
        }
    }
 
-Testing toString() with AssertJ
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Testing toString()
+~~~~~~~~~~~~~~~~~~
 
 In your unit tests, verify that ``toString()`` formats output according to specification:
 
 .. code-block:: java
 
-   @Test
    public void testCardToString()
    {
        Card card = new Card("Knight", "Steel", 5);

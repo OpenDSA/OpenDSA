@@ -1,703 +1,980 @@
-.. This file is part of the OpenDSA eTextbook project. See
-.. http://opendsa.org for more details.
-.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
-.. distributed under an MIT open source license.
-
 .. avmetadata::
    :title: Abstract Classes, Frameworks, and Command Patterns
-   :author: Molly Domino
+   :author: Molly Domino; Stephen Edwards
    :institution: Virginia Tech
-   :keyword: Static; Exception
+   :keyword: Abstract Class; Abstract Method; Template Method; Command Pattern; Scanner; Stream Processing; Tokenization; Design Patterns
    :naturallanguage: en
    :programminglanguage: Java
-   :description: CS1-level introduction to the static keyword, main method, and exception handling.
+   :description: Comprehensive introduction to abstract classes, behavioral design patterns, the Command pattern, text stream parsing with Scanner, and testing text-driven command interpreters.
+
 
 Abstract Classes, Frameworks, and Command Patterns
 ==================================================
 
-The Main Method
----------------
+.. |br| raw:: html
 
-Traditionally, the first program you write when learning a new programming
-language is called the hello world program. All it does is display the words
-"Hello, World!" on the screen. In Java, it looks like this:
+   <br />
+
+.. sidebar:: Learning Objectives
+
+    **Estimated Time**: ~42 minutes (~42 min reading at 100 WPM)
+
+   After reading this chapter, you will be able to:
+
+   * **Compare** and contrast abstract classes with interfaces, selecting the appropriate abstraction based on code reuse and subtyping requirements.
+   * **Declare** abstract classes containing instance fields, constructors, concrete methods, and abstract method signatures.
+   * **Implement** the Template Method design pattern to define the skeleton of an algorithm in an abstract class while deferring specific steps to subclasses.
+   * **Implement** the Command design pattern to encapsulate operations into executable objects, decoupling invokers from receivers.
+   * **Parse** whitespace-delimited text streams using ``java.util.Scanner`` lookahead and token retrieval methods (``hasNext()``, ``next()``).
+   * **Author** a multi-token command interpreter that reads verb-argument command pairs and evaluates action dispatch using ``.equals()``.
+   * **Analyze** the structural weaknesses of cascading ``if/else-if`` command dispatch ladders to motivate associative map dispatch in future chapters.
+   * **Design** automated test methods verifying text-driven command interpreters by constructing ``Scanner`` instances backed by ``String`` inputs and evaluating receiver postconditions with test case assertions in test classes extending ``TestCase``.
+
+
+As software applications grow beyond small, single-purpose utilities into
+larger, multi-component systems, managing complexity becomes a central software
+design challenge. Up to this point in our study of object-oriented programming,
+we have used class inheritance to specialize behaviors and interfaces to define
+abstract contracts.
+
+However, many computing problems require an intermediate architectural tier: a
+structure that can define shared, reusable state and default implementations
+like a superclass, while simultaneously enforcing that subclasses provide
+specialized implementations of critical behaviors like an interface.
+
+In this chapter, we will study **abstract classes** and **abstract methods**,
+which provide this essential bridge. We will then examine two foundational
+**software design patterns**—the **Template Method pattern** and the **Command
+pattern**—which allow us to build modular, extensible application frameworks.
+Finally, we will explore stream tokenization using Java's ``Scanner`` class,
+learn how to construct interactive multi-token command interpreters, and analyze
+how to test text-driven systems using automated unit tests.
+
+
+Abstract Classes and Incomplete Blueprints
+------------------------------------------
+
+In Chapter 7, we saw how subclasses extend superclasses to inherit instance
+fields and methods. In those examples, the superclass was a concrete class: you
+could instantiate a ``Jeroo``, a ``Card``, or an ``Actor`` directly using the
+``new`` operator.
+
+However, in many system designs, a superclass represents an abstract concept
+rather than a specific, tangible entity. Consider designing a software system
+for an automated smart home. You might model devices using a hierarchy of
+classes:
+
+.. code-block:: text
+
+                +---------------+
+                |   Appliance   |
+                +---------------+
+                   ^    ^    ^
+        +----------+    |    +----------+
+        |               |               |
+   +----------+  +------------+  +--------------+
+   |SmartLight|  | Thermostat |  | SmartSpeaker |
+   +----------+  +------------+  +--------------+
+
+Every appliance in the home shares certain common attributes: each has a
+location name (such as ``"Kitchen"`` or ``"Living Room"``), an operational
+power status (on or off), and basic methods to toggle power. However, what does
+it mean to instantiate a generic "Appliance" by itself? What sound does a generic
+appliance make? How does a generic appliance operate?
+
+A generic appliance cannot operate because the concept is incomplete. It exists
+solely to define the common foundation from which concrete appliances—like
+lights, thermostats, and speakers—derive their structure and behavior.
+
+The `abstract` Class Keyword
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Java allows programmers to declare that a class is intentionally incomplete by
+tagging it with the ``abstract`` keyword in the class header:
 
 .. code-block:: java
 
-   public class HelloWorld
+   public abstract class Appliance
    {
-       public static void main(String[] args)
+       // Class contents...
+   }
+
+Declaring a class as ``abstract`` has a profound architectural effect: **it
+prevents direct instantiation**. Any attempt to create an instance of an
+abstract class using ``new`` causes a compile-time error:
+
+.. code-block:: java
+
+   Appliance device = new Appliance("Hallway"); // COMPILE ERROR: Appliance is abstract; cannot be instantiated
+
+By making ``Appliance`` abstract, the compiler guarantees that only fully
+specified, concrete subclasses (like ``SmartLight`` or ``Thermostat``) can ever
+be created in memory.
+
+Abstract Method Declarations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to preventing direct instantiation, an abstract class can declare
+**abstract methods**. An abstract method is a method signature that defines the
+name, return type, and formal parameters of an operation, but intentionally
+provides **no method body**:
+
+.. code-block:: java
+
+   public abstract void operate();
+
+Notice two syntactic rules:
+
+1. The method header includes the ``abstract`` reserved word.
+2. The method header ends with a semicolon (``;``) instead of a brace-delimited
+   body (``{ ... }``).
+
+When an abstract class declares an abstract method, it establishes a formal
+contract: **any concrete subclass extending this abstract class MUST provide a
+concrete implementation for every inherited abstract method**. If a subclass
+fails to override and implement even a single abstract method, the compiler will
+reject the subclass unless the subclass itself is also declared ``abstract``.
+
+What Abstract Classes Can Contain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Unlike Java interfaces, which are primarily restricted to method declarations
+and constant values, an abstract class is a full-fledged class. An abstract class
+can contain:
+
+* **Private instance variables** to store state shared across all subclasses.
+* **Constructors** to initialize those instance variables when a subclass
+  invokes ``super(...)``.
+
+* **Concrete methods** containing shared algorithms and helper logic that all
+  subclasses inherit directly without modification.
+
+* **Abstract methods** that act as placeholders for behaviors that each subclass
+  must implement uniquely.
+
+Let us examine the complete ``Appliance`` abstract superclass:
+
+.. code-block:: java
+
+   public abstract class Appliance
+   {
+       private String location;
+       private boolean isOn;
+
+       /**
+        * Constructor for the abstract superclass.
+        * Subclasses invoke this using super(location).
+        */
+       public Appliance(String location)
        {
-           // generate some simple output
-           System.out.println("Hello, World!");
+           this.location = location;
+           this.isOn = false;
+       }
+
+       public String getLocation()
+       {
+           return location;
+       }
+
+       public boolean isOn()
+       {
+           return isOn;
+       }
+
+       public void turnOn()
+       {
+           this.isOn = true;
+       }
+
+       public void turnOff()
+       {
+           this.isOn = false;
+       }
+
+       /**
+        * Abstract method: Subclasses must provide their own
+        * concrete implementation of how this appliance operates.
+        */
+       public abstract void operate();
+   }
+
+Now, let us implement a concrete subclass: ``SmartLight``. Because
+``SmartLight`` is not declared abstract, it **must** provide a body for
+``operate()``:
+
+.. code-block:: java
+
+   public class SmartLight extends Appliance
+   {
+       private int brightness; // 0 to 100 percent
+
+       public SmartLight(String location)
+       {
+           super(location);
+           this.brightness = 100;
+       }
+
+       public int getBrightness()
+       {
+           return brightness;
+       }
+
+       public void setBrightness(int level)
+       {
+           if (level >= 0 && level <= 100)
+           {
+               this.brightness = level;
+           }
+       }
+
+       @Override
+       public void operate()
+       {
+           if (isOn())
+           {
+               System.out.println("Illuminating " + getLocation()
+                   + " at " + brightness + "% brightness.");
+           }
+           else
+           {
+               System.out.println("Light in " + getLocation() + " is off.");
+           }
        }
    }
 
-We know from previous modules that the single line of code inside this method
-will print out the phrase "Hello, World!"
+Similarly, a ``Thermostat`` subclass can extend ``Appliance``, define its own
+``int targetTemperature`` field, and provide its own specialized implementation
+of ``operate()`` that turns on the heater or air conditioner.
 
-This program defines one method named ``main()`` with the following signature:
-
-.. code-block:: java
-
-   public static void main(String[] args)
-
-A method declared with this exact signature is special: it can be used as
-the entry point for executing a standalone Java program.
-The ``HelloWorld`` program is an example of a **Java application program**, or
-a Java application for short,  An application program is a stand-alone program
-in the sense that it does not depend on any other program to run.
-In Java, any class you write can contain its own stand-alone program, if
-it provides its own declaration of a ``main()`` method with this special
-signature.
-
-Every Java application program must have a ``main()`` method (with exactly
-that method signature) which is the place where the program begins
-executing when it is run.
-For a program that contains many classes, it is up to the programmer which
-class should contain the ``main()`` method.
-Further, when you "start" or "execute" a Java application, execution begins
-with the ``main()`` method rather than by creating an object--it is then up
-to ``main()`` to create all the objects needed by your program.
-
-As mentioned above, the method signature for this method is very specific.  This
-is because of the very special role this method has in the program.  The method
-signature must be *exactly*:
+Through dynamic method dispatch, we can store diverse appliances in an array or
+list of type ``Appliance[]`` and invoke ``operate()`` polymorphically:
 
 .. code-block:: java
 
-   public static void main(String[] args)
+   Appliance[] devices = new Appliance[2];
+   devices[0] = new SmartLight("Kitchen");
+   devices[1] = new Thermostat("Living Room", 72);
 
-Many of the keywords we see here you'll recognize.
-
-* ``public`` means this method is accessible to other classes in the program.
-* ``void`` means this method does not return anything.
-* ``main`` is the name given to this method.
-* ``String[] args`` means that this method takes in an array of Strings
-  called ``args``.
-
-The String array ``args`` is actually a feature that will allow a user to pass
-String arguments to the program when it starts up.  For the most part, we won't
-worry about making use of this array in this class.  However, it is still part of
-the method signature and can't be considered a main method without it.
-When a Java program is executed in a stand-alone way using a command line,
-the arguments given on the command line are used to populate this array, so
-they are accessible inside ``main()``.
-
-.. raw:: html
-
-   <div class="align-center" style="margin-top:1em;">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/P-_Nzi_mCRo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-   </div>
-
-
-The Static Keyword
-------------------
-
-In English, when we say something is *static* we mean it does not move or change.
-This is the same in Java.  By contrast, a computer  program is *dynamic*.
-It changes.  It does things and performs certain actions.
-
-Once put into place, we know that anything with the
-keyword **static** will mean that it will not change.  The static keyword
-is a modifier you can place on declarations within a class, and it means
-that the corresponding declaration will belong to a class itself, rather than
-a specific object (an instance of the class).
-
-Lets take a look at what we mean by that:
-
-.. code-block:: java
-
-   public class Ball
+   for (Appliance dev : devices)
    {
-       private String color;
+       dev.turnOn();
+       dev.operate(); // Dynamically dispatches to the correct subclass method!
+   }
 
-       public Ball()
+
+Abstract Classes vs. Interfaces: Design Choices
+-----------------------------------------------
+
+A common question for software designers is: *When should I use an abstract
+class, and when should I use an interface?* Both mechanisms allow you to declare
+method signatures that subclasses or implementing classes must provide. However,
+their roles in object-oriented architecture are fundamentally distinct.
+
+Comparing Language Mechanics
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The table below contrasts the mechanical differences between abstract classes
+and interfaces in Java:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 35 35
+
+   * - Design Dimension
+     - Abstract Class
+     - Interface
+   * - **Inheritance Keyword**
+     - Subclasses use ``extends``
+     - Implementing classes use ``implements``
+   * - **Inheritance Multiplicity**
+     - **Single inheritance**: A class can extend only *one* class
+     - **Multiple implementation**: A class can implement *many* interfaces
+   * - **Instance State**
+     - Can declare private instance variables of any type
+     - Cannot declare instance fields (only ``public static final`` constants)
+   * - **Constructors**
+     - Can have constructors to initialize shared superclass fields
+     - Cannot have constructors (interfaces cannot be instantiated)
+   * - **Method Access Modifiers**
+     - Can declare ``private``, ``protected``, or ``public`` methods
+     - Methods are implicitly ``public``
+   * - **Primary Purpose**
+     - Code reuse and shared state within a strict hierarchy
+     - Contractual behavioral capability across unrelated types
+
+Architectural Roles: IS-A Identity vs. CAN-DO Capability
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Beyond the syntax, the choice between an abstract class and an interface is
+guided by the nature of the relationship you are modeling:
+
+1. **Use an Abstract Class when modeling an IS-A relationship with shared state:**
+   Choose an abstract class when your classes form a natural, close-knit family
+   where every subclass is genuinely a specialized version of the parent
+   concept and shares common state and algorithms. For example, a ``SmartLight``
+   genuinely *is an* ``Appliance``; it makes sense for it to inherit the
+   location field, power status, and getter methods from ``Appliance``.
+
+2. **Use an Interface when modeling a CAN-DO capability across unrelated classes:**
+   Choose an interface when you want to guarantee that a class provides certain
+   behaviors, regardless of where that class sits in the inheritance hierarchy.
+   For example, an interface named ``Scheduleable`` with a method ``void
+   scheduleEvent(int time)`` could be implemented by a ``SmartLight``, a
+   ``SprinklerSystem``, a ``CalendarEvent``, or an ``AutomatedBackupTask``.
+   These classes share no common state and do not belong to the same family, but
+   they all *can do* scheduling.
+
+.. note::
+
+   In sophisticated software frameworks, abstract classes and interfaces
+   frequently work together. A framework often defines a top-level interface
+   declaring capabilities, accompanied by an **abstract base class** that
+   provides a partial, default implementation of that interface to reduce boiler-plate
+   code for developers.
+
+The Template Method Design Pattern
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+One of the most powerful applications of abstract classes is the **Template
+Method design pattern**.
+
+A **design pattern** is a well-established, battle-tested solution to a common
+software design problem. In the Template Method pattern, an abstract superclass
+defines the overall structure (or "skeleton") of an algorithm inside a concrete
+method. Certain steps of the algorithm, however, are declared as abstract
+methods whose implementation is deferred to subclasses.
+
+Consider an automated cleaning routine for smart robotic cleaners:
+
+.. code-block:: java
+
+   public abstract class RoboticCleaner extends Appliance
+   {
+       public RoboticCleaner(String location)
        {
-           this.color = "Red";
+           super(location);
        }
 
-       public void setColor(String newColor)
+       /**
+        * The Template Method: defines the invariant steps of a cleaning cycle.
+        * Declared final so subclasses cannot accidentally break the sequence.
+        */
+       public final void runCleaningCycle()
        {
-           this.color = newColor;
+           turnOn();
+           calibrateSensors(); // Abstract step: specialized by subclass
+           performCleaning();  // Abstract step: specialized by subclass
+           returnToDock();     // Concrete step: shared by all cleaners
+           turnOff();
        }
 
-       public String getColor()
+       // Primitive steps that subclasses MUST customize:
+       protected abstract void calibrateSensors();
+       protected abstract void performCleaning();
+
+       // Concrete step shared by all robotic cleaners:
+       private void returnToDock()
        {
-           return this.color;
+           System.out.println(getLocation() + " cleaner returning to charging dock.");
        }
    }
 
-This code declares a ``Ball`` class.  When initialized, all ``Ball`` objects
-have their ``color`` field set to "Red", but a setter method has been provided
-so we could change that to another color. The field ``color`` "belongs" to the
-object, since each individual instance of ``Ball`` has its own ``color`` field,
-and each instance can store a different value in its own ``color`` field,
-separate from all other ``Ball``\ s.
-To access or change this field though, we need to create a ``Ball`` object to
-work with.
+Now, different cleaning robots can customize the cleaning mechanics without
+rewriting the overarching operational cycle:
 
 .. code-block:: java
 
-   Ball b1 = new Ball();               // creates a red Ball
-   b1.setColor("Blue");                // changes the color to Blue
-   System.out.println(b1.getColor());  // prints out the string "Blue"
-
-Now, lets assume that all ``Ball`` objects we want to must have exactly the
-same diameter--a diameter of 15 centimeters.  This might be a good application
-for using the ``static`` keyword.
-
-.. code-block:: java
-
-   public class Ball
+   public class VacuumBot extends RoboticCleaner
    {
-       private String color;
-       private static int diameter = 15;
+       public VacuumBot(String location)
+       {
+           super(location);
+       }
 
+       @Override
+       protected void calibrateSensors()
+       {
+           System.out.println("Scanning floor elevation and carpet thresholds.");
+       }
+
+       @Override
+       protected void performCleaning()
+       {
+           System.out.println("Engaging suction motors and side brushes.");
+       }
+   }
+
+When a client calls ``vacuumBot.runCleaningCycle()``, the inherited template
+method executes the five-step routine in exact sequence, calling the specialized
+sensor calibration and suction routines defined in ``VacuumBot``.
+
+
+The Command Pattern: Encapsulating Actions
+------------------------------------------
+
+In many programs, you need to execute actions in response to user input, such as
+clicking a button in a graphical user interface, typing a command into a text
+terminal, or reading instructions from an automation script.
+
+The Tightly Coupled Approach (And Why It Fails)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A novice programmer often writes code that directly connects the user input
+handler with the low-level business logic:
+
+.. code-block:: java
+
+   // Tightly coupled input handling:
+   public void handleUserInput(String input, SmartLight light, Thermostat thermostat)
+   {
+       if (input.equals("light on"))
+       {
+           light.turnOn();
+       }
+       else if (input.equals("light off"))
+       {
+           light.turnOff();
+       }
+       else if (input.equals("cool down"))
+       {
+           thermostat.setTargetTemperature(68);
+       }
+       // ... dozens more else-if branches
+   }
+
+While this code works for two or three options, it suffers from severe
+architectural problems:
+
+* **Rigid Coupling**: The input handler is hardwired to specific appliance
+  instances and specific method names.
+
+* **Zero Reusability**: If you want to trigger the same action from a scheduled
+  timer or a macro script, you must duplicate the conditional branching.
+
+* **No History or Queuing**: You cannot easily queue requests, undo actions, or
+  log commands, because actions are ephemeral method calls rather than tangible
+  data.
+
+Treating Actions as First-Class Objects
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The **Command design pattern** solves this problem by encapsulating an action or
+request as a **first-class object**.
+
+Instead of directly invoking a method on an appliance, we create an object that
+represents the intent to perform that action. The command object bundles together
+the target object (the **receiver**), the operation to perform, and any required
+arguments.
+
+The Command pattern involves four primary roles:
+
+1. **The Command Interface**: Declares a uniform method signature for executing
+   an action, typically:
+   
+   .. code-block:: java
+   
+      public interface Command
+      {
+          void execute();
+      }
+
+2. **The Receiver**: The domain entity that contains the state and knows how to
+   perform the actual work (e.g., ``SmartLight``, ``Thermostat``).
+
+3. **The Concrete Command**: A class implementing the ``Command`` interface that
+   holds a private reference to the receiver and executes specific methods on
+   the receiver when its ``execute()`` method is invoked.
+
+4. **The Invoker**: The component that holds and triggers commands (such as a
+   remote control, a menu system, or an input interpreter) without knowing what
+   the concrete command does or who the receiver is.
+
+
+Implementing Concrete Commands with Receivers
+---------------------------------------------
+
+Let us implement the Command pattern for our smart home appliances. First, we
+define the simple, elegant ``Command`` interface:
+
+.. code-block:: java
+
+   public interface Command
+   {
+       /**
+        * Carries out the action encapsulated by this command.
+        */
+       void execute();
+   }
+
+Building Concrete Command Classes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Next, we create concrete command classes for each distinct operation. Notice
+how each concrete command stores its receiver in a private instance field
+initialized via its constructor:
+
+.. code-block:: java
+
+   /**
+    * Concrete command to turn an appliance on.
+    */
+   public class TurnOnCommand implements Command
+   {
+       private Appliance receiver;
+
+       public TurnOnCommand(Appliance receiver)
+       {
+           this.receiver = receiver;
+       }
+
+       @Override
+       public void execute()
+       {
+           receiver.turnOn();
+           System.out.println("Turned on device in " + receiver.getLocation());
+       }
+   }
+
+Commands can also encapsulate parameters. For instance, setting a thermostat's
+temperature requires both a receiver and a target temperature argument:
+
+.. code-block:: java
+
+   /**
+    * Concrete command to set a thermostat's target temperature.
+    */
+   public class SetTemperatureCommand implements Command
+   {
+       private Thermostat thermostat;
+       private int targetTemperature;
+
+       public SetTemperatureCommand(Thermostat thermostat, int targetTemperature)
+       {
+           this.thermostat = thermostat;
+           this.targetTemperature = targetTemperature;
+       }
+
+       @Override
+       public void execute()
+       {
+           thermostat.setTargetTemperature(targetTemperature);
+           System.out.println("Set thermostat in " + thermostat.getLocation()
+               + " to " + targetTemperature + " degrees.");
+       }
+   }
+
+The Invoker: Decoupling Execution from Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Now consider the invoker: a programmable multi-slot remote control or an
+automation controller:
+
+.. code-block:: java
+
+   public class RemoteControl
+   {
+       private Command[] buttons;
+
+       public RemoteControl(int numButtons)
+       {
+           this.buttons = new Command[numButtons];
+       }
+
+       public void setCommand(int slot, Command command)
+       {
+           if (slot >= 0 && slot < buttons.length)
+           {
+               buttons[slot] = command;
+           }
+       }
+
+       public void pressButton(int slot)
+       {
+           if (slot >= 0 && slot < buttons.length && buttons[slot] != null)
+           {
+               // Polymorphic execution: the remote has no idea what this command does!
+               buttons[slot].execute();
+           }
+       }
+   }
+
+Notice the immense architectural benefit of this decoupling:
+
+* The ``RemoteControl`` class does not import ``SmartLight``, ``Thermostat``,
+  or any other specific device. It depends **only on the ``Command``
+  interface**.
+
+* You can add fifty new kinds of appliances and commands to the system without
+  changing a single line of code in ``RemoteControl``!
+
+* You can dynamically reassign what a button does at runtime simply by calling
+  ``setCommand()`` with a different command object.
+
+
+Text Stream Processing with `Scanner`
+-------------------------------------
+
+Now that we can encapsulate actions into executable objects, how do we allow
+human users to trigger these actions using typed text commands?
+
+To process user input, we use Java's standard input processing tool:
+``java.util.Scanner``.
+
+Whitespace-Delimited Tokenization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A **stream** is an abstract sequence of data characters. When a user enters a
+line of text such as:
+
+.. code-block:: text
+
+   "set   temp    72"
+
+the text consists of characters separated by spaces. In computer science,
+individual words or meaningful chunks in an input stream separated by whitespace
+(spaces, tabs, or newlines) are called **tokens**.
+
+A ``Scanner`` acts as a parser that automatically tokenizes text. When you call
+its core reading method:
+
+.. code-block:: java
+
+   String token = scanner.next();
+
+the scanner skips any leading whitespace, reads characters until it hits the
+next whitespace character, and returns the token as a ``String``.
+
+Guarding Stream Reads with `hasNext()`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you call ``scanner.next()`` when there are no more tokens available in the
+stream, the scanner throws a runtime exception:
+``java.util.NoSuchElementException``.
+
+To prevent crashes, you must **always verify stream availability** before
+attempting to read. The scanner provides a lookahead method:
+
+.. code-block:: java
+
+   boolean hasMore = scanner.hasNext();
+
+``scanner.hasNext()`` returns ``true`` if another token is available to read, and
+``false`` if the stream has been completely exhausted.
+
+Comparing String Tokens: `.equals()` vs. `==`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When evaluating command words read by a scanner, you must compare their content
+using the ``.equals()`` method, **never the** ``==`` **identity operator**:
+
+.. code-block:: java
+
+   String commandWord = scanner.next();
+
+   // CORRECT: Compares character contents
+   if (commandWord.equals("status"))
+   {
        // ...
    }
 
-The main reason to use the static keyword is when you want to define a common
-property of the entire class, rather than just a single object. Here, because
-``diameter`` is declared as ``static``, there is just one ``diameter`` field
-stored in the class itself, and that single copy is shared by all objects
-created from the class. Rather than each object storing its own diameter,
-there is just one place where this value is stored--in the class itself.
-The ``static`` modifier is used when you want a single resource (or method)
-to be shared by all objects in the class.
-
-Then, when accessing a static method or field, you talk about it differently
-than regular fields that are stored within the object itself. For example,
-consider a ``toString()`` method for the ``Ball`` class:
-
-.. code-block:: java
-
-   public String toString()
+   // WRONG: Compares memory object addresses!
+   if (commandWord == "status")
    {
-       return this.color + " ball with diameter " + Ball.diameter;
+       // Almost guaranteed to evaluate to false!
    }
 
-Here, when referring to the ``color`` field, we use ``this.color``, where
-``this`` refers to the *current object*, which owns the field ``color``.
-We are talking about the ``color`` value stored in the current object.
-However, when referring to ``diameter``, it does not belong to the
-current object, and instead belongs to the class. Therefore, we use
-the class name before the dot (.) to refer to it: ``Ball.diameter``.
+Remember from Chapter 8 that ``==`` tests whether two references point to the
+exact same object in heap memory. Because the scanner dynamically allocates a
+new ``String`` object for every token it extracts, ``commandWord == "status"``
+will evaluate to ``false`` even if the characters are identical.
 
-Similarly, if we had a class with a main method, we don't need to create an
-object of that class to run the ``main()``, since ``main()`` is a method that
-(because it is static) belongs to the class itself, rather than being invoked
-on an individual object:
+The Standard Stream Processing Loop
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To process a sequence of commands until the stream ends, we structure our
+algorithm around a ``while (scanner.hasNext())`` loop:
 
 .. code-block:: java
 
-   public class HelloWorld
+   import java.util.Scanner;
+
+   public class StreamEchoer
    {
-       public static void main(String[] args)
+       public void echoAllTokens(Scanner scanner)
        {
-           // generate some simple output
-           System.out.println("Hello, World!");
+           while (scanner.hasNext())
+           {
+               String token = scanner.next();
+               System.out.println("Processing token: " + token);
+           }
        }
    }
 
-With this declaration, we can call  the ``main()`` method without creating
-an object of type ``HelloWorld``.
+
+Parsing Multi-Token Commands
+----------------------------
+
+Most interactive applications require commands composed of more than one word.
+For example, a user might enter a **verb** followed by an **argument**:
+
+* ``"temp 72"`` (verb: *temp*, argument: *72*)
+* ``"light on"`` (verb: *light*, argument: *on*)
+* ``"mode eco"`` (verb: *mode*, argument: *eco*)
+
+Reading Structured Command Pairs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To parse a multi-token command line, our parser follows a sequential protocol:
+
+1. Read the command verb using ``scanner.next()``.
+2. Convert the verb to lowercase using ``.toLowerCase()`` to ensure
+   case-insensitive input processing.
+
+3. Check whether an argument token exists before attempting to read it.
+4. Extract the argument (using ``scanner.next()`` for strings or
+   ``scanner.nextInt()`` for integers) and execute the corresponding action.
+
+Here is a straightforward interpreter implementing this protocol:
 
 .. code-block:: java
 
-   HelloWorld.main(null);
-
-In short, methods or fields declared ``static`` belong to the class itself,
-rather than to any object created from that class, and all objects created
-from the class share the same copy of the ``static`` field(s) or method(s).
-Also, when referring to static fields or methods, use the class name itself
-followed by a dot (.), rather than using ``this``, since they belong to
-the class rather than any instance of the class.
-
-
-A Common Pitfall
-~~~~~~~~~~~~~~~~
-
-One thing to keep in mind is that methods that are static are in some ways
-seperate from non-static methods.  Let's take a closer look at the ``Ball``
-example.
-
-.. code-block:: java
-
-   public class Ball
+   public void interpretSingleCommand(Scanner scanner, Thermostat thermostat, SmartLight light)
    {
-       private String color;
-       private static int diameter = 15;
-
-       public static void printData()
+       if (!scanner.hasNext())
        {
-           // This line will not work!
-           String message = "This ball is " + color + " and has a diameter of "
-               + diameter + " cm" ;
-           System.out.println(message);
+           return; // Stream is empty
+       }
+
+       String verb = scanner.next().toLowerCase();
+
+       if (verb.equals("status"))
+       {
+           System.out.println("Thermostat is at " + thermostat.getTargetTemperature());
+           System.out.println("Light is " + (light.isOn() ? "ON" : "OFF"));
+       }
+       else if (verb.equals("temp"))
+       {
+           if (scanner.hasNextInt())
+           {
+               int degrees = scanner.nextInt();
+               thermostat.setTargetTemperature(degrees);
+           }
+           else
+           {
+               System.out.println("Error: 'temp' command requires an integer temperature.");
+           }
+       }
+       else if (verb.equals("light"))
+       {
+           if (scanner.hasNext())
+           {
+               String state = scanner.next().toLowerCase();
+               if (state.equals("on"))
+               {
+                   light.turnOn();
+               }
+               else if (state.equals("off"))
+               {
+                   light.turnOff();
+               }
+               else
+               {
+                   System.out.println("Error: State must be 'on' or 'off'.");
+               }
+           }
+       }
+       else
+       {
+           System.out.println("Unrecognized command: " + verb);
        }
    }
 
-The method ``printData()`` is static.  It can be called without creating an
-object.
-Because of this, we can not reference the field ``color``, since that field
-belongs to instances of ``Ball`` (and each ball has its own color).  More
-generally, we cannot reference anything that isn't static in a static method.
+The `if/else-if` Command Dispatch Anti-Pattern
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It is common to make this mistake in the ``main()`` method.  Lets take a look
-again at a different implementation of the "Hello World" code:
+The cascading ``if/else-if`` structure shown above is the most obvious way to
+route text commands. In introductory programming, this is often where students
+begin.
+
+However, in professional software engineering, relying on a giant cascading
+``if/else-if`` chain for command routing is considered an **anti-pattern**—a
+commonly used structure that appears straightforward on the surface but produces
+severe architectural flaws as the system expands:
+
+1. **Violation of the Open/Closed Principle**:
+   One of the most important rules of software engineering is the **Open/Closed
+   Principle**: *software entities should be open for extension, but closed for
+   modification*. In the ``if/else-if`` approach, every single time you want to
+   add a new command to your application (such as adding a ``"fan"`` or
+   ``"lock"`` command), you **must modify the parser class itself** by cutting
+   open the method and appending more branches. This risks introducing defects
+   into previously working commands.
+
+2. **Code Bloat and Degrading Maintainability**:
+   While three commands produce a readable ladder, real-world systems easily
+   possess dozens or hundreds of commands. A 50-branch ``if/else-if`` ladder
+   spanning hundreds of lines of code becomes an unmaintainable nightmare to
+   navigate, read, and test.
+
+3. **Linear Performance Degradation**:
+   A cascading ``if/else-if`` chain evaluates each condition sequentially from
+   top to bottom. If you have 50 commands and the user executes the 50th
+   command, Java must perform 50 string comparisons before finding a match.
+
+Looking Ahead: The Map-Based Solution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+How do professional software engineers eliminate this anti-pattern?
+
+The answer lies in combining the **Command design pattern** with an **associative
+data structure called a Map**. In Chapter 12, you will learn about Java's
+``Map<String, Command>`` collection. A Map acts as a high-speed dictionary: it
+stores key-value associations, mapping command word strings (like ``"temp"`` or
+``"light"``) directly to concrete ``Command`` objects.
+
+With a map-based dispatcher:
+
+* The entire multi-page ``if/else-if`` ladder is replaced by a single line of
+  code:
+  
+  .. code-block:: java
+  
+     Command cmd = commandMap.get(verb);
+     if (cmd != null) { cmd.execute(); }
+
+* Adding a new command requires **zero changes** to the parser: you simply
+  register a new command object into the map!
+
+Understanding the mechanics of multi-token stream parsing in this chapter
+provides the essential foundation you need before we replace the branching
+ladder with map-based dispatch in Chapter 12.
+
+
+Testing Text-Driven Command Interpreters
+----------------------------------------
+
+Testing an interactive program that reads commands can seem daunting if you
+assume testing requires a human sitting at a keyboard typing into a terminal.
+Fortunately, Java's ``Scanner`` architecture makes automated unit testing of
+text interpreters straightforward and fast.
+
+String-Backed Test Scanners
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Although ``Scanner`` is often used with ``System.in`` to read from the console,
+a ``Scanner`` can be instantiated to read from **any data source**—including a
+simple in-memory ``String``:
 
 .. code-block:: java
 
-   public class HelloWorld
+   Scanner testStream = new Scanner("temp 72 light on");
+
+When you pass this string-backed scanner to your command interpreter, the scanner
+delivers the tokens ``"temp"``, ``"72"``, ``"light"``, and ``"on"`` in exact
+sequence, just as if an exceptionally fast typist entered them at the console!
+
+Authoring Test Classes Extending `TestCase`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the BlueJ environment used in our course, automated unit tests are written by
+declaring test classes that extend ``TestCase`` (from the ``student`` package):
+
+.. code-block:: java
+
+   public class CommandInterpreterTest extends TestCase
+
+Because the project template provides the necessary import (``import student.TestCase;``),
+you extend ``TestCase`` directly without package qualification.
+
+Inside your test methods, you:
+
+1. Set up fresh receiver instances.
+2. Construct a ``Scanner`` populated with specific command strings.
+3. Invoke the interpreter method.
+4. Verify receiver state changes and postconditions using **test case
+   assertions** (such as ``assertEquals(...)``, ``assertTrue(...)``, ``assertFalse(...)``).
+
+Here is a comprehensive unit test suite verifying our command interpreter:
+
+.. code-block:: java
+
+   public class CommandInterpreterTest extends TestCase
    {
-       public void print()
+       private Thermostat thermostat;
+       private SmartLight light;
+       private SmartHomeHub hub;
+
+       /**
+        * Automatically executed before each test method.
+        */
+       public void setUp()
        {
-           System.out.println("Hello, World!");
+           thermostat = new Thermostat("Hallway", 68);
+           light = new SmartLight("Porch");
+           hub = new SmartHomeHub(thermostat, light);
        }
 
-       public static void main(String[] args)
+       public void testInterpretTempCommand()
        {
-           // This will not work!
-           print();
+           // Provide a valid temperature command stream
+           Scanner stream = new Scanner("temp 74");
+           hub.interpret(stream);
+
+           // Verify receiver postconditions with test case assertions:
+           assertThat(thermostat.getTargetTemperature()).isEqualTo(74);
+       }
+
+       public void testInterpretLightOnAndOff()
+       {
+           // Initially the light is off
+           assertThat(light.isOn()).isFalse();
+
+           // Execute light on command
+           Scanner streamOn = new Scanner("light on");
+           hub.interpret(streamOn);
+           assertThat(light.isOn()).isTrue();
+
+           // Execute light off command
+           Scanner streamOff = new Scanner("light off");
+           hub.interpret(streamOff);
+           assertThat(light.isOn()).isFalse();
+       }
+
+       public void testInterpretMultipleCommandsInStream()
+       {
+           // Stream with multiple sequential commands
+           Scanner stream = new Scanner("temp 71 light on");
+           hub.interpretAll(stream);
+
+           assertThat(thermostat.getTargetTemperature()).isEqualTo(71);
+           assertThat(light.isOn()).isTrue();
+       }
+
+       public void testInterpretEmptyStream()
+       {
+           // Empty stream should terminate gracefully without error
+           Scanner emptyStream = new Scanner("");
+           hub.interpret(emptyStream);
+
+           // State remains at defaults
+           assertThat(thermostat.getTargetTemperature()).isEqualTo(68);
+           assertThat(light.isOn()).isFalse();
+       }
+
+       public void testInterpretUnknownCommand()
+       {
+           // Unrecognized command should be ignored without crashing
+           Scanner stream = new Scanner("activate lasers");
+           hub.interpret(stream);
+
+           assertThat(thermostat.getTargetTemperature()).isEqualTo(68);
+           assertThat(light.isOn()).isFalse();
        }
    }
 
-In this situation, the method ``print()`` is non-static--meaning you must have
-an instance of the ``HelloWorld`` class to call the method on.  It cannot be
-called from a static method!  There are two ways to get around this.  We could
-add the ``static`` keyword to the ``print()`` method.  This is the simplest
-solution, but generally it is a good design practice to only use the static
-keyword when it is strictly necessary.
-
-Instead, we can create a new object of our ``HelloWorld`` class inside our
-``main()`` method and use that object to call the ``print()`` method.
-
-.. code-block:: java
-
-   public class Hello
-   {
-       public void print()
-       {
-           System.out.println("Hello, World!");
-       }
-
-       public static void main(String[] args)
-       {
-           // This will work!
-           HelloWorld hObject = new HelloWorld();
-           hObject.print();
-       }
-   }
-
-In fact, this pattern is quite common in ``main()`` methods, where the whole
-point of the ``main()`` method is to create the initial object(s) needed for
-the program and to "start" them by calling one or more methods on them.
-
-However, remember that static methods cannot call non-static methods without
-also having an object that is an instance of the class available.
-In short, be aware of what you reference when writing code in a static method!
-
-.. raw:: html
-
-   <div class="align-center" style="margin-top:1em;">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/wa1HzkMqY9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-   </div>
-
-
-Errors
-------
-
-There are two major kinds of errors that can occur in a program:
-compile-time errors and run-time errors. It is useful to distinguish among
-them in order to track them down more quickly.
-
-
-Compile-Time errors
-~~~~~~~~~~~~~~~~~~~
-
-Compile-time errors occur when you violate the syntax rules of the Java
-language. For example, parentheses and braces have to come in matching
-pairs. So ``int x = (1 + 2);`` is legal, but ``int x = 8);`` is not. In the
-latter case, the program cannot be compiled, and the compiler displays an
-error.
-
-In BlueJ, compile-time errors will show up as a red line under
-the offending code before you even press "compile".
-
-Error messages from the compiler usually indicate where in the program the
-error occurred, and sometimes they can tell you exactly what the error is. As
-an example, let’s get back to the hello world program:
-
-.. code-block:: java
-
-   public class HelloWorld
-   {
-       public static void main(String[] args)
-       {
-           System.out.println("Hello, World!") // there's a missing semi-colon here!
-       }
-   }
-
-If you forget the semicolon at the end of the print statement, you might get
-an error message like this:
-
-.. code-block:: java
-
-   File: Hello.java [line: 5]
-   Error: ';' expected
-
-That’s pretty good: the location of the error is correct, and the error message
-tells you what’s wrong.
-
-But (as you have probably seen in this class) error messages are not always
-easy to understand.  Sometimes the compiler
-reports the place in the program where the error was detected, not where it
-actually occurred. And sometimes the description of the problem is more
-confusing than helpful.
-
-.. code-block:: java
-
-   public class HelloWorld
-   {
-       public static void main(String[] args)
-       {
-           System.out.println("Hello, World!");
-           // there's a missing curly brace here!
-   }
-
-You might get a message like this:
-
-.. code-block:: java
-
-   File: Hello.java [line: 7]
-   Error:  reached end of file while parsing
-
-There are two problems here. First, the error message is written from the
-compiler’s point of view, not yours. **Parsing** is the process of reading a
-program before translating; if the compiler gets to the end of the file while
-still parsing, that means something was omitted. But the compiler doesn’t know
-what. It also doesn’t know where. The compiler discovers the error at the end
-of the program (line 7), but the missing brace should be on the previous line.
-
-Error messages contain useful information, so you should make an effort to
-read and understand them. But it can be important to know that they do not
-tell the whole story.
-
-
-Run-Time Errors
-~~~~~~~~~~~~~~~
-
-During the first few weeks of your programming career, you will probably spend
-a lot of time tracking down compile-time errors (sometimes called syntax
-errors). But as you gain experience, you will make fewer mistakes and find
-them more quickly.
-
-The second type of error is a run-time error, so-called because it does not
-appear until after the program has started running. In Java, these errors
-occur while the interpreter is executing byte code and something goes wrong.
-These errors are also called **exceptions** because they usually indicate that
-something exceptional (and bad) has happened.
-
-When a run-time error occurs, the interpreter displays an error message
-that explains what happened and where. For example, if you accidentally
-divide by zero you will get a message like this:
-
-.. raw:: html
-
-   <pre>
-   Exception in thread "main" java.lang.ArithmeticException: / by zero at HelloWorld.main(HelloWorld.java:5)
-   </pre>
-
-Some parts of this output are useful for debugging. The first line includes
-the name of the exception, ``java.lang.ArithmeticException``, and a message
-that indicates more specifically what happened, ``/ by zero``.
-
-The next line shows the method where the error occurred;
-``HelloWorld.main`` indicates the method
-``main()`` in the class ``HelloWorld``. It also reports the file where the
-method is defined, HelloWorld.java, and the line number where the error
-occurred, 5.
-
-
-Throwing Exceptions
--------------------
-
-In Java, errors and other abnormal conditions are handled by **throwing**
-and **catching** exceptions.  When an error or an exceptional condition is
-detected, you can *throw an exception*.
-This is like pulling the fire alarm.
-
-Lets assume we had a method that divided one parameter by the other:
-
-.. code-block:: java
-
-   public double div(double num, double denom)
-   {
-       return num / denom;
-   }
-
-However, what if we couldn't guarantee that the variable ``denom`` was going
-to be non-zero?  We could add an if statement that will throw an exception
-if ``denom`` is equal to 0.
-
-.. code-block:: java
-
-   public double div(double num, double denom)
-       throws Exception
-   {
-       if (denom == 0.0)
-       {
-           throw new Exception("Tried to divide by 0!");
-       }
-
-       return num / denom;
-   }
-
-Running ``div(1.0, 0.0)`` would cause the following text to be printed to
-the console:
-
-.. raw:: html
-
-   <pre>
-   java.lang.Exception: Tried to divide by 0!
-   </pre>
-
-Our message is what gets printed out.
-
-Again, throwing an exception is like pulling a fire alarm. It brings
-everything to a halt. Just like a return statement, when an ``Exception`` is
-thrown, the code will stop running at that line.
-
-We can see the syntax for creating a new ``Exception`` above.  ``throw`` is a
-keyword in java for throwing exceptions.
-
-You'll notice the syntax after the word ``throw`` looks a lot like how we
-create objects--because that is exactly what it is doing.  An Exception is a
-kind of object baked into Java.  In fact, ``Exception`` is a parent class with
-many different subclasses.  In this case, it is perhaps more accurate to use
-a child class called ``IllegalArgumentException``.
-
-.. code-block:: java
-
-   public double div(double num, double denom)
-       throws IllegalArgumentException
-   {
-       if (denom == 0.0)
-       {
-           throw new IllegalArgumentException("Tried to divide by 0!");
-       }
-       return num / denom;
-   }
-
-This would produce the error message:
-
-.. raw:: html
-
-   <pre>
-   java.lang.IllegalArgumentException: Tried to divide by 0!
-   </pre>
-
-You'll also notice a change to the method signature.  There's additional
-text after the parameter list but before the opening curly brace.  If there's
-a path where an exception will be intentionally thrown, we need to add that
-to the method signature.  You won't be able to compile code without adding
-these lines to the method signature, which indicate to the caller that an
-exception might be thrown.
-
-
-Try/Catch Blocks
-----------------
-
-So far, we've seen how to throw errors intentionally.  However, what if we
-would like code to fall back to some other case if an error is thrown?  Just
-as we can throw an exception, we can **catch** one as well.  Let us revisit
-our example:
-
-.. code-block:: java
-
-   public double div(double num, double denom)
-       throws IllegalArgumentException
-   {
-       if (denom == 0.0)
-       {
-           throw new IllegalArgumentException("Tried to divide by 0!");
-       }
-       return num / denom;
-   }
-
-   /**
-    * divides two randomly generated numbers
-    */
-   public double divideRandom()
-   {
-       Random rand = Random.generator();
-       double numerator = 5.5 * rand.nextInt(5);
-       double denominator = 5.5 * rand.nextInt(5);
-
-       double quotient = div(numerator, denominator);
-       return quotient;
-   }
-
-Here, we generate two random doubles then run the ``div`` method.  However,
-recall what we know about the code: ``rand.nextInt(5)``.  This code will
-generate a random integer between 0 and 4.  This means there is a chance
-either variable could end up being set to the result of ``5.5 * 0`` or 0. 
-Setting ``numerator`` to 0 is no big deal, but if ``denominator`` is 0, we'll
-see that exception get thrown.
-
-What if we want to gracefully get out of this potential problem without an
-error getting thrown? We can employ a "try/catch" block.
-
-.. code-block:: java
-
-   /**
-    * divides two randomly generated numbers
-    */
-   public double divideRandom()
-   {
-       Random r = Random.generator();
-       double numerator = 5.5 * r.nextInt(5);
-       double denominator = 5.5 * r.nextInt(5);
-
-       double quotient = 0.0;
-       try
-       {
-           quotient = div(numerator, denominator);
-       }
-       catch (IllegalArgumentException err)
-       {
-           quotient = div(numerator, 2.0);
-       }
-       return quotient;
-   }
-
-The handling of exceptions in Java takes place in two parts.  First we *try* to
-execute some statements that may or may not lead to an exception.  These are
-enclosed within the ``try`` clause.
-
-.. code-block:: java
-
-   try
-   {
-       quotient = div(numerator, denominator);
-   }
-
-Second, we provide one or more ``catch`` clauses to handle particular types
-of exceptions that we expect *may* occur.
-In this case, we are only handling one ``IllegalArgumentException``, so we
-just provide one ``catch`` (although you could provide multiple if needed,
-each for a different type of exception).
-
-.. code-block:: java
-
-   catch (IllegalArgumentException err)
-   {
-       quotient = div(numerator, 2.0);
-   }
-
-The way that this code works is that the code in the ``try`` block is run.
-If it works fine, great--there is nothing extra to do. However, if
-an ``IllegalArgumentException`` is thrown inside the ``try`` part, the catch
-block *catches* the exception without causing the whole program to grind to a
-halt.  Instead, if that exception is thrown, the variable ``quotient`` is
-assigned to the result of running ``div(numerator, 2.0)``.
-
-As we said earlier, throwing an exception is like pulling a fire alarm.
-The ``throw`` occurs somewhere within the scope of the ``try`` block.  The
-"fire department" in this case is the code contained in the ``catch`` clause
-that immediately follows the ``try``.
-
-
-Try/Catch/Finally Syntax
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-A **try block** begins with the keyword ``try`` followed by a block of code
-enclosed within curly braces.  A **catch clause** or **catch block** consists
-of the keyword ``catch`` followed by a parameter declaration that identifies
-the type of ``Exception`` being caught, followed by a collection of statements
-enclosed within curly braces. These are statements that handle the exception by
-taking appropriate actions. Because of this, ``catch`` clauses are also often
-called *exception handlers*.
-
-Once an exception is thrown, control is transferred outisde of the ``try``
-block to an appropriate catch block.  Control does not return to the ``try``
-block.
-
-.. code-block:: java
-
-   try
-   {
-       // block of statements at least one of which may throw an exception
-   }
-   catch (ExceptionClassName parameterName)
-   {
-       // block of statements to be executed if ExceptionClassName is thrown
-   }
-   catch (DifferentExceptionClassName otherParameterName)
-   {
-       // block of statements to be executed if DifferentExceptionClassName is thrown
-   }
-
-We can also add another optional clause that will run whether or not an
-exception is thrown using the keyword ``finally``.
-
-.. code-block:: java
-
-   try
-   {
-       // block of statements at least one of which may throw an exception
-   }
-   catch (ExceptionClassName parameterName)
-   {
-       // block of statements to be executed if ExceptionClassName is thrown
-   }
-   catch (DifferentExceptionClassName otherParameterName)
-   {
-       // block of statements to be executed if DifferentExceptionClassName is thrown
-   }
-   finally
-   {
-       // optional block of statements that is executed
-       // whether or not an exception is thrown
-       // this code is always run
-   }
-
-After the code in the ``try`` is executed, and after any matching ``catch``
-block is executed, the code inside the ``finally`` block will *always* be
-run at the end. Even if an exception is thrown inside the ``try`` that does
-not match any ``catch`` clause, the ``finally`` block will still be executed.
-
-Note that there can be multiple ``catch`` clauses associated with a
-given ``try`` block, and the order in which they are arranged is important.
-A thrown exception will be caught by the first catch that matches the type of
-exception thrown.  Therefore, it is better to arrange catch clauses from the
-most specific to most general.
-
-.. code-block:: java
-
-   try
-   {
-       // block of statements at least one of which may throw an exception
-   }
-   catch (Exception exc)
-   {
-       // This will catch any possible exception thrown as Exception
-       // is the general parent class.
-   }
-   catch (IllegalArgumentException illegal)
-   {
-       // This code is not reachable in this format.
-   }
-
-It is also important to remember that a ``try`` block must be immediately
-followed by one or my catch clauses and a catch clause can only follow a try block.
-
-.. raw:: html
-
-   <div class="align-center" style="margin-top:1em;">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/1XAfapkBQjk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-   </div>
+By testing across both valid commands, sequential multi-command streams, empty
+inputs, and malformed command words, you ensure that your command interpreter is
+robust, crash-proof, and fully validated.
 
 
 Programming Practice 11
@@ -709,15 +986,10 @@ Programming Practice 11
 
 .. raw:: html
 
-   <footer>
-     <p>Content adapted from:</p>
-     <p><a href="http://www.cs.trincoll.edu/~ram/jjj/">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde,
-     licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).</p>
-     <p><a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
-     licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).</p>
-     <p>
-     Adapted by Stephen H. Edwards and Molly Domino.
-     </p>
-   </footer>
-
-
+   <footer style="border-top: 1px solid #777;"><div class="footer">
+     Selected content adapted from:<br/>
+     <a href="http://www.cs.trincoll.edu/~ram/jjj/">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde,
+     licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).<br/>
+     <a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
+     licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+   </div></footer>

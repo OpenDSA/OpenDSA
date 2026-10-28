@@ -132,19 +132,19 @@ At its most basic, a computer program is simply a sequence of instructions for a
     <table class="docutils align-default" style="margin-bottom:1em;">
     <thead><tr><th>Symbol</th><th>Textual Program Statement (Method Call)</th></tr></thead>
     <tbody>
-    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-move.png"/></td>
+    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-move.png" alt="Move"/></td>
     <td><code>andy.move();</code></td></tr>
-     <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-right.png"/></td>
+     <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-right.png" alt="Turn Right"/></td>
     <td><code>andy.turnRight();</code></td></tr>
-    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-left.png"/></td>
+    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-left.png" alt="Turn Left"/></td>
     <td><code>andy.turnLeft();</code></td></tr>
-    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-jump.png"/></td>
+    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-jump.png" alt="Jump"/></td>
     <td><code>andy.jump();</code></td></tr>
-    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-light.png"/></td>
+    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-light.png" alt="Turn Light On"/></td>
     <td><code>andy.turnLightOn();</code></td></tr>
-    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-f1.png"/></td>
+    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-f1.png" alt="Function 1"/></td>
     <td><code>andy.f1();</code></td></tr>
-    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-f2.png"/></td>
+    <tr><td><img src="https://courses.cs.vt.edu/~cs1114/booklet//img/light-bot-f2.png" alt="Function 2"/></td>
     <td><code>andy.f2();</code></td></tr>
     </tbody>
     </table>

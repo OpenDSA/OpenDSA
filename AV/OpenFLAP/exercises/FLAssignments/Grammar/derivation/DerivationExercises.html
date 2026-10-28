@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Derivation Exercises</title>
+  <link rel="stylesheet" href="../../../../BruteForceParse.css">
+  <link rel="stylesheet" href="DerivationExercises.css?v=20261026-pifla">
+  <script defer src="DerivationExerciseData.js?v=20261026-pifla"></script>
+  <script defer src="DerivationExerciseEngine.js"></script>
+  <script defer src="../../../../BruteForceDerivation.js"></script>
+  <script defer src="DerivationExercises.js?v=20261026-pifla"></script>
+</head>
+<body class="derivation-exercises">
+  <h1>Derivation Exercises</h1>
+  <p>Select a substring and apply a production to derive the target string, or step through an example.</p>
+  <nav class="mode-links" aria-label="Exercise navigation">
+    <a class="back-link" href="../../../../grammarEditor.html">Back to Grammar Editor</a>
+    <label for="exercise-select">Exercise <select id="exercise-select"></select></label>
+  </nav>
+  <div class="parse-layout">
+    <aside class="grammar-panel" aria-label="Grammar productions">
+      <h2>Grammar</h2>
+      <div id="rules"></div>
+      <p class="grammar-note">Uppercase letters are nonterminals. λ denotes the empty string.</p>
+      <details id="hints"><summary>Hints</summary><ul id="hint-list"></ul></details>
+    </aside>
+    <main class="parse-workspace">
+      <section class="exercise-description" aria-labelledby="exercise-title">
+        <h2 id="exercise-title"></h2>
+        <p id="exercise-kind" class="grammar-note"></p>
+        <p id="prompt"></p>
+        <p><strong>Target string:</strong> <code id="target"></code></p>
+        <p class="source-note"><strong>Source:</strong> <span id="source-description"></span> <a id="source" target="_blank" rel="noopener">Open textbook section</a></p>
+        <details class="source-note"><summary>Adaptation details</summary><p id="adaptation"></p></details>
+      </section>
+      <section class="derivation-view" aria-label="Derivation exercise">
+        <nav class="toolbar" aria-label="Exercise mode">
+          <button id="practice-mode" type="button" aria-pressed="true">Practice</button>
+          <button id="reference-mode" type="button" aria-pressed="false">Example</button>
+          <label id="solution-label" hidden>Example <select id="solution"><option value="0">1: a+(b*c)</option><option value="1">2: (a+b)*c</option></select></label>
+        </nav>
+        <p id="instructions" class="view-note"></p>
+        <div class="form-panel">
+          <p><strong>Sentential form:</strong> <span id="step-count"></span></p>
+          <div id="current-form" tabindex="-1" aria-label="Current sentential form"></div>
+          <p id="selection-label" class="view-note"></p>
+          <div id="available-rules" aria-label="Matching productions"></div>
+        </div>
+        <nav class="controls" aria-label="Derivation steps">
+          <button id="restart" type="button">Reset</button>
+          <button id="previous" type="button">Previous</button>
+          <button id="next" type="button">Step</button>
+          <button id="undo" type="button" hidden>Undo</button>
+          <label for="viewmode">View</label>
+          <select id="viewmode"><option id="tree-option" value="tree">Noninverted Tree</option><option value="table">Derivation Table</option></select>
+        </nav>
+        <p id="status" role="status" aria-live="polite"></p>
+        <section id="history-section" hidden aria-label="Derivation table"><div class="history-scroll"><table><thead><tr><th>Step</th><th>Production</th><th>Sentential form</th></tr></thead><tbody id="history"></tbody></table></div></section>
+        <section id="tree-section" aria-labelledby="tree-title"><h2 id="tree-title">Parse Tree</h2><div id="tree" class="tree-scroll"></div><p class="view-note">Highlighted nodes were created in the latest step. λ contributes no characters to the final string.</p></section>
+        <p id="context-note" class="view-note" hidden></p>
+      </section>
+      <section id="comparison" class="derivation-view" hidden><h2>Compare Parse Trees</h2><p id="comparison-status"></p><div id="saved-trees"></div></section>
+    </main>
+  </div>
+</body>
+</html>

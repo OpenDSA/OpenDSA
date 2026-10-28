@@ -233,7 +233,7 @@ fame is its low number of swaps.
 Actually, we can't expect this to ever make much difference since we
 are talking about :math:`\Theta(n)` actions within :math:`\Theta(n^2)`
 total steps, an inconsequential fraction.
-The other consideration is whether this is could typically be expected
+The other consideration is whether this could typically be expected
 to save time even when just considering the time needed to do the
 swaps.
 Doing the check to see if a swap is necessary also takes some time.

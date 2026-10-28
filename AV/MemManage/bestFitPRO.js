@@ -188,7 +188,7 @@
       ODSA.AV.logExerciseInit(initData);
 
       if(!theArray) {
-        theArray = av.ds.array(freeValues, {center: false}).css({"x": "275", "y": "180"});
+        theArray = av.ds.array(freeValues, {center: false}).css({transform: "translate(275px, 180px)"});
       } else {
         for(i = 0; i < 4; i++) {
           theArray.value(i, freeValues[i]);
