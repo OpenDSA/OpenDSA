@@ -1,3 +1,39 @@
+/* Launcher palettes; existing machine editors keep their own styles. */
+:root {
+  --page-background: #eee;
+  --panel-background: #F5F5EA;
+  --control-background: #fff;
+  --text-color: #333;
+  --muted-color: #555;
+  --accent-color: #000033;
+  --border-color: #B6C0B2;
+  --hover-background: #eed;
+}
+
+:root[data-palette="blue"] {
+  --page-background: #e9eff5;
+  --panel-background: #f0f6fc;
+  --accent-color: #164b7a;
+  --border-color: #aabed0;
+  --hover-background: #dceaf7;
+}
+
+:root[data-palette="green"] {
+  --page-background: #eaf0e9;
+  --panel-background: #f1f7ee;
+  --accent-color: #245637;
+  --border-color: #afc2ac;
+  --hover-background: #dfeeda;
+}
+
+:root[data-palette="purple"] {
+  --page-background: #eeeaf3;
+  --panel-background: #f6f1fb;
+  --accent-color: #59367e;
+  --border-color: #bfb0ce;
+  --hover-background: #e9ddf5;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -9,20 +45,22 @@
 body {
   margin: 0;
   padding: 48px 20px;
-  background: #eee;
-  color: #333;
+  background: var(--page-background);
+  color: var(--text-color);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.5;
 }
 
 a {
-  color: #000033;
+  color: var(--accent-color);
 }
 
 a:focus-visible,
 button:focus-visible,
-input:focus-visible {
-  outline: 3px solid #000033;
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--accent-color);
   outline-offset: 4px;
 }
 
@@ -31,7 +69,7 @@ input:focus-visible {
   left: 20px;
   top: -100px;
   padding: 8px 16px;
-  background: #fff;
+  background: var(--control-background);
 }
 
 .skip-link:focus {
@@ -42,8 +80,8 @@ input:focus-visible {
   max-width: 650px;
   margin: 0 auto;
   overflow: hidden;
-  background: #F5F5EA;
-  border: 1px solid #B6C0B2;
+  background: var(--panel-background);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.07);
 }
@@ -55,12 +93,12 @@ input:focus-visible {
   justify-content: space-between;
   gap: 20px;
   padding: 30px 32px 26px;
-  border-bottom: 1px solid #B6C0B2;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .eyebrow {
   margin: 0 0 8px;
-  color: #555;
+  color: var(--muted-color);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -75,7 +113,7 @@ h1 {
 }
 
 .brand-dot {
-  color: #000033;
+  color: var(--accent-color);
 }
 
 .header-help {
@@ -114,7 +152,7 @@ h2 {
 .search-controls label {
   display: block;
   margin-bottom: 6px;
-  color: #555;
+  color: var(--muted-color);
   font-size: 13px;
   font-weight: 600;
 }
@@ -130,39 +168,39 @@ h2 {
   min-width: 0;
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid #B6C0B2;
+  border: 1px solid var(--border-color);
   border-radius: 9px;
-  background: #fff;
-  color: #333;
+  background: var(--control-background);
+  color: var(--text-color);
   font: inherit;
   font-size: 14px;
 }
 
 .search-bar input::placeholder {
-  color: #666;
+  color: var(--muted-color);
   opacity: 1;
 }
 
 .search-bar button {
   flex-shrink: 0;
   padding: 10px 14px;
-  border: 1px solid #B6C0B2;
+  border: 1px solid var(--border-color);
   border-radius: 9px;
-  background: #fff;
-  color: #000033;
+  background: var(--control-background);
+  color: var(--accent-color);
   font: inherit;
   font-size: 13px;
   cursor: pointer;
 }
 
 .search-bar button:hover {
-  background: #eed;
-  border-color: #666;
+  background: var(--hover-background);
+  border-color: var(--muted-color);
 }
 
 .search-status {
   margin: 8px 0 0;
-  color: #555;
+  color: var(--muted-color);
   font-size: 13px;
 }
 
@@ -180,17 +218,17 @@ h2 {
   justify-content: space-between;
   gap: 16px;
   padding: 15px 18px;
-  background: #fff;
-  border: 1px solid #B6C0B2;
+  background: var(--control-background);
+  border: 1px solid var(--border-color);
   border-radius: 9px;
-  color: #333;
+  color: var(--text-color);
   text-decoration: none;
 }
 
 .tool:hover,
 .tool:focus-visible {
-  background: #eed;
-  border-color: #666;
+  background: var(--hover-background);
+  border-color: var(--muted-color);
 }
 
 .tool-label {
@@ -200,15 +238,15 @@ h2 {
 
 .tool-arrow {
   flex-shrink: 0;
-  color: #000033;
+  color: var(--accent-color);
   font-size: 23px;
 }
 
 footer {
   padding: 16px 32px;
-  background: #F5F5EA;
-  border-top: 1px solid #B6C0B2;
-  color: #555;
+  background: var(--panel-background);
+  border-top: 1px solid var(--border-color);
+  color: var(--muted-color);
   font-size: 12px;
 }
 
@@ -230,4 +268,71 @@ footer {
   .tool {
     padding: 14px;
   }
+}
+
+/* The separate preferences window uses the same palette as the launcher. */
+.preferences-page {
+  padding: 20px;
+}
+
+.preferences-window {
+  max-width: 480px;
+}
+
+.preferences-window h1 {
+  font-size: 28px;
+  letter-spacing: -0.5px;
+}
+
+.preferences-panel {
+  display: grid;
+  gap: 10px;
+  padding: 24px;
+}
+
+.preferences-panel label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.preferences-panel select {
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--control-background);
+  color: var(--text-color);
+  font: inherit;
+}
+
+.preference-hint {
+  margin: 0 0 12px;
+  color: var(--muted-color);
+  font-size: 13px;
+}
+
+.preference-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.preference-actions button {
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--control-background);
+  color: var(--accent-color);
+  font: inherit;
+  cursor: pointer;
+}
+
+.preference-actions button:hover {
+  background: var(--hover-background);
+}
+
+.preferences-return {
+  font-size: 13px;
 }

@@ -64,6 +64,73 @@
     searchInput.focus();
   });
 
+
+  var preferenceStore = window.OpenFLAPPreferences;
+  var settings;
+
+  function loadPreferences() {
+    settings = preferenceStore.load();
+  }
+
+  function applyPreferences() {
+    preferenceStore.applyPalette(settings);
+
+    tools.forEach(function (tool) {
+      var notice = tool.element.querySelector(".visually-hidden");
+      if (notice) {
+        notice.textContent = settings.openMode === "window" ?
+          "(opens in new window)" : "(opens in new tab)";
+      }
+    });
+  }
+
+  document.getElementById("preferences-link").addEventListener("click", function (event) {
+    if (event.button !== 0 || event.ctrlKey || event.metaKey ||
+        event.shiftKey || event.altKey) {
+      return;
+    }
+    var preferencesWindow = window.open(this.href, "OpenFLAPPreferences",
+      "popup,width=520,height=620,resizable=yes,scrollbars=yes");
+    if (preferencesWindow) {
+      event.preventDefault();
+      preferencesWindow.focus();
+    }
+    // If a popup is blocked, the ordinary link opens the preferences page.
+  });
+
+  window.addEventListener("storage", function (event) {
+    if (event.key === preferenceStore.storageKey || event.key === null) {
+      loadPreferences();
+      applyPreferences();
+    }
+  });
+
+  // Also refresh after returning from a preferences window or cached page.
+  window.addEventListener("focus", function () {
+    loadPreferences();
+    applyPreferences();
+  });
+  window.addEventListener("pageshow", function () {
+    loadPreferences();
+    applyPreferences();
+  });
+
+  document.getElementById("tool-list").addEventListener("click", function (event) {
+    var link = event.target.closest("a.tool");
+    if (!link || settings.openMode !== "window" || event.defaultPrevented ||
+        event.button !== 0 || event.ctrlKey || event.metaKey ||
+        event.shiftKey || event.altKey) {
+      return;
+    }
+
+    // Request a separate window only during a direct user action.
+    event.preventDefault();
+    window.open(link.href, "_blank", "popup,width=1100,height=800,noopener");
+  });
+
+  loadPreferences();
+  applyPreferences();
+
   // Keep the tool list usable if JavaScript is unavailable.
   searchControls.hidden = false;
   filterTools();

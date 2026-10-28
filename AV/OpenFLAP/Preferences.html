@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Preferences | OpenFLAP</title>
+    <link rel="stylesheet" href="../../lib/normalize.css">
+    <link rel="stylesheet" href="css/OpenFLAP.css">
+    <script src="PreferencesStore.js" defer></script>
+    <script src="Preferences.js" defer></script>
+  </head>
+  <body class="preferences-page">
+    <main class="launcher preferences-window">
+      <header class="masthead">
+        <div>
+          <p class="eyebrow">OpenFLAP</p>
+          <h1>Preferences</h1>
+        </div>
+      </header>
+      <form class="preferences-panel" id="preferences-form">
+        <label for="open-mode">Open machines in</label>
+        <select id="open-mode" name="openMode"></select>
+        <p class="preference-hint">Your browser may choose a tab instead of a window.</p>
+        <label for="color-palette">Page color palette</label>
+        <select id="color-palette" name="palette"></select>
+        <div class="preference-actions">
+          <button type="submit">Save</button>
+          <button type="button" id="close-preferences">Close</button>
+          <button type="button" id="cancel-preferences">Cancel</button>
+        </div>
+        <p class="preference-hint" id="preferences-status" role="status"></p>
+      </form>
+    </main>
+  </body>
+</html>
