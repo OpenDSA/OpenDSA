@@ -98,18 +98,19 @@
     }
     mode = av.variable(0);
 
-    //  clear all the Raphael elements
-    av.getSvg().clear();
+    //  clear all the SVG elements
+    d3.select(av.getSvg()).selectAll("*").remove();
 
     //  add text
-    var font = {
-      "font-size": 16,
-      "font-family": "Times New Roman",
-      "font-weight": "bold"
-    };
     var canvasWidth = exercise.jsav.container.find(".jsavcanvas").width();
-    av.getSvg().text(canvasWidth / 2, 20, interpret("av_table_to_be_sorted")).attr(font);
-    av.getSvg().text(canvasWidth / 2, 180, interpret("av_call_stack")).attr(font);
+    d3.select(av.getSvg()).append("text")
+      .attr("x", canvasWidth / 2).attr("y", 20).attr("text-anchor", "middle")
+      .attr("font-size", 16).attr("font-family", "Times New Roman").attr("font-weight", "bold")
+      .text(interpret("av_table_to_be_sorted"));
+    d3.select(av.getSvg()).append("text")
+      .attr("x", canvasWidth / 2).attr("y", 180).attr("text-anchor", "middle")
+      .attr("font-size", 16).attr("font-family", "Times New Roman").attr("font-weight", "bold")
+      .text(interpret("av_call_stack"));
 
     // hide old umsg messages
     av.umsg("");
