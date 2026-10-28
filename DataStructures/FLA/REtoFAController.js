@@ -41,7 +41,7 @@ controllerProto.init = function(jsav, expression, visualize, exercise, options) 
 	var start = this.fa.addNode({left: '15px'});
 	var height = options.height || 440;
 	var width = options.width || 750;
-	var end = this.fa.addNode({left: width - 10, top: height - 40});
+	var end = this.fa.addNode({left: width - 60, top: height - 80});
 	this.fa.makeInitial(start);
 	this.fa.makeFinal(end);
 	var t = this.fa.addEdge(start, end, {weight: expression});
