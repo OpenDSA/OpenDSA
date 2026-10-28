@@ -158,6 +158,7 @@ controllerProto.transitionCheck = function(transition) {
  */
 controllerProto.completeStep = function() {
 	if (action == 0) {
+		if (toDo.length == 0) return; // conversion complete -- nothing left to expand (removes console error)
 		var t = toDo[0];
 		this.transitionCheck(t);
 	}
