@@ -18,7 +18,7 @@
     
     var i;
     var output = 0;
-    keyValue = $.trim(keyValue);
+    keyValue = keyValue.trim();
     for (i = 0; i < keyValue.length; i++) {
       output += keyValue.charCodeAt(i);
     }

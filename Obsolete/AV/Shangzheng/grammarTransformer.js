@@ -1985,9 +1985,9 @@ $(document).ready(function () {
         console.log(productions[0][1]);
         for (var i = 0; i < productions.length; i++) {
             if (productions[i][2] === lambda) {
-                imgs = imgs + '<img src=' + latexit + productions[i][0]+"%20\\to%20" +"\\lambda"+'>' + "<br>";
+                imgs = imgs + '<img src="' + latexit + productions[i][0]+"%20\\to%20" +"\\lambda"+'" alt="' + productions[i][0] + ' -&gt; &lambda;">' + "<br>";
             } else {
-                imgs = imgs + '<img src=' + latexit + productions[i][0]+"%20\\to%20" +productions[i][2]+'>' + "<br>";
+                imgs = imgs + '<img src="' + latexit + productions[i][0]+"%20\\to%20" +productions[i][2]+'" alt="' + productions[i][0] + ' -&gt; ' + productions[i][2] + '">' + "<br>";
             }
 
         }

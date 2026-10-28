@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CYK Parser</title><style>
+body{font:16px Arial,sans-serif;background:#f5f5e9;color:#161616;margin:24px auto;max-width:1000px;padding:0 16px}h1{font-size:26px}button,input{font:inherit;padding:6px 10px}nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}table{border-collapse:collapse;background:white;margin:16px 0}td,th{border:1px solid #aaa;padding:8px 12px;text-align:center}caption{text-align:left;font-weight:bold}#tableArea{overflow:auto}#message{min-height:24px}#tree ul{border-left:1px solid #aaa;padding-left:24px}#tree li{margin:8px 0} [hidden]{display:none!important}
+</style></head><body><h1>CYK Parser</h1>
+<p>Use CNF rules A → BC or A → a. The first rule defines the start variable. Leave the input blank for the empty string. Inputs are limited to 64 characters.</p>
+<table id="grammar"><caption>Grammar</caption><thead><tr><th>Left</th><th></th><th>Right</th></tr></thead><tbody></tbody></table>
+<form id="inputForm"><label for="input">Input string</label> <input id="input" maxlength="64" autocomplete="off"> <button id="parsebutton">Parse</button></form>
+<p id="message" role="status"></p>
+<nav aria-label="Parse table controls"><button id="stepbutton" disabled>Step</button><button id="completebutton" disabled>Complete All</button><button id="flipbutton" disabled>Flip Table</button><button id="derivationbutton" disabled>See Derivation</button><button id="backbutton">Back to Grammar Editor</button></nav>
+<p id="progress" aria-live="polite"></p><div id="tableArea"></div><section id="derivation" hidden><h2>One derivation tree</h2><div id="tree"></div></section>
+<script src="CYK.js"></script><script src="CYKParser.js"></script></body></html>

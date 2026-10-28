@@ -36,26 +36,37 @@ class av_ff(Element):pass
 
 
 def visit_av_dgm_html(self, node):
+  if hasattr(self, 'builder') and self.builder.name == 'revealjs':
+    ebook_path = conf.ebook_path
+    odsa_path = conf.odsa_path
+    rel_path = os.path.relpath(odsa_path, ebook_path)
+    relative_prefix = rel_path.replace('\\', '/') + '/'
+  else:
+    relative_prefix = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/'
+
   # add link tags if specified (via :links: in RST)
   if 'links' in node:
     links = node['links'].split()
     for link in links:
       # relative to the output of the book (../Books/<...>/)
-      link_path = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/' + link
+      link_path = relative_prefix + link
       self.body.append('<link href="%s" rel="stylesheet" type="text/css" />\n' % link_path)
   
   #  add script tags if specified (via :scripts: in RST)
   if 'scripts' in node:
     scripts = node['scripts'].split()
+    is_revealjs = hasattr(self, 'builder') and self.builder.name == 'revealjs'
     for script in scripts:
-      script_path = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/' + script
-      self.body.append('<script type="text/javascript" src="%s"></script>\n' % script_path)
+      script_path = relative_prefix + script
+      if is_revealjs and 'DataStructures/' in script:
+        self.body.append('<script type="text/javascript" src="%s" defer></script>\n' % script_path)
+      else:
+        self.body.append('<script type="text/javascript" src="%s"></script>\n' % script_path)
   
   # Get the exercise name to create the container ID
   exer_name = node.get('exer_name', '')
-  self.body.append('<div class="divdgm">')
-  self.body.append('<div id="%s">' % exer_name)
-  self.body.append('</div>')
+  self.body.append(self.starttag(node, 'div', CLASS='divdgm'))
+  self.body.append('<div id="%s"></div>\n' % exer_name)
 
 def depart_av_dgm_html(self, node):
   self.body.append('</div>\n') 
@@ -146,18 +157,26 @@ def doctree_read(app, doctree):
   figid_docname_map = getattr(env, 'figid_docname_map', {})
   module = ''
   num_module = 0
+  prefix = getattr(app.config, 'figure_caption_prefix', 'Figure')
   for avdgm_info in doctree.traverse(Element):  #av_dgm):
     if env.docname != module:
       i = 1
-    if env.docname in json_data:
+    if json_data and env.docname in json_data:
       module = env.docname
       num_module = json_data[env.docname]
     if isinstance( avdgm_info, av_dgm ) or ( isinstance( avdgm_info, av_ss) and len(avdgm_info['ids'])>0 ):
       for cap in avdgm_info.traverse(caption):
-        if num_module != '':
-          cap[0] = Text(" %s %s.%d: %s" % (app.config.figure_caption_prefix, num_module, i, cap[0]))
+        if len(cap) > 0:
+          cap_text = cap[0].lstrip() if isinstance(cap[0], Text) else str(cap[0])
+          if num_module != '':
+            cap[0] = Text("%s %s.%d: %s" % (prefix, num_module, i, cap_text))
+          else:
+            cap[0] = Text("%s %d: %s" % (prefix, i, cap_text))
         else:
-          cap[0] = Text(" %s %d: %s" % (app.config.figure_caption_prefix, i, cap[0]))
+          if num_module != '':
+            cap += Text("%s %s.%d" % (prefix, num_module, i))
+          else:
+            cap += Text("%s %d" % (prefix, i))
       for id in avdgm_info['ids']:
         figids[id] = i
         figid_docname_map[id] = env.docname
@@ -188,12 +207,10 @@ def setup(app):
 
 def loadTable():
   try:
-    table=open('table.json')
-    data = json.load(table)
-    table.close()
-    return data
-  except IOError:
-    print('ERROR: No table.json file.')
+    with open('table.json') as table:
+      return json.load(table)
+  except (IOError, ValueError):
+    return {}
 
 # div.jsavcanvas is required to ensure it appears before the error message otherwise the container appears over top of the message, blocking the 'Resubmit' link from being clicked
 SLIDESHOW = '''\
@@ -291,31 +308,29 @@ class inlineav(Directive):
       self.options['output_code'] = ''
 
     if self.options['type'] == "dgm":
-      # compiles all HTML together to avoid container issues & offset mismatches
-      html_parts = []
+      avdgm_node = av_dgm()
+      avdgm_node['exer_name'] = self.options['exer_name']
       
-      # get relative path
-      rel_path = os.path.relpath(conf.av_dir, conf.ebook_path).replace('\\', '/') + '/'
-      
-      # add any link tags
+      # pass links & scripts to node
       if 'links' in self.options:
-        links = self.options['links'].split()
-        for link in links:
-          html_parts.append('<link href="%s%s" rel="stylesheet" type="text/css" />' % (rel_path, link))
-      
-      # add any script tags
+        avdgm_node['links'] = self.options['links']
       if 'scripts' in self.options:
-        scripts = self.options['scripts'].split()
-        for script in scripts:
-          html_parts.append('<script type="text/javascript" src="%s%s"></script>' % (rel_path, script))
+        avdgm_node['scripts'] = self.options['scripts']
       
-      # visualization container
-      html_parts.append('<div class="divdgm">')
-      html_parts.append('<div id="%s"></div>' % self.options['exer_name'])
-      html_parts.append('</div>')
-      
-      # return everything as single HTML AV node
-      return [nodes.raw('', '\n'.join(html_parts), format='html')]
+      if self.content:
+        node = nodes.Element()          # anonymous container for parsing
+        self.state.nested_parse(self.content, self.content_offset, node)
+        first_node = node[0]
+        if isinstance(first_node, nodes.paragraph):
+          caption = nodes.caption(first_node.rawsource, '', *first_node.children)
+          caption['align'] = self.options['align']
+          caption['classes'].append('caption')
+          if self.options.get('align'):
+            caption['classes'].append('align-' + self.options['align'])
+            caption['style'] = 'text-align: %s;' % self.options['align']
+          avdgm_node += caption
+
+      return [avdgm_node]
     elif self.options['type'] == "ss" and self.content:
       avss_node = av_ss()
       avss_node['res'] = SLIDESHOW % self.options
@@ -332,6 +347,10 @@ class inlineav(Directive):
       if isinstance(first_node, nodes.paragraph):
         caption = nodes.caption(first_node.rawsource, '', *first_node.children)
         caption['align']= self.options['align']
+        caption['classes'].append('caption')
+        if self.options.get('align'):
+          caption['classes'].append('align-' + self.options['align'])
+          caption['style'] = 'text-align: %s;' % self.options['align']
         avss_node += caption
       return [avss_node]
     elif self.options['type'] == "ff":

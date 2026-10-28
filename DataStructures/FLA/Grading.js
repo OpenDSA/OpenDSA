@@ -223,6 +223,8 @@
     // step of both animation sequences. Useful in exercises where only the final state is relevant
     // instead of the process how student got there.
     finalStep: function () {
+      this.score.undetermined = false;
+      this.score.message = "";
       this.score.correct = 0;
       this.score.student = 1;
       this.score.total = 1;
@@ -240,6 +242,11 @@
       }
       else {
         var obj = this.options.exerciseController.startTesting();
+        if (obj && obj.undetermined) {
+          this.score.undetermined = true;
+          this.score.message = obj.message;
+          return;
+        }
         if (typeof obj == "number"){
           this.score.correct = obj;
         }
@@ -322,6 +329,10 @@
   exerproto.showGrade = function () {
     // shows an alert box of the grade
     this.grade();
+    if (this.score.undetermined) {
+      window.alert(this.score.message);
+      return;
+    }
     var grade = this.score,
       msg = this.jsav._translate("yourScore") + " " + (grade.correct * 100).toFixed(2) + "%";
     if (grade.fix > 0) {

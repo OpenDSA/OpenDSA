@@ -7,7 +7,7 @@ Window.helpTexts = {
     <p style="float: right;">
         <img src="MechSolver/gifs/general-greyhelpbutton.gif" 
         style="padding-left:10px; border:1px; width: 150px;" 
-        alt="">
+        alt="Help button in grey rectangle">
     </p>
     <p>Here are a few guidelines to help you find your way around this system.
     At any point, you can bring up this help box by clicking on the "Help" Button inside the grey rectangle.</p>
@@ -17,17 +17,17 @@ Window.helpTexts = {
         <p style="float: right;">
             <img src="MechSolver/gifs/general-click-5.gif" 
             style="padding-left:10px; border:1px; width: 150px;" 
-            alt="">
+            alt="Click to select quantity in problem">
         </p>
         <p style="float: right;">
             <img src="MechSolver/gifs/general-click-2.gif" 
             style="padding-left:10px; border:1px; width: 150px;" 
-            alt="">
+            alt="Click to select equation in bank">
         </p>
         <p style="float: right;">
             <img src="MechSolver/gifs/general-click-3.gif" 
             style="padding-left:10px; border:1px; width: 319px;" 
-            alt="">
+            alt="Click to add equation to workspace">
         </p>
         <p style="text-align: justify;">
         Most items in the interface are clickable. Everything except the unboxed text in the problem prose is interactive.
@@ -42,22 +42,22 @@ Window.helpTexts = {
         <p style="float: right;">
             <img src="MechSolver/gifs/general-qmark-1.png" 
             style="padding-left:10px; border:1px; width: 100px;" 
-            alt="">
+            alt="Help question mark for equations">
         </p>
         <p style="float: right;">
             <img src="MechSolver/gifs/general-qmark-2.png" 
             style="padding-left:10px; border:1px; width: 100px;" 
-            alt="">
+            alt="Help question mark for variables">
         </p>
         <p style="float: right;">
             <img src="MechSolver/gifs/general-qmark-3.png" 
             style="padding-left:10px; border:1px; width: 100px;" 
-            alt="">
+            alt="Help question mark for units">
         </p>
         <p style="float: right;">
             <img src="MechSolver/gifs/general-qmark-4.png" 
             style="padding-left:10px; border:1px; width: 100px;" 
-            alt="">
+            alt="Help question mark for workspaces">
         </p>
     </div>
     `
@@ -110,12 +110,12 @@ Window.helpTexts = {
         <p style="float: right;">
         <img src="MechSolver/gifs/submissionbox-submit-2.gif" 
         style="padding-left:10px; border:1px; width: 180px;" 
-        alt="">
+        alt="Submit answer button">
         </p>
         <p style="float: right;">
         <img src="MechSolver/gifs/valuebox-click.gif" 
         style="padding-left:10px; border:1px; width: 180px;" 
-        alt="">
+        alt="Clicking calculated value box">
         </p>
         <p style="text-align: justify;">
         All solved answers calculated in the workspaces must be selected and dropped into the yellow solution boxes, prior to clicking the green "Check Answer" button.
@@ -126,7 +126,7 @@ Window.helpTexts = {
         <p style="float: right;">
         <img src="MechSolver/gifs/submissionbox-cut.gif" 
         style="padding-left:10px; border:1px; width: 250px;" 
-        alt="">
+        alt="Scissors button to clear solution box">
         </p>
         <p style="text-align: justify;">
         The solution box can be cleared by clicking on the &#x2702 Symbol.
@@ -137,7 +137,7 @@ Window.helpTexts = {
         <p style="float: right;">
         <img src="MechSolver/gifs/submissionbox-dropdown.gif" 
         style="padding-left:10px; border:1px; width: 300px;" 
-        alt="">
+        alt="Dropdown menu in solution box">
         </p>
         <p style="text-align: justify;">
         Some boxes may allow typing in text, or selecting options from a list.
@@ -151,7 +151,7 @@ Window.helpTexts = {
         <p style="float: bottom;">
         <img src="MechSolver/gifs/submit-major.gif" 
         style="padding-left:10px; border:1px; width: 100%;" 
-        alt="">
+        alt="Check Answer button to evaluate answers">
         </p>
     </div>
     `
@@ -164,7 +164,7 @@ Window.helpTexts = {
         <p style="float: right;">
         <img src="MechSolver/gifs/eqbank-dropdown.gif" 
         style="padding-left:10px; border:1px; width: 60%;" 
-        alt="">
+        alt="Dropdown menu showing equation categories">
         </p>
         <p>All activities in this platform start with selecting equations to add to the workspaces.
         The drop-down menu points to the different categories of equations one can use in their problem solving.
@@ -182,7 +182,7 @@ Window.helpTexts = {
         <p style="float: bottom;">
         <img src="MechSolver/gifs/workspace-add.gif" 
         style="padding-left:10px; border:1px; width: 100%;" 
-        alt="">
+        alt="Add button to place selected equation in workspace">
     </div>
     `
     ,

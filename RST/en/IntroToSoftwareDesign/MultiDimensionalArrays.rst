@@ -1,39 +1,94 @@
-.. This file is part of the OpenDSA eTextbook project. See
-.. http://opendsa.org for more details.
-.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
-.. distributed under an MIT open source license.
-
 .. avmetadata::
    :title: Multi-Dimensional Arrays and Matrix Algorithms
-   :author: Molly Domino
+   :author: Molly Domino; Stephen Edwards
    :institution: Virginia Tech
-   :keyword: Array
+   :keyword: Array; 2D Array; Multi-Dimensional Array; Matrix; Row-Major; Column-Major; Grid; Coordinate Mapping
    :naturallanguage: en
    :programminglanguage: Java
-   :description: CS1-level introduction to multi-dimensional arrays.
+   :description: Comprehensive introduction to multi-dimensional arrays, matrix indexing conventions, row-major and column-major traversals, row searching, shifting algorithms, coordinate mapping, and unit testing.
+
 
 Multi-Dimensional Arrays and Matrix Algorithms
 ==============================================
 
-Dimensions in an Array
-----------------------
+.. |br| raw:: html
 
-So far when working with arrays, we've worked with
-**one-dimensional arrays** where we use a single subscript value to
-identify a position. You can imagine a one-dimensional array as a
-"line" of values.
+   <br />
 
-However, sometimes you would like to represent data that is easier to
-think of as being arranged in a grid or a table instead of just a straight
-line. Java supports creating arrays with more than one subscript--which
-translates to more than one *dimension*.
+.. sidebar:: Learning Objectives
 
-A **two-dimensional array** is useful for certain kinds of problems.
-We often think of a two-dimensional array as being a rectangular grid,
-and use two subscript values instead of one. In fact, it turns out that
-if we imagine each individual "row" in the grid is its own one-dimensional
-array, then a rectangular grid is actually a series of rows arranged in
-a line--an array whose components are themselves arrays.
+    **Estimated Time**: ~63 minutes (~41 min reading + ~22 min video at 100 WPM)
+
+   After reading this chapter, you will be able to:
+
+   * **Declare**, instantiate, and index 2D arrays of primitive types and object references using both dynamic allocation syntax and nested array initializer literals.
+   * **Contrast** row-column indexing (``grid[row][col]``) with Cartesian spatial indexing (``grid[x][y]``), explaining that Java does not enforce an interpretation and that the programmer must maintain consistency across all operations.
+   * **Trace** the array-of-arrays memory structure and evaluate row and column lengths using ``grid.length`` and ``grid[i].length``.
+   * **Implement** nested ``for`` loop algorithms to traverse 2D arrays in both row-major and column-major order.
+   * **Implement** matrix inspection and reduction algorithms, including full-row occupancy detection, 2D linear searching, and conditional element counting.
+   * **Implement** matrix row-shifting and row-clearing operations preserving grid consistency and boundary integrity.
+   * **Apply** coordinate offset arithmetic to map real-world domain values and relative stencil offsets to 0-based array indices.
+   * **Design** automated test methods verifying 2D grid states and transformation postconditions using test case assertions across normal and boundary conditions.
+
+
+In previous chapters, we used one-dimensional arrays and lists to store linear
+sequences of values—such as a list of playing cards, an array of daily high
+temperatures, or a sequence of tweet timestamps. A one-dimensional array can be
+visualized as a single row or line of values, where each element is accessed by a
+single integer subscript.
+
+However, many computing problems involve data that is naturally organized in
+two or more dimensions. Consider a seating chart in a theater, a spreadsheet
+table with rows and columns, a digital image made of horizontal and vertical
+pixels, or the game board for checkers, chess, or a puzzle game. In these
+situations, organizing values into a two-dimensional grid is vastly more natural
+and intuitive than flattening everything into a single line.
+
+Java provides native support for **multi-dimensional arrays**—arrays whose
+elements are themselves arrays. In this chapter, we will explore how to declare,
+allocate, index, traverse, manipulate, and test two-dimensional arrays and
+matrices.
+
+
+Introduction to 2D Arrays & Matrices
+------------------------------------
+
+A **two-dimensional array** (often called a **2D array** or a **matrix**) is a
+collection of values organized into a rectangular grid consisting of **rows**
+and **columns**.
+
+To understand why a 2D array is needed, imagine you are developing a scientific
+application to record precipitation levels across all 12 months of the year,
+tracking rainfall for each day of every month. If you used a one-dimensional
+array with 365 elements:
+
+.. code-block:: java
+
+   double[] rainfall = new double[365];
+
+it would be cumbersome to determine which index corresponds to March 15th or to
+compute the average precipitation specifically for the month of July. You would
+have to manually calculate how many days occurred in prior months to find the
+correct starting index.
+
+A far clearer and more robust design is to represent the data with a
+two-dimensional array having one dimension for the month and a second dimension
+for the day within that month:
+
+.. code-block:: java
+
+   double[][] rainfall = new double[12][31];
+
+In this statement:
+
+* ``double[][]`` indicates that the variable ``rainfall`` holds a reference to a
+  two-dimensional array of ``double`` values.
+
+* The first bracket pair ``[12]`` specifies the size of the first dimension (12
+  months).
+
+* The second bracket pair ``[31]`` specifies the size of the second dimension (31
+  days per month).
 
 .. raw:: html
 
@@ -41,287 +96,222 @@ a line--an array whose components are themselves arrays.
    <iframe width="560" height="315" src="https://www.youtube.com/embed/alwukGslBG8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
    </div>
 
-For example, you might use a two-dimensional of array (or 2D array, for short)
-if you are doing a scientific
-study in which you have to track the amount of precipitation for every day
-of the year, and you wanted to organize the day both by month and day.
-One way to organize these data would be to create a one-dimensional
-array, consisting of 365 elements:
+Declaring and Allocating 2D Arrays
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The general syntax for declaring a two-dimensional array reference in Java is:
 
 .. code-block:: java
 
-   double[] rainfall  = new double [ 365 ];
+   DataType[][] arrayName;
 
-However, with this representation, it would make it very difficult to calculate
-the average rainfall within a given month, which might be an important part of
-your study.
-
-A better representation for this problem would be to use a two-dimensional array,
-with one dimension for the months and one for the days.
-
-The following statement declares the array variable ``rainfall`` and initializes
-it to refer to a newly created 12 by 31 array of ``double`` values:
+To allocate the array in memory, we use the ``new`` operator, specifying the
+dimensions:
 
 .. code-block:: java
 
-   double[] rainfall  = new double[12][31];
+   arrayName = new DataType[rows][cols];
 
-Thus, ``rainfall`` is an array of arrays. You can think of the first array
-as the 12 months required for the problem. And you can think of each month
-as an array of 31 days. The months will be indexed from 0 to 11, and the
-days will be indexed from 0 to 30.
-
-The problem with this representation is that when we want to refer to
-the rainfall for January 5, we would have to use ``rainfall[0][4]``.
-This is awkward and misleading, since we'd normally write the date as "1/5"
-if we were communicating with another person.
-The problem is that dates (like 12/31/2021) start their counting at 1, while
-arrays start counting at 0.
-
-Because it will be difficult to remember this fact,
-our representation of the rainfall data may cause us to make errors when we
-start writing our algorithms. We can easily remedy this problem by just
-defining our array to have an extra month and an extra day each month:
+We can combine declaration and allocation into a single statement:
 
 .. code-block:: java
 
-   double[] rainfall  = new double[13][32];
+   int[][] seatingChart = new int[15][25]; // 15 rows of 25 seats each
+   boolean[][] lightGrid = new boolean[8][8]; // 8x8 grid of lights
+   String[][] timetable = new String[5][8]; // 5 days, 8 time slots per day
 
-This representation creates an array with 13 months, indexed from 0 to 12,
-with 32 days per month, indexed from 0 to 31. However, we can simply
-ignore the 0 month and 0 day by using unit indexing (indexing starting with 1)
-in all of the algorithms that process the array. In other words, if we view
-this array as a two-dimensional table, consisting of 13 rows and 32 columns,
-we can leave row 0 and column 0 unused.
+Just like one-dimensional arrays, when a 2D array is created with ``new``, all of
+its elements are automatically initialized to their default values:
 
-.. odsafig:: Images/ArrayDiagram.png
+* Numeric types (``int``, ``double``, ``byte``, ``short``, ``long``, ``float``)
+  are initialized to ``0`` or ``0.0``.
+
+* Boolean types (``boolean``) are initialized to ``false``.
+* Object reference types (such as ``String``, ``Color``, or custom classes) are
+  initialized to ``null``.
+
+.. note::
+
+   Remember that allocating an array of object references (such as
+   ``String[][] words = new String[4][6];``) creates a grid full of ``null``
+   references. You must still instantiate each individual object and place it
+   into the grid cells before invoking methods on those elements, otherwise a
+   ``NullPointerException`` will occur.
+
+
+Row-Column Indexing & Array-of-Arrays Model
+-------------------------------------------
+
+To read or modify a specific cell in a two-dimensional array, you provide two
+subscripts inside individual square bracket pairs:
+
+.. code-block:: java
+
+   array[firstIndex][secondIndex]
+
+Understanding the Indexing Conventions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A critical conceptual insight is that Java itself **does not enforce any
+geometric meaning** on the two subscripts. To Java, a 2D array is simply an
+"array of arrays": an outer array containing references to several inner
+arrays.
+
+The interpretation of what the two indices represent is determined entirely by
+the programmer. In practice, programmers primarily use two distinct indexing
+conventions depending on the problem domain:
+
+1. **Row-First (Row/Column) Convention:** ``grid[row][col]``
+
+   In this convention, the first index selects the horizontal row (vertical
+   position, measured downward from the top), and the second index selects the
+   column (horizontal position across that row):
+
+   * ``row`` ranges from ``0`` to ``numRows - 1``.
+   * ``col`` ranges from ``0`` to ``numCols - 1``.
+
+   This model matches how people read spreadsheets, tables, and mathematical
+   matrices.
+
+2. **Coordinate-First (Cartesian x/y) Convention:** ``grid[x][y]``
+
+   In this convention, the first index selects the horizontal position (``x``,
+   column index), and the second index selects the vertical position (``y``,
+   row index):
+
+   * ``x`` ranges from ``0`` to ``width - 1`` (columns).
+   * ``y`` ranges from ``0`` to ``height - 1`` (rows).
+
+   This model matches graphical coordinate systems and spatial micro-worlds
+   (like the Jeroo island or computer screen pixels).
+
+.. important::
+
+   The programming language does not dictate whether you use
+   ``grid[row][col]`` or ``grid[x][y]``. What matters most is that you **choose
+   one convention and adhere to it consistently throughout your entire
+   program**.
+
+   Mixing the two conventions—for example, treating the first index as a row in
+   one method and as an :math:`x`-coordinate in another—is one of the most
+   frequent sources of bugs in grid-based software, often causing
+   ``ArrayIndexOutOfBoundsException`` whenever the grid is not square.
+
+In this chapter and throughout standard matrix algorithms, we will predominantly
+use the **row-major convention** (``grid[row][col]``) because it directly
+reflects Java's underlying memory structure.
+
+The Array-of-Arrays Memory Model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In Java, multi-dimensional arrays are physically structured as **arrays of
+arrays**. When you execute:
+
+.. code-block:: java
+
+   int[][] matrix = new int[3][4];
+
+Java does not allocate a single monolithic 12-element block. Instead, it performs
+the following:
+
+1. It allocates an outer array of 3 elements, where each element is a reference
+   variable capable of pointing to a 1D ``int[]`` array.
+
+2. It allocates three distinct 1D ``int[]`` arrays, each having a length of 4.
+3. It assigns the reference of each 4-element array into the corresponding slot
+   of the outer array.
+
+.. odsafig:: Images/TwoDArr.png
+   :width: 80%
    :align: center
 
-As the figure above shows, the very first element of this 416-element array
-has subscripts (0,0) while the last location has subscripts (12,31). The main
-advantages of this representation is that the program as a whole will be
-much easier to read and understand and much less prone to error.
+Because of this architecture:
 
-In order to refer to an element in a two-dimensional array, you need to
-use two subscripts. For the ``rainfall`` array, the first subscript will specify
-the month and the second will specify the day within the month. Thus, the
-following statements assign 1.15 to the ``rainfall`` element representing
-January 5, and then print its value:
+* ``matrix.length`` evaluates to the length of the outer array, which represents
+  the **number of rows** (here, ``3``).
 
-.. code-block:: java
+* ``matrix[r].length`` evaluates to the length of the inner array at index ``r``,
+  which represents the **number of columns in row** ``r`` (here, ``4``).
 
-   double[] rainfall  = new double[13][32];
-   rainfall[1][5] = 1.15; // rainfall for January 1st is 1.15
+* ``matrix[r]`` on its own refers to an entire one-dimensional row array.
 
-Just as in the case of one-dimensional arrays, it is an error to attempt
-to reference an element that is not in the array. Each of the following
-examples would cause an ``IndexOutOfBoundsException`` when executed:
+.. tip::
 
-.. code-block:: java
+   To determine the dimensions of a rectangular 2D array ``grid``:
 
-   double[] rainfall  = new double[13][32];
-   rainfall[13][32] = 1.15; // no such element
-   rainfall[11][33] = 1.15; // no such column
-   rainfall[14][2] = 1.15;  // no such row
+   * Number of rows: ``grid.length``
+   * Number of columns: ``grid[0].length`` (assuming at least one row exists)
 
-.. raw:: html
+Literal Initializers for 2D Arrays
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   <div class="align-center" style="margin-top:1em;">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/L3-q2GxAqZA?start=105" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-   </div>
-
-
-Iterating through a 2D Array
-----------------------------
-
-As we've mentioned before, a ``double`` array will automatically initialize
-every value to 0.0 so we do not need to initialize the elements unless we
-want them to start with a different value. Remember if we were working with
-Strings or objects, this would not be the case!
-
-However, for many array problems it is necessary to initialize the array elements
-to some other value. For a two-dimensional array, this would require a nested
-loop. To illustrate this algorithm, let’s use a nested pair of for loops to
-initialize each element of the ``rainfall`` array to 0:
+Just as with one-dimensional arrays, you can declare and initialize a 2D array
+using nested curly braces:
 
 .. code-block:: java
 
-   for (int month = 1; month < rainfall.length ; month++)
-   {
-       for (int day = 1 ; day < rainfall[month].length ; day++)
-       {
-           rainfall[month][day] = 0.0;
-       }
-   }
+   int[][] scores = {
+       {88, 92, 79},
+       {95, 84, 91},
+       {70, 85, 90}
+   };
 
-Note that both for loops start at 1 since we're not using row 0 or column 0.
+Here, ``scores.length`` is ``3``, and each row has length ``3``. The commas
+separate each row, and each row is an array literal enclosed in its own pair of
+braces.
 
-Remember that when you have a nested for loop, the inner loop iterates faster.
-Thus, for each month, the inner loop will iterate over 31 days. This is equivalent
-to processing the array as if you were going across each row and then down to
-the next row in the representation shown in the picture in the previous section.
+Ragged (Jagged) Arrays
+~~~~~~~~~~~~~~~~~~~~~~
 
-Note that for a two-dimensional array, both dimensions have an associated
-length, which is used in this example to specify the upper bound of each
-for loop.
-For the ``rainfall`` array, the first dimension (months) has a length of 13
-and the second dimension (days) has a length of 32.
-
-Another way to view the ``rainfall`` array is to remember that it is an
-array of arrays.
-The length of the first array, which corresponds to the
-number of months (13), is given by ``rainfall.length``. The length of
-each month’s array, which corresponds to the number of days (32) in a
-month, is given by ``rainfall[month].length``.
-
-The outer loop of the nested for loop iterates through months 1 through
-12, and the inner for loop iterates through days 1 through 31. In this way,
-372 = 12 × 31 elements of the array are set to 0.0.
-
-
-Multi-Dimensional Arrays
-------------------------
-
-Java doesn’t limit arrays to just two dimensions. For example, suppose
-we decide to extend our rainfall survey to cover a ten-year period. For
-each year we now need a two-dimensional array of months and days.
-This results in a three-dimensional
-array consisting of an array of years, each of which contains
-an array of months, each of which contains an array of days:
+Because each row in a 2D array is an independent object, the individual rows do
+not all have to be the same length! A multi-dimensional array with rows of
+different lengths is called a **ragged array** (or **jagged array**):
 
 .. code-block:: java
 
-   int years = 10;
-   int months = 13;
-   int days = 32;
+   int[][] ragged = {
+       {1, 2},
+       {3, 4, 5, 6},
+       {7, 8, 9}
+   };
 
-   double [][][] rainfall = new double[years][months][days];
+Here, ``ragged.length`` is ``3``, while ``ragged[0].length`` is ``2``,
+``ragged[1].length`` is ``4``, and ``ragged[2].length`` is ``3``. Ragged arrays
+can be useful for representing non-rectangular structures, such as a triangle or
+sparse data.
 
-Following the design convention of not using the 0 month and 0 days, we
-end up with a 10 × 13 × 32 array.
+Higher Dimensions (3D Arrays and Beyond)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the figure below, each year of the rainfall data is represented as a separate
-"page"". On each page, there is a two-dimensional table that consists of 12
-rows (1 per month) and 31 columns (1 per day).
+Java allows you to stack as many dimensions as your problem requires. For
+example, a 3D array can be visualized as a collection of 2D grids (pages,
+layers, or depth slices):
+
+.. code-block:: java
+
+   int layers = 5;
+   int rows = 10;
+   int cols = 20;
+
+   double[][][] cube = new double[layers][rows][cols];
 
 .. odsafig:: Images/3DArrayGraphic.png
    :align: center
 
-the following algorithm would be used to initialize all elements of our
-three-dimensional rainfall array:
+Multi-Dimensional Lists (Lists of Lists)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Just as an array can hold references to other arrays, a ``List`` can hold
+references to other lists:
 
 .. code-block:: java
 
-   for (int year = 0; year < rainfall.length ; year++)
-   {
-       for (int month = 1 ; month < rainfall[year].length ; month++)
-       {
-           for(int day = 1 ; day < rainfall[year][month].length; day++)
-           {
-               rainfall[year][month][day] = 0.0;
-           }
-       }
-   }
+   List<List<String>> gridOfWords = new ArrayList<>();
 
-Note again the proper use of the length attribute for each of the
-three dimensions of the array. In the outer loop, ``rainfall.length``,
-we’re referring to the number of years. In the middle loop,
-``rainfall[year].length``, we’re referring to number of months within
-a given year. In the inner loop, ``rainfall[year][month]``.length,
-we’re referring to the number of days within a month.
-
-If we added a fourth dimension to our array, to represent different ciites,
-for example, and wanted to extend
-this algorithm to initialize it, we would simply embed the three-level loop
-within another for loop that would iterate over each city.
-
-
-Initializing a Multi-Dimensional Array
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If we didn't want to use loops like the code above, we could also initialize
-our multi-dimensional array using our alternate method we saw for
-one-dimensional arrays where you can list out the initial value for
-each item within the array inside curly braces ({}).
-
-To recap, we could initialize a one-dimensional array of ``int``\ s like this:
-
-.. code-block:: java
-
-   int[] numbers = {1, 2, 3};
-
-For multi-dimensional arrays we could write:
-
-.. code-block:: java
-
-   int[][] grid = {
-       // two rows of 3 columns each
-       {1, 2, 3},
-       {4, 5, 6}
-   };
-   String[][][] arr3D = {
-       // a 2x2x2 "cube" of strings
-       {
-           {"a", "b"},
-           {"c", "d"}
-       },
-       {
-           {"e", "f"},
-           {"g", "h"}
-       }
-   };
-
-
-Jagged (or Ragged) Arrays
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Because multi-dimensional arrays in Java are created as an array of arrays,
-the individual arrays that represent separate rows are distinct objects in
-their own right. As a result, they do not all have to have the same length.
-When a multi-dimensional array has sub-arrays of different sizes, it is called
-"jagged" (or sometimes "ragged") instead of "full" or "rectangular". Jagged
-arrays have rows of uneven (unequal) sizes. Sometimes they are used to
-represent *sparse matrices*, but can be used for other situations as well.
- 
-Below, we see an array of ``double``\ s consisting of three rows, each of
-which has a different number of elements. The first row contains three
-elements, the second
-contains two elements, and the last row contains four elements. As this
-last example shows, the rows in a multidimensional array don’t all have
-to have the same length.
-
-.. code-block:: java
-
-   double[][] arrDifferent = {
-       {1.0, 2.0, 3.0},
-       {4.0, 5.0},
-       {6.0, 7.0, 8.0, 9.0}
-   };
-
-Initializing arrays like this by writing out the specific cell values is
-feasible only for relatively small arrays.
-To see why, just imagine what the initializer expression would be for our
-three-dimensional rainfall array. It would require 4,160 (or 10 × 13 × 32)
-zeroes, separated by commas! However, it can be really useful for
-describing smaller arrays. It is also the primary way Java allows programmers
-to record literal values representing sets of typed-in numbers or strings,
-and so arrays initialized this way are often used to provide tabular
-data literals in Java programs.
-
-
-But Can You Have Multi-dimensional Lists?
------------------------------------------
-
-One of the advantages that arrays provide over lists is that they have
-built-in support for stacking as many dimensions as necessary. ``List``\ s,
-on the other hand, have only a single dimension and a single integer position
-value you can use in their ``get()`` method.
-
-Or do they? It turns out that just as a multi-dimensional array in Java
-can be thought of as an "array of arrays", you can use the same concept
-to create a "list of lists" if you need a multi-dimensional list. After
-all, a list can contain any type of object, and lists themselves are
-objects, so it makes sense that you can put lists inside lists. 
+While lists of lists offer dynamic resizing, 2D arrays (``Type[][]``) are
+generally preferred for fixed-size grids, board games, and numerical matrices
+because of their concise indexing syntax (``grid[r][c]`` vs.
+``grid.get(r).get(c)``) and significantly higher runtime performance.
 
 .. raw:: html
 
@@ -330,69 +320,550 @@ objects, so it makes sense that you can put lists inside lists.
    </div>
 
 
-Integer Division and Modulus
-----------------------------
+Traversing 2D Grids: Row-Major vs. Column-Major
+-----------------------------------------------
 
-Suppose you have a measurement in inches and you want to convert to feet and
-inches. The goal is divide by 12 (the number of inches in a foot) and keep the
-remainder.
+Processing every element in a two-dimensional array requires two loops: one loop
+to control the first dimension and a second loop nested inside it to control the
+second dimension.
 
-We have already seen the division operator (``/``), which computes the quotient
-of two numbers. If the numbers are integers, it performs integer division, which
-throws away any fractional part of the answer, discarding any remainder.
+Nested Loop Mechanics
+~~~~~~~~~~~~~~~~~~~~~
 
-Java also provides the **modulus** operator (``%``), which divides two numbers
-and computes the remainder.
+Recall how nested loops execute: for **every single iteration** of the outer
+loop, the inner loop executes through its **entire cycle** from beginning to end.
 
-Using division and modulus, we can convert to feet and inches like this:
+If an outer loop runs :math:`R` times and an inner loop runs :math:`C` times,
+the code inside the body of the inner loop will execute a total of:
 
-.. code-block:: java
+.. math::
 
-   int quotient = 76 / 12;  // division
-   int remainder = 76 % 12; // modulus
+   \text{Total Operations} = R \times C
 
-The first line yields 6. The second line, which is pronounced “76 mod 12”,
-yields 4. So 76 inches is 6 feet, 4 inches.
+For a :math:`20 \times 10` grid, the inner loop body runs :math:`20 \times 10 =
+200` times.
 
-The modulus operator looks like a percent sign, but you might find it helpful
-to think of it as a division sign (÷) rotated to the left.
+Row-Major Traversal
+~~~~~~~~~~~~~~~~~~~
 
-The modulus operator turns out to be surprisingly useful. For example, you
-can check whether one number is divisible by another: if ``x % y`` is zero, then
-``x`` is evenly divisible by ``y`` with no remainder.
-
-For example, if we wanted to write an if statement that only ran if an ``int x``
-was divisible by 5, we'd write:
+In **row-major traversal**, the outer loop iterates over the rows, and the inner
+loop iterates over the columns. This visits every element horizontally, row by
+row, exactly like reading lines of text in a book:
 
 .. code-block:: java
 
-   if (x % 5 == 0)
+   public void printRowMajor(int[][] grid)
    {
-       // do some action
+       for (int row = 0; row < grid.length; row++)
+       {
+           for (int col = 0; col < grid[row].length; col++)
+           {
+               System.out.print(grid[row][col] + "\t");
+           }
+           System.out.println(); // newline at the end of each row
+       }
    }
 
-You also can use modulus to "extract" digits from a number:
-``x % 10`` yields the rightmost digit of x, which is the same as the remainder
-after dividing x by 10. Similarly, ``x % 100`` yields the last two digits.
-You can combine this with division, since ``x / 10`` is the digits *without*
-the rightmost digit. For example, the number 1234 consists of 123 (which
-is ``x / 10``) followed by 4 (which is ``x % 10``).
+Tracing the execution for a :math:`3 \times 3` grid:
 
-Also, many encryption algorithms use the modulus operator extensively.
+1. ``row = 0``: ``col`` iterates ``0, 1, 2`` (accesses ``(0,0)``, ``(0,1)``, ``(0,2)``).
+2. ``row = 1``: ``col`` iterates ``0, 1, 2`` (accesses ``(1,0)``, ``(1,1)``, ``(1,2)``).
+3. ``row = 2``: ``col`` iterates ``0, 1, 2`` (accesses ``(2,0)``, ``(2,1)``, ``(2,2)``).
 
-Here are two really short videos you can check out that will help explain
-modulo arithmetic as well:
+Row-major order is the standard pattern used when printing tabular data,
+analyzing individual horizontal rows, or searching across a matrix.
 
+Column-Major Traversal
+~~~~~~~~~~~~~~~~~~~~~~
+
+In **column-major traversal**, the outer loop iterates over the columns, and the
+inner loop iterates over the rows. This visits elements vertically, column by
+column, top-to-bottom:
+
+.. code-block:: java
+
+   public void printColumnMajor(int[][] grid)
+   {
+       int numRows = grid.length;
+       int numCols = grid[0].length;
+
+       for (int col = 0; col < numCols; col++)
+       {
+           for (int row = 0; row < numRows; row++)
+           {
+               System.out.print(grid[row][col] + "\t");
+           }
+           System.out.println(); // newline at the end of each column
+       }
+   }
+
+Tracing the execution for a :math:`3 \times 3` grid:
+
+1. ``col = 0``: ``row`` iterates ``0, 1, 2`` (accesses ``(0,0)``, ``(1,0)``, ``(2,0)``).
+2. ``col = 1``: ``row`` iterates ``0, 1, 2`` (accesses ``(0,1)``, ``(1,1)``, ``(2,1)``).
+3. ``col = 2``: ``row`` iterates ``0, 1, 2`` (accesses ``(0,2)``, ``(1,2)``, ``(2,2)``).
+
+When to Use Each Traversal
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* **Use Row-Major** when processing horizontal lines or when row data belongs
+  together. For example, in a gradebook array where rows represent students and
+  columns represent assignments, row-major traversal allows you to compute each
+  student's overall course average.
+
+* **Use Column-Major** when processing vertical lines or vertical slices. In the
+  same gradebook, column-major traversal allows you to compute the class average
+  for each specific assignment across all students.
 
 .. raw:: html
 
    <div class="align-center" style="margin-top:1em;">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/MrTtsX2Wg9Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/L3-q2GxAqZA?start=105" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
    </div>
 
-   <div class="align-center" style="margin-top:1em;">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/VUZpocjQFWo?start=200&end=259" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-   </div>
+
+Matrix Algorithms: Searching & Checking Rows
+--------------------------------------------
+
+Now that we can traverse grids systematically, let us examine several standard
+matrix algorithms used to inspect, verify, and reduce grid data.
+
+Consider a reservation system for an auditorium or movie theater represented by
+a 2D boolean array:
+
+.. code-block:: java
+
+   boolean[][] reserved = new boolean[numRows][numCols];
+
+A cell ``reserved[row][col]`` is ``true`` if that seat is currently booked, and
+``false`` if it remains open.
+
+Algorithm 1: Checking Full-Row Occupancy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Suppose the venue offers a discount when an entire row is completely booked by a
+single group. We need a method ``isRowFull(boolean[][] grid, int row)`` that
+returns ``true`` if and only if **every cell** in that specified row is ``true``:
+
+.. code-block:: java
+
+   public boolean isRowFull(boolean[][] grid, int row)
+   {
+       // Inspect each column in the given row:
+       for (int col = 0; col < grid[row].length; col++)
+       {
+           // If we find any seat that is NOT occupied, the row is not full
+           if (!grid[row][col])
+           {
+               return false; // Short-circuit early exit
+           }
+       }
+       // If the loop finished without finding any empty seat, all are occupied
+       return true;
+   }
+
+Notice the **early return** design pattern: as soon as the algorithm encounters
+a single empty cell, it immediately returns ``false``. The method only returns
+``true`` after all columns have been inspected.
+
+Algorithm 2: Counting Occupied Seats Across the Entire Matrix
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To count how many total seats in the venue are booked, we combine an accumulator
+variable with a nested row-major loop:
+
+.. code-block:: java
+
+   public int countTotalOccupied(boolean[][] grid)
+   {
+       int count = 0;
+       for (int row = 0; row < grid.length; row++)
+       {
+           for (int col = 0; col < grid[row].length; col++)
+           {
+               if (grid[row][col])
+               {
+                   count++;
+               }
+           }
+       }
+       return count;
+   }
+
+Algorithm 3: Linear Search in a 2D Matrix
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Suppose an office building organizes employee mailboxes in a 2D array of names:
+``String[][] mailboxes``. To find whether an employee has a mailbox and determine
+their row and column position:
+
+.. code-block:: java
+
+   public int[] findMailbox(String[][] grid, String targetName)
+   {
+       if (targetName == null)
+       {
+           return null;
+       }
+
+       for (int row = 0; row < grid.length; row++)
+       {
+           for (int col = 0; col < grid[row].length; col++)
+           {
+               if (targetName.equals(grid[row][col]))
+               {
+                   return new int[] { row, col }; // Found at (row, col)
+               }
+           }
+       }
+       return null; // Target name was not present in the grid
+   }
+
+Algorithm 4: Clearing an Entire Row
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When all reservations in a row are cancelled, we reset every cell in that row
+back to ``false``:
+
+.. code-block:: java
+
+   public void clearRow(boolean[][] grid, int row)
+   {
+       for (int col = 0; col < grid[row].length; col++)
+       {
+           grid[row][col] = false;
+       }
+   }
+
+
+Row Shifting & Grid Transformations
+-----------------------------------
+
+Many grid-based systems—such as falling sand simulators, warehouse shelving
+management, and puzzle games—require moving entire rows of data upward or
+downward within a matrix.
+
+Consider a warehouse storage rack represented as a 2D array:
+
+.. code-block:: java
+
+   int[][] storageRack = new int[numTiers][numBins];
+
+Here, numbers represent product identifiers stored in bins on each shelf tier,
+and ``0`` represents an empty bin.
+
+Suppose that when an entire shelf tier is cleared or retrieved, all higher tiers
+must **shift downward by one position** so inventory remains accessible, and the
+topmost tier becomes completely vacant.
+
+The Direction of Iteration: Avoiding Data Overwrite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Suppose shelf row 3 is cleared, and we want all rows above it (rows 0, 1, and 2)
+to shift downward into rows 1, 2, and 3:
+
+* Row 2 moves into Row 3.
+* Row 1 moves into Row 2.
+* Row 0 moves into Row 1.
+* Row 0 becomes empty.
+
+Consider what would happen if we wrote a loop that iterates **downward** from
+the top (from row 1 to row 3):
+
+.. code-block:: java
+
+   // BUGGY ATTEMPT: Iterating in the wrong direction!
+   for (int r = 1; r <= clearedRow; r++)
+   {
+       for (int c = 0; c < grid[r].length; c++)
+       {
+           grid[r][c] = grid[r - 1][c]; // Overwrites row r with row r - 1
+       }
+   }
+
+Let us trace this buggy loop:
+
+1. When ``r = 1``: Row 1 is replaced by the contents of Row 0. Now Row 1 holds Row 0's data.
+2. When ``r = 2``: Row 2 is replaced by Row 1. But Row 1 was *already* overwritten with Row 0! So Row 2 now holds Row 0's data!
+3. When ``r = 3``: Row 3 is replaced by Row 2, which also holds Row 0's data!
+
+The entire grid becomes a duplicate copy of Row 0!
+
+To prevent overwriting data before it has been copied, we **must iterate in
+reverse order**, starting at the cleared row and working upward toward row 1:
+
+.. code-block:: java
+
+   public void shiftRowsDownward(int[][] grid, int clearedRow)
+   {
+       // Step backward from clearedRow up to row 1:
+       for (int r = clearedRow; r > 0; r--)
+       {
+           // Copy each element of row r - 1 into row r:
+           for (int c = 0; c < grid[r].length; c++)
+           {
+               grid[r][c] = grid[r - 1][c];
+           }
+       }
+
+       // Reset the top row (row 0) to empty values:
+       for (int c = 0; c < grid[0].length; c++)
+       {
+           grid[0][c] = 0;
+       }
+   }
+
+.. important::
+
+   When shifting elements downward in an array, always iterate **from bottom to
+   top** so that each row is safely moved before the row above it overwrites it.
+   Conversely, when shifting elements upward, always iterate **from top to
+   bottom**.
+
+Deep Copying vs. Row Reference Swapping
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In Java, because a 2D array is an array of 1D row references, you might be
+tempted to write:
+
+.. code-block:: java
+
+   // DANGEROUS: Reference aliasing!
+   grid[r] = grid[r - 1];
+
+While this syntactically compiles, it copies the **reference** to the row, not
+the individual values! As a result, ``grid[r]`` and ``grid[r - 1]`` now point to
+the exact same array object in memory (aliasing). Later modifying a cell in one
+row will silently alter the other row as well.
+
+To prevent aliasing bugs, always copy the individual elements in an inner loop as
+shown in ``shiftRowsDownward``, or allocate a brand-new array for each shifted
+row.
+
+
+Coordinate Mapping & Offset Arithmetic
+--------------------------------------
+
+Real-world applications frequently operate with domain measurements that do not
+naturally begin at index 0. For example:
+
+* Hours of the day may run from 8:00 AM to 5:00 PM (hours 8 to 17).
+* Year values may span from 2020 to 2030.
+* Game objects may occupy multiple cells defined by relative offsets from a
+  central anchor point.
+
+To connect real-world data with zero-based arrays, we use **coordinate mapping**
+and **offset arithmetic**.
+
+Domain-to-Index Offset Translation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Suppose you are building a weekly scheduling application. Business hours run
+from 8:00 AM to 5:00 PM (hours 8 through 17, for a total of 10 hourly slots).
+Days of the week are numbered 0 through 6 (Monday through Sunday).
+
+We can represent the schedule using a 2D array:
+
+.. code-block:: java
+
+   String[][] weeklyPlanner = new String[7][10]; // 7 days, 10 hour slots
+
+Because valid row indices are ``0`` through ``9``, an appointment at hour 8
+cannot be placed directly at index 8 without wasting slots 0 through 7.
+Instead, we translate the domain hour into an array index using an offset:
+
+.. math::
+
+   \text{slotIndex} = \text{hour} - \text{START\_HOUR}
+
+.. code-block:: java
+
+   public static final int START_HOUR = 8; // 8:00 AM corresponds to index 0
+
+   public int hourToIndex(int hour)
+   {
+       return hour - START_HOUR;
+   }
+
+   public int indexToHour(int index)
+   {
+       return index + START_HOUR;
+   }
+
+For an appointment on Wednesday (day 2) at 2:00 PM (hour 14):
+
+* Day index: ``2``
+* Hour index: ``14 - 8 = 6``
+* Target cell: ``weeklyPlanner[2][6]``
+
+Multi-Cell Shapes & Relative Offsets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In graphic design and grid-based puzzle software, shapes are frequently composed
+of multiple neighboring cells placed relative to an anchor coordinate:
+
+.. code-block:: java
+
+   // A plus-shaped pattern centered at an anchor:
+   //      (r-1, c)
+   // (r, c-1)  (r, c)  (r, c+1)
+   //      (r+1, c)
+
+Rather than hardcoding absolute grid coordinates, we define the shape as an
+array of relative row and column offsets ``(dr, dc)`` from the anchor position:
+
+.. code-block:: java
+
+   int[][] plusPatternOffsets = {
+       {0, 0},   // center anchor
+       {-1, 0},  // one step up
+       {1, 0},   // one step down
+       {0, -1},  // one step left
+       {0, 1}    // one step right
+   };
+
+To stamp or place this pattern onto a grid with its center at ``(anchorRow,
+anchorCol)``:
+
+1. For each offset ``{dr, dc}``, compute:
+   
+   .. math::
+   
+      \text{targetRow} = \text{anchorRow} + dr
+   
+   .. math::
+   
+      \text{targetCol} = \text{anchorCol} + dc
+
+2. Validate that the target coordinate falls strictly within the grid bounds:
+   
+   .. code-block:: java
+   
+      targetRow >= 0 && targetRow < numRows && targetCol >= 0 && targetCol < numCols
+
+3. Only modify the grid cells after verifying that **all** target cells are
+   valid and unoccupied.
+
+1D-to-2D and 2D-to-1D Coordinate Translation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sometimes high-performance graphics engines flatten a two-dimensional grid of
+dimensions :math:`\text{ROWS} \times \text{COLS}` into a single 1D array of size
+:math:`\text{ROWS} \cdot \text{COLS}`.
+
+You can convert between the two representations using integer division and the
+modulo operator:
+
+* **From 2D to 1D index**:
+  
+  .. math::
+  
+     \text{index} = (\text{row} \times \text{COLS}) + \text{col}
+
+* **From 1D index back to 2D coordinates**:
+  
+  .. math::
+  
+     \text{row} = \text{index} / \text{COLS}
+  
+  .. math::
+  
+     \text{col} = \text{index} \% \text{COLS}
+
+
+Testing 2D Matrix Classes in JUnit
+----------------------------------
+
+Testing classes that manage two-dimensional grids requires verifying both cell
+states and structural postconditions.
+
+Constructing Synthetic Test Fixtures
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When writing automated unit tests, create small, focused test grids (such as
+:math:`3 \times 3` or :math:`4 \times 5`) so you can manually verify expected
+outputs and corner cases without overwhelming complexity:
+
+.. code-block:: java
+
+   public class GridManagerTest extends TestCase
+   {
+       private boolean[][] testGrid;
+
+       public void setUp()
+       {
+           // Set up a fresh 3x3 grid before each test method
+           testGrid = new boolean[3][3];
+       }
+
+       public void testIsRowFull()
+       {
+           GridManager manager = new GridManager();
+
+           // Initially empty: row 1 should not be full
+           assertThat(manager.isRowFull(testGrid, 1)).isFalse();
+
+           // Fill cells (1, 0) and (1, 1), but leave (1, 2) false
+           testGrid[1][0] = true;
+           testGrid[1][1] = true;
+           assertThat(manager.isRowFull(testGrid, 1)).isFalse();
+
+           // Fill the last cell in row 1
+           testGrid[1][2] = true;
+           assertThat(manager.isRowFull(testGrid, 1)).isTrue();
+       }
+   }
+
+Verifying Grid Transformations Before and After
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When testing methods that transform a grid (such as shifting rows, clearing
+lines, or stamping patterns), verify the state of affected cells, the state of
+newly introduced boundary cells, and the state of untouched rows:
+
+.. code-block:: java
+
+   public void testShiftRowsDownward()
+   {
+       int[][] rack = new int[3][3];
+       rack[0][0] = 10;
+       rack[0][1] = 20;
+       rack[1][0] = 30;
+       rack[1][1] = 40;
+       rack[2][0] = 50; // cleared row
+       rack[2][1] = 60;
+
+       GridManager manager = new GridManager();
+       manager.shiftRowsDownward(rack, 2);
+
+       // Row 2 should now contain former contents of Row 1:
+       assertThat(rack[2][0]).isEqualTo(30);
+       assertThat(rack[2][1]).isEqualTo(40);
+
+       // Row 1 should now contain former contents of Row 0:
+       assertThat(rack[1][0]).isEqualTo(10);
+       assertThat(rack[1][1]).isEqualTo(20);
+
+       // Row 0 must be reset to zero:
+       assertThat(rack[0][0]).isEqualTo(0);
+       assertThat(rack[0][1]).isEqualTo(0);
+       assertThat(rack[0][2]).isEqualTo(0);
+   }
+
+Testing Boundary and Edge Conditions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Always construct test cases that exercise the matrix boundaries:
+
+* **Top and Bottom Rows**: Accessing and transforming row ``0`` and row
+  ``numRows - 1``.
+
+* **Left and Right Columns**: Accessing and transforming column ``0`` and column
+  ``numCols - 1``.
+
+* **Index Bounds Checking**: Verifying that passing coordinates outside valid
+  ranges (negative indices or indices :math:`\ge` length) are properly handled
+  or rejected without throwing an unhandled ``ArrayIndexOutOfBoundsException``.
 
 
 Programming Practice 10
@@ -411,5 +882,3 @@ Programming Practice 10
      <a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
      licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
    </div></footer>
-
-

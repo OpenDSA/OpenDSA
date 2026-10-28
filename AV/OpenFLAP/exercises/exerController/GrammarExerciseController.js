@@ -163,10 +163,12 @@ controllerProto.startTesting = function () {
       if (firstTestcase.indexOf("regular") >= 0) {
         correctGrammarType = (grammarType === 'RLG' || grammarType === 'LLG');
       } else {
+        // A grammar can be both left- and right-linear (for example S -> b).
+        // Test the requested property, not identifyGrammar's preferred label.
         if (firstTestcase.indexOf("right") >= 0)
-          correctGrammarType = (grammarType === 'RLG');
+          correctGrammarType = this.checkRightLinear();
         else if (firstTestcase.indexOf("left") >= 0)
-          correctGrammarType = (grammarType === 'LLG');
+          correctGrammarType = this.checkLeftLinear();
       }
       if (correctGrammarType) {
         $("#testResults").append("<tr><td>" + firstTestcase + "</td><td>" + "Satisfied" + "</td><td class='correct'>" + (correctGrammarType ? "Yes" : "No") + "</td></tr>");
@@ -204,6 +206,13 @@ controllerProto.startTesting = function () {
           //inputResult = pda.traverseOneInput(input);
           parser.inputString = input;
           inputResult = parser.stringAccepted()[0];
+          if (inputResult === null) {
+            var message = "Search limit reached. Grading could not be completed; no score was submitted. Try simplifying the grammar.";
+            $("#testResults").empty().hide();
+            $("#percentage").text(message).show();
+            $("#check_mark").hide();
+            return {undetermined: true, message: message};
+          }
         } else {
   
           inputResult = !FiniteAutomaton.willReject(parser, input.split("").reverse().join(""));
@@ -271,13 +280,17 @@ controllerProto.toExercise = function (button) {
 // the function that really changes the problem displayed
 // called by toExercise
 controllerProto.updateExercise = function (id) {
+  var escapeAlt = function(text) {
+    if (!text) return "";
+    return String(text).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  };
   var exercise = this.tests[id];
   this.testCases = exercise["testCases"];
  
   this.testChomskey = Object.keys(this.testCases[this.testCases.length - 1])[0] === 'CNF'; //identify weather studetns shoud transform the grammar to CNF or Not
   var type = exercise["type"];
   if (type == "expression") {
-    $("#expression").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
+    $("#expression").html("<img src='" + latexit + exercise["expression"] + "' alt='" + escapeAlt(exercise["expression"]) + "' border='0'/>");
     $("#question").show();
     $("#description").hide();
   } else {
@@ -289,7 +302,7 @@ controllerProto.updateExercise = function (id) {
           var expression = parts[a + 1];
           text = parts[0] + " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[2];
           $("#description").html(text);
-          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' border='0'/>");
+          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' alt='" + escapeAlt(expression) + "' border='0'/>");
         }
         else{
           var expression = parts[a];
@@ -300,7 +313,7 @@ controllerProto.updateExercise = function (id) {
             text = " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[a+1];
           }
           $("#description").append(text);
-          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' border='0'/>");
+          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' alt='" + escapeAlt(expression) + "' border='0'/>");
         }
         a=a+2;
       }
@@ -876,6 +889,15 @@ var interactableUnitTransform = function (jsav, grammar, noUnit) {
   //startParse(grammar);
   $('.jsavcontrols').hide();
   var v = grammar.getGrammarVariables();
+  // Include RHS-only variables so every unit-production edge can be drawn.
+  for (var ruleIndex = 0; ruleIndex < productions.length; ruleIndex++) {
+    var rhs = productions[ruleIndex][2];
+    for (var symbolIndex = 0; symbolIndex < rhs.length; symbolIndex++) {
+      if (variables.indexOf(rhs[symbolIndex]) !== -1 && v.indexOf(rhs[symbolIndex]) === -1) {
+        v.push(rhs[symbolIndex]);
+      }
+    }
+  }
   //$(grammar.element).css("margin-left", "auto");
   var OStype = window.navigator.platform.toLowerCase();
 
@@ -1468,7 +1490,8 @@ var removeUnit = function () {
 var removeUnitHelper = function (productions, pDict) {
   for (var i = 0; i < productions.length; i++) {
     if (productions[i][2].length === 1 && variables.indexOf(productions[i][2]) !== -1) {
-      var p = pDict[productions[i][2]];
+      // An undefined variable has no replacement productions.
+      var p = pDict[productions[i][2]] || [];
       var n;
       for (var j = 0; j < p.length; j++) {
         if (p[j].length === 1 && variables.indexOf(p[j]) !== -1) {
@@ -1494,6 +1517,8 @@ var removeUnitHelper = function (productions, pDict) {
 var removeUseless = function (productions) {
   var derivers = {}; // variables that derive a string of terminals
   //var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+  if (!productions.length) return [];
+  var start = productions[0][0];
   var counter = 0;
   while (findDerivable(derivers, productions)) {
     counter++;
@@ -1502,7 +1527,9 @@ var removeUseless = function (productions) {
       break;
     }
   };
-  var transformed = [];
+  // Preserve the original start, even if its rules are all nonproductive.
+    if (!(start in derivers)) return [];
+    var transformed = [];
   // remove productions which do not derive a string of terminals
   for (var i = 0; i < productions.length; i++) {
     if (_.every(productions[i][2], function (x) {
@@ -1511,8 +1538,9 @@ var removeUseless = function (productions) {
       transformed.push(productions[i]);
     }
   }
+  // No productive rules means the language is empty; there is no graph to traverse.
+  if (transformed.length === 0) return [];
   var pDict = {}; // dictionary to hold reachable variables
-  var start = "S"; //transformed[0][0];
   for (var i = 0; i < transformed.length; i++) {
     if (!(transformed[i][0] in pDict)) {
       pDict[transformed[i][0]] = [];
