@@ -1,0 +1,8 @@
+/* Keep these responsive exercises inside the textbook's reading column. */
+#DerivationPRO iframe.embeddedExercise,
+#DerivationPalindromePRO iframe.embeddedExercise,
+#DerivationLeftmostPRO iframe.embeddedExercise {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
