@@ -1,0 +1,24 @@
+.derivation-pro #container { max-width: 100%; }
+.derivation-pro .avcontainer { margin-top: 0; }
+.derivation-pro .jsavexercisecontrols { display: flex; flex-wrap: wrap; gap: 8px; text-align: left; }
+.derivation-pro .jsavexercisecontrols input { width: auto; max-width: 100%; }
+.derivation-pro progress { width: min(100%, 420px); height: 18px; margin-bottom: 20px; }
+.derivation-pro .jsavscore { font-weight: bold; }
+.derivation-pro .jsavcanvas { min-height: 0; height: 0; }
+.derivation-pro #status { margin: 12px 0; }
+.derivation-pro table { width: 100%; }
+.derivation-pro .scored-links { gap: 8px; }
+.derivation-pro .scored-links a { color: #14548c; padding: 6px 10px; border: 1px solid #b7b7b7; text-decoration: none; }
+.derivation-pro .scored-links a[aria-current="page"] { color: #161616; background: #dce7f1; border-color: #42586c; font-weight: bold; }
+.derivation-pro #parse-tree-view { margin-top: 14px; }
+.derivation-pro #parse-tree-view summary { cursor: pointer; }
+.derivation-pro #tree { margin-top: 10px; }
+.derivation-pro #tree svg { max-width: 100%; height: auto; }
+.derivation-pro #prof_check_mark { position: static; display: block; height: 26px; text-align: right; }
+.derivation-pro #prof_check_mark img { width: 26px; height: 26px; }
+.derivation-pro.embedded .mode-links, .derivation-pro.embedded .scored-links,
+.derivation-pro.embedded h1 { display: none; }
+.derivation-pro.embedded { margin-top: 0; margin-bottom: 0; }
+.jsavmodelanswer .jsavcanvas { min-height: 100px; }
+.jsavmodelanswer .jsavvariable { position: relative; margin: 20px; font-size: 25px; }
+.jsavmodelanswer .jsavvarlabel { font-size: 16px; }

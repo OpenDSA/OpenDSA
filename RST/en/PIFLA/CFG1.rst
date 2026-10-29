@@ -17,6 +17,8 @@
 Context-Free Grammars Part 1
 ============================
 
+.. odsalink:: AV/OpenFLAP/exercises/FLAssignments/Grammar/derivation/DerivationBook.css
+
 Context-Free Languages 
 ----------------------
 
@@ -66,6 +68,28 @@ String Derivation
    :keyword: Context-Free Grammars and Languages
 
 
+Recursive Derivation Practice
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Construct a derivation of ``aaabbb`` using the grammar from the example.
+Each correct production application contributes one point toward completion.
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/derivation/DerivationPRO.html pe
+   :long_name: Grammar Derivation: aaabbb
+   :keyword: Context-Free Grammars and Languages; String Derivation
+
+
+Palindrome Derivation Practice
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Construct the palindrome ``ababa`` by choosing productions that build matching
+outer symbols, then replace the remaining nonterminal with the middle symbol.
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/derivation/DerivationPalindromePRO.html pe
+   :long_name: Grammar Derivation: ababa
+   :keyword: Context-Free Grammars and Languages; String Derivation; Palindrome
+
+
 Derivation Trees
 ----------------
 
@@ -83,6 +107,18 @@ Derivation Trees Example
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/PIFLA/CFL/TreeExampleCON.js
    :output: show
    :keyword: Context-Free Grammars and Languages
+
+
+Leftmost Derivation Practice
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Derive ``aacbb``, replacing the leftmost remaining nonterminal at each step.
+Applying an empty production also counts as a step. Compare your completed
+parse tree with your derivation table.
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/derivation/DerivationLeftmostPRO.html pe
+   :long_name: Leftmost Grammar Derivation: aacbb
+   :keyword: Context-Free Grammars and Languages; Leftmost Derivation; Parse Tree
 
 
 Practice question 1

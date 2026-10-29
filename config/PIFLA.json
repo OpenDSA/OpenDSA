@@ -292,7 +292,23 @@
       }
     },
     "Context-Free Grammars and Languages": {
-      "PIFLA/CFG1": {},
+      "PIFLA/CFG1": {
+        "DerivationPRO": {
+          "points": 3.0,
+          "threshold": 1.0,
+          "required": true
+        },
+        "DerivationPalindromePRO": {
+          "points": 3.0,
+          "threshold": 1.0,
+          "required": true
+        },
+        "DerivationLeftmostPRO": {
+          "points": 5.0,
+          "threshold": 1.0,
+          "required": true
+        }
+      },
       "PIFLA/CFG2": {},
       "PIFLA/BNF": {},
       "PIFLA/CFGExercises": {
