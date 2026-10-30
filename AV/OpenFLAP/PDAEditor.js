@@ -87,20 +87,6 @@
         }
         initialize(data);
       }
-		$('#undoButton').click(function(){
-			highlight_select_button();
-			//$('#undoButton').addClass("active");
-			g.undo();
-			$('.jsavgraph').click(graphClickHandler);
-			$('.jsavedgelabel').click(labelClickHandler);
-		});
-		$('#redoButton').click(function(){
-			highlight_select_button()
-			//$('#redoButton').addClass("active");
-			g.redo();
-			$('.jsavgraph').click(graphClickHandler);
-			$('.jsavedgelabel').click(labelClickHandler);
-		});
     resetUndoButtons();
     $('#emptyStackCheck').click(function(){
       if($(this).prop("checked")){
@@ -179,8 +165,7 @@
     jsav.displayInit();
     g.click(nodeClickHandler);
     g.click(edgeClickHandler, {edge: true});
-    $('.jsavgraph').click(graphClickHandler);
-    $('.jsavedgelabel').click(labelClickHandler);
+    GraphEditor.rebindClickHandlers(graphClickHandler, labelClickHandler);
   };
 
   // handler for editing edges/transitions
@@ -297,47 +282,47 @@
   };
   
   // handler for the nodes of the graph
-  var nodeClickHandler = function(e) {  
-    // editing nodes should be changed to match the interface in multitapeTest.js
-    if ($(".jsavgraph").hasClass("editNodes")) {
-      g.saveFAState();
-      g.selected = this;
-      g.selected.highlight();
-      var Prompt = new FANodePrompt(updateNode, g.selected.hasClass('start'), g.selected.hasClass('final'), g.selected.stateLabel());
-      Prompt.render(g.selected.value());
-      g.selected.unhighlight();
-    }
-    else if ($('.jsavgraph').hasClass('moveNodes')) {
-      /*highlight_select_button();
-      removeModeClasses();
-      removeND();
-      g.enableDragging();
-      jsav.umsg('Drag to Move.');
-        $('#moveButton').addClass("active");*/
-    }
-    else if ($('.jsavgraph').hasClass('deleteNodes')) {
-      g.removeNode(this);
-    }
+  // Mode-dispatch on click is generic across all graph editors - see GraphEditor.js.
+  // Order matters: edit mode also carries the moveNodes class, so editNodes is checked first.
+  var nodeClickHandler = function(e) {
+    GraphEditor.dispatchModeClick.call(this, {
+      editNodes: function() {
+        // editing nodes should be changed to match the interface in multitapeTest.js
+        g.saveFAState();
+        g.selected = this;
+        g.selected.highlight();
+        var Prompt = new FANodePrompt(updateNode, g.selected.hasClass('start'), g.selected.hasClass('final'), g.selected.stateLabel());
+        Prompt.render(g.selected.value());
+        g.selected.unhighlight();
+      },
+      moveNodes: function() {},  // dragging is handled by JSAV; a click does nothing here
+      deleteNodes: function() {
+        g.removeNode(this);
+      }
+    });
   };
 
   // handler for the edges of the graph
   var edgeClickHandler = function(e) {
-    if ($('.jsavgraph').hasClass('editNodes')) {
-      this.highlight();
-      var input = confirm("Delete edge?");
-      if (input === null) {
+    GraphEditor.dispatchModeClick.call(this, {
+      editNodes: function() {
+        this.highlight();
+        var input = confirm("Delete edge?");
+        if (input === null) {
+          this.unhighlight();
+          return;
+        }
+        if (input) {
+          g.saveFAState();
+          g.removeEdge(this);
+        }
         this.unhighlight();
-        return;
+      },
+      convert: function() {
+        this.highlight();
+        convertTransition(this);
       }
-      if (input) {
-        g.saveFAState();
-        g.removeEdge(this);
-      }
-      this.unhighlight();
-    }else if ($(".jsavgraph").hasClass("convert")) {
-      this.highlight();
-      convertTransition(this);
-    }
+    });
   };
 
 
@@ -373,41 +358,33 @@
     jsav.umsg("Click on the transitions to convert to grammar");
   };
   var addNodesMode = function() {
-    highlight_select_button();
-    removeModeClasses();
-    removeND();
-    cancel();
-    var jg = $(".jsavgraph");
-    jg.addClass("addNodes");
-    $("#mode").html('Adding nodes');
-    jsav.umsg("Click to add nodes");
-    $('#nodeButton').addClass("active");
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      setup: function() {
+        cancel();
+        $("#mode").html('Adding nodes');
+      },
+      modeClass: 'addNodes',
+      message: 'Click to add nodes',
+      buttonSelector: '#nodeButton'
+    });
   };
   var addEdgesMode = function() {
-    //cancel();
-    highlight_select_button();
-    removeModeClasses();
-    removeND();
-    var jg = $(".jsavgraph");
-    jg.addClass("addEdges");
-    g.disableDragging();
-    $(".jsavgraph").addClass("addEdges");
-    $('.jsavgraph').off('mousedown').mousedown(mouseDown);
-    $('.jsavgraph').off('mousemove').mousemove(mouseMove);
-    $('.jsavgraph').off('mouseup').mouseup(mouseUp);
-    $("#mode").html('Adding edges');
-    jsav.umsg("Drag from one edge to another.");
-    $('#edgeButton').addClass("active");
-    /*highlight_select_button();
-    removeModeClasses();
-    removeND();
-    g.disableDragging();
-    $(".jsavgraph").addClass("addEdges");
-    $('.jsavgraph').off('mousedown').mousedown(mouseDown);
-    $('.jsavgraph').off('mousemove').mousemove(mouseMove);
-    $('.jsavgraph').off('mouseup').mouseup(mouseUp);
-    jsav.umsg('Drag from one node to another.');
-    $('#edgeButton').addClass("active")*/
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      setup: function() {
+        g.disableDragging();
+        $('.jsavgraph').off('mousedown').mousedown(mouseDown);
+        $('.jsavgraph').off('mousemove').mousemove(mouseMove);
+        $('.jsavgraph').off('mouseup').mouseup(mouseUp);
+        $("#mode").html('Adding edges');
+      },
+      modeClass: 'addEdges',
+      message: 'Drag from one edge to another.',
+      buttonSelector: '#edgeButton'
+    });
   };
   var moveNodesMode = function() {
     cancel();
@@ -424,44 +401,38 @@
         $('#moveButton').addClass("active");*/
   };
   var editMode = function() {
-    highlight_select_button();
-    removeModeClasses();
-    removeND();
-    cancel();
-    moveNodesMode();
-    var jg = $(".jsavgraph");
-    jg.addClass("editNodes");
-    $("#mode").html('Editing nodes and edges');
-    addEdgeSelect();
-    jsav.umsg("Click a node or edge to edit.");
-    $('#editButton').addClass("active");
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      setup: function() {
+        cancel();
+        moveNodesMode();
+        $("#mode").html('Editing nodes and edges');
+        addEdgeSelect();
+      },
+      modeClass: 'editNodes',
+      message: 'Click a node or edge to edit.',
+      buttonSelector: '#editButton'
+    });
   };
   var deleteMode = function() {
-    highlight_select_button();
-    removeModeClasses();
-    removeND();
-    cancel();
-    var jg = $(".jsavgraph");
-    jg.addClass("deleteNodes");
-    $("#mode").html('Deleting');
-    jsav.umsg("Click a node or edge to delete. Enter to confirm.");
-    $('#deleteButton').addClass("active");
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      setup: function() {
+        cancel();
+        $("#mode").html('Deleting');
+      },
+      modeClass: 'deleteNodes',
+      message: 'Click a node or edge to delete. Enter to confirm.',
+      buttonSelector: '#deleteButton'
+    });
   };
   var cancel = function() {
-    removeEdgeSelect();
+    GraphEditor.cancel(jsav, g, removeEdgeSelect);
+    // PDA-specific cleanup on top of the shared cancel.
     removeLabelMenu();
-    var jg = $(".jsavgraph");
-    jg.removeClass("working");
-    jg.removeClass("addNodes");
-    jg.removeClass("addEdges");
-    jg.removeClass("moveNodes");
-    jg.removeClass("editNodes");
-    jg.removeClass("deleteNodes");
-    jg.removeClass("convert");
-    var nodes = g.nodes();
-    for (var node = nodes.next(); node; node = nodes.next()) {
-      node.unhighlight();
-    }
+    $(".jsavgraph").removeClass("convert");
     $('#edge').hide();
     $('#editEdge').hide();
     $("#mode").html('\n');
@@ -734,8 +705,7 @@
   // Since both of them are empty, both buttons are also disabled.
   // Called whenever the user loads a new graph.
   function resetUndoButtons () {
-    document.getElementById("undoButton").disabled = true;
-    document.getElementById("redoButton").disabled = true;
+    GraphEditor.resetUndoButtons();
   };
 
   // Undoes the effects of testND and testLambda, unhighlighting all nodes and edges.
@@ -753,31 +723,7 @@
   // Disable all editing modes so that click handlers do not fire.
   // Called when the user switches editing modes, or otherwise presses a button that changes the view.
   var removeModeClasses = function() {
-    // Clear all superfluous or otherwise outdated information on the page.
-    $('.arrayPlace').empty();
-    $('#download').html('');
-    jsav.umsg('');
-    // Unselect and unhighlight any selected nodes or edges.
-    if (g.first) {
-      g.first.unhighlight();
-      g.first = null;
-    }
-    if (g.selected) {
-      g.selected.unhighlight();
-      g.selected = null;
-    }
-    if ($(".jsavgraph").hasClass("deleteNodes")) {
-      $(".jsavgraph").removeClass("deleteNodes");
-      // Return edges to normal size.
-      removeEdgeSelect();
-    }
-    else {
-      $(".jsavgraph").removeClass("addNodes");
-      $(".jsavgraph").removeClass("addEdges");
-      $(".jsavgraph").removeClass("editNodes");
-      $(".jsavgraph").removeClass("moveNodes");
-      $(".jsavgraph").removeClass("working");
-    }
+    GraphEditor.removeModeClasses(jsav, g, removeEdgeSelect);
   };
 
   function closeAv() {
@@ -790,23 +736,7 @@
   }
 
   function highlight_select_button(){
-    // Add active class to the current button (highlight it)
-    /*var header = document.getElementById("menu_options");
-    var btns = header.getElementsByClassName("icon_btn");
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function() {
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-      });
-    }*/
-    $('#undoButton').removeClass("active");
-    $('#redoButton').removeClass("active");
-    $('#deleteButton').removeClass("active");
-    $('#editButton').removeClass("active");
-    $('#nodeButton').removeClass("active");
-    $('#edgeButton').removeClass("active");
-        $('#collapseButton').removeClass("active");
+    GraphEditor.highlightSelectButton();
   }
 
 
@@ -828,16 +758,18 @@
   $('#stepByClosureButton').click(onClickTraverseClosure);
   $('#stepByStateButton').click(onClickTraverseState);
 
+  // Bound once here (not also in onLoadHandler) so a single click undoes a single step.
   $('#undoButton').click(function() {
+    highlight_select_button();
     g.undo();
-    $(".jsavgraph").click(graphClickHandler);
-    $('.jsavedgelabel').click(labelClickHandler);
+    GraphEditor.rebindClickHandlers(graphClickHandler, labelClickHandler);
   });
   $('#redoButton').click(function() {
+    highlight_select_button();
     g.redo();
-    $(".jsavgraph").click(graphClickHandler);
-    $('.jsavedgelabel').click(labelClickHandler);
+    GraphEditor.rebindClickHandlers(graphClickHandler, labelClickHandler);
   });
+  $('#savePDF').click(GraphEditor.saveCanvasAsImage);
   $('#closeAv').click(closeAv)
   $('#loadFile').on('change', load);
   $('#configurations').hide();
