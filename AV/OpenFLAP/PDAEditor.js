@@ -192,7 +192,7 @@
   var initEditEdgeInput = function(label) {
     var weights = $(label).html().split("<br>");
     // delete edge if there is only one transition and in delete mode
-    if (weights.length == 1 && g.hasClass("delete")) {
+    if (weights.length == 1 && g.hasClass("deleteNodes")) {
       g.saveFAState();
       $(label).html("");
       g.layout({layout: 'manual'});
@@ -299,7 +299,7 @@
   // handler for the nodes of the graph
   var nodeClickHandler = function(e) {  
     // editing nodes should be changed to match the interface in multitapeTest.js
-    if ($(".jsavgraph").hasClass("edit")) {
+    if ($(".jsavgraph").hasClass("editNodes")) {
       g.saveFAState();
       g.selected = this;
       g.selected.highlight();
@@ -315,14 +315,14 @@
       jsav.umsg('Drag to Move.');
         $('#moveButton').addClass("active");*/
     }
-    else if ($('.jsavgraph').hasClass('delete')) {
+    else if ($('.jsavgraph').hasClass('deleteNodes')) {
       g.removeNode(this);
     }
   };
 
   // handler for the edges of the graph
   var edgeClickHandler = function(e) {
-    if ($('.jsavgraph').hasClass('edit')) {
+    if ($('.jsavgraph').hasClass('editNodes')) {
       this.highlight();
       var input = confirm("Delete edge?");
       if (input === null) {
@@ -430,7 +430,7 @@
     cancel();
     moveNodesMode();
     var jg = $(".jsavgraph");
-    jg.addClass("edit");
+    jg.addClass("editNodes");
     $("#mode").html('Editing nodes and edges');
     addEdgeSelect();
     jsav.umsg("Click a node or edge to edit.");
@@ -442,7 +442,7 @@
     removeND();
     cancel();
     var jg = $(".jsavgraph");
-    jg.addClass("delete");
+    jg.addClass("deleteNodes");
     $("#mode").html('Deleting');
     jsav.umsg("Click a node or edge to delete. Enter to confirm.");
     $('#deleteButton').addClass("active");
@@ -455,8 +455,8 @@
     jg.removeClass("addNodes");
     jg.removeClass("addEdges");
     jg.removeClass("moveNodes");
-    jg.removeClass("edit");
-    jg.removeClass("delete");
+    jg.removeClass("editNodes");
+    jg.removeClass("deleteNodes");
     jg.removeClass("convert");
     var nodes = g.nodes();
     for (var node = nodes.next(); node; node = nodes.next()) {
@@ -599,36 +599,6 @@
   var willAccept = function(graph, input) {
     return graph.traverseOneInput(input)
   }
-
-  // Disable all editing modes so that click handlers do not fire.
-  // Called when the user switches editing modes, or otherwise presses a button that changes the view.
-  var removeModeClasses = function() {
-    // Clear all superfluous or otherwise outdated information on the page.
-    //$('.arrayPlace').empty();
-    //$('#download').html('');
-    jsav.umsg('');
-    // Unselect and unhighlight any selected nodes or edges.
-    if (g.first) {
-      g.first.unhighlight();
-      g.first = null;
-    }
-    if (g.selected) {
-      g.selected.unhighlight();
-      g.selected = null;
-    }
-    if ($(".jsavgraph").hasClass("deleteNodes")) {
-      $(".jsavgraph").removeClass("deleteNodes");
-      // Return edges to normal size.
-      collapseEdges();
-    }
-    else {
-      $(".jsavgraph").removeClass("addNodes");
-      $(".jsavgraph").removeClass("addEdges");
-      $(".jsavgraph").removeClass("editNodes");
-      $(".jsavgraph").removeClass("moveNodes");
-      $(".jsavgraph").removeClass("working");
-    }
-  };
 
   /**
    * Function to download the diagram as an xml file with a dialog box for entering file the file name.
@@ -799,7 +769,7 @@
     if ($(".jsavgraph").hasClass("deleteNodes")) {
       $(".jsavgraph").removeClass("deleteNodes");
       // Return edges to normal size.
-      collapseEdges();
+      removeEdgeSelect();
     }
     else {
       $(".jsavgraph").removeClass("addNodes");
