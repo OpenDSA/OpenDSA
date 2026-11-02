@@ -1,5 +1,5 @@
 var lambda = String.fromCharCode(955);
-function Node (l, t, i, f, label, moutput) {
+function SerializableNode (l, t, i, f, label, moutput) {
 	this.left = l;
 	this.top = t;
 	this.i = i;
@@ -30,7 +30,7 @@ function serialize(g) {
 		var f = next.hasClass("final");
 		var label = next.stateLabel();
 		var moutput = lambdafyMoore(next.mooreOutput());
-		var node = new Node(left, top, i, f, label, moutput);
+		var node = new SerializableNode(left, top, i, f, label, moutput);
 		nodes[ind] = node;
 		ind++;
 	}
