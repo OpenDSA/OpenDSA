@@ -66,12 +66,10 @@
       "CS3slides/AlgAnal": {}
     },
     "Week 3": {
-      "CS3slides/Lists": {},
-      "CS3slides/Binary": {}
+      "CS3slides/Lists": {}
     },
     "Week 4": {
-      "CS3slides/Binary2": {},
-      "CS3slides/Binary3": {}
+      "CS3slides/Binary": {}
     },
     "Week 5": {
       "CS3slides/Heaps": {}
@@ -99,7 +97,8 @@
       "CS3slides/Graphs": {}
     },
     "Week 13": {
-      "CS3slides/Indexing": {}
+      "CS3slides/LinearIndex": {},
+      "CS3slides/TreeIndex": {}
     },
     "Week 14": {
       "CS3slides/General": {}
