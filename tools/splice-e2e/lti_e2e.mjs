@@ -116,11 +116,14 @@ try {
   const first = await launchAndWait('launch 1');
   if (!first || !first.ready) throw new Error('the KA exercise never became ready (is the launch page fresh? rerun rake splice_e2e:launch)');
 
-  // Answer (first choice, or 0) and check it
+  // Answer (first choice, or 0; in a JSAV exercise, click the first value)
+  // and check it
   await evaluate(`(() => {
     const d = document.getElementById('${EXERCISE}_iframe').contentDocument;
     const input = d.querySelector('#solutionarea input, #answerform input, #workarea textarea, #solutionarea textarea');
+    const jsavValue = d.querySelector('#workarea .jsavvalue');
     if (input && input.type === 'radio') input.checked = true; else if (input && input.value === '') input.value = '0';
+    if (jsavValue) jsavValue.click();
     d.getElementById('check-answer-button').click();
   })()`);
   await sleep(4000);

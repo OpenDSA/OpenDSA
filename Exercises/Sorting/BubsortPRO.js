@@ -19,7 +19,7 @@
       answerArr.length = 0; // Out with the old
       // Give random numbers in range 0..999
       for (i = 0; i < arr_size; i++) {
-        answerArr[i] = Math.floor(Math.random() * 1000);
+        answerArr[i] = Khan.randRange(0, 999);
       }
       cloneArr = answerArr.slice(0);      // Now make a copy
 

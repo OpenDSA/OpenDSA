@@ -19,9 +19,9 @@
       var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"];
 
       // Get color for right and level 1 nodes.
-      var color_root = Math.floor((Math.random() * 100) % colors.length);
-      var color_right = Math.floor((Math.random() * 100) % colors.length);
-      var color_left = Math.floor((Math.random() * 100) % colors.length);
+      var color_root = Khan.randRange(0, colors.length - 1);
+      var color_right = Khan.randRange(0, colors.length - 1);
+      var color_left = Khan.randRange(0, colors.length - 1);
 
       // Create tree.
       bst.root("").css({"background-color": colors[color_root]});
@@ -36,7 +36,7 @@
       bst.layout();
 
       // Pick bottom layer node to be the chosen one at random.
-      var chosen_index = Math.floor((Math.random() * 100) % bottom_layer.length);
+      var chosen_index = Khan.randRange(0, bottom_layer.length - 1);
       var chosen_node = bottom_layer[chosen_index];
 
       // Give the chosen node a grey glow to indicate that is has being selected.
@@ -95,11 +95,11 @@
     if (level <= max_level) {
       var color_index;
       // Determine if left node will be created.
-      if (Math.random() > probability_threshold) {
+      if (KhanUtil.random() > probability_threshold) {
         // Create new node.
         var new_left = root.left("");
         // Determine node background color.
-        color_index = Math.floor((Math.random() * 100) % colors.length);
+        color_index = Khan.randRange(0, colors.length - 1);
         new_left.css({"background-color": colors[color_index]});
         // Give node chosen property
         new_left.is_chosen = false;
@@ -111,11 +111,11 @@
       }
 
       // Determine if right node will be created.
-      if (Math.random() > probability_threshold) {
+      if (KhanUtil.random() > probability_threshold) {
         // Determine if left node will be created.
         var new_right = root.right("");
         // Determine node background color.
-        color_index = Math.floor((Math.random() * 100) % colors.length);
+        color_index = Khan.randRange(0, colors.length - 1);
         new_right.css({"background-color": colors[color_index]});
         // Give node chosen property
         new_right.is_chosen = false;

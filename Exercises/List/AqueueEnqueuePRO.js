@@ -121,7 +121,7 @@
       // Copy in data, but only if the queue is not empty
       if (((rear + 1) % maxSize) !== front) {
         while (frontIndex !== ((rear + 1) % maxSize)) {
-          answerArr[frontIndex] = Math.floor(Math.random() * 1000);
+          answerArr[frontIndex] = Khan.randRange(0, 999);
           frontIndex = (frontIndex + 1) % maxSize;
         }
       }

@@ -4,7 +4,11 @@
   var hashFuncSfold = {
     // Generate a key
     genKey: function(len) {
-      return Math.random().toString(36).substring(2, len + 2);
+      var key = "";
+      while (key.length < len) {
+        key += Khan.randRange(0, 35).toString(36);
+      }
+      return key;
     },
 
     // Return the computed Answer

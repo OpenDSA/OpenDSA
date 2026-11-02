@@ -15,7 +15,7 @@
       answerArr.length = 0; // Out with the old
       // Give random numbers in range 0..999
       for (i = 0; i < arrSize; i++) {
-        answerArr[i] = Math.floor(Math.random() * 1000);
+        answerArr[i] = Khan.randRange(0, 999);
       }
 
       // Do a partial selection sort to set things up
