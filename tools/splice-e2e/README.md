@@ -58,6 +58,7 @@ student (`example-2` to `example-51`), for a clean progress record.
 
 - `SpliceRelayTest.json`: the test book (KA `MisSumm` in
   `AlgAnal/AnalMisunderstanding`, a summary exercise; KA `CompareGrowth` in
-  `AlgAnal/AnalIntro`, a single exercise; plus `SimpleDemo/Tour`)
+  `AlgAnal/AnalIntro`, a single exercise; KA `LlistInsertPRO` in
+  `List/ListLinked`, a JSAV exercise; plus `SimpleDemo/Tour`)
 - `lti_e2e.mjs`: the headless Chrome driver
 - The rake tasks live in OpenDSA-LTI: `lib/tasks/splice_e2e.rake` (development only)

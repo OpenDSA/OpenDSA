@@ -54,9 +54,9 @@
       var indices = [],
           i,
           ilength = 1;
-      if (type === 0) { ilength = Math.floor(Math.random() * 3) + 1; }
+      if (type === 0) { ilength = Khan.randRange(1, 3); }
       for (i = 0; i < ilength; i++) {
-        indices[i] = Math.floor(Math.random() * 8);
+        indices[i] = Khan.randRange(0, 7);
       }
       return indices;
     },
