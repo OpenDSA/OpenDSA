@@ -34,6 +34,24 @@ div.figure p.caption {
     font-size: 0.5em;
 }
 
+div.figure p.caption.align-center {
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+div.figure p.caption.align-right {
+    left: auto;
+    right: 0;
+    text-align: right;
+}
+
+div.figure p.caption.align-left {
+    left: 0;
+    right: auto;
+    text-align: left;
+}
+
 .slide-no {
     position: absolute;
     bottom: 1ex;

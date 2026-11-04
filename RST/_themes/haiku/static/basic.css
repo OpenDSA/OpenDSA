@@ -204,6 +204,30 @@ div.body p.caption {
     text-align: inherit;
 }
 
+div.body p.caption.align-left,
+p.caption.align-left,
+figure.align-left figcaption {
+    text-align: left;
+}
+
+div.body p.caption.align-center,
+p.caption.align-center,
+figure.align-center figcaption {
+    text-align: center;
+}
+
+div.body p.caption.align-right,
+p.caption.align-right,
+figure.align-right figcaption {
+    text-align: right;
+}
+
+div.body p.caption.align-justify,
+p.caption.align-justify,
+figure.align-justify figcaption {
+    text-align: justify;
+}
+
 div.body td {
     text-align: left;
 }
