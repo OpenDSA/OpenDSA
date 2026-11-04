@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "pifla-anbn",
+  "title": "Derive aaabbb",
+  "prompt": "Starting from S, derive aaabbb by selecting a nonterminal and applying a production. Finish with exactly aaabbb and no nonterminals remaining.",
+  "source": "PIFLA: Context-Free Grammars Part 1 — String Derivation",
+  "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PIFLA/html/CFG1.html#string-derivation",
+  "startSymbol": "S",
+  "rules": [
+    [
+      "S",
+      "aSb"
+    ],
+    [
+      "S",
+      "ab"
+    ]
+  ],
+  "target": "aaabbb",
+  "leftmost": false,
+  "passRate": 1,
+  "reference": [
+    {
+      "production": 1,
+      "position": 1
+    },
+    {
+      "production": 1,
+      "position": 2
+    },
+    {
+      "production": 2,
+      "position": 3
+    }
+  ]
+}
