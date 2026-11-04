@@ -442,6 +442,232 @@ var GraphEditor = (function ($) {
     });
   }
 
+  // Reads every node's current position/size (raw CSS, independent of any
+  // zoom transform - see createZoomPan's screenToLocal comments for why
+  // that distinction matters), as parallel arrays so the rects can be
+  // handed to transformNodeRects and the results matched back up to their
+  // node by array index.
+  function getNodeRects(g) {
+    var nodeList = [], rects = [], nodes = g.nodes();
+    for (var node = nodes.next(); node; node = nodes.next()) {
+      nodeList.push(node);
+      rects.push({
+        left: parseFloat(node.element.css('left')) || 0,
+        top: parseFloat(node.element.css('top')) || 0,
+        width: node.element.outerWidth(),
+        height: node.element.outerHeight()
+      });
+    }
+    return { nodes: nodeList, rects: rects };
+  }
+
+  // Wires the View menu's layout items (any that exist on the page) to the
+  // layout algorithms and rigid transforms, plus Save/Restore Layout.
+  // options: {
+  //   jsav,
+  //   getGraph: function() returning the current graph (editors replace
+  //     their graph on load, so it's looked up at click time),
+  //   removeModeClassesFn, removeTestHighlightsFn: each editor's own
+  // }
+  function attachLayoutMenu(options) {
+    var jsav = options.jsav, getGraph = options.getGraph;
+    function run(algorithmFn) {
+      applyLayout(getGraph(), algorithmFn, options.removeModeClassesFn, options.removeTestHighlightsFn);
+    }
+
+    // Applies a rigid group transform (flip/rotate/fill-screen) to every
+    // node's position at once. One undo step for the whole operation.
+    function transformLayout(transformName) {
+      var g = getGraph();
+      g.saveFAState();
+      var nodeRects = getNodeRects(g),
+        targetSize = { width: g.element.width(), height: g.element.height() },
+        newPositions = transformNodeRects(nodeRects.rects, transformName, targetSize);
+      for (var i = 0; i < nodeRects.nodes.length; i++) {
+        nodeRects.nodes[i].element.css({ left: newPositions[i].left, top: newPositions[i].top });
+        nodeRects.nodes[i].stateLabelPositionUpdate();
+      }
+      g.updateEdgePositions();
+    }
+
+    // Bookmarks the current node positions (keyed by each node's own stable
+    // id, not its editable state name) so they can be restored later even if
+    // labels/structure change in the meantime - narrower than the regular
+    // undo stack, which would also revert those other edits.
+    var layoutSnapshot = null;
+    function saveLayout() {
+      layoutSnapshot = {};
+      var nodes = getGraph().nodes();
+      for (var node = nodes.next(); node; node = nodes.next()) {
+        layoutSnapshot[node.id()] = {
+          left: parseFloat(node.element.css('left')) || 0,
+          top: parseFloat(node.element.css('top')) || 0
+        };
+      }
+      jsav.umsg('Layout saved.');
+    }
+    function restoreLayout() {
+      if (!layoutSnapshot) {
+        jsav.umsg('No saved layout yet.');
+        return;
+      }
+      var g = getGraph();
+      g.saveFAState();
+      var nodes = g.nodes();
+      for (var node = nodes.next(); node; node = nodes.next()) {
+        var pos = layoutSnapshot[node.id()];
+        if (pos) {
+          node.element.css({ left: pos.left, top: pos.top });
+          node.stateLabelPositionUpdate();
+        }
+      }
+      g.updateEdgePositions();
+      jsav.umsg('Layout restored.');
+    }
+
+    var algorithms = {
+      '#layoutButton': function(g) { g.layout(); },
+      '#circleButton': function(g) { g.circleLayoutAlg(); },
+      '#gemButton': function(g) { g.gemLayoutAlg(); },
+      '#spiralButton': function(g) { g.spiralLayoutAlg(); },
+      '#treeDegreeButton': function(g) { g.treeLayoutAlg(false); },
+      '#treeHieButton': function(g) { g.treeLayoutAlg(true); },
+      '#twoCircleButton': function(g) { g.twoCircleLayoutAlg(); },
+      '#randomButton': function(g) { g.randomLayoutAlg(); }
+    };
+    Object.keys(algorithms).forEach(function(selector) {
+      $(selector).click(function() { run(algorithms[selector]); });
+    });
+    ['flipHorizontal', 'flipVertical', 'rotate90', 'fillScreen'].forEach(function(name) {
+      $('#' + name + 'Button').click(function() { run(function() { transformLayout(name); }); });
+    });
+    $('#saveLayoutButton').click(saveLayout);
+    $('#restoreLayoutButton').click(restoreLayout);
+  }
+
+  // Wires the zoom toolbar (#zoomInButton, #zoomOutButton, #zoomResetButton,
+  // #zoomLevelDisplay) and scroll-wheel zoom on .jsavcanvas to a controller
+  // from createZoomPan.
+  function attachZoomControls(zoomPan) {
+    function updateZoomDisplay() {
+      $('#zoomLevelDisplay').text(Math.round(zoomPan.getZoom() * 100) + '%');
+    }
+    function zoomAroundCanvasCenter(factor) {
+      var canvasOffset = $('.jsavcanvas').offset();
+      zoomPan.setZoom(zoomPan.getZoom() * factor,
+        canvasOffset.left + $('.jsavcanvas').width() / 2,
+        canvasOffset.top + $('.jsavcanvas').height() / 2);
+      updateZoomDisplay();
+    }
+    $('#zoomInButton').click(function() { zoomAroundCanvasCenter(1.2); });
+    $('#zoomOutButton').click(function() { zoomAroundCanvasCenter(1 / 1.2); });
+    $('#zoomResetButton').click(function() { zoomPan.reset(); updateZoomDisplay(); });
+
+    // Scroll/trackpad wheel zooms, centered on the cursor. Bound natively
+    // (not via jQuery) with { passive: false } so preventDefault() reliably
+    // stops the page itself from scrolling.
+    var zoomCanvasEl = document.querySelector('.jsavcanvas');
+    if (zoomCanvasEl) {
+      zoomCanvasEl.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        zoomPan.setZoom(zoomPan.getZoom() * (e.deltaY > 0 ? 0.9 : 1.1), e.pageX, e.pageY);
+        updateZoomDisplay();
+      }, { passive: false });
+    }
+  }
+
+  // Starting a drag on empty canvas background (not on a node/edge/label)
+  // either pans the view, or - in "Edit Nodes" mode specifically - draws a
+  // rubber-band selection rectangle instead. Bound to .jsavcanvas (the
+  // stable viewport, not .jsavgraph) since editors repeatedly clear/rebind
+  // .jsavgraph's own mousedown/mousemove/mouseup for edge-drawing.
+  // g.selectedNodes holds the current rubber-band selection (separate from
+  // g.selected, the single-node reference used by edit/delete click
+  // handling, which stays untouched).
+  // options: { zoomPan, getGraph, allowPan (default true) }
+  // Returns { consumeSuppressedClick, clearSelection }: the editor's canvas
+  // click handler should return early when consumeSuppressedClick() is true,
+  // since that click just ended a pan/selection drag rather than being a
+  // real click.
+  function attachPanAndSelect(options) {
+    var zoomPan = options.zoomPan, getGraph = options.getGraph,
+      allowPan = options.allowPan !== false;
+    var suppressNextClick = false;
+    var panning = false, panStartX, panStartY, panMoved = false;
+    var selecting = false, selectStartX, selectStartY, selectMoved = false;
+    var DRAG_THRESHOLD = 4; // px of movement before this counts as a drag, not a click
+    var rubberBand = createRubberBandSelector('.jsavcanvas');
+
+    function clearSelection() {
+      var g = getGraph();
+      if (g.selectedNodes) {
+        for (var i = 0; i < g.selectedNodes.length; i++) { g.selectedNodes[i].unhighlight(); }
+      }
+      g.selectedNodes = [];
+    }
+    function setSelectedNodes(nodes) {
+      clearSelection();
+      getGraph().selectedNodes = nodes;
+      for (var i = 0; i < nodes.length; i++) { nodes[i].highlight(); }
+    }
+
+    $('.jsavcanvas').on('mousedown', function(e) {
+      if ($(e.target).closest('.jsavnode, .jsavedge, .jsavedgelabel, .jsavgraphnode').length) { return; }
+      if ($('.jsavgraph').hasClass('editNodes')) {
+        selecting = true;
+        selectMoved = false;
+        selectStartX = e.pageX;
+        selectStartY = e.pageY;
+        rubberBand.start();
+      } else if (allowPan) {
+        panning = true;
+        panMoved = false;
+        panStartX = e.pageX;
+        panStartY = e.pageY;
+      }
+    });
+    $(document).on('mousemove', function(e) {
+      if (panning) {
+        var dx = e.pageX - panStartX, dy = e.pageY - panStartY;
+        if (!panMoved && Math.abs(dx) < DRAG_THRESHOLD && Math.abs(dy) < DRAG_THRESHOLD) { return; }
+        panMoved = true;
+        zoomPan.panBy(dx, dy);
+        panStartX = e.pageX;
+        panStartY = e.pageY;
+      } else if (selecting) {
+        var dx2 = e.pageX - selectStartX, dy2 = e.pageY - selectStartY;
+        if (!selectMoved && Math.abs(dx2) < DRAG_THRESHOLD && Math.abs(dy2) < DRAG_THRESHOLD) { return; }
+        selectMoved = true;
+        rubberBand.update(selectStartX, selectStartY, e.pageX, e.pageY);
+      }
+    });
+    $(document).on('mouseup', function(e) {
+      if (panning) {
+        if (panMoved) { suppressNextClick = true; }
+        panning = false;
+      } else if (selecting) {
+        if (selectMoved) {
+          var bounds = rubberBand.update(selectStartX, selectStartY, e.pageX, e.pageY);
+          var matched = rubberBand.elementsWithin(bounds, $('.jsavgraphnode'));
+          setSelectedNodes(matched.map(function(el) { return $(el).data('node'); }).filter(Boolean));
+          suppressNextClick = true;
+        } else {
+          clearSelection();
+        }
+        rubberBand.end();
+        selecting = false;
+      }
+    });
+
+    return {
+      consumeSuppressedClick: function() {
+        if (suppressNextClick) { suppressNextClick = false; return true; }
+        return false;
+      },
+      clearSelection: clearSelection
+    };
+  }
+
   return {
     removeModeClasses: removeModeClasses,
     cancel: cancel,
@@ -459,6 +685,10 @@ var GraphEditor = (function ($) {
     rebindClickHandlers: rebindClickHandlers,
     createZoomPan: createZoomPan,
     createRubberBandSelector: createRubberBandSelector,
-    transformNodeRects: transformNodeRects
+    transformNodeRects: transformNodeRects,
+    getNodeRects: getNodeRects,
+    attachLayoutMenu: attachLayoutMenu,
+    attachZoomControls: attachZoomControls,
+    attachPanAndSelect: attachPanAndSelect
   };
 })(jQuery);

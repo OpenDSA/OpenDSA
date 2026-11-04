@@ -20,7 +20,12 @@
     exerciseIndex,//for creating exercises
     type,//type of editor: fixer, tester or editor
     fatoreController,
-    exerController;
+    exerController,
+    canvasControls, // pan + rubber-band select, set up at the bottom via GraphEditor.attachPanAndSelect
+    // The edges/preview-line SVG is a sibling of .jsavgraph (not a child
+    // of it), so it needs the same transform applied explicitly to stay
+    // visually in sync - see alsoTransform in GraphEditor.createZoomPan.
+    zoomPan = GraphEditor.createZoomPan('.jsavgraph', { minZoom: 0.25, maxZoom: 3, alsoTransform: '.jsavcanvas > svg' });
     var stepBy = '';
     var emptyStackCheckbox =  document.createElement("input");
     var emptyStackLabel = document.createElement("label");
@@ -267,13 +272,13 @@
 
   // handler for the graph window
   var graphClickHandler = function(e) {
+    if (canvasControls.consumeSuppressedClick()) { return; } // this click ended a pan/selection drag, not a real click
     if ($(".jsavgraph").hasClass("addNodes")) {
       g.saveFAState();
-      var newNode = g.addNode(),
-          nodeX = newNode.element.width()/2.0,
-        nodeY = newNode.element.height()/2.0;
-      $(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
-    } 
+      // zoom-aware: converts the click into the canvas's own coordinates
+      var local = zoomPan.screenToLocal(e.pageX, e.pageY);
+      executeAddNode(g, local.y, local.x);
+    }
   };
 
   function updateNode(wasInitialState, initial_state, wasFinalState, final_state, node_label) {
@@ -625,10 +630,12 @@
     var node = $(e.target);
     g.first = g.getNodeWithValue(node.text());
     g.first.highlight();
-    offset = $('.jsavgraph').offset(),
-    offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
-    startX = e.pageX - 15; 
-    startY = e.pageY - offset.top + offset2 - 5;
+    // The preview line is drawn on the edges' SVG, which has a different
+    // local origin than node top/left positions - screenToDrawingLocal
+    // (not screenToLocal) is the correct, zoom-aware conversion for it.
+    var local = zoomPan.screenToDrawingLocal(e.pageX, e.pageY);
+    startX = local.x;
+    startY = local.y;
   }
 
   function mouseUp(e) {
@@ -647,10 +654,18 @@
     initEdgeInput();
   }
 
+  // Page-coordinate center of a node as drawn (accounts for zoom/pan).
+  function nodeScreenCenter(node) {
+    var r = node.element[0].getBoundingClientRect();
+    return { x: r.left + window.scrollX + r.width / 2, y: r.top + window.scrollY + r.height / 2 };
+  }
+
   function initEdgeInput() {
-    // draw the edge input box at correct position
+    // Draw the edge input box centered above the midpoint between the two
+    // states. Measured from the states themselves rather than the preview
+    // line, so it works at any zoom and when the line was never drawn
+    // (a single click on a state, which makes a self-loop).
     var path = $('path[opacity="1.5"]');
-    var box = path[0].getBBox();
     var edgeInput = $('#edge');
     var rows = $('#edge > table > tr');
     for (var i = 1; i < rows.length; i++) {
@@ -660,9 +675,11 @@
     $('#pop').val(lambda);
     $('#push').val(lambda);
     edgeInput.show();
-    var leftOffset = 15 + box.x + box.width / 2;
-    var topOffset = box.y + box.height / 2 + $('.jsavgraph').offset().top - 5;
-    edgeInput.css({left: leftOffset, top: topOffset});
+    var from = nodeScreenCenter(g.first), to = nodeScreenCenter(g.selected);
+    edgeInput.offset({
+      left: (from.x + to.x) / 2 - edgeInput.outerWidth() / 2,
+      top: (from.y + to.y) / 2 - 14
+    });
     path.remove();
     first = g.first;
     g.first = null;
@@ -695,8 +712,9 @@
 
   function mouseMove(e) {
     if (!g.first) return;
-    endX = e.pageX - 15;
-    endY = e.pageY - offset.top + offset2 - 5;
+    var local = zoomPan.screenToDrawingLocal(e.pageX, e.pageY);
+    endX = local.x;
+    endY = local.y;
     $('path[opacity="1.5"]').remove();
     jsav.g.line(startX, startY, endX, endY, {"opacity": 1.5});
   }
@@ -740,7 +758,6 @@
   }
 
 
-  $('#layoutbutton').click(function() {g.layout()});
   $('#testNDbutton').click(toggleND);
   $('#testlambdabutton').click(toggleLambda);
   $('#cancelButton').click(cancel);
@@ -780,6 +797,49 @@
   $('#closeAv').hide();
 
   onLoadHandler();
+
+  // Everything below needs the JSAV canvas, which onLoadHandler creates.
+  // View menu layout items (generic - see GraphEditor.js). This replaces a
+  // binding to '#layoutbutton', which never matched the menu's '#layoutButton'.
+  GraphEditor.attachLayoutMenu({
+    jsav: jsav,
+    getGraph: function() { return g; },
+    removeModeClassesFn: removeModeClasses,
+    removeTestHighlightsFn: removeND
+  });
+
+  // --- Zoom / pan / rubber-band select (generic - see GraphEditor.js) ---
+  // Zoom and pan are only turned on where the page has the zoom toolbar
+  // (and so a way to reset the view); box-select works everywhere.
+  var hasZoomControls = $('#zoomInButton').length > 0;
+  if (hasZoomControls) { GraphEditor.attachZoomControls(zoomPan); }
+  canvasControls = GraphEditor.attachPanAndSelect({ zoomPan: zoomPan, getGraph: function() { return g; }, allowPan: hasZoomControls });
+
+  function deleteSelectedNodes() {
+    if (!g.selectedNodes || !g.selectedNodes.length) { return; }
+    g.saveFAState();
+    var nodes = g.selectedNodes;
+    canvasControls.clearSelection();
+    for (var i = 0; i < nodes.length; i++) { executeDeleteNode(g, nodes[i]); }
+  }
+
+  // Keyboard shortcuts - same keys as the FA editor.
+  GraphEditor.registerKeybindings([
+    { test: function(e) { return e.key === 'Escape'; }, action: cancel },
+    { test: function(e) { return (e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'z'; },
+      action: function() { GraphEditor.clickButtonUnlessDisabled('#undoButton'); } },
+    { test: function(e) { return (e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 'y' || (e.shiftKey && e.key.toLowerCase() === 'z')); },
+      action: function() { GraphEditor.clickButtonUnlessDisabled('#redoButton'); } },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 'a'; }, action: editMode },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 's'; }, action: addNodesMode },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 't'; }, action: addEdgesMode },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 'd'; }, action: deleteMode },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 'u'; },
+      action: function() { GraphEditor.clickButtonUnlessDisabled('#undoButton'); } },
+    { test: function(e) { return (e.key === 'Delete' || e.key === 'Backspace') && g.selectedNodes && g.selectedNodes.length > 0; },
+      action: deleteSelectedNodes }
+  ]);
+
   // Standalone editors do not load the optional Canvas progress helpers.
   if (typeof window.inCanvas === "function" && window.inCanvas()) {
     initGraphFromServer();

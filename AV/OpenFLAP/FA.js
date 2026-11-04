@@ -16,7 +16,7 @@ var exerciseLocation;
       type,//type of editor: fixer, tester or editor
       fatoreController,
       exerController,
-      wasPanning = false, // true for one click right after a canvas drag-to-pan, so that click doesn't also add a node
+      canvasControls, // pan + rubber-band select, set up at the bottom via GraphEditor.attachPanAndSelect
       // The edges/preview-line SVG is a sibling of .jsavgraph (not a child
       // of it), so it needs the same transform applied explicitly to stay
       // visually in sync - see alsoTransform in GraphEditor.createZoomPan.
@@ -194,7 +194,7 @@ var exerciseLocation;
   // Sets click handlers for when the user clicks on the JSAV graph.
   // Closing an open right-click menu, and mode-dispatch on click
   var graphClickHandler = function(e) {
-    if (wasPanning) { wasPanning = false; return; } // this click ended a drag-to-pan, not a real click
+    if (canvasControls.consumeSuppressedClick()) { return; } // this click ended a pan/selection drag, not a real click
     if (GraphEditor.closeContextMenuIfOpen(g)) { return; }
     GraphEditor.dispatchModeClick({
       addNodes: function() {
@@ -634,123 +634,14 @@ var exerciseLocation;
     }
   };
 
-  // Saves the graph, then reconfigures the layout automatically.
-  // Triggered by clicking the "Layout" button.
-  // Applying a layout algorithm is generic across all graph editors - see GraphEditor.js.
-  var layoutGraph = function() {
-    GraphEditor.applyLayout(g, function(g) { g.layout(); }, removeModeClasses, removeND);
-  };
-  //Apply a random layout algorithm to the graph
-  var randomLayout = function() {
-    GraphEditor.applyLayout(g, function(g) { g.randomLayoutAlg(); }, removeModeClasses, removeND);
-  };
-  // Triggered by clicking the "Circle" button.
-  var circleLayout = function() {
-    GraphEditor.applyLayout(g, function(g) { g.circleLayoutAlg(); }, removeModeClasses, removeND);
-  };
-  // Triggered by clicking the "GEM" button.
-  var gemLayout = function() {
-    GraphEditor.applyLayout(g, function(g) { g.gemLayoutAlg(); }, removeModeClasses, removeND);
-  };
-
-  // Triggered by clicking the "Spiral" button.
-  var spiralLayout = function() {
-    GraphEditor.applyLayout(g, function(g) { g.spiralLayoutAlg(); }, removeModeClasses, removeND);
-  };
+  // View menu layout items (algorithms, flip/rotate/fill, save/restore) are
+  // generic across all graph editors - wired up at the bottom via
+  // GraphEditor.attachLayoutMenu.
 
   // Exit out of all editing modes and prepare the view for the input string JSAV array.
   var readyTraversal = function() {
     removeModeClasses();
     jsav.umsg('Click on an input to trace its traversal.');
-  };
-
-  var twoCircleLayout = function() {
-    GraphEditor.applyLayout(g, function(g) { g.twoCircleLayoutAlg(); }, removeModeClasses, removeND);
-  };
-  var treeLayoutDegree = function() {
-    GraphEditor.applyLayout(g, function(g) { g.treeLayoutAlg(false); }, removeModeClasses, removeND);
-  };
-  var treeLayoutHierarchy = function() {
-    GraphEditor.applyLayout(g, function(g) { g.treeLayoutAlg(true); }, removeModeClasses, removeND);
-  };
-
-  // Reads every node's current position/size (raw CSS, independent of any
-  // zoom transform - see GraphEditor.createZoomPan's screenToLocal comments
-  // for why that distinction matters), as parallel arrays so the rects can
-  // be handed to GraphEditor.transformNodeRects and the results matched
-  // back up to their node by array index.
-  function getNodeRects(automaton) {
-    var nodeList = [], rects = [], nodes = automaton.nodes();
-    for (var node = nodes.next(); node; node = nodes.next()) {
-      nodeList.push(node);
-      rects.push({
-        left: parseFloat(node.element.css('left')) || 0,
-        top: parseFloat(node.element.css('top')) || 0,
-        width: node.element.outerWidth(),
-        height: node.element.outerHeight()
-      });
-    }
-    return { nodes: nodeList, rects: rects };
-  }
-
-  // Applies a rigid group transform (flip/rotate/fill-screen) to every
-  // node's position at once. One undo step for the whole operation.
-  function transformLayout(transformName) {
-    g.saveFAState();
-    var nodeRects = getNodeRects(g),
-      targetSize = { width: g.element.width(), height: g.element.height() },
-      newPositions = GraphEditor.transformNodeRects(nodeRects.rects, transformName, targetSize);
-    for (var i = 0; i < nodeRects.nodes.length; i++) {
-      nodeRects.nodes[i].element.css({ left: newPositions[i].left, top: newPositions[i].top });
-      nodeRects.nodes[i].stateLabelPositionUpdate();
-    }
-    g.updateEdgePositions();
-  }
-  var flipHorizontal = function() {
-    GraphEditor.applyLayout(g, function() { transformLayout('flipHorizontal'); }, removeModeClasses, removeND);
-  };
-  var flipVertical = function() {
-    GraphEditor.applyLayout(g, function() { transformLayout('flipVertical'); }, removeModeClasses, removeND);
-  };
-  var rotate90 = function() {
-    GraphEditor.applyLayout(g, function() { transformLayout('rotate90'); }, removeModeClasses, removeND);
-  };
-  var fillScreen = function() {
-    GraphEditor.applyLayout(g, function() { transformLayout('fillScreen'); }, removeModeClasses, removeND);
-  };
-
-  // Bookmarks the current node positions (keyed by each node's own stable
-  // id, not its editable state name) so they can be restored later even if
-  // labels/structure change in the meantime - narrower than the regular
-  // undo stack, which would also revert those other edits.
-  var layoutSnapshot = null;
-  var saveLayout = function() {
-    layoutSnapshot = {};
-    var nodes = g.nodes();
-    for (var node = nodes.next(); node; node = nodes.next()) {
-      layoutSnapshot[node.id()] = {
-        left: parseFloat(node.element.css('left')) || 0,
-        top: parseFloat(node.element.css('top')) || 0
-      };
-    }
-    jsav.umsg('Layout saved.');
-  };
-  var restoreLayout = function() {
-    if (!layoutSnapshot) {
-      jsav.umsg('No saved layout yet.');
-      return;
-    }
-    g.saveFAState();
-    var nodes = g.nodes();
-    for (var node = nodes.next(); node; node = nodes.next()) {
-      var pos = layoutSnapshot[node.id()];
-      if (pos) {
-        node.element.css({ left: pos.left, top: pos.top });
-        node.stateLabelPositionUpdate();
-      }
-    }
-    g.updateEdgePositions();
-    jsav.umsg('Layout restored.');
   };
 
   // Exit out of all editing modes and prepare the view for the input string JSAV array.
@@ -1414,20 +1305,12 @@ var exerciseLocation;
   $('#moveButton').click(moveNodes);
   $('#editButton').click(editNodes);
   $('#deleteButton').click(deleteNodes);
-  $('#layoutButton').click(layoutGraph);
-  $('#circleButton').click(circleLayout);
-  $('#gemButton').click(gemLayout);
-  $('#spiralButton').click(spiralLayout);
-  $('#treeDegreeButton').click(treeLayoutDegree);
-  $('#treeHieButton').click(treeLayoutHierarchy);
-  $('#twoCircleButton').click(twoCircleLayout);
-  $('#randomButton').click(randomLayout);
-  $('#flipHorizontalButton').click(flipHorizontal);
-  $('#flipVerticalButton').click(flipVertical);
-  $('#rotate90Button').click(rotate90);
-  $('#fillScreenButton').click(fillScreen);
-  $('#saveLayoutButton').click(saveLayout);
-  $('#restoreLayoutButton').click(restoreLayout);
+  GraphEditor.attachLayoutMenu({
+    jsav: jsav,
+    getGraph: function() { return g; },
+    removeModeClassesFn: removeModeClasses,
+    removeTestHighlightsFn: removeND
+  });
   $('#ndButton').click(testND);
   $('#lambdaButton').click(testLambda);
   $('#completeButton').click(testComplete);
@@ -1464,46 +1347,15 @@ var exerciseLocation;
   ]);
   $('#download').hide();
 
-  // --- Zoom / pan ---
-  function updateZoomDisplay() {
-    $('#zoomLevelDisplay').text(Math.round(zoomPan.getZoom() * 100) + '%');
-  }
-  function zoomAroundCanvasCenter(factor) {
-    var canvasOffset = $('.jsavcanvas').offset();
-    zoomPan.setZoom(zoomPan.getZoom() * factor,
-      canvasOffset.left + $('.jsavcanvas').width() / 2,
-      canvasOffset.top + $('.jsavcanvas').height() / 2);
-    updateZoomDisplay();
-  }
-  $('#zoomInButton').click(function() { zoomAroundCanvasCenter(1.2); });
-  $('#zoomOutButton').click(function() { zoomAroundCanvasCenter(1 / 1.2); });
-  $('#zoomResetButton').click(function() { zoomPan.reset(); updateZoomDisplay(); });
-
-  // Scroll/trackpad wheel zooms, centered on the cursor. Bound natively
-  // (not via jQuery) with { passive: false } so preventDefault() reliably
-  // stops the page itself from scrolling.
-  var zoomCanvasEl = document.querySelector('.jsavcanvas');
-  if (zoomCanvasEl) {
-    zoomCanvasEl.addEventListener('wheel', function(e) {
-      e.preventDefault();
-      zoomPan.setZoom(zoomPan.getZoom() * (e.deltaY > 0 ? 0.9 : 1.1), e.pageX, e.pageY);
-      updateZoomDisplay();
-    }, { passive: false });
-  }
+  // --- Zoom / pan / rubber-band select (generic - see GraphEditor.js) ---
+  GraphEditor.attachZoomControls(zoomPan);
+  canvasControls = GraphEditor.attachPanAndSelect({ zoomPan: zoomPan, getGraph: function() { return g; } });
 
   // Multi-select: g.selectedNodes holds the current rubber-band selection
   // (separate from g.selected, the pre-existing single-node reference used
   // by edit/delete click handling, which stays untouched).
   function clearSelection() {
-    if (g.selectedNodes) {
-      for (var i = 0; i < g.selectedNodes.length; i++) { g.selectedNodes[i].unhighlight(); }
-    }
-    g.selectedNodes = [];
-  }
-  function setSelectedNodes(nodes) {
-    clearSelection();
-    g.selectedNodes = nodes;
-    for (var i = 0; i < nodes.length; i++) { nodes[i].highlight(); }
+    canvasControls.clearSelection();
   }
   function deleteSelectedNodes() {
     if (!g.selectedNodes || !g.selectedNodes.length) { return; }
@@ -1513,67 +1365,6 @@ var exerciseLocation;
     for (var i = 0; i < nodes.length; i++) { executeDeleteNode(g, nodes[i]); }
     checkAllEdges();
   }
-
-  // Starting a drag on empty canvas background (not on a node/edge/label)
-  // either pans the view, or - in "Edit Nodes" mode specifically - draws a
-  // rubber-band selection rectangle instead. Bound to .jsavcanvas (the
-  // stable viewport, not .jsavgraph) since addEdges() repeatedly
-  // clears/rebinds .jsavgraph's own mousedown/mousemove/mouseup for
-  // edge-drawing.
-  (function() {
-    var panning = false, panStartX, panStartY, panMoved = false;
-    var selecting = false, selectStartX, selectStartY, selectMoved = false;
-    var DRAG_THRESHOLD = 4; // px of movement before this counts as a drag, not a click
-    var rubberBand = GraphEditor.createRubberBandSelector('.jsavcanvas');
-
-    $('.jsavcanvas').on('mousedown', function(e) {
-      if ($(e.target).closest('.jsavnode, .jsavedge, .jsavedgelabel, .jsavgraphnode').length) { return; }
-      if ($('.jsavgraph').hasClass('editNodes')) {
-        selecting = true;
-        selectMoved = false;
-        selectStartX = e.pageX;
-        selectStartY = e.pageY;
-        rubberBand.start();
-      } else {
-        panning = true;
-        panMoved = false;
-        panStartX = e.pageX;
-        panStartY = e.pageY;
-      }
-    });
-    $(document).on('mousemove', function(e) {
-      if (panning) {
-        var dx = e.pageX - panStartX, dy = e.pageY - panStartY;
-        if (!panMoved && Math.abs(dx) < DRAG_THRESHOLD && Math.abs(dy) < DRAG_THRESHOLD) { return; }
-        panMoved = true;
-        zoomPan.panBy(dx, dy);
-        panStartX = e.pageX;
-        panStartY = e.pageY;
-      } else if (selecting) {
-        var dx2 = e.pageX - selectStartX, dy2 = e.pageY - selectStartY;
-        if (!selectMoved && Math.abs(dx2) < DRAG_THRESHOLD && Math.abs(dy2) < DRAG_THRESHOLD) { return; }
-        selectMoved = true;
-        rubberBand.update(selectStartX, selectStartY, e.pageX, e.pageY);
-      }
-    });
-    $(document).on('mouseup', function(e) {
-      if (panning) {
-        if (panMoved) { wasPanning = true; }
-        panning = false;
-      } else if (selecting) {
-        if (selectMoved) {
-          var bounds = rubberBand.update(selectStartX, selectStartY, e.pageX, e.pageY);
-          var matched = rubberBand.elementsWithin(bounds, $('.jsavgraphnode'));
-          setSelectedNodes(matched.map(function(el) { return $(el).data('node'); }).filter(Boolean));
-          wasPanning = true; // reuse the same click-suppression flag
-        } else {
-          clearSelection();
-        }
-        rubberBand.end();
-        selecting = false;
-      }
-    });
-  })();
 
   function displayHelp(){
     window.open("FAHelp.html", "helpwindow");
