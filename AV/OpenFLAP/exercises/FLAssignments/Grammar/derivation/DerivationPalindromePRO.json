@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "id": "pifla-palindrome",
+  "title": "Derive the Palindrome ababa",
+  "prompt": "Starting from S, construct the palindrome ababa. Choose productions that build the matching outer symbols, then replace the remaining S with the middle terminal.",
+  "source": "PIFLA: Context-Free Grammars Part 1 — String Derivation, palindrome example",
+  "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PIFLA/html/CFG1.html#string-derivation",
+  "startSymbol": "S",
+  "rules": [
+    [
+      "S",
+      "aSa"
+    ],
+    [
+      "S",
+      "bSb"
+    ],
+    [
+      "S",
+      "a"
+    ],
+    [
+      "S",
+      "b"
+    ],
+    [
+      "S",
+      "λ"
+    ]
+  ],
+  "target": "ababa",
+  "leftmost": false,
+  "passRate": 1,
+  "reference": [
+    {
+      "production": 1,
+      "position": 1
+    },
+    {
+      "production": 2,
+      "position": 2
+    },
+    {
+      "production": 3,
+      "position": 3
+    }
+  ]
+}
