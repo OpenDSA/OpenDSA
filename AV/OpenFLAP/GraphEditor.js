@@ -668,6 +668,28 @@ var GraphEditor = (function ($) {
     };
   }
 
+  // The state-name label (.jsavvaluelabel) under a mouse event, or null.
+  // Looks through whatever is on top - on exercise pages JSAV's "shutter"
+  // overlay covers the canvas while the drag's highlight animation plays,
+  // so the event's own target is the shutter, not the state.
+  function stateLabelAtPointer(e) {
+    var els = document.elementsFromPoint(e.clientX, e.clientY);
+    for (var i = 0; i < els.length; i++) {
+      if ($(els[i]).hasClass('jsavvaluelabel')) { return els[i]; }
+    }
+    return null;
+  }
+
+  // Wires the mouse handlers for drawing a new transition. Move/up are
+  // listened for on the whole document (not just .jsavgraph) because the
+  // shutter overlay mentioned above swallows them on exercise pages.
+  function bindTransitionDrag(mouseDown, mouseMove, mouseUp) {
+    $('.jsavgraph').off('mousedown').mousedown(mouseDown);
+    $('.jsavgraph').off('mousemove').off('mouseup');
+    $(document).off('mousemove.transitionDrag').on('mousemove.transitionDrag', mouseMove);
+    $(document).off('mouseup.transitionDrag').on('mouseup.transitionDrag', mouseUp);
+  }
+
   // Page-coordinate center of a node as drawn (accounts for zoom/pan).
   function nodeScreenCenter(node) {
     var r = node.element[0].getBoundingClientRect();
@@ -883,6 +905,8 @@ var GraphEditor = (function ($) {
     attachZoomControls: attachZoomControls,
     attachPanAndSelect: attachPanAndSelect,
     nodeScreenCenter: nodeScreenCenter,
+    stateLabelAtPointer: stateLabelAtPointer,
+    bindTransitionDrag: bindTransitionDrag,
     createTransitionEditor: createTransitionEditor
   };
 })(jQuery);

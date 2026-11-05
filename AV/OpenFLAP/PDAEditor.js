@@ -289,9 +289,7 @@
       removeTestHighlightsFn: removeND,
       setup: function() {
         g.disableDragging();
-        $('.jsavgraph').off('mousedown').mousedown(mouseDown);
-        $('.jsavgraph').off('mousemove').mousemove(mouseMove);
-        $('.jsavgraph').off('mouseup').mouseup(mouseUp);
+        GraphEditor.bindTransitionDrag(mouseDown, mouseMove, mouseUp);
         $("#mode").html('Adding edges');
       },
       modeClass: 'addEdges',
@@ -541,14 +539,14 @@
 
   function mouseUp(e) {
     if (!g.first) return;
-    var targetClass = $(e.target).attr('class');
-    if (targetClass !== "jsavvaluelabel") {
+    var label = GraphEditor.stateLabelAtPointer(e);
+    if (!label) {
       $('path[opacity="1.5"]').remove();
       g.first.unhighlight();
       g.first = null;
       return;
     }
-    var node = $(e.target);
+    var node = $(label);
     g.selected = g.getNodeWithValue(node.text());
     g.selected.highlight();
     
