@@ -175,99 +175,7 @@
 
   // handler for editing edges/transitions
   var labelClickHandler = function(e) {
-    initEditEdgeInput(this);  
-  };
-
-  // show table for the label clicked
-  var initEditEdgeInput = function(label) {
-    var weights = $(label).html().split("<br>");
-    // delete edge if there is only one transition and in delete mode
-    if (weights.length == 1 && g.hasClass("deleteNodes")) {
-      g.saveFAState();
-      $(label).html("");
-      g.layout({layout: 'manual'});
-      return;
-    }
-    var tbody = $('#editEdge > table > tbody');
-    var rows = tbody.find('tr');
-    for (var i = rows.length - 1; i > 0; i--) {
-      rows[i].remove();
-    }
-    var row = $(rows[0]);
-    for (var i = 0; i < weights.length; i++) {
-      weights[i] = toColonForm(weights[i]);
-      var letters = weights[i].split(":");
-      rows = tbody.find('tr');
-      if (i >= rows.length) {
-        var newRow = row.clone();
-        tbody.append(newRow);
-      }
-      var lastRow = tbody.find('tr').last();
-      lastRow.find('#input').val(letters[0]);
-      lastRow.find('#pop').val(letters[1]);
-      lastRow.find('#push').val(letters[2]);
-      lastRow.find('#deleteEdge').text("Delete");
-      lastRow.find('#deleteEdge').click(deleteRowInEditEdge);
-      //lastRow.find('#deleteEdge').on("click", label, deleteRowInEditEdge);
-    }
-    var editEdgeInput = $('#editEdge');
-    tbody.attr({remove: false});
-    $('#deleteEdge').text("Delete");
-    editEdgeInput.css({left: $(label).offset().left, top: $(label).offset().top});
-    editEdgeInput.show();
-    $('#input').focus();
-    //completeEditEdge(label);
-    $(document).off('keyup').keyup(function(e) {
-      if (e.keyCode == 13) {
-        // console.log("Wut up")
-        completeEditEdge(label);
-      } else if (e.keyCode == 27) {
-        cancel();
-      }
-    });
-  };
-
-  var deleteRowInEditEdge = function() {
-    var tbody = $(this).parent().parent().parent();
-    if (tbody.children().length == 1) {
-      tbody.attr({remove: 'true'});
-      $(document).trigger(
-        jQuery.Event( 'keyup', { keyCode: 13, which: 13 } )
-      );
-
-      return;
-    }
-    $(this).parent().parent().remove();
-  };
-
-  var completeEditEdge = function(label) {
-    var editEdgeInput = $('#editEdge');
-    var tbody = editEdgeInput.find('tbody');
-    var newWeight = "";
-    if (tbody.attr('remove') == 'true') {
-      newWeight = "";
-    }
-    else {
-      var rows = tbody.find('tr');
-      var weights = [];
-      for (var i = 0; i < rows.length; i++) {
-        var row = $(rows[i]);
-        var input = row.find('#input').val();
-        var pop = row.find('#pop').val();
-        var push = row.find('#push').val();
-        if (input == "") input = lambda;
-        if (pop == "") pop = lambda;
-        if (push == "") push = lambda;
-        weights.push(input + "," + pop + ";" + push);
-      }
-      newWeight = weights.join("<br>");
-    }
-    $(label).html(newWeight);
-    g.saveFAState();
-    g.layout({layout: 'manual'});
-    g.updateEdgePositions();
-    editEdgeInput.hide();
-    g.updateAlphabet();
+    transitions.openEditTable(this);
   };
 
   // handler for the graph window
@@ -438,34 +346,27 @@
     // PDA-specific cleanup on top of the shared cancel.
     removeLabelMenu();
     $(".jsavgraph").removeClass("convert");
-    $('#edge').hide();
-    $('#editEdge').hide();
+    transitions.closeAll();
     $("#mode").html('\n');
     jsav.umsg("Enjoy");
   }
 
+  // The add-transition box and the edit-transitions table are shared with the TM editor
+  var transitions = GraphEditor.createTransitionEditor({
+    getGraph: function() { return g; },
+    addFields: ['input', 'pop', 'push'],
+    editFields: ['input', 'pop', 'push'],
+    emptySymbol: lambda,
+    formatWeight: function(v) { return v[0] + "," + v[1] + ";" + v[2]; },
+    deleteModeClass: 'deleteNodes',
+    labelClickHandler: labelClickHandler,
+    onEditCancel: function() { cancel(); }
+  });
+
   // make edges easier to click
-  var addEdgeSelect = function () {
-    var edges = g.edges();
-    for (var next = edges.next(); next; next= edges.next()) {
-      next.addClass('edgeSelect');
-      next.layout();
-    }
-  };
-  var removeEdgeSelect = function () {
-    var edges = g.edges();
-    for (var next = edges.next(); next; next = edges.next()) {
-      if (next.hasClass('edgeSelect')) {
-        next.removeClass('edgeSelect');
-        next.layout();
-      }
-    }
-  };
-  var removeLabelMenu = function() {
-    if ($('#editedgelabel')) {
-      $('#editedgelabel').remove();
-    }
-  };
+  var addEdgeSelect = function () { transitions.addEdgeSelect(); };
+  var removeEdgeSelect = function () { transitions.removeEdgeSelect(); };
+  var removeLabelMenu = function() { transitions.removeLabelMenu(); };
 
   var onClickTraverseClosure = function() {
     stepBy = 'closure'
@@ -651,63 +552,7 @@
     g.selected = g.getNodeWithValue(node.text());
     g.selected.highlight();
     
-    initEdgeInput();
-  }
-
-  // Page-coordinate center of a node as drawn (accounts for zoom/pan).
-  function nodeScreenCenter(node) {
-    var r = node.element[0].getBoundingClientRect();
-    return { x: r.left + window.scrollX + r.width / 2, y: r.top + window.scrollY + r.height / 2 };
-  }
-
-  function initEdgeInput() {
-    // Draw the edge input box centered above the midpoint between the two
-    // states. Measured from the states themselves rather than the preview
-    // line, so it works at any zoom and when the line was never drawn
-    // (a single click on a state, which makes a self-loop).
-    var path = $('path[opacity="1.5"]');
-    var edgeInput = $('#edge');
-    var rows = $('#edge > table > tr');
-    for (var i = 1; i < rows.length; i++) {
-      rows[i].remove();
-    }
-    $('#input').val(lambda);
-    $('#pop').val(lambda);
-    $('#push').val(lambda);
-    edgeInput.show();
-    var from = nodeScreenCenter(g.first), to = nodeScreenCenter(g.selected);
-    edgeInput.offset({
-      left: (from.x + to.x) / 2 - edgeInput.outerWidth() / 2,
-      top: (from.y + to.y) / 2 - 14
-    });
-    path.remove();
-    first = g.first;
-    g.first = null;
-    $('#input').focus();
-    $(document).keyup(function(e) {
-      if (e.keyCode == 13) {
-        addEdgeWithInputBox();
-      }
-    });
-  }
-
-  function addEdgeWithInputBox() {
-    if (!first) return;
-    var edgeInput = $('#edge');
-    var input = $('#input').val();
-    var pop = $('#pop').val();
-    var push = $('#push').val();
-    var edgeWeight = input + "," + pop + ";" + push;
-    g.saveFAState();
-    g.addEdge(first, g.selected, {weight: edgeWeight});
-    $('.jsavedgelabel').off('click').click(labelClickHandler);
-
-    edgeInput.hide();
-    first.unhighlight();
-    g.selected.unhighlight();
-    g.updateEdgePositions();
-    first = null;
-    g.selected= null;
+    transitions.openAddBox(g.first, g.selected);
   }
 
   function mouseMove(e) {

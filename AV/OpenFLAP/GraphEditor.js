@@ -668,6 +668,198 @@ var GraphEditor = (function ($) {
     };
   }
 
+  // Page-coordinate center of a node as drawn (accounts for zoom/pan).
+  function nodeScreenCenter(node) {
+    var r = node.element[0].getBoundingClientRect();
+    return { x: r.left + window.scrollX + r.width / 2, y: r.top + window.scrollY + r.height / 2 };
+  }
+
+  // Shared PDA/TM transition editor: the #edge box for adding a transition and the #editEdge table for editing an arrow's transitions.
+  // The config supplies the machine-specific parts: field ids, what a blank field means (emptySymbol), and how fields join into a label (formatWeight).
+  function createTransitionEditor(config) {
+    var getGraph = config.getGraph,
+      emptySymbol = config.emptySymbol,
+      parseWeight = config.parseWeight || function(line) { return toColonForm(line).split(':'); },
+      deleteLastRowCommits = config.deleteLastRowCommits !== false,
+      pending = null,        // { from, to } while the add box is open
+      editingLabel = null;   // the label element while the edit table is open
+
+    function valueOrEmpty(v) { return (v === '' || v === undefined || v === null) ? emptySymbol : v; }
+
+    // --- Add box (#edge) ---
+
+    function openAddBox(from, to) {
+      var g = getGraph(), edgeInput = $('#edge');
+      var rows = $('#edge > table > tr');
+      for (var i = 1; i < rows.length; i++) {
+        rows[i].remove();
+      }
+      config.addFields.forEach(function(id, k) {
+        var def = config.addDefaults ? config.addDefaults[k] : emptySymbol;
+        if (def !== null && def !== undefined) { edgeInput.find('#' + id).val(def); }
+      });
+      edgeInput.show();
+      // Centered above the midpoint between the two states, measured from the
+      // states themselves so it works at any zoom and for a single-click self-loop.
+      var a = nodeScreenCenter(from), b = nodeScreenCenter(to);
+      edgeInput.offset({
+        left: (a.x + b.x) / 2 - edgeInput.outerWidth() / 2,
+        top: (a.y + b.y) / 2 - 14
+      });
+      $('path[opacity="1.5"]').remove();  // the drag's preview line
+      pending = { from: from, to: to };
+      g.first = null;
+      edgeInput.find('#' + config.addFields[0]).focus();
+      // One namespaced handler, replaced (not stacked) each time the box opens.
+      $(document).off('keyup.transitionAdd').on('keyup.transitionAdd', function(e) {
+        if (e.keyCode == 13) { commitAdd(); }
+        else if (e.keyCode == 27) { closeAddBox(); }
+      });
+    }
+
+    function commitAdd() {
+      if (!pending) { return; }
+      var g = getGraph(), edgeInput = $('#edge');
+      var values = config.addFields.map(function(id) { return valueOrEmpty(edgeInput.find('#' + id).val()); });
+      g.saveFAState();
+      g.addEdge(pending.from, pending.to, { weight: config.formatWeight(values) });
+      $('.jsavedgelabel').off('click').click(config.labelClickHandler);
+      g.updateEdgePositions();
+      closeAddBox();
+    }
+
+    // Closes the add box without adding anything.
+    function closeAddBox() {
+      $(document).off('keyup.transitionAdd');
+      $('#edge').hide();
+      $('path[opacity="1.5"]').remove();
+      if (pending) {
+        pending.from.unhighlight();
+        pending.to.unhighlight();
+        pending = null;
+      }
+      var g = getGraph();
+      if (g) { g.selected = null; }
+    }
+
+    // --- Edit table (#editEdge) ---
+
+    function openEditTable(label) {
+      var g = getGraph();
+      var weights = $(label).html().split("<br>");
+      // In delete mode, clicking a single-transition label removes it outright.
+      if (weights.length == 1 && g.hasClass(config.deleteModeClass)) {
+        g.saveFAState();
+        $(label).html("");
+        g.layout({ layout: 'manual' });
+        g.updateEdgePositions();
+        return;
+      }
+      var tbody = $('#editEdge > table > tbody');
+      var rows = tbody.find('tr');
+      for (var i = rows.length - 1; i > 0; i--) {
+        rows[i].remove();
+      }
+      var row = $(rows[0]);
+      for (var w = 0; w < weights.length; w++) {
+        var values = parseWeight(weights[w]);
+        if (w >= tbody.find('tr').length) {
+          tbody.append(row.clone());
+        }
+        var lastRow = tbody.find('tr').last();
+        config.editFields.forEach(function(id, k) { lastRow.find('#' + id).val(values[k]); });
+        lastRow.find('#deleteEdge').text("Delete").off('click').on('click', deleteRow);
+      }
+      tbody.attr({ remove: false });
+      editingLabel = label;
+      var editEdgeInput = $('#editEdge');
+      editEdgeInput.css({ left: $(label).offset().left, top: $(label).offset().top });
+      editEdgeInput.show();
+      tbody.find('tr').first().find('#' + config.editFields[0]).focus();
+      $(document).off('keyup.transitionEdit').on('keyup.transitionEdit', function(e) {
+        if (e.keyCode == 13) { commitEdit(label); }
+        else if (e.keyCode == 27) { closeEditTable(); config.onEditCancel(); }
+      });
+    }
+
+    // Click handler for a row's Delete button.
+    function deleteRow() {
+      var tbody = $(this).closest('tbody');
+      if (tbody.children().length == 1) {
+        tbody.attr({ remove: 'true' });
+        if (deleteLastRowCommits) {
+          commitEdit(editingLabel);
+        } else {
+          $(this).text("Deleted");
+        }
+        return;
+      }
+      $(this).closest('tr').remove();
+    }
+
+    function commitEdit(label) {
+      var g = getGraph(), editEdgeInput = $('#editEdge');
+      var tbody = editEdgeInput.find('tbody');
+      var newWeight = "";
+      if (tbody.attr('remove') != 'true') {
+        var weights = [];
+        tbody.find('tr').each(function() {
+          var r = $(this);
+          weights.push(config.formatWeight(config.editFields.map(function(id) { return valueOrEmpty(r.find('#' + id).val()); })));
+        });
+        newWeight = weights.join("<br>");
+      }
+      $(label).html(newWeight);
+      g.saveFAState();
+      g.layout({ layout: 'manual' });
+      g.updateEdgePositions();
+      closeEditTable();
+      g.updateAlphabet();
+    }
+
+    function closeEditTable() {
+      $(document).off('keyup.transitionEdit');
+      $('#editEdge').hide();
+      editingLabel = null;
+    }
+
+    // --- Making edges easier to click while editing ---
+
+    function addEdgeSelect() {
+      var edges = getGraph().edges();
+      for (var next = edges.next(); next; next = edges.next()) {
+        next.addClass('edgeSelect');
+        next.layout();
+      }
+    }
+    function removeEdgeSelect() {
+      var edges = getGraph().edges();
+      for (var next = edges.next(); next; next = edges.next()) {
+        if (next.hasClass('edgeSelect')) {
+          next.removeClass('edgeSelect');
+          next.layout();
+        }
+      }
+    }
+    function removeLabelMenu() {
+      $('#editedgelabel').remove();
+    }
+
+    return {
+      openAddBox: openAddBox,
+      commitAdd: commitAdd,
+      closeAddBox: closeAddBox,
+      openEditTable: openEditTable,
+      commitEdit: commitEdit,
+      closeEditTable: closeEditTable,
+      // Closes both boxes without saving - for the editor's cancel.
+      closeAll: function() { closeAddBox(); closeEditTable(); },
+      addEdgeSelect: addEdgeSelect,
+      removeEdgeSelect: removeEdgeSelect,
+      removeLabelMenu: removeLabelMenu
+    };
+  }
+
   return {
     removeModeClasses: removeModeClasses,
     cancel: cancel,
@@ -689,6 +881,8 @@ var GraphEditor = (function ($) {
     getNodeRects: getNodeRects,
     attachLayoutMenu: attachLayoutMenu,
     attachZoomControls: attachZoomControls,
-    attachPanAndSelect: attachPanAndSelect
+    attachPanAndSelect: attachPanAndSelect,
+    nodeScreenCenter: nodeScreenCenter,
+    createTransitionEditor: createTransitionEditor
   };
 })(jQuery);
