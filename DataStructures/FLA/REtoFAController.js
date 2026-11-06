@@ -210,6 +210,9 @@ controllerProto.nextStep = function() {
 		this.jsav.step();
 		this.jsav.umsg("The automaton is complete.");
 		this.fa.layout();
+		// Dragging was disabled during expansion (so new states are created
+		// frozen); re-enable it now so the finished automaton can be rearranged.
+		this.fa.enableDragging();
 		$('#export').show();
 		}
 		//$('#export').show();
@@ -249,6 +252,8 @@ controllerProto.completeAll = function() {
 		}
 		this.completeStep();
 	}
+	// Expansion is finished; allow the resulting states to be dragged.
+	this.fa.enableDragging();
 	$('#export').show();
 	return this.fa;
 }
