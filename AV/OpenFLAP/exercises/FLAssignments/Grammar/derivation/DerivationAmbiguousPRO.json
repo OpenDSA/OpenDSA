@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "id": "rodger-g1-ambiguous",
+  "title": "G1: Ambiguous grammar",
+  "prompt": "Derive aaabbb. More than one successful derivation is accepted. A step is incorrect only when it enters a proved dead end.",
+  "source": "Susan Rodger: grammar examples provided November 4, 2026",
+  "url": "README.md#professor-rodgers-possibility-tree-examples",
+  "startSymbol": "S",
+  "rules": [
+    [
+      "S",
+      "aA"
+    ],
+    [
+      "S",
+      "Bb"
+    ],
+    [
+      "S",
+      "λ"
+    ],
+    [
+      "A",
+      "aA"
+    ],
+    [
+      "A",
+      "aS"
+    ],
+    [
+      "B",
+      "Bb"
+    ],
+    [
+      "B",
+      "Sb"
+    ]
+  ],
+  "target": "aaabbb",
+  "leftmost": false,
+  "passRate": 1,
+  "grading": "possibility",
+  "reference": [
+    {
+      "production": 1,
+      "position": 1
+    },
+    {
+      "production": 4,
+      "position": 2
+    },
+    {
+      "production": 5,
+      "position": 3
+    },
+    {
+      "production": 2,
+      "position": 4
+    },
+    {
+      "production": 6,
+      "position": 4
+    },
+    {
+      "production": 7,
+      "position": 4
+    },
+    {
+      "production": 3,
+      "position": 4
+    }
+  ]
+}
