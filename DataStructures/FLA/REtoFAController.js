@@ -37,11 +37,15 @@ controllerProto.init = function(jsav, expression, visualize, exercise, options) 
 	this.visualize = visualize;
 	this.jsav = jsav;	
 	this.fa = jsav.ds.FA($.extend({width: '750px', height: 440, layout: 'automatic'}, options));
-	this.fa.disableDragging();
+	// Keep states draggable throughout (so they can be rearranged while the
+	// expression is being split, not only after the automaton is complete).
+	// enableDragging() also sets isDraggable, so every state added during
+	// expansion is created draggable too.
+	this.fa.enableDragging();
 	var start = this.fa.addNode({left: '15px'});
 	var height = options.height || 440;
 	var width = options.width || 750;
-	var end = this.fa.addNode({left: width - 10, top: height - 40});
+	var end = this.fa.addNode({left: width - 60, top: height - 80});
 	this.fa.makeInitial(start);
 	this.fa.makeFinal(end);
 	var t = this.fa.addEdge(start, end, {weight: expression});
@@ -60,6 +64,16 @@ controllerProto.init = function(jsav, expression, visualize, exercise, options) 
 
 controllerProto.clear = function() {
 	this.fa.clear();
+}
+
+// removeEdge() only hides the edge line, not its label (the label-aware
+// transition.hide() is commented out in FA.js), so a split edge's regular
+// expression would stay on screen. Hide the label explicitly so each split
+// visibly removes the old expression.
+controllerProto.hideTransitionLabel = function(transition) {
+	if (transition && transition._label && transition._label.element) {
+		transition._label.element.hide();
+	}
 }
 
 /**
@@ -108,7 +122,8 @@ controllerProto.transitionCheck = function(transition) {
 		return;
 	}
 	this.transition = transition;
-	toDo.splice(0, 1);
+	var todoIndex = toDo.indexOf(transition);
+	if (todoIndex >= 0) toDo.splice(todoIndex, 1);
 	var label = transition.weight();
 	var umsgString = "";
 	switch (action) {
@@ -116,6 +131,7 @@ controllerProto.transitionCheck = function(transition) {
 			var s1 = transition.start(), s2 = transition.end();
 			var newLabel = delambda(label.substring(1, label.length - 1));
 			this.fa.removeEdge(transition);
+			this.hideTransitionLabel(transition);
 			var t = this.fa.addEdge(s1, s2, {weight: newLabel});
 			if (this.requiredAction(newLabel) != 0)
 				toDo.push(t);
@@ -156,9 +172,21 @@ controllerProto.transitionCheck = function(transition) {
 /**
  * Does a step.
  */
-controllerProto.completeStep = function() {
+controllerProto.completeStep = function(clicked) {
 	if (action == 0) {
-		var t = toDo[0];
+		// Either expand a specific transition the user clicked, or the next one
+		// in the queue (Do Step / Do All). toDo holds exactly the live,
+		// still-expandable transitions, so a click is honored only when its
+		// transition is in toDo -- this ignores clicks on single-symbol/lambda
+		// labels and on stale labels left behind by an already-split edge.
+		var t;
+		if (clicked) {
+			if (toDo.indexOf(clicked) < 0) return;
+			t = clicked;
+		} else {
+			t = toDo[0];
+			if (!t) return; // conversion complete -- nothing left to expand (removes console error)
+		}
 		this.transitionCheck(t);
 	}
 	var from = this.transition.start();
@@ -209,6 +237,9 @@ controllerProto.nextStep = function() {
 		this.jsav.step();
 		this.jsav.umsg("The automaton is complete.");
 		this.fa.layout();
+		// Dragging was disabled during expansion (so new states are created
+		// frozen); re-enable it now so the finished automaton can be rearranged.
+		this.fa.enableDragging();
 		$('#export').show();
 		}
 		//$('#export').show();
@@ -248,6 +279,8 @@ controllerProto.completeAll = function() {
 		}
 		this.completeStep();
 	}
+	// Expansion is finished; allow the resulting states to be dragged.
+	this.fa.enableDragging();
 	$('#export').show();
 	return this.fa;
 }
@@ -277,9 +310,10 @@ controllerProto.replaceTransition = function(transition, exps) {
 	at = at.rotate(Math.atan2(pEnd.y - pStart.y, pEnd.x - pStart.x));
 
 	var ps = new Point(0.2, 0.0);
-	var pe = new Point(0.8, 0.0);	
+	var pe = new Point(0.8, 0.0);
 
 	this.fa.removeEdge(transition);
+	this.hideTransitionLabel(transition);
 
 	for (var i = 0; i < exps.length; i++) {
 		pStart = new Point();

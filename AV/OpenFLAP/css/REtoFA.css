@@ -1,0 +1,16 @@
+/* REtoFA (Regular Expression to NFA) page overrides.
+   tester.css (loaded before this file) forces scrollbars that the RE->NFA
+   view doesn't need:
+     .jsavcanvas { overflow-x: auto }      -> stray horizontal slider
+     #container  { height: 810px; overflow-y: auto } -> stray vertical slider
+   The canvas is a fixed-size single graph, so hide its overflow and let the
+   container grow to fit its content instead of scrolling. */
+
+.jsavcanvas {
+	overflow: hidden;
+}
+
+#container {
+	height: auto;
+	overflow: visible;
+}

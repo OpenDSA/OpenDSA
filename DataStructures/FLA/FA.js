@@ -4860,28 +4860,28 @@ function getRandomInt(max) {
         if (begin == none || end == none) {
           table.push([from.value(), to.value(), direct]);
         } else {
-          //    var step1 = normalizeTransitionToRE(begin);
-          //    var step2 = normalizeTransitionToRE(pause);
-          //    var step3 = normalizeTransitionToRE(end);
           var step1 = begin;
           var step2 = pause;
           var step3 = end;
+          // step1/step3 are concatenation operands: a union such as "a+ba" must
+          // be parenthesized before it is concatenated, since concatenation binds
+          // tighter than "+". (addStar already parenthesizes the star operand.)
           if (step2 == none || step2 == lambda) {
             if (step1 == lambda) {
               indirect = step3;
             } else if (step3 == lambda) {
               indirect = step1;
             } else {
-              indirect = step1 + step3;
+              indirect = normalizeTransitionToRE(step1) + normalizeTransitionToRE(step3);
             }
           } else if (step1 == lambda && step3 == lambda) {
             indirect = addStar(step2);
           } else if (step1 == lambda) {
-            indirect = addStar(step2) + step3;
+            indirect = addStar(step2) + normalizeTransitionToRE(step3);
           } else if (step3 == lambda) {
-            indirect = step1 + addStar(step2);
+            indirect = normalizeTransitionToRE(step1) + addStar(step2);
           } else {
-            indirect = step1 + addStar(step2) + step3;
+            indirect = normalizeTransitionToRE(step1) + addStar(step2) + normalizeTransitionToRE(step3);
           }
           if (direct == none) {
             table.push([from.value(), to.value(), indirect]);
@@ -5041,10 +5041,19 @@ function getRandomInt(max) {
     return transition + "*";
   }
 
-  //returns true if word needs parentheses (if it is an "+" (OR) expression)
+  //returns true if word needs parentheses before being concatenated or starred,
+  //i.e. it is a top-level "+" (OR) expression. A "+" nested inside parentheses
+  //(e.g. the one in "(a+ba)a*b") does not count, so already-grouped expressions
+  //are not wrapped again.
   function needParentheses(word) {
+    var depth = 0;
     for (var i = 0; i < word.length; i++) {
-      if (word.charAt(i) === "+") {
+      var c = word.charAt(i);
+      if (c === "(") {
+        depth++;
+      } else if (c === ")") {
+        depth--;
+      } else if (c === "+" && depth === 0) {
         return true;
       }
     }
