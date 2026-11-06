@@ -37,7 +37,11 @@ controllerProto.init = function(jsav, expression, visualize, exercise, options) 
 	this.visualize = visualize;
 	this.jsav = jsav;	
 	this.fa = jsav.ds.FA($.extend({width: '750px', height: 440, layout: 'automatic'}, options));
-	this.fa.disableDragging();
+	// Keep states draggable throughout (so they can be rearranged while the
+	// expression is being split, not only after the automaton is complete).
+	// enableDragging() also sets isDraggable, so every state added during
+	// expansion is created draggable too.
+	this.fa.enableDragging();
 	var start = this.fa.addNode({left: '15px'});
 	var height = options.height || 440;
 	var width = options.width || 750;
@@ -60,6 +64,16 @@ controllerProto.init = function(jsav, expression, visualize, exercise, options) 
 
 controllerProto.clear = function() {
 	this.fa.clear();
+}
+
+// removeEdge() only hides the edge line, not its label (the label-aware
+// transition.hide() is commented out in FA.js), so a split edge's regular
+// expression would stay on screen. Hide the label explicitly so each split
+// visibly removes the old expression.
+controllerProto.hideTransitionLabel = function(transition) {
+	if (transition && transition._label && transition._label.element) {
+		transition._label.element.hide();
+	}
 }
 
 /**
@@ -117,6 +131,7 @@ controllerProto.transitionCheck = function(transition) {
 			var s1 = transition.start(), s2 = transition.end();
 			var newLabel = delambda(label.substring(1, label.length - 1));
 			this.fa.removeEdge(transition);
+			this.hideTransitionLabel(transition);
 			var t = this.fa.addEdge(s1, s2, {weight: newLabel});
 			if (this.requiredAction(newLabel) != 0)
 				toDo.push(t);
@@ -295,9 +310,10 @@ controllerProto.replaceTransition = function(transition, exps) {
 	at = at.rotate(Math.atan2(pEnd.y - pStart.y, pEnd.x - pStart.x));
 
 	var ps = new Point(0.2, 0.0);
-	var pe = new Point(0.8, 0.0);	
+	var pe = new Point(0.8, 0.0);
 
 	this.fa.removeEdge(transition);
+	this.hideTransitionLabel(transition);
 
 	for (var i = 0; i < exps.length; i++) {
 		pStart = new Point();
