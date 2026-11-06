@@ -563,6 +563,101 @@ function controls(harness) {
   } finally { moduleDOM.window.close(); }
   process.stdout.write('PASS: real odsaMOD SPLICE completion handling respects the PE passing threshold and clears a stale proficiency mark.\n');
 
+  for (const [page, routeCount, expectedTrees] of [['DerivationAmbiguousPRO.html', 2, 2], ['DerivationMultiplePRO.html', 6, 1]]) {
+    const harness = await loadPage(page);
+    try {
+      const {w, $, click, exercise, task, total, apply, finish, check, clean} = controls(harness);
+      const graph = w.derivationPRO.possibility;
+      assert.equal(graph.maxDepth, 18);
+      assert.equal(graph.successfulPaths, routeCount);
+      for (const id of ['possibility-view', 'possibility-tree', 'search-summary', 'search-preview-link']) {
+        assert.equal($(id), null, 'Internal search must not appear in scored pages');
+      }
+      const routes = [];
+      function visit(node, steps) {
+        if (node.form === task.target) { routes.push(steps); return; }
+        for (const edge of node.edges) {
+          const child = graph.nodes[edge.to];
+          if (child.status === 'reachable') visit(child, steps.concat({rule:edge.rule, at:edge.at, after:child.form}));
+        }
+      }
+      visit(graph.nodes[0], []);
+      assert.equal(routes.length, routeCount);
+      const treeSignatures = new Set();
+      for (const route of routes) {
+        click('reset'); check('S', 0, 0);
+        assert.equal(w.derivationPRO.possibility, graph, 'Reuse the tree built before the attempt');
+        route.forEach((step, i) => { apply(step.at, step.rule); check(step.after, i + 1, i + 1); });
+        assert.match($('result').textContent, /Passed/);
+        assert.equal(harness.reports.at(-1).score, 1);
+        // Recover the applied rules from the chosen route, independently of DOM IDs.
+        let before = 'S';
+        const steps = route.map(step => { const result = {...step, before}; before = step.after; return result; });
+        const tree = w.BruteForceDerivation.build(task.rules.map(([a,b]) => [a,'→',b]), {start:'S',steps}, steps.length);
+        function signature(id) { const n = tree.nodes[id]; return [n.symbol, n.children.map(signature)]; }
+        treeSignatures.add(JSON.stringify(tree.roots.map(signature)));
+      }
+      assert.equal(treeSignatures.size, expectedTrees);
+      click('reset');
+      if (routeCount === 2) {
+        apply(0, 0); check('aA', 1, 1);
+        apply(1, 4); check('aA', 1, 1, 1);
+        assert.match($('status').textContent, /Dead end/);
+        apply(1, 4); check('aA', 1, 1, 1);
+        apply(1, 3); check('aaA', 1, 2, 1);
+        finish(2); check(task.target, total - 1, total, 1);
+      } else {
+        apply(0, 1); check('S', 0, 0, 1);
+        const bFirst = routes.find(route => route[1].after === 'aABbb');
+        bFirst.forEach((step, i) => { apply(step.at, step.rule); check(step.after, i, i + 1, 1); });
+      }
+      click('undo');
+      assert.equal(exercise.score.correct, total - 2);
+      assert.equal(exercise.score.student, total - 1);
+      click('reset'); check('S', 0, 0);
+      const nonreference = routes.at(-1);
+      apply(nonreference[0].at, nonreference[0].rule);
+      const beforeReports = harness.reports.length;
+      click('answer'); exercise.modelav.end();
+      assert.equal(exercise.modelStructures.value(), task.target);
+      exercise.modelDialog.hide();
+      nonreference.slice(1).forEach(step => apply(step.at, step.rule));
+      check(task.target, total, total);
+      click('grade'); assert.equal(harness.reports.length, beforeReports);
+      click('reset'); finish(); check(task.target, total, total);
+      assert.equal(harness.reports.at(-1).score, 1);
+      clean();
+    } finally { harness.dom.window.close(); }
+  }
+  const graphPreview = await loadPage('DerivationPreview.html', '?config=DerivationAmbiguousPRO.json');
+  try {
+    const {w, $, apply, check, clean} = controls(graphPreview);
+    for (const id of ['possibility-view', 'possibility-tree', 'search-summary', 'search-preview-link']) {
+      assert.equal($(id), null, 'Internal search must not appear in author preview');
+    }
+    assert.throws(() => w.DerivationPROConfig.validate({...authored, grading:'possibility', target:'a', rules:[['S','a'],['S','S']], reference:[{production:1,position:1}]}), /different step counts/);
+    assert.equal(w.derivationPRO.possibility.maxDepth, 18);
+    assert.ok(w.derivationPRO.possibility.nodes.length > 0, 'Search is still precomputed internally');
+    apply(0, 0); apply(1, 4); check('aA', 1, 1, 1);
+    assert.deepEqual(graphPreview.reports, []);
+    clean();
+  } finally { graphPreview.dom.window.close(); }
+  const uncertainTask = {...authored, id:'depth-cutoff', target:'a', grading:'possibility', passRate:1,
+    rules:[['S','a'],['S','A'],['A','B'],['B','C'],['C','a']], reference:[{production:1,position:1}]};
+  const unknown = await loadPage('DerivationPreview.html', '?config=unknown.json', (w, fixtures) => {
+    fixtures['unknown.json'] = {body: JSON.stringify(uncertainTask)};
+  });
+  try {
+    const {$, apply, check, clean} = controls(unknown);
+    apply(0, 1); check('S', 0, 0);
+    assert.match($('status').textContent, /Search limit reached/);
+    assert.match($('status').textContent, /no point was lost/);
+    apply(0, 0); check('a', 1, 1);
+    clean();
+  } finally { unknown.dom.window.close(); }
+  process.stdout.write('PASS: G1 two routes/two trees, G2 six routes/one tree, early dead-end grading, native controls/model isolation, hidden internal search in scored/preview pages and ungraded depth cutoffs.\n');
+
+
 
 
 })().catch(error => { process.stderr.write(error.stack + '\n'); process.exitCode = 1; });

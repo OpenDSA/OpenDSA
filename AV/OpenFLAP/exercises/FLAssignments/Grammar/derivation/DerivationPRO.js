@@ -1,4 +1,4 @@
-/* JSAV exercise template for a derivation with a specified reference sequence. */
+/* JSAV derivation exercises: reference-sequence or possibility-tree grading. */
 (function ($) {
   'use strict';
   function GrammarDerivationExercise(container, task, solution, options) {
@@ -24,6 +24,17 @@
       if (!result.ok || modelCheck.current() !== step.after) throw new Error('Invalid reference derivation.');
     });
     if (!modelCheck.complete()) throw new Error('The reference must reach the target.');
+    const possibility = task.grading === 'possibility' ? task.possibility || window.DerivationPossibility.build(task) : null;
+    if (possibility) {
+      if (possibility.classify('S', 0).status !== 'reachable') {
+        throw new Error('No successful route was found within the search depth/resource limit. This is not proof of a dead end.');
+      }
+      // The two supplied examples have fixed successful lengths (7 and 5).
+      // Do not invent a points policy for arbitrary variable-length routes.
+      if (possibility.successfulLengths.length !== 1 || possibility.successfulLengths[0] !== reference.length) {
+        throw new Error('Successful routes have different step counts. A scoring policy is needed before using this exercise.');
+      }
+    }
     // Determine the minimum whole points using the same comparison as grading,
     // including thresholds that fall exactly on a fraction such as 2/3.
     let requiredPoints = 0;
@@ -143,7 +154,24 @@
       const result = state.apply(rule, selected[0]);
       // A matching production submitted in the wrong derivation order is a
       // mistake too; merely clicking a symbol or an unmatched rule is not.
-      if (!result.ok) { penalize(step, result.message); return; }
+      if (!result.ok) {
+        if (possibility && result.message.includes('too long')) {
+          render('A search/display limit was reached. The step was not applied or graded, and no point was lost.');
+        } else penalize(step, result.message);
+        return;
+      }
+      if (possibility) {
+        const next = possibility.classify(state.current(), step + 1);
+        if (next.status === 'dead') {
+          penalize(step, 'Dead end: this production leaves no route to the target. The step was automatically undone.');
+          return;
+        }
+        if (next.status === 'unknown') {
+          selected = null;
+          render('Search limit reached: this step could not be determined within the precomputed tree. It was not applied or graded, and no point was lost. Choose another step or Reset.');
+          return;
+        }
+      }
       formState.value(state.current());
       traceState.value(encode(state.history()));
       selected = null;
@@ -257,7 +285,16 @@
     const reset = exercise.reset.bind(exercise), undo = exercise.undo.bind(exercise);
     const grade = exercise.grade.bind(exercise);
     exercise.grade = function () {
-      const score = grade();
+      let score;
+      if (possibility) {
+        const steps = trace();
+        let completed = 0;
+        for (let i = 0; i < steps.length; i++) {
+          if (possibility.classify(steps[i].after, i + 1).status !== 'reachable') break;
+          completed++;
+        }
+        score = Object.assign(exercise.score, {total: reference.length, correct: completed, student: steps.length});
+      } else score = grade();
       const completed = score.correct;
       score.undo = [...lostSteps].filter(step => step < completed).length;
       score.fix = 0;
@@ -280,7 +317,7 @@
       undo(); selected = null; refresh(true);
     };
     exercise.reset();
-    return {jsav: av, exercise, task};
+    return {jsav: av, exercise, task, possibility};
   }
   window.GrammarDerivationExercise = GrammarDerivationExercise;
   $(function () {

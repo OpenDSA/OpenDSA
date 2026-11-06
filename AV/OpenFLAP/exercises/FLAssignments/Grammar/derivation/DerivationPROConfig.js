@@ -20,6 +20,10 @@
     requireValue(typeof data.leftmost === 'boolean', 'leftmost must be true or false.');
     requireValue(typeof data.passRate === 'number' && Number.isFinite(data.passRate) && data.passRate >= 0 && data.passRate <= 1,
       'passRate must be a number between 0 and 1.');
+    const grading = data.grading ?? 'reference';
+    requireValue(['reference', 'possibility'].includes(grading), 'grading must be reference or possibility.');
+    requireValue(grading !== 'possibility' || data.target.length > 0,
+      'possibility grading needs a nonempty target for the 3 × target length depth bound.');
     requireValue(Array.isArray(data.rules) && data.rules.length > 0, 'rules must be a nonempty array.');
     const rules = data.rules.map((rule, i) => {
       requireValue(Array.isArray(rule) && rule.length === 2 && rule.every(symbols => typeof symbols === 'string'),
@@ -33,7 +37,7 @@
     requireValue(Array.isArray(data.reference) && data.reference.length > 0 && data.reference.length <= 200,
       'reference must list between 1 and 200 production applications.');
     const task = {id: data.id, title: data.title, prompt: data.prompt, source: data.source, url: sourceURL.href,
-      rules, target: data.target, leftmost: data.leftmost, passRate: data.passRate};
+      rules, target: data.target, leftmost: data.leftmost, passRate: data.passRate, grading};
     const state = window.DerivationExerciseEngine.create(task);
     const steps = data.reference.map((step, i) => {
       requireValue(step && Number.isInteger(step.production) && step.production >= 1 && step.production <= rules.length &&
@@ -45,6 +49,13 @@
     });
     requireValue(state.complete(), 'the reference must finish with exactly the target and no nonterminals.');
     task.verified_steps = [steps];
+    if (grading === 'possibility') {
+      task.possibility = window.DerivationPossibility.build(task);
+      requireValue(task.possibility.classify('S', 0).status === 'reachable',
+        'no successful route was found within the search limits; this is not proof of a dead end.');
+      requireValue(task.possibility.successfulLengths.length === 1 && task.possibility.successfulLengths[0] === steps.length,
+        'successful routes have different step counts; a scoring policy is needed before grading this exercise.');
+    }
     return task;
   }
   async function importFile(file) {

@@ -64,6 +64,66 @@ does not change the raw earned-points score sent to OpenDSA. The module-side
 PE proficiency display checks the configured threshold when an attempt is
 complete; completion with lost points does not automatically award proficiency.
 
+## Professor Rodger's possibility-tree examples
+
+Two additional pages transcribe the grammar examples supplied on November 4,
+2026. They are standalone review instances, not newly registered textbook
+assignments:
+
+| Page / JSON | Grammar | Target | Successful routes | Steps per route |
+|---|---|---|---|---|
+| `DerivationAmbiguousPRO` | G1: `S → aA / Bb / λ`, `A → aA / aS`, `B → Bb / Sb` | `aaabbb` | 2 | 7 |
+| `DerivationMultiplePRO` | G2: `S → aABb / λ`, `A → aA / a`, `B → Bb / b` | `aaabbb` | 6 | 5 |
+
+G1 is ambiguous and its two routes produce different parse trees. G2 has
+independent A/B rewrites: its six orders produce the same parse tree. The
+provided G1 notes use `aaabbb`; G2 uses that same target here for comparison.
+
+These JSON files set `"grading": "possibility"`. The default for existing
+JSON files remains `"reference"`, so the original three exercises keep their
+existing behavior. Model Answer still shows one example route, but the new
+mode does not use it to require a particular student's derivation order.
+
+`DerivationPossibility.js` constructs the search before an attempt starts.
+S is depth 0 and each production application adds one level. **Maximum depth
+is exactly `3 * target.length`**, hence 18 for `aaabbb`; this is not a bound
+of 18 characters per sentential form. Equal states are shared only when both
+the entire sentential form and its depth match. This preserves the remaining
+depth budget and handles cyclic grammars without an infinite tree.
+
+All valid replacements are considered (or only leftmost ones if configured).
+The layered graph is classified from its leaves back to S. A node with a
+successful descendant is reachable; a completely explored node whose children
+are dead is dead. CFG states whose fixed terminals cannot be a subsequence of
+the target can be proved dead without expanding irrelevant descendants.
+A confirmed dead-end action is rejected immediately and loses the current
+step's point. It is not necessary to wait for a wrong final terminal string.
+
+A depth/resource cutoff is **undetermined**, not a proved dead end. Such a
+student action is left unapplied and ungraded, without losing a point. Resource
+safeguards (20,000 states, 100,000 edges, 512-character display/engine capacity,
+and a 2-second build budget) are separate from the depth bound. Neither supplied
+example reaches these safeguards: their complete searches have 48 and 47 nodes,
+with no undetermined nodes.
+
+The supplied exercises have fixed successful step counts, so one point per
+step, persistent loss within an attempt, Undo, Reset and passing thresholds
+remain unchanged. Imported possibility exercises with known successful routes
+of different lengths are rejected with a configuration error instead of choosing
+an unapproved scoring policy. Empty targets still work in reference mode;
+possibility mode currently needs a nonempty target for its `3 * length` bound.
+
+The possibility structure is used internally for grading only. Neither scored
+pages nor author preview displays the search graph, its route statistics, or an
+inspection link. The student's Parse tree records only productions actually
+applied in their own derivation. Author preview never submits scores.
+
+Run the pure search checks as well as the JSAV checks:
+
+```sh
+node tools/regression/grammar-derivation-possibility.cjs
+```
+
 ## JSON exercise definitions and author preview
 
 The three scored instances are defined by:
@@ -135,8 +195,8 @@ loaded from the same website without a cached copy; local files are read with
 FileReader and kept only in the current tab's session storage.
 
 These instances each have a unique successful sequence under their stated
-rules (including the required leftmost order for `aacbb`). **The template does
-not yet grade arbitrary alternative derivations**: configuring an exercise
+rules (including the required leftmost order for `aacbb`). **The reference-sequence mode does
+not grade arbitrary alternative derivations**: configuring an exercise
 with multiple valid sequences requires a grading policy that accepts those
 sequences, or explicit instructions specifying the required derivation.
 
