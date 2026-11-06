@@ -49,6 +49,13 @@ var jsav,
 		$('#nextStep').click(function() {
 			controller.completeStep();
 		});
+		// Clicking a transition's regular-expression label splits (expands) just
+		// that transition. Delegated so it also covers labels created later.
+		$('#jsavcontainer').on('click', '.jsavedgelabel', function() {
+			if (!controller) return;
+			var edge = $(this).data('edge');
+			if (edge) controller.completeStep(edge);
+		});
 		$('#allSteps').click(function() {
 			controller.completeAll();
 		});

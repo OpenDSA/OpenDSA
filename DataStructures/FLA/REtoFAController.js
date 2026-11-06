@@ -108,7 +108,8 @@ controllerProto.transitionCheck = function(transition) {
 		return;
 	}
 	this.transition = transition;
-	toDo.splice(0, 1);
+	var todoIndex = toDo.indexOf(transition);
+	if (todoIndex >= 0) toDo.splice(todoIndex, 1);
 	var label = transition.weight();
 	var umsgString = "";
 	switch (action) {
@@ -156,10 +157,21 @@ controllerProto.transitionCheck = function(transition) {
 /**
  * Does a step.
  */
-controllerProto.completeStep = function() {
+controllerProto.completeStep = function(clicked) {
 	if (action == 0) {
-		if (toDo.length == 0) return; // conversion complete -- nothing left to expand (removes console error)
-		var t = toDo[0];
+		// Either expand a specific transition the user clicked, or the next one
+		// in the queue (Do Step / Do All). toDo holds exactly the live,
+		// still-expandable transitions, so a click is honored only when its
+		// transition is in toDo -- this ignores clicks on single-symbol/lambda
+		// labels and on stale labels left behind by an already-split edge.
+		var t;
+		if (clicked) {
+			if (toDo.indexOf(clicked) < 0) return;
+			t = clicked;
+		} else {
+			t = toDo[0];
+			if (!t) return; // conversion complete -- nothing left to expand (removes console error)
+		}
 		this.transitionCheck(t);
 	}
 	var from = this.transition.start();
