@@ -467,7 +467,7 @@ var lambda = String.fromCharCode(955),
   automatonproto.makeInitial = function (node, options) {
     node.addClass("start");
     // ensure that initial will appear
-    if (node.position().left < 10) {
+    if (node.localPosition().left < 10) {
       node.css("left", "10px");
       node.automaton.updateEdgePositions();
     }
@@ -2122,11 +2122,21 @@ var lambda = String.fromCharCode(955),
      Function to update the position of the state label.
      Must be run whenever nodes are moved.
    */
+  // This state's top/left in the canvas's own (unzoomed) coordinates. JSAV's
+  // position() measures the node as drawn, so under the editors' zoom it is
+  // already scaled - and the arrow/labels positioned from it get scaled a
+  // second time by the zoom transform. Same reason as rawPosition in
+  // transitionproto.layout.
+  stateproto.localPosition = function () {
+    return { top: parseFloat(this.element.css('top')) || 0, left: parseFloat(this.element.css('left')) || 0 };
+  };
+
   stateproto.stateLabelPositionUpdate = function (options) {
+    var pos = this.localPosition();
     // update initial arrow position while we're at it
     if (this._initialMarker) {
-      var fromPoint = [this.position().left - 10, this.position().top + this.element.outerHeight() / 2.0],
-        toPoint = [this.position().left, this.position().top + this.element.outerHeight() / 2.0];
+      var fromPoint = [pos.left - 10, pos.top + this.element.outerHeight() / 2.0],
+        toPoint = [pos.left, pos.top + this.element.outerHeight() / 2.0];
       this._initialMarker.movePoints([
         [0].concat(fromPoint), [1].concat(toPoint)
       ], options);
@@ -2134,7 +2144,7 @@ var lambda = String.fromCharCode(955),
     if (this._stateLabel) {
       // Center the label directly over the node so it reads as being inside
       // the state circle, rather than floating below-left of it.
-      var bbox = this.position(),
+      var bbox = pos,
         lbbox = this._stateLabel.bounds(),
         nWidth = this.element.outerWidth(),
         nHeight = this.element.outerHeight(),
@@ -2145,7 +2155,7 @@ var lambda = String.fromCharCode(955),
       }
     }
     if (this._mooreOutput) {
-      var bbox = this.position(),
+      var bbox = pos,
         lbbox = this._mooreOutput.bounds(),
         nWidth = this.element.outerWidth(),
         nHeight = this.element.outerHeight(),
@@ -2158,8 +2168,9 @@ var lambda = String.fromCharCode(955),
   };
   // Function to add the initial state arrow to this state
   stateproto.addInitialMarker = function (options) {
-    var t = this.position().top + this.element.outerHeight() / 2.0,
-      l2 = this.position().left,
+    var pos = this.localPosition(),
+      t = pos.top + this.element.outerHeight() / 2.0,
+      l2 = pos.left,
       l1 = l2 - 10;
     this._initialMarker = this.jsav.g.line(l1, t, l2, t, $.extend({ "stroke-width": 5, "arrow-end": "block-wide-short" }, options));
   };

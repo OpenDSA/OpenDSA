@@ -238,7 +238,7 @@ This situation is illustrated by this figure:
 .. inlineav:: HeapsIndCON dgm
    :links: AV/Binary/HeapsIndCON.css
    :scripts: AV/Binary/HeapsIndCON.js
-   :align: justify
+   :align: center
    :keyword: Heap
 
    Final stage in the heap-building algorithm.

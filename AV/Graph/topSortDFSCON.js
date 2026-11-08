@@ -118,7 +118,7 @@ function displaySort(numberofnodes) {
   for (var i = 0; i < numberofnodes - 1; i++) {
     str += "CS " + arr.value(i) + " , ";
   }
-  str += "CS" + arr.value(numberofnodes - 1);
+  str += "CS " + arr.value(numberofnodes - 1);
 
   return str;
 }
