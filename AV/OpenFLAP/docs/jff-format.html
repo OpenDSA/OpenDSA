@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JFLAP File Format (.jff)</title>
+<style>
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    max-width: 52em;
+    margin: 0 auto;
+    padding: 1.5em 1em 4em;
+    line-height: 1.5;
+    color: #222;
+    background: #fff;
+  }
+  h1 { font-size: 1.9em; margin-bottom: 0.2em; }
+  h2 { margin-top: 2em; border-bottom: 1px solid #ccc; padding-bottom: 0.2em; }
+  h3 { margin-top: 1.5em; }
+  .subtitle { color: #555; margin-top: 0; }
+  code, pre { font-family: Menlo, Consolas, "Courier New", monospace; font-size: 0.9em; }
+  code { background: #f3f3f3; padding: 0 0.25em; border-radius: 3px; }
+  pre {
+    background: #f6f6f6;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.8em 1em;
+    overflow-x: auto;
+    line-height: 1.35;
+  }
+  pre code { background: none; padding: 0; }
+  table { border-collapse: collapse; margin: 0.8em 0 1.2em; width: 100%; }
+  th, td { border: 1px solid #ccc; padding: 0.35em 0.6em; text-align: left; vertical-align: top; }
+  th { background: #eee; }
+  .note {
+    background: #fff8e1;
+    border-left: 4px solid #e0a800;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+  }
+  .toc { background: #f6f6f6; border: 1px solid #ddd; padding: 0.5em 1.5em; }
+  .toc ol { margin: 0.4em 0; }
+  .meta { color: #666; font-size: 0.9em; }
+</style>
+</head>
+<body>
+
+<h1>JFLAP File Format (.jff)</h1>
+<p class="subtitle">A reference for the XML format JFLAP uses to save automata, grammars, regular expressions, L-systems and pumping lemmas.</p>
+<p class="meta">Describes JFLAP 7.1. Derived from the JFLAP 7.1 source code (package <code>file.xml</code>) and checked against files saved by JFLAP. DRAFT &mdash; [author / date].</p>
+
+<div class="toc">
+<strong>Contents</strong>
+<ol>
+  <li><a href="#overview">Overview</a></li>
+  <li><a href="#types">File types</a></li>
+  <li><a href="#automata">Automata: states, transitions and notes</a></li>
+  <li><a href="#fa">Finite automata (<code>fa</code>)</a></li>
+  <li><a href="#pda">Pushdown automata (<code>pda</code>)</a></li>
+  <li><a href="#tm">Turing machines (<code>turing</code>)</a></li>
+  <li><a href="#tmbb">Turing machines with building blocks</a></li>
+  <li><a href="#mealy">Mealy and Moore machines</a></li>
+  <li><a href="#grammar">Grammars (<code>grammar</code>)</a></li>
+  <li><a href="#re">Regular expressions (<code>re</code>)</a></li>
+  <li><a href="#lsystem">L-systems (<code>lsystem</code>)</a></li>
+  <li><a href="#pumping">Pumping lemmas</a></li>
+  <li><a href="#reading">How JFLAP reads a file</a></li>
+  <li><a href="#source">Source reference</a></li>
+</ol>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="overview">1. Overview</h2>
+
+<p>A <code>.jff</code> file is a plain XML document. JFLAP also opens files ending in <code>.xml</code> with the same reader. Every file has the same outer shape: a root element <code>&lt;structure&gt;</code> whose first child, <code>&lt;type&gt;</code>, says what the file contains. The rest of the content depends on the type.</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+&lt;!--Created with JFLAP 7.1.--&gt;
+&lt;structure&gt;
+    &lt;type&gt;fa&lt;/type&gt;
+    ... content for this type ...
+&lt;/structure&gt;</code></pre>
+
+<p>The XML comments JFLAP writes (<code>Created with JFLAP 7.1.</code>, <code>The list of states.</code>, and so on) are for people reading the file. JFLAP ignores them when it opens a file, and they can be left out.</p>
+
+<p>This XML format was introduced in JFLAP 4. Older JFLAP 3 text files and JFLAP 4 beta serialized files use different formats and are not covered here.</p>
+
+<!-- ============================================================ -->
+<h2 id="types">2. File types</h2>
+
+<p>The text inside <code>&lt;type&gt;</code> is one of:</p>
+
+<table>
+  <tr><th><code>&lt;type&gt;</code></th><th>Contents</th><th>Section</th></tr>
+  <tr><td><code>fa</code></td><td>Finite automaton (DFA or NFA)</td><td><a href="#fa">4</a></td></tr>
+  <tr><td><code>pda</code></td><td>Pushdown automaton</td><td><a href="#pda">5</a></td></tr>
+  <tr><td><code>turing</code></td><td>Turing machine, one to five tapes</td><td><a href="#tm">6</a></td></tr>
+  <tr><td><code>turingbb</code></td><td>Turing machine with building blocks</td><td><a href="#tmbb">7</a></td></tr>
+  <tr><td><code>mealy</code></td><td>Mealy machine</td><td><a href="#mealy">8</a></td></tr>
+  <tr><td><code>moore</code></td><td>Moore machine</td><td><a href="#mealy">8</a></td></tr>
+  <tr><td><code>grammar</code></td><td>Grammar</td><td><a href="#grammar">9</a></td></tr>
+  <tr><td><code>re</code></td><td>Regular expression</td><td><a href="#re">10</a></td></tr>
+  <tr><td><code>lsystem</code></td><td>L-system</td><td><a href="#lsystem">11</a></td></tr>
+  <tr><td><code>regular pumping lemma</code></td><td>Saved regular pumping lemma game</td><td><a href="#pumping">12</a></td></tr>
+  <tr><td><code>context-free pumping lemma</code></td><td>Saved context-free pumping lemma game</td><td><a href="#pumping">12</a></td></tr>
+</table>
+
+<p>The first six types are all automata and share one structure, described next. They differ only in what is written on a transition (and, for Moore machines, on a state).</p>
+
+<!-- ============================================================ -->
+<h2 id="automata">3. Automata: states, transitions and notes</h2>
+
+<p>For every automaton type, the <code>&lt;type&gt;</code> element is followed by an <code>&lt;automaton&gt;</code> element containing the states, then the transitions, then any notes.</p>
+
+<pre><code>&lt;structure&gt;
+    &lt;type&gt;fa&lt;/type&gt;
+    &lt;automaton&gt;
+        &lt;state id="0" name="q0"&gt; ... &lt;/state&gt;
+        &lt;state id="1" name="q1"&gt; ... &lt;/state&gt;
+        &lt;transition&gt; ... &lt;/transition&gt;
+        &lt;note&gt; ... &lt;/note&gt;
+    &lt;/automaton&gt;
+&lt;/structure&gt;</code></pre>
+
+<p>If the <code>&lt;automaton&gt;</code> wrapper is missing, JFLAP looks for states and transitions directly inside <code>&lt;structure&gt;</code>, so files from older versions that omit it still open.</p>
+
+<h3>3.1 <code>&lt;state&gt;</code></h3>
+
+<pre><code>&lt;state id="0" name="q0"&gt;
+    &lt;x&gt;60.0&lt;/x&gt;
+    &lt;y&gt;144.0&lt;/y&gt;
+    &lt;label&gt;start here&lt;/label&gt;
+    &lt;initial/&gt;
+    &lt;final/&gt;
+&lt;/state&gt;</code></pre>
+
+<table>
+  <tr><th>Item</th><th>Kind</th><th>Required</th><th>Meaning</th></tr>
+  <tr><td><code>id</code></td><td>attribute</td><td>yes</td><td>Integer that identifies the state. Transitions refer to states by this number. Must be unique.</td></tr>
+  <tr><td><code>name</code></td><td>attribute</td><td>no</td><td>Name shown in the state circle. Defaults to <code>q</code> followed by the id (e.g. <code>q3</code>). A <code>&lt;name&gt;</code> child element is also accepted and takes priority over the attribute.</td></tr>
+  <tr><td><code>&lt;x&gt;</code>, <code>&lt;y&gt;</code></td><td>element</td><td>no</td><td>Position of the state's center on the canvas, in pixels, as decimal numbers. If any state has no position, JFLAP lays out the unpositioned states automatically when the file is opened.</td></tr>
+  <tr><td><code>&lt;label&gt;</code></td><td>element</td><td>no</td><td>Optional label text displayed under the state.</td></tr>
+  <tr><td><code>&lt;initial/&gt;</code></td><td>empty element</td><td>no</td><td>Present if this is the start state. Only one state should have it; if several do, the last one read becomes the start state.</td></tr>
+  <tr><td><code>&lt;final/&gt;</code></td><td>empty element</td><td>no</td><td>Present if this is an accepting (final) state. Any number of states may have it.</td></tr>
+</table>
+
+<h3>3.2 <code>&lt;transition&gt;</code></h3>
+
+<pre><code>&lt;transition&gt;
+    &lt;from&gt;0&lt;/from&gt;
+    &lt;to&gt;1&lt;/to&gt;
+    &lt;controlx&gt;170&lt;/controlx&gt;
+    &lt;controly&gt;90&lt;/controly&gt;
+    ... type-specific elements ...
+&lt;/transition&gt;</code></pre>
+
+<table>
+  <tr><th>Element</th><th>Required</th><th>Meaning</th></tr>
+  <tr><td><code>&lt;from&gt;</code></td><td>yes</td><td>The <code>id</code> of the source state.</td></tr>
+  <tr><td><code>&lt;to&gt;</code></td><td>yes</td><td>The <code>id</code> of the destination state. May equal <code>&lt;from&gt;</code> (a loop).</td></tr>
+  <tr><td><code>&lt;controlx&gt;</code>, <code>&lt;controly&gt;</code></td><td>no</td><td>Integer control point for a curved edge. Both must be present to take effect. If absent, JFLAP draws the edge with its default shape.</td></tr>
+</table>
+
+<p>Each transition holds exactly one label. A transition with several labels in the editor (for example <code>a, b</code> on the same arrow) is saved as several separate <code>&lt;transition&gt;</code> elements with the same <code>&lt;from&gt;</code> and <code>&lt;to&gt;</code>.</p>
+
+<p>The type-specific elements are described in sections 4 to 8.</p>
+
+<div class="note">
+<strong>Empty strings and &lambda;.</strong> An empty element such as <code>&lt;read/&gt;</code> means the empty string, which JFLAP displays as &lambda; (or &epsilon;, depending on preferences). A missing element is treated the same as an empty one. The &lambda; character itself is never written to the file.
+</div>
+
+<h3>3.3 <code>&lt;note&gt;</code></h3>
+
+<p>A text note placed on the canvas.</p>
+
+<pre><code>&lt;note&gt;
+    &lt;text&gt;Accepts strings ending in ab&lt;/text&gt;
+    &lt;x&gt;40.0&lt;/x&gt;
+    &lt;y&gt;300.0&lt;/y&gt;
+&lt;/note&gt;</code></pre>
+
+<p><code>&lt;text&gt;</code> is required; a note without it is skipped. <code>&lt;x&gt;</code> and <code>&lt;y&gt;</code> give its position.</p>
+
+<!-- ============================================================ -->
+<h2 id="fa">4. Finite automata (<code>fa</code>)</h2>
+
+<p>Each transition has one extra element:</p>
+
+<table>
+  <tr><th>Element</th><th>Meaning</th></tr>
+  <tr><td><code>&lt;read&gt;</code></td><td>The input read on this transition. Empty for a &lambda;-transition. May contain more than one character (JFLAP allows multi-character labels on FA transitions).</td></tr>
+</table>
+
+<p>Complete example: an NFA over {a, b} that accepts strings containing <code>a</code>, with a &lambda;-transition.</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&lt;!--Created with JFLAP 7.1.--&gt;&lt;structure&gt;
+    &lt;type&gt;fa&lt;/type&gt;
+    &lt;automaton&gt;
+        &lt;!--The list of states.--&gt;
+        &lt;state id="0" name="q0"&gt;
+            &lt;x&gt;60.0&lt;/x&gt;
+            &lt;y&gt;144.0&lt;/y&gt;
+            &lt;initial/&gt;
+        &lt;/state&gt;
+        &lt;state id="1" name="q1"&gt;
+            &lt;x&gt;278.0&lt;/x&gt;
+            &lt;y&gt;152.0&lt;/y&gt;
+        &lt;/state&gt;
+        &lt;state id="2" name="q2"&gt;
+            &lt;x&gt;494.0&lt;/x&gt;
+            &lt;y&gt;162.0&lt;/y&gt;
+            &lt;final/&gt;
+        &lt;/state&gt;
+        &lt;!--The list of transitions.--&gt;
+        &lt;transition&gt;
+            &lt;from&gt;0&lt;/from&gt;
+            &lt;to&gt;0&lt;/to&gt;
+            &lt;read&gt;b&lt;/read&gt;
+        &lt;/transition&gt;
+        &lt;transition&gt;
+            &lt;from&gt;0&lt;/from&gt;
+            &lt;to&gt;1&lt;/to&gt;
+            &lt;read&gt;a&lt;/read&gt;
+        &lt;/transition&gt;
+        &lt;transition&gt;
+            &lt;from&gt;1&lt;/from&gt;
+            &lt;to&gt;2&lt;/to&gt;
+            &lt;read/&gt;
+        &lt;/transition&gt;
+        &lt;transition&gt;
+            &lt;from&gt;2&lt;/from&gt;
+            &lt;to&gt;2&lt;/to&gt;
+            &lt;read&gt;a&lt;/read&gt;
+        &lt;/transition&gt;
+        &lt;transition&gt;
+            &lt;from&gt;2&lt;/from&gt;
+            &lt;to&gt;2&lt;/to&gt;
+            &lt;read&gt;b&lt;/read&gt;
+        &lt;/transition&gt;
+    &lt;/automaton&gt;
+&lt;/structure&gt;</code></pre>
+
+<!-- ============================================================ -->
+<h2 id="pda">5. Pushdown automata (<code>pda</code>)</h2>
+
+<p>Each transition has three extra elements, always written in this order:</p>
+
+<table>
+  <tr><th>Element</th><th>Meaning</th></tr>
+  <tr><td><code>&lt;read&gt;</code></td><td>Input read. Empty for &lambda;.</td></tr>
+  <tr><td><code>&lt;pop&gt;</code></td><td>String popped from the top of the stack. Empty to pop nothing.</td></tr>
+  <tr><td><code>&lt;push&gt;</code></td><td>String pushed onto the stack. Empty to push nothing.</td></tr>
+</table>
+
+<p>The editor shows this transition as <code>a, Z ; aZ</code>:</p>
+
+<pre><code>&lt;transition&gt;
+    &lt;from&gt;0&lt;/from&gt;
+    &lt;to&gt;0&lt;/to&gt;
+    &lt;read&gt;a&lt;/read&gt;
+    &lt;pop&gt;Z&lt;/pop&gt;
+    &lt;push&gt;aZ&lt;/push&gt;
+&lt;/transition&gt;</code></pre>
+
+<p>The initial stack symbol (<code>Z</code> by default) is not stored in the file.</p>
+
+<!-- ============================================================ -->
+<h2 id="tm">6. Turing machines (<code>turing</code>)</h2>
+
+<h3>6.1 Single-tape</h3>
+
+<p>Each transition has three extra elements:</p>
+
+<table>
+  <tr><th>Element</th><th>Meaning</th></tr>
+  <tr><td><code>&lt;read&gt;</code></td><td>Symbol read from the tape. Empty means the blank symbol.</td></tr>
+  <tr><td><code>&lt;write&gt;</code></td><td>Symbol written to the tape. Empty means the blank symbol.</td></tr>
+  <tr><td><code>&lt;move&gt;</code></td><td>Head movement: <code>R</code> (right), <code>L</code> (left) or <code>S</code> (stay). If missing, JFLAP uses <code>R</code>.</td></tr>
+</table>
+
+<div class="note">
+<strong>The blank symbol.</strong> JFLAP displays the blank as &#x25A1; (Unicode U+25A1), but always saves it as an empty element, e.g. <code>&lt;read/&gt;</code>. The &#x25A1; character does not appear in files.
+</div>
+
+<p>The editor shows this transition as <code>a ; x, R</code>:</p>
+
+<pre><code>&lt;transition&gt;
+    &lt;from&gt;0&lt;/from&gt;
+    &lt;to&gt;1&lt;/to&gt;
+    &lt;read&gt;a&lt;/read&gt;
+    &lt;write&gt;x&lt;/write&gt;
+    &lt;move&gt;R&lt;/move&gt;
+&lt;/transition&gt;</code></pre>
+
+<h3>6.2 Multi-tape</h3>
+
+<p>A machine with 2 to 5 tapes adds a <code>&lt;tapes&gt;</code> element, placed between <code>&lt;type&gt;</code> and <code>&lt;automaton&gt;</code>. Each <code>&lt;read&gt;</code>, <code>&lt;write&gt;</code> and <code>&lt;move&gt;</code> then carries a <code>tape</code> attribute (numbered from 1). JFLAP writes them grouped by tape: read, write, move for tape 1, then for tape 2, and so on.</p>
+
+<pre><code>&lt;structure&gt;
+    &lt;type&gt;turing&lt;/type&gt;
+    &lt;tapes&gt;2&lt;/tapes&gt;
+    &lt;automaton&gt;
+        ...
+        &lt;transition&gt;
+            &lt;from&gt;0&lt;/from&gt;
+            &lt;to&gt;1&lt;/to&gt;
+            &lt;read tape="1"&gt;a&lt;/read&gt;
+            &lt;write tape="1"&gt;a&lt;/write&gt;
+            &lt;move tape="1"&gt;R&lt;/move&gt;
+            &lt;read tape="2"/&gt;
+            &lt;write tape="2"&gt;a&lt;/write&gt;
+            &lt;move tape="2"&gt;R&lt;/move&gt;
+        &lt;/transition&gt;
+    &lt;/automaton&gt;
+&lt;/structure&gt;</code></pre>
+
+<p>A missing <code>tape</code> attribute means tape 1. Missing <code>&lt;tapes&gt;</code> means one tape. More than 5 tapes is rejected.</p>
+
+<!-- ============================================================ -->
+<h2 id="tmbb">7. Turing machines with building blocks</h2>
+
+<p>A building block is a state that contains a whole Turing machine. In a file saved from the building-blocks editor:</p>
+
+<ul>
+  <li>Every state is written as a <code>&lt;block&gt;</code> element instead of <code>&lt;state&gt;</code>, even states that are not really blocks. A <code>&lt;block&gt;</code> has the same <code>id</code>, <code>name</code>, <code>&lt;x&gt;</code>, <code>&lt;y&gt;</code>, <code>&lt;initial/&gt;</code> and <code>&lt;final/&gt;</code> as a state, plus a <code>&lt;tag&gt;</code> element.</li>
+  <li><code>&lt;tag&gt;</code> holds the name of the element that stores the machine inside the block. JFLAP generates these as <code>Machine</code> followed by the id (e.g. <code>Machine2</code>).</li>
+  <li>Each inner machine is written as a separate element with that name, placed directly inside <code>&lt;structure&gt;</code>, next to <code>&lt;automaton&gt;</code>. Its contents have the same form as <code>&lt;automaton&gt;</code>. Ordinary states get an empty inner machine.</li>
+  <li>A transition can be marked <code>block="true"</code>. Such a transition only stores <code>&lt;read&gt;</code> (for tape 1); its write and move are fixed by JFLAP.</li>
+</ul>
+
+<pre><code>&lt;structure&gt;
+    &lt;type&gt;turingbb&lt;/type&gt;
+    &lt;automaton&gt;
+        &lt;block id="0" name="q0"&gt;
+            &lt;tag&gt;Machine0&lt;/tag&gt;
+            &lt;x&gt;80.0&lt;/x&gt;
+            &lt;y&gt;100.0&lt;/y&gt;
+            &lt;initial/&gt;
+        &lt;/block&gt;
+        &lt;block id="1" name="q1"&gt;
+            &lt;tag&gt;Machine1&lt;/tag&gt;
+            &lt;x&gt;240.0&lt;/x&gt;
+            &lt;y&gt;100.0&lt;/y&gt;
+            &lt;final/&gt;
+        &lt;/block&gt;
+        &lt;transition&gt;
+            ...
+        &lt;/transition&gt;
+    &lt;/automaton&gt;
+    &lt;Machine0/&gt;
+    &lt;Machine1&gt;
+        ... states and transitions of the machine inside q1 ...
+    &lt;/Machine1&gt;
+&lt;/structure&gt;</code></pre>
+
+<p>When reading, JFLAP looks up an inner machine by searching the whole document for the first element whose name equals the <code>&lt;tag&gt;</code> text. Tag names should therefore be unique within a file.</p>
+
+<p class="note">Any file containing a <code>&lt;block&gt;</code> element is opened as a building-block machine, whatever its <code>&lt;type&gt;</code> says. See <a href="#reading">section 13</a>.</p>
+
+<!-- ============================================================ -->
+<h2 id="mealy">8. Mealy and Moore machines</h2>
+
+<h3>8.1 Mealy (<code>mealy</code>)</h3>
+
+<p>Output is produced on transitions. Each transition has two extra elements:</p>
+
+<table>
+  <tr><th>Element</th><th>Meaning</th></tr>
+  <tr><td><code>&lt;read&gt;</code></td><td>Input read.</td></tr>
+  <tr><td><code>&lt;transout&gt;</code></td><td>Output produced when the transition is taken.</td></tr>
+</table>
+
+<pre><code>&lt;transition&gt;
+    &lt;from&gt;0&lt;/from&gt;
+    &lt;to&gt;1&lt;/to&gt;
+    &lt;read&gt;a&lt;/read&gt;
+    &lt;transout&gt;1&lt;/transout&gt;
+&lt;/transition&gt;</code></pre>
+
+<h3>8.2 Moore (<code>moore</code>)</h3>
+
+<p>Output belongs to states. Each <code>&lt;state&gt;</code> has an extra <code>&lt;output&gt;</code> element:</p>
+
+<pre><code>&lt;state id="1" name="q1"&gt;
+    &lt;x&gt;200.0&lt;/x&gt;
+    &lt;y&gt;100.0&lt;/y&gt;
+    &lt;output&gt;1&lt;/output&gt;
+&lt;/state&gt;</code></pre>
+
+<p>Transitions are written like Mealy transitions, including <code>&lt;transout&gt;</code>, which JFLAP sets to the output of the destination state.</p>
+
+<div class="note">
+<strong>Watch out:</strong> when reading a Moore file, each transition's <code>&lt;transout&gt;</code> <em>overwrites</em> the <code>&lt;output&gt;</code> of its destination state, because transitions are read after states. Files written by other tools should make every incoming transition's <code>&lt;transout&gt;</code> equal to the destination state's <code>&lt;output&gt;</code>. A missing <code>&lt;transout&gt;</code> counts as empty and will clear the state's output.
+</div>
+
+<!-- ============================================================ -->
+<h2 id="grammar">9. Grammars (<code>grammar</code>)</h2>
+
+<p>A grammar is a list of <code>&lt;production&gt;</code> elements placed directly inside <code>&lt;structure&gt;</code> (there is no wrapper element). Each production has a left side and a right side.</p>
+
+<pre><code>&lt;structure&gt;
+    &lt;type&gt;grammar&lt;/type&gt;
+    &lt;!--The list of productions.--&gt;
+    &lt;production&gt;
+        &lt;left&gt;S&lt;/left&gt;
+        &lt;right&gt;aSb&lt;/right&gt;
+    &lt;/production&gt;
+    &lt;production&gt;
+        &lt;left&gt;S&lt;/left&gt;
+        &lt;right/&gt;
+    &lt;/production&gt;
+&lt;/structure&gt;</code></pre>
+
+<table>
+  <tr><th>Element</th><th>Meaning</th></tr>
+  <tr><td><code>&lt;left&gt;</code></td><td>Left-hand side, e.g. <code>S</code>. May be more than one symbol for unrestricted grammars.</td></tr>
+  <tr><td><code>&lt;right&gt;</code></td><td>Right-hand side. Empty for a &lambda;-production (<code>S &rarr; &lambda;</code>).</td></tr>
+</table>
+
+<p>The grammar's kind (regular, context-free, unrestricted) and its start variable are not stored explicitly. By JFLAP convention the start variable is the left side of the first production, so keep that production first. Duplicate productions are dropped when the file is opened.</p>
+
+<!-- ============================================================ -->
+<h2 id="re">10. Regular expressions (<code>re</code>)</h2>
+
+<pre><code>&lt;structure&gt;
+    &lt;type&gt;re&lt;/type&gt;
+    &lt;!--The regular expression.--&gt;
+    &lt;expression&gt;(a+b)*abb&lt;/expression&gt;
+&lt;/structure&gt;</code></pre>
+
+<p>The expression is stored as the text typed in the editor. In JFLAP's notation <code>+</code> means union, <code>*</code> is Kleene star, and concatenation is written by juxtaposition.</p>
+
+<p class="note">An empty <code>&lt;expression/&gt;</code> element causes an error when opening the file. To save an empty expression, omit the element entirely.</p>
+
+<!-- ============================================================ -->
+<h2 id="lsystem">11. L-systems (<code>lsystem</code>)</h2>
+
+<p>An L-system has an axiom, rewriting rules and drawing parameters, all directly inside <code>&lt;structure&gt;</code>. Symbols are separated by spaces.</p>
+
+<pre><code>&lt;structure&gt;
+    &lt;type&gt;lsystem&lt;/type&gt;
+    &lt;!--The L-system axiom.--&gt;
+    &lt;axiom&gt;F&lt;/axiom&gt;
+    &lt;!--The rewriting rules.--&gt;
+    &lt;production&gt;
+        &lt;left&gt;F&lt;/left&gt;
+        &lt;right&gt;F + F - - F + F&lt;/right&gt;
+    &lt;/production&gt;
+    &lt;!--The drawing parameters.--&gt;
+    &lt;parameter&gt;
+        &lt;name&gt;angle&lt;/name&gt;
+        &lt;value&gt;60&lt;/value&gt;
+    &lt;/parameter&gt;
+&lt;/structure&gt;</code></pre>
+
+<table>
+  <tr><th>Element</th><th>Required</th><th>Meaning</th></tr>
+  <tr><td><code>&lt;axiom&gt;</code></td><td>yes</td><td>Starting string. If there are several, the last one is used.</td></tr>
+  <tr><td><code>&lt;production&gt;</code></td><td>no</td><td>One <code>&lt;left&gt;</code> symbol and one or more <code>&lt;right&gt;</code> replacements. Several <code>&lt;right&gt;</code> elements make a stochastic rule (one is chosen at random).</td></tr>
+  <tr><td><code>&lt;parameter&gt;</code></td><td>no</td><td>A <code>&lt;name&gt;</code> / <code>&lt;value&gt;</code> pair, e.g. <code>angle</code>, <code>distance</code>. Parameters without a name are ignored.</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<h2 id="pumping">12. Pumping lemmas</h2>
+
+<p>These files save the state of a pumping lemma game. All elements are placed directly inside <code>&lt;structure&gt;</code>.</p>
+
+<h3>12.1 Regular (<code>regular pumping lemma</code>)</h3>
+
+<pre><code>&lt;structure&gt;
+    &lt;type&gt;regular pumping lemma&lt;/type&gt;
+    &lt;name&gt;...language name as shown in JFLAP...&lt;/name&gt;
+    &lt;first_player&gt;...&lt;/first_player&gt;
+    &lt;m&gt;3&lt;/m&gt;
+    &lt;w&gt;aaabbb&lt;/w&gt;
+    &lt;i&gt;2&lt;/i&gt;
+    &lt;xLength&gt;1&lt;/xLength&gt;
+    &lt;yLength&gt;1&lt;/yLength&gt;
+    &lt;attempt&gt;...&lt;/attempt&gt;
+&lt;/structure&gt;</code></pre>
+
+<table>
+  <tr><th>Element</th><th>Meaning</th></tr>
+  <tr><td><code>&lt;name&gt;</code></td><td>Which language/lemma this is. Must match one of the lemmas built into JFLAP.</td></tr>
+  <tr><td><code>&lt;first_player&gt;</code></td><td><code>Human</code> or <code>Computer</code>: who moves first.</td></tr>
+  <tr><td><code>&lt;m&gt;</code>, <code>&lt;w&gt;</code>, <code>&lt;i&gt;</code></td><td>The values of m, w and i chosen during the game.</td></tr>
+  <tr><td><code>&lt;xLength&gt;</code>, <code>&lt;yLength&gt;</code></td><td>Lengths of x and y in the decomposition w = xyz.</td></tr>
+  <tr><td><code>&lt;attempt&gt;</code></td><td>Zero or more previous attempts, in order.</td></tr>
+</table>
+
+<h3>12.2 Context-free (<code>context-free pumping lemma</code>)</h3>
+
+<p>The same elements as the regular version, except that the decomposition w = uvxyz is stored as <code>&lt;uLength&gt;</code>, <code>&lt;vLength&gt;</code>, <code>&lt;xLength&gt;</code> and <code>&lt;yLength&gt;</code>. It may also contain any number of <code>&lt;case&gt;</code> elements, each recording one case of the proof:</p>
+
+<pre><code>&lt;case&gt;
+    &lt;caseULength&gt;0&lt;/caseULength&gt;
+    &lt;caseVLength&gt;1&lt;/caseVLength&gt;
+    &lt;caseXLength&gt;0&lt;/caseXLength&gt;
+    &lt;caseYLength&gt;1&lt;/caseYLength&gt;
+    &lt;caseI&gt;2&lt;/caseI&gt;
+&lt;/case&gt;</code></pre>
+
+<!-- ============================================================ -->
+<h2 id="reading">13. How JFLAP reads a file</h2>
+
+<p>These rules matter mostly to people writing tools that produce <code>.jff</code> files.</p>
+
+<h3>13.1 Choosing the file type</h3>
+<p>JFLAP checks the following, in order, and stops at the first match:</p>
+<ol>
+  <li>If the file contains a <code>&lt;tapes&gt;</code> element anywhere, it is opened as a (multi-tape) Turing machine.</li>
+  <li>Otherwise, if it contains a <code>&lt;block&gt;</code> element anywhere, it is opened as a Turing machine with building blocks.</li>
+  <li>Otherwise the text of the first <code>&lt;type&gt;</code> element is used. A file without <code>&lt;type&gt;</code> cannot be opened.</li>
+  <li>For <code>&lt;type&gt;turing&lt;/type&gt;</code>, JFLAP asks the user whether to open it as a standard Turing machine or as one with building blocks.</li>
+</ol>
+
+<h3>13.2 Leniency and errors</h3>
+<table>
+  <tr><th>Situation</th><th>What JFLAP does</th></tr>
+  <tr><td>Unknown elements</td><td>Ignored. Extra elements can be added without breaking JFLAP.</td></tr>
+  <tr><td>Missing transition fields (<code>&lt;read&gt;</code>, <code>&lt;pop&gt;</code>, etc.)</td><td>Treated as empty (&lambda; or blank). Missing <code>&lt;move&gt;</code> becomes <code>R</code>.</td></tr>
+  <tr><td>State with no <code>&lt;x&gt;</code>/<code>&lt;y&gt;</code></td><td>Opened and placed automatically.</td></tr>
+  <tr><td>Two states with the same <code>id</code></td><td>Error; the file does not open.</td></tr>
+  <tr><td>Transition with no <code>&lt;from&gt;</code> or <code>&lt;to&gt;</code>, or referring to an id that does not exist</td><td>Error; the file does not open.</td></tr>
+  <tr><td><code>id</code> that is not an integer</td><td>Silently read as <code>-1</code>. Avoid this: two such states collide.</td></tr>
+  <tr><td>Coordinate that is not a number</td><td>Error; the file does not open.</td></tr>
+  <tr><td>Turing machine with fewer than 1 or more than 5 tapes, or a <code>tape</code> attribute out of range</td><td>Error; the file does not open.</td></tr>
+</table>
+
+<h3>13.3 Writing</h3>
+<ul>
+  <li>JFLAP writes UTF-8, with tab indentation.</li>
+  <li>States are written in their internal order, which is usually but not always increasing <code>id</code>. Transition order is not significant.</li>
+  <li><code>&lt;x&gt;</code> and <code>&lt;y&gt;</code> are always written as decimals (e.g. <code>60.0</code>).</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 id="source">14. Source reference</h2>
+
+<p>The format is defined by the JFLAP 7.1 source code. The classes below read and write each type and are the authority if this page and JFLAP ever disagree.</p>
+
+<table>
+  <tr><th>Class (package <code>file.xml</code>)</th><th>Handles</th></tr>
+  <tr><td><code>TransducerFactory</code></td><td>Choosing the reader from <code>&lt;type&gt;</code>, <code>&lt;tapes&gt;</code> and <code>&lt;block&gt;</code></td></tr>
+  <tr><td><code>AbstractTransducer</code></td><td>The <code>&lt;structure&gt;</code> / <code>&lt;type&gt;</code> wrapper</td></tr>
+  <tr><td><code>AutomatonTransducer</code></td><td>States, blocks, transitions, notes (shared by all automata)</td></tr>
+  <tr><td><code>FSATransducer</code></td><td><code>fa</code></td></tr>
+  <tr><td><code>PDATransducer</code></td><td><code>pda</code></td></tr>
+  <tr><td><code>TMTransducer</code>, <code>TMBBTransducer</code></td><td><code>turing</code>, <code>turingbb</code></td></tr>
+  <tr><td><code>MealyTransducer</code>, <code>MooreTransducer</code></td><td><code>mealy</code>, <code>moore</code></td></tr>
+  <tr><td><code>GrammarTransducer</code></td><td><code>grammar</code></td></tr>
+  <tr><td><code>RETransducer</code></td><td><code>re</code></td></tr>
+  <tr><td><code>LSystemTransducer</code></td><td><code>lsystem</code></td></tr>
+  <tr><td><code>RegPumpingLemmaTransducer</code>, <code>CFPumpingLemmaTransducer</code></td><td>Pumping lemmas</td></tr>
+</table>
+
+<p>The file is written by <code>file.XMLCodec</code>, which accepts both <code>.jff</code> and <code>.xml</code> extensions when opening.</p>
+
+</body>
+</html>
