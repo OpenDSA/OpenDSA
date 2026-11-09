@@ -734,8 +734,8 @@ are case-sensitive and character-exact**:
 .. code-block:: java
 
    "bridge".equals("Bridge")  // FALSE!
-   "bridge".hashCode()       // -1379965416
-   "Bridge".hashCode()       // 1999805960
+   "bridge".hashCode()        // -1379965416
+   "Bridge".hashCode()        // 1999805960
 
 Because a ``HashMap`` locates entries by evaluating ``hashCode()`` and
 ``.equals()``, querying a map holding the key ``"bridge"`` with the string
@@ -817,27 +817,78 @@ mismatches, missing registrations, or unintended key overwrites—can easily go
 unnoticed unless exercised by thorough test suites.
 
 In CS 1114, automated unit tests are written in test classes extending
-``TestCase`` (from the ``student`` package). BlueJ creates new test classes using
-templates with the proper import (``import student.TestCase;``) already
-configured, so we always write **public class ... extends TestCase**
-without package qualification.
+``TestCase`` (from the ``student`` package) and use **AssertJ fluent assertions**
+via a static import:
 
-Let us write a comprehensive test suite verifying the behavior of our
-``CampusLocation`` navigation system and a map-driven command interpreter.
+.. code-block:: java
+
+   import student.TestCase;
+   import static org.assertj.core.api.Assertions.*;
+
+AssertJ provides a fluent, highly readable syntax for inspecting collections,
+object references, and primitive values.
+
+AssertJ Assertions for Maps
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When testing classes that store, manage, or return a ``Map<K, V>``, AssertJ's
+``assertThat(map)`` provides a rich collection of assertion methods tailored
+specifically for associative collections:
+
+.. list-table::
+   :widths: 45 55
+   :header-rows: 1
+
+   * - Assertion Method
+     - What It Verifies
+   * - ``assertThat(map).isEmpty()``
+     - Verifies the map contains zero key-value entries.
+   * - ``assertThat(map).isNotEmpty()``
+     - Verifies the map contains at least one entry.
+   * - ``assertThat(map).hasSize(int expected)``
+     - Verifies the number of key-value pairs in the map.
+   * - ``assertThat(map).containsKey(K key)``
+     - Verifies that the specified key exists in the map.
+   * - ``assertThat(map).doesNotContainKey(K key)``
+     - Verifies that the specified key does not exist in the map.
+   * - ``assertThat(map).containsKeys(K... keys)``
+     - Verifies that all specified keys exist in the map.
+   * - ``assertThat(map).containsOnlyKeys(K... keys)``
+     - Verifies that the map contains exactly the given keys and no others.
+   * - ``assertThat(map).containsValue(V value)``
+     - Verifies that the specified value is associated with at least one key.
+   * - ``assertThat(map).doesNotContainValue(V value)``
+     - Verifies that the specified value does not appear in the map.
+   * - ``assertThat(map).containsEntry(K key, V value)``
+     - Verifies that the specific key-to-value mapping exists in the map.
+   * - ``assertThat(map).doesNotContainEntry(K key, V value)``
+     - Verifies that the specific key-to-value mapping does not exist.
+   * - ``assertThat(map.get(key)).isEqualTo(expected)``
+     - Verifies the value retrieved for a key matches the expected object.
+   * - ``assertThat(map.get(key)).isNull()``
+     - Verifies that looking up an unmapped key returns ``null``.
+   * - ``assertThat(map.get(key)).isNotNull()``
+     - Verifies that looking up a key yields a valid object reference.
+
+In addition to map assertions, AssertJ's string assertions (such as
+``assertThat(str).contains(...)``) and boolean assertions (such as
+``assertThat(bool).isTrue()`` and ``assertThat(bool).isFalse()``) make it easy to
+verify formatted descriptions and receiver state without writing verbose
+conditional statements.
 
 Testing Campus Navigation Pathways
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A robust test class for ``CampusLocation`` must verify:
+Let us examine how to write focused, idiomatic unit tests for our ``CampusLocation``
+navigation system using AssertJ. Rather than lumping all checks into one massive
+test method, we structure our test class with focused test methods that each
+verify an individual requirement.
 
-1. Setting and retrieving connections with standard lowercase pathway names.
-2. Case-insensitivity and whitespace trimming (verifying uppercase, mixed-case,
-   and padded lookups).
+Setting Up the Test Fixture
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3. Querying nonexistent pathways safely returning ``null``.
-4. Guarding against ``null`` lookup arguments without throwing exceptions.
-5. Overwriting a pathway with a new destination.
-6. Pathway listing via ``listAvailablePathways()``.
+In our test class, we declare instance fields for the locations under test and
+initialize a baseline network of connected pathways inside ``setUp()``:
 
 .. code-block:: java
 
@@ -860,72 +911,134 @@ A robust test class for ``CampusLocation`` must verify:
            library.connectLocation("walkway", drillfield);
        }
 
-       /**
-        * Verifies successful destination retrieval with standard lowercase keys.
-        */
-       public void testGetDestinationStandard()
-       {
-           assertEquals(studentCenter, library.getDestination("plaza"));
-           assertEquals(drillfield, library.getDestination("walkway"));
-       }
+Verifying Standard Key Retrieval
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-       /**
-        * Verifies that getDestination is case-insensitive and trims whitespace.
-        */
-       public void testGetDestinationCaseInsensitive()
-       {
-           assertEquals(studentCenter, library.getDestination("PLAZA"));
-           assertEquals(studentCenter, library.getDestination("Plaza"));
-           assertEquals(drillfield, library.getDestination("  WALKWAY  "));
-       }
+To test that registered pathways correctly resolve to their assigned destinations,
+we invoke the lookup method and verify the returned object using ``isEqualTo()``:
 
-       /**
-        * Verifies that querying a nonexistent pathway returns null.
-        */
-       public void testGetDestinationNonexistent()
-       {
-           assertNull(library.getDestination("tunnel"));
-           assertNull(library.getDestination("skybridge"));
-       }
+.. code-block:: java
 
-       /**
-        * Verifies that null queries safely return null without throwing an exception.
-        */
-       public void testGetDestinationNullKey()
-       {
-           assertNull(library.getDestination(null));
-       }
-
-       /**
-        * Verifies that re-connecting a pathway overwrites the previous destination.
-        */
-       public void testConnectLocationOverwrite()
-       {
-           CampusLocation bookstore = new CampusLocation("Bookstore", "merchandise");
-           library.connectLocation("plaza", bookstore);
-
-           assertEquals(bookstore, library.getDestination("plaza"));
-       }
-
-       /**
-        * Verifies that listAvailablePathways outputs all registered pathway labels.
-        */
-       public void testListAvailablePathways()
-       {
-           String pathways = library.listAvailablePathways();
-
-           assertTrue(pathways.contains("plaza"));
-           assertTrue(pathways.contains("walkway"));
-           assertFalse(pathways.contains("tunnel"));
-       }
+   /**
+    * Verifies successful destination retrieval with standard lowercase keys.
+    */
+   public void testGetDestinationStandard()
+   {
+       assertThat(library.getDestination("plaza")).isEqualTo(studentCenter);
+       assertThat(library.getDestination("walkway")).isEqualTo(drillfield);
    }
+
+Verifying Case-Insensitivity and Key Normalization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A robust map-based lookup normalizes input keys (for example, by calling
+``.trim().toLowerCase()``). We test that uppercase, mixed-case, and whitespace-padded
+pathway names all reliably resolve to the expected destination:
+
+.. code-block:: java
+
+   /**
+    * Verifies that getDestination is case-insensitive and trims whitespace.
+    */
+   public void testGetDestinationCaseInsensitive()
+   {
+       assertThat(library.getDestination("PLAZA")).isEqualTo(studentCenter);
+       assertThat(library.getDestination("Plaza")).isEqualTo(studentCenter);
+       assertThat(library.getDestination("  WALKWAY  ")).isEqualTo(drillfield);
+   }
+
+Testing Missing Keys and Null Queries
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When a queried pathway has not been registered, or when a caller passes ``null``,
+the method should safely return ``null`` without throwing an exception. We
+verify this using AssertJ's ``isNull()``:
+
+.. code-block:: java
+
+   /**
+    * Verifies that querying a nonexistent pathway safely returns null.
+    */
+   public void testGetDestinationNonexistent()
+   {
+       assertThat(library.getDestination("tunnel")).isNull();
+       assertThat(library.getDestination("skybridge")).isNull();
+   }
+
+   /**
+    * Verifies that null queries safely return null without throwing an exception.
+    */
+   public void testGetDestinationNullKey()
+   {
+       assertThat(library.getDestination(null)).isNull();
+   }
+
+Testing Key Overwrite Behavior
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In Java maps, calling ``put()`` with a key that is already present replaces the
+previous value. We verify that reconnecting a pathway updates the destination:
+
+.. code-block:: java
+
+   /**
+    * Verifies that re-connecting a pathway overwrites the previous destination.
+    */
+   public void testConnectLocationOverwrite()
+   {
+       CampusLocation bookstore = new CampusLocation("Bookstore", "merchandise");
+       library.connectLocation("plaza", bookstore);
+
+       assertThat(library.getDestination("plaza")).isEqualTo(bookstore);
+   }
+
+Testing Formatted Pathway Summaries
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When testing methods that list available pathways (such as ``listAvailablePathways()``),
+we use AssertJ's fluent string assertions to verify that registered pathways are
+present and unregistered ones are omitted:
+
+.. code-block:: java
+
+   /**
+    * Verifies that listAvailablePathways outputs all registered pathway labels.
+    */
+   public void testListAvailablePathways()
+   {
+       String pathways = library.listAvailablePathways();
+
+       assertThat(pathways)
+           .contains("plaza")
+           .contains("walkway")
+           .doesNotContain("tunnel");
+   }
+
+Direct Map Assertions on Internal State
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If a class provides package-private or getter access to its underlying map (or
+when inspecting a map returned by a method), AssertJ lets you assert directly on
+the collection in a single fluent chain:
+
+.. code-block:: java
+
+   // Direct map inspection with AssertJ
+   Map<String, CampusLocation> exits = library.getExits();
+
+   assertThat(exits)
+       .hasSize(2)
+       .containsKey("plaza")
+       .containsEntry("walkway", drillfield)
+       .doesNotContainKey("tunnel");
 
 Testing Map-Driven Command Interpreters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When testing a command interpreter powered by ``Map<String, Command>``, you
-verify that valid command words invoke receiver actions while unknown command
-words trigger default fallbacks:
+When testing a command interpreter powered by a ``Map<String, Command>``, we verify
+that valid command strings successfully dispatch to receiver actions and update
+device state, while unrecognized words gracefully fall back without throwing
+exceptions.
 
 .. code-block:: java
 
@@ -942,42 +1055,68 @@ words trigger default fallbacks:
            interpreter = new CommandInterpreter(thermostat, light);
        }
 
-       /**
-        * Tests executing a registered command via the map dispatcher.
-        */
-       public void testValidCommandExecution()
-       {
-           assertFalse(light.isOn());
+Verifying Command Dispatch and Receiver State
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-           interpreter.interpretSingleCommand("light on");
-           assertTrue(light.isOn());
+We verify that executing recognized command words triggers the expected state
+transitions on the receiver objects using ``isTrue()`` and ``isFalse()``:
 
-           interpreter.interpretSingleCommand("light off");
-           assertFalse(light.isOn());
-       }
+.. code-block:: java
 
-       /**
-        * Tests case-insensitive command verb dispatch.
-        */
-       public void testCommandVerbCasing()
-       {
-           interpreter.interpretSingleCommand("TEMP 74");
-           assertEquals(74, thermostat.getTargetTemperature());
+   /**
+    * Tests executing a registered command via the map dispatcher.
+    */
+   public void testValidCommandExecution()
+   {
+       assertThat(light.isOn()).isFalse();
 
-           interpreter.interpretSingleCommand("Temp 68");
-           assertEquals(68, thermostat.getTargetTemperature());
-       }
+       interpreter.interpretSingleCommand("light on");
+       assertThat(light.isOn()).isTrue();
 
-       /**
-        * Tests unrecognized command words gracefully fall back without crashing.
-        */
-       public void testUnrecognizedCommand()
-       {
-           // Should output error message without throwing exception:
-           interpreter.interpretSingleCommand("jump");
-           assertEquals(70, thermostat.getTargetTemperature());
-           assertFalse(light.isOn());
-       }
+       interpreter.interpretSingleCommand("light off");
+       assertThat(light.isOn()).isFalse();
+   }
+
+Verifying Case-Insensitive Verb Dispatch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We verify that the command parser normalizes verbs before map lookup so that
+commands with varying casing execute correctly:
+
+.. code-block:: java
+
+   /**
+    * Tests case-insensitive command verb dispatch.
+    */
+   public void testCommandVerbCasing()
+   {
+       interpreter.interpretSingleCommand("TEMP 74");
+       assertThat(thermostat.getTargetTemperature()).isEqualTo(74);
+
+       interpreter.interpretSingleCommand("Temp 68");
+       assertThat(thermostat.getTargetTemperature()).isEqualTo(68);
+   }
+
+Verifying Unrecognized Command Fallback
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When an unregistered command word is encountered, the interpreter should safely
+handle the unknown token (e.g., printing an error message) without modifying
+receiver state or throwing an unhandled exception:
+
+.. code-block:: java
+
+   /**
+    * Tests that unrecognized command words gracefully fall back without crashing.
+    */
+   public void testUnrecognizedCommand()
+   {
+       // Should output error message without throwing exception:
+       interpreter.interpretSingleCommand("jump");
+
+       // Receiver state remains completely unchanged:
+       assertThat(thermostat.getTargetTemperature()).isEqualTo(70);
+       assertThat(light.isOn()).isFalse();
    }
 
 Notice how clean, fast, and deterministic these unit tests are. Because our
