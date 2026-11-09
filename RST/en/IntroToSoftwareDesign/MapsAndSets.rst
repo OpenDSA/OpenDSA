@@ -817,12 +817,12 @@ mismatches, missing registrations, or unintended key overwrites—can easily go
 unnoticed unless exercised by thorough test suites.
 
 In CS 1114, automated unit tests are written in test classes extending
-``TestCase`` (from the ``student`` package) and use **AssertJ fluent assertions**
+``TestCase`` (from the ``student`` package or the ``student.micro`` package) and
+use **AssertJ fluent assertions**
 via a static import:
 
 .. code-block:: java
 
-   import student.TestCase;
    import static org.assertj.core.api.Assertions.*;
 
 AssertJ provides a fluent, highly readable syntax for inspecting collections,
@@ -833,7 +833,7 @@ AssertJ Assertions for Maps
 
 When testing classes that store, manage, or return a ``Map<K, V>``, AssertJ's
 ``assertThat(map)`` provides a rich collection of assertion methods tailored
-specifically for associative collections:
+specifically for associative collections (maps):
 
 .. list-table::
    :widths: 45 55
