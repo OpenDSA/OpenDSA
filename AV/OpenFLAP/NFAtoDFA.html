@@ -10,15 +10,10 @@
 			<link rel="stylesheet" href="./css/NFAtoDFA.css" type="text/css" />
 
 
-			<script src="../../lib/jquery-3.7.1.min.js"></script>
+			<script src="../../lib/jquery.min.js"></script>
 
-		     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-		    <!-- add icon_button library -->
-		    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		    <!-- PDF save link -->
-		    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js" integrity="sha384-CchuzHs077vGtfhGYl9Qtc7Vx64rXBXdIAZIPbItbNyWIRTdG0oYAqki3Ry13Yzu" crossorigin="anonymous"></script>
+		     <link rel="stylesheet" href="./css/dropdown.css" type="text/css" />
+		     <script src="./Dropdown.js"></script>
 		    <link rel="stylesheet" type="text/css" href="../../lib/jquery.ui.min.css" />
 		<style>
 			#av {
@@ -45,6 +40,10 @@
     		.jsavmodelanswer {
     			text-align: center;
     		}
+    		/* keep each menu button on one line, so the caret sits beside its text */
+    		.headerTable button {
+    			white-space: nowrap;
+    		}
 		</style>
 	</head>
 	<body>
@@ -53,9 +52,6 @@
 		<div id="av">
 			<div style="display:inline;">
 		        <div style="float: right;" id="menu_options">
-	        	  <button id="editButton" class="icon_btn"><i class="fa fa-mouse-pointer"></i></button>
-		          <!--<button id="not_implemented" class="icon_btn" title="Expand Group on (T)erminal"><i class="fa fa-joomla"></i></button>
-		          <button id="not_implemented" class="icon_btn" title="Expand State"><i class="fa fa-share-alt"></i></button>-->
 		          <button type="button" id="completeButton">Complete</button>
 				  <button type="button" id="checkDone">Done?</button>
 				  <button type="button" id="exportButton">Export</button>
@@ -79,7 +75,7 @@
 		                </div>
 
 		                <button class="functionality" id="begin">Input</button>
-		                <div class="dropdown" style="height: 20px !important; width: 73px;">
+		                <div class="dropdown" style="height: 20px !important;">
 		                  <button type="button" data-toggle="dropdown">Convert
 		                  <span class="caret"></span></button>
 		                  <ul class="dropdown-menu">
@@ -101,6 +97,7 @@
 		          </table>
 		        </div>
 		      </div>
+		    <div id="download"></div>
 		    <br>
 		    <br>
 			<hr style="margin-top: 0px; border-top: 1px solid #333; margin-bottom: 0px;">

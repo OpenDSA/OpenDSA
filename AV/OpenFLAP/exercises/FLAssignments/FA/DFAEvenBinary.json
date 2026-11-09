@@ -3,6 +3,7 @@
   "totalTrueCases": 4,
   "totalFalseCases": 5,
   "containLetters": ["1", "0"],
+  "tools": ["edit", "addState", "addTransition", "delete", "undo", "redo"],
   "randomStringLength": [0, 15],
   "description": "Give a DFA that accepts the language over $\\Sigma = \\{0, 1\\}$ of strings that represent even binary numbers.",
   "testCases": [

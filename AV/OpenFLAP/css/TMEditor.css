@@ -42,3 +42,45 @@
 	padding: 0;
 	border: 0;
 }
+
+/* Rubber-band selection box (same as FA.css, which TM pages don't load) */
+.jsav-selection-rect {
+	position: absolute;
+	border: 1px dashed #3b82f6;
+	background-color: rgba(59, 130, 246, 0.1);
+	pointer-events: none;
+	z-index: 900;
+}
+
+/* Custom state labels drawn inside the state circle (same as FA.css, which
+   TM pages don't load - without position:absolute the label ignored its
+   left/top and showed up away from its state). */
+.jsavstatelabel {
+	font-size: 1em;
+	z-index: 700;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	box-sizing: border-box;
+	margin: 0;
+	pointer-events: none;
+	overflow: hidden;
+	background-color: white;
+	border-radius: 50%;
+}
+/* The label text inside a state - same as FA.css's .label_css, and without
+   the border FLA.css gives .label_css elsewhere. */
+.jsavstatelabel .label_css {
+	width: 100%;
+	margin: 0;
+	padding: 0 7px;
+	box-sizing: border-box;
+	font-size: 0.85em;
+	line-height: 1.1;
+	word-break: break-word;
+	overflow-wrap: break-word;
+	border: none;
+	background-color: transparent;
+}

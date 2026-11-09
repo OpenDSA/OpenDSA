@@ -18,10 +18,10 @@
     <link rel="stylesheet" href="./css/tester.css" type="text/css" />
     <link rel="stylesheet" href="./css/FAtoRE.css" type="text/css" />
     <link rel="stylesheet" href="./css/help.css" type="text/css">
-    <script src="../../lib/jquery-3.7.1.min.js"></script>
+    <script src="../../lib/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/dropdown.css" type="text/css" />
+    <script src="./Dropdown.js"></script>
 
     <!-- add icon_button library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -51,6 +51,10 @@
           <button id="deleteButton" class="icon_btn"><i class="fa fa-close"></i></button>
           <button id="undoButton" class="icon_btn"><i class="fa fa-undo"></i></button>
           <button id="redoButton" class="icon_btn"><i class="fa fa-undo fa-rotate-180 fa-flip-horizontal"></i></button>
+          <button id="zoomOutButton" class="icon_btn"><i class="fa fa-search-minus"></i></button>
+          <span id="zoomLevelDisplay" style="display:inline-block; width:42px; text-align:center;">100%</span>
+          <button id="zoomInButton" class="icon_btn"><i class="fa fa-search-plus"></i></button>
+          <button id="zoomResetButton" class="icon_btn"><i class="fa fa-expand"></i></button>
         </div>
 
         <div style="float: left;">
@@ -70,6 +74,9 @@
 
                 </div>
                 <button class="functionality" id="begin">Input</button>
+                <button class="functionality" id="shorthandButton">Enable Shorthand</button>
+                <button class="functionality" id="clearLabelButton">Clear Labels</button>
+                <button class="functionality" id="trapState">Add Trap State</button>
 
                 <div class="dropdown" style="height: 20px !important;">
                   <button type="button" data-toggle="dropdown">Test
@@ -77,6 +84,9 @@
                   <ul class="dropdown-menu">
                     <li><a href="#" class="functionality" id="ndButton">Highlight Nondeterminism</a></li>
                     <li><a href="#" class="functionality" id="lambdaButton">Highlight &lambda;-Transitions</a></li>
+                    <li><a href="#" class="functionality" id="completeButton">Highlight Incomplete States</a></li>
+                    <li><a href="#" class="functionality" id="autoCompleteButton">Complete with Trap State</a></li>
+                    <li><a href="#" class="functionality" id="checkEquivalenceButton">Check DFAs Equivalence</a></li>
                   </ul>
 
                 </div>
@@ -92,6 +102,12 @@
                     <li><a href="#" class="functionality" id="treeHieButton">Tree (Hierarchy)</a></li>
                     <li><a href="#" class="functionality" id="twoCircleButton">Two Circle</a></li>
                     <li><a href="#" class="functionality" id="randomButton">Random</a></li>
+                    <li><a href="#" class="functionality" id="flipHorizontalButton">Flip Horizontal</a></li>
+                    <li><a href="#" class="functionality" id="flipVerticalButton">Flip Vertical</a></li>
+                    <li><a href="#" class="functionality" id="rotate90Button">Rotate 90&deg;</a></li>
+                    <li><a href="#" class="functionality" id="fillScreenButton">Fill Screen</a></li>
+                    <li><a href="#" class="functionality" id="saveLayoutButton">Save Layout</a></li>
+                    <li><a href="#" class="functionality" id="restoreLayoutButton">Restore Layout</a></li>
                   </ul>
 
                 </div>
@@ -137,7 +153,7 @@
       </div>
 
       <div id="av">
-        <!-- <p class="jsavoutput jsavline"></p> -->
+        <p class="jsavoutput jsavline"></p>
       </div>
 
       <script src="../../lib/jquery.ui.min.js"></script>
@@ -151,9 +167,10 @@
       <script src="../../lib/underscore.js"></script>
       <script src="../../DataStructures/FLA/Commands.js"></script>
       <script src="../../DataStructures/FLA/FA.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
+      <script src="../../lib/html2canvas.js"></script>
       <script src="../../DataStructures/FLA/TuringMachine.js"></script>
       <script src="./CustomPrompt.js"></script>
+      <script src="./GraphEditor.js"></script>
       <!--<script src="./exercises/exerController/ExerciseController.js"></script>-->
       <script src="./FA.js"></script>
       <script type="text/javascript"></script>

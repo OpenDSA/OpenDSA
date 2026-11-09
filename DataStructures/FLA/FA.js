@@ -467,7 +467,7 @@ var lambda = String.fromCharCode(955),
   automatonproto.makeInitial = function (node, options) {
     node.addClass("start");
     // ensure that initial will appear
-    if (node.position().left < 10) {
+    if (node.localPosition().left < 10) {
       node.css("left", "10px");
       node.automaton.updateEdgePositions();
     }
@@ -1871,12 +1871,13 @@ var lambda = String.fromCharCode(955),
   // Function to save the state of the graph and push it to the undo stack.
   // Called whenever any graph manipulation is made.
   // Note that a size restriction of 20 is imposed on both the undo stack and the redo stack.
+  // The undo/redo buttons are looked up with jQuery so this is a no-op on pages (e.g. exercises) that leave them out.
   automatonproto.saveFAState = function () {
     var data = serialize(this);
     this.undoStack.push(data);
     this.redoStack = [];
-    document.getElementById("undoButton").disabled = false;
-    document.getElementById("redoButton").disabled = true;
+    $("#undoButton").prop("disabled", false);
+    $("#redoButton").prop("disabled", true);
     if (this.undoStack.length > 20) {
       this.undoStack.shift();
     }
@@ -1891,9 +1892,9 @@ var lambda = String.fromCharCode(955),
     data = this.undoStack.pop();
     data = JSON.parse(data);
     this.initFromParsedJSONSource(data);
-    document.getElementById("redoButton").disabled = false;
+    $("#redoButton").prop("disabled", false);
     if (this.undoStack.length == 0) {
-      document.getElementById("undoButton").disabled = true;
+      $("#undoButton").prop("disabled", true);
     }
   };
 
@@ -1906,9 +1907,9 @@ var lambda = String.fromCharCode(955),
     data = this.redoStack.pop();
     data = JSON.parse(data);
     this.initFromParsedJSONSource(data);
-    document.getElementById("undoButton").disabled = false;
+    $("#undoButton").prop("disabled", false);
     if (this.redoStack.length == 0) {
-      document.getElementById("redoButton").disabled = true;
+      $("#redoButton").prop("disabled", true);
     }
   };
 
@@ -1970,6 +1971,57 @@ var lambda = String.fromCharCode(955),
     }
     return edges;
   };
+  var DEFAULT_NODE_SIZE = 45,
+    MAX_LABEL_WIDTH = 100,
+    LABEL_PADDING = 8;
+
+  // Measures how a state label's text would actually render (using the real
+  // label_css font/metrics via a hidden probe element), so a node knows
+  // whether it needs to grow into an oval to fit the label.
+  var measureLabelSize = function (text, styleAttr) {
+    var $probe = $('<p class="label_css"></p>')
+      .attr("style", styleAttr || "")
+      .css({ position: "absolute", visibility: "hidden", top: "-9999px", left: "-9999px", whiteSpace: "nowrap", width: "auto" })
+      .text(text)
+      .appendTo("body");
+    var naturalWidth = $probe.outerWidth(),
+      size;
+    if (naturalWidth + LABEL_PADDING <= MAX_LABEL_WIDTH) {
+      size = { width: Math.max(DEFAULT_NODE_SIZE, naturalWidth + LABEL_PADDING), height: DEFAULT_NODE_SIZE, wrapped: false };
+    } else {
+      $probe.css({ whiteSpace: "normal", wordBreak: "break-word", width: MAX_LABEL_WIDTH });
+      // Multi-line text needs more vertical clearance than a plain ellipse
+      // gives near its top/bottom edges, so pad extra beyond the measured height.
+      size = { width: MAX_LABEL_WIDTH, height: Math.max(DEFAULT_NODE_SIZE, $probe.outerHeight() + LABEL_PADDING * 2), wrapped: true };
+    }
+    $probe.remove();
+    return size;
+  };
+
+  // Grows or shrinks this node to fit its current state label, turning the
+  // circle into an oval when the label doesn't fit at the default size.
+  // Keeps connected edges and the label overlay in sync with the new size.
+  stateproto._fitNodeToLabel = function (options) {
+    // Note: _stateLabel.text() (JSAV's label API) actually returns raw HTML,
+    // not the visible text - read the underlying <p class="label_css">
+    // directly to get both the plain text and its style (bold/italic/size
+    // all affect how much room the text actually needs).
+    var $p = this._stateLabel ? this._stateLabel.element.find(".label_css") : null,
+      text = $p && $p.length ? $p.text().trim() : "",
+      styleAttr = $p && $p.length ? $p.attr("style") : "",
+      size = text ? measureLabelSize(text, styleAttr) : { width: DEFAULT_NODE_SIZE, height: DEFAULT_NODE_SIZE, wrapped: false };
+    if (this.element.outerWidth() !== size.width || this.element.outerHeight() !== size.height) {
+      // A full ellipse clips multi-line text near the top/bottom edges, so
+      // wrapped labels get a pill-shaped (fixed radius) node instead.
+      this.css({ width: size.width, height: size.height, borderRadius: size.wrapped ? "16px" : "50%" }, options);
+      var edges = this.automaton.edges();
+      for (var next = edges.next(); next; next = edges.next()) {
+        if (next.start().equals(this) || next.end().equals(this)) { next.layout(); }
+      }
+    }
+    this.stateLabelPositionUpdate(options);
+  };
+
   /*
      Function to set the state label or get the current value of the state label.
      "node.stateLabel()" does not return the state label if the node is hidden!
@@ -1983,6 +2035,12 @@ var lambda = String.fromCharCode(955),
       } else {
         return undefined;
       }
+    } else if (newLabel === "") {
+      if (this._stateLabel) {
+        this._stateLabel.element.remove();
+        this._stateLabel = undefined;
+        this._fitNodeToLabel(options);
+      }
     } else {
       if (!this._stateLabel) {
         this._stateLabel = this.jsav.label(newLabel, { container: this.container.element });
@@ -1990,6 +2048,7 @@ var lambda = String.fromCharCode(955),
       } else {
         this._stateLabel.text(newLabel, options);
       }
+      this._fitNodeToLabel(options);
     }
   };
 
@@ -2063,28 +2122,40 @@ var lambda = String.fromCharCode(955),
      Function to update the position of the state label.
      Must be run whenever nodes are moved.
    */
+  // This state's top/left in the canvas's own (unzoomed) coordinates. JSAV's
+  // position() measures the node as drawn, so under the editors' zoom it is
+  // already scaled - and the arrow/labels positioned from it get scaled a
+  // second time by the zoom transform. Same reason as rawPosition in
+  // transitionproto.layout.
+  stateproto.localPosition = function () {
+    return { top: parseFloat(this.element.css('top')) || 0, left: parseFloat(this.element.css('left')) || 0 };
+  };
+
   stateproto.stateLabelPositionUpdate = function (options) {
+    var pos = this.localPosition();
     // update initial arrow position while we're at it
     if (this._initialMarker) {
-      var fromPoint = [this.position().left - 10, this.position().top + this.element.outerHeight() / 2.0],
-        toPoint = [this.position().left, this.position().top + this.element.outerHeight() / 2.0];
+      var fromPoint = [pos.left - 10, pos.top + this.element.outerHeight() / 2.0],
+        toPoint = [pos.left, pos.top + this.element.outerHeight() / 2.0];
       this._initialMarker.movePoints([
         [0].concat(fromPoint), [1].concat(toPoint)
       ], options);
     }
     if (this._stateLabel) {
-      var bbox = this.position(),
+      // Center the label directly over the node so it reads as being inside
+      // the state circle, rather than floating below-left of it.
+      var bbox = pos,
         lbbox = this._stateLabel.bounds(),
         nWidth = this.element.outerWidth(),
         nHeight = this.element.outerHeight(),
-        newTop = bbox.top + nHeight,
-        newLeft = bbox.left - 30;
-      if (newTop !== lbbox.top || newLeft || lbbox.left) {
-        this._stateLabel.css({ top: newTop, left: newLeft /*, width: nWidth*/ }, options);
+        newTop = bbox.top,
+        newLeft = bbox.left;
+      if (newTop !== lbbox.top || newLeft !== lbbox.left || nWidth !== this._stateLabel.element.outerWidth() || nHeight !== this._stateLabel.element.outerHeight()) {
+        this._stateLabel.css({ top: newTop, left: newLeft, width: nWidth, height: nHeight }, options);
       }
     }
     if (this._mooreOutput) {
-      var bbox = this.position(),
+      var bbox = pos,
         lbbox = this._mooreOutput.bounds(),
         nWidth = this.element.outerWidth(),
         nHeight = this.element.outerHeight(),
@@ -2097,8 +2168,9 @@ var lambda = String.fromCharCode(955),
   };
   // Function to add the initial state arrow to this state
   stateproto.addInitialMarker = function (options) {
-    var t = this.position().top + this.element.outerHeight() / 2.0,
-      l2 = this.position().left,
+    var pos = this.localPosition(),
+      t = pos.top + this.element.outerHeight() / 2.0,
+      l2 = pos.left,
       l1 = l2 - 10;
     this._initialMarker = this.jsav.g.line(l1, t, l2, t, $.extend({ "stroke-width": 5, "arrow-end": "block-wide-short" }, options));
   };
@@ -2226,11 +2298,15 @@ var lambda = String.fromCharCode(955),
   // Editor drag handlers. These delegate the shared drag behavior to the
   // automaton prototype methods above (which in turn extend the base graph
   // class), and only add the editor-specific parts: animation stack
-  // backup/restore (Peixuan) and the initial state left-edge clamp.
+  // backup/restore (Peixuan), the initial state left-edge clamp, and (for
+  // multi-select) moving every other selected node by the same delta.
+  var groupDragLastPos = null;
+
   function dragStart(event, node) {
     var dragNode = node.helper.data("node");
     backupAnimStacks(dragNode.automaton.jsav);
     dragNode.automaton.dragStart(dragNode, event, node);
+    groupDragLastPos = { left: node.position.left, top: node.position.top };
   };
 
   function dragStop(event, node) {
@@ -2238,6 +2314,7 @@ var lambda = String.fromCharCode(955),
     dragNode.automaton.dragStop(dragNode, event, node);
     restoreAnimStacks(dragNode.automaton.jsav);
     addLayoutListeners(dragNode.automaton.jsav, dragNode);
+    groupDragLastPos = null;
   };
 
   function dragging(event, node) {
@@ -2249,6 +2326,29 @@ var lambda = String.fromCharCode(955),
     }
     g.drag(dragNode, event, node);
     dragNode.element.draggable('enable');
+
+    // Multi-select group move: if the dragged node is part of a current
+    // rubber-band selection, shift every other selected node by the same
+    // delta, so the whole selection moves together.
+    if (groupDragLastPos && g.selectedNodes && g.selectedNodes.length > 1 &&
+        g.selectedNodes.indexOf(dragNode) !== -1) {
+      var dx = node.position.left - groupDragLastPos.left,
+        dy = node.position.top - groupDragLastPos.top;
+      if (dx !== 0 || dy !== 0) {
+        for (var i = 0; i < g.selectedNodes.length; i++) {
+          var other = g.selectedNodes[i];
+          if (other === dragNode) { continue; }
+          var pos = other.position();
+          other.css({ left: pos.left + dx, top: pos.top + dy });
+          other.stateLabelPositionUpdate();
+          var edges = g.edges();
+          for (var next = edges.next(); next; next = edges.next()) {
+            if (next.start() === other || next.end() === other) { next.layout(); }
+          }
+        }
+      }
+    }
+    groupDragLastPos = { left: node.position.left, top: node.position.top };
   };
 
   //********************************************************************************************************************************* */
@@ -2301,6 +2401,10 @@ var lambda = String.fromCharCode(955),
     if (typeof this.options.weight !== "undefined") {
       this._weight = this.options.weight;
       this.label(this._weight);
+      // Same back-reference as transitionproto.weight() below - needed here
+      // too since the constructor calls .label() directly rather than going
+      // through weight().
+      if (this._label) { this._label.element.data("edge", this); }
     }
     if (visible) {
       this.g.show();
@@ -2318,6 +2422,33 @@ var lambda = String.fromCharCode(955),
     }
     this._setweight(newWeight);
     this.label(newWeight);
+    // Back-reference from the label's own DOM element to this edge, so a
+    // click on the label (labelClickHandler in AV/OpenFLAP/FA.js) can find
+    // its edge object directly instead of searching every edge. Set here
+    // (rather than only at construction) so it's in place regardless of
+    // which path first creates the label.
+    if (this._label) { this._label.element.data("edge", this); }
+  };
+
+  // Sets or gets this edge's label style (bold/italic/font size). Applied as
+  // plain CSS directly on the label element - deliberately never mixed into
+  // the label's HTML/text, since transitionproto.layout() (below) re-reads
+  // weight() straight from that HTML, and traversal, grading and save/load
+  // all rely on weight() being exactly the transition characters, with no
+  // markup mixed in.
+  transitionproto.labelStyle = function (newStyle, options) {
+    if (typeof newStyle === "undefined") {
+      return this._labelStyle || { bold: false, italic: false, fontSize: "normal" };
+    }
+    this._labelStyle = newStyle;
+    if (this._label) {
+      this._label.css({
+        fontWeight: newStyle.bold ? "bold" : "normal",
+        fontStyle: newStyle.italic ? "italic" : "normal",
+        fontSize: (newStyle.fontSize && newStyle.fontSize !== "normal") ? newStyle.fontSize : ""
+      }, options);
+    }
+    return this;
   };
 
   /*
@@ -2332,11 +2463,22 @@ var lambda = String.fromCharCode(955),
       return;
     }
     this.weight(this._label.element[0].innerHTML);
+    // node.position() (jQuery, via JSAV.position) derives local coordinates
+    // from offset() differences, which bake in any CSS transform (e.g. the
+    // FA editor's zoom/pan scale) on the shared .jsavgraph ancestor - so
+    // under zoom it returns the raw left/top multiplied by the zoom level
+    // instead of the raw value itself. Edge endpoints need the raw,
+    // transform-independent value, since the edges' own drawing surface
+    // gets that same CSS transform applied separately (see GraphEditor's
+    // alsoTransform) - applying it twice would double-scale the edge.
+    var rawPosition = function (node) {
+      return { top: parseFloat(node.element.css('top')) || 0, left: parseFloat(node.element.css('left')) || 0 };
+    };
     var controlPointX, controlPointY, midX, midY,
       sElem = this.start().element,
       eElem = this.end().element,
-      start = (options && options.start) ? options.start : this.start().position(),
-      end = (options && options.end) ? options.end : this.end().position(),
+      start = (options && options.start) ? options.start : rawPosition(this.start()),
+      end = (options && options.end) ? options.end : rawPosition(this.end()),
       sWidth = sElem.outerWidth() / 2.0,
       sHeight = sElem.outerHeight() / 2.0,
       eWidth = eElem.outerWidth() / 2.0,
@@ -2378,11 +2520,11 @@ var lambda = String.fromCharCode(955),
       /************************This code is added to determine the arc direction for the loop arrow. if the state is in the second half of the
       FA, then the acr will be in the button. */
       var FAnodes = this.container._nodes;
-      var minToplocation = FAnodes[0].position().top,
-        maxTopLocation = FAnodes[0].position().top;
+      var minToplocation = rawPosition(FAnodes[0]).top,
+        maxTopLocation = rawPosition(FAnodes[0]).top;
       for (var n = 1; n < FAnodes.length; n++) {
-        minToplocation = Math.min(minToplocation, FAnodes[n].position().top);
-        maxTopLocation = Math.max(maxTopLocation, FAnodes[n].position().top);
+        minToplocation = Math.min(minToplocation, rawPosition(FAnodes[n]).top);
+        maxTopLocation = Math.max(maxTopLocation, rawPosition(FAnodes[n]).top);
       }
 
       // if (this.end().element.position().top <= 0) {
@@ -2392,7 +2534,7 @@ var lambda = String.fromCharCode(955),
       //   this.end().element.offset({ top: this.end().element.offset().top - 50 });
       //   this.endnode.getIncoming().forEach(edge => edge.layout());
       // }
-      if ((this.end().position().top > this.container.element.height() / 2) && minToplocation !== maxTopLocation) { //this means, draw the arrow at the button
+      if ((rawPosition(this.end()).top > this.container.element.height() / 2) && minToplocation !== maxTopLocation) { //this means, draw the arrow at the button
         fromY = Math.round(fromY + sHeight); //Change the - sign to + in case we need to flip the loop arrow and remove "adjust"
         this.g.path("M" + fromX + ',' + fromY + ' a' + loopR + ',' + loopR + ' -45 1,0 ' //this 1 is to draw it from the top. Make it 0 to flip it.
           +
@@ -2406,6 +2548,8 @@ var lambda = String.fromCharCode(955),
     }
     // If the edge should be an arc (implemented as a quadratic bezier curve)
     else if (this.options.arc) {
+      // Draggable curve control point is commented out (see setControlPoint
+      // below) - persisting it would mean changing the .jff save format.
       this.options.arcoffset = 15;
       var midX = ((fromPoint[0] + toPoint[0]) / 2.0),
         midY = ((fromPoint[1] + toPoint[1]) / 2.0),
@@ -2458,14 +2602,20 @@ var lambda = String.fromCharCode(955),
         }
 
       }
-      var controlPointX = midX + scaling * vectorX,
-        controlPointY = midY + scaling * vectorY;
+      controlPointX = midX + scaling * vectorX;
+      controlPointY = midY + scaling * vectorY;
       //controlPointY = (controlPointY <= 70)? controlPointY + controlPoint_offset: controlPointY;
       //controlPointY = (controlPointY >= 140)? controlPointY - controlPoint_offset: controlPointY;
       this.g.path('M ' + fromPoint[0] + ',' + fromPoint[1] + ' Q' + controlPointX + ',' +
         controlPointY + ' ' + toPoint[0] + ',' + toPoint[1], options);
+      // this._syncControlHandle(midX, midY, vectorX, vectorY, controlPointX, controlPointY);
     } else { //line (same as .movePoints)
       this.g.path(("M" + fromPoint[0] + " " + fromPoint[1] + "L" + toPoint[0] + " " + toPoint[1]), options);
+      // var straightMidX = (fromPoint[0] + toPoint[0]) / 2.0,
+      //   straightMidY = (fromPoint[1] + toPoint[1]) / 2.0,
+      //   straightVectorX = fromPoint[1] - toPoint[1],
+      //   straightVectorY = toPoint[0] - fromPoint[0];
+      // this._syncControlHandle(straightMidX, straightMidY, straightVectorX, straightVectorY, straightMidX, straightMidY);
     }
 
     // update the edge label position
@@ -2476,14 +2626,14 @@ var lambda = String.fromCharCode(955),
         bbheight = Math.abs(fromPoint[1] - toPoint[1]);
       if (this.start().equals(this.end())) { //in case of loop arrow we need to do the same as we did for the arrow direction.
         var FAnodes = this.container._nodes;
-        var minToplocation = FAnodes[0].position().top,
-          maxTopLocation = FAnodes[0].position().top;
+        var minToplocation = rawPosition(FAnodes[0]).top,
+          maxTopLocation = rawPosition(FAnodes[0]).top;
         for (var n = 1; n < FAnodes.length; n++) {
-          minToplocation = Math.min(minToplocation, FAnodes[n].position().top);
-          maxTopLocation = Math.max(maxTopLocation, FAnodes[n].position().top);
+          minToplocation = Math.min(minToplocation, rawPosition(FAnodes[n]).top);
+          maxTopLocation = Math.max(maxTopLocation, rawPosition(FAnodes[n]).top);
         }
         bbtop = Math.round(start.top - 1.1 * sHeight);
-        if ((this.end().position().top > this.container.element.height() / 2) && minToplocation !== maxTopLocation) {
+        if ((rawPosition(this.end()).top > this.container.element.height() / 2) && minToplocation !== maxTopLocation) {
           var labelCount = this._weight.split("<br>").length;
           bbtop = Math.round(start.top + sHeight * 2 + 2.6 * sHeight + 20 * (labelCount - 1));
         }
@@ -2518,6 +2668,70 @@ var lambda = String.fromCharCode(955),
       this.addClass("jsavedge", options).removeClass("jsavnulledge");
     }
   };
+
+  // Draggable edge-curve control point - commented out rather than deleted.
+  // Persisting the dragged shape into saved files would mean adding new
+  // fields to the .jff format, which risks compatibility with JFLAP and
+  // anything else built against the standard schema. See GraphEditor.js
+  // generic-layer work for context on why this existed.
+  /*
+  var CONTROL_HANDLE_SIZE = 10; // px; matches .jsavedge-controlpoint in FA.css
+
+  function ancestorScale(el) {
+    var transform = window.getComputedStyle(el).transform;
+    if (!transform || transform === 'none') { return 1; }
+    var match = /matrix\(([^,]+),/.exec(transform);
+    return match ? parseFloat(match[1]) || 1 : 1;
+  }
+
+  transitionproto._syncControlHandle = function (midX, midY, vectorX, vectorY, pointX, pointY) {
+    var vectorLength = Math.sqrt(vectorX * vectorX + vectorY * vectorY);
+    this._curveMid = { x: midX, y: midY };
+    this._curveVector = { x: vectorX, y: vectorY, length: vectorLength };
+    if (!this._controlHandle) {
+      var self = this,
+        graphEl = this.container.element;
+      this._controlHandle = $('<div class="jsavedge-controlpoint"></div>')
+        .data('edge', this)
+        .appendTo(graphEl);
+      this._controlHandle.on('mousedown', function (downEvent) {
+        downEvent.stopPropagation();
+        downEvent.preventDefault();
+        var scale = ancestorScale(graphEl[0]),
+          startLeft = parseFloat($(this).css('left')) || 0,
+          startTop = parseFloat($(this).css('top')) || 0,
+          startPageX = downEvent.pageX,
+          startPageY = downEvent.pageY;
+        $(document).on('mousemove.edgecontrolpoint', function (moveEvent) {
+          var left = startLeft + (moveEvent.pageX - startPageX) / scale,
+            top = startTop + (moveEvent.pageY - startPageY) / scale;
+          self.setControlPoint(left + CONTROL_HANDLE_SIZE / 2, top + CONTROL_HANDLE_SIZE / 2);
+        });
+        $(document).on('mouseup.edgecontrolpoint', function () {
+          $(document).off('mousemove.edgecontrolpoint mouseup.edgecontrolpoint');
+        });
+      });
+    }
+    this._controlHandle.css({ left: pointX - CONTROL_HANDLE_SIZE / 2, top: pointY - CONTROL_HANDLE_SIZE / 2 });
+  };
+
+  transitionproto.setControlPoint = function (x, y) {
+    if (!this._curveMid || !this._curveVector || !this._curveVector.length) { return; }
+    var dx = x - this._curveMid.x,
+      dy = y - this._curveMid.y,
+      offset = (dx * this._curveVector.x + dy * this._curveVector.y) / this._curveVector.length,
+      SNAP_THRESHOLD = 10;
+    if (Math.abs(offset) <= SNAP_THRESHOLD) {
+      this.options.arc = false;
+      this.options.controlPoint = null;
+    } else {
+      this.options.arc = true;
+      this.options.arcoffset = offset;
+      this.options.controlPoint = { x: x, y: y };
+    }
+    this.layout();
+  };
+  */
 
   function normalizeAngle(angle) {
     var pi = Math.PI;
@@ -2674,6 +2888,19 @@ var lambda = String.fromCharCode(955),
     }
   };
 
+  // Draggable control-point handle hide/show overrides - commented out
+  // along with the rest of that feature above.
+  /*
+  transitionproto.hide = function (options) {
+    JSAV._types.ds.Edge.prototype.hide.call(this, options);
+    if (this._controlHandle) { this._controlHandle.hide(); }
+  };
+  transitionproto.show = function (options) {
+    JSAV._types.ds.Edge.prototype.show.call(this, options);
+    if (this._controlHandle) { this._controlHandle.show(); }
+  };
+  */
+
 
 
 
@@ -2718,8 +2945,17 @@ var lambda = String.fromCharCode(955),
 
   // function to change the customized label of a node
   // an option in right click menu
+  // If the hosting editor page has registered a richer label-editing dialog
+  // (window.jsavOpenNodeLabelDialog - see AV/OpenFLAP/FA.js), use that
+  // instead, so double-click and right-click "Change Label" open the same
+  // dialog. Pages that don't register it (this file is shared by several
+  // other editors) keep the plain prompt() fallback.
   var changeLabel = function (node) {
     $("#rmenu").hide();
+    if (typeof window.jsavOpenNodeLabelDialog === "function") {
+      window.jsavOpenNodeLabelDialog(node);
+      return;
+    }
     var nodeLabel = prompt("How do you want to label it?");
     if (!nodeLabel || nodeLabel == "null") {
       nodeLabel = "";
@@ -3218,57 +3454,235 @@ var lambda = String.fromCharCode(955),
     }
   };
 
+  /*
+    Find the states that have no transition on some symbol of the alphabet.
+    Returns an array of {node, missing}, one entry per incomplete state.
+  */
+  var findMissingTransitions = function (graph, alphabet) {
+    if (!alphabet) {
+      graph.updateAlphabet();
+      alphabet = Object.keys(graph.alphabet);
+    }
+    var incomplete = [];
+    var nodes = graph.nodes();
+    for (var node = nodes.next(); node; node = nodes.next()) {
+      var missing = [];
+      for (var i = 0; i < alphabet.length; i++) {
+        if (graph.transitionFunction(node, alphabet[i]).length === 0) {
+          missing.push(alphabet[i]);
+        }
+      }
+      if (missing.length > 0) {
+        incomplete.push({node: node, missing: missing});
+      }
+    }
+    return incomplete;
+  };
 
-  //Complete the DFA by adding missing edges from each nodes to a new node. 
-  var completeDFA = function(jsav, graph){
+  var isComplete = function (graph, alphabet) {
+    return findMissingTransitions(graph, alphabet).length === 0;
+  };
+
+
+  //Complete the DFA by adding missing edges from each nodes to a new node.
+  //alphabet is optional; without it, the alphabet is inferred from the graph's edges.
+  var completeDFA = function(jsav, graph, alphabet){
 
     graph.options = $.extend({layout: 'automatic'}, graph.options);
-    nodes = graph.nodes();
-    edges = graph.edges();
-    alp = graph.alphabet;
-    alphabet = [];
-    missing = {};
-    hasMissing = false;
-    for (const key in alp) {
-      alphabet.push(key);
+    if (!alphabet) {
+      alphabet = Object.keys(graph.updateAlphabet());
     }
-    for (var next = nodes.next(); next; next = nodes.next()) {
-      var edgesFromNext = next.container._edges[next.container._nodes.indexOf(next)];
-      if (edgesFromNext.length != alphabet.length){
-        if (edgesFromNext.length == 0){
-          missing[next.container._nodes.indexOf(next)] = [];
-          for (i in alphabet){
-            missing[next.container._nodes.indexOf(next)].push(alphabet[i]);
-          }
-        }
-        else {
-          for (edge in edgesFromNext){
-            var weights = edgesFromNext[edge]._weight.split('<br>');
-            if (weights.length != alphabet.length){
-              hasMissing =true;
-              missing[next.container._nodes.indexOf(next)] = [];
-              for (i in alphabet){
-                if (weights.indexOf(alphabet[i]) == -1){
-                  missing[next.container._nodes.indexOf(next)].push(alphabet[i]);
-                }
-              }
-            }
-          }
-        }
-      }
+    var incomplete = findMissingTransitions(graph, alphabet);
+    if(incomplete.length == 0)
+    {
+      return graph;
     }
-
-    if (hasMissing){
-      var newNode = graph.addNode();
-      var newLabel = alphabet.toString().replace(',', '<br>');
-      graph.addEdge(newNode, newNode, {weight: newLabel});
-      for (i in missing){
-        var label = missing[i].toString().replace(',', '<br>');
-        graph.addEdge(nodes[i], newNode, {weight: label});
-      }
+    
+    var trapNode = graph.addNode();
+    graph.addEdge(trapNode, trapNode, {weight: alphabet.join('<br>')});
+    for(var i = 0; i<incomplete.length; i++)
+    {
+      graph.addEdge(incomplete[i].node, trapNode, {weight: incomplete[i].missing.join('<br>')});
     }
     graph.layout();
     return graph;
+  };
+
+  // Splits a group of states on the first symbol that sends them to
+  // different existing groups. Returns [group] unchanged if none does.
+  var splitGroup = function (group, groups, alphabet, trans) {
+    if (group.length <= 1) { return [group]; }
+    for (var a = 0; a < alphabet.length; a++) {
+      var sym = alphabet[a];
+      var buckets = {};
+      for (var i = 0; i < group.length; i++) {
+        var gi = groupIndexOf(groups, trans[group[i]][sym]);
+        if (!buckets[gi]) { buckets[gi] = []; }
+        buckets[gi].push(group[i]);
+      }
+      var keys = Object.keys(buckets);
+      if (keys.length > 1) {
+        return keys.map(function (k) { return buckets[k]; });
+      }
+    }
+    return [group];
+  };
+
+  var groupIndexOf = function (groups, stateValue) {
+    for (var i = 0; i < groups.length; i++) {
+      if (groups[i].indexOf(stateValue) !== -1) { return i; }
+    }
+    return -1;
+  };
+
+  /*
+    Checks automaton is actually deterministic: has an initial state, no
+    lambda transitions, and no two transitions from the same state on the
+    same symbol. Same check the FA grading code already runs, shared here
+    so minimizeDFA/areIsomorphic aren't run on something they can't handle.
+  */
+  FiniteAutomaton.isDFA = function (automaton) {
+    if (!automaton.initial) { return false; }
+    var alphabet = Object.keys(automaton.updateAlphabet());
+    var nodes = automaton.nodes();
+    for (var node = nodes.next(); node; node = nodes.next()) {
+      if (automaton.transitionFunction(node, automaton.emptystring).length > 0) {
+        return false;
+      }
+      for (var i = 0; i < alphabet.length; i++) {
+        if (automaton.transitionFunctionMultiple(node, alphabet[i]).length > 1) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+
+  /*
+    Minimizes automaton via partition refinement (table-filling): states
+    get merged until no symbol can tell any two of them apart. Assumes a
+    deterministic automaton with an initial state; completes missing
+    transitions with a synthetic trap state first.
+    Returns plain data, not a renderable FA: { states, start, final, alphabet, trans }.
+  */
+  FiniteAutomaton.minimizeDFA = function (automaton) {
+    var alphabet = Object.keys(automaton.updateAlphabet()).sort();
+    var reachable = [automaton.initial];
+    FADepthFirstSearch(reachable, automaton.initial);
+
+    var TRAP = '__trap__';
+    var states = [], finalSet = new Set(), trans = {}, needsTrap = false;
+    for (var i = 0; i < reachable.length; i++) {
+      var node = reachable[i], v = node.value();
+      states.push(v);
+      if (node.hasClass('final')) { finalSet.add(v); }
+      trans[v] = {};
+      for (var a = 0; a < alphabet.length; a++) {
+        var sym = alphabet[a];
+        var dest = automaton.transitionFunction(node, sym)[0];
+        if (!dest) { needsTrap = true; }
+        trans[v][sym] = dest || TRAP;
+      }
+    }
+    if (needsTrap) {
+      states.push(TRAP);
+      trans[TRAP] = {};
+      for (var a2 = 0; a2 < alphabet.length; a2++) { trans[TRAP][alphabet[a2]] = TRAP; }
+    }
+
+    // Start from {finals} vs {non-finals}, then keep splitting until stable.
+    var groups = [
+      states.filter(function (s) { return finalSet.has(s); }),
+      states.filter(function (s) { return !finalSet.has(s); })
+    ].filter(function (g) { return g.length > 0; });
+
+    var changed = true;
+    while (changed) {
+      changed = false;
+      var nextGroups = [];
+      for (var gi = 0; gi < groups.length; gi++) {
+        var split = splitGroup(groups[gi], groups, alphabet, trans);
+        if (split.length > 1) { changed = true; }
+        nextGroups = nextGroups.concat(split);
+      }
+      groups = nextGroups;
+    }
+
+    var groupName = function (g) { return g.slice().sort().join(','); };
+    var nameOf = function (stateValue) {
+      for (var i = 0; i < groups.length; i++) {
+        if (groups[i].indexOf(stateValue) !== -1) { return groupName(groups[i]); }
+      }
+    };
+
+    var minStates = [], minFinal = new Set(), minTrans = {};
+    for (var gi2 = 0; gi2 < groups.length; gi2++) {
+      var name = groupName(groups[gi2]), rep = groups[gi2][0];
+      minStates.push(name);
+      if (finalSet.has(rep)) { minFinal.add(name); }
+      minTrans[name] = {};
+      for (var a3 = 0; a3 < alphabet.length; a3++) {
+        minTrans[name][alphabet[a3]] = nameOf(trans[rep][alphabet[a3]]);
+      }
+    }
+
+    return {
+      states: minStates,
+      start: nameOf(automaton.initial.value()),
+      final: minFinal,
+      alphabet: alphabet,
+      trans: minTrans
+    };
+  };
+
+  // Hypothesizes that s1 (in dfa1) and s2 (in dfa2) are the same state
+  // under some renaming, then recursively checks every transition agrees.
+  // matching is shared across the whole walk so cycles can't recurse forever.
+  var hypothesizeSameState = function (s1, s2, dfa1, dfa2, matching) {
+    if (matching.hasOwnProperty(s1)) { return matching[s1] === s2; }
+    if (dfa1.final.has(s1) !== dfa2.final.has(s2)) { return false; }
+    matching[s1] = s2;
+    for (var i = 0; i < dfa1.alphabet.length; i++) {
+      var sym = dfa1.alphabet[i];
+      if (!hypothesizeSameState(dfa1.trans[s1][sym], dfa2.trans[s2][sym], dfa1, dfa2, matching)) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  /*
+    Checks whether two already-minimized DFAs (the plain-data shape
+    minimizeDFA returns) are identical once you allow renaming states.
+    Two minimal DFAs for the same language are always isomorphic, so this
+    is only meaningful on inputs that have already been through minimizeDFA.
+  */
+  FiniteAutomaton.areIsomorphic = function (dfa1, dfa2) {
+    if (dfa1.states.length !== dfa2.states.length) { return false; }
+    if (dfa1.alphabet.slice().sort().join() !== dfa2.alphabet.slice().sort().join()) { return false; }
+    return hypothesizeSameState(dfa1.start, dfa2.start, dfa1, dfa2, {});
+  };
+
+  /*
+    Validates, minimizes, and compares two automata for language
+    equivalence - the full pipeline, mirroring JFLAP's DFAEqualityAction.
+    error is set (and equivalent left null) if either input isn't a DFA.
+  */
+  FiniteAutomaton.checkEquivalence = function (automaton1, automaton2) {
+    if (!FiniteAutomaton.isDFA(automaton1)) {
+      return { equivalent: null, error: 'The first automaton is not a complete, deterministic FA.' };
+    }
+    if (!FiniteAutomaton.isDFA(automaton2)) {
+      return { equivalent: null, error: 'The second automaton is not a complete, deterministic FA.' };
+    }
+    var min1 = FiniteAutomaton.minimizeDFA(automaton1);
+    var min2 = FiniteAutomaton.minimizeDFA(automaton2);
+    return {
+      equivalent: FiniteAutomaton.areIsomorphic(min1, min2),
+      error: null,
+      minimized1: min1,
+      minimized2: min2
+    };
   };
 
   /*
@@ -3783,6 +4197,8 @@ var lambda = String.fromCharCode(955),
   FiniteAutomaton.complement = complement;
   FiniteAutomaton.combine = combine
   FiniteAutomaton.completeDFA = completeDFA;
+  FiniteAutomaton.findMissingTransitions = findMissingTransitions;
+  FiniteAutomaton.isComplete = isComplete;
   FiniteAutomaton.union = union;
 }(jQuery));
 /*
@@ -4455,28 +4871,28 @@ function getRandomInt(max) {
         if (begin == none || end == none) {
           table.push([from.value(), to.value(), direct]);
         } else {
-          //    var step1 = normalizeTransitionToRE(begin);
-          //    var step2 = normalizeTransitionToRE(pause);
-          //    var step3 = normalizeTransitionToRE(end);
           var step1 = begin;
           var step2 = pause;
           var step3 = end;
+          // step1/step3 are concatenation operands: a union such as "a+ba" must
+          // be parenthesized before it is concatenated, since concatenation binds
+          // tighter than "+". (addStar already parenthesizes the star operand.)
           if (step2 == none || step2 == lambda) {
             if (step1 == lambda) {
               indirect = step3;
             } else if (step3 == lambda) {
               indirect = step1;
             } else {
-              indirect = step1 + step3;
+              indirect = normalizeTransitionToRE(step1) + normalizeTransitionToRE(step3);
             }
           } else if (step1 == lambda && step3 == lambda) {
             indirect = addStar(step2);
           } else if (step1 == lambda) {
-            indirect = addStar(step2) + step3;
+            indirect = addStar(step2) + normalizeTransitionToRE(step3);
           } else if (step3 == lambda) {
-            indirect = step1 + addStar(step2);
+            indirect = normalizeTransitionToRE(step1) + addStar(step2);
           } else {
-            indirect = step1 + addStar(step2) + step3;
+            indirect = normalizeTransitionToRE(step1) + addStar(step2) + normalizeTransitionToRE(step3);
           }
           if (direct == none) {
             table.push([from.value(), to.value(), indirect]);
@@ -4636,10 +5052,19 @@ function getRandomInt(max) {
     return transition + "*";
   }
 
-  //returns true if word needs parentheses (if it is an "+" (OR) expression)
+  //returns true if word needs parentheses before being concatenated or starred,
+  //i.e. it is a top-level "+" (OR) expression. A "+" nested inside parentheses
+  //(e.g. the one in "(a+ba)a*b") does not count, so already-grouped expressions
+  //are not wrapped again.
   function needParentheses(word) {
+    var depth = 0;
     for (var i = 0; i < word.length; i++) {
-      if (word.charAt(i) === "+") {
+      var c = word.charAt(i);
+      if (c === "(") {
+        depth++;
+      } else if (c === ")") {
+        depth--;
+      } else if (c === "+" && depth === 0) {
         return true;
       }
     }

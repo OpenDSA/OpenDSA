@@ -330,7 +330,8 @@ tm.initFromXML = function(text) {
     } else {
       move = move.nodeValue;
     }
-    this.addEdge(nodeMap[from], nodeMap[to], {weight: read + "," + write + ";" + move});
+    // Same read;write,move label format as TMTransition and the editor's add box.
+    this.addEdge(nodeMap[from], nodeMap[to], {weight: read + ";" + write + "," + move});
   }
   this.layout();
 

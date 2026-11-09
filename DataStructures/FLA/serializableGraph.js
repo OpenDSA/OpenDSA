@@ -1,5 +1,5 @@
 var lambda = String.fromCharCode(955);
-function Node (l, t, i, f, label, moutput) {
+function SerializableNode (l, t, i, f, label, moutput) {
 	this.left = l;
 	this.top = t;
 	this.i = i;
@@ -30,7 +30,7 @@ function serialize(g) {
 		var f = next.hasClass("final");
 		var label = next.stateLabel();
 		var moutput = lambdafyMoore(next.mooreOutput());
-		var node = new Node(left, top, i, f, label, moutput);
+		var node = new SerializableNode(left, top, i, f, label, moutput);
 		nodes[ind] = node;
 		ind++;
 	}
@@ -97,6 +97,35 @@ function delambdafyMoore(outputChar) {
 	return outputChar;
 };
 
+function buildStyledLabelHtml(text, style) {
+	style = style || {};
+	var styleParts = [];
+	if (style.bold) { styleParts.push("font-weight:bold"); }
+	if (style.italic) { styleParts.push("font-style:italic"); }
+	if (style.fontSize && style.fontSize !== "normal") { styleParts.push("font-size:" + style.fontSize); }
+	var styleAttr = styleParts.length ? ' style="' + styleParts.join(";") + '"' : "";
+	return '<p class="label_css"' + styleAttr + '> ' + text + '</p>';
+}
+
+function parseStyledLabelHtml(html) {
+	var result = { text: "", bold: false, italic: false, fontSize: "normal" };
+	if (!html) { return result; }
+	var match = html.match(/>([^<]*)</);
+	result.text = (match ? match[1] : html.replace(/<[^>]*>/g, "")).trim();
+	result.bold = /font-weight:\s*bold/i.test(html);
+	result.italic = /font-style:\s*italic/i.test(html);
+	var sizeMatch = html.match(/font-size:\s*([\d.]+em)/i);
+	if (sizeMatch) { result.fontSize = sizeMatch[1]; }
+	return result;
+}
+
+function escapeXmlText(text) {
+	return String(text)
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;");
+}
+
 // function to serialize the current graph to xml format.
 function serializeGraphToXML (graph) {
 	var text = '<?xml version="1.0" encoding="utf-8"?>';
@@ -115,7 +144,11 @@ function serializeGraphToXML (graph) {
 		text = text + "\t\t\t" + '<x>' + left + '</x>' + "\n";
 		text = text + "\t\t\t" + '<y>' + top + '</y>' + "\n";
 		if (label) {
-			text = text + '<label>' + label + '</label>';
+			var labelInfo = parseStyledLabelHtml(label);
+			if (labelInfo.text) {
+				text = text + '<label bold="' + labelInfo.bold + '" italic="' + labelInfo.italic +
+					'" fontsize="' + labelInfo.fontSize + '">' + escapeXmlText(labelInfo.text) + '</label>';
+			}
 		}
 		if (i) {
 			text = text + "\t\t\t" + '<initial/>' + "\n";
@@ -131,8 +164,10 @@ function serializeGraphToXML (graph) {
 		var fromnode = next.start().value().substring(1);
 		var tonode = next.end().value().substring(1);
 		var w = next.weight().split('<br>');
+		var edgeStyle = next.labelStyle ? next.labelStyle() : { bold: false, italic: false, fontSize: "normal" };
 		for (var i = 0; i < w.length; i++) {
-			text = text + "\t\t" +'<transition>'+ "\n";
+			text = text + "\t\t" + '<transition bold="' + edgeStyle.bold + '" italic="' + edgeStyle.italic +
+				'" fontsize="' + edgeStyle.fontSize + '">' + "\n";
 			text = text + "\t\t\t" + '<from>' + fromnode + '</from>' + "\n";
 			text = text + "\t\t\t" + '<to>' + tonode + '</to>' + "\n";
 			if (w[i] === lambda) {

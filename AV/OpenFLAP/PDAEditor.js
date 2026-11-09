@@ -20,7 +20,12 @@
     exerciseIndex,//for creating exercises
     type,//type of editor: fixer, tester or editor
     fatoreController,
-    exerController;
+    exerController,
+    canvasControls, // pan + rubber-band select, set up at the bottom via GraphEditor.attachPanAndSelect
+    // The edges/preview-line SVG is a sibling of .jsavgraph (not a child
+    // of it), so it needs the same transform applied explicitly to stay
+    // visually in sync - see alsoTransform in GraphEditor.createZoomPan.
+    zoomPan = GraphEditor.createZoomPan('.jsavgraph', { minZoom: 0.25, maxZoom: 3, alsoTransform: '.jsavcanvas > svg' });
     var stepBy = '';
     var emptyStackCheckbox =  document.createElement("input");
     var emptyStackLabel = document.createElement("label");
@@ -87,20 +92,6 @@
         }
         initialize(data);
       }
-		$('#undoButton').click(function(){
-			highlight_select_button();
-			//$('#undoButton').addClass("active");
-			g.undo();
-			$('.jsavgraph').click(graphClickHandler);
-			$('.jsavedgelabel').click(labelClickHandler);
-		});
-		$('#redoButton').click(function(){
-			highlight_select_button()
-			//$('#redoButton').addClass("active");
-			g.redo();
-			$('.jsavgraph').click(graphClickHandler);
-			$('.jsavedgelabel').click(labelClickHandler);
-		});
     resetUndoButtons();
     $('#emptyStackCheck').click(function(){
       if($(this).prop("checked")){
@@ -179,116 +170,23 @@
     jsav.displayInit();
     g.click(nodeClickHandler);
     g.click(edgeClickHandler, {edge: true});
-    $('.jsavgraph').click(graphClickHandler);
-    $('.jsavedgelabel').click(labelClickHandler);
+    GraphEditor.rebindClickHandlers(graphClickHandler, labelClickHandler);
   };
 
   // handler for editing edges/transitions
   var labelClickHandler = function(e) {
-    initEditEdgeInput(this);  
-  };
-
-  // show table for the label clicked
-  var initEditEdgeInput = function(label) {
-    var weights = $(label).html().split("<br>");
-    // delete edge if there is only one transition and in delete mode
-    if (weights.length == 1 && g.hasClass("delete")) {
-      g.saveFAState();
-      $(label).html("");
-      g.layout({layout: 'manual'});
-      return;
-    }
-    var tbody = $('#editEdge > table > tbody');
-    var rows = tbody.find('tr');
-    for (var i = rows.length - 1; i > 0; i--) {
-      rows[i].remove();
-    }
-    var row = $(rows[0]);
-    for (var i = 0; i < weights.length; i++) {
-      weights[i] = toColonForm(weights[i]);
-      var letters = weights[i].split(":");
-      rows = tbody.find('tr');
-      if (i >= rows.length) {
-        var newRow = row.clone();
-        tbody.append(newRow);
-      }
-      var lastRow = tbody.find('tr').last();
-      lastRow.find('#input').val(letters[0]);
-      lastRow.find('#pop').val(letters[1]);
-      lastRow.find('#push').val(letters[2]);
-      lastRow.find('#deleteEdge').text("Delete");
-      lastRow.find('#deleteEdge').click(deleteRowInEditEdge);
-      //lastRow.find('#deleteEdge').on("click", label, deleteRowInEditEdge);
-    }
-    var editEdgeInput = $('#editEdge');
-    tbody.attr({remove: false});
-    $('#deleteEdge').text("Delete");
-    editEdgeInput.css({left: $(label).offset().left, top: $(label).offset().top});
-    editEdgeInput.show();
-    $('#input').focus();
-    //completeEditEdge(label);
-    $(document).off('keyup').keyup(function(e) {
-      if (e.keyCode == 13) {
-        // console.log("Wut up")
-        completeEditEdge(label);
-      } else if (e.keyCode == 27) {
-        cancel();
-      }
-    });
-  };
-
-  var deleteRowInEditEdge = function() {
-    var tbody = $(this).parent().parent().parent();
-    if (tbody.children().length == 1) {
-      tbody.attr({remove: 'true'});
-      $(document).trigger(
-        jQuery.Event( 'keyup', { keyCode: 13, which: 13 } )
-      );
-
-      return;
-    }
-    $(this).parent().parent().remove();
-  };
-
-  var completeEditEdge = function(label) {
-    var editEdgeInput = $('#editEdge');
-    var tbody = editEdgeInput.find('tbody');
-    var newWeight = "";
-    if (tbody.attr('remove') == 'true') {
-      newWeight = "";
-    }
-    else {
-      var rows = tbody.find('tr');
-      var weights = [];
-      for (var i = 0; i < rows.length; i++) {
-        var row = $(rows[i]);
-        var input = row.find('#input').val();
-        var pop = row.find('#pop').val();
-        var push = row.find('#push').val();
-        if (input == "") input = lambda;
-        if (pop == "") pop = lambda;
-        if (push == "") push = lambda;
-        weights.push(input + "," + pop + ";" + push);
-      }
-      newWeight = weights.join("<br>");
-    }
-    $(label).html(newWeight);
-    g.saveFAState();
-    g.layout({layout: 'manual'});
-    g.updateEdgePositions();
-    editEdgeInput.hide();
-    g.updateAlphabet();
+    transitions.openEditTable(this);
   };
 
   // handler for the graph window
   var graphClickHandler = function(e) {
+    if (canvasControls.consumeSuppressedClick()) { return; } // this click ended a pan/selection drag, not a real click
     if ($(".jsavgraph").hasClass("addNodes")) {
       g.saveFAState();
-      var newNode = g.addNode(),
-          nodeX = newNode.element.width()/2.0,
-        nodeY = newNode.element.height()/2.0;
-      $(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
-    } 
+      // zoom-aware: converts the click into the canvas's own coordinates
+      var local = zoomPan.screenToLocal(e.pageX, e.pageY);
+      executeAddNode(g, local.y, local.x);
+    }
   };
 
   function updateNode(wasInitialState, initial_state, wasFinalState, final_state, node_label) {
@@ -297,47 +195,47 @@
   };
   
   // handler for the nodes of the graph
-  var nodeClickHandler = function(e) {  
-    // editing nodes should be changed to match the interface in multitapeTest.js
-    if ($(".jsavgraph").hasClass("edit")) {
-      g.saveFAState();
-      g.selected = this;
-      g.selected.highlight();
-      var Prompt = new FANodePrompt(updateNode, g.selected.hasClass('start'), g.selected.hasClass('final'), g.selected.stateLabel());
-      Prompt.render(g.selected.value());
-      g.selected.unhighlight();
-    }
-    else if ($('.jsavgraph').hasClass('moveNodes')) {
-      /*highlight_select_button();
-      removeModeClasses();
-      removeND();
-      g.enableDragging();
-      jsav.umsg('Drag to Move.');
-        $('#moveButton').addClass("active");*/
-    }
-    else if ($('.jsavgraph').hasClass('delete')) {
-      g.removeNode(this);
-    }
+  // Mode-dispatch on click is generic across all graph editors - see GraphEditor.js.
+  // Order matters: edit mode also carries the moveNodes class, so editNodes is checked first.
+  var nodeClickHandler = function(e) {
+    GraphEditor.dispatchModeClick.call(this, {
+      editNodes: function() {
+        // editing nodes should be changed to match the interface in multitapeTest.js
+        g.saveFAState();
+        g.selected = this;
+        g.selected.highlight();
+        var Prompt = new FANodePrompt(updateNode, g.selected.hasClass('start'), g.selected.hasClass('final'), g.selected.stateLabel());
+        Prompt.render(g.selected.value());
+        g.selected.unhighlight();
+      },
+      moveNodes: function() {},  // dragging is handled by JSAV; a click does nothing here
+      deleteNodes: function() {
+        g.removeNode(this);
+      }
+    });
   };
 
   // handler for the edges of the graph
   var edgeClickHandler = function(e) {
-    if ($('.jsavgraph').hasClass('edit')) {
-      this.highlight();
-      var input = confirm("Delete edge?");
-      if (input === null) {
+    GraphEditor.dispatchModeClick.call(this, {
+      editNodes: function() {
+        this.highlight();
+        var input = confirm("Delete edge?");
+        if (input === null) {
+          this.unhighlight();
+          return;
+        }
+        if (input) {
+          g.saveFAState();
+          g.removeEdge(this);
+        }
         this.unhighlight();
-        return;
+      },
+      convert: function() {
+        this.highlight();
+        convertTransition(this);
       }
-      if (input) {
-        g.saveFAState();
-        g.removeEdge(this);
-      }
-      this.unhighlight();
-    }else if ($(".jsavgraph").hasClass("convert")) {
-      this.highlight();
-      convertTransition(this);
-    }
+    });
   };
 
 
@@ -373,41 +271,31 @@
     jsav.umsg("Click on the transitions to convert to grammar");
   };
   var addNodesMode = function() {
-    highlight_select_button();
-    removeModeClasses();
-    removeND();
-    cancel();
-    var jg = $(".jsavgraph");
-    jg.addClass("addNodes");
-    $("#mode").html('Adding nodes');
-    jsav.umsg("Click to add nodes");
-    $('#nodeButton').addClass("active");
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      setup: function() {
+        cancel();
+        $("#mode").html('Adding nodes');
+      },
+      modeClass: 'addNodes',
+      message: 'Click to add nodes',
+      buttonSelector: '#nodeButton'
+    });
   };
   var addEdgesMode = function() {
-    //cancel();
-    highlight_select_button();
-    removeModeClasses();
-    removeND();
-    var jg = $(".jsavgraph");
-    jg.addClass("addEdges");
-    g.disableDragging();
-    $(".jsavgraph").addClass("addEdges");
-    $('.jsavgraph').off('mousedown').mousedown(mouseDown);
-    $('.jsavgraph').off('mousemove').mousemove(mouseMove);
-    $('.jsavgraph').off('mouseup').mouseup(mouseUp);
-    $("#mode").html('Adding edges');
-    jsav.umsg("Drag from one edge to another.");
-    $('#edgeButton').addClass("active");
-    /*highlight_select_button();
-    removeModeClasses();
-    removeND();
-    g.disableDragging();
-    $(".jsavgraph").addClass("addEdges");
-    $('.jsavgraph').off('mousedown').mousedown(mouseDown);
-    $('.jsavgraph').off('mousemove').mousemove(mouseMove);
-    $('.jsavgraph').off('mouseup').mouseup(mouseUp);
-    jsav.umsg('Drag from one node to another.');
-    $('#edgeButton').addClass("active")*/
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      setup: function() {
+        g.disableDragging();
+        GraphEditor.bindTransitionDrag(mouseDown, mouseMove, mouseUp);
+        $("#mode").html('Adding edges');
+      },
+      modeClass: 'addEdges',
+      message: 'Drag from one edge to another.',
+      buttonSelector: '#edgeButton'
+    });
   };
   var moveNodesMode = function() {
     cancel();
@@ -424,72 +312,59 @@
         $('#moveButton').addClass("active");*/
   };
   var editMode = function() {
-    highlight_select_button();
-    removeModeClasses();
-    removeND();
-    cancel();
-    moveNodesMode();
-    var jg = $(".jsavgraph");
-    jg.addClass("edit");
-    $("#mode").html('Editing nodes and edges');
-    addEdgeSelect();
-    jsav.umsg("Click a node or edge to edit.");
-    $('#editButton').addClass("active");
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      setup: function() {
+        cancel();
+        moveNodesMode();
+        $("#mode").html('Editing nodes and edges');
+        addEdgeSelect();
+      },
+      modeClass: 'editNodes',
+      message: 'Click a node or edge to edit.',
+      buttonSelector: '#editButton'
+    });
   };
   var deleteMode = function() {
-    highlight_select_button();
-    removeModeClasses();
-    removeND();
-    cancel();
-    var jg = $(".jsavgraph");
-    jg.addClass("delete");
-    $("#mode").html('Deleting');
-    jsav.umsg("Click a node or edge to delete. Enter to confirm.");
-    $('#deleteButton').addClass("active");
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      setup: function() {
+        cancel();
+        $("#mode").html('Deleting');
+      },
+      modeClass: 'deleteNodes',
+      message: 'Click a node or edge to delete. Enter to confirm.',
+      buttonSelector: '#deleteButton'
+    });
   };
   var cancel = function() {
-    removeEdgeSelect();
+    GraphEditor.cancel(jsav, g, removeEdgeSelect);
+    // PDA-specific cleanup on top of the shared cancel.
     removeLabelMenu();
-    var jg = $(".jsavgraph");
-    jg.removeClass("working");
-    jg.removeClass("addNodes");
-    jg.removeClass("addEdges");
-    jg.removeClass("moveNodes");
-    jg.removeClass("edit");
-    jg.removeClass("delete");
-    jg.removeClass("convert");
-    var nodes = g.nodes();
-    for (var node = nodes.next(); node; node = nodes.next()) {
-      node.unhighlight();
-    }
-    $('#edge').hide();
-    $('#editEdge').hide();
+    $(".jsavgraph").removeClass("convert");
+    transitions.closeAll();
     $("#mode").html('\n');
     jsav.umsg("Enjoy");
   }
 
+  // The add-transition box and the edit-transitions table are shared with the TM editor
+  var transitions = GraphEditor.createTransitionEditor({
+    getGraph: function() { return g; },
+    addFields: ['input', 'pop', 'push'],
+    editFields: ['input', 'pop', 'push'],
+    emptySymbol: lambda,
+    formatWeight: function(v) { return v[0] + "," + v[1] + ";" + v[2]; },
+    deleteModeClass: 'deleteNodes',
+    labelClickHandler: labelClickHandler,
+    onEditCancel: function() { cancel(); }
+  });
+
   // make edges easier to click
-  var addEdgeSelect = function () {
-    var edges = g.edges();
-    for (var next = edges.next(); next; next= edges.next()) {
-      next.addClass('edgeSelect');
-      next.layout();
-    }
-  };
-  var removeEdgeSelect = function () {
-    var edges = g.edges();
-    for (var next = edges.next(); next; next = edges.next()) {
-      if (next.hasClass('edgeSelect')) {
-        next.removeClass('edgeSelect');
-        next.layout();
-      }
-    }
-  };
-  var removeLabelMenu = function() {
-    if ($('#editedgelabel')) {
-      $('#editedgelabel').remove();
-    }
-  };
+  var addEdgeSelect = function () { transitions.addEdgeSelect(); };
+  var removeEdgeSelect = function () { transitions.removeEdgeSelect(); };
+  var removeLabelMenu = function() { transitions.removeLabelMenu(); };
 
   var onClickTraverseClosure = function() {
     stepBy = 'closure'
@@ -600,36 +475,6 @@
     return graph.traverseOneInput(input)
   }
 
-  // Disable all editing modes so that click handlers do not fire.
-  // Called when the user switches editing modes, or otherwise presses a button that changes the view.
-  var removeModeClasses = function() {
-    // Clear all superfluous or otherwise outdated information on the page.
-    //$('.arrayPlace').empty();
-    //$('#download').html('');
-    jsav.umsg('');
-    // Unselect and unhighlight any selected nodes or edges.
-    if (g.first) {
-      g.first.unhighlight();
-      g.first = null;
-    }
-    if (g.selected) {
-      g.selected.unhighlight();
-      g.selected = null;
-    }
-    if ($(".jsavgraph").hasClass("deleteNodes")) {
-      $(".jsavgraph").removeClass("deleteNodes");
-      // Return edges to normal size.
-      collapseEdges();
-    }
-    else {
-      $(".jsavgraph").removeClass("addNodes");
-      $(".jsavgraph").removeClass("addEdges");
-      $(".jsavgraph").removeClass("editNodes");
-      $(".jsavgraph").removeClass("moveNodes");
-      $(".jsavgraph").removeClass("working");
-    }
-  };
-
   /**
    * Function to download the diagram as an xml file with a dialog box for entering file the file name.
    * Calls FileSaverPDA in CustomPrompt.js
@@ -684,78 +529,35 @@
     var node = $(e.target);
     g.first = g.getNodeWithValue(node.text());
     g.first.highlight();
-    offset = $('.jsavgraph').offset(),
-    offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
-    startX = e.pageX - 15; 
-    startY = e.pageY - offset.top + offset2 - 5;
+    // The preview line is drawn on the edges' SVG, which has a different
+    // local origin than node top/left positions - screenToDrawingLocal
+    // (not screenToLocal) is the correct, zoom-aware conversion for it.
+    var local = zoomPan.screenToDrawingLocal(e.pageX, e.pageY);
+    startX = local.x;
+    startY = local.y;
   }
 
   function mouseUp(e) {
     if (!g.first) return;
-    var targetClass = $(e.target).attr('class');
-    if (targetClass !== "jsavvaluelabel") {
+    var label = GraphEditor.stateLabelAtPointer(e);
+    if (!label) {
       $('path[opacity="1.5"]').remove();
       g.first.unhighlight();
       g.first = null;
       return;
     }
-    var node = $(e.target);
+    var node = $(label);
     g.selected = g.getNodeWithValue(node.text());
     g.selected.highlight();
     
-    initEdgeInput();
-  }
-
-  function initEdgeInput() {
-    // draw the edge input box at correct position
-    var path = $('path[opacity="1.5"]');
-    var box = path[0].getBBox();
-    var edgeInput = $('#edge');
-    var rows = $('#edge > table > tr');
-    for (var i = 1; i < rows.length; i++) {
-      rows[i].remove();
-    }
-    $('#input').val(lambda);
-    $('#pop').val(lambda);
-    $('#push').val(lambda);
-    edgeInput.show();
-    var leftOffset = 15 + box.x + box.width / 2;
-    var topOffset = box.y + box.height / 2 + $('.jsavgraph').offset().top - 5;
-    edgeInput.css({left: leftOffset, top: topOffset});
-    path.remove();
-    first = g.first;
-    g.first = null;
-    $('#input').focus();
-    $(document).keyup(function(e) {
-      if (e.keyCode == 13) {
-        addEdgeWithInputBox();
-      }
-    });
-  }
-
-  function addEdgeWithInputBox() {
-    if (!first) return;
-    var edgeInput = $('#edge');
-    var input = $('#input').val();
-    var pop = $('#pop').val();
-    var push = $('#push').val();
-    var edgeWeight = input + "," + pop + ";" + push;
-    g.saveFAState();
-    g.addEdge(first, g.selected, {weight: edgeWeight});
-    $('.jsavedgelabel').off('click').click(labelClickHandler);
-
-    edgeInput.hide();
-    first.unhighlight();
-    g.selected.unhighlight();
-    g.updateEdgePositions();
-    first = null;
-    g.selected= null;
+    transitions.openAddBox(g.first, g.selected);
   }
 
   function mouseMove(e) {
     if (!g.first) return;
-    endX = e.pageX - 15;
-    endY = e.pageY - offset.top + offset2 - 5;
+    var local = zoomPan.screenToDrawingLocal(e.pageX, e.pageY);
+    endX = local.x;
+    endY = local.y;
     $('path[opacity="1.5"]').remove();
     jsav.g.line(startX, startY, endX, endY, {"opacity": 1.5});
   }
@@ -764,8 +566,7 @@
   // Since both of them are empty, both buttons are also disabled.
   // Called whenever the user loads a new graph.
   function resetUndoButtons () {
-    document.getElementById("undoButton").disabled = true;
-    document.getElementById("redoButton").disabled = true;
+    GraphEditor.resetUndoButtons();
   };
 
   // Undoes the effects of testND and testLambda, unhighlighting all nodes and edges.
@@ -783,31 +584,7 @@
   // Disable all editing modes so that click handlers do not fire.
   // Called when the user switches editing modes, or otherwise presses a button that changes the view.
   var removeModeClasses = function() {
-    // Clear all superfluous or otherwise outdated information on the page.
-    $('.arrayPlace').empty();
-    $('#download').html('');
-    jsav.umsg('');
-    // Unselect and unhighlight any selected nodes or edges.
-    if (g.first) {
-      g.first.unhighlight();
-      g.first = null;
-    }
-    if (g.selected) {
-      g.selected.unhighlight();
-      g.selected = null;
-    }
-    if ($(".jsavgraph").hasClass("deleteNodes")) {
-      $(".jsavgraph").removeClass("deleteNodes");
-      // Return edges to normal size.
-      collapseEdges();
-    }
-    else {
-      $(".jsavgraph").removeClass("addNodes");
-      $(".jsavgraph").removeClass("addEdges");
-      $(".jsavgraph").removeClass("editNodes");
-      $(".jsavgraph").removeClass("moveNodes");
-      $(".jsavgraph").removeClass("working");
-    }
+    GraphEditor.removeModeClasses(jsav, g, removeEdgeSelect);
   };
 
   function closeAv() {
@@ -820,27 +597,10 @@
   }
 
   function highlight_select_button(){
-    // Add active class to the current button (highlight it)
-    /*var header = document.getElementById("menu_options");
-    var btns = header.getElementsByClassName("icon_btn");
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function() {
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-      });
-    }*/
-    $('#undoButton').removeClass("active");
-    $('#redoButton').removeClass("active");
-    $('#deleteButton').removeClass("active");
-    $('#editButton').removeClass("active");
-    $('#nodeButton').removeClass("active");
-    $('#edgeButton').removeClass("active");
-        $('#collapseButton').removeClass("active");
+    GraphEditor.highlightSelectButton();
   }
 
 
-  $('#layoutbutton').click(function() {g.layout()});
   $('#testNDbutton').click(toggleND);
   $('#testlambdabutton').click(toggleLambda);
   $('#cancelButton').click(cancel);
@@ -858,16 +618,18 @@
   $('#stepByClosureButton').click(onClickTraverseClosure);
   $('#stepByStateButton').click(onClickTraverseState);
 
+  // Bound once here (not also in onLoadHandler) so a single click undoes a single step.
   $('#undoButton').click(function() {
+    highlight_select_button();
     g.undo();
-    $(".jsavgraph").click(graphClickHandler);
-    $('.jsavedgelabel').click(labelClickHandler);
+    GraphEditor.rebindClickHandlers(graphClickHandler, labelClickHandler);
   });
   $('#redoButton').click(function() {
+    highlight_select_button();
     g.redo();
-    $(".jsavgraph").click(graphClickHandler);
-    $('.jsavedgelabel').click(labelClickHandler);
+    GraphEditor.rebindClickHandlers(graphClickHandler, labelClickHandler);
   });
+  $('#savePDF').click(GraphEditor.saveCanvasAsImage);
   $('#closeAv').click(closeAv)
   $('#loadFile').on('change', load);
   $('#configurations').hide();
@@ -878,6 +640,49 @@
   $('#closeAv').hide();
 
   onLoadHandler();
+
+  // Everything below needs the JSAV canvas, which onLoadHandler creates.
+  // View menu layout items (generic - see GraphEditor.js). This replaces a
+  // binding to '#layoutbutton', which never matched the menu's '#layoutButton'.
+  GraphEditor.attachLayoutMenu({
+    jsav: jsav,
+    getGraph: function() { return g; },
+    removeModeClassesFn: removeModeClasses,
+    removeTestHighlightsFn: removeND
+  });
+
+  // --- Zoom / pan / rubber-band select (generic - see GraphEditor.js) ---
+  // Zoom and pan are only turned on where the page has the zoom toolbar
+  // (and so a way to reset the view); box-select works everywhere.
+  var hasZoomControls = $('#zoomInButton').length > 0;
+  if (hasZoomControls) { GraphEditor.attachZoomControls(zoomPan); }
+  canvasControls = GraphEditor.attachPanAndSelect({ zoomPan: zoomPan, getGraph: function() { return g; }, allowPan: hasZoomControls });
+
+  function deleteSelectedNodes() {
+    if (!g.selectedNodes || !g.selectedNodes.length) { return; }
+    g.saveFAState();
+    var nodes = g.selectedNodes;
+    canvasControls.clearSelection();
+    for (var i = 0; i < nodes.length; i++) { executeDeleteNode(g, nodes[i]); }
+  }
+
+  // Keyboard shortcuts - same keys as the FA editor.
+  GraphEditor.registerKeybindings([
+    { test: function(e) { return e.key === 'Escape'; }, action: cancel },
+    { test: function(e) { return (e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'z'; },
+      action: function() { GraphEditor.clickButtonUnlessDisabled('#undoButton'); } },
+    { test: function(e) { return (e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 'y' || (e.shiftKey && e.key.toLowerCase() === 'z')); },
+      action: function() { GraphEditor.clickButtonUnlessDisabled('#redoButton'); } },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 'a'; }, action: editMode },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 's'; }, action: addNodesMode },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 't'; }, action: addEdgesMode },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 'd'; }, action: deleteMode },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 'u'; },
+      action: function() { GraphEditor.clickButtonUnlessDisabled('#undoButton'); } },
+    { test: function(e) { return (e.key === 'Delete' || e.key === 'Backspace') && g.selectedNodes && g.selectedNodes.length > 0; },
+      action: deleteSelectedNodes }
+  ]);
+
   // Standalone editors do not load the optional Canvas progress helpers.
   if (typeof window.inCanvas === "function" && window.inCanvas()) {
     initGraphFromServer();

@@ -1,10 +1,16 @@
 (function($) {
-	// Adds a new node to the specified graph in the given x, y coordinates.
+	// Adds a new node to the specified graph, centered on the given top/left.
+	// top/left are local coordinates (relative to the graph's own canvas, the
+	// same system node top/left CSS already uses) rather than page
+	// coordinates, so this places correctly under any zoom/pan transform the
+	// caller may have applied to the canvas - the caller is responsible for
+	// converting a raw mouse event's pageX/pageY into this local system
+	// (e.g. via GraphEditor.createZoomPan's screenToLocal) before calling.
 	var executeAddNode = function(graph, top, left){
 		var newNode = graph.addNode();
 		var offsetTop = top - newNode.element.height()/2.0,
 				offsetLeft = left - newNode.element.width()/2.0;
-		$(newNode.element).offset({top: offsetTop, left: offsetLeft});
+		newNode.element.css({ top: offsetTop, left: offsetLeft });
 		// Node position is centered on the given top, left coordinates.
 		return newNode;
 	};

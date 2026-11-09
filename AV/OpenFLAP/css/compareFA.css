@@ -1,0 +1,60 @@
+#av {
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.instructions {
+  font-size: 0.9em;
+  color: #444;
+  max-width: 800px;
+  margin: 0 auto 16px;
+  text-align: left;
+}
+#machines {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.machine {
+  flex: 1 1 460px;
+  min-width: 320px;
+}
+.toolbar {
+  margin-bottom: 8px;
+}
+.toolbar button {
+  margin: 2px;
+}
+.toolbar button.mode.active {
+  background-color: #3356d6;
+  color: white;
+}
+#canvasA, #canvasB {
+  height: 360px;
+  outline: 1px black solid;
+  border: 10px transparent solid;
+}
+/* Being a flex item's child throws off this svg's "auto" static-position
+   resolution (none of the other JSAV pages use flexbox), so pin it. */
+#canvasA > svg, #canvasB > svg {
+  left: 0;
+  top: 0;
+}
+#compareRow {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+#compareButton {
+  font-size: 1em;
+  padding: 8px 20px;
+}
+#resultMessage {
+  font-weight: 600;
+  font-size: 1em;
+}
+#resultMessage.good { color: #1f9d64; }
+#resultMessage.bad { color: #d1453b; }

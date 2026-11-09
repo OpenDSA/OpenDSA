@@ -15,7 +15,12 @@ var exerciseLocation;
       exerciseIndex,//for creating exercises
       type,//type of editor: fixer, tester or editor
       fatoreController,
-      exerController;
+      exerController,
+      canvasControls, // pan + rubber-band select, set up at the bottom via GraphEditor.attachPanAndSelect
+      // The edges/preview-line SVG is a sibling of .jsavgraph (not a child
+      // of it), so it needs the same transform applied explicitly to stay
+      // visually in sync - see alsoTransform in GraphEditor.createZoomPan.
+      zoomPan = GraphEditor.createZoomPan('.jsavgraph', { minZoom: 0.25, maxZoom: 3, alsoTransform: '.jsavcanvas > svg' });
       $("#rmenu").load("./rmenu.html");
       $("#rmenu").hide();
   // Handler for initializing graph upon loading the web page.
@@ -85,15 +90,13 @@ var exerciseLocation;
       highlight_select_button();
       //$('#undoButton').addClass("active");
       g.undo();
-      $('.jsavgraph').click(graphClickHandler);
-      $('.jsavedgelabel').click(labelClickHandler);
+      GraphEditor.rebindClickHandlers(graphClickHandler, labelClickHandler);
     });
     $('#redoButton').click(function(){
       highlight_select_button()
       //$('#redoButton').addClass("active");
       g.redo();
-      $('.jsavgraph').click(graphClickHandler);
-      $('.jsavedgelabel').click(labelClickHandler);
+      GraphEditor.rebindClickHandlers(graphClickHandler, labelClickHandler);
     });
     resetUndoButtons();
   };
@@ -106,20 +109,24 @@ var exerciseLocation;
   };
 
   // Sets click handler for when the user clicks a JSAV edge label.
+  // Mode-dispatch on click is generic across all graph editors - see GraphEditor.js.
   var labelClickHandler = function(e) {
-    if ($(".jsavgraph").hasClass("editNodes")) {
-      // If in "Edit Nodes" mode (which also serves to edit edges), open the custom prompt box to edit the edge.
-      label = this;
-      var values = $(label).html().split('<br>');
-      var Prompt = new EdgePrompt(updateEdge, emptystring);
-      Prompt.render(values);
-    }
-    else if ($(".jsavgraph").hasClass("deleteNodes")) {
-      console.log("click on label");
-      g.saveFAState();
-      $(this).html("");
-      g.layout({layout:"manual"});
-    }
+    GraphEditor.dispatchModeClick.call(this, {
+      editNodes: function() {
+        // "Edit Nodes" mode also serves to edit edges.
+        label = this;
+        var values = $(label).html().split('<br>');
+        var clickedEdge = $(label).data("edge");
+        var currentStyle = clickedEdge ? clickedEdge.labelStyle() : undefined;
+        var Prompt = new EdgePrompt(updateEdge, emptystring, currentStyle);
+        Prompt.render(values);
+      },
+      deleteNodes: function() {
+        g.saveFAState();
+        $(this).html("");
+        g.layout({layout:"manual"});
+      }
+    });
   };
   
   function deserialize(data) {
@@ -181,66 +188,86 @@ var exerciseLocation;
     jsav.displayInit();
     g.click(nodeClickHandler);
     g.click(edgeClickHandler, {edge: true});
-    $('.jsavgraph').click(graphClickHandler);
-    $('.jsavedgelabel').click(labelClickHandler);
+    GraphEditor.rebindClickHandlers(graphClickHandler, labelClickHandler);
   };
 
   // Sets click handlers for when the user clicks on the JSAV graph.
+  // Closing an open right-click menu, and mode-dispatch on click
   var graphClickHandler = function(e) {
-    if ($("#rmenu").is(":visible")) {
-      g.hideRMenu();
-    }
-    
-    else if ($(".jsavgraph").hasClass("addNodes") && !$(".jsavgraph").hasClass("addTrapState")) {
-      // If in "Add Nodes" mode, save the graph and add a node.
-      g.saveFAState();
-      executeAddNode(g, e.pageY, e.pageX);
-    }
-    else if ($(".jsavgraph").hasClass("addNodes") && $(".jsavgraph").hasClass("addTrapState")) {
-      // If in "Add Nodes" and "trap state" mode, save the graph and add a node.
-      g.saveFAState();
-      var node = executeAddNode(g, e.pageY, e.pageX);
-      g.saveFAState();
-      //executeEditFANode(g, g.selected, initial_state, final_state, node_label);
-      executeEditNode(g, node, false, false, "Trap State");
-    }
+    if (canvasControls.consumeSuppressedClick()) { return; } // this click ended a pan/selection drag, not a real click
+    if (GraphEditor.closeContextMenuIfOpen(g)) { return; }
+    GraphEditor.dispatchModeClick({
+      addNodes: function() {
+        g.saveFAState();
+        var local = zoomPan.screenToLocal(e.pageX, e.pageY);
+        var node = executeAddNode(g, local.y, local.x);
+        if ($(".jsavgraph").hasClass("addTrapState")) {
+          // A second saveFAState() here (matching the original code) gives
+          // "add the node" and "label it as a trap state" separate undo steps.
+          g.saveFAState();
+          // executeEditNode's signature is (graph, node, wasInitialState,
+          // initial_state, wasFinalState, final_state, node_label) - this
+          // call was previously missing two arguments, so the label string
+          // landed in the wasFinalState slot and no label was ever applied.
+          executeEditNode(g, node, false, false, false, false, buildStyledLabelHtml("Trap State"));
+        }
+      }
+    });
   };
 
-  // Sets click handlers for when the user clicks on a JSAV node.
+  // Opens the same styled node-edit dialog used by double-click, for a given
+  // node. Shared by nodeClickHandler (double-click, in "Edit Nodes" mode) and
+  // by the right-click context menu's "Change Label" (registered below as
+  // window.jsavOpenNodeLabelDialog), so both entry points produce identical UI.
+  var openNodeEditDialog = function(node) {
+    clearSelection();
+    g.saveFAState();
+    g.selected = node;
+    g.selected.highlight();
+    var Prompt = new FANodePrompt(updateNode, g.selected.hasClass('start'), g.selected.hasClass('final'), g.selected.stateLabel());
+    Prompt.render(g.selected.value());
+    g.selected.unhighlight();
+  };
+  // Let the shared FA data model (DataStructures/FLA/FA.js, used by several
+  // other editor pages too) route its right-click "Change Label" through this
+  // editor's richer dialog instead of a plain prompt().
+  window.jsavOpenNodeLabelDialog = openNodeEditDialog;
+
+  // Mode-dispatch on click is generic across all graph editors - see GraphEditor.js.
   var nodeClickHandler = function(e) {
-    if ($(".jsavgraph").hasClass("editNodes") && !$(".jsavgraph").hasClass("RE")) {
-      // If in "Edit Nodes" mode, open the custom prompt box to edit the selected node.
-      g.saveFAState();
-      g.selected = this;
-      g.selected.highlight();
-      var Prompt = new FANodePrompt(updateNode, g.selected.hasClass('start'), g.selected.hasClass('final'), g.selected.stateLabel());
-      Prompt.render(g.selected.value());
-      g.selected.unhighlight();
-    }
-    else if ($('.jsavgraph').hasClass('deleteNodes')) {
-      // If in "Delete Nodes" mode, save the graph and delete the node.
-      g.saveFAState();
-      executeDeleteNode(g, this);
-      checkAllEdges();
-    }
-    else if ($('.jsavgraph').hasClass('collapse2')) {
-      g.selected = this;
-      if (g.selected == g.initial || g.selected.hasClass('final')) {
-        alert("You need to click on a noninitial, nonfinal node.")
-        return;
+    GraphEditor.dispatchModeClick.call(this, {
+      editNodes: function() {
+        // Editing is handled by the FA-to-RE conversion flow instead while in "RE" mode.
+        if (!$(".jsavgraph").hasClass("RE")) {
+          openNodeEditDialog(this);
+        }
+      },
+      deleteNodes: function() {
+        g.saveFAState();
+        executeDeleteNode(g, this);
+        checkAllEdges();
+      },
+      collapse2: function() {
+        g.selected = this;
+        if (g.selected == g.initial || g.selected.hasClass('final')) {
+          alert("You need to click on a noninitial, nonfinal node.")
+          return;
+        }
+        fatoreController.collapseState(g.selected);
       }
-      fatoreController.collapseState(g.selected);
-    }
+    });
   };
 
   // Sets click handler for when the user clicks a JSAV edge.
   var edgeClickHandler = function(e) {
-    if ($('.jsavgraph').hasClass('deleteNodes')) {
-      // If in "Delete Nodes" mode (which also serves to delete edges), save the graph and delete the edge.
-      g.saveFAState();
-      executeDeleteEdge(g, this);
-      checkAllEdges();
-    }
+    GraphEditor.dispatchModeClick.call(this, {
+      deleteNodes: function() {
+        // "Delete Nodes" mode also serves to delete edges.
+        g.saveFAState();
+        executeDeleteEdge(g, this);
+        checkAllEdges();
+      }
+    });
   };
 
   // Called by the edit node custom prompt box to save the graph and update the node upon clicking "OK".
@@ -251,10 +278,11 @@ var exerciseLocation;
   };
 
   // Called by the add edge custom prompt box to save the graph and create the edge upon clicking "Done".
-  function createEdge(edge_label) {
+  function createEdge(edge_label, style) {
     if (!g.first || !g.selected) return;
     g.saveFAState();
     var edge = g.addEdge(g.first, g.selected, {weight: edge_label});
+    if (style) { edge.labelStyle(style); }
     $(edge._label.element).click(labelClickHandler);
     // This new edge does need its edge label click handler to be set individually.
     checkEdge(edge);
@@ -322,9 +350,13 @@ var exerciseLocation;
   }
 
   // Called by the edit edge custom prompt box to save the graph and update the edge upon clicking "Done".
-  function updateEdge(edge_label) {
+  function updateEdge(edge_label, style) {
     g.saveFAState();
     executeEditEdge(g, label, edge_label);
+    if (style) {
+      var editedEdge = $(label).data("edge");
+      if (editedEdge) { editedEdge.labelStyle(style); }
+    }
     checkAllEdges();
     // Check to see if shorthand notation is disabled, and whether the transitions on this edge are therefore allowed (i.e. only one character long).
     if (!g.shorthand) {
@@ -375,15 +407,16 @@ var exerciseLocation;
     }
   };
 
-  // Function to switch to "Add Nodes" mode.
+  // Entering a toolbar mode is generic across all graph editors - see GraphEditor.js.
   // Triggered by clicking the "Add Nodes" button.
   var addNodes = function() {
-    highlight_select_button();
-    removeModeClasses();
-    removeND();
-    $('.jsavgraph').addClass("addNodes");
-    jsav.umsg('Click to add nodes.');
-    $('#nodeButton').addClass("active");
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      modeClass: 'addNodes',
+      message: 'Click to add nodes.',
+      buttonSelector: '#nodeButton'
+    });
   };
 
   // Function to switch to "Add Edges" mode.
@@ -401,40 +434,41 @@ var exerciseLocation;
     $('#edgeButton').addClass("active");
   };
 
-  // Function to switch to "Move Nodes" mode.
   // Triggered by clicking the "Move Nodes" button.
   var moveNodes = function() {
-    highlight_select_button();
-    removeModeClasses();
-    removeND();
-    g.enableDragging();
-    jsav.umsg('Drag to Move.');
-    $('#moveButton').addClass("active");
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      setup: function() { g.enableDragging(); },
+      message: 'Drag to Move.',
+      buttonSelector: '#moveButton'
+    });
   };
 
-  // Function to switch to "Edit Nodes" mode.
-  // Triggered by clicking the "Edit Nodes/Edges" button.
+  // Triggered by clicking the "Edit Nodes/Edges" button. Dragging stays
+  // enabled in this mode too (same as Move Nodes), so nodes can still be
+  // repositioned while editing.
   var editNodes = function() {
-    highlight_select_button();
-    removeModeClasses();
-    removeND();
-    moveNodes();
-    $('.jsavgraph').addClass('editNodes');
-    jsav.umsg('Click a node or edge label.');
-    $('#editButton').addClass("active");
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      setup: function() { g.enableDragging(); },
+      modeClass: 'editNodes',
+      message: 'Click a node or edge label.',
+      buttonSelector: '#editButton'
+    });
   };
 
-  // Function to switch to "Delete Nodes" mode.
   // Triggered by clicking the "Delete Nodes/Edges" button.
   var deleteNodes = function() {
-    highlight_select_button();
-    $('#deleteButton').addClass("active");
-    removeModeClasses();
-    removeND();
-    $('.jsavgraph').addClass('deleteNodes');
-    jsav.umsg('Click a node or edge to delete it.');
-    // Expand the edges to make them easier to click.
-    expandEdges();
+    GraphEditor.enterMode(jsav, {
+      removeModeClassesFn: removeModeClasses,
+      removeTestHighlightsFn: removeND,
+      setup: expandEdges, // Expand the edges to make them easier to click.
+      modeClass: 'deleteNodes',
+      message: 'Click a node or edge to delete it.',
+      buttonSelector: '#deleteButton'
+    });
   };
   
   var stateCollapser = function() {
@@ -557,11 +591,42 @@ var exerciseLocation;
     }
   };
 
+  var testComplete = function()
+  {
+    removeModeClasses();
+    removeND();
+    var incomplete = FiniteAutomaton.findMissingTransitions(g);
+    var report = [];
+    for(var i =0; i<incomplete.length; i++)
+    {
+      incomplete[i].node.addClass('testingIncomplete');
+      report.push(incomplete[i].node.value() + " (missing " + incomplete[i].missing.join(", ") + ")");
+    }
+    jsav.umsg(report.length ? "Incomplete: " + report.join("; ") : "Every state has a transition on every input symbol.");
+    return report.length === 0;
+  };
+
+  // Adds a trap state and sends every missing transition to it.
+  // Triggered after clicking the "Complete with Trap State" button.
+  var completeFA = function() {
+    removeModeClasses();
+    removeND();
+    if (FiniteAutomaton.isComplete(g)) {
+      jsav.umsg("This FA is already complete.");
+      return;
+    }
+    g.saveFAState();
+    FiniteAutomaton.completeDFA(jsav, g);
+    GraphEditor.rebindClickHandlers(graphClickHandler, labelClickHandler);
+  };
+
+
   // Undoes the effects of testND and testLambda, unhighlighting all nodes and edges.
   var removeND = function() {
     var nodes = g.nodes();
     for(var next = nodes.next(); next; next = nodes.next()) {
       next.removeClass("testingND");
+      next.removeClass("testingIncomplete");
     }
     var edges = g.edges();
     for (var next = edges.next(); next; next = edges.next()) {
@@ -569,60 +634,14 @@ var exerciseLocation;
     }
   };
 
-  // Saves the graph, then reconfigures the layout automatically.
-  // Triggered by clicking the "Layout" button.
-  var layoutGraph = function() {
-    removeModeClasses();
-    removeND();
-    g.layout();
-  };
-  //Apply a random layout algorithm to the graph
-  var randomLayout = function() {
-    removeModeClasses();
-    removeND();
-    g.randomLayoutAlg();
-  };
-  // Triggered by clicking the "Circle" button.
-  var circleLayout = function() {
-    removeModeClasses();
-    removeND();
-    g.circleLayoutAlg();
-    //layoutCircle(100, Math.PI, 2*Math.PI);
-  };
-  // Triggered by clicking the "GEM" button.
-  var gemLayout = function() {
-    removeModeClasses();
-    removeND();
-    g.gemLayoutAlg();
-  };
-
-  // Triggered by clicking the "Spiral" button.
-  var spiralLayout = function() {
-    removeModeClasses();
-    removeND();
-    g.spiralLayoutAlg();
-  };
+  // View menu layout items (algorithms, flip/rotate/fill, save/restore) are
+  // generic across all graph editors - wired up at the bottom via
+  // GraphEditor.attachLayoutMenu.
 
   // Exit out of all editing modes and prepare the view for the input string JSAV array.
   var readyTraversal = function() {
     removeModeClasses();
     jsav.umsg('Click on an input to trace its traversal.');
-  };
-
-  var twoCircleLayout = function() {
-    removeModeClasses();
-    removeND();
-    g.twoCircleLayoutAlg();
-  };
-  var treeLayoutDegree = function() {
-    removeModeClasses();
-    removeND();
-    g.treeLayoutAlg(false);
-  };
-  var treeLayoutHierarchy = function() {
-    removeModeClasses();
-    removeND();
-    g.treeLayoutAlg(true);
   };
 
   // Exit out of all editing modes and prepare the view for the input string JSAV array.
@@ -754,20 +773,12 @@ var exerciseLocation;
   // Since both of them are empty, both buttons are also disabled.
   // Called whenever the user loads a new graph.
   function resetUndoButtons () {
-    document.getElementById("undoButton").disabled = true;
-    document.getElementById("redoButton").disabled = true;
+    GraphEditor.resetUndoButtons();
   };
 
-  //cancel all current options
+
   function cancel() {
-    $(".jsavgraph").removeClass("addNodes").removeClass("addEdges").removeClass("moveNodes").removeClass("editNodes").removeClass("deleteNodes").removeClass("working");
-    jsav.umsg("");
-    var nodes = g.nodes();
-    _.each(nodes, function(x) {x.unhighlight();});
-    g.selected = null;
-    g.hideRMenu();
-    collapseEdges();
-    g.enableDragging();
+    GraphEditor.cancel(jsav, g, collapseEdges);
   }
 
   function finishExercise() {
@@ -832,9 +843,18 @@ var exerciseLocation;
         if (isFinal) {
           newNode.addClass('final');
         }
-        if (isLabel) {
-          var label_val = '<p class = "label_css">' + isLabel.childNodes[0].nodeValue + '</p>';
-          newNode.stateLabel(label_val);
+        if (isLabel && isLabel.childNodes[0]) {
+          // The new save format stores label text as plain (escaped) XML
+          // text content plus bold/italic/fontsize attributes - rebuild the
+          // same styled HTML that buildStyledLabelHtml() produces when a
+          // label is set via the editor, so loaded labels render and
+          // auto-resize identically to freshly-typed ones.
+          var labelStyle = {
+            bold: isLabel.getAttribute("bold") === "true",
+            italic: isLabel.getAttribute("italic") === "true",
+            fontSize: isLabel.getAttribute("fontsize") || "normal"
+          };
+          newNode.stateLabel(buildStyledLabelHtml(isLabel.childNodes[0].nodeValue, labelStyle));
         }
         nodeMap[xmlStates[i].id] = newNode;
         newNode.stateLabelPositionUpdate();
@@ -852,6 +872,11 @@ var exerciseLocation;
           read = read.nodeValue;
         }
         var edge = g.addEdge(nodeMap[from], nodeMap[to], {weight: read});
+        edge.labelStyle({
+          bold: xmlTrans[i].getAttribute("bold") === "true",
+          italic: xmlTrans[i].getAttribute("italic") === "true",
+          fontSize: xmlTrans[i].getAttribute("fontsize") || "normal"
+        });
         edge.layout();
       }
       finalize();
@@ -1117,6 +1142,20 @@ var exerciseLocation;
     window.open("./minDFA.html");
   }
 
+  // Sends the current automaton to the DFA comparison tool as Machine A.
+  // Triggered by clicking "Check DFAs Equivalence".
+  var checkEquivalence = function() {
+    removeND();
+    if (testND()) {
+      testLambda();
+      window.alert("This Finite Automaton is nondeterministic.\nPlease convert to DFA before checking equivalence.");
+      return;
+    }
+    localStorage['checkEquivalence'] = true;
+    localStorage['toCompare'] = serialize(g);
+    window.open("./compareFA.html");
+  }
+
   // transfrom FA to regular expression
   var toRE = function() {
     $("html, body").animate({ scrollTop: 0 }, "slow");
@@ -1160,31 +1199,7 @@ var exerciseLocation;
   // Disable all editing modes so that click handlers do not fire.
   // Called when the user switches editing modes, or otherwise presses a button that changes the view.
   var removeModeClasses = function() {
-    // Clear all superfluous or otherwise outdated information on the page.
-    $('.arrayPlace').empty();
-    $('#download').html('');
-    jsav.umsg('');
-    // Unselect and unhighlight any selected nodes or edges.
-    if (g.first) {
-      g.first.unhighlight();
-      g.first = null;
-    }
-    if (g.selected) {
-      g.selected.unhighlight();
-      g.selected = null;
-    }
-    if ($(".jsavgraph").hasClass("deleteNodes")) {
-      $(".jsavgraph").removeClass("deleteNodes");
-      // Return edges to normal size.
-      collapseEdges();
-    }
-    else {
-      $(".jsavgraph").removeClass("addNodes");
-      $(".jsavgraph").removeClass("addEdges");
-      $(".jsavgraph").removeClass("editNodes");
-      $(".jsavgraph").removeClass("moveNodes");
-      $(".jsavgraph").removeClass("working");
-    }
+    GraphEditor.removeModeClasses(jsav, g, collapseEdges);
   };
 
   function clearLabels() {
@@ -1194,7 +1209,7 @@ var exerciseLocation;
     }
   }
 
-  var startX, startY, endX, endY, offset, offset2; // start position of dragging edge line
+  var startX, startY, endX, endY, offset; // start position of dragging edge line
   function mouseDown(e) {
     if (!$('.jsavgraph').hasClass('addEdges')) return;
     var targetClass = $(e.target).attr('class');
@@ -1202,15 +1217,20 @@ var exerciseLocation;
     var node = $(e.target);
     g.first = g.getNodeWithValue(node.text());
     g.first.highlight();
-    offset = $('.jsavgraph').offset(),
-    offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
     if ($('.jsavgraph').hasClass("RE")) {
+      // RE (FA-to-regex) mode doesn't support zoom/pan, so its coordinate
+      // math is left exactly as it always was.
+      offset = $('.jsavgraph').offset();
       startX = e.pageX - offset.left;
       startY = e.pageY - offset.top;
     } else {
-      startX = e.pageX - offset.left + offset2;
-      startY = e.pageY - offset.top + offset2;
-    }      
+      // The preview line is drawn on the edges' SVG, which has a different
+      // local origin than node top/left positions - screenToDrawingLocal
+      // (not screenToLocal) is the correct conversion for it.
+      var local = zoomPan.screenToDrawingLocal(e.pageX, e.pageY);
+      startX = local.x;
+      startY = local.y;
+    }
   }
 
   function mouseUp(e) {
@@ -1249,12 +1269,12 @@ var exerciseLocation;
       endX = e.pageX - offset.left;
       endY = e.pageY - offset.top;
     } else {
-      endX = e.pageX - offset.left + offset2;
-      endY = e.pageY - offset.top + offset2;
+      var local = zoomPan.screenToDrawingLocal(e.pageX, e.pageY);
+      endX = local.x;
+      endY = local.y;
     }
     $('path[opacity="1.5"]').remove();
     jsav.g.line(startX, startY, endX, endY, {"opacity": 1.5});
-    //jsav.g.line(startX, startY, e.pageX, e.pageY, {"opacity": 1.5});
   }
   function addTrapState(){
     if (g.initial == null) {
@@ -1267,73 +1287,11 @@ var exerciseLocation;
   }
 
   function savePDF(){
-    html2canvas(document.querySelector("#av")).then(canvas => {
-      /*var imgData = canvas.toDataURL(
-        'image/png');              
-        var doc = new jsPDF('p', 'mm');
-        doc.addImage(imgData, 'PNG', 10, 10);
-        doc.save('sample-file.pdf');*/
-      var a = document.createElement('a');
-      // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
-      a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
-      a.download = 'image.jpg';
-      a.click();
-
-
-    });
-    //Get svg markup as string
-    /*var svg = $('div.jsavgraph.jsavfiniteautomaton.jsavautoresize.jsavcenter');
-      var svg = svg.html();
-      var svg1 = svg.innerHTML;
-      if (svg){
-      svg = svg.replace(/\r?\n|\r/g, '').trim();
-      }
-
-      var canvas = document.createElement('canvas');
-      var context = canvas.getContext('2d');
-
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      canvg(canvas, svg);
-
-
-      var imgData = canvas.toDataURL('image/png');
-
-      // Generate PDF
-      var doc = new jsPDF('p', 'pt', 'a4');
-      doc.addImage(imgData, 'PNG', 40, 40, 75, 75);
-      doc.save('test.pdf');*/
-    /*var doc = new jsPDF();
-      var specialElementHandlers = {
-      '#editor': function (element, renderer) {
-      return true;
-      }
-      };
-      var ht = $('svg').html();
-      doc.fromHTML(ht, 150, 150, {
-      'width': 170,
-      'elementHandlers': specialElementHandlers
-      });
-      doc.save('sample-file.pdf');*/
+    GraphEditor.saveCanvasAsImage();
   }
 
   function highlight_select_button(){
-    // Add active class to the current button (highlight it)
-    /*var header = document.getElementById("menu_options");
-      var btns = header.getElementsByClassName("icon_btn");
-      for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function() {
-      var current = document.getElementsByClassName("active");
-      current[0].className = current[0].className.replace(" active", "");
-      this.className += " active";
-      });
-      }*/
-    $('#undoButton').removeClass("active");
-    $('#redoButton').removeClass("active");
-    $('#deleteButton').removeClass("active");
-    $('#editButton').removeClass("active");
-    $('#nodeButton').removeClass("active");
-    $('#edgeButton').removeClass("active");
-    $('#collapseButton').removeClass("active");
+    GraphEditor.highlightSelectButton();
   }
   // Button click handlers.
   $('#trapState').click(addTrapState);
@@ -1347,20 +1305,21 @@ var exerciseLocation;
   $('#moveButton').click(moveNodes);
   $('#editButton').click(editNodes);
   $('#deleteButton').click(deleteNodes);
-  $('#layoutButton').click(layoutGraph);
-  $('#circleButton').click(circleLayout);
-  $('#gemButton').click(gemLayout);
-  $('#spiralButton').click(spiralLayout);
-  $('#treeDegreeButton').click(treeLayoutDegree);
-  $('#treeHieButton').click(treeLayoutHierarchy);
-  $('#twoCircleButton').click(twoCircleLayout);
-  $('#randomButton').click(randomLayout);
+  GraphEditor.attachLayoutMenu({
+    jsav: jsav,
+    getGraph: function() { return g; },
+    removeModeClassesFn: removeModeClasses,
+    removeTestHighlightsFn: removeND
+  });
   $('#ndButton').click(testND);
   $('#lambdaButton').click(testLambda);
+  $('#completeButton').click(testComplete);
+  $('#autoCompleteButton').click(completeFA);
   $('#epsilonButton').click(switchEmptyString);
   $('#shorthandButton').click(switchShorthand);
   $('#toDFAButton').click(convertToDFA);
   $('#minimizeButton').click(minimizeDFA);
+  $('#checkEquivalenceButton').click(checkEquivalence);
   $('#toGrammarButton').click(convertToGrammar);
   $('#toREButton').click(toRE);
   $('#clearLabelButton').click(clearLabels);
@@ -1370,10 +1329,42 @@ var exerciseLocation;
   $('#clearLabelButton').hide();
   $( "#dialog" ).dialog({ autoOpen: false });
   $("#helpButton").click(displayHelp);
-  $(document).keyup(function(e) {
-    if (e.keyCode === 27) cancel();   // esc
-  });
+  // Keyboard shortcuts: Escape, Ctrl/Cmd+Z and Ctrl/Cmd+Y (or Shift+Z) for undo/redo
+  GraphEditor.registerKeybindings([
+    { test: function(e) { return e.key === 'Escape'; }, action: cancel },
+    { test: function(e) { return (e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'z'; },
+      action: function() { GraphEditor.clickButtonUnlessDisabled('#undoButton'); } },
+    { test: function(e) { return (e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 'y' || (e.shiftKey && e.key.toLowerCase() === 'z')); },
+      action: function() { GraphEditor.clickButtonUnlessDisabled('#redoButton'); } },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 'a'; }, action: editNodes },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 's'; }, action: addNodes },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 't'; }, action: addEdges },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 'd'; }, action: deleteNodes },
+    { test: function(e) { return !e.ctrlKey && !e.metaKey && e.key.toLowerCase() === 'u'; },
+      action: function() { GraphEditor.clickButtonUnlessDisabled('#undoButton'); } },
+    { test: function(e) { return (e.key === 'Delete' || e.key === 'Backspace') && g.selectedNodes && g.selectedNodes.length > 0; },
+      action: deleteSelectedNodes }
+  ]);
   $('#download').hide();
+
+  // --- Zoom / pan / rubber-band select (generic - see GraphEditor.js) ---
+  GraphEditor.attachZoomControls(zoomPan);
+  canvasControls = GraphEditor.attachPanAndSelect({ zoomPan: zoomPan, getGraph: function() { return g; } });
+
+  // Multi-select: g.selectedNodes holds the current rubber-band selection
+  // (separate from g.selected, the pre-existing single-node reference used
+  // by edit/delete click handling, which stays untouched).
+  function clearSelection() {
+    canvasControls.clearSelection();
+  }
+  function deleteSelectedNodes() {
+    if (!g.selectedNodes || !g.selectedNodes.length) { return; }
+    g.saveFAState();
+    var nodes = g.selectedNodes;
+    clearSelection();
+    for (var i = 0; i < nodes.length; i++) { executeDeleteNode(g, nodes[i]); }
+    checkAllEdges();
+  }
 
   function displayHelp(){
     window.open("FAHelp.html", "helpwindow");

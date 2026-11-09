@@ -25,7 +25,7 @@ Abstract Classes, Frameworks, and Command Patterns
    * **Declare** abstract classes containing instance fields, constructors, concrete methods, and abstract method signatures.
    * **Implement** the Template Method design pattern to define the skeleton of an algorithm in an abstract class while deferring specific steps to subclasses.
    * **Implement** the Command design pattern to encapsulate operations into executable objects, decoupling invokers from receivers.
-   * **Parse** whitespace-delimited text streams using ``java.util.Scanner`` lookahead and token retrieval methods (``hasNext()``, ``next()``).
+   * **Parse** whitespace-delimited text using ``java.util.Scanner`` lookahead and token retrieval methods (``hasNext()``, ``next()``).
    * **Author** a multi-token command interpreter that reads verb-argument command pairs and evaluates action dispatch using ``.equals()``.
    * **Analyze** the structural weaknesses of cascading ``if/else-if`` command dispatch ladders to motivate associative map dispatch in future chapters.
    * **Design** automated test methods verifying text-driven command interpreters by constructing ``Scanner`` instances backed by ``String`` inputs and evaluating receiver postconditions with test case assertions in test classes extending ``TestCase``.
@@ -46,7 +46,7 @@ In this chapter, we will study **abstract classes** and **abstract methods**,
 which provide this essential bridge. We will then examine two foundational
 **software design patterns**—the **Template Method pattern** and the **Command
 pattern**—which allow us to build modular, extensible application frameworks.
-Finally, we will explore stream tokenization using Java's ``Scanner`` class,
+Finally, we will explore tokenization using Java's ``Scanner`` class,
 learn how to construct interactive multi-token command interpreters, and analyze
 how to test text-driven systems using automated unit tests.
 
@@ -117,7 +117,7 @@ Abstract Method Declarations
 In addition to preventing direct instantiation, an abstract class can declare
 **abstract methods**. An abstract method is a method signature that defines the
 name, return type, and formal parameters of an operation, but intentionally
-provides **no method body**:
+provides **no method body**, just like an interface:
 
 .. code-block:: java
 
@@ -147,12 +147,12 @@ can contain:
   invokes ``super(...)``.
 
 * **Concrete methods** containing shared algorithms and helper logic that all
-  subclasses inherit directly without modification.
+  subclasses inherit directly.
 
 * **Abstract methods** that act as placeholders for behaviors that each subclass
-  must implement uniquely.
+  must implement itself.
 
-Let us examine the complete ``Appliance`` abstract superclass:
+Let's examine the complete ``Appliance`` abstract superclass:
 
 .. code-block:: java
 
@@ -198,7 +198,7 @@ Let us examine the complete ``Appliance`` abstract superclass:
        public abstract void operate();
    }
 
-Now, let us implement a concrete subclass: ``SmartLight``. Because
+Now, let's implement a concrete subclass: ``SmartLight``. Because
 ``SmartLight`` is not declared abstract, it **must** provide a body for
 ``operate()``:
 
@@ -369,11 +369,11 @@ Consider an automated cleaning routine for smart robotic cleaners:
        }
 
        // Primitive steps that subclasses MUST customize:
-       protected abstract void calibrateSensors();
-       protected abstract void performCleaning();
+       public abstract void calibrateSensors();
+       public abstract void performCleaning();
 
        // Concrete step shared by all robotic cleaners:
-       private void returnToDock()
+       public void returnToDock()
        {
            System.out.println(getLocation() + " cleaner returning to charging dock.");
        }
@@ -392,13 +392,13 @@ rewriting the overarching operational cycle:
        }
 
        @Override
-       protected void calibrateSensors()
+       public void calibrateSensors()
        {
            System.out.println("Scanning floor elevation and carpet thresholds.");
        }
 
        @Override
-       protected void performCleaning()
+       public void performCleaning()
        {
            System.out.println("Engaging suction motors and side brushes.");
        }
@@ -493,7 +493,7 @@ The Command pattern involves four primary roles:
 Implementing Concrete Commands with Receivers
 ---------------------------------------------
 
-Let us implement the Command pattern for our smart home appliances. First, we
+Let's implement the Command pattern for our smart home appliances. First, we
 define the simple, elegant ``Command`` interface:
 
 .. code-block:: java
@@ -611,8 +611,8 @@ Notice the immense architectural benefit of this decoupling:
   ``setCommand()`` with a different command object.
 
 
-Text Stream Processing with `Scanner`
--------------------------------------
+Text Input Processing with `Scanner`
+------------------------------------
 
 Now that we can encapsulate actions into executable objects, how do we allow
 human users to trigger these actions using typed text commands?
@@ -623,8 +623,7 @@ To process user input, we use Java's standard input processing tool:
 Whitespace-Delimited Tokenization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A **stream** is an abstract sequence of data characters. When a user enters a
-line of text such as:
+When a user enters a line of text such as:
 
 .. code-block:: text
 
@@ -644,14 +643,14 @@ its core reading method:
 the scanner skips any leading whitespace, reads characters until it hits the
 next whitespace character, and returns the token as a ``String``.
 
-Guarding Stream Reads with `hasNext()`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Guarding Reads with `hasNext()`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you call ``scanner.next()`` when there are no more tokens available in the
 stream, the scanner throws a runtime exception:
 ``java.util.NoSuchElementException``.
 
-To prevent crashes, you must **always verify stream availability** before
+To prevent such exceptions, you must **always verify token availability** before
 attempting to read. The scanner provides a lookahead method:
 
 .. code-block:: java
@@ -662,7 +661,7 @@ attempting to read. The scanner provides a lookahead method:
 ``false`` if the stream has been completely exhausted.
 
 Comparing String Tokens: `.equals()` vs. `==`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When evaluating command words read by a scanner, you must compare their content
 using the ``.equals()`` method, **never the** ``==`` **identity operator**:
@@ -688,17 +687,17 @@ exact same object in heap memory. Because the scanner dynamically allocates a
 new ``String`` object for every token it extracts, ``commandWord == "status"``
 will evaluate to ``false`` even if the characters are identical.
 
-The Standard Stream Processing Loop
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The Standard Input Processing Loop
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To process a sequence of commands until the stream ends, we structure our
+To process a sequence of commands until the sequence ends, we structure our
 algorithm around a ``while (scanner.hasNext())`` loop:
 
 .. code-block:: java
 
    import java.util.Scanner;
 
-   public class StreamEchoer
+   public class InputEchoer
    {
        public void echoAllTokens(Scanner scanner)
        {
@@ -790,7 +789,7 @@ Here is a straightforward interpreter implementing this protocol:
    }
 
 The `if/else-if` Command Dispatch Anti-Pattern
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The cascading ``if/else-if`` structure shown above is the most obvious way to
 route text commands. In introductory programming, this is often where students
@@ -877,14 +876,11 @@ Authoring Test Classes Extending `TestCase`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the BlueJ environment used in our course, automated unit tests are written by
-declaring test classes that extend ``TestCase`` (from the ``student`` package):
+declaring test classes that extend ``TestCase``:
 
 .. code-block:: java
 
    public class CommandInterpreterTest extends TestCase
-
-Because the project template provides the necessary import (``import student.TestCase;``),
-you extend ``TestCase`` directly without package qualification.
 
 Inside your test methods, you:
 
@@ -892,7 +888,7 @@ Inside your test methods, you:
 2. Construct a ``Scanner`` populated with specific command strings.
 3. Invoke the interpreter method.
 4. Verify receiver state changes and postconditions using **test case
-   assertions** (such as ``assertEquals(...)``, ``assertTrue(...)``, ``assertFalse(...)``).
+   assertions** (using ``assertThat(...)``).
 
 Here is a comprehensive unit test suite verifying our command interpreter:
 
@@ -972,7 +968,7 @@ Here is a comprehensive unit test suite verifying our command interpreter:
        }
    }
 
-By testing across both valid commands, sequential multi-command streams, empty
+By testing across both valid commands, sequential multi-command sequences, empty
 inputs, and malformed command words, you ensure that your command interpreter is
 robust, crash-proof, and fully validated.
 

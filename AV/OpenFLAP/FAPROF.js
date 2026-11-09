@@ -29,38 +29,40 @@ var exerciseLocation;
     switch (type) {
     case 'fixer':
       var exercisePath = (exerciseLocation == null)? "./exercises/fixerTests.json": exerciseLocation;
-      exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph});
+      exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph, applyTools: applyTools});
       exerController.load();
       break;
     case 'tester':
       var exercisePath = getExerciseLocation();//(exerciseLocation == null)? "./exercises/FAwithExpression.json": exerciseLocation;
-      exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph});
+      exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph, applyTools: applyTools});
       exerController.load();
       break;
     default:
       break;
     }
 
-    $('#undoButton').click(function(){
-      highlight_select_button();
-      //$('#undoButton').addClass("active");
-      g.undo();
-      $('.jsavgraph').click(graphClickHandler);
-      $('.jsavedgelabel').click(labelClickHandler);
-    });
-    $('#redoButton').click(function(){
-      highlight_select_button()
-      //$('#redoButton').addClass("active");
-      g.redo();
-      $('.jsavgraph').click(graphClickHandler);
-      $('.jsavedgelabel').click(labelClickHandler);
-    });
     resetUndoButtons();
     
     var exercise = jsav.flexercise(modelSolution, initialize,
                                    {feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), exerciseController: exerController});
     exercise.reset();
   };
+  // Triggered by clicking the "Undo" button.
+  function undoAction() {
+    highlight_select_button();
+    g.undo();
+    $('.jsavgraph').click(graphClickHandler);
+    $('.jsavedgelabel').click(labelClickHandler);
+  }
+
+  // Triggered by clicking the "Redo" button.
+  function redoAction() {
+    highlight_select_button();
+    g.redo();
+    $('.jsavgraph').click(graphClickHandler);
+    $('.jsavedgelabel').click(labelClickHandler);
+  }
+
   // Sets click handler for when the user clicks a JSAV edge label.
   var labelClickHandler = function(e) {
     if ($(".jsavgraph").hasClass("editNodes")) {
@@ -133,21 +135,34 @@ var exerciseLocation;
     $('.jsavedgelabel').click(labelClickHandler);
   };
 
+  // Converts a click's page coordinates into coordinates local to
+  // .jsavgraph, which is what executeAddNode expects.
+  function screenToLocal(pageX, pageY) {
+    var graphOffset = $('.jsavgraph').offset();
+    var borderWidth = parseFloat($('.jsavgraph').css('border-left-width')) || 0;
+    return {
+      x: pageX - graphOffset.left - borderWidth,
+      y: pageY - graphOffset.top - borderWidth
+    };
+  }
+
   // Sets click handlers for when the user clicks on the JSAV graph.
   var graphClickHandler = function(e) {
     if ($("#rmenu").is(":visible")) {
       g.hideRMenu();
     }
-    
+
     else if ($(".jsavgraph").hasClass("addNodes") && !$(".jsavgraph").hasClass("addTrapState")) {
       // If in "Add Nodes" mode, save the graph and add a node.
       g.saveFAState();
-      executeAddNode(g, e.pageY, e.pageX);
+      var local = screenToLocal(e.pageX, e.pageY);
+      executeAddNode(g, local.y, local.x);
     }
     else if ($(".jsavgraph").hasClass("addNodes") && $(".jsavgraph").hasClass("addTrapState")) {
       // If in "Add Nodes" and "trap state" mode, save the graph and add a node.
       g.saveFAState();
-      var node = executeAddNode(g, e.pageY, e.pageX);
+      var local = screenToLocal(e.pageX, e.pageY);
+      var node = executeAddNode(g, local.y, local.x);
       g.saveFAState();
       //executeEditFANode(g, g.selected, initial_state, final_state, node_label);
       executeEditNode(g, node, false, false, "Trap State");
@@ -363,7 +378,7 @@ var exerciseLocation;
       // If there are no empty strings on the graph, nothing was changed. Remove the saved graph from the undo stack.
       g.undoStack.pop();
       if(g.undoStack.length == 0) {
-        document.getElementById("undoButton").disabled = true;
+        $("#undoButton").prop("disabled", true);
       }
     }
   };
@@ -450,11 +465,57 @@ var exerciseLocation;
     }
   };
 
+  // The exercise's declared alphabet (containLetters). Without it, completeness would only be judged against symbols the student has already drawn.
+  var exerciseAlphabet = function() {
+    var exercise = exerController && exerController.tests && exerController.tests[exerController.currentExercise];
+    return exercise ? exercise["containLetters"] : undefined;
+  };
+
+  // The exercise template has no JSAV message line, so optional tools report here instead.
+  var toolMessage = function(msg) {
+    $('#toolOutput').text(msg);
+  };
+
+  // Highlights states missing a transition on some symbol of the alphabet.
+  // Triggered by the optional "highlightIncomplete" tool.
+  var testComplete = function()
+  {
+    removeModeClasses();
+    removeND();
+    var incomplete = FiniteAutomaton.findMissingTransitions(g, exerciseAlphabet());
+    var report = [];
+    for(var i =0; i<incomplete.length; i++)
+    {
+      incomplete[i].node.addClass('testingIncomplete');
+      report.push(incomplete[i].node.value() + " (missing " + incomplete[i].missing.join(", ") + ")");
+    }
+    toolMessage(report.length ? "Incomplete: " + report.join("; ") : "Every state has a transition on every input symbol.");
+    return report.length === 0;
+  };
+
+  // Adds a trap state and sends every missing transition to it.
+  // Triggered by the optional "completeWithTrap" tool.
+  var completeFA = function() {
+    removeModeClasses();
+    removeND();
+    var alphabet = exerciseAlphabet();
+    if (FiniteAutomaton.isComplete(g, alphabet)) {
+      toolMessage("This FA is already complete.");
+      return;
+    }
+    g.saveFAState();
+    FiniteAutomaton.completeDFA(jsav, g, alphabet);
+    $('.jsavgraph').click(graphClickHandler);
+    $('.jsavedgelabel').click(labelClickHandler);
+  };
+
   // Undoes the effects of testND and testLambda, unhighlighting all nodes and edges.
   var removeND = function() {
+    toolMessage('');
     var nodes = g.nodes();
     for(var next = nodes.next(); next; next = nodes.next()) {
       next.removeClass("testingND");
+      next.removeClass("testingIncomplete");
     }
     var edges = g.edges();
     for (var next = edges.next(); next; next = edges.next()) {
@@ -599,8 +660,8 @@ var exerciseLocation;
   // Since both of them are empty, both buttons are also disabled.
   // Called whenever the user loads a new graph.
   function resetUndoButtons () {
-    document.getElementById("undoButton").disabled = true;
-    document.getElementById("redoButton").disabled = true;
+    $("#undoButton").prop("disabled", true);
+    $("#redoButton").prop("disabled", true);
   };
 
   //cancel all current options
@@ -860,6 +921,7 @@ var exerciseLocation;
     }
     else {
       $(".jsavgraph").removeClass("addNodes");
+      $(".jsavgraph").removeClass("addTrapState");
       $(".jsavgraph").removeClass("addEdges");
       $(".jsavgraph").removeClass("editNodes");
       $(".jsavgraph").removeClass("moveNodes");
@@ -979,11 +1041,7 @@ var exerciseLocation;
   $("#finish").click(finishExercise);
   $('#loadFile').change(loadXML);
   $('#cancelButton').click(cancel);
-  $('#nodeButton').click(addNodes);
-  $('#edgeButton').click(addEdges);
   $('#moveButton').click(moveNodes);
-  $('#editButton').click(editNodes);
-  $('#deleteButton').click(deleteNodes);
   $('#layoutButton').click(layoutGraph);
   $('#ndButton').click(testND);
   $('#lambdaButton').click(testLambda);
@@ -1004,6 +1062,68 @@ var exerciseLocation;
     if (e.keyCode === 27) cancel();   // esc
   });
   $('#download').hide();
+
+  // Every toolbar button an exercise can show. An exercise gets exactly the tools named in its JSON "tools" array.
+  // id: kept for buttons other code looks up by id (mode highlighting, undo/redo enabling).
+  // output: the tool reports results in the #toolOutput line.
+  var TOOLS = {
+    edit:                {id: "editButton",   icon: "fa-mouse-pointer",                         title: "Edit states and transitions", handler: editNodes},
+    addState:            {id: "nodeButton",   icon: "fa-dot-circle-o",                          title: "Add states",                  handler: addNodes},
+    addTransition:       {id: "edgeButton",   icon: "fa-long-arrow-right",                      title: "Add transitions",             handler: addEdges},
+    delete:              {id: "deleteButton", icon: "fa-close",                                 title: "Delete states and transitions", handler: deleteNodes},
+    undo:                {id: "undoButton",   icon: "fa-undo",                                  title: "Undo",                        handler: undoAction},
+    redo:                {id: "redoButton",   icon: "fa-undo fa-rotate-180 fa-flip-horizontal", title: "Redo",                        handler: redoAction},
+    addTrapState:        {icon: "fa-ban",                  title: "Add trap state",              handler: addTrapState},
+    highlightIncomplete: {icon: "fa-exclamation-triangle", title: "Highlight incomplete states", handler: testComplete, output: true},
+    completeWithTrap:    {icon: "fa-magic",                title: "Complete with trap state",    handler: completeFA,   output: true},
+    highlightND:         {icon: "fa-code-fork",            title: "Highlight nondeterminism",    handler: testND}
+  };
+
+  // Tools named in the page's "tools" URL parameter (comma-separated), or null if there is none.
+  // Lets a textbook choose an exercise's tools, e.g. through the avembed directive's :url_params: option.
+  function toolsFromUrl() {
+    var param = new URLSearchParams(window.location.search).get('tools');
+    if (param === null) {
+      return null;
+    }
+    return param.split(',').map(function(name) { return name.trim(); }).filter(Boolean);
+  }
+
+  // Builds the toolbar from the tools an exercise allows. Called by ExerciseController each time an exercise loads
+  // (including on reset), so buttons from the previous load are removed first.
+  // Handlers are bound here because the buttons don't exist yet when the click bindings above run.
+  // A "tools" URL parameter, when present, replaces the exercise's JSON "tools" list.
+  function applyTools(allowed) {
+    $('.exerciseTool').remove();
+    var urlTools = toolsFromUrl();
+    if (urlTools) {
+      allowed = urlTools;
+    }
+    // There are no default tools: an exercise without a "tools" list gets an empty toolbar.
+    if (!Array.isArray(allowed)) {
+      console.warn('Exercise has no "tools" list in its JSON, so no toolbar buttons are shown.');
+      allowed = [];
+    }
+    var needsOutput = false;
+    allowed.forEach(function(name) {
+      var tool = TOOLS[name];
+      if (!tool) {
+        console.warn("Unknown exercise tool: " + name);
+        return;
+      }
+      $('<button class="icon_btn exerciseTool">')
+        .attr({id: tool.id, title: tool.title, 'data-tool': name})
+        .append($('<i class="fa">').addClass(tool.icon))
+        .click(function() { tool.handler(); })
+        .appendTo('#menu_options');
+      needsOutput = needsOutput || tool.output;
+    });
+    if (needsOutput) {
+      $('<p id="toolOutput" class="exerciseTool">').insertAfter('.jsavscore');
+    }
+    // A freshly loaded exercise has nothing to undo or redo.
+    resetUndoButtons();
+  }
 
   // magic happens here
   onLoadHandler();

@@ -4,6 +4,7 @@
     "totalTrueCases": 5,
     "totalFalseCases": 2,
     "containLetters": ["a", "b"],
+    "tools": ["edit", "addState", "addTransition", "delete", "undo", "redo"],
     "randomStringLength": [0, 15],
     "description": "Give a DFA that accepts the language over $\\Sigma =\\{a, b\\}$ where the number of a’s and b’s are either both even or both odd.",
     "testCases": [{

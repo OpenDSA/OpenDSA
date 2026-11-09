@@ -2,6 +2,15 @@
 	width: 100%;
 	position: relative;
 }
+/* FAtoRE.css sets p.jsavoutput.jsavline to a fixed 10px height (shared by
+   several other pages, so left alone there), but this page's status text
+   has a 20px line-height and was overflowing into the canvas border below
+   it, making the border look like it struck through the text. Higher
+   specificity here overrides it for just this page. */
+#av > p.jsavoutput.jsavline {
+	height: auto;
+	min-height: 20px;
+}
 .arrayPlace {
 	max-width: 100%;
 	overflow: initial;
@@ -15,6 +24,9 @@
 }
 .testingND {
 	background-color: blue;
+}
+.testingIncomplete {
+	background-color: orange;
 }
 .current {
 	background-color: yellow;
@@ -36,8 +48,16 @@
 	font-size: 1em;
 	z-index: 700;
 	position: absolute;
-	display: inline-block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	box-sizing: border-box;
 	margin: 0;
+	pointer-events: none;
+	overflow: hidden;
+	background-color: white;
+	border-radius: 50%;
 }
 .jsavmooreoutput {
 	font-size: 1em;
@@ -48,11 +68,36 @@
 }
 .jsavcanvas {
 	height: 500px;
+	overflow: hidden;
 }
 .jsavgraph {
 	outline: 1px black solid;
 	border: 10px transparent solid;
 }
+.jsav-selection-rect {
+	position: absolute;
+	border: 1px dashed #3b82f6;
+	background-color: rgba(59, 130, 246, 0.1);
+	pointer-events: none;
+	z-index: 900;
+}
+/* Draggable edge-curve control point - commented out along with the JS
+   in DataStructures/FLA/FA.js (.jff save-format compatibility concern).
+.jsavedge-controlpoint {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: #3b82f6;
+	border: 1px solid white;
+	cursor: move;
+	z-index: 600;
+	display: none;
+}
+.jsavgraph.editNodes .jsavedge-controlpoint {
+	display: block;
+}
+*/
 .jsavnode {
 	cursor: pointer;
 }
@@ -107,7 +152,12 @@
 }
 
 .label_css {
-    width: auto;
-    border: 1px solid black;
-    background-color: white;
+    width: 100%;
+    margin: 0;
+    padding: 0 7px;
+    box-sizing: border-box;
+    font-size: 0.85em;
+    line-height: 1.1;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }

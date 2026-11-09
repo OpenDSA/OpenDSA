@@ -14,13 +14,18 @@
   	var lambda = String.fromCharCode(955),
     epsilon = String.fromCharCode(949);
 
+	// exerciseLog comes from the exercise controller script, which NFAtoDFA.html
+	// (opened by the FA editor's "Convert to DFA") does not load
+	var hasExerciseLog = typeof exerciseLog !== "undefined";
+
 	// initializes the reference/original NFA
 	function onLoadHandler(){
 		var type = $('h1').attr('id');
 		if (type == 'Exercise') {
 			var exerciseLocation = getExerciseLocation();
 			//var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_2/exercise1_a.json": exerciseLocation;
-			exerController = new NFAtoDFAMinimizationController(jsav, g, exerciseLocation, "json", {initGraph: initGraph});
+			// the controller builds the graph itself through initGraph, so there is no FA to pass in yet
+			exerController = new NFAtoDFAMinimizationController(jsav, null, exerciseLocation, "json", {initGraph: initGraph});
       exerController.load();		
 
       var exercise = jsav.flexercise(modelSolution, initializeExercise,
@@ -85,7 +90,8 @@
 		}
 		else if(type == 'Exercise')
 		{
-			var source = opts.graph ? opts.graph : JSON.parse(g);
+			// updateExercise always passes a graph (an empty one if the JSON has none)
+			var source = opts.graph;
 			referenceGraph = jsav.ds.FA({width: "45%", height: 440, layout: "manual", element: $("#reference")});
 			referenceGraph.initFromParsedJSONSource(source, 0.5);
 			referenceGraph.updateAlphabet();
@@ -157,7 +163,7 @@ var graphClickHandlers = function(e) {
 			$(".jsavgraph").removeClass("working");
 			selectedNode.unhighlight();
 			jsav.umsg("Choose a state to expand:");
-			if(exerciseLog){
+			if(hasExerciseLog){
 				exerciseLog.errorsCount++;
 				exerciseLog.errorMessages.push(targetS + ": State label is incorrect");
 			}
@@ -172,7 +178,7 @@ var graphClickHandlers = function(e) {
 				$(".jsavgraph").removeClass("working");
 				selectedNode.unhighlight();
 				jsav.umsg("Choose a state to expand:");
-				if(exerciseLog){
+				if(hasExerciseLog){
 					exerciseLog.errorsCount++;
 					exerciseLog.errorMessages.push(targetS + ": State label already exists");
 				}
@@ -202,7 +208,7 @@ var graphClickHandlers = function(e) {
 		selectedNode.unhighlight();
 		newNode.unhighlight();
 		jsav.umsg("Choose a state to expand:");
-		if(exerciseLog)
+		if(hasExerciseLog)
 			exerciseLog.numberOfSteps++;
 	}
 };
@@ -225,7 +231,7 @@ var nodeClickHandlers = function(e) {
 			return;
 		} else if (!_.contains(alphabet, expandT)) {
 			alert("That terminal is not in the alphabet!");
-			if(exerciseLog){
+			if(hasExerciseLog){
 				exerciseLog.errorsCount++;
 				exerciseLog.errorMessages.push(expandT + ": That terminal is not in the alphabet");
 			}
@@ -238,7 +244,7 @@ var nodeClickHandlers = function(e) {
 		for(var edgeNumber = 0; edgeNumber< selectedNodeEdges.length; edgeNumber++){
 			if(selectedNodeEdges[edgeNumber]._weight === expandT){
 				alert("There is an existing transition for the same alpabet");
-				if(exerciseLog){
+				if(hasExerciseLog){
 					exerciseLog.errorsCount++;
 					exerciseLog.errorMessages.push(expandT + ": There is an existing transition for the same alpabet");
 				}
@@ -256,7 +262,7 @@ var nodeClickHandlers = function(e) {
 		var node = next.sort().join();
 		if (!node) {
 			alert("There are no paths on that terminal!");
-			if(exerciseLog){
+			if(hasExerciseLog){
 				exerciseLog.errorsCount++;
 				exerciseLog.errorMessages.push(expandT + ": There are no paths on that terminal");
 			}
@@ -267,7 +273,7 @@ var nodeClickHandlers = function(e) {
 		$(".editButton").hide();
 		$(".jsavgraph").addClass("working");
 		jsav.umsg("Click to place new state");
-		if(exerciseLog)
+		if(hasExerciseLog)
 			exerciseLog.numberOfSteps++;
 		e.stopPropagation();
 	} else {
@@ -277,7 +283,7 @@ var nodeClickHandlers = function(e) {
 			if (newEdge) { newEdge.layout(); }
 		}			 else {
 			alert("State label is incorrect.");
-			if(exerciseLog){
+			if(hasExerciseLog){
 				exerciseLog.errorsCount++;
 				exerciseLog.errorMessages.push(expandT + ": State label is incorrect");
 			}
@@ -288,7 +294,7 @@ var nodeClickHandlers = function(e) {
 		this.unhighlight();
 		jsav.umsg("Choose a state to expand:");
 		e.stopPropagation();
-		if(exerciseLog)
+		if(hasExerciseLog)
 			exerciseLog.numberOfSteps++;
 	}
 };
@@ -333,14 +339,15 @@ var nodeClickHandlers = function(e) {
       $("#exportButton").show();
     }		else {
 	  jsav.umsg("You're not done yet.");
-	  if(exerciseLog){
+	  if(hasExerciseLog){
 		exerciseLog.errorsCount++;
 		exerciseLog.errorMessages.push("You're not done yet");
     }
     return 0;
 	}
+	// return the whole {score, solution} so the grader also stores the student's DFA
 	if(exerController)
-		return exerController.startTesting(studentGraph).score;
+		return exerController.startTesting(studentGraph);
   };
   /*
   These function added to compare student solution with the expected solution. Previously, the code was calling the equals method for Grapths, which depend that the 
@@ -372,7 +379,13 @@ var nodeClickHandlers = function(e) {
   var nodeSortFunctionOptionsValue = function(a, b) {
     return a.options.value.localeCompare(b.options.value);
   };
-  var equalNodes = function(thisNode, otherNode, options) {
+  // an edge's weight lists its symbols ("a<br>b") in the order they were added,
+  // so compare the symbols themselves rather than the weight strings
+  var sameSymbols = function(edge, otherEdge) {
+    return edge.weight().split("<br>").sort().join() ===
+           otherEdge.weight().split("<br>").sort().join();
+  };
+  var equalNodes = function(thisNode, otherNode) {
     var myNeighbors = thisNode.neighbors().sort(nodeSortFunctionLabel),
         otherNeighbors = otherNode.neighbors().sort(nodeSortFunctionOptionsValue),
         myNeighbor, otherNeighbor;
@@ -384,11 +397,8 @@ var nodeClickHandlers = function(e) {
       myNeighbor = myNeighbors[i];
       otherNeighbor = otherNeighbors[i];
       // if edges differ -> not the same nodes
-      if (!thisNode.container.getEdge(thisNode, myNeighbor)
-                .equals(otherNode.container.getEdge(otherNode, otherNeighbor),
-                        $.extend({}, options, {dontCheckNodes: true})
-                        //options
-                        )) {
+      if (!sameSymbols(thisNode.container.getEdge(thisNode, myNeighbor),
+                       otherNode.container.getEdge(otherNode, otherNeighbor))) {
         return false;
       }
     }
@@ -410,7 +420,9 @@ var nodeClickHandlers = function(e) {
   }
 
   //this function to save student solution
-  	$("#saveButton").click(function () {
+  	$("#saveButton").click(function (e) {
+		// Save Machine is an href="#" link in the File menu; following it can cancel the download
+		e.preventDefault();
 		$('#download').hide();
 		$('#download').html('');
 		var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGraphToXML(studentGraph));

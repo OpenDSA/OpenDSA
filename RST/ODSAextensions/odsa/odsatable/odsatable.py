@@ -3,6 +3,7 @@ from docutils.nodes import figure, caption, Text, reference, raw, SkipNode, Elem
 from sphinx.roles import XRefRole
 from docutils.parsers.rst import Directive
 from docutils.parsers.rst import directives
+from docutils.parsers.rst.directives.images import Figure
 import json
 
 
@@ -10,12 +11,10 @@ class odsatable(Element): pass
 
 def loadTable():
    try:
-      table=open('table.json')
-      data = json.load(table)
-      table.close()
-      return data
-   except IOError:
-      print('ERROR: No table.json file.')
+      with open('table.json') as table:
+         return json.load(table)
+   except (IOError, ValueError):
+      return {}
 
 def setup(app):
     app.connect('doctree-read', doctree_read)
@@ -34,19 +33,30 @@ def doctree_read(app, doctree):
     for odsat_info in doctree.traverse(Element):  
         if env.docname != module:
            i = 1
-        if  env.docname in json_data:
+        if json_data and env.docname in json_data:
             module = env.docname
             num_module = json_data[env.docname]
         if isinstance( odsat_info, odsatable ):
             for cap in odsat_info.traverse(caption):
-                if num_module != '':
-                    cap[0] = Text(" %s %s.%d: %s" % ('Table', num_module, i, cap[0]))
+                if len(cap) > 0:
+                    cap_text = cap[0].lstrip() if isinstance(cap[0], Text) else str(cap[0])
+                    if num_module != '':
+                        cap[0] = Text("%s %s.%d: %s" % ('Table', num_module, i, cap_text))
+                    else:
+                        cap[0] = Text("%s %d: %s" % ('Table', i, cap_text))
                 else:
-                    cap[0] = Text(" %s %d: %s" % ('Table', i, cap[0]))
+                    if num_module != '':
+                        cap += Text("%s %s.%d" % ('Table', num_module, i))
+                    else:
+                        cap += Text("%s %d" % ('Table', i))
             i += 1
 
 def html_visit_odsatable(self, node):
-    self.body.append(self.starttag(node, 'div', CLASS='divdgm'))
+    align = node.get('align')
+    classes = 'divdgm'
+    if align:
+        classes += ' align-' + align
+    self.body.append(self.starttag(node, 'div', CLASS=classes))
 
 
 def html_depart_odsatable(self, node):
@@ -90,7 +100,12 @@ class odsatab(Directive):
             if isinstance(first_node, nodes.paragraph):
                 caption = nodes.caption(first_node.rawsource, '',
                                         *first_node.children)
-                caption['align']= capalign
+                target_align = capalign or align
+                caption['align'] = target_align
+                caption['classes'].append('caption')
+                if target_align:
+                    caption['classes'].append('align-' + target_align)
+                    caption['style'] = 'text-align: %s;' % target_align
                 odsatable_node += caption
             elif not (isinstance(first_node, nodes.comment)
                       and len(first_node) == 0):

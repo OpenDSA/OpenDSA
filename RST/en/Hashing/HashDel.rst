@@ -16,7 +16,7 @@
    :description: Presentation of approaches to deleting records from a hash table.
 
 Hashing Deletion
-===============
+================
 
 Deletion
 --------

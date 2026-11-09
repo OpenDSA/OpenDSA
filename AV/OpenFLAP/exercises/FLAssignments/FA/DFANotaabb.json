@@ -5,6 +5,7 @@
     "totalTrueCases": 6,
     "totalFalseCases": 4,
     "containLetters": ["a", "b"],
+    "tools": ["edit", "addState", "addTransition", "delete", "undo", "redo"],
     "randomStringLength": [0, 15],
     "description": "Construct the DFA that accepts the complement of L($((aa)^+bb)^*$)",
     "testCases": [
