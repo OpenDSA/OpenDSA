@@ -138,11 +138,15 @@ controllerProto.toExercise = function (button) {
 // called by toExercise
 controllerProto.updateExercise = function (id) {
   var latexit = "http://latex.codecogs.com/svg.latex?";
+  var escapeAlt = function(text) {
+    if (!text) return "";
+    return String(text).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  };
 	var exercise = this.tests[id];
 	var type = exercise["type"];
 	this.testCases = exercise["testCases"];
 	if (type == "expression") {
-		$("#expression").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
+		$("#expression").html("<img src='" + latexit + exercise["expression"] + "' alt='" + escapeAlt(exercise["expression"]) + "' border='0'/>");
 		$("#question").show();
 		$("#description").hide();
 	} else {
@@ -154,7 +158,7 @@ controllerProto.updateExercise = function (id) {
           var expression = parts[a + 1];
           text = parts[0] + " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[2];
           $("#description").html(text);
-          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' border='0'/>");
+          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' alt='" + escapeAlt(expression) + "' border='0'/>");
         }
         else{
           var expression = parts[a];
@@ -165,7 +169,7 @@ controllerProto.updateExercise = function (id) {
             text = " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[a+1];
           }
           $("#description").append(text);
-          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' border='0'/>");
+          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' alt='" + escapeAlt(expression) + "' border='0'/>");
         }
         a=a+2;
       }

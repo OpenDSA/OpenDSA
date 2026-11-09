@@ -130,7 +130,6 @@ def generate_html(av_name, title, links, scripts, is_dgm, output_path):
   <script type="text/javascript" src="{relative_prefix}lib/jquery.scrolldepth.js"></script>
   <script type="text/javascript" src="{relative_prefix}lib/timeme.js"></script>
   <script type="text/javascript" src="{relative_prefix}lib/jquery.ui.min.js"></script>
-  <script type="text/javascript" src="{relative_prefix}lib/jquery.transit.js"></script>
   <script type="text/javascript" src="{relative_prefix}lib/raphael.js"></script>
   <script type="text/javascript" src="{relative_prefix}lib/JSAV.js"></script>
   <script type="text/javascript" src="{relative_prefix}lib/odsaUtils.js"></script>

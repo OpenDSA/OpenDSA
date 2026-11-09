@@ -61,7 +61,7 @@
 
     // if there are several options for one item, pick one randomly
     for (i = 0; i < sortedItems.length; i++) {
-      if ($.isArray(sortedItems[i])) {
+      if (Array.isArray(sortedItems[i])) {
         index = Math.floor(Math.random() * sortedItems[i].length);
         sortedItems[i] = sortedItems[i][index];
       }

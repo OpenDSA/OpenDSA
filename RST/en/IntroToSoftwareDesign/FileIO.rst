@@ -1,381 +1,249 @@
-.. This file is part of the OpenDSA eTextbook project. See
-.. http://opendsa.org for more details.
-.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
-.. distributed under an MIT open source license.
-
 .. avmetadata::
-   :title: Variable Scoping, File Input/Output, and Streams 
-   :author: Molly Domino
+   :title: Variable Scoping, File Input/Output, and Streams
+   :author: Clifford A. Shaffer, Molly Domino, Stephen Edwards
    :institution: Virginia Tech
-   :keyword: Variable Scope; File Processing; Scanner
+   :keyword: Variable Scope; File Processing; Scanner; PrintWriter; Streams; Spatial Geometry; Euclidean Distance
    :naturallanguage: en
    :programminglanguage: Java
-   :description: CS1-level introduction to variable scoping and file I/O.
+   :description: Comprehensive introduction to variable scoping rules, reading and writing files with Scanner and PrintWriter, stream resource management, 2D spatial coordinate algorithms, Euclidean distance formulas, and unit testing with TestCase.
 
 Variable Scoping, File Input/Output, and Streams
 ================================================
 
-Variable Scoping
-----------------
+.. sidebar:: Learning Objectives
 
-Now that you have experience with fields, parameters, and variables in a
-variety of situations, it is time to learn more about exactly where a
-user-defined name can be accessed. The *scope* of a user-defined name is the region of
-source code where the name is visible and can be used.
+    **Estimated Time**: ~57 minutes (~42 min reading + ~15 min video at 100 WPM)
+
+   * **Analyze and trace** variable visibility, access rules, and lifetimes across nested block scopes, method parameters, and instance fields.
+   * **Resolve** variable shadowing conflicts using the ``this`` keyword to disambiguate instance fields from local parameters.
+   * **Implement** file reading routines using ``Scanner`` and ``File`` to parse structured textual data from disk storage.
+   * **Construct** file writing routines using ``PrintWriter`` to generate persistent text files with proper stream flushing and closing.
+   * **Manage** system resources and prevent resource leaks by ensuring streams are reliably closed after processing.
+   * **Apply** 2D coordinate geometry and nested loops to traverse spatial grids and transform pixel values.
+   * **Formulate** mathematical distance algorithms using Euclidean distance formulas to compute radial gradients and spatial falloff.
+   * **Design** automated unit test suites extending ``TestCase`` to verify file I/O operations and spatial coordinate transformations using synthetic test fixtures.
 
 
-Local Scope
-~~~~~~~~~~~
+Comprehensive Scope: Blocks, Methods, Fields
+--------------------------------------------
 
-Recall that mutator methods (or "setters" as they're often called) are used to
-change the values of private fields in a class.  For example:
+Now that you have worked with variables, parameters, and fields across a wide
+variety of object-oriented architectures, it is time to formalize the rules that
+govern where variables are visible and how long they exist.
 
-.. code-block:: java
+The **scope** of a variable (or any identifier) is the region of program source
+code where that variable's name is recognized, accessible, and valid to use.
+Attempting to refer to a variable outside of its scope results in a compile-time
+error (such as ``cannot find symbol``).
 
-   public class Cat
-   {
-       private String color;
+In Java, every variable belongs to one of three primary scope categories based on
+where it is declared:
 
-       // ...
+1. **Block Scope**: Variables declared inside any block of code enclosed by
+   curly braces (``{ ... }``), such as inside a ``for`` loop, ``while`` loop,
+   or ``if`` statement branch.
 
-       public void setColor(String newColor)
-       {
-            color = newColor;
-       }
-   }
+2. **Method Scope (Local Scope)**: Formal parameters declared in a method's
+   header and local variables declared at the top level of a method body.
 
-This  ``setColor()`` method makes use of both a field and a parameter.
-It is important to note that there is a difference in where these two types
-of variables can be used. The **scope** of a variable or method refers to where
-it can be used in a program.
-
-A parameter’s scope is limited to the body of the method in which it is
-declared.  Parameters are local variables
-which are declared in the parameter list of a method’s header and which
-have initial values specified by the arguments in a method call.  For example,
-if we had an object of type ``Cat`` called ``c``, we could call
-the ``setColor()`` method like so:
-
-.. code-block:: java
-
-   c.setColor("Black");
-
-When we write the method, we declare the variable ``newColor``, and when we call
-the method here,
-we set ``s`` equal to the string "Black".  If we wanted to call the method
-again, we would need to provide a new value for the variable ``newColor``.
-
-.. code-block:: java
-
-   c.setColor("Black");
-   c.setColor("Grey");
-
-Such values do not carry over between method calls.
-
-The scope of a parameter is the
-same as the scope of a variable declared at the
-very beginning of the body of a method.   Once the flow of execution leaves a
-method, its parameters and other local variables cease to exist. The scope
-of local variables is referred to as **local scope**.
-
-.. note:: Local Variables
-
-    Local variables, that is, parameters and variables declared in the body of
-    a method, have **local scope** which extends from the point at which they
-    are defined to the end of the block of code in which they are defined. In
-    particular, the scope of a parameter is the entire body of the method in
-    which it is declared.
-
-It would be a syntax error to refer to a method’s parameters or other local
-variables from outside the method.
-
+3. **Class Instance Scope**: Instance variables (fields) declared inside the
+   class body but outside of any method or constructor.
 
 Block-Level Scope
 ~~~~~~~~~~~~~~~~~
 
-Variables that are declared in the body of a method have scope
-which extends from the point where they are declared to the end
-of the **block** of code in which they are declared.  When a local variable
-is declared at the beginning of a method, it has the local scope discussed
-above.
+A **block** in Java is any sequence of statements grouped between matching
+opening and closing braces: ``{ ... }``.
 
-However, local variables are not restricted to the beginning of a method, and
-their declarations can be placed elsewhere, which can affect their scope.  When
-control structures
-like if-statements or loops are involved, scope can be a bit more specific.
+When a variable is declared inside a block, its scope begins **at the point of
+its declaration** and extends only to the **closing brace** (``}``) of that
+innermost enclosing block:
 
 .. code-block:: java
 
-   public void exampleMethod(int x)
+   public void processScores(int threshold)
    {
-       if (x % 2 == 0)
+       int count = 0; // Scope of count: entire method body
+
+       if (threshold > 0)
        {
-           int value = 4;
+           int bonus = 5; // Scope of bonus: inside this if-block only!
+           count += bonus;
        }
-       value = value + 2; // This will not work!
+
+       // COMPILE ERROR: bonus is out of scope here!
+       // System.out.println("Bonus applied: " + bonus);
    }
 
-Variables declared inside the curly braces (``{}``) of a control structure
-like a loop or conditional only exist within those curly braces.  The method
-above would not work as the variable ``value`` is only declared and initialized
-inside the if statement's true branch, and that variable ceases to exist when
-the corresponding closing brace marking the end of the if statement's true
-branch is reached. As a result, its name is no longer visible once execution
-has left the block (the pair of braces) where it is declared. Any attempt to
-use the variable outside of the braces where it is declared will result in a
-compiler error, since the variable is no longer visible or accessible--no longer
-"in scope".
+Because ``bonus`` was declared inside the ``if`` block, it ceases to exist as
+soon as execution leaves that block.
 
-The same is true for looping structures:
+Loop Counters and Iteration Scope
+"""""""""""""""""""""""""""""""""
+
+A classic example of block-level scope is the index variable declared in a
+standard ``for`` loop header:
 
 .. code-block:: java
 
-   for (int i = 0; i < 12; i++)
+   for (int i = 0; i < 10; i++)
    {
-       System.out.println(i);
+       System.out.println("Iteration: " + i);
    }
-   i = i + 1; // This will not work!
 
-The variable ``i`` is defined as part of the for loop and its scope is the
-body of the for loop--the braces surrounding the loop's body. The variable ``i``
-ceases to exist after the for loop is finished.
+   // COMPILE ERROR: i cannot be resolved to a variable!
+   // System.out.println("Final i was: " + i);
 
-To get around this issue, you will sometimes see code where a variable
-is declared *before* a control structure, so that it can be accessed inside
-the control structure and also after it.
+The counter variable ``i`` exists exclusively within the ``for`` statement. Once
+the loop terminates, ``i`` is discarded from memory. If you require the final
+value of an iteration index after the loop completes, you must declare the
+variable *before* the loop:
 
 .. code-block:: java
 
-   public void exampleMethod(int x)
+   int lastIndex = 0;
+   for (int i = 0; i < 10; i++)
    {
-       int value = 0;
-       if (x % 2 == 0)
+       lastIndex = i;
+   }
+   System.out.println("Last index was: " + lastIndex); // Valid!
+
+Method Scope (Parameters and Local Variables)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Formal parameters are declared in a method's signature header:
+
+.. code-block:: java
+
+   public void setTargetSpeed(int speed, boolean turbo)
+   {
+       int effectiveSpeed = speed; // Local variable
+       if (turbo)
        {
-           value = 4;
+           effectiveSpeed += 20;
        }
-       value = value + 2;
+       this.currentSpeed = effectiveSpeed;
    }
 
-We could also do something similar with a for loop:
+The parameters ``speed`` and ``turbo`` receive copies of the argument values
+passed into the method when called. Their scope spans the entire body of
+``setTargetSpeed()``.
+
+Every time a method is invoked, Java allocates a brand-new **stack frame** in
+memory containing space for all of its parameters and local variables. When the
+method finishes executing and returns, its stack frame is completely destroyed.
+Local variables **do not persist between successive method calls**.
+
+Class Instance Scope (Fields)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In contrast to local variables, **fields** (instance variables) are declared
+directly inside the class body:
 
 .. code-block:: java
 
-   int i = 0;
-   for (i = 0; i < 12; i++)
+   public class SensorNode
    {
-       System.out.println(i);
+       private double reading;
+       private String location;
+
+       public SensorNode(String location)
+       {
+           this.location = location;
+           this.reading = 0.0;
+       }
+
+       public void updateReading(double newReading)
+       {
+           reading = newReading;
+       }
+
+       public double getReading()
+       {
+           return reading;
+       }
    }
-   i = i + 1; // This will work!
 
+The fields ``reading`` and ``location`` have **class instance scope**:
 
-Class Scope
-~~~~~~~~~~~
+* They are visible to **every method, constructor, and helper** within the class.
+* They persist in memory on the heap for the **entire lifetime of the object**.
+* Every distinct instance of ``SensorNode`` created with ``new`` possesses its
+  own independent copies of these fields.
 
-By contrast, fields and all methods have scope that extends throughout the
-entire class, that is, **class scope**. They
-can be used in the body of any method and in the expressions that assign
-initial values to class level variables.
+Variable Shadowing and Disambiguation with `this`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note:: Class-Level Variables
+**Variable shadowing** occurs when a variable declared in an inner scope has the
+identical identifier name as a variable in an outer scope.
 
-    Fields and methods have class scope, which extends throughout the class.
-
-
-A Common Misconception
-~~~~~~~~~~~~~~~~~~~~~~
-
-After declaring a variable it is tempting to use to both the variable name and
-the variable's type whenever referring to it.  For example:
+In Java, you cannot declare two local variables with the same name in the same
+method or in nested blocks—the compiler will reject it as a duplicate variable
+declaration:
 
 .. code-block:: java
 
-    public class Cat
-    {
-        private String color;
+   int total = 10;
+   if (total > 5)
+   {
+       // COMPILE ERROR: Variable total is already defined in method!
+       int total = 20; 
+   }
 
-        // ...
-
-        public void setColor(String newColor)
-        {
-             String color = newColor;
-        }
-    }
-
-This setter will **not** change the value of the field ``color``.  To Java,
-whenever the type of a variable is included, you are declaring a variable.
-Java will allow you to declare variables with the same name, as long as they
-are in different scopes.
-In the code above, there is a field called ``color`` with class-level
-scope, *and* a local variable called ``color`` that only exists within
-the ``setColor()`` method.
-
-Even though these variables have the same name and type, they are different.
-Changing one will not change the other.  Another common example of this can be
-seen when testing.  Let's look at a hypothetical test file for our ``Cat`` class.
+However, Java **does permit** a method parameter or local variable to have the
+exact same name as an instance field:
 
 .. code-block:: java
 
-    public class CatTest
-        extends TestCase
-    {
-        private Cat testCat;
+   public class Thermostat
+   {
+       private int temperature; // Field
 
-        public void setUp()
-        {
-            Cat testCat = new Cat();
-        }
+       public void setTemperature(int temperature) // Parameter shadows field!
+       {
+           // Which temperature is this?
+           temperature = temperature; // Assigns parameter to itself! Field is untouched!
+       }
+   }
 
-        public void test1()
-        {
-            testCat.setColor("White");
-        }
-    }
+Inside ``setTemperature()``, the parameter ``temperature`` **shadows** (hides)
+the field ``temperature``. An unqualified reference to ``temperature`` resolves
+strictly to the parameter. As written above, the field is never modified!
 
-This is the same issue as we saw in the previous example.
-There is a class-level ``Cat`` object declared as a field (``private Cat testCat;``).
-But, instead of initializing the field inside ``setUp()``, we also
-have a local variable being declared, also called ``testCat``.  This means
-the field ``testCat`` will not be initialized, since the object created inside
-``setUp()`` is being used to initialize the local variable inside that method,
-which will cease to exist when the method ends.  When
-we refer to the ``testCat`` variable in ``test1()``, we refer to the field,
-which was never initialized and will therefore contain ``null``.  Thus, this
-test will produce a ``NullPointerException``.
-
-Fortunately, the problem is easily fixed.  Once a variable has been declared,
-we only need to refer to it by the variable's name.
+To resolve this conflict cleanly, we use the ``this`` **keyword**. In Java,
+``this`` is a reference to the current object executing the method. Prefixing
+the field name with ``this.`` explicitly tells the compiler to access the
+instance field:
 
 .. code-block:: java
 
-    public class CatTest
-        extends TestCase
-    {
-        private Cat testCat;
+   public void setTemperature(int temperature)
+   {
+       this.temperature = temperature; // Valid: field on left, parameter on right!
+   }
 
-        public void setUp()
-        {
-            testCat = new Cat();
-        }
+This idiom is the standard convention throughout professional Java development,
+particularly in constructors and mutators.
 
-        public void test1()
-        {
-            testCat.setColor("White"); // this won't work!
-        }
-    }
+Variable Lifetime vs. Scope
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This code would run without error. The field ``testCat`` is still declared
-outside any method, giving it a class-level scope.  But this time, it is
-initialized in our ``setUp()`` method correctly, and ``setUp()``
-runs before every test.  This means that in ``test1()``, ``testCat`` would
-refer to a ``Cat`` object, not the value ``null``.
+It is vital to distinguish between a variable's **scope** and its **lifetime**:
 
+* **Scope** is a compile-time, textual property: *Where in the code can I write
+  the name of this variable?*
 
-A Note on Naming
-~~~~~~~~~~~~~~~~
+* **Lifetime** is a runtime, temporal property: *How long does the variable's
+  storage slot remain alive in memory?*
 
-As we saw above, Java can handle having two variables with the same name
-and type when they are declared in different scopes.  This can also lead to
-confusion.  For example, we could
-have two String variables called ``color``.  One a field and one a parameter.
-
-.. code-block:: java
-
-    public class Cat
-    {
-        private String color;
-
-        // ...
-
-        public void setColor(String color)
-        {
-             color = color;
-        }
-    }
-
-This code would compile but it is not advisable to use such naming conventions.
-This is because it is not clear if the field ``color`` is being set to the
-parameter ``color`` or vice-versa, or something else entirely.  Let's take a
-look at what is happening here by adding a few print statements:
-
-
-.. code-block:: java
-
-    public class Cat
-    {
-        private String color;
-
-        public Cat()
-        {
-            this.color = "Black";
-        }
-
-        public void setColor(String color)
-        {
-            color = color;
-            System.out.println(this.color);
-            System.out.println(color);
-        }
-    }
-
-In this example, whenever we make a new ``Cat`` object, the value of the
-field ``color`` is set to "Black" at first.  When we run ``setColor("Green")``
-we see an interesting result in our print statements:
-
-.. odsafig:: Images/ScopeCatOutput.png
-   :align: center
-
-The first thing to be printed out is ``this.color``.  Which we see is "Black".
-The value of the field was not changed to "Green"! This means that when we write
-``color = color`` we know that the field color was not on the left side of
-the assignment operator.
-
-One might assume, then, that the parameter ``color`` is the value on the left
-side of the assignment operator.  This would mean that the parameter was changed
-from "Green" to "Black". But our second print statement tells us otherwise.
-When we print out the parameter ``color`` we see it is still "Green".  This
-means that the field ``color`` was not on the right side of the equals
-sign either!
-
-What happened in this code is that we set the parameter variable ``color``
-equal to itself--meaning nothing changed!
-
-Generally, the best way to avoid such confusion is to give your variables
-distinct names like we did initially:
-
-
-.. code-block:: java
-
-    public void setColor(String newColor)
-    {
-        color = newColor;
-    }
-
-
-Alternately, if for some reason you *must* use the same variable name at two
-different scope levels, using the modifier ``this`` will help clarify which
-variable you are referring to:
-
-.. code-block:: java
-
-    public void setColor(String color)
-    {
-        this.color = color;
-    }
-
-Now, the field ``color`` is on the left side of the assignment operator and the
-parameter ``color`` is on the right.  So, if we ran ``setColor("Green");``
-the field ``color`` would be changed from "Black" to "Green".
-
-You will sometimes see this convention in setter methods or constructors,
-where the programmer has intentionally used the same name for both the
-parameter and the field, to communicate the intent that the parameter is
-the value that will be stored in the field. When using this approach it
-is mandatory to alway include ``this.`` as a prefix when referring to the
-field name, because otherwise, all uses of the name would refer to the
-parameter only.
+| Variable Category | Scope Boundary | Lifetime in Memory |
+| :--- | :--- | :--- |
+| **Block Variable** | From declaration to closing brace ``}`` of block. | From execution of declaration until the block exits. |
+| **Method Parameter** | Entire body of declaring method. | Allocated when method is called; destroyed when method returns. |
+| **Instance Field** | Entire body of declaring class. | Allocated when object is instantiated with ``new``; destroyed when object is garbage collected. |
 
 Summarizing Scope Concepts
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -384,435 +252,188 @@ Summarizing Scope Concepts
    </div>
 
 
-Your Opinions on Course Grading Policies 
+Your Opinions on Course Grading Policies
 ----------------------------------------
 
-Please Complete the following survey. The survey includes questions regarding your
-opinions on the grading policies in this course and how you approach learning
-in this course. We will use this information to understand better how you are
+Please complete the following survey. The survey includes questions regarding
+your opinions on the grading policies in this course and how you approach
+learning. We will use this information to understand better how students are
 affected by these policies so that we can improve the course.
 
 Towards the end of the survey you will be asked if you consent for your answers
-and course data to be used in a study about grading policies.  There is no
-additional work on your part if you provide consent for your data to
-be used in the study.  Completing the survey should take less than 30 minutes.
-Your course instructor will not know whether you agree to
-participate until after you have completed the course and final
-grades have been turned in. You will earn assignment credit for submitting this
-survey, whether or not you agree to participate in the study or decline to
-answer some or all of the questions.
+and course data to be used in a study about grading policies. There is no
+additional work on your part if you provide consent. Completing the survey should
+take less than 30 minutes. Your course instructor will not know whether you agree
+to participate until after grades have been submitted. You will earn assignment
+credit for submitting this survey, regardless of your survey responses.
 
 .. raw:: html
 
-    <a href="https://virginiatech.questionpro.com/t/AYIrDZ65ya" target="_blank">CS 1114 Grading Policies Survey 2</a>
+    <p><a href="https://virginiatech.questionpro.com/t/AYIrDZ65ya" target="_blank">CS 1114 Grading Policies Survey 2</a></p>
 
-Please answer below and your submission of the survey will be verified
-for credit.
+Please answer below and your submission of the survey will be verified for
+credit:
 
 .. avembed:: Exercises/IntroToSoftwareDesign/EGPSurvey.html ka
    :long_name: Survey Completed
 
 
-Java Input and Output
----------------------
+Reading Text Files with `Scanner` and `File`
+--------------------------------------------
 
-We have been using ``System.out.println()`` for a while, but you might not
-have thought about what it means. ``System`` is a class that provides methods
-related to the "system" or environment where programs run. It also provides
-``System.out``, which is a special field that refers to an object providing
-methods for displaying output, including ``println()``.
-In fact, we can use ``System.out.println()`` to display the value
-of ``System.out``:
+In Chapter 11, you learned how to use ``java.util.Scanner`` to tokenize text
+streams and parse command words and numbers (using ``hasNext()``, ``next()``,
+and ``nextInt()``) for Lab 11 (Simple Text Input). In that context, scanners
+processed interactive input streams (like ``System.in``) or in-memory test
+strings.
 
+In this chapter, we extend those stream-processing techniques to
+**file-based persistence**: reading datasets stored in permanent files on disk
+media and saving outputs for future execution.
 
-.. code-block:: java
+The Three-Step Stream Lifecycle and Resource Management
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   System.out.println(System.out);
+In Java, input and output are framed around the concept of a **stream**: an
+ordered sequence of bytes or characters connecting a program to an external data
+source or destination.
 
-The result is:
+Every file stream operation follows a strict three-step lifecycle:
 
-.. code-block::
+1. **Open the stream**: Establish a connection to the physical resource (such as
+   a file on disk).
 
-   java.io.PrintStream@685d72cd
+2. **Transfer data**: Read or write data sequentially from or to the stream.
+3. **Close the stream**: Disconnect from the resource, releasing operating
+   system file handles and flushing buffers.
 
-This output indicates that ``System.out`` refers to a ``PrintStream`` object,
-which is defined in a package called ``java.io``. A package is a collection of
-related classes; ``java.io`` contains classes for "I/O" which stands for
-*input and output*.
+When you created a ``Scanner`` on an in-memory ``String`` in Chapter 11, no
+underlying operating system resources were allocated. However, opening a file on
+disk requests a **file handle** (or file descriptor) from the host operating
+system. Operating systems limit the number of open file handles any single
+program can hold simultaneously. If a program repeatedly opens files without
+closing them, it exhausts available handles—causing subsequent file operations to
+fail. This defect is known as a **resource leak**. Therefore, calling
+``scanner.close()`` as Step 3 is mandatory whenever reading from disk files.
 
+Reading from Files Using `java.io.File` and `java.util.Scanner`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Basic Input and Output Concepts
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+To open a physical disk file for reading with a standard ``Scanner``:
 
-Java provides an extensive library of classes for managing input and output of
-all forms of data.  In Java, any source or destination for I/O is considered
-a "stream" or sequence of bytes or characters. To perform output, we insert
-bytes or characters into the stream. To perform input, we extract bytes or
-characters from the stream.  Even characters entered at a keyboard (if we
-think about them as a sequence of keystrokes) can be represented as a stream.
+1. Create a ``java.io.File`` object representing the file path.
+2. Pass the ``File`` object to the ``Scanner`` constructor.
 
-**Input** operations are framed in terms of reading from a stream in a
-three-step process:
-
-1. open the stream
-2. read data items from the stream front to back in sequence
-3. close the stream.
-
-**Output** operations are framed in terms of writing to a stream in a
-similar three-step process:
-
-1. open the stream
-2. write data onto the end of the stream in sequence
-3. close the stream.
-
-To use Java's input/output classes, make sure that in addition to importing
-any other necessary packages, also import the ``java.io`` package and
-the ``java.util`` package:
+Because the requested file might not exist on disk, opening a file is a checked
+operation in Java that requires handling ``java.io.FileNotFoundException``:
 
 .. code-block:: java
 
-   import java.io.*;
-   import java.util.*;
+   import java.io.File;
+   import java.io.FileNotFoundException;
+   import java.util.Scanner;
 
-
-Output Using PrintWriters
--------------------------
-
-Opening a Stream for Output
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In this class, we will only deal with textual, human-readable output. The main
-class we will use for generating output is Java's ``PrintWriter`` class, from
-the ``java.io`` package. To create a ``PrintWriter``, we'll use a utility
-method in the ``IOHelper`` class from the VT student package
-(``import student.*;``\ ):
-
-.. code-block:: java
-
-   PrintWriter outStream = IOHelper.createPrintWriter("output.txt");
-
-This line declares a new variable, ``outStream`` and creates a new ``PrintWriter``
-object that sends output to a brand new file in the file system. If a file with
-the name already exists in the project directory it will be deleted before a new
-empty file with the same name is created.
-
-The ``PrintWriter`` object provides formatting and conversion operations.
-A ``PrintWriter`` object is designed to send its output to a stream. It does
-not know (or care) whether the stream is connected to a disk file or a network
-connection or another device. The ``IOHelper`` class provides a few other
-methods for creating ``PrintWriter`` objects, including methods that append to
-an existing file instead of overwriting it, or streams that are connected to
-the console for output.
-
-
-Writing to an Output Stream
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Three basic methods provided by ``PrintWriter`` objects provide virtually all
-of the output capabilities you will need in this course:
-
-* ``<stream>.print(<value>);`` writes the specified <value> to the given
-  <stream>. There are actually many versions of this method that support every
-  possible type of <value> you might want to print.
-
-* ``<stream>.println(<value>);`` writes the specified <value> to the given
-  <stream>, and then follows it by writing a 'line terminator' to mark the end
-  of the current line (Java writes an appropriate line termination character
-  sequence based on the current operating system's text file format
-  conventions). As with ``print()``, you can provide any type of value
-  to ``println()``. You can even call ``println()`` without giving any argument
-  at all, for example, to terminate the current line after several
-  previous ``print()`` messages.
-
-* ``<stream>.write(<value>);`` writes a single character specified by an
-  integer <value>. This operation is most often used when you are producing
-  output one character at a time, rather than in larger chunks. However, if
-  you pass an entire ``String`` value to ``write()`` instead of an ``int``
-  value, then the entire string will be written to the ``PrintWriter()`` just
-  as if you had used ``print()``.
-
-For example:
-
-.. code-block:: java
-
-   outStream.print("This is a message, and ");
-   outStream.println("these words appear on the same line as those above");
-   outStream.println(100 / 2);  // prints the value "50"
-   outStream.write(65);         // writes the letter 'A', whose ASCII code is 65
-
-
-Closing a Stream
-~~~~~~~~~~~~~~~~
-
-Once you have completed all of the operations you intend to carry out on a given
-stream, the stream should be closed. Closing the stream frees up operating system
-resources used to connect to and communicate with the stream, and makes sure that
-any buffered data you have written to the stream is flushed out to the physical
-device involved (if any).
-
-Closing a stream is easy:
-
-.. code-block:: java
-
-   outStream.close();
-
-You should close both input streams and output streams this way. In many simple
-programs, a good rule of thumb is to make sure that the method that creates the
-stream should also be the one responsible for closing it.
-
-
-A Complete Output Example
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-We can put all these pieces together to show how to generate output to a file,
-for example. Let's say we want to create a file called ``output.txt`` containing
-some output from our program. We can do it in one method like this (don't
-forget to import ``java.io.*`` in your class):
-
-.. code-block:: java
-
-   public void printResultFile(int result)
+   public class DataReader
    {
-       PrintWriter out = IOHelper.createPrintWriter("output.txt");
-       out.println("This is the first line of output.");
-       out.print("The result is: ");
-       out.print(result);
-       out.println();
-       out.close();
-   }
-
-If called with a specific argument, like ``printResultFile(42);``, the method
-will produce a file called ``output.txt`` in your BlueJ project directory
-containing these lines:
-
-.. code-block:: java
-
-   This is the first line of output.
-   The result is: 42
-
-At other times, when there is a lot of output to produce, you may want to place
-all the ``println()`` calls in one or more other methods. Then you can pass a
-``PrintWriter`` object as a parameter, as in this example:
-
-.. code-block:: java
-
-   public void printResultFile()
-   {
-       PrintWriter out = IOHelper.createPrintWriter("output.txt");
-       printHeader(out);
-       printData(out);
-       out.close();
-   }
-
-   public void printHeader(PrintWriter outStream)
-   {
-       outStream.println("This is the output for ...");
-       // other output commands go here.
-   }
-
-   public void printData(PrintWriter outStream)
-   {
-       outStream.print(/* ... */);
-       // more, as needed ...
-   }
-
-
-Output with System.out
-~~~~~~~~~~~~~~~~~~~~~~
-
-It turns out that printing to the terminal is such a common action that Java
-provides a pre-initialized output stream just for that purpose, called
-``System.out``. The advantage of ``System.out`` is that it is already declared
-and always ready for use, and your program is not responsible for closing it.
-As a result, you can directly call ``print()``, ``println()``, or ``write()``
-on ``System.out`` anywhere you like.
-
-.. code-block:: java
-
-   System.out.println("beginning the code ...");
-   ...
-   if (someCondition())
-   {
-       System.out.println("someCondition() is true");
-       x = ...;
-       System.out.println("x = " + x);
-   }
-   else
-   {
-       System.out.println("someCondition() is false");
-       y = ...;
-       System.out.println("y = " + y);
-   }
-
-Above, notice the way the plus operator (``+``) was used to combine a textual
-string with another value to make a larger message. This is a nice feature of
-Java--the plus operator works to "concatenate" two strings into a larger string
-by placing one after the other. Further, when you concatenate a string with
-any other type of value, the other value is converted into a human-readable
-string representation first by calling its ``toString()`` method.
-
-* As a result, here are some recommendations for output in this course:
-
-* When you just want to produce simple messages in the terminal window to help
-  debug a problem with your code, use ``System.out``.
-
-* When you just want to interactively prompt the user for some value(s),
-  use ``System.out``.
-
-* When your program is supposed to produce a series of output lines in a file,
-  use a ``PrintWriter``.
-
-* When your program is supposed to produce a series of output lines that may
-  go either to the terminal window or to a file, write one or more methods
-  that use a ``PrintWriter`` provided as a parameter. You can always call such
-  a method and provide it with a ``PrintWriter`` produced with a ``System.out``
-  stream in order to produce output on the screen (see
-  the ``IOHelper.createConsoleWriter()`` method). Alternatively, you can pass
-  in a ``PrintWriter`` connected to a file instead (or even one connected to
-  an internet socket for communicating with another program on another
-  machine!).
-
-
-Input Using Scanners
---------------------
-
-Opening a Stream for Input
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The main class we will use for reading input is Java's ``Scanner`` class, from
-the ``java.io package``. Creating a ``Scanner`` is simple:
-
-.. code-block:: java
-
-   Scanner inStream = IOHelper.createScanner("input.txt");
-
-This line declares a new name, ``inStream`` and creates a Scanner object that
-reads characters from the named file. The ``createScanner()`` method opens
-files using path names relative to your project directory, so the file
-called ``input.txt`` should be located there.
-You can provide a fully qualified path name instead of a relative path name
-if you desire.
-
-The ``java.io`` package offers a rich inheritance hierarchy of classes for
-reading from text files. The ``Scanner`` class was created to simplify text
-input and is thus preferred over the other classes.
-
-
-Reading from an Input Stream
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Several methods provided by
-`Scanner <https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html>`_
-objects provide virtually all of the input capabilities you will need in
-this course:
-
-* ``<scanner>.hasNext();`` Returns ``true`` if this scanner has another
-  token in its input.
-
-* ``<scanner>.next();`` Finds and returns the next complete token
-  (by default the next whitespace delimited string as a String object like
-  the next line or next tab-seperated word) from this scanner.
-  A ``NoSuchElementException``
-  is thrown if no more tokens are available, (i.e., you have reached the end
-  of input).
-
-* ``<scanner>.hasNextLine();`` Returns ``true`` if this scanner has another
-  line in its input.
-
-* ``<scanner>.nextLine();`` Finds and returns the next complete line.
-  A ``NoSuchElementException``
-  is thrown if no more tokens are available, (i.e., you have reached the end
-  of input).
-
-* ``<scanner>.hasNext<PrimitiveType>();`` The ``<PrimitiveType>`` can be
-  replaced by ``double``, ``float``, ``int``, etc. Returns ``true`` if this
-  scanner has another token in its input and it can be interpreted as a value
-  of the ``<PrimitiveType>``.
-
-* ``<scanner>.next<PrimitiveType>();`` he ``<PrimitiveType>`` can be
-  replaced by ``double``, ``float``, ``int``, etc.  The method scans the next
-  token of the input as an ``<PrimitiveType>`` and returns back the
-  corresponding ``<PrimitiveType>`` value. It throws an ``InputMismatchException``
-  if the next token does not match the ``<PrimitiveType>``, or if the value
-  scanned is out of range. It also throws
-  a ``NoSuchElementException``
-  if no more tokens are available.
-
-* ``<scanner>.useDelimiter(String pattern);`` by default whitespace (spaces,
-  tabs, or new line characters) are used as delimiters for separating the input
-  into tokens to return. This method allows the user to set the delimiter characters
-  to whatever they wish for breaking up the input.  Commas are a common other
-  delimiter to use as tables or data is often stored in what are called CSV
-  (comma seperated value) files.
-
-* ``<scanner>.close();`` closes the scanner to release system resources being
-  used by the scanner.
-
-To use these methods, normally you will process the input by scanning one line
-at a time and then scanning the line for the desired tokens.
-
-For example:
-
-.. code-block:: java
-
-   Scanner inStream = IOHelper.createScanner("input.txt");
-   // if NOT at the end of the stream, more input is available
-   if (inStream.hasNextLine())
-   {
-       // Get an entire line
-       String thisLine = inStream.nextLine();
-       // Create a scanner to process the line
-       Scanner line = new Scanner(thisLine);
-       // Check for the next whitespace delimited int
-       if (line.hasNextInt())
+       public void readScores(String filename)
        {
-           System.out.println(line.nextInt());
+           File file = new File(filename);
+
+           // Defensive check: verify file exists before attempting to read!
+           if (!file.exists())
+           {
+               System.out.println("Error: File " + filename + " does not exist.");
+               return;
+           }
+
+           try
+           {
+               Scanner scanner = new Scanner(file);
+
+               // Step 2: Read file contents line by line
+               while (scanner.hasNextLine())
+               {
+                   String line = scanner.nextLine();
+                   System.out.println("Read: " + line);
+               }
+
+               // Step 3: Always close the stream to release the file handle!
+               scanner.close();
+           }
+           catch (FileNotFoundException e)
+           {
+               System.out.println("Could not open file: " + e.getMessage());
+           }
        }
    }
-   inStream.close();
 
-Notice how the existence of each input is checked before it is extracted to
-avoid exceptions.
-
-Also, if you have programmed in another language before, note that characters
-in Java are encoded using unicode, a 16-bit character code. Programmers in
-other languages may instead be familiar with ASCII, the
-American Standard Code for Information Interchange, which is a 7-bit character
-code. Fortunately, the first 128 codes in unicode are equivalent to the entire
-`ASCII character set <https://www.asciitable.com/>`_ . For American users, ASCII
-values may thus be freely used when reading and writing character-by-character
-without error, although this approach does not directly extend to programs
-written for an international audience.
-
-The Scanner class can be used to read from any input stream, including files,
-the keyboard through the terminal window, or even URLs. To read from the
-keyboard, for example:
+In CS 1114, you can also use the VT student support helper method
+``IOHelper.createScanner(filename)``, which encapsulates file opening and error
+handling:
 
 .. code-block:: java
 
-   Scanner keyBoard = IOHelper.createKeyboardScanner();
+   Scanner scanner = IOHelper.createScanner("data.txt");
 
-   System.out.print("Enter your name: ");
-   // Prompt the user String name = keyBoard.nextLine();
-   System.out.println("Hello " + name); // Echo input
+Line-by-Line Reading vs. Token Parsing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When performing interactive keyboard input there is no need to check for the
-existence of the next token. The scanner will automatically block (i.e., wait)
-for the user to enter input.
+In Chapter 11, command interpreters processed input token-by-token using
+``scanner.next()``, skipping whitespace between words. Files, however, are
+often structured as discrete records where each line represents a distinct entry
+(such as lines in a CSV file or sentences in a document).
 
-Scanners can also be used to read from a file that is publicly available on the
-Web if you know the URL:
+To read entire lines at a time, ``Scanner`` provides dedicated line-reading
+methods:
+
+* ``scanner.hasNextLine()``: Returns ``true`` if another line of text exists in
+  the input stream.
+
+* ``scanner.nextLine()``: Reads and returns the entire remainder of the current
+  line as a ``String`` (including all spaces and tabs), advancing the scanner
+  past the newline delimiter.
+
+Processing Structured Tabular Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Text files frequently contain structured tabular data—such as student grades,
+inventory catalogs, or spatial coordinates—where values are separated by spaces
+or tabs.
+
+Consider a file named ``inventory.txt`` containing item names, unit counts, and
+prices:
+
+.. code-block:: text
+
+   Apples  45  0.89
+   Oranges 30  1.15
+   Bananas 60  0.59
+
+Because ``Scanner`` supports typed parsing on file streams just as it does on
+strings, we can read structured records using the typed query methods you learned
+in Chapter 11:
 
 .. code-block:: java
 
-   Scanner inWebFile = IOHelper.createScannerForURL(
-       "http://server.subdomain.domain/dir/file.txt");
-   while (inWebFile.hasNextLine())
+   public void processInventory(String filename)
    {
-       String line = inWebFile.nextLine();
-       System.out.println(line); // Echo input
+       Scanner in = IOHelper.createScanner(filename);
+
+       while (in.hasNext())
+       {
+           String itemName = in.next();
+           int quantity = in.nextInt();
+           double unitPrice = in.nextDouble();
+
+           double totalValue = quantity * unitPrice;
+           System.out.println(itemName + " total inventory value: $" + totalValue);
+       }
+
+       in.close(); // Mandatory cleanup
    }
-   inWebFile.close();
+
+Visual Summary of File Scanner Concepts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -821,204 +442,481 @@ Web if you know the URL:
    </div>
 
 
-A Complete Input Example
-------------------------
+Writing Files with `PrintWriter`
+--------------------------------
 
-We can put all these pieces together to show how to read input from a file one
-character at a time, for example. Let's say we want to read the characters
-from a file called ``input.txt``. We can do it in one method like this (don't
-forget to ``import java.io.*`` and ``java.util.*`` in your class):
+While ``Scanner`` handles incoming data streams, the standard class for
+generating human-readable textual output in Java is
+``java.io.PrintWriter``.
 
-.. code-block:: java
+Creating a `PrintWriter`
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-   public void readChars()
-   {
-       Scanner in = IOHelper.createScanner("input.txt");
-       // while NOT at the end of the stream, more input is available
-       while (in.hasNextLine())
-       {
-           String thisLine = in.nextLine(); // Get an entire line
-           for (int index = 0; index < thisLine.length(); index++)
-           {
-               char ch = thisLine.charAt(index);
-               System.out.print(ch);
-           }
-           System.out.println();
-       }
-       in.close();
-   }
-
-At other times, when there is a lot of output to produce, you may want to place
-all the ``read()`` calls in one or more other methods. Then you can pass a
-``Scanner`` object as a parameter:
+To create a new text file and write data to it:
 
 .. code-block:: java
 
-   public void processInputFile()
-   {
-       Scanner in = IOHelper.createScanner("input.txt");
-       readHeader(in);
-       readData(in);
-       in.close();
-   }
+   import java.io.PrintWriter;
+   import java.io.File;
+   import java.io.FileNotFoundException;
 
-   public void readHeader(Scanner inStream)
+   public void createReport(String filename)
    {
-       String nextLine = null;
-       if (inStream.hasNextLine())
+       try
        {
-           nextLine = inStream.nextLine();
-           // other input commands go here.
+           PrintWriter writer = new PrintWriter(new File(filename));
+
+           writer.println("=== Daily Sensor Summary ===");
+           writer.println("Date: 2026-10-24");
+           writer.printf("Average Temperature: %.2f degrees\n", 71.458);
+
+           writer.close(); // Flush and close!
+       }
+       catch (FileNotFoundException e)
+       {
+           System.out.println("Could not create output file: " + e.getMessage());
        }
    }
 
-   public void readData(Scanner inStream)
-   {
-       String nextLine = null;
-       if (inStream.hasNext() )
-       {
-           nextLine = inStream.nextLine();
-           // more, as needed ...
-       }
-   }
-
-
-A Complete Input/Output Example
--------------------------------
-
-Often, it is necessary to combine the processes of reading from some source
-and writing to some destination. Here is a simple example that copies an input
-file character by character:
+In CS 1114, you can also use ``IOHelper.createPrintWriter(filename)``:
 
 .. code-block:: java
 
-   import cs1705.*;
-   import java.io.*;
-   import java.util.*;
+   PrintWriter writer = IOHelper.createPrintWriter("report.txt");
 
+When creating a ``PrintWriter`` for a filename:
 
-   // -------------------------------------------------------------------------
-   /**
-    * Shows how to read/write a file one character at a time.
-    * @author Dwight Barnette
-    * @version 2006.03.09
-    */
-   public class CopyFileByLine
+* If the target file **does not exist**, the operating system creates a brand-new
+  empty file.
+
+* If a file with that name **already exists**, its previous contents are
+  immediately erased (truncated to zero bytes) and replaced with the new output.
+
+Core `PrintWriter` Methods
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``PrintWriter`` class provides the identical formatting methods you have
+long used with ``System.out``:
+
+* ``print(value)``: Writes the text representation of any primitive or object to
+  the file without terminating the line.
+
+* ``println(value)``: Writes the value followed by an operating-system-specific
+  newline character sequence (``\n`` on Linux/macOS, ``\r\n`` on Windows).
+
+* ``println()``: Outputs an empty newline.
+* ``printf(format, args...)``: Produces formatted text with precision specifiers
+  (e.g., ``%.2f`` for two decimal places).
+
+Generating Delimited Text Files (CSV Export)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+One common application of file output is exporting data in **Comma-Separated
+Values (CSV)** format, which can be opened directly in spreadsheet applications
+like Microsoft Excel or Google Sheets:
+
+.. code-block:: java
+
+   public void exportStudentAverages(Map<String, Double> grades, String filename)
    {
-       // ----------------------------------------------------------
-       /**
-        * Copy the source file to the specified destination file.
-        * @param fromFile the name of the file to copy from
-        * @param toFile the name of the file to copy to
-        */
-       public void copyFile(String fromFile, String toFile)
-       {
-           Scanner source = IOHelper.createScanner(inFile);
-           PrintWriter dest = IOHelper.createPrintWriter(toFile);
+       PrintWriter out = IOHelper.createPrintWriter(filename);
 
+       // Write CSV header row:
+       out.println("StudentID,AverageGrade");
+
+       // Write data rows:
+       for (String id : grades.keySet())
+       {
+           out.println(id + "," + grades.get(id));
+       }
+
+       out.close();
+   }
+
+
+Resource Management & Stream Closing
+------------------------------------
+
+Whenever a program opens a file, the underlying operating system allocates a
+precious resource known as a **file descriptor** (or file handle). Operating
+systems impose strict limits on how many file descriptors a single process can
+keep open concurrently.
+
+The Problem: Resource Leaks and Data Loss
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If your code repeatedly opens files inside loops or methods without closing them,
+the program suffers a **resource leak**. Eventually, the operating system denies
+any further file access, causing crashes.
+
+Even worse, output streams employ **internal memory buffers** for efficiency.
+When you call ``writer.println("Hello")``, Java does not immediately write the
+characters to the physical disk platter or solid-state drive; it accumulates them
+in a memory buffer.
+
+Data is only written to disk when:
+
+1. The internal buffer fills up completely,
+2. You explicitly call ``writer.flush()``, or
+3. You invoke ``writer.close()``.
+
+If a program crashes or terminates before an output stream is closed, **buffered
+data remaining in memory is lost forever**, resulting in truncated or completely
+empty output files!
+
+The Ownership Rule of Resource Management
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To prevent resource leaks and data corruption, follow this foundational rule:
+
+.. note::
+
+   **The Ownership Rule**: The method or class responsible for *opening* a stream
+   must also be responsible for *closing* it.
+
+Modern Resource Management: Try-with-Resources
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Java 7 introduced the **try-with-resources statement**, the gold standard in
+modern Java for safe resource management. Any object implementing the
+``java.lang.AutoCloseable`` interface (which includes ``Scanner`` and
+``PrintWriter``) declared inside the ``try (...)`` parentheses is
+**guaranteed to be closed automatically** when the block exits, whether the code
+completes normally or throws an exception:
+
+.. code-block:: java
+
+   public void copyFile(String sourceName, String destName)
+   {
+       File inFile = new File(sourceName);
+       File outFile = new File(destName);
+
+       // Try-with-resources automatically closes BOTH streams!
+       try (Scanner source = new Scanner(inFile);
+            PrintWriter dest = new PrintWriter(outFile))
+       {
            while (source.hasNextLine())
            {
-               String thisLine = source.nextLine();
-               for (int index = 0; index < thisLine.length(); index++)
-               {
-                   char ch = thisLine.charAt(index);
-                   dest.print(ch);
-               }
-               dest.println();
+               dest.println(source.nextLine());
            }
-           source.close();
-           dest.close();
+       }
+       catch (FileNotFoundException e)
+       {
+           System.out.println("File error: " + e.getMessage());
        }
    }
 
 
-Testing I/O-based Operations
-----------------------------
+2D Coordinate Geometry & Spatial Transformations
+------------------------------------------------
 
-When it comes to testing, remember to write one or more test cases for each
-method that your write in your solution. Preferably, you should write these tests
-before (or as) you write the method itself, rather than saving testing until
-your code works. As you work on larger and larger programs, it is important to
-build skills in convincing yourself that the parts you have already written
-work as you intend, even if the full solution has not been completed.
+In Chapter 10, we explored multi-dimensional arrays, traversing rows and columns
+using nested ``for`` loops. In computer graphics, computer vision, GIS mapping,
+and simulation systems, grid manipulation frequently demands understanding **2D
+spatial coordinate geometry**.
 
-For testing programs that read input or produce output, it seems difficult when
-the program operates directly on the console, since it is hard to "assert" what
-should come out on the screen. Plus you would always need to be present to
-"type in" the required input sequence.
+In a digital image or spatial matrix:
 
-To make these tests fully automated, however, don't write tests that use
-``System.out`` or that read from an external source. Instead, simply create a
-``Scanner`` to read from a fixed input string as part of your test case.
-For output, create a ``PrintWriter`` that can write to a String object instead of the console.
+* The horizontal axis is **$x$**, extending from $0$ (the left edge) to
+  $width - 1$ (the right edge).
 
-To make these tasks easy, the ``TestCase`` base class from which all your test
-cases inherit provides a few helper methods for you:
+* The vertical axis is **$y$**, extending from $0$ (the top edge) to
+  $height - 1$ (the bottom edge).
 
-* ``setIn(<contents>);`` takes a string and uses it to create a ``Scanner``
-  for your test to use as input. The scanner gets cleared automatically
-  before each test case, so you can call this in ``setUp()`` if you want to
-  use the same input sequence for all your tests.
+Notice that in standard computer graphics coordinates, the vertical $y$-axis is
+inverted relative to Cartesian school math: **$y = 0$ is at the very top**, and
+$y$ increases as you move downward!
 
-* ``in();`` returns the current ``Scanner`` being used for input. You can use
-  this, in combination with ``setIn()`` to set up an input stream for your own
-  input-based methods inside test cases. The scanner gets cleared automatically
-  at the start of each test case.
+The Center Point of a Spatial Field
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* ``out();`` returns a ``PrintWriter`` that you can use for output.
-  This ``PrintWriter`` captures all of its own output for later use in
-  assertions, and its contents are reset before each test case.
-
-As an example, consider the following test method (which assumes your text fixture
-includes a ``doIt`` object created from some DoIt class that provides a
-method called ``processSomeInput()`` that accepts a ``Scanner``  parameter):
+Many geometric operations require identifying the exact center coordinate of the
+grid:
 
 .. code-block:: java
 
-   public void testProcessSomeInput()
-   {
-       // set up the input stream
-       setIn("some test input");
+   int centerX = width / 2;
+   int centerY = height / 2;
 
-       // run the method to get results
-       doIt.processSomeInput(in());
+For example, in a $100 \times 100$ coordinate grid:
 
-       // test that the result is what was expected
-       assertThat( ... );
-   }
+* ``centerX = 100 / 2 = 50``
+* ``centerY = 100 / 2 = 50``
 
-Suppose there was a ``produceOutput()`` method that wrote to a ``PrintWriter``:
+Coordinate Distance Offsets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: java
-
-   public void testProcessSomeInput()
-   {
-       // run the method to get results
-       doIt.produceOutput(out());
-
-       // test that the result is what was expected
-       assertThat("what I expect").isEqualTo(out().getHistory());
-   }
-
-Finally, you can even deal with both input and output at the same time:
+For any arbitrary cell located at coordinates $(x, y)$, its horizontal and
+vertical offsets from the center point are calculated via subtraction:
 
 .. code-block:: java
 
-   public void testProcessSomeInput()
+   int deltaX = x - centerX;
+   int deltaY = y - centerY;
+
+* If $x < centerX$, $\Delta x$ is negative (the cell lies to the left of center).
+* If $x > centerX$, $\Delta x$ is positive (the cell lies to the right of center).
+* If $y < centerY$, $\Delta y$ is negative (the cell lies above center).
+* If $y > centerY$, $\Delta y$ is positive (the cell lies below center).
+
+
+Euclidean Distance & Radial Modulation Formulas
+-----------------------------------------------
+
+While rectangular grids are indexed by discrete integers, physical phenomena
+such as light, sound, heat, and gravity disperse **radially in circles** from a
+central source point.
+
+The Euclidean Distance Formula
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To determine how far any coordinate $(x, y)$ is from an anchor point $(centerX,
+centerY)$, we apply the classical **Euclidean distance formula** derived from
+the Pythagorean theorem:
+
+$$\text{distance} = \sqrt{(x - centerX)^2 + (y - centerY)^2}$$
+
+In Java, we compute this using ``Math.sqrt()`` and basic arithmetic:
+
+.. code-block:: java
+
+   double deltaX = x - centerX;
+   double deltaY = y - centerY;
+   double distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+Notice that squaring the delta terms (``deltaX * deltaX``) naturally eliminates
+any negative signs, ensuring the squared sum is always positive before taking the
+square root.
+
+Maximum Distance and Radius Normalization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To scale or modulate values across a spatial grid, we need to know the **maximum
+possible distance** from the center to the farthest point in the grid (which
+occurs at any of the four outer corners):
+
+$$\text{maxDistance} = \sqrt{centerX^2 + centerY^2}$$
+
+.. code-block:: java
+
+   double maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
+
+By dividing the current cell's distance by ``maxDistance``, we compute a
+**normalized radial ratio** between $0.0$ and $1.0$:
+
+$$\text{ratio} = \frac{\text{distance}}{\text{maxDistance}}$$
+
+* At the exact center $(centerX, centerY)$, $\text{distance} = 0.0$, so $\text{ratio} = 0.0$.
+* At the farthest corner, $\text{distance} = \text{maxDistance}$, so $\text{ratio} = 1.0$.
+
+Radial Heat Dispersion Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Consider a simulation where a heating element is placed at the center of a
+two-dimensional metal plate. The temperature is hottest at the center and
+dissipates smoothly toward the cool outer edges.
+
+We can model this using a radial falloff factor:
+
+$$\text{factor} = 1.0 - \frac{\text{distance}}{\text{maxDistance}}$$
+
+.. code-block:: java
+
+   public class HeatPlateSimulation
    {
-       setIn("some test input");
+       private double[][] grid;
+       private int width;
+       private int height;
 
-       // run the method to get results
-       doIt.processSomeStuff(in(), out());
+       public HeatPlateSimulation(int width, int height)
+       {
+           this.width = width;
+           this.height = height;
+           this.grid = new double[height][width];
+       }
 
-       // test that the result is what was expected
-       assertThat("output I want").isEqualTo( out().getHistory()));
+       public void applyCentralHeat(double maxTemperature)
+       {
+           int centerX = width / 2;
+           int centerY = height / 2;
+           double maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
+
+           for (int y = 0; y < height; y++)
+           {
+               for (int x = 0; x < width; x++)
+               {
+                   double dx = x - centerX;
+                   double dy = y - centerY;
+                   double distance = Math.sqrt(dx * dx + dy * dy);
+
+                   grid[y][x] = computeDissipatedTemp(distance, maxDistance, maxTemperature);
+               }
+           }
+       }
+
+       /**
+        * Helper method: computes dissipated temperature with safe bounding.
+        */
+       public double computeDissipatedTemp(double dist, double maxDist, double maxTemp)
+       {
+           double falloff = 1.0 - (dist / maxDist);
+
+           // Defensive clamping: ensure factor remains in [0.0, 1.0]
+           double clampedFactor = Math.max(0.0, Math.min(1.0, falloff));
+
+           return maxTemp * clampedFactor;
+       }
    }
 
-The ``TestCase`` base class provides similar methods for setting ``System.in``
-or retrieving the history from ``System.out``. See the javadoc for
-`TestCase <https://courses.cs.vt.edu/~cs1114/api/student/TestCase.html>`_
-for more details.
+Decomposing Complex Geometry with Helper Methods
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Notice how the nested coordinate loops in ``applyCentralHeat()`` remain clean
+and readable because the arithmetic calculation of the temperature value is
+delegated to the ``computeDissipatedTemp()`` **helper method**.
+
+Extracting mathematical formulas into private helper methods offers three
+profound software engineering benefits:
+
+1. **Isolation of Complexity**: Loop indexing logic is separated from arithmetic
+   physics formulas.
+
+2. **Reusability**: The same mathematical helper can be reused across multiple
+   transformation passes.
+
+3. **Testability**: The mathematical helper can be exercised directly by unit
+   test assertions with known synthetic inputs!
+
+
+Testing File I/O and Spatial Algorithms with `TestCase`
+-------------------------------------------------------
+
+Testing software that interacts with external files and complex mathematical
+transformations requires disciplined automated test design.
+
+In CS 1114, test classes extend ``TestCase`` (from the ``student`` package).
+Because the BlueJ project template provides the required import
+(``import student.TestCase;``), test classes simply extend ``TestCase``
+directly without package qualification:
+
+.. code-block:: java
+
+   import student.TestCase;
+
+   public class FileProcessorTest extends TestCase
+
+Testing File Input and Output Without Hardcoded Disk Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Testing file I/O against physical disk files can introduce brittle dependencies:
+files might be missing, permissions may fail, or test runs might pollute the
+filesystem.
+
+To make unit testing deterministic and fast, the ``TestCase`` base class provides
+built-in stream mocking helpers:
+
+* ``setIn(String data)``: Feeds synthetic string data into the test framework's
+  input stream.
+
+* ``in()``: Returns a ``Scanner`` reading from the synthetic input configured by
+  ``setIn()``.
+
+* ``out()``: Returns a ``PrintWriter`` that records all program output.
+* ``out().getHistory()``: Retrieves everything written to the output stream as a
+  ``String`` for assertion evaluation.
+
+.. code-block:: java
+
+   public class DataReporterTest extends TestCase
+   {
+       private DataReporter reporter;
+
+       public void setUp()
+       {
+           reporter = new DataReporter();
+       }
+
+       /**
+        * Verifies that processing synthetic scanner input produces expected results.
+        */
+       public void testProcessScores()
+       {
+           setIn("85 92 78 95");
+           int average = reporter.computeAverage(in());
+
+           assertEquals(87, average);
+       }
+
+       /**
+        * Verifies that writing to a PrintWriter produces expected formatted text.
+        */
+       public void testProduceReport()
+       {
+           reporter.writeHeader(out(), "Midterm Exam");
+
+           String history = out().getHistory();
+           assertTrue(history.contains("=== Midterm Exam ==="));
+       }
+   }
+
+Testing 2D Spatial Geometry with Synthetic Fixtures
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When testing spatial distance algorithms, running tests on large images or giant
+$1000 \times 1000$ matrices makes manual verification tedious.
+
+The best practice is to test on **small synthetic grids** (such as $3 \times 3$
+or $5 \times 5$) where expected distances can be solved by hand on paper:
+
+For a $3 \times 3$ grid with $centerX = 1, centerY = 1$:
+
+* Center $(1, 1)$: $dx = 0, dy = 0 \implies distance = 0.0$.
+* Adjacent edge $(1, 2)$: $dx = 0, dy = 1 \implies distance = 1.0$.
+* Diagonal corner $(0, 0)$: $dx = -1, dy = -1 \implies distance = \sqrt{1 + 1} = \sqrt{2} \approx 1.414$.
+
+.. code-block:: java
+
+   public class HeatPlateSimulationTest extends TestCase
+   {
+       private HeatPlateSimulation sim;
+
+       public void setUp()
+       {
+           sim = new HeatPlateSimulation(3, 3);
+       }
+
+       /**
+        * Verifies exact center temperature is undiminished.
+        */
+       public void testCenterTemperature()
+       {
+           double temp = sim.computeDissipatedTemp(0.0, 1.414, 100.0);
+           assertEquals(100.0, temp, 0.01);
+       }
+
+       /**
+        * Verifies outer corner temperature falloff.
+        */
+       public void testCornerTemperature()
+       {
+           double maxDist = Math.sqrt(1 + 1); // 1.4142...
+           double temp = sim.computeDissipatedTemp(maxDist, maxDist, 100.0);
+           assertEquals(0.0, temp, 0.01);
+       }
+
+       /**
+        * Verifies that distances exceeding maxDistance clamp gracefully to 0.0.
+        */
+       public void testClampingBeyondMax()
+       {
+           double temp = sim.computeDissipatedTemp(5.0, 2.0, 100.0);
+           assertEquals(0.0, temp, 0.01);
+       }
+   }
+
+By combining small test fixtures with tolerance assertions (``assertEquals(expected, actual, delta)``),
+you guarantee that your spatial transformations are mathematically sound before
+deploying them to full-scale applications.
 
 
 Programming Practice 13
@@ -1037,5 +935,3 @@ Programming Practice 13
      <a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
      licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
    </div></footer>
-
-

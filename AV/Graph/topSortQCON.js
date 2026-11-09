@@ -59,7 +59,7 @@ $(document).ready(function() {
 
   topSortBFS(g.nodes()[0]);
 
-  jsav.umsg("Possible ordering of CS coures:  " + displaySort());
+  jsav.umsg("Possible ordering of CS courses:  " + displaySort());
   jsav.step();
   jsav.recorded();
 

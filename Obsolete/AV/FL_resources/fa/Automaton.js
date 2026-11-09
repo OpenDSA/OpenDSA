@@ -1139,7 +1139,7 @@ transitionproto.layout = function(options) {
 	}
 
 	// update the edge label position
-	if ($.isFunction(this._labelPositionUpdate)) {
+	if (typeof this._labelPositionUpdate === "function") {
 		var bbtop = Math.min(fromPoint[1], toPoint[1]),
 				bbleft = Math.min(fromPoint[0], toPoint[0]),
 				bbwidth = Math.abs(fromPoint[0] - toPoint[0]),

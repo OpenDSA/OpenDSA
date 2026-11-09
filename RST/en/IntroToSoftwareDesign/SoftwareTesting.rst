@@ -98,6 +98,7 @@ three basic parts.
    values, conditions, or variables** used in the test.  For example, we
    can imagine a scenario where we wish to test ``isEven()`` on
    the input value 2.
+
 2. Second, a test case must define a **procedure** for
    exercising the software under test.  In the case of
    ``isEven()``, the procedure can be very simple: call the
@@ -106,6 +107,7 @@ three basic parts.
    however, we may need to perform a longer, more complicated series of
    actions to exercise it, and this procedure is part of the test
    case.
+
 3. Third, a test case must define the **expected behavior** that
    should result when the software is exercised in this way.  For
    example, if we call ``isEven()`` with a value of 2, we would
@@ -149,6 +151,7 @@ According to Glenford Myers, a **good test case** is one that:
 * **Has a high probability of finding an error**.  Since our
   goal is to demonstrate faults, we should pick test cases that we think
   have the greatest chance of succeeding.
+
 * **Is not redundant**.  If we already have a test case for
   the value 2, we don't need another one.  Further, why not use some
   other integer, like 147652?  Well, is there any reason to think this
@@ -157,6 +160,7 @@ According to Glenford Myers, a **good test case** is one that:
   number as well?  If it simply retests behavior that has already been
   adequately demonstrated, then it is **redundant**--it exercises
   behavior already tested by other test cases in our test suite.
+
 * Is "best of breed".  In other words, if there are several
   redundant test cases you might consider that all cover the same
   behavior, pick the test case that has the highest probability of
@@ -165,6 +169,7 @@ According to Glenford Myers, a **good test case** is one that:
   random value do?  In this case, it might be better to pick the largest
   negative integer (-2\ :sup:`31`), since it will also check that the
   method works on an extreme boundary of the integer range.
+
 * **Is neither too simple nor too complex**.  Suppose you are
   testing a group of methods on a class, rather than just focusing on
   ``isEven()``.  You could have a test case that called every
@@ -602,6 +607,7 @@ the part is extremely simple:
 1. Set up the initial conditions for your test (create any objects
    needed, place them in the correct state, put everything necessary
    where it needs to be, etc.).
+
 2. Call the method you are testing.
 3. Check that the behavior you expected has occurred. This could involve
    checking the return value of the method, or checking the state of the
@@ -948,7 +954,7 @@ Condition Coverage (Branch Coverage)
 **Condition coverage** (also called **branch coverage**) is a more rigorous
 metric. It measures whether every decision point in your code (such as an ``if``
 statement, an ``if-else`` ladder, or a ``while`` loop) has been evaluated to
-**both ``true`` and ``false``** across your test cases.
+**both** ``true`` **and** ``false`` across your test cases.
 
 In the ``clearObstacle()`` example above:
 

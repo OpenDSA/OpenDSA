@@ -142,7 +142,7 @@ degree of each node.
 Assuming that the proposed ordering has a length of :math:`n`,
 move through the nodes of the proposed ordering in order from
 the beginning.
-For each node :math:`v`, check that it's count is zero.
+For each node :math:`v`, check that its count is zero.
 Then decrement the count by one for each neighbor reachable by
 :math:`v`.
 If all nodes have a count of zero when they are visited in this order,

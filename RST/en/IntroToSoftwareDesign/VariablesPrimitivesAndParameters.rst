@@ -242,6 +242,7 @@ to a single value:
    int totalMinutes = hours * 60 + minutes; // computes 155
 
 Java follows standard mathematical **operator precedence**:
+
 1. Multiplication (``*``), division (``/``), and remainder (``%``) have higher precedence than addition (``+``) and subtraction (``-``).
 2. Operators with equal precedence evaluate from left to right.
 3. You can use parentheses ``( )`` to explicitly control the order of operations:
@@ -337,6 +338,7 @@ It is critical to distinguish between **truncation** and **rounding**:
 * **Truncation** simply chops off the fractional part and throws it away, moving toward zero.
   Both ``(int) 8.1`` and ``(int) 8.99`` produce ``8``. Java does *not* automatically round to
   the nearest whole number when casting.
+
 * **Rounding** finds the closest whole number (so ``8.1`` rounds to ``8``, but ``8.9`` rounds to ``9``).
 
 If your calculation requires rounding rather than truncation, Java provides two common approaches:
@@ -485,7 +487,7 @@ Methods can be categorized by whether they produce a result:
 2. **non-void methods**: Compute and produce a value (an answer) that is returned to the caller.
 
 The return Keyword and Non-Void Return Types
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To write a method that returns a value, you replace the keyword ``void`` in the method header with the
 **return type** of the value being produced:
@@ -547,10 +549,13 @@ Because non-void methods return values, a call to a non-void method is an expres
 
 * Store the returned value in a variable:
   ``int larger = this.max(12, 19);``
+
 * Use the returned value in arithmetic:
   ``int total = this.convertHoursToMinutes(3) + 45;``
+
 * Pass the returned value as an argument to another method:
   ``this.hopMultiple(this.max(2, 5));``
+
 * Use the returned boolean directly in a conditional:
   ``if (this.hasFlower()) { ... }``
 
@@ -703,6 +708,7 @@ Consider a method with a compound condition containing :math:`N` simple boolean 
    }
 
 Here, there are :math:`N = 2` simple conditions:
+
 1. Condition 1: ``this.hasFlower()``
 2. Condition 2: ``this.seesNet(AHEAD)``
 
@@ -735,16 +741,18 @@ you need exactly **N + 1 test cases**:
      - Both conditions evaluate to ``true``. Result: ``true``.
 
 For any compound ``&&`` expression with :math:`N` conditions:
+
 * You need **1 test case** where every condition evaluates to ``true`` (the overall expression is ``true``).
 * You need **N test cases** where each condition :math:`k` (from 1 to :math:`N`) is the *first* condition to evaluate to ``false``.
 
 The same :math:`N + 1` rule applies to compound ``||`` expressions:
+
 * You need **1 test case** where every condition evaluates to ``false`` (the overall expression is ``false``).
 * You need **N test cases** where each condition :math:`k` is the *first* condition to evaluate to ``true`` (triggering short-circuit termination).
 
 
 The "Lining Up Preceding Conditions" Trap
-""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""
 
 A very common mistake students make when writing unit tests for compound conditions is trying to
 test a specific sub-condition without setting up the environment so that execution actually reaches it.
@@ -873,6 +881,7 @@ Declaring Subclass Constructors & Invoking super(...)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A constructor declaration has two defining characteristics:
+
 1. It has **no return type** (not even ``void``).
 2. Its name is **identical to the name of the class**.
 

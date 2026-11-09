@@ -1366,7 +1366,7 @@ var lambda = String.fromCharCode(955),
     }
 
     // update the edge label position
-    if ($.isFunction(this._labelPositionUpdate)) {
+    if (typeof this._labelPositionUpdate === "function") {
       var bbtop = Math.min(fromPoint[1], toPoint[1]),
         bbleft = Math.min(fromPoint[0], toPoint[0]),
         bbwidth = Math.abs(fromPoint[0] - toPoint[0]),
@@ -2975,7 +2975,7 @@ function getRandomInt(max) {
     this.leftPoly = null;
     this.rightPoly = null;
 
-    if ($.isArray(element)) {
+    if (Array.isArray(element)) {
       // x & y control
       var right = x_coord + element.length * cell_size; //topright
 

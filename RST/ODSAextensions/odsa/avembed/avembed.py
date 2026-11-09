@@ -66,11 +66,11 @@ BUTTON_HTML = '''\
   data-target="%(exer_name)s_iframe"
   value="%(show_hide_text)s %(long_name)s"/>
 <span id="%(exer_name)s_shb_error_msg" class="shb_msg">
-  <img src="_static/Images/warning.png" class="shb_warning_icon" />
+  <img src="_static/Images/warning.png" class="shb_warning_icon" alt="Error Saving" />
   &nbsp;Server Error&nbsp;<a class="resubmit_link" href="#">Resubmit</a>
 </span>
 <span id="%(exer_name)s_shb_saving_msg" class="shb_msg">Saving...</span>
-<img id="%(exer_name)s_spinner" class="loading-spinner" src="_static/Images/spinner.gif" />
+<img id="%(exer_name)s_spinner" class="loading-spinner" src="_static/Images/spinner.gif" alt="Loading" />
 '''
 
 

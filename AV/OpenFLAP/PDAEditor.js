@@ -876,9 +876,12 @@
   $('#editEdge').hide()
   $('#alphabets').hide();
   $('#closeAv').hide();
+
   onLoadHandler();
-  if (window.inCanvas())
+  // Standalone editors do not load the optional Canvas progress helpers.
+  if (typeof window.inCanvas === "function" && window.inCanvas()) {
     initGraphFromServer();
+  }
 
   //g = initGraph({layout: "manual"});
   //g.layout();

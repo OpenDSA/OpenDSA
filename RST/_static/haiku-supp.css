@@ -47,6 +47,10 @@ img{border:0}
 blockquote{background-color:rgb(230, 230, 230); padding: 10px 10px 10px 10px; margin: 10px 0; margin-left: 0}
 svg:not(:root){overflow:hidden}
 figure{margin:1em 40px}
+figure.align-center figcaption, p.caption.align-center, div.body p.caption.align-center { text-align: center; }
+figure.align-left figcaption, p.caption.align-left, div.body p.caption.align-left { text-align: left; }
+figure.align-right figcaption, p.caption.align-right, div.body p.caption.align-right { text-align: right; }
+figure.align-justify figcaption, p.caption.align-justify, div.body p.caption.align-justify { text-align: justify; }
 hr{-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;height:0}
 pre{overflow:auto}
 code,kbd,pre,samp{font-family:"JetbrainsMono",monospace,monospace;font-size:1em}

@@ -68,8 +68,7 @@ var lambda = String.fromCharCode(955),
 	  }  
 	// initialize graph
 	var initGraph = function(opts) {
-		g = jsav.ds.TM($.extend({width: '750px', height: 440, emptystring: square, editable: true,
-			minNodeTop: 80, edgeLabelGap: 8}, opts));
+		g = jsav.ds.TM($.extend({width: '750px', height: 440, emptystring: square, editable: true}, opts));
 		g.enableDragging();
 		emptystring = g.emptystring;
 		var gWidth = g.element.width(),
@@ -210,10 +209,6 @@ var lambda = String.fromCharCode(955),
 			    nodeX = newNode.element.width()/2.0,
 				nodeY = newNode.element.height()/2.0;
 			$(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
-			// Keep newly created states below the fixed initial/final UI area.
-			if (newNode.element.position().top < g.options.minNodeTop) {
-				newNode.element.css('top', g.options.minNodeTop);
-			}
 		} 
 		// else if ($('.jsavgraph').hasClass('moveNodes')) {
 		// }

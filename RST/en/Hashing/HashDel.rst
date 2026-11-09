@@ -15,8 +15,8 @@
    :programminglanguage: N/A
    :description: Presentation of approaches to deleting records from a hash table.
 
-Hahing Deletion
-===============
+Hashing Deletion
+================
 
 Deletion
 --------

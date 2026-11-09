@@ -84,11 +84,11 @@
       initData.gen_incrs = incrs;
       ODSA.AV.logExerciseInit(initData);
 
-      theArray = av.ds.array($theArray, {center: false, layout: arrayLayout.val()}).css({"x": "295", "y": "10"});
+      theArray = av.ds.array($theArray, {center: false, layout: arrayLayout.val()}).css({transform: "translate(295px, 10px)"});
 	  av.forward();
-	  theArrays = av.ds.array($theArrays, {left: true, layout: arrayLayout.val()}).css({"x": "-3", "y": "20"});
+	  theArrays = av.ds.array($theArrays, {left: true, layout: arrayLayout.val()}).css({transform: "translate(-3px, 20px)"});
 	  av.forward();
-	  solArray = av.ds.array($solArray, {left: true, layout: arrayLayout.val()}).css({"x": "0", "y": "30"});
+	  solArray = av.ds.array($solArray, {left: true, layout: arrayLayout.val()}).css({transform: "translate(0px, 30px)"});
 	  
       return theArrays;
     }
