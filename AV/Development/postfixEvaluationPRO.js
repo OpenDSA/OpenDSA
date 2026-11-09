@@ -70,23 +70,26 @@
     stack.layout();
 
     // clear all the Raphael elements
-    av.getSvg().clear();
+    d3.select(av.getSvg()).selectAll("*").remove();
 
     // add text
-    var font = {
-      "font-size": 16,
-      "font-family": "Times New Roman",
-      "font-weight": "bold"
-    };
     var canvasWidth = exercise.jsav.container.find(".jsavcanvas").width();
-    av.getSvg().text(canvasWidth / 2, 20, interpret("av_postfix_expression")).attr(font);
-    av.getSvg().text(canvasWidth / 2, 200, interpret("av_operand_stack")).attr(font);
+    d3.select(av.getSvg()).append("text")
+      .attr("x", canvasWidth / 2).attr("y", 20).attr("text-anchor", "middle")
+      .attr("font-size", 16).attr("font-family", "Times New Roman").attr("font-weight", "bold")
+      .text(interpret("av_postfix_expression"));
+    d3.select(av.getSvg()).append("text")
+      .attr("x", canvasWidth / 2).attr("y", 200).attr("text-anchor", "middle")
+      .attr("font-size", 16).attr("font-family", "Times New Roman").attr("font-weight", "bold")
+      .text(interpret("av_operand_stack"));
 
     // draw the Evaluator
     var rect_x = 50;
     var rect_y = 220;
     av.g.rect(rect_x, rect_y, 200, 120, {r: 20});
-    av.getSvg().text(rect_x + 100, rect_y + 15, interpret("av_evaluator"));
+    d3.select(av.getSvg()).append("text")
+      .attr("x", rect_x + 100).attr("y", rect_y + 15).attr("text-anchor", "middle")
+      .text(interpret("av_evaluator"));
 
     for (i = 0; i < 3; i++) {
       if (evaluatorArrays[i]) {

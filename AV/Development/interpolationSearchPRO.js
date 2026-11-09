@@ -117,7 +117,7 @@
     array.layout();
 
     // clear all the Raphael elements
-    av.getSvg().clear();
+    d3.select(av.getSvg()).selectAll("*").remove();
 
     // save the coordinate of the array
     var arrayX = array.element.offset().left - av.canvas.offset().left;

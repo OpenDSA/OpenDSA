@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+  SPLICE AV Test (dev tool, not part of the book build)
+
+  Plays the parent "learning system" role for one AV proficiency exercise
+  and logs every message the AV sends. Do the exercise by hand, then check:
+
+    1. SPLICE.getState arrives on load (answered here with {}).
+    2. Each grade change arrives as SPLICE.reportScoreAndState, with
+       state.<exercise>.type = jsav-exercise-grade-change / -grade / -step-fixed.
+    3. NO legacy grade message (a plain object with type jsav-exercise-grade*)
+       arrives. If it does, grades would be counted twice.
+    4. In DevTools > Network, NO request to /odsa_exercise_attempts is made
+       from the exercise frame (the iframe must not talk to the server).
+
+  Usage (from the OpenDSA repo root):
+    python3 -m http.server 8000
+    open http://localhost:8000/splice-av-test.html
+    pick another exercise with ?ex=AV/Path/To/ExercisePRO.html
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SPLICE AV Test</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, sans-serif; margin: 0; height: 100vh; }
+  #frame { position: absolute; left: 0; top: 0; width: 60%; height: 100%; border: 0; }
+  #panel { position: absolute; right: 0; top: 0; width: 40%; height: 100%; overflow-y: auto;
+           background: #1e1e1e; color: #ddd; padding: 10px; box-sizing: border-box;
+           font-family: monospace; font-size: 12px; }
+  #summary { position: sticky; top: 0; background: #1e1e1e; padding-bottom: 6px; border-bottom: 1px solid #444; }
+  .ok { color: #7cd67c; } .fail { color: #e06c6c; } .info { color: #7cb8d6; } .dim { color: #888; }
+</style>
+</head>
+<body>
+<iframe id="frame"></iframe>
+<div id="panel">
+  <div id="summary">
+    getState: <span id="s-get" class="dim">waiting</span> |
+    SPLICE grades: <span id="s-splice">0</span> |
+    legacy grades: <span id="s-legacy">0</span>
+  </div>
+  <div id="log"></div>
+</div>
+<script>
+  var ex = new URLSearchParams(location.search).get('ex') || 'AV/Binary/BSTsearchPRO.html';
+  var frame = document.getElementById('frame');
+  var logEl = document.getElementById('log');
+  var spliceGrades = 0, legacyGrades = 0;
+
+  function log(cls, text) {
+    var div = document.createElement('div');
+    div.className = cls;
+    div.textContent = text;
+    logEl.appendChild(div);
+  }
+
+  function update() {
+    document.getElementById('s-splice').textContent = spliceGrades;
+    var l = document.getElementById('s-legacy');
+    l.textContent = legacyGrades;
+    l.className = legacyGrades ? 'fail' : 'ok';
+  }
+
+  window.addEventListener('message', function (e) {
+    if (e.source !== frame.contentWindow) { return; }
+    var data = e.data;
+    if (typeof data === 'string') {
+      try { data = JSON.parse(data); } catch (err) { log('dim', 'string: ' + data); return; }
+    }
+    if (!data || typeof data !== 'object') { return; }
+
+    if (data.subject === 'SPLICE.getState') {
+      frame.contentWindow.postMessage(
+        {subject: 'SPLICE.getState.response', message_id: data.message_id, state: {}}, '*');
+      var g = document.getElementById('s-get');
+      g.textContent = 'received'; g.className = 'ok';
+      log('ok', 'SPLICE.getState -> answered {}');
+    } else if (data.subject === 'SPLICE.reportScoreAndState') {
+      spliceGrades++;
+      var name = Object.keys(data.state || {})[0];
+      var st = (data.state || {})[name] || {};
+      log('ok', 'SPLICE.reportScoreAndState ' + name + ' type=' + st.type +
+          ' score=' + data.score + ' complete=' + st.complete);
+    } else if (data.subject === 'SPLICE.sendEvent') {
+      log('info', 'SPLICE.sendEvent ' + data.name);
+    } else if (data.subject === 'lti.frameResize') {
+      // resize noise, ignore
+    } else if (typeof data.type === 'string' && (data.type === 'jsav-exercise-grade' || data.type === 'jsav-exercise-grade-change') ||
+               data.type === 'jsav-exercise-step-fixed') {
+      legacyGrades++;
+      log('fail', 'LEGACY grade message (would double count): ' + data.type);
+    } else if (data.type) {
+      log('dim', 'legacy event: ' + data.type);
+    }
+    update();
+  });
+
+  log('info', 'Loading ' + ex);
+  frame.src = ex;
+</script>
+</body>
+</html>

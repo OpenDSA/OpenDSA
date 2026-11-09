@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "rodger-g2-multiple-variables",
+  "title": "G2: Multiple variables",
+  "prompt": "Derive aaabbb. You may expand A or B first; any order that can still reach the target is accepted.",
+  "source": "Susan Rodger: grammar examples provided November 4, 2026",
+  "url": "README.md#professor-rodgers-possibility-tree-examples",
+  "startSymbol": "S",
+  "rules": [
+    [
+      "S",
+      "aABb"
+    ],
+    [
+      "S",
+      "λ"
+    ],
+    [
+      "A",
+      "aA"
+    ],
+    [
+      "A",
+      "a"
+    ],
+    [
+      "B",
+      "Bb"
+    ],
+    [
+      "B",
+      "b"
+    ]
+  ],
+  "target": "aaabbb",
+  "leftmost": false,
+  "passRate": 1,
+  "grading": "possibility",
+  "reference": [
+    {
+      "production": 1,
+      "position": 1
+    },
+    {
+      "production": 3,
+      "position": 2
+    },
+    {
+      "production": 4,
+      "position": 3
+    },
+    {
+      "production": 5,
+      "position": 4
+    },
+    {
+      "production": 6,
+      "position": 4
+    }
+  ]
+}

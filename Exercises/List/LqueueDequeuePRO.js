@@ -237,7 +237,7 @@
       answerArr[0] = "null";
       // Give random numbers in range 0..999
       for (i = 1; i < size + 1; i++) {
-        answerArr[i] = Math.floor(Math.random() * 1000);
+        answerArr[i] = Khan.randRange(0, 999);
       }
       // Make a copy.
       listArr = answerArr.slice(0);

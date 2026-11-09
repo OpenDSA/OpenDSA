@@ -41,7 +41,7 @@ requests that it be deallocated.
 So the programmer has much greater control of memory, but with greater
 responsibility since the memory must now be actively managed.
 Dropping all references to a memory location without deallocating it
-is a signficant source of errors in C/C++, and this is so common that
+is a significant source of errors in C/C++, and this is so common that
 it has a name: :term:`memory leak`.
 (In fact, many commercial programs implemented in C++ have memory
 leaks, that will eventually make them crash after being used for a

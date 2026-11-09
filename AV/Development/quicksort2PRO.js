@@ -133,17 +133,18 @@
     pivotInBound = av.variable(1);
 
     // clear all the Raphael elements
-    av.getSvg().clear();
+    d3.select(av.getSvg()).selectAll("*").remove();
 
     // add text
-    var font = {
-      "font-size": 16,
-      "font-family": "Times New Roman",
-      "font-weight": "bold"
-    };
     var canvasWidth = exercise.jsav.container.find(".jsavcanvas").width();
-    av.getSvg().text(canvasWidth / 2, 20, interpret("table_to_be_sorted")).attr(font);
-    av.getSvg().text(canvasWidth / 2, 230, interpret("call_stack")).attr(font);
+    d3.select(av.getSvg()).append("text")
+      .attr("x", canvasWidth / 2).attr("y", 20).attr("text-anchor", "middle")
+      .attr("font-size", 16).attr("font-family", "Times New Roman").attr("font-weight", "bold")
+      .text(interpret("table_to_be_sorted"));
+    d3.select(av.getSvg()).append("text")
+      .attr("x", canvasWidth / 2).attr("y", 230).attr("text-anchor", "middle")
+      .attr("font-size", 16).attr("font-family", "Times New Roman").attr("font-weight", "bold")
+      .text(interpret("call_stack"));
 
     //hide old umsg messages
     av.umsg("");

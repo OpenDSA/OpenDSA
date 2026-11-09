@@ -22,7 +22,7 @@
       // Set up answer array
       answerArr.length = 0; // Out with the old
       for (i = 0; i < arr_size; i++) { // Give random numbers in range 0..999
-        answerArr[i] = Math.floor(Math.random() * 1000);
+        answerArr[i] = Khan.randRange(0, 999);
       }
       for (i = 0; i < 4; i++) {
         answerArr.push(""); // Put blanks on end

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--
+  SPLICE KA Test (dev tool, not part of the book build)
+
+  Automated assertion test for KA exercises talking to their host only
+  through SPLICE. Plays the "learning system" role (what odsaMOD does on
+  a module page) and drives a real KA summary exercise in two passes:
+
+    Pass 1 (nothing saved): answers SPLICE.getState with state null and
+      no progress, then reads the sub-questions the exercise offers.
+    Pass 2 (restore): reloads the exercise and answers SPLICE.getState
+      with a saved state naming a different sub-question, plus progress.
+
+    PASS criteria:
+      1. SPLICE.getState is sent on load.
+      2. With a saved state, the sub-question named in it is rendered.
+      3. Progress sent in the getState response is shown (score / total).
+      4. Choosing a sub-question is reported as reportScoreAndState with
+         state.type "ka-exercise", current_exercise set, and no attempt.
+      5. An attempt is reported as reportScoreAndState with score 0 or 1
+         and state.attempt holding the scoring data (sha1, complete, ...).
+      6. The exercise iframe makes no HTTP request to the score server.
+      7. An odsa-progress message from the host updates the score shown.
+
+  Usage:
+    cd <OpenDSA repo> && python3 -m http.server 8000
+    open http://localhost:8000/splice-ka-test.html
+      (default exercise: Exercises/AlgAnal/MisSumm.html — pass ?ex=... to
+       change; it must be a summary ("Summ") exercise. getState is answered
+       after ?delay=ms, default 1000, to act like a real server lookup)
+    Results print in the panel; the last line is RESULT: PASS or FAIL.
+
+  The exercise runs with scoringServerEnabled=true so it restores state,
+  but every request it would make to the server is recorded instead.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SPLICE KA Test</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, sans-serif; margin: 0; height: 100vh; }
+  #frame { position: absolute; left: 0; top: 0; width: 55%; height: 100%; border: 0; }
+  #panel { position: absolute; right: 0; top: 0; width: 45%; height: 100%; overflow-y: auto; background: #1e1e1e; color: #ddd; padding: 10px; font-family: monospace; font-size: 12px; }
+  .ok { color: #7cd67c; } .fail { color: #e06c6c; } .info { color: #7cb8d6; }
+</style>
+</head>
+<body>
+  <iframe id="frame" src=""></iframe>
+  <div id="panel"></div>
+<script>
+  const params = new URLSearchParams(location.search);
+  const exercisePath = params.get("ex") || "Exercises/AlgAnal/MisSumm.html";
+  const exerciseUrl = exercisePath + "?localMode=true&module=KAspliceTest&selfLoggingEnabled=false&scoringServerEnabled=true";
+  const exerciseName = exercisePath.split("/").pop().replace(/\.html$/, "");
+  // Simulated server time to answer getState (?delay=ms)
+  const getStateDelay = parseInt(params.get("delay") || "1000", 10);
+
+  const frame = document.getElementById("frame");
+  const panel = document.getElementById("panel");
+  function out(cls, text) {
+    const d = document.createElement("div");
+    d.className = cls;
+    d.textContent = text;
+    panel.appendChild(d);
+    panel.scrollTop = panel.scrollHeight;
+  }
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  // ---- learning-system role ----
+  let reports = [];            // reportScoreAndState messages, in order
+  let getStateSeen = false;
+  let getStateReply = null;    // {state, progress} to answer getState with
+
+  window.addEventListener("message", function (e) {
+    let data = e.data;
+    if (typeof data === "string") { try { data = JSON.parse(data); } catch (err) { return; } }
+    if (typeof data !== "object" || data === null || !data.subject) return;
+
+    if (data.subject === "SPLICE.getState") {
+      getStateSeen = true;
+      const response = { subject: "SPLICE.getState.response", message_id: data.message_id, state: {} };
+      response.state[exerciseName] = getStateReply ? getStateReply.state : null;
+      if (getStateReply && getStateReply.progress) response.progress = getStateReply.progress;
+      // Answer after a delay, like a real server lookup, so the test
+      // fails if the exercise picks a sub-question without waiting
+      const source = e.source;
+      setTimeout(function () {
+        source.postMessage(response, "*");
+        out("info", "getState → answered after " + getStateDelay + " ms: " + JSON.stringify(response.state));
+      }, getStateDelay);
+    } else if (data.subject === "SPLICE.reportScoreAndState") {
+      reports.push(data);
+      const st = (data.state || {})[exerciseName] || {};
+      out("info", "reportScoreAndState score=" + data.score + " current_exercise=" + st.current_exercise + (st.attempt ? " +attempt" : ""));
+    }
+  }, false);
+
+  // ---- helpers for the exercise iframe ----
+  function frameKhan() { try { return frame.contentWindow.Khan; } catch (err) { return null; } }
+  function renderedProblem() {
+    const doc = frame.contentDocument;
+    const p = doc && doc.querySelector("#workarea > [id]");
+    return p ? p.id : null;
+  }
+  async function loadExercise() {
+    reports = []; getStateSeen = false;
+    frame.src = exerciseUrl + "&t=" + Date.now();
+    for (let i = 0; i < 60; i++) {
+      await sleep(500);
+      const doc = frame.contentDocument;
+      const btn = doc && doc.getElementById("check-answer-button");
+      if (btn && !btn.disabled && renderedProblem()) return true;
+    }
+    return false;
+  }
+  // Record every XHR the exercise makes from now on
+  function recordRequests() {
+    const urls = [];
+    const XHR = frame.contentWindow.XMLHttpRequest;
+    const open = XHR.prototype.open;
+    XHR.prototype.open = function (method, url) { urls.push(method + " " + url); return open.apply(this, arguments); };
+    return urls;
+  }
+
+  async function run() {
+    const results = [];
+    const check = (name, ok, detail) => {
+      results.push(ok);
+      out(ok ? "ok" : "fail", (ok ? "PASS " : "FAIL ") + name + (ok || detail === undefined ? "" : "  -> " + JSON.stringify(detail)));
+    };
+
+    // ---- pass 1: nothing saved ----
+    out("info", "==== pass 1: nothing saved ====");
+    getStateReply = null;
+    if (!await loadExercise()) { out("fail", "FATAL: exercise never became ready"); return; }
+    check("1 getState sent on load", getStateSeen);
+    const ids = [];
+    frameKhan().exercises.find(".problems").children("[id]").each(function () { ids.push(this.id); });
+    const first = renderedProblem();
+    out("info", "sub-questions: " + ids.join(", ") + " · rendered: " + first);
+    const firstReport = reports.find(r => !((r.state || {})[exerciseName] || {}).attempt);
+    const firstState = firstReport ? firstReport.state[exerciseName] : null;
+    check("4 sub-question choice reported as ka-exercise state without attempt",
+      !!firstState && firstState.type === "ka-exercise" && firstState.current_exercise === first, reports);
+
+    // ---- pass 2: restore a different sub-question ----
+    const target = ids.find(id => id !== first) || first;
+    out("info", "==== pass 2: restore " + target + " ====");
+    getStateReply = {
+      state: { type: "ka-exercise", current_exercise: target },
+      progress: { type: "odsa-progress", exercise: exerciseName, threshold: 5, error: false,
+                  exercise_progress: { current_score: 2, highest_score: 2, current_exercise: target,
+                                       correct_exercises: "", hinted_exercise: "" } }
+    };
+    if (!await loadExercise()) { out("fail", "FATAL: exercise never became ready (pass 2)"); return; }
+    check("2 saved sub-question is rendered", renderedProblem() === target, { rendered: renderedProblem(), target });
+    const doc = frame.contentDocument;
+    const shown = () => (doc.getElementById("points-progress") || {}).textContent + "/" + (doc.getElementById("points-total") || {}).textContent;
+    check("3 progress from the getState response is shown", shown() === "2/5", shown());
+
+    // ---- attempt ----
+    const requests = recordRequests();
+    const before = reports.length;
+    const input = doc.querySelector("#solutionarea input, #answerform input");
+    if (input && input.type === "radio") { input.checked = true; }
+    else if (input && input.value === "") { input.value = "0"; }
+    doc.getElementById("check-answer-button").click();
+    out("info", "answered and clicked Check Answer");
+    for (let i = 0; i < 20 && !reports.slice(before).some(r => (r.state[exerciseName] || {}).attempt); i++) await sleep(250);
+    const attemptReport = reports.slice(before).find(r => (r.state[exerciseName] || {}).attempt);
+    const ast = attemptReport ? attemptReport.state[exerciseName] : null;
+    check("5 attempt reported with score 0/1 and scoring data in state.attempt",
+      !!ast && (attemptReport.score === 0 || attemptReport.score === 1) && ast.type === "ka-exercise" &&
+      ast.current_exercise === target && !!ast.attempt.sha1 && (ast.attempt.complete === 0 || ast.attempt.complete === 1) &&
+      ast.attempt.attempt_number >= 1, attemptReport);
+    const serverCalls = requests.filter(u => /odsa_exercise_(attempts|progresses)/.test(u));
+    check("6 no HTTP request from the iframe to the score server", serverCalls.length === 0, requests);
+
+    // ---- host pushes progress ----
+    frame.contentWindow.postMessage(JSON.stringify({
+      type: "odsa-progress", exercise: exerciseName, threshold: 5, error: false, is_proficient: false,
+      exercise_progress: { current_score: 3, highest_score: 3, current_exercise: target, correct_exercises: target, hinted_exercise: "" }
+    }), location.origin);
+    await sleep(300);
+    check("7 odsa-progress updates the score shown", shown() === "3/5", shown());
+
+    out("", "");
+    out(results.every(Boolean) ? "ok" : "fail",
+      results.every(Boolean) ? "RESULT: PASS — all KA SPLICE assertions met" : "RESULT: FAIL — see details above");
+  }
+  run();
+</script>
+</body>
+</html>

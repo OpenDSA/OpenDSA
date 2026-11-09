@@ -24,7 +24,7 @@
 
       // Give random numbers in range 0..999
       for (i = 0; i < curr_size; i++) {
-        answerArr[i] = Math.floor(Math.random() * 1000);
+        answerArr[i] = Khan.randRange(0, 999);
       }
       for (i = 0; i < max_size - curr_size; i++) {
         answerArr.push([""]);

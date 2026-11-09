@@ -1,9 +1,19 @@
-/* JSAV exercise template for a derivation with a specified reference sequence. */
+/* JSAV derivation exercises: reference-sequence or possibility-tree grading. */
 (function ($) {
   'use strict';
-  function GrammarDerivationExercise(container, task, solution) {
+  function GrammarDerivationExercise(container, task, solution, options) {
     const root = $(container), node = id => root.find('#' + id)[0];
     const reference = task.verified_steps[solution || 0];
+    const preview = !!(options && options.preview);
+    // Textbook embeds supply threshold through the standard OpenDSA parameter.
+    const configuredRate = ODSA.UTILS.params.threshold ?? task.passRate;
+    const passRate = Number(configuredRate);
+    if (!['number', 'string'].includes(typeof configuredRate) || String(configuredRate).trim() === '' ||
+        !Number.isFinite(passRate) || passRate < 0 || passRate > 1) {
+      throw new Error('The passing threshold must be a number between 0 and 1.');
+    }
+    // Deliberately outside JSAV's recorded state: Undo cannot restore lost credit.
+    const lostSteps = new Set();
     const engine = window.DerivationExerciseEngine;
     const substringRules = task.rules.some(([left]) => left.length > 1);
     // Validate the configured model before constructing a scored exercise.
@@ -14,12 +24,30 @@
       if (!result.ok || modelCheck.current() !== step.after) throw new Error('Invalid reference derivation.');
     });
     if (!modelCheck.complete()) throw new Error('The reference must reach the target.');
+    const possibility = task.grading === 'possibility' ? task.possibility || window.DerivationPossibility.build(task) : null;
+    if (possibility) {
+      if (possibility.classify('S', 0).status !== 'reachable') {
+        throw new Error('No successful route was found within the search depth/resource limit. This is not proof of a dead end.');
+      }
+      // The two supplied examples have fixed successful lengths (7 and 5).
+      // Do not invent a points policy for arbitrary variable-length routes.
+      if (possibility.successfulLengths.length !== 1 || possibility.successfulLengths[0] !== reference.length) {
+        throw new Error('Successful routes have different step counts. A scoring policy is needed before using this exercise.');
+      }
+    }
+    // Determine the minimum whole points using the same comparison as grading,
+    // including thresholds that fall exactly on a fraction such as 2/3.
+    let requiredPoints = 0;
+    while (requiredPoints / reference.length < passRate) requiredPoints++;
     let formState, traceState, selected = null, exercise, creditAllowed = true;
     const av = new JSAV(root, {lang: 'en', logEvent: function (event) {
+      // A generic author preview may load any JSON file. It must never report
+      // those different tasks under one OpenDSA score identity.
+      if (preview) return;
       // Keep model-answer practice out of the scoring pipeline until Reset.
       // Both the standard Grade button and live progress use this event sink.
       if (event.type === 'jsav-exercise-model-open') {
-        if (exercise.score.correct !== exercise.score.total) {
+        if (!student().complete()) {
           creditAllowed = false;
           node('credit-note').hidden = false;
           node('credit-note').textContent = 'Model Answer opened. You can continue practicing, but this attempt will not report a score. Select Reset to begin a new scored attempt.';
@@ -31,6 +59,9 @@
       if (event.type === 'jsav-exercise-reset') creditAllowed = true;
       if (!creditAllowed && ['jsav-exercise-grade', 'jsav-exercise-grade-change'].includes(event.type)) return;
       $('body').trigger('jsav-log-event', [event]);
+      // odsaAV shows its local check mark for completion, including a failed
+      // attempt. Keep the mark consistent with this exercise's passing rate.
+      if (exercise && (!passed() || !creditAllowed)) $('#prof_check_mark, #check_mark').hide();
     }});
     av.SPEED = 0;
     av.recorded();
@@ -100,18 +131,60 @@
     function selectedText() {
       return selected ? formState.value().slice(selected[0], selected[1] + 1) : '';
     }
+    function passed() {
+      return student().complete() && exercise.score.correct >= requiredPoints;
+    }
+    function percent(value) { return Number((value * 100).toFixed(1)) + '%'; }
+    function penalize(step, message) {
+      const alreadyLost = lostSteps.has(step);
+      lostSteps.add(step);
+      selected = null;
+      refresh(true, message + ' The derivation has not changed. ' + (alreadyLost ?
+        'This step has already lost its point; no additional point was lost.' :
+        'The point for step ' + (step + 1) + ' is lost for this attempt.') +
+        ' Try again. Only Reset restores eligibility for lost points.', true);
+      node('current-form').focus({preventScroll: true});
+    }
     function apply(rule) {
       if (!selected || selectedText() !== task.rules[rule][0]) {
         render('Select a substring that matches the left side of the production.', true);
         return;
       }
-      const state = student(), result = state.apply(rule, selected[0]);
-      if (!result.ok) { render(result.message, true); return; }
+      const state = student(), step = state.history().length;
+      const result = state.apply(rule, selected[0]);
+      // A matching production submitted in the wrong derivation order is a
+      // mistake too; merely clicking a symbol or an unmatched rule is not.
+      if (!result.ok) {
+        if (possibility && result.message.includes('too long')) {
+          render('A search/display limit was reached. The step was not applied or graded, and no point was lost.');
+        } else penalize(step, result.message);
+        return;
+      }
+      if (possibility) {
+        const next = possibility.classify(state.current(), step + 1);
+        if (next.status === 'dead') {
+          penalize(step, 'Dead end: this production leaves no route to the target. The step was automatically undone.');
+          return;
+        }
+        if (next.status === 'unknown') {
+          selected = null;
+          render('Search limit reached: this step could not be determined within the precomputed tree. It was not applied or graded, and no point was lost. Choose another step or Reset.');
+          return;
+        }
+      }
       formState.value(state.current());
       traceState.value(encode(state.history()));
       selected = null;
       // One production application is one JSAV gradeable step.
       exercise.gradeableStep();
+      const score = exercise.grade();
+      if (score.correct + score.undo < score.student) {
+        // Check the recorded state with JSAV, then discard the wrong step
+        // without sending an intermediate score or leaving a wrong tree.
+        undo();
+        penalize(step, 'Incorrect step for this target. The step was automatically undone.');
+        return;
+      }
       refresh(true);
       node('current-form').focus({preventScroll: true});
     }
@@ -153,21 +226,27 @@
       const score = exercise.score;
       root.find('.jsavcurrentscore').text(score.correct);
       root.find('.jsavmaxscore').text(score.total);
-      const done = state.complete() && score.correct === score.total;
-      if (!done || !creditAllowed) $('#prof_check_mark, #check_mark').hide();
+      const done = state.complete();
+      if (!passed() || !creditAllowed) $('#prof_check_mark, #check_mark').hide();
       root.find('.jsavamidone').text(done ? 'DONE' : 'In progress');
       node('progress').max = score.total;
-      node('progress').value = score.correct;
-      const wrong = score.correct < steps.length;
-      node('status').textContent = message || (done ? 'Derivation complete. All ' + score.total + ' steps are correct.' : wrong ?
-        'This production is valid, but it leaves the reference derivation for this target. Use Undo to revise it.' :
-        score.correct + ' of ' + score.total + ' steps correct.');
-      node('status').className = error || wrong ? 'error' : done ? 'success' : '';
+      node('progress').value = steps.length;
+      node('attempt-summary').textContent = 'Steps completed: ' + steps.length + ' / ' + score.total +
+        '. Points lost this attempt: ' + lostSteps.size + '. Required to pass: ' + percent(passRate) +
+        ' (at least ' + requiredPoints + ' / ' + score.total + ' points, with the derivation completed).';
+      const outcome = !creditAllowed ? 'Practice only; select Reset to begin a new scored attempt.' :
+        passed() ? 'Passed.' : 'Not passed. Select Reset to try again.';
+      node('result').textContent = done ? 'Derivation complete. Score: ' + score.correct + ' / ' + score.total +
+        ' (' + percent(score.correct / score.total) + '). ' + outcome : '';
+      node('result').className = done ? (passed() && creditAllowed ? 'success' : 'error') : '';
+      node('status').textContent = message || (done ? '' :
+        'Complete the next derivation step. An incorrect step is automatically undone and loses that step\'s point.');
+      node('status').className = error ? 'error' : '';
       ODSA.AV.sendResizeMsg();
     }
-    function refresh(report) {
+    function refresh(report, message, error) {
       exercise.grade();
-      render();
+      render(message, error);
       if (report) av.logEvent({type: 'jsav-exercise-grade-change', score: $.extend({}, exercise.score)});
     }
     node('exercise-title').textContent = task.title;
@@ -175,7 +254,8 @@
     node('target').textContent = task.target;
     node('source').href = task.url;
     node('source').textContent = task.source;
-    document.getElementById('examples-link').href = 'DerivationExercises.html#' + task.id;
+    document.getElementById('examples-link').href = 'DerivationExercises.html' + (preview ? '' : '#' + task.id);
+    node('preview-note').hidden = !preview;
     document.querySelectorAll('.scored-links a').forEach(link => {
       if (link.dataset.exercise === task.id) link.setAttribute('aria-current', 'page');
     });
@@ -192,7 +272,8 @@
       row.addEventListener('click', () => { if (!button.disabled) apply(rule); }); body.append(row);
     });
     exercise = av.exercise(model, initialize, {
-      // Grade the recorded sequence while keeping standard Undo/Reset/Model/Grade controls.
+      // Retain native controls and sequence grading. The template adds inline
+      // automatic undo and a persistent per-step credit ledger below.
       feedback: 'atend', grader: 'default', controls: root.find('.jsavexercisecontrols'),
       modelButtonTitle: 'Model Answer', gradeButtonTitle: 'Grade',
       showGrade: function () {
@@ -202,11 +283,33 @@
       }
     });
     const reset = exercise.reset.bind(exercise), undo = exercise.undo.bind(exercise);
+    const grade = exercise.grade.bind(exercise);
+    exercise.grade = function () {
+      let score;
+      if (possibility) {
+        const steps = trace();
+        let completed = 0;
+        for (let i = 0; i < steps.length; i++) {
+          if (possibility.classify(steps[i].after, i + 1).status !== 'reachable') break;
+          completed++;
+        }
+        score = Object.assign(exercise.score, {total: reference.length, correct: completed, student: steps.length});
+      } else score = grade();
+      const completed = score.correct;
+      score.undo = [...lostSteps].filter(step => step < completed).length;
+      score.fix = 0;
+      score.correct = completed - score.undo;
+      // OpenDSA computes completion from (correct + undo + fix) / total.
+      // Count lost steps only after they are successfully completed, so a
+      // failed attempt cannot report completion before reaching the target.
+      return score;
+    };
     exercise.reset = function () {
       creditAllowed = true;
+      lostSteps.clear();
       node('credit-note').hidden = true;
       reset();
-      ODSA.AV.logExerciseInit({exercise: task.id, target: task.target});
+      if (!preview) ODSA.AV.logExerciseInit({exercise: task.id, target: task.target});
       refresh(false);
     };
     exercise.undo = function () {
@@ -214,17 +317,81 @@
       undo(); selected = null; refresh(true);
     };
     exercise.reset();
-    return {jsav: av, exercise};
+    return {jsav: av, exercise, task, possibility};
   }
   window.GrammarDerivationExercise = GrammarDerivationExercise;
   $(function () {
     document.getElementById('container').innerHTML = window.DerivationPROLayout;
+    const preview = document.body.dataset.preview === 'true';
+    const importer = document.getElementById('json-import');
+    const importStatus = document.getElementById('import-status');
+    if (preview) {
+      importer.hidden = false;
+      const input = document.getElementById('json-file');
+      const choose = document.getElementById('choose-json');
+      const filenameLabel = document.getElementById('json-filename');
+      choose.addEventListener('click', () => input.click());
+      const clear = document.getElementById('clear-json');
+      clear.hidden = new URLSearchParams(window.location.search).get('local') !== '1';
+      input.addEventListener('change', function () {
+        const file = input.files[0];
+        if (!file) return;
+        input.disabled = true;
+        choose.disabled = true;
+        filenameLabel.textContent = file.name;
+        importStatus.className = '';
+        importStatus.textContent = 'Reading ' + file.name + '…';
+        window.derivationImportReady = (async function () {
+          try {
+            await window.DerivationPROConfig.importFile(file);
+            window.location.replace('DerivationPreview.html?local=1');
+          } catch (error) {
+            importStatus.textContent = error.message;
+            importStatus.className = 'error';
+          } finally {
+            input.disabled = false;
+            choose.disabled = false;
+            input.value = '';
+          }
+        })();
+      });
+      clear.addEventListener('click', function () {
+        try {
+          window.DerivationPROConfig.clearLocal();
+          window.location.replace('DerivationPreview.html');
+        } catch (error) {
+          importStatus.textContent = error.message;
+          importStatus.className = 'error';
+        }
+      });
+    }
     // Each textbook iframe represents one exercise identity. Keep navigation
     // between tasks on the standalone page so iframe scores cannot be mixed.
     if (window.self !== window.top) document.body.classList.add('embedded');
-    const config = window.DerivationPROConfig;
-    const task = window.DerivationExerciseData.find(item => item.id === config.exerciseId);
-    if (!task) throw new Error('Unknown derivation exercise: ' + config.exerciseId);
-    window.derivationPRO = new GrammarDerivationExercise('#derivation-pro', task, config.solution);
+    document.getElementById('status').textContent = 'Loading exercise…';
+    window.derivationPROReady = (async function () {
+      try {
+        const {task, preview, filename} = await window.DerivationPROConfig.load();
+        if (!task) {
+          document.getElementById('derivation-pro').hidden = true;
+          importStatus.textContent = 'Choose a JSON file to begin.';
+          return null;
+        }
+        if (preview) {
+          importStatus.textContent = 'Loaded: ' + filename;
+          document.getElementById('json-filename').textContent = filename;
+        }
+        document.title = (preview ? 'Author preview: ' : '') + task.title + ' — Grammar Derivation Exercise';
+        window.derivationPRO = new GrammarDerivationExercise('#derivation-pro', task, 0, {preview});
+        return window.derivationPRO;
+      } catch (error) {
+        const panel = document.getElementById('derivation-pro');
+        panel.textContent = 'Unable to start this exercise. ' + error.message;
+        panel.setAttribute('role', 'alert');
+        console.error(error);
+        ODSA.AV.sendResizeMsg();
+        return null;
+      }
+    })();
   });
 })(jQuery);

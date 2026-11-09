@@ -19,7 +19,7 @@
       // Generate a random tree with 4 to 7 nodes
       arrayOfNodes[0] = gt.root();
       sizeOfArray = 1;
-      var numNodes = Math.floor(Math.random() * (7 - 4)) + 4;
+      var numNodes = Khan.randRange(4, 6);
       var i = 1;
       while (i <= numNodes) {
         if (randomNode(gt, letters.charAt(i)) === true) i++;
@@ -56,7 +56,7 @@
     // Add a child to a random node in gt with value value
 
     // Pick a random node to be the parent
-    var randomIndex = Math.floor(Math.random() * (sizeOfArray));
+    var randomIndex = Khan.randRange(0, sizeOfArray - 1);
 
     // We don't want to let the tree get too deep
     var i = 0;

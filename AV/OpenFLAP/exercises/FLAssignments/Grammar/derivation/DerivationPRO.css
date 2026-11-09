@@ -4,6 +4,12 @@
 .derivation-pro .jsavexercisecontrols input { width: auto; max-width: 100%; }
 .derivation-pro progress { width: min(100%, 420px); height: 18px; margin-bottom: 20px; }
 .derivation-pro .jsavscore { font-weight: bold; }
+.derivation-pro .json-import { border: 1px solid #b7b7b7; padding: 16px; margin: 18px 0; background: #fff; }
+.derivation-pro .json-import h2 { margin-top: 0; }
+.derivation-pro .json-file-picker { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.derivation-pro #json-filename { min-width: 0; overflow-wrap: anywhere; }
+.derivation-pro .json-import button { margin: 8px 0; }
+.derivation-pro #import-status.error { color: #a01919; }
 .derivation-pro .jsavcanvas { min-height: 0; height: 0; }
 .derivation-pro #status { margin: 12px 0; }
 .derivation-pro table { width: 100%; }

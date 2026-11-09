@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "id": "pifla-leftmost-aacbb",
+  "title": "Leftmost Derivation of aacbb",
+  "prompt": "Starting from S, derive aacbb using a leftmost derivation: replace the leftmost nonterminal at every step. Compare the completed parse tree with the derivation table.",
+  "source": "PIFLA: Context-Free Grammars Part 1 — String Derivation and Derivation Trees Example",
+  "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PIFLA/html/CFG1.html#derivation-trees-example",
+  "startSymbol": "S",
+  "rules": [
+    [
+      "S",
+      "AcB"
+    ],
+    [
+      "A",
+      "aAa"
+    ],
+    [
+      "A",
+      "λ"
+    ],
+    [
+      "B",
+      "Bbb"
+    ],
+    [
+      "B",
+      "λ"
+    ]
+  ],
+  "target": "aacbb",
+  "leftmost": true,
+  "passRate": 1,
+  "reference": [
+    {
+      "production": 1,
+      "position": 1
+    },
+    {
+      "production": 2,
+      "position": 1
+    },
+    {
+      "production": 3,
+      "position": 2
+    },
+    {
+      "production": 4,
+      "position": 4
+    },
+    {
+      "production": 5,
+      "position": 4
+    }
+  ]
+}

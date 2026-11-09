@@ -101,7 +101,7 @@
     var count = 0;
     var randomIndex;
     while (count < arr_size) {
-      randomIndex = Math.floor(Math.random() * numfuncs);
+      randomIndex = Khan.randRange(0, numfuncs - 1);
       if (functions[randomIndex] !== "") {
         cloneArr.push(katex.renderToString(functions[randomIndex]));
         cloneIndex.push(randomIndex);

@@ -234,7 +234,7 @@ Why Are Bad Reference Bugs So Common?
 
 In the ``badPointer`` example above,
 the compiler would actually catch the mistake above before it is
-allowed to even run, because the unitialized reference is being
+allowed to even run, because the uninitialized reference is being
 dereferenced.
 But the exact same result would happen if your program had for some
 reason set the value of ``badPointer`` to ``null``.
