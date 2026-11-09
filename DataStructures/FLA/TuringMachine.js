@@ -782,7 +782,7 @@ var Traversor = function(TM, jsavs) {
           var nextStates = [];
           for (var j = 0; j < currentStates.length; j++) {
             var currentState = currentStates[j];
-            var tapeValue = currentState.tape.currentValue();
+            var tapeValue = currentState.tape.value();
             // var tapeValue = currentState.tape.value();
             var successors = currentState.state.neighbors();
             for (var next = successors.next(); next; next = successors.next()) {

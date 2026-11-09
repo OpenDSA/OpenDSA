@@ -2243,6 +2243,10 @@ var lambda = String.fromCharCode(955),
   function dragging(event, node) {
     var dragNode = node.helper.data("node");
     var g = dragNode.automaton;
+    // Optional top boundary used by editors with fixed controls above the canvas.
+    if (g.options.minNodeTop !== undefined && node.position.top < g.options.minNodeTop) {
+      node.position.top = g.options.minNodeTop;
+    }
     // keep the initial state marker from being dragged off the left edge
     if (dragNode == g.initial && node.helper.offset().left < 45) {
       node.helper.offset({ left: 45 });
@@ -2508,7 +2512,8 @@ var lambda = String.fromCharCode(955),
           this._label.css("transform", "rotate(" + rotateAngle + "rad)" + " translateY(-" + (this._label.element.height() / 2.0 + strokeWidth + 1 + this.options.arcoffset / 2.0) + "px)");
         }
       } else {
-        this._label.css("transform", "rotate(" + rotateAngle + "rad)" + " translateY(-" + (this._label.element.height() / 2.0 + strokeWidth + 1) + "px)");
+        var labelGap = this.container.options.edgeLabelGap || 0;
+        this._label.css("transform", "rotate(" + rotateAngle + "rad)" + " translateY(-" + (this._label.element.height() / 2.0 + strokeWidth + 1 + labelGap) + "px)");
       }
     }
 
