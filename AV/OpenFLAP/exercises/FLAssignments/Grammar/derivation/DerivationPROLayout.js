@@ -25,7 +25,6 @@ window.DerivationPROLayout = `
     <div id="derivation-pro" class="avcontainer">
       <h2 id="exercise-title"></h2>
       <p id="prompt"></p>
-      <p><strong>Target string:</strong> <code id="target"></code></p>
       <p class="source-note"><strong>Source:</strong> <a id="source" target="_blank" rel="noopener">PIFLA: String Derivation</a></p>
       <p id="preview-note" class="view-note" role="status" hidden>Author preview. Scores are shown locally and are not submitted.</p>
       <p class="jsavexercisecontrols" aria-label="Exercise controls"></p>
@@ -42,6 +41,7 @@ window.DerivationPROLayout = `
         </aside>
         <main class="parse-workspace">
           <div class="form-panel">
+            <p class="workspace-target"><strong>Target string:</strong> <code id="target"></code></p>
             <p><strong>Sentential form:</strong> <span id="step-count"></span></p>
             <div id="current-form" tabindex="-1" aria-label="Current sentential form"></div>
             <p id="selection-label" class="view-note"></p>

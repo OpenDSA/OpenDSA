@@ -63,3 +63,5 @@
   #rules table { max-width: 320px; }
   #saved-trees { grid-template-columns: 1fr; }
 }
+
+.derivation-exercises .workspace-target { margin: 0 0 10px; overflow-wrap: anywhere; }
