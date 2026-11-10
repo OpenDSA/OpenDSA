@@ -39,3 +39,18 @@ const epsilon = build({target: 'a', rules: [['S', 'AB'], ['A', 'λ'], ['B', 'a']
 assert.equal(epsilon.classify('AB', 1).status, 'reachable');
 assert.deepEqual(epsilon.successfulLengths, [3]);
 console.log('PASS: both supplied grammars, all successful routes, early dead ends, depth-only bound, layer-aware cycles, nullable rules and conservative resource cutoffs.');
+
+for (const [number, count, length] of [[22, 450, 11], [10, 8, 5]]) {
+  const task = JSON.parse(fs.readFileSync(path.join(folder, 'DerivationTextbook' + number + 'PRO.json')));
+  const g = build(task);
+  assert.equal(g.successfulPaths, count);
+  assert.deepEqual(g.successfulLengths, [length]);
+  assert(g.nodes.every(n => n.status !== 'unknown'));
+  let routes = 0;
+  function walk(n, depth) {
+    if (n.form === task.target) { assert.equal(depth, length); routes++; return; }
+    for (const e of n.edges) if (g.nodes[e.to].status === 'reachable') walk(g.nodes[e.to], depth + 1);
+  }
+  walk(g.nodes[0], 0); assert.equal(routes, count);
+}
+console.log('PASS: all 458 successful textbook routes.');

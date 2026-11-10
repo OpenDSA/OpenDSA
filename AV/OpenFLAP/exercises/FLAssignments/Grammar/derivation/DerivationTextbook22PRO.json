@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "id": "textbook-5-1-ex22",
+  "title": "Textbook Exercise 22: Derive aabbbb",
+  "prompt": "Starting from S, derive aabbbb. Select a nonterminal and apply a production. Open Parse tree to inspect your derivation. This adapts the derivation-tree part of Exercise 22; the language-description question is not graded.",
+  "source": "Section 5.1, Context-Free Grammars, Exercise 22 (screenshots supplied by Siqi Rui)",
+  "url": "README.md#textbook-section-51-exercises",
+  "startSymbol": "S",
+  "rules": [
+    [
+      "S",
+      "AB"
+    ],
+    [
+      "S",
+      "λ"
+    ],
+    [
+      "A",
+      "aB"
+    ],
+    [
+      "B",
+      "Sb"
+    ]
+  ],
+  "target": "aabbbb",
+  "leftmost": false,
+  "passRate": 1,
+  "grading": "possibility",
+  "reference": [
+    {
+      "production": 1,
+      "position": 1
+    },
+    {
+      "production": 3,
+      "position": 1
+    },
+    {
+      "production": 4,
+      "position": 2
+    },
+    {
+      "production": 1,
+      "position": 2
+    },
+    {
+      "production": 3,
+      "position": 2
+    },
+    {
+      "production": 4,
+      "position": 3
+    },
+    {
+      "production": 2,
+      "position": 3
+    },
+    {
+      "production": 4,
+      "position": 4
+    },
+    {
+      "production": 2,
+      "position": 4
+    },
+    {
+      "production": 4,
+      "position": 6
+    },
+    {
+      "production": 2,
+      "position": 6
+    }
+  ]
+}

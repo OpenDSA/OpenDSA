@@ -629,6 +629,32 @@ function controls(harness) {
       clean();
     } finally { harness.dom.window.close(); }
   }
+  for (const [number, count, total] of [[22, 450, 11], [10, 8, 5]]) {
+    const h = await loadPage('DerivationTextbook' + number + 'PRO.html');
+    try {
+      const {w, $, click, apply, check, task, clean} = controls(h);
+      const graph = w.derivationPRO.possibility;
+      assert.equal(graph.successfulPaths, count);
+      assert.equal(graph.maxDepth, 3 * task.target.length);
+      // Exercise the first and last successful route through real JSAV controls.
+      for (const reverse of [false, true]) {
+        click('reset');
+        let n = graph.nodes[0], step = 0;
+        while (n.form !== task.target) {
+          const choices = n.edges.filter(e => graph.nodes[e.to].status === 'reachable');
+          const e = reverse ? choices.at(-1) : choices[0];
+          n = graph.nodes[e.to]; apply(e.at, e.rule);
+          step++; check(n.form, step, step);
+        }
+        assert.equal(step, total); assert.match($('result').textContent, /Passed/);
+        click('undo');
+        assert.equal(w.derivationPRO.exercise.score.correct, total - 1);
+        click('reset'); check('S', 0, 0);
+      }
+      clean();
+    } finally { h.dom.window.close(); }
+  }
+  process.stdout.write('PASS: textbook 22 and 10 alternate-route JSAV scoring.\n');
   const graphPreview = await loadPage('DerivationPreview.html', '?config=DerivationAmbiguousPRO.json');
   try {
     const {w, $, apply, check, clean} = controls(graphPreview);

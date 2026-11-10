@@ -359,3 +359,26 @@ The multi-question examples page remains a standalone, ungraded prototype.
 The three separate scored instances integrate JSAV step grading and OpenDSA
 score events, and are embedded into PIFLA Module 6.1 as described above.
 Deployed book/LMS persistence has not been validated.
+
+## Textbook Section 5.1 exercises
+
+These examples transcribe the Section 5.1 (Context-Free Grammars) exercise
+screenshots supplied by Siqi Rui on November 10, 2026. The visible second page
+is numbered 139. The book title and edition were not provided in those images;
+no title or external source URL is inferred.
+
+- **Exercise 22**: `S → AB | λ`, `A → aB`, `B → Sb`; original target
+  `aabbbb`. Open `DerivationTextbook22PRO.html`. This adapts the original
+  derivation-tree task into interactive production applications; the original
+  language-description question is not graded. All 450 successful action
+  sequences take 11 steps (maximum search depth 18).
+- **Exercise 10**: `S → aSB | bSA | λ`, `A → a`, `B → b`.
+  Open `DerivationTextbook10PRO.html`. The original asks for the generated
+  language. The target `abab` is chosen for this interactive adaptation,
+  not supplied by the original question. All eight successful action sequences
+  take five steps (maximum search depth 12).
+
+The two supported examples are standalone pages and are not registered in the
+textbook build.
+The possibility search remains internal; only the student's own Parse tree is
+shown. Run the possibility and JSAV regression scripts listed above.
