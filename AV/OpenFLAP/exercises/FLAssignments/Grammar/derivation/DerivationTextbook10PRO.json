@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "textbook-5-1-ex10",
+  "title": "Textbook Exercise 10: Derive abab",
+  "prompt": "Starting from S, derive abab. Different successful expansion orders are accepted. This adapts the grammar from Exercise 10; abab is a target chosen for this activity. The original language-description question is not graded.",
+  "source": "Section 5.1, Context-Free Grammars, Exercise 10 (screenshots supplied by Siqi Rui)",
+  "url": "README.md#textbook-section-51-exercises",
+  "startSymbol": "S",
+  "rules": [
+    [
+      "S",
+      "aSB"
+    ],
+    [
+      "S",
+      "bSA"
+    ],
+    [
+      "S",
+      "λ"
+    ],
+    [
+      "A",
+      "a"
+    ],
+    [
+      "B",
+      "b"
+    ]
+  ],
+  "target": "abab",
+  "leftmost": false,
+  "passRate": 1,
+  "grading": "possibility",
+  "reference": [
+    {
+      "production": 1,
+      "position": 1
+    },
+    {
+      "production": 2,
+      "position": 2
+    },
+    {
+      "production": 3,
+      "position": 3
+    },
+    {
+      "production": 4,
+      "position": 3
+    },
+    {
+      "production": 5,
+      "position": 4
+    }
+  ]
+}
