@@ -254,28 +254,6 @@ body {
     border: none;
     outline: none;
 }
-
-/* jQuery UI tabs accessibility contrast and interaction (fixes #745) */
-.ui-state-active,
-.ui-widget-content .ui-state-active,
-.ui-widget-header .ui-state-active,
-.ui-tabs .ui-tabs-nav li.ui-tabs-active {
-    border: 1px solid #0052a3;
-    background: #0066cc;
-    color: #ffffff;
-}
-
-.ui-state-active a,
-.ui-state-active a:link,
-.ui-state-active a:visited,
-.ui-tabs .ui-tabs-nav li.ui-tabs-active a {
-    color: #ffffff;
-}
-
-.ui-tabs .ui-tabs-nav li,
-.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
-    cursor: pointer;
-}
 .redbg{
   background-color: #FFB6C1 !important;
 }

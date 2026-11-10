@@ -159,19 +159,7 @@ class codeinclude(Directive):
         html_strs[0] = tab_header + '</ul>' + html_strs[0]
         # Link to additional jQuery UI libraries, so we don't load it on pages where its not needed
         lib_path = os.path.relpath(conf.odsa_path,conf.ebook_path) + '/lib'
-        html_strs[-1] += (
-          '</div><script>$(function() {'
-          'if ($.ui && $.ui.tabs && !$.ui.tabs.prototype._odsa_patched) {'
-          '  $.ui.tabs.prototype._odsa_patched = true;'
-          '  var orig = $.ui.tabs.prototype._isLocal;'
-          '  $.ui.tabs.prototype._isLocal = function(a) {'
-          '    return !a.getAttribute("href") || orig.apply(this, arguments);'
-          '  };'
-          '}'
-          'var $t = $( "#%s" ).tabs();'
-          '$t.find(".ui-tabs-nav a.ui-tabs-anchor").removeAttr("href");'
-          '});</script>'
-        ) % (tab_id)
+        html_strs[-1] += '</div><script>$(function() {$( "#%s" ).tabs();});</script>' % (tab_id)
 
     # If only one code block exists, print the code normally
     if len(code_nodes) == 1:
