@@ -4973,6 +4973,44 @@ function getRandomInt(max) {
     this.visualize = false;
   };
 
+  // Ensure the automaton has exactly one final state that is distinct from the
+  // initial state -- JFLAP's getSingleFinalState normalization. If it already
+  // is in that form, nothing changes. Otherwise a fresh final state is created,
+  // every old final state gets a lambda-transition to it and is made non-final.
+  // This lets FA->RE handle multiple final states, a start state that is also
+  // accepting, and single-state machines, which otherwise dead-end or misconvert.
+  // Returns true if the automaton was changed.
+  controllerProto.normalizeToSingleFinal = function () {
+    var finals = this.fa.getFinals();
+    if (finals.length === 1 && finals[0] !== this.fa.initial) {
+      return false; // already a single final state distinct from the initial
+    }
+    var newFinal = this.fa.addNode(this.newFinalPosition());
+    for (var i = 0; i < finals.length; i++) {
+      this.fa.addEdge(finals[i], newFinal, { weight: lambda });
+      this.fa.removeFinal(finals[i]);
+    }
+    this.fa.makeFinal(newFinal);
+    return true;
+  };
+
+  // Picks a position for the generated final state: to the right of the current
+  // states, at their average height, so it does not overlap existing nodes.
+  controllerProto.newFinalPosition = function () {
+    var nodes = this.fa.nodes(),
+      maxLeft = 0, sumTop = 0, count = 0;
+    for (var node = nodes.next(); node; node = nodes.next()) {
+      var pos = node.position();
+      maxLeft = Math.max(maxLeft, parseInt(pos.left, 10) || 0);
+      sumTop += parseInt(pos.top, 10) || 0;
+      count++;
+    }
+    return {
+      left: (maxLeft + 100) + 'px',
+      top: (count ? Math.round(sumTop / count) : 100) + 'px'
+    };
+  };
+
   controllerProto.checkForTransitions = function () {
     var edgesNum = this.fa.edges().length;
     var nodesNum = this.fa.nodes().length;
