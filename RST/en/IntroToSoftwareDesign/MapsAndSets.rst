@@ -1017,7 +1017,7 @@ present and unregistered ones are omitted:
 Direct Map Assertions on Internal State
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If a class provides package-private or getter access to its underlying map (or
+If a class provides getter access to its underlying map (or
 when inspecting a map returned by a method), AssertJ lets you assert directly on
 the collection in a single fluent chain:
 
