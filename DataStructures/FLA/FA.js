@@ -573,10 +573,10 @@ var lambda = String.fromCharCode(955),
 
   // ---------------------------------------------------------------------
   // Canvas notes: free-floating text boxes, saved in .jff files as <note><text/><x/><y/></note> like JFLAP.
-  // Right-click empty canvas for Add Note; right-click a note (or click it in delete mode) to delete it.
+  // Right-click empty canvas for Add Note / Display State Labels; right-click a note (or click it in delete mode) to delete it.
   // This lives in Automaton so every FA/PDA/TM editor and exercise gets it.
 
-  function ensureNoteStyles() {
+  function ensureCanvasStyles() {
     if (document.getElementById('jsavNoteStyles')) { return; }
     $('<style id="jsavNoteStyles">' +
       '.jsavnote{position:absolute;z-index:20;background:#fff8c4;border:1px solid #d4c26a;border-top-width:8px;cursor:move;box-shadow:1px 1px 3px rgba(0,0,0,.2)}' +
@@ -584,6 +584,7 @@ var lambda = String.fromCharCode(955),
       '#jsavCanvasMenu{position:absolute;z-index:1000;display:none;margin:0;padding:2px 0;list-style:none;background:#fff;border:1px solid #999;box-shadow:2px 2px 5px rgba(0,0,0,.25);font:13px Arial,sans-serif}' +
       '#jsavCanvasMenu li{padding:4px 14px;cursor:pointer;white-space:nowrap}' +
       '#jsavCanvasMenu li:hover{background:#ddd}' +
+      '.jsavHideStateLabels .jsavstatelabel{visibility:hidden}' +
       '</style>').appendTo('head');
   }
 
@@ -603,7 +604,7 @@ var lambda = String.fromCharCode(955),
   }
 
   automatonproto.addNote = function (text, left, top) {
-    ensureNoteStyles();
+    ensureCanvasStyles();
     var g = this;
     var note = { text: text || "", left: Math.max(0, left || 0), top: Math.max(0, top || 0) };
     var $el = $('<div class="jsavnote"><textarea rows="1" spellcheck="false" placeholder="Type a note"></textarea></div>')
@@ -650,6 +651,14 @@ var lambda = String.fromCharCode(955),
       .on('change', function () { g.saveFAState(beforeEdit); beforeEdit = serialize(g); })
       .on('keydown', function (e) { if (e.key === 'Escape') { $text.blur(); } });
     return note;
+  };
+
+  // Shows or hides every state label (not the state names)
+  // A view setting only: not saved in undo or .jff files. With no argument, reports whether labels are shown.
+  automatonproto.displayStateLabels = function (show) {
+    if (show === undefined) { return !this.element.hasClass('jsavHideStateLabels'); }
+    ensureCanvasStyles();
+    this.element.toggleClass('jsavHideStateLabels', !show);
   };
 
   automatonproto.moveNote = function (note, left, top) {
@@ -702,9 +711,10 @@ var lambda = String.fromCharCode(955),
   function getCanvasMenu() {
     var $menu = $('#jsavCanvasMenu');
     if ($menu.length) { return $menu; }
-    ensureNoteStyles();
+    ensureCanvasStyles();
     $menu = $('<ul id="jsavCanvasMenu">' +
       '<li data-action="addNote">Add Note</li>' +
+      '<li data-action="toggleStateLabels"></li>' +
       '<li data-action="deleteNote">Delete Note</li></ul>').appendTo('body');
     $menu.on('mousedown click contextmenu', function (e) { e.stopPropagation(); e.preventDefault(); });
     $menu.on('click', 'li', function () {
@@ -713,6 +723,8 @@ var lambda = String.fromCharCode(955),
       if (action === 'addNote') {
         g.saveFAState();
         g.addNote("", canvasMenuPoint.left, canvasMenuPoint.top).element.find('textarea').focus();
+      } else if (action === 'toggleStateLabels') {
+        g.displayStateLabels(!g.displayStateLabels());
       } else if (action === 'deleteNote') {
         g.deleteNote(canvasMenuNote);
       }
@@ -727,12 +739,13 @@ var lambda = String.fromCharCode(955),
     canvasMenuGraph = g;
     canvasMenuNote = note || null;
     canvasMenuPoint = clientToGraphLocal(g, e.clientX, e.clientY);
-    $menu.find('[data-action=addNote]').toggle(!note);
+    $menu.find('[data-action=addNote], [data-action=toggleStateLabels]').toggle(!note);
+    $menu.find('[data-action=toggleStateLabels]').html((g.displayStateLabels() ? '&#x2713; ' : '') + 'Display State Labels');
     $menu.find('[data-action=deleteNote]').toggle(!!note);
     $menu.css({ left: e.pageX, top: e.pageY }).show();
   }
 
-  // Right-clicking empty canvas opens the Add Note menu (states keep their own menu).
+  // Right-clicking empty canvas opens the Add Note / Display State Labels menu (states keep their own menu).
   function bindCanvasMenu(g) {
     g.element.on('contextmenu', function (e) {
       if ($(e.target).closest('.jsavgraphnode, .jsavnode, .jsavedgelabel, .jsavnote').length) { return; }
