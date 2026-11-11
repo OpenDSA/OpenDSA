@@ -703,12 +703,12 @@ Because the pathways are stored in a map, a location can inspect its own
 
    public String listAvailablePathways()
    {
-       StringBuilder sb = new StringBuilder("Available pathways:");
+       String pathways = "Available pathways:";
        for (String pathway : pathways.keySet())
        {
-           sb.append(" ").append(pathway);
+           pathways += " " + pathway;
        }
-       return sb.toString();
+       return pathways;
    }
 
 If the library connects via the plaza and the walkway, ``listAvailablePathways()``
