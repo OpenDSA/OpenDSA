@@ -762,6 +762,7 @@ var exerciseLocation;
         var edge = g.addEdge(nodeMap[from], nodeMap[to], {weight: read});
         edge.layout();
       }
+      g.loadNotesFromXML(xmlDoc);
       finalize();
     }
     /*if (auto === 'auto'){

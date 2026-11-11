@@ -43,6 +43,7 @@ var lambda = String.fromCharCode(955),
     this.undoStack = [];
     this.redoStack = [];
     this.editable = options.editable;
+    this.notes = []; // canvas notes: { text, left, top, element }, see addNote
     this.options = $.extend({
       visible: true,
       nodegap: 40,
@@ -88,6 +89,9 @@ var lambda = String.fromCharCode(955),
     $(document).click(function () {
       t.hideRMenu();
     });
+    if (this.editable) {
+      bindCanvasMenu(this);
+    }
 
     //$("#rmenu").load("../../AV/OpenFLAP/rmenu.html");
     //$("#rmenu").hide();
@@ -175,6 +179,7 @@ var lambda = String.fromCharCode(955),
     for (var next = nodes.next(); next; next = nodes.next()) {
       this.removeNode(next);
     }
+    this.clearNotes();
     for (var i = 0; i < source.nodes.length; i++) {
       var nodeValue = (source.nodes[i].nodeValue) ? source.nodes[i].nodeValue : 'q' + i;
       var node = this.addNode({ value: nodeValue }),
@@ -214,6 +219,10 @@ var lambda = String.fromCharCode(955),
         var edge = this.addEdge(this.nodes()[source.edges[i].start], this.nodes()[source.edges[i].end]);
       }
       edge.layout();
+    }
+    var sourceNotes = source.notes || [];
+    for (var i = 0; i < sourceNotes.length; i++) {
+      this.addNote(sourceNotes[i].text, sourceNotes[i].left * ratio, sourceNotes[i].top);
     }
   }
 
@@ -561,6 +570,177 @@ var lambda = String.fromCharCode(955),
       this._nodes[i].value('q' + i);
     }
   };
+
+  // ---------------------------------------------------------------------
+  // Canvas notes: free-floating text boxes, saved in .jff files as <note><text/><x/><y/></note> like JFLAP.
+  // Right-click empty canvas for Add Note; right-click a note (or click it in delete mode) to delete it.
+  // This lives in Automaton so every FA/PDA/TM editor and exercise gets it.
+
+  function ensureNoteStyles() {
+    if (document.getElementById('jsavNoteStyles')) { return; }
+    $('<style id="jsavNoteStyles">' +
+      '.jsavnote{position:absolute;z-index:20;background:#fff8c4;border:1px solid #d4c26a;border-top-width:8px;cursor:move;box-shadow:1px 1px 3px rgba(0,0,0,.2)}' +
+      '.jsavnote textarea{display:block;width:130px;border:none;background:transparent;resize:horizontal;font:13px Arial,sans-serif;line-height:16px;padding:3px;margin:0;outline:none;cursor:text;overflow:hidden}' +
+      '#jsavCanvasMenu{position:absolute;z-index:1000;display:none;margin:0;padding:2px 0;list-style:none;background:#fff;border:1px solid #999;box-shadow:2px 2px 5px rgba(0,0,0,.25);font:13px Arial,sans-serif}' +
+      '#jsavCanvasMenu li{padding:4px 14px;cursor:pointer;white-space:nowrap}' +
+      '#jsavCanvasMenu li:hover{background:#ddd}' +
+      '</style>').appendTo('head');
+  }
+
+  // On-screen size / local size of the graph element, so clicks and drags stay right while zoomed.
+  function graphScale(g) {
+    var el = g.element[0];
+    return el.offsetWidth ? el.getBoundingClientRect().width / el.offsetWidth : 1;
+  }
+
+  function clientToGraphLocal(g, clientX, clientY) {
+    var el = g.element[0], rect = el.getBoundingClientRect(), scale = graphScale(g);
+    return { left: (clientX - rect.left) / scale - el.clientLeft, top: (clientY - rect.top) / scale - el.clientTop };
+  }
+
+  function fitNoteText($text) {
+    $text.css('height', 'auto').css('height', $text[0].scrollHeight + 'px');
+  }
+
+  automatonproto.addNote = function (text, left, top) {
+    ensureNoteStyles();
+    var g = this;
+    var note = { text: text || "", left: Math.max(0, left || 0), top: Math.max(0, top || 0) };
+    var $el = $('<div class="jsavnote"><textarea rows="1" spellcheck="false" placeholder="Type a note"></textarea></div>')
+      .css({ left: note.left, top: note.top })
+      .appendTo(this.element);
+    var $text = $el.find('textarea').val(note.text);
+    note.element = $el;
+    this.notes.push(note);
+    fitNoteText($text);
+    // Clicks on a note belong to the note, not the canvas under it (no new state, pan, or transition drag).
+    $el.on('click mousedown dblclick', function (e) { e.stopPropagation(); });
+    if (!this.editable) {
+      $text.prop('readonly', true);
+      return note;
+    }
+    $el.on('mousedown', function (e) {
+      hideCanvasMenu();
+      g.hideRMenu();
+      if (e.which !== 1 || e.target === $text[0]) { return; }
+      e.preventDefault();
+      var scale = graphScale(g), startX = e.clientX, startY = e.clientY,
+        startLeft = note.left, startTop = note.top, before = serialize(g), moved = false;
+      $(document).on('mousemove.jsavnote', function (ev) {
+        var dx = (ev.clientX - startX) / scale, dy = (ev.clientY - startY) / scale;
+        if (!moved && Math.abs(dx) + Math.abs(dy) < 3) { return; }
+        moved = true;
+        g.moveNote(note, startLeft + dx, startTop + dy);
+      }).on('mouseup.jsavnote', function () {
+        $(document).off('.jsavnote');
+        if (moved) { g.saveFAState(before); }
+      });
+    });
+    $el.on('click', function () {
+      if (g.element.hasClass('deleteNodes')) { g.deleteNote(note); }
+    });
+    $el.on('contextmenu', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      showCanvasMenu(g, e, note);
+    });
+    var beforeEdit;
+    $text.on('focus', function () { beforeEdit = serialize(g); })
+      .on('input', function () { note.text = $text.val(); fitNoteText($text); })
+      .on('change', function () { g.saveFAState(beforeEdit); beforeEdit = serialize(g); })
+      .on('keydown', function (e) { if (e.key === 'Escape') { $text.blur(); } });
+    return note;
+  };
+
+  automatonproto.moveNote = function (note, left, top) {
+    note.left = Math.max(0, left);
+    note.top = Math.max(0, top);
+    note.element.css({ left: note.left, top: note.top });
+  };
+
+  automatonproto.deleteNote = function (note) {
+    var index = this.notes.indexOf(note);
+    if (index === -1) { return; }
+    this.saveFAState();
+    note.element.remove();
+    this.notes.splice(index, 1);
+  };
+
+  automatonproto.clearNotes = function () {
+    for (var i = 0; i < this.notes.length; i++) { this.notes[i].element.remove(); }
+    this.notes = [];
+  };
+
+  // The <note> elements for a .jff file (placed inside <automaton>, after the transitions).
+  automatonproto.notesToXML = function () {
+    var text = "";
+    for (var i = 0; i < this.notes.length; i++) {
+      var n = this.notes[i];
+      text += "\t\t<note>\n\t\t\t<text>" + escapeXmlText(n.text) + "</text>\n" +
+        "\t\t\t<x>" + n.left + "</x>\n\t\t\t<y>" + n.top + "</y>\n\t\t</note>\n";
+    }
+    return text;
+  };
+
+  automatonproto.loadNotesFromXML = function (xmlDoc) {
+    this.clearNotes();
+    var xmlNotes = xmlDoc.getElementsByTagName("note");
+    for (var i = 0; i < xmlNotes.length; i++) {
+      var textEl = xmlNotes[i].getElementsByTagName("text")[0],
+        xEl = xmlNotes[i].getElementsByTagName("x")[0],
+        yEl = xmlNotes[i].getElementsByTagName("y")[0];
+      this.addNote(textEl ? textEl.textContent : "", xEl ? Number(xEl.textContent) : 0, yEl ? Number(yEl.textContent) : 0);
+    }
+  };
+
+  var canvasMenuGraph = null, canvasMenuNote = null, canvasMenuPoint = null;
+
+  function hideCanvasMenu() {
+    $('#jsavCanvasMenu').hide();
+  }
+
+  function getCanvasMenu() {
+    var $menu = $('#jsavCanvasMenu');
+    if ($menu.length) { return $menu; }
+    ensureNoteStyles();
+    $menu = $('<ul id="jsavCanvasMenu">' +
+      '<li data-action="addNote">Add Note</li>' +
+      '<li data-action="deleteNote">Delete Note</li></ul>').appendTo('body');
+    $menu.on('mousedown click contextmenu', function (e) { e.stopPropagation(); e.preventDefault(); });
+    $menu.on('click', 'li', function () {
+      var g = canvasMenuGraph, action = $(this).data('action');
+      hideCanvasMenu();
+      if (action === 'addNote') {
+        g.saveFAState();
+        g.addNote("", canvasMenuPoint.left, canvasMenuPoint.top).element.find('textarea').focus();
+      } else if (action === 'deleteNote') {
+        g.deleteNote(canvasMenuNote);
+      }
+    });
+    $(document).on('mousedown', hideCanvasMenu);
+    $(document).on('keydown', function (e) { if (e.key === 'Escape') { hideCanvasMenu(); } });
+    return $menu;
+  }
+
+  function showCanvasMenu(g, e, note) {
+    var $menu = getCanvasMenu();
+    canvasMenuGraph = g;
+    canvasMenuNote = note || null;
+    canvasMenuPoint = clientToGraphLocal(g, e.clientX, e.clientY);
+    $menu.find('[data-action=addNote]').toggle(!note);
+    $menu.find('[data-action=deleteNote]').toggle(!!note);
+    $menu.css({ left: e.pageX, top: e.pageY }).show();
+  }
+
+  // Right-clicking empty canvas opens the Add Note menu (states keep their own menu).
+  function bindCanvasMenu(g) {
+    g.element.on('contextmenu', function (e) {
+      if ($(e.target).closest('.jsavgraphnode, .jsavnode, .jsavedgelabel, .jsavnote').length) { return; }
+      e.preventDefault();
+      g.hideRMenu();
+      showCanvasMenu(g, e);
+    });
+  }
   // Function to find a node using its name.
   automatonproto.getNodeWithValue = function (value) {
     var nodes = this.nodes();
@@ -1872,8 +2052,9 @@ var lambda = String.fromCharCode(955),
   // Called whenever any graph manipulation is made.
   // Note that a size restriction of 20 is imposed on both the undo stack and the redo stack.
   // The undo/redo buttons are looked up with jQuery so this is a no-op on pages (e.g. exercises) that leave them out.
-  automatonproto.saveFAState = function () {
-    var data = serialize(this);
+  // snapshot: optional serialize() output taken before the change, for changes that finish later (note drags and text edits).
+  automatonproto.saveFAState = function (snapshot) {
+    var data = snapshot || serialize(this);
     this.undoStack.push(data);
     this.redoStack = [];
     $("#undoButton").prop("disabled", false);
@@ -3096,6 +3277,7 @@ var lambda = String.fromCharCode(955),
         var edge = this.addEdge(nodeMap[from], nodeMap[to], { weight: read });
         edge.layout();
       }
+      this.loadNotesFromXML(xmlDoc);
       var currentFAHeight = this.element.height();
       this.element.height(Math.max(currentFAHeight, maxYvalue));
       //jsav.displayInit();

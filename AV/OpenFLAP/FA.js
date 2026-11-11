@@ -879,6 +879,7 @@ var exerciseLocation;
         });
         edge.layout();
       }
+      g.loadNotesFromXML(xmlDoc);
       finalize();
     }
     /*if (auto === 'auto'){

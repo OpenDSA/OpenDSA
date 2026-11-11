@@ -242,6 +242,7 @@ tm.serializeToXML = function() {
             text = text + '</transition>';
         }
     }
+    text = text + this.notesToXML();
     text = text + "</automaton></structure>"
         return text;
 };
@@ -334,6 +335,7 @@ tm.initFromXML = function(text) {
     this.addEdge(nodeMap[from], nodeMap[to], {weight: read + ";" + write + "," + move});
   }
   this.layout();
+  this.loadNotesFromXML(xmlDoc);
 
     // var parser,
     //      xmlDoc;

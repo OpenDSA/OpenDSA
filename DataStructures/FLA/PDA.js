@@ -463,6 +463,7 @@
         text = text + "\t\t" + '</transition>' + "\n";
       }
     }
+    text = text + this.notesToXML();
     text = text + "\t" + "</automaton>" + "\n" + "</structure>"
       return text;
   };
@@ -557,6 +558,7 @@
       this.addEdge(nodeMap[from], nodeMap[to], {weight: read + "," + pop + ";" + push});
     }
     this.layout();
+    this.loadNotesFromXML(xmlDoc);
   };
   
   /*

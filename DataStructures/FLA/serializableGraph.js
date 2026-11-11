@@ -43,6 +43,9 @@ function serialize(g) {
 		edges[i] = edge;
 	}
 	var gg = new Graph(nodes, edges, shorthand);
+	if (g.notes && g.notes.length) {
+		gg.notes = g.notes.map(function (n) { return { text: n.text, left: n.left, top: n.top }; });
+	}
 	jsonGraph = JSON.stringify(gg);
 	return jsonGraph
 }
@@ -178,6 +181,9 @@ function serializeGraphToXML (graph) {
 			}
 			text = text + "\t\t" + '</transition>' + "\n";
 		}
+	}
+	if (graph.notesToXML) {
+		text = text + graph.notesToXML();
 	}
 	text = text + "\t" + "</automaton>" + "\n" + "</structure>"
 		// this xml format mimics that used by jflap 7, and is thus compatible with the software.
