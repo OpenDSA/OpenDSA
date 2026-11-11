@@ -569,13 +569,28 @@ Look closely at how this works:
 Architectural Comparison
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-| Criterion | Cascading `if/else-if` Ladder | Map-Driven Command Registry |
-| :--- | :--- | :--- |
-| **Open/Closed Principle** | **Violated**: Adding a command requires editing parser source code. | **Satisfied**: New commands are registered dynamically without touching parser code. |
-| **Time Complexity** | $O(N)$ linear search through all branch conditions. | $O(1)$ constant-time hash table lookup. |
-| **Code Length** | Grows linearly ($+5$ to $+10$ lines per command). | Constant size: exactly one lookup regardless of command count. |
-| **Coupling** | High: Parser is coupled to every concrete action. | Low: Parser depends only on the generic ``Command`` interface. |
-| **Dynamic Configuration** | Impossible: Commands are hardcoded at compile time. | Simple: Commands can be added, disabled, or rebound at runtime. |
+.. list-table::
+   :widths: 20 40 40
+   :header-rows: 1
+
+   * - Criterion
+     - Cascading ``if/else-if`` Ladder
+     - Map-Driven Command Registry
+   * - **Open/Closed Principle**
+     - **Violated**: Adding a command requires editing parser source code.
+     - **Satisfied**: New commands are registered dynamically without touching parser code.
+   * - **Time Complexity**
+     - $O(N)$ linear search through all branch conditions.
+     - $O(1)$ constant-time hash table lookup.
+   * - **Code Length**
+     - Grows linearly ($+5$ to $+10$ lines per command).
+     - Constant size: exactly one lookup regardless of command count.
+   * - **Coupling**
+     - High: Parser is coupled to every concrete action.
+     - Low: Parser depends only on the generic ``Command`` interface.
+   * - **Dynamic Configuration**
+     - Impossible: Commands are hardcoded at compile time.
+     - Simple: Commands can be added, disabled, or rebound at runtime.
 
 
 Modeling Spatial Worlds: Interconnected Locations and Pathway Maps
