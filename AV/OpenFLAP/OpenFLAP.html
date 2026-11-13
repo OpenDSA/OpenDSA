@@ -1,20 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>OpenFLAP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="OpenFLAP editors and tools for formal languages and automata.">
+    <title>OpenFLAP | Editors and Tools</title>
+    <link rel="stylesheet" href="../../lib/normalize.css">
+    <link rel="stylesheet" href="css/OpenFLAP.css">
+    <style>
+      /* Hidden visually, still read by screen readers */
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+    <script src="OpenFLAP.js" defer></script>
   </head>
-  <body>
-    <h1>OpenFLAP Editors and Tools</h1>
 
-    <ul>
-      <li> <a href="FA.html">Finite Automata Editor</a> (This is often
-      where you want to start, to access some of the conversion
-        tools.)
-      <li> <a href="PDAEditor.html">Push-Down Automata Editor</a>
-      <li><a href="REtoFA.html">Convert a regular expression to a
-          finite automata</a>
-      <li><a href="TMEditor">Turing Machine Editor</a>
-      <li><a href="grammarEditor.html">Grammar Editor</a>
-    </ul>
+  <body>
+    <a class="skip-link" href="#tools">Skip to tools</a>
+
+    <main class="launcher">
+      <header class="masthead">
+        <div class="brand">
+          <p class="eyebrow">Formal languages &amp; automata</p>
+          <h1>OpenFLAP<span class="brand-dot" aria-hidden="true">.</span></h1>
+        </div>
+
+        <nav class="header-help" aria-label="Help">
+          <a href="FAHelp.html">Finite automata help</a>
+          <a href="GrammarHelp.html">Grammar help</a>
+        </nav>
+      </header>
+
+      <section class="tool-section" aria-labelledby="tools">
+        <div class="section-heading">
+          <h2 id="tools" tabindex="-1">Tools</h2>
+        </div>
+
+        <div class="search-controls" id="search-controls" hidden>
+          <label for="tool-search">Search tools</label>
+
+          <div class="search-bar">
+            <input
+              type="search"
+              id="tool-search"
+              placeholder="Search by name or abbreviation…"
+              autocomplete="off"
+              spellcheck="false"
+              aria-controls="tool-list"
+              aria-describedby="search-status"
+            >
+            <button type="button" id="clear-search" hidden>
+              Clear
+            </button>
+          </div>
+
+          <p id="search-status" class="search-status" role="status"></p>
+        </div>
+
+        <ul class="tool-list" id="tool-list">
+          <li data-keywords="DFA NFA FA deterministic nondeterministic finite automata">
+            <a class="tool" href="FA.html" target="_blank" rel="noopener">
+              <span class="tool-label">Finite Automaton</span>
+              <span class="visually-hidden">(opens in new tab)</span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+
+          <li data-keywords="Mealy transducer">
+            <a class="tool" href="/Obsolete/AV/FLA/MartinTamayo/MealyMachine/MealyEditor.html" target="_blank" rel="noopener">
+              <span class="tool-label">Mealy Machine</span>
+              <span class="visually-hidden">(opens in new tab)</span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+
+          <li data-keywords="Moore transducer">
+            <a class="tool" href="NotImplemented.html" target="_blank" rel="noopener">
+              <span class="tool-label">Moore Machine</span>
+              <span class="visually-hidden">(opens in new tab)</span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+
+          <li data-keywords="PDA NPDA push down stack automata">
+            <a class="tool" href="PDAEditor.html" target="_blank" rel="noopener">
+              <span class="tool-label">Pushdown Automaton</span>
+              <span class="visually-hidden">(opens in new tab)</span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+
+          <li data-keywords="TM tape">
+            <a class="tool" href="TMEditor.html" target="_blank" rel="noopener">
+              <span class="tool-label">Turing Machine</span>
+              <span class="visually-hidden">(opens in new tab)</span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+
+          <li data-keywords="TM multitape multiple tapes">
+            <a class="tool" href="NotImplemented.html" target="_blank" rel="noopener">
+              <span class="tool-label">Multi-Tape Turing Machine</span>
+              <span class="visually-hidden">(opens in new tab)</span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+
+          <li data-keywords="TM building blocks">
+            <a class="tool" href="NotImplemented.html" target="_blank" rel="noopener">
+              <span class="tool-label">Turing Machine With Building Blocks</span>
+              <span class="visually-hidden">(opens in new tab)</span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+
+          <li data-keywords="CFG context free production rules">
+            <a class="tool" href="grammarEditor.html" target="_blank" rel="noopener">
+              <span class="tool-label">Grammar</span>
+              <span class="visually-hidden">(opens in new tab)</span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+
+          <li data-keywords="LSystem Lindenmayer">
+            <a class="tool" href="NotImplemented.html" target="_blank" rel="noopener">
+              <span class="tool-label">L-System</span>
+              <span class="visually-hidden">(opens in new tab)</span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+
+          <li data-keywords="RE regex regexp expression conversion">
+            <a class="tool" href="REtoFA.html" target="_blank" rel="noopener">
+              <span class="tool-label">Regular Expression</span>
+              <span class="visually-hidden">(opens in new tab)</span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+
+          <li data-keywords="regular language pumping lemma">
+            <a class="tool" href="NotImplemented.html" target="_blank" rel="noopener">
+              <span class="tool-label">Regular Pumping Lemma</span>
+              <span class="visually-hidden">(opens in new tab)</span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+
+          <li data-keywords="CFL context free language pumping lemma">
+            <a class="tool" href="NotImplemented.html" target="_blank" rel="noopener">
+              <span class="tool-label">Context-Free Pumping Lemma</span>
+              <span class="visually-hidden">(opens in new tab)</span>
+              <span class="tool-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <footer>OpenFLAP</footer>
+    </main>
   </body>
 </html>

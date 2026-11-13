@@ -17,12 +17,10 @@ table_doc={}
 
 def loadTable():
    try:
-      table=open('table.json')
-      data = json.load(table)
-      table.close()
-      return data
-   except IOError:
-      print('ERROR: No table.json file.')
+      with open('table.json') as table:
+         return json.load(table)
+   except (IOError, ValueError):
+      return {}
 
 
 # Visit/depart functions
@@ -55,7 +53,7 @@ def html_visit_num_ref(self, node):
         label, target = fields
         target_file = ''
         chapter = ''
-        if target in json_data:
+        if json_data and target in json_data:
             chapter = json_data[target].rsplit('.',1)[0]  
             for name_l, idx in json_data.items():
                 if idx == chapter:    
@@ -96,18 +94,27 @@ def doctree_read(app, doctree):
                    _exple = 1
                    _thrm = 1
             if isinstance( figure_info, figure):
-                if env.docname in json_data:
+                if json_data and env.docname in json_data:
                     module = env.docname  
                     num_module = json_data[env.docname]  
                     # num_module will be blank if we are compiling stand-alone modules
                     standalone_module = (num_module == '')
                 for cap in figure_info.traverse(caption):
-                    if standalone_module:
-                        cap[0] = Text(" %s %d: %s" % (app.config.figure_caption_prefix, i, cap[0]))
-                        figids_1[env.docname]= '%d' %(i)
+                    if len(cap) > 0:
+                        cap_text = cap[0].lstrip() if isinstance(cap[0], Text) else str(cap[0])
+                        if standalone_module:
+                            cap[0] = Text("%s %d: %s" % (app.config.figure_caption_prefix, i, cap_text))
+                            figids_1[env.docname]= '%d' %(i)
+                        else:
+                            cap[0] = Text("%s %s.%d: %s" % (app.config.figure_caption_prefix, num_module, i, cap_text))
+                            figids_1[env.docname]= '%s.%d' %(num_module, i)
                     else:
-                        cap[0] = Text(" %s %s.%d: %s" % (app.config.figure_caption_prefix, num_module, i, cap[0]))
-                        figids_1[env.docname]= '%s.%d' %(num_module, i) 
+                        if standalone_module:
+                            cap += Text("%s %d" % (app.config.figure_caption_prefix, i))
+                            figids_1[env.docname]= '%d' %(i)
+                        else:
+                            cap += Text("%s %s.%d" % (app.config.figure_caption_prefix, num_module, i))
+                            figids_1[env.docname]= '%s.%d' %(num_module, i) 
                 for id in figure_info['ids']:
                     figids[id] = i
                     figid_docname_map[id] = env.docname
@@ -125,7 +132,7 @@ def doctree_read(app, doctree):
 
             if isinstance( figure_info, topic):
                 numbered_label = ''
-                if  env.docname in json_data:
+                if json_data and env.docname in json_data:
                     module = env.docname
                     num_module = json_data[env.docname]
                     # num_module will be blank if we are compiling stand-alone modules
@@ -135,7 +142,7 @@ def doctree_read(app, doctree):
                 if len(figure_info.attributes['ids']) > 0:
                     for label in figure_info.attributes['ids']:
                         xrefs = ''
-                        if label in json_data:
+                        if json_data and label in json_data:
                             xrefs = json_data[label]
                             if '#' in xrefs:
                                 xrefs = xrefs[:-1]

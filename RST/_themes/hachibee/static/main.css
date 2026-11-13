@@ -3,6 +3,10 @@
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
 body{margin:0}
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+figure.align-center figcaption, p.caption.align-center, div.body p.caption.align-center { text-align: center; }
+figure.align-left figcaption, p.caption.align-left, div.body p.caption.align-left { text-align: left; }
+figure.align-right figcaption, p.caption.align-right, div.body p.caption.align-right { text-align: right; }
+figure.align-justify figcaption, p.caption.align-justify, div.body p.caption.align-justify { text-align: justify; }
 audio,canvas,progress,video{display:inline-block;vertical-align:baseline}
 audio:not([controls]){display:none;height:0}
 [hidden],template{display:none}

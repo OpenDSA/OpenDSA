@@ -221,7 +221,7 @@ Looping Over Map Contents
 
 As mentioned above, keys are unique, and maps provide a method to get the
 full set of all keys they contain. This method is called ``keySet()`` and
-it returns a ``Set`` of key values--the ``Set`` interface is discuseed next.
+it returns a ``Set`` of key values--the ``Set`` interface is discussed next.
 
 Because the ``keySet()`` method returns a collection of all the keys in
 the map, it is commonly used in looping over the entire map:

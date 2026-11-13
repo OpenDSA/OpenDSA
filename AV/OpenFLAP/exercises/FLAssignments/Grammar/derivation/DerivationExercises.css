@@ -1,0 +1,65 @@
+/* Extend the same base stylesheet as OpenFLAP's single and multiple parsers. */
+.derivation-exercises { line-height: 1.45; }
+.derivation-exercises .parse-layout { grid-template-columns: minmax(210px, 260px) minmax(0, 1fr); }
+.back-link { display: inline-block; color: #161616; background: #efefef; border: 1px solid #888; border-radius: 2px; padding: 6px 11px; text-decoration: none; }
+.back-link:hover { background: #e4e4e4; }
+#exercise-select { max-width: min(52vw, 460px); }
+.grammar-panel h2 { margin-top: 0; }
+#rules table { margin-top: 0; width: 100%; table-layout: fixed; }
+#rules .left-column { width: 28%; }
+#rules .arrow-column { width: 20%; }
+#rules .right-column { width: 52%; }
+#rules th, #rules td { text-align: center; vertical-align: middle; }
+#rules td { padding: 0; height: 44px; font: 20px Georgia, serif; }
+#rules th { font-size: 14px; padding: 8px 4px; background: #f1f1e9; }
+#rules .production-arrow span { display: inline-block; line-height: 1; }
+#rules .production-right { padding: 6px 8px; overflow-wrap: anywhere; }
+.rule { box-sizing: border-box; width: 100%; min-height: 44px; border: 0; border-radius: 0; background: transparent; font: 20px Georgia, serif; text-align: center; padding: 7px 4px; color: #161616; }
+.rule:disabled { opacity: 1; cursor: default; }
+.rule-row.interactive { cursor: pointer; }
+.rule-row.interactive:hover, .rule-row.matching { background: #e5eef7; }
+.rule-row.last-rule { background: #fff0c9; }
+.rule:focus-visible { outline-offset: -3px; }
+.exercise-description h2 { margin: 0 0 5px; }
+.exercise-description p { margin: 8px 0; }
+#exercise-kind, #source { font-size: 14px; }
+#source { color: #14548c; }
+.source-note { font-size: 14px; color: #515151; }
+.source-note summary { cursor: pointer; }
+#target { font-size: 20px; }
+.toolbar { margin-top: 0 !important; }
+.toolbar button[aria-pressed="true"] { background: #dce7f1; border: 1px solid #42586c; font-weight: bold; }
+#solution-label { margin-left: auto; }
+.form-panel { background: #f7f7f2; border: 1px solid #c4c4b9; padding: 10px 12px; }
+#step-count { float: right; font-size: 14px; }
+#current-form { display: flex; flex-wrap: wrap; align-items: center; min-height: 48px; padding: 5px 0; }
+.symbol { min-width: 28px; border: 1px solid transparent; border-radius: 0; background: transparent; padding: 3px; font: 27px Georgia, serif; color: #161616; }
+.symbol.variable { color: #14548c; }
+.symbol:disabled { opacity: 1; }
+.symbol.selected { background: #dce7f1; border-color: #2868a0; }
+#selection-label { min-height: 20px; }
+#available-rules { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 8px; }
+#available-rules button { background: #e5eef7; border: 1px solid #2868a0; }
+#current-form:focus-visible { outline: 2px solid #2868a0; outline-offset: 3px; }
+.controls { position: sticky; top: 0; z-index: 2; background: white; padding: 8px 0; border-bottom: 1px solid #c4c4b9; }
+#status { min-height: 24px; }
+#status.success { color: #226b29; }
+#status.error { color: #a02626; }
+.history-scroll, .tree-scroll { overflow: auto; max-height: 560px; }
+.history-scroll table { width: 100%; margin: 0; }
+.history-scroll th { position: sticky; top: 0; background: #eee; }
+#history tr:last-child { background: #fff0c9; }
+#tree-section h2 { margin-top: 16px; }
+.tree-scroll svg { display: block; margin: 0 auto; background: white; max-width: none; }
+#saved-trees { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+#saved-trees h3 { font-size: 16px; }
+#saved-trees svg { width: 100%; height: auto; }
+#hints { font-size: 14px; }
+#hints summary { cursor: pointer; }
+#hint-list { padding-left: 20px; }
+@media (max-width: 720px) {
+  .derivation-exercises .parse-layout { grid-template-columns: 1fr; }
+  #exercise-select { max-width: calc(100vw - 125px); }
+  #rules table { max-width: 320px; }
+  #saved-trees { grid-template-columns: 1fr; }
+}
