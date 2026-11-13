@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Control Parse</title>
+  <link rel="stylesheet" href="BruteForceParse.css">
+  <link rel="stylesheet" href="UserControlParse.css">
+</head>
+<body class="user-control-parser">
+  <h1>User Control Parse</h1>
+  <p>Choose productions and where to apply them to build your own derivation. This exploration tool does not grade or automatically undo your choices.</p>
+  <nav class="mode-links" aria-label="Editor navigation"><button id="backbutton" type="button">Back to Grammar Editor</button></nav>
+  <div class="parse-layout">
+    <aside class="grammar-panel">
+      <table id="grammar"><caption>Grammar — select a production</caption><thead><tr><th>Left</th><th></th><th>Right</th></tr></thead><tbody></tbody></table>
+      <p>The first production's left side is the start form.</p>
+    </aside>
+    <main class="parse-workspace">
+      <form id="inputForm"><label for="input">Target string</label><input id="input" autocomplete="off" aria-describedby="inputHelp"><button id="startbutton" type="submit">Start</button></form>
+      <p id="inputHelp">Leave blank, or enter ! or λ, for the empty string. Start begins a new derivation.</p>
+      <p id="message" role="status" aria-live="polite"></p>
+      <section id="manual" hidden>
+        <div class="manual-form">
+          <p><strong>Target string:</strong> <code id="target"></code></p>
+          <p><strong>Sentential form:</strong> <span id="stepCount"></span></p>
+          <div id="currentForm" aria-label="Current sentential form"></div>
+          <p id="chosenRule"></p>
+          <label for="occurrence">Occurrence</label> <select id="occurrence" aria-describedby="selectionHelp"></select>
+          <p id="selectionHelp">Select a production, then choose an occurrence or click its first symbol in the current form. Positions start at 1. Each Step applies one production once.</p>
+          <nav aria-label="Manual derivation controls"><button id="step" type="button">Step</button><button id="previous" type="button">Previous</button><button id="reset" type="button">Reset</button></nav>
+        </div>
+        <label for="view">View</label> <select id="view"><option value="tree">Noninverted Tree</option><option value="table">Derivation Table</option></select>
+        <p id="viewNote"></p>
+        <div id="tree" class="tree-container" tabindex="0" role="region" aria-label="Derivation visualization"></div>
+        <div id="tableView" class="table-container" hidden><table><thead><tr><th>Step</th><th>Production</th><th>Sentential form</th></tr></thead><tbody id="history"></tbody></table></div>
+      </section>
+    </main>
+  </div>
+  <script src="BruteForceDerivation.js"></script>
+  <script src="BruteForceParseUI.js"></script>
+  <script src="UserControlParser.js"></script>
+  <script src="UserControlParse.js"></script>
+</body>
+</html>
