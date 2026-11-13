@@ -5093,13 +5093,14 @@ function getRandomInt(max) {
       nodes2.reset();
       for (var to = nodes2.next(); to; to = nodes2.next()) {
         if (from == this.fa.selected || to == this.fa.selected) continue;
-        var straight = this.fa.getEdge(from, to).weight();
-        var begin = this.fa.getEdge(from, node).weight();
-        var pause = this.fa.getEdge(node, node).weight();
-        var end = this.fa.getEdge(node, to).weight();
+        // An edge carrying several symbols is stored as one "<br>"-separated
+        // weight, so read each one back as a union before using it here.
+        var straight = weightToRE(this.fa.getEdge(from, to).weight());
+        var begin = weightToRE(this.fa.getEdge(from, node).weight());
+        var pause = weightToRE(this.fa.getEdge(node, node).weight());
+        var end = weightToRE(this.fa.getEdge(node, to).weight());
         var indirect = "";
 
-        //var direct = normalizeTransitionToRE(straight);
         var direct = straight;
         if (begin == none || end == none) {
           table.push([from.value(), to.value(), direct]);
