@@ -5215,10 +5215,11 @@ function getRandomInt(max) {
     var to = this.fa.getFinals()[0];
     // The two-state generalized transition graph, where i is the initial state
     // and j the final one: ii/jj are the self-loops, ij and ji the arcs between.
-    var ii = this.fa.getEdge(from, from).weight();
-    var ij = this.fa.getEdge(from, to).weight();
-    var ji = this.fa.getEdge(to, from).weight();
-    var jj = this.fa.getEdge(to, to).weight();
+    // weightToRE turns an edge carrying several symbols into a union first.
+    var ii = weightToRE(this.fa.getEdge(from, from).weight());
+    var ij = weightToRE(this.fa.getEdge(from, to).weight());
+    var ji = weightToRE(this.fa.getEdge(to, from).weight());
+    var jj = weightToRE(this.fa.getEdge(to, to).weight());
     // JFLAP's getFinalExpression: (ii* ij jj* ji)* ii* ij jj*. concatRE/starRE
     // collapse the empty set and lambda, so the lambda-transitions added by
     // normalizeToSingleFinal drop out instead of showing up in the result.
