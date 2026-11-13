@@ -1,0 +1,8 @@
+.user-control-parser .manual-form { background: #fff; border: 1px solid #c4c4b9; padding: 16px; margin-bottom: 16px; }
+.user-control-parser #currentForm { display: flex; flex-wrap: wrap; gap: 4px; margin: 14px 0; }
+.user-control-parser .symbol { background: #f4f8fd; border: 1px solid #66727d; min-width: 36px; }
+.user-control-parser .selected { background: #dce7f1; outline: 2px solid #2868a0; }
+.user-control-parser #target, .user-control-parser #chosenRule { overflow-wrap: anywhere; }
+.user-control-parser #occurrence { max-width: 100%; }
+.user-control-parser #grammar button { background: transparent; border: 0; }
+.user-control-parser #grammar tr.selected { background: #dce7f1; outline: 0; }

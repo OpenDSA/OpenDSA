@@ -3444,6 +3444,7 @@ $(document).ready(function () {
   $('#deletebutton').click(deleteMode);
   $('#addrowbutton').click(addrowMode);
   $('#bfpbutton').click(bruteForceParse);
+  $('#ucpbutton').click(function () { openBruteForceParser('UserControlParse.html'); });
   $('#mbfpbutton').click(mbfParse);
   $('#llbutton').click(llParse);
   $('#slrbutton').click(slrParse);
