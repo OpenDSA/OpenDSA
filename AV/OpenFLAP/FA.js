@@ -1331,6 +1331,7 @@ var exerciseLocation;
   $( "#dialog" ).dialog({ autoOpen: false });
   $("#helpButton").click(displayHelp);
   // Keyboard shortcuts: Escape, Ctrl/Cmd+Z and Ctrl/Cmd+Y (or Shift+Z) for undo/redo
+  GraphEditor.attachFastRun({ buttonSelector: '#fastRunButton', getGraph: function() { return g; } });
   GraphEditor.registerKeybindings([
     { test: function(e) { return e.key === 'Escape'; }, action: cancel },
     { test: function(e) { return (e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'z'; },

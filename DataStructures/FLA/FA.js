@@ -653,6 +653,94 @@ var lambda = String.fromCharCode(955),
     return note;
   };
 
+  // ---------------------------------------------------------------------
+  // Fast Run: a breadth-first search over configurations, like JFLAP's Input > Fast Run.
+  // Each machine type supplies fastRunRules(input): { start, moves(config), accepts(config),
+  // key(config), columns, describe(config), haltsOnAccept }. Different paths are kept apart
+  // (so "Keep looking" can find each one); a path that repeats one of its own configurations is dropped.
+  var FAST_RUN_BATCH = 5000; // configurations generated before asking whether to keep going
+
+  automatonproto.createRunSearch = function (rules) {
+    var queue = [rules.start], head = 0, generated = 1, budget = FAST_RUN_BATCH,
+      search = { accepted: 0, generated: 0 };
+    rules.start.parent = null;
+    rules.start.key = rules.key(rules.start);
+    function repeatsOnItsPath(config) {
+      for (var p = config.parent; p; p = p.parent) {
+        if (p.key === config.key) { return true; }
+      }
+      return false;
+    }
+    // Returns { path } for the next accepting configuration, { done: true } when every
+    // possibility is used up, or { paused: true } after each batch of FAST_RUN_BATCH configurations.
+    search.next = function () {
+      while (head < queue.length) {
+        if (generated >= budget) {
+          budget += FAST_RUN_BATCH;
+          search.generated = generated;
+          return { paused: true };
+        }
+        var config = queue[head];
+        queue[head++] = null; // let finished configurations be garbage collected
+        var accepting = rules.accepts(config);
+        if (!(accepting && rules.haltsOnAccept)) {
+          var moves = rules.moves(config);
+          for (var i = 0; i < moves.length; i++) {
+            moves[i].parent = config;
+            moves[i].key = rules.key(moves[i]);
+            if (!repeatsOnItsPath(moves[i])) {
+              queue.push(moves[i]);
+              generated++;
+            }
+          }
+        }
+        if (accepting) {
+          search.accepted++;
+          var path = [];
+          for (var c = config; c; c = c.parent) { path.unshift(rules.describe(c)); }
+          search.generated = generated;
+          return { path: path };
+        }
+      }
+      search.generated = generated;
+      return { done: true };
+    };
+    return search;
+  };
+
+  function isEmptySymbol(symbol) {
+    return symbol === "" || symbol === lambda || symbol === epsilon;
+  }
+  window.isEmptyTransitionSymbol = isEmptySymbol;
+
+  // FA rules: a configuration is a state plus how much input has been read.
+  // Without shorthand mode only single-symbol transitions are followed, matching the Input button.
+  automatonproto.fastRunRules = function (input) {
+    var shorthand = this.shorthand;
+    return {
+      start: { state: this.initial, pos: 0 },
+      columns: ["State", "Input left"],
+      moves: function (c) {
+        var out = [], edges = c.state.getOutgoing() || [];
+        for (var i = 0; i < edges.length; i++) {
+          var weights = edges[i].weight().split("<br>");
+          for (var j = 0; j < weights.length; j++) {
+            var w = weights[j];
+            if (isEmptySymbol(w)) {
+              out.push({ state: edges[i].end(), pos: c.pos });
+            } else if ((shorthand || w.length === 1) && input.substr(c.pos, w.length) === w) {
+              out.push({ state: edges[i].end(), pos: c.pos + w.length });
+            }
+          }
+        }
+        return out;
+      },
+      accepts: function (c) { return c.pos === input.length && c.state.hasClass("final"); },
+      key: function (c) { return c.state.value() + "|" + c.pos; },
+      describe: function (c) { return [c.state.value(), input.substring(c.pos) || lambda]; }
+    };
+  };
+
   // Shows or hides every state label (not the state names)
   // A view setting only: not saved in undo or .jff files. With no argument, reports whether labels are shown.
   automatonproto.displayStateLabels = function (show) {

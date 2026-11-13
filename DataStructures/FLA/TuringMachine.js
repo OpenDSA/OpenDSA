@@ -188,6 +188,60 @@ tm.traverse = function(currentStates) {
     return nextStates;
 };
 
+// Fast Run rules (see Automaton.createRunSearch). Like JFLAP, the machine halts and accepts as
+// soon as it enters a final state. The tape is a string plus the index of cell 0 in it (offset),
+// trimmed of blanks at both ends so equal tapes give equal keys.
+tm.fastRunRules = function (input) {
+    function cell(c) {
+        var i = c.head + c.offset;
+        return (i >= 0 && i < c.tape.length) ? c.tape[i] : square;
+    }
+    function trim(tape, offset) {
+        var start = 0, end = tape.length;
+        while (start < end && tape[start] === square) { start++; }
+        while (end > start && tape[end - 1] === square) { end--; }
+        return { tape: tape.substring(start, end), offset: offset - start };
+    }
+    function step(c, state, write, move) {
+        var tape = c.tape, offset = c.offset, i = c.head + offset;
+        if (i < 0) { tape = new Array(-i + 1).join(square) + tape; offset -= i; i = 0; }
+        if (i >= tape.length) { tape += new Array(i - tape.length + 2).join(square); }
+        tape = tape.substring(0, i) + write + tape.substring(i + 1);
+        var trimmed = trim(tape, offset);
+        var head = c.head + (move === "R" ? 1 : move === "L" ? -1 : 0);
+        return { state: state, tape: trimmed.tape, offset: trimmed.offset, head: head };
+    }
+    function showTape(c) {
+        var from = Math.min(-c.offset, c.head), to = Math.max(c.tape.length - c.offset - 1, c.head), text = "";
+        for (var p = from; p <= to; p++) {
+            var ch = cell({ tape: c.tape, offset: c.offset, head: p });
+            text += (p === c.head) ? "[" + ch + "]" : ch;
+        }
+        return text;
+    }
+    return {
+        start: { state: this.initial, tape: input, offset: 0, head: 0 },
+        columns: ["State", "Tape ([ ] marks the head)"],
+        haltsOnAccept: true,
+        moves: function (c) {
+            var out = [], edges = c.state.getOutgoing() || [], symbol = cell(c);
+            for (var i = 0; i < edges.length; i++) {
+                var weights = edges[i].weight().split("<br>");
+                for (var j = 0; j < weights.length; j++) {
+                    var t = toColonForm(weights[j]).split(":"),
+                        read = t[0] === "" ? square : t[0],
+                        write = t[1] === "" ? square : t[1];
+                    if (read === symbol) { out.push(step(c, edges[i].end(), write, t[2])); }
+                }
+            }
+            return out;
+        },
+        accepts: function (c) { return c.state.hasClass("final"); },
+        key: function (c) { return c.state.value() + "|" + c.offset + "|" + c.tape + "|" + c.head; },
+        describe: function (c) { return [c.state.value(), showTape(c)]; }
+    };
+};
+
 //======================
 // Save/Load
 // save TM as XML

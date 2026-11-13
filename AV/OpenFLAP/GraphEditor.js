@@ -882,7 +882,110 @@ var GraphEditor = (function ($) {
     };
   }
 
+  // Fast Run dialog (JFLAP's Input > Fast Run): type a string, see whether it is accepted and
+  // the path of configurations that accepts it, then "Keep looking" for other accepting paths.
+  // The search itself is Automaton.createRunSearch with the machine's own fastRunRules.
+  // options: { buttonSelector, getGraph }
+  function attachFastRun(options) {
+    $(options.buttonSelector).click(function (e) {
+      e.preventDefault();
+      if (!options.getGraph().initial) {
+        window.alert("Fast Run needs an initial state.");
+        return;
+      }
+      openFastRun(options.getGraph);
+    });
+  }
+
+  function ensureFastRunDialog() {
+    if ($('#fastRunOverlay').length) { return; }
+    $('<style id="fastRunStyles">' +
+      '#fastRunOverlay{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.35);display:none}' +
+      '#fastRunBox{position:absolute;top:80px;left:50%;transform:translateX(-50%);width:420px;max-width:calc(100% - 32px);background:#fff;border:1px solid #888;border-radius:4px;box-shadow:0 4px 16px rgba(0,0,0,.3);font:14px Arial,sans-serif}' +
+      '#fastRunBox .fr-head{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#eee;border-bottom:1px solid #ccc;font-weight:bold}' +
+      '#fastRunBox .fr-body{padding:12px}' +
+      '#fastRunBox input{width:220px;margin:0 6px}' +
+      '#fastRunResult{margin-top:12px}' +
+      '#fastRunResult .fr-msg{font-weight:bold;margin-bottom:8px}' +
+      '#fastRunResult .fr-accept{color:#1a7f37}#fastRunResult .fr-reject{color:#c62828}' +
+      '#fastRunResult .fr-path{max-height:300px;overflow:auto;border:1px solid #ddd}' +
+      '#fastRunResult table{width:100%;border-collapse:collapse;font-family:monospace}' +
+      '#fastRunResult th,#fastRunResult td{padding:3px 8px;border-bottom:1px solid #eee;text-align:left}' +
+      '#fastRunResult .fr-buttons{margin-top:10px;text-align:right}' +
+      '#fastRunResult .fr-buttons button{margin-left:6px}' +
+      '</style>').appendTo('head');
+    $('<div id="fastRunOverlay"><div id="fastRunBox">' +
+      '<div class="fr-head"><span>Fast Run</span><button type="button" class="fr-close" aria-label="Close">&times;</button></div>' +
+      '<div class="fr-body"><label>Input:<input type="text" id="fastRunInput" autocomplete="off"></label>' +
+      '<button type="button" id="fastRunGo">Run</button>' +
+      '<div id="fastRunResult"></div></div></div></div>').appendTo('body');
+    $('#fastRunOverlay').on('click', function (e) { if (e.target === this) { closeFastRun(); } });
+    $('#fastRunBox .fr-close').on('click', closeFastRun);
+    $('#fastRunOverlay').on('keydown', function (e) {
+      e.stopPropagation(); // keep editor shortcuts (s, t, Delete, ...) out of the dialog
+      if (e.key === 'Escape') { closeFastRun(); }
+    });
+  }
+
+  function closeFastRun() {
+    $('#fastRunOverlay').hide();
+  }
+
+  // getGraph is called on every run, since some editors replace their graph when a file is loaded.
+  function openFastRun(getGraph) {
+    ensureFastRunDialog();
+    $('#fastRunResult').empty();
+    $('#fastRunOverlay').show();
+    $('#fastRunInput').off('keydown.fastRun').on('keydown.fastRun', function (e) {
+      // preventDefault: otherwise this Enter also presses the Keep looking button that run() focuses.
+      if (e.key === 'Enter') { e.preventDefault(); run(); }
+    }).focus().select();
+    $('#fastRunGo').off('click').on('click', run);
+
+    function run() {
+      var g = getGraph(), input = $('#fastRunInput').val();
+      var rules = g.fastRunRules(input);
+      showNext(g.createRunSearch(rules), rules.columns, input);
+    }
+  }
+
+  function showNext(search, columns, input) {
+    var r = search.next(), $result = $('#fastRunResult').empty();
+    if (r.path) {
+      $result.append($('<div class="fr-msg fr-accept">').text('Accepting configuration found for ' +
+        (input === '' ? 'the empty string' : '"' + input + '"') + '!'));
+      var $table = $('<table>'), $row = $('<tr>').append($('<th>').text('Step'));
+      columns.forEach(function (c) { $row.append($('<th>').text(c)); });
+      $table.append($row);
+      r.path.forEach(function (cells, i) {
+        var $tr = $('<tr>').append($('<td>').text(i));
+        cells.forEach(function (c) { $tr.append($('<td>').text(c)); });
+        $table.append($tr);
+      });
+      $result.append($('<div class="fr-path">').append($table));
+      $result.append($('<div class="fr-buttons">')
+        .append($('<button type="button" class="fr-keep">Keep looking</button>').on('click', function () { showNext(search, columns, input); }))
+        .append($('<button type="button" class="fr-done">I\'m done</button>').on('click', closeFastRun)));
+      $result.find('.fr-keep').focus();
+    } else if (r.paused) {
+      $result.append($('<div class="fr-msg">').text(search.generated + ' configurations have been generated. Keep going?'));
+      $result.append($('<div class="fr-buttons">')
+        .append($('<button type="button" class="fr-keep">Keep going</button>').on('click', function () { showNext(search, columns, input); }))
+        .append($('<button type="button" class="fr-done">Stop</button>').on('click', function () {
+          $('#fastRunResult').empty().append($('<div class="fr-msg">').text('Stopped after ' + search.generated + ' configurations' +
+            (search.accepted ? ' (' + search.accepted + ' accepted).' : '; no accepting configuration found.')));
+        })));
+      $result.find('.fr-keep').focus();
+    } else if (search.accepted === 0) {
+      $result.append($('<div class="fr-msg fr-reject">').text(input === '' ? 'The empty string was rejected.' : 'The input "' + input + '" was rejected.'));
+    } else {
+      $result.append($('<div class="fr-msg">').text(search.accepted + ' configuration' + (search.accepted === 1 ? '' : 's') +
+        ' accepted, and other possibilities are exhausted.'));
+    }
+  }
+
   return {
+    attachFastRun: attachFastRun,
     removeModeClasses: removeModeClasses,
     cancel: cancel,
     resetUndoButtons: resetUndoButtons,
