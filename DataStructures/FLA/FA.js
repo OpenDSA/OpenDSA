@@ -5161,6 +5161,13 @@ function getRandomInt(max) {
 
   // add empty transitions to states without transitions to each other
   controllerProto.completeTransitions = function () {
+    // State elimination assumes one final state that is not the initial state,
+    // so normalize first (adds a new final state only when one is needed).
+    if (this.normalizeToSingleFinal() && this.visualize) {
+      this.jsav.umsg("First we add a single new final state, with " + lambda +
+        "-transitions to it from each old final state.");
+      this.jsav.step();
+    }
     var nodes1 = this.fa.nodes();
     var nodes2 = this.fa.nodes();
     for (var from = nodes1.next(); from; from = nodes1.next()) {
@@ -5205,57 +5212,18 @@ function getRandomInt(max) {
   controllerProto.generateExpression = function () {
     var from = this.fa.initial;
     var to = this.fa.getFinals()[0];
-    var fromm = normalizeTransitionToRE(this.fa.getEdge(from, from).weight());
-    var fromTo = normalizeTransitionToRE(this.fa.getEdge(from, to).weight(), true);
-    var toFrom = normalizeTransitionToRE(this.fa.getEdge(to, from).weight());
-    var too = normalizeTransitionToRE(this.fa.getEdge(to, to).weight());
-    var cycle = "",
-      target = "",
-      expression = "";
-    if (fromTo == none) {
-      expression = none;
-    } else if (toFrom == none) {
-      //cycle = "";
-      if ((fromm == none || fromm == lambda) && (too == none || too == lambda)) {
-        expression = fromTo;
-      } else if (fromm == none || fromm == lambda) {
-        if (too.length > 1) {
-          expression = fromTo + addStar(too);
-        } else {
-          expression = fromTo + too + "*";
-        }
-      } else if (too == none || too == lambda) {
-        if (fromm.length > 1) {
-          expression = addStar(fromm) + fromTo;
-        } else {
-          expression = fromm + "*" + fromTo;
-        }
-      } else if (fromm.length > 1 && too.length > 1) {
-        expression = addStar(fromm) + fromTo + addStar(too);
-      } else if (fromm.length > 1) {
-        expression = addStar(fromm) + fromTo + too + "*";
-      } else if (too.length > 1) {
-        expression = fromm + "*" + fromTo + addStar(too);
-      } else {
-        expression = fromm + "*" + fromTo + too + "*";
-      }
-    } else {
-      //cycle = something;
-      if ((fromm == none || fromm == lambda) && (too == none || too == lambda)) {
-        cycle = addStar(fromTo + toFrom);
-        target = fromTo;
-      } else if (fromm == none || fromm == lambda) {
-        cycle = addStar(fromTo + addStar(too) + toFrom);
-        target = fromTo + addStar(too);
-      } else if (too == none || too == lambda) {
-        cycle = addStar(addStar(fromm) + fromTo + toFrom);
-        target = addStar(fromm) + fromTo;
-      } else {
-        cycle = addStar(addStar(fromm) + fromTo + addStar(too) + toFrom);
-        target = addStar(fromm) + fromTo + addStar(too);
-      }
-      expression = cycle + target;
-    }
+    // The two-state generalized transition graph, where i is the initial state
+    // and j the final one: ii/jj are the self-loops, ij and ji the arcs between.
+    var ii = this.fa.getEdge(from, from).weight();
+    var ij = this.fa.getEdge(from, to).weight();
+    var ji = this.fa.getEdge(to, from).weight();
+    var jj = this.fa.getEdge(to, to).weight();
+    // JFLAP's getFinalExpression: (ii* ij jj* ji)* ii* ij jj*. concatRE/starRE
+    // collapse the empty set and lambda, so the lambda-transitions added by
+    // normalizeToSingleFinal drop out instead of showing up in the result.
+    var loop = concatRE(starRE(ii), concatRE(ij, concatRE(starRE(jj), ji)));
+    var tail = concatRE(starRE(ii), concatRE(ij, starRE(jj)));
+    var expression = concatRE(starRE(loop), tail);
     if (this.visualize == false) {
       $("p").text("Generalized transition graph finished! Expression: " + expression + ". Click Export to open the regular expression in a new window.");
       $("#finalize").hide();
@@ -5270,6 +5238,40 @@ function getRandomInt(max) {
   function exportToRE(expression) {
     localStorage.expression = expression;
     window.open("./REtoFA.html");
+  }
+
+  // True when the whole expression is already a starred unit (e.g. "a*" or
+  // "(ab)*"), so starring it again would add nothing.
+  function isStarredUnit(word) {
+    if (word.length < 2 || word.charAt(word.length - 1) !== "*") return false;
+    var body = word.substring(0, word.length - 1);
+    if (body.length === 1) return true;
+    if (body.charAt(0) !== "(" || body.charAt(body.length - 1) !== ")") return false;
+    var depth = 0;
+    for (var i = 0; i < body.length; i++) {
+      if (body.charAt(i) === "(") depth++;
+      else if (body.charAt(i) === ")") depth--;
+      if (depth === 0 && i < body.length - 1) return false;
+    }
+    return true;
+  }
+
+  // Kleene star, honouring the empty set and lambda (JFLAP's star()).
+  // Starring nothing or the empty string both give the empty string.
+  function starRE(r) {
+    if (r === none || r === lambda) return lambda;
+    if (isStarredUnit(r)) return r;
+    return addStar(r);
+  }
+
+  // Concatenation, honouring the empty set and lambda (JFLAP's concatenate()).
+  // Anything concatenated with the empty set is the empty set, and lambda
+  // simply drops out. Operands that are a top-level "+" get parenthesized.
+  function concatRE(r1, r2) {
+    if (r1 === none || r2 === none) return none;
+    if (r1 === lambda) return r2;
+    if (r2 === lambda) return r1;
+    return normalizeTransitionToRE(r1) + normalizeTransitionToRE(r2);
   }
 
   // add star if needed for transitions

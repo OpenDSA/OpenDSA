@@ -1166,10 +1166,12 @@ var exerciseLocation;
       return;
     }
     var finals = g.getFinals();
-    if (finals.length !== 1) {
-      alert("You must have exactly one final state.");
+    if (finals.length === 0) {
+      alert("You must have at least one final state.");
       return;
     }
+    // More than one final state (or a final state that is also the initial
+    // state) is fine: the converter normalizes to a single final state.
     localStorage.clear();
     localStorage.setItem("toRE", true);
     localStorage.setItem("FAtoREConvert", serialize(g));
