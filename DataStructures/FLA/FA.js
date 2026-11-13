@@ -5028,21 +5028,21 @@ function getRandomInt(max) {
     }
   };
 
-  // change ...<br>... to (...+...)
+  // A pair of states can only have one edge, so addEdge merges several input
+  // symbols into a single "<br>"-separated weight. Read that back as a union
+  // before it is used as a regular expression: "a<br>b" becomes "a+b".
+  // The union is left unparenthesized; concatRE/normalizeTransitionToRE add
+  // parentheses wherever it ends up being concatenated.
+  function weightToRE(weight) {
+    if (!weight) return weight;
+    var symbols = weight.split("<br>").filter(function (s) { return s.length > 0; });
+    if (symbols.length === 0) return weight;
+    if (symbols.length === 1) return symbols[0];
+    return symbols.join("+");
+  }
+
   // add parentheses to the ones with + sign
   function normalizeTransitionToRE(transition, last) {
-    //  var arr = transition.split("<br>");
-    //  if (arr.length == 1) {
-    //  return transition;
-    //  }
-    //  if (arr.length == 0 && last) return re;
-    //  var re = "(" + arr[0];
-    //  for (var i = 1; i < arr.length; i++) {
-    //  re += "+" + arr[i];
-    //  }
-    //  re += ")";
-    //  return re;
-    //}
     if (needParentheses(transition)) {
       return addParentheses(transition);
     }
