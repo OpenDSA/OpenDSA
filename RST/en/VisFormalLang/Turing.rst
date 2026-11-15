@@ -458,7 +458,7 @@ in a legal start configuration.)
 But, we can ask again: Is every Turing-acceptable language Turing
 decidable?
 In other words, whenever the Turing-acceptable machine would hang,
-can we *always* replace it with logic to trigger a non-existant
+can we *always* replace it with logic to trigger a non-existent
 transition instead?
 This is known as the :term:`Halting Problem`.
 
