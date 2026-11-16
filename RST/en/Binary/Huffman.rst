@@ -218,7 +218,7 @@ Finally, ``temp3`` is returned to ``fl``.
 .. [#] ASCII coding actually uses 8 bits per character.
        Seven bits are used to represent the 128 codes of the ASCII
        character set.
-       The eigth bit as a :term:`parity` bit, that can be used to
+       The eighth bit as a :term:`parity` bit, that can be used to
        check if there is a transmission error for the character.
 
 
@@ -369,7 +369,7 @@ corresponding fixed-length coding.
 The problem is that "MUCK" is composed of letters that are not
 expected to occur often.
 If the message does not match the expected frequencies of the letters,
-than the length of the encoding will not be as expected either.
+then the length of the encoding will not be as expected either.
 
 You can use the following visualization to create a huffman tree for
 your own set of letters and frequencies.
