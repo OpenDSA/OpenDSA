@@ -56,8 +56,14 @@
 	margin: 0;
 	pointer-events: none;
 	overflow: hidden;
-	background-color: white;
+	background-color: transparent;
 	border-radius: 50%;
+}
+.jsavHasStateLabel > .jsavvalue {
+	visibility: hidden;
+}
+.jsavHideStateLabels .jsavHasStateLabel > .jsavvalue {
+	visibility: visible;
 }
 .jsavmooreoutput {
 	font-size: 1em;

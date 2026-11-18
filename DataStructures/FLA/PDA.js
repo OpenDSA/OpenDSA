@@ -405,6 +405,39 @@
     }
   };
   
+  // Fast Run rules (see Automaton.createRunSearch). The stack is a string with its top first,
+  // starting as "Z"; a transition read,pop;push matches input and stack prefixes, like JFLAP.
+  // Accepts with all input read in a final state, or with an empty stack (or just Z) when
+  // the editor's empty-stack acceptance box is checked.
+  pda.fastRunRules = function (input) {
+    var emptyStackMode = localStorage['empty'] === "true";
+    return {
+      start: { state: this.initial, pos: 0, stack: "Z" },
+      columns: ["State", "Input left", "Stack"],
+      moves: function (c) {
+        var out = [], edges = c.state.getOutgoing() || [];
+        for (var i = 0; i < edges.length; i++) {
+          var weights = edges[i].weight().split("<br>");
+          for (var j = 0; j < weights.length; j++) {
+            var t = toColonForm(weights[j]).split(":"),
+              read = isEmptyTransitionSymbol(t[0]) ? "" : t[0],
+              pop = isEmptyTransitionSymbol(t[1]) ? "" : t[1],
+              push = isEmptyTransitionSymbol(t[2]) ? "" : (t[2] || "");
+            if (input.substr(c.pos, read.length) !== read || c.stack.substr(0, pop.length) !== pop) { continue; }
+            out.push({ state: edges[i].end(), pos: c.pos + read.length, stack: push + c.stack.substring(pop.length) });
+          }
+        }
+        return out;
+      },
+      accepts: function (c) {
+        if (c.pos !== input.length) { return false; }
+        return emptyStackMode ? (c.stack === "" || c.stack === "Z") : c.state.hasClass("final");
+      },
+      key: function (c) { return c.state.value() + "|" + c.pos + "|" + c.stack; },
+      describe: function (c) { return [c.state.value(), input.substring(c.pos) || lambda, c.stack || lambda]; }
+    };
+  };
+
   /**
    * Saves the PDA as an XML file with formatting.
    */

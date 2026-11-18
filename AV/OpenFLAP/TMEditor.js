@@ -625,6 +625,7 @@ jsav.recorded();
 
 	// Keyboard shortcuts - same keys as the FA and PDA editors. (Escape inside
 	// the transition boxes is handled by the boxes themselves.)
+	GraphEditor.attachFastRun({ buttonSelector: '#fastRunButton', getGraph: function() { return g; } });
 	GraphEditor.registerKeybindings([
 		{ test: function(e) { return e.key === 'Escape'; }, action: cancel },
 		{ test: function(e) { return (e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'z'; },

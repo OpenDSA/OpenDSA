@@ -667,6 +667,7 @@
   }
 
   // Keyboard shortcuts - same keys as the FA editor.
+  GraphEditor.attachFastRun({ buttonSelector: '#fastRunButton', getGraph: function() { return g; } });
   GraphEditor.registerKeybindings([
     { test: function(e) { return e.key === 'Escape'; }, action: cancel },
     { test: function(e) { return (e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'z'; },
