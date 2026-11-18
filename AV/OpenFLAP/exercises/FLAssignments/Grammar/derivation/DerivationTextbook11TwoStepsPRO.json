@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "textbook-5-1-ex11twostepspro",
+  "title": "Textbook Exercise 11: Derive aabb (maximum 2 steps)",
+  "prompt": "Derive aabb using legal productions. Any successful route is accepted. Complete the derivation within the maximum number of steps when one is specified.",
+  "source": "Section 5.1, Context-Free Grammars, Exercise 11 (screenshots supplied by Siqi Rui)",
+  "url": "README.md#textbook-section-51-exercises",
+  "startSymbol": "S",
+  "rules": [
+    [
+      "S",
+      "aaSbb"
+    ],
+    [
+      "S",
+      "SS"
+    ],
+    [
+      "S",
+      "\u03bb"
+    ]
+  ],
+  "target": "aabb",
+  "leftmost": false,
+  "passRate": 1,
+  "grading": "completion",
+  "reference": [
+    {
+      "production": 1,
+      "position": 1
+    },
+    {
+      "production": 3,
+      "position": 3
+    }
+  ],
+  "maxSteps": 2
+}

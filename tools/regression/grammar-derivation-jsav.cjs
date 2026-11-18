@@ -140,7 +140,9 @@ function controls(harness) {
   return {w, doc, $, control, click, exercise, task, reference, total, form, apply, finish, check, clean};
 }
 
-(async function () {
+module.exports = {loadPage, controls};
+
+if (require.main === module) (async function () {
   const harness = await loadPage('DerivationPRO.html');
   try {
     const {w, doc, $, control, click, exercise, apply, finish, check, clean} = controls(harness);

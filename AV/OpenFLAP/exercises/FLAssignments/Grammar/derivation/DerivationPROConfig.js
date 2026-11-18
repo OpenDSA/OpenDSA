@@ -21,7 +21,7 @@
     requireValue(typeof data.passRate === 'number' && Number.isFinite(data.passRate) && data.passRate >= 0 && data.passRate <= 1,
       'passRate must be a number between 0 and 1.');
     const grading = data.grading ?? 'reference';
-    requireValue(['reference', 'possibility'].includes(grading), 'grading must be reference or possibility.');
+    requireValue(['reference', 'possibility', 'completion'].includes(grading), 'grading must be reference, possibility or completion.');
     requireValue(grading !== 'possibility' || data.target.length > 0,
       'possibility grading needs a nonempty target for the 3 × target length depth bound.');
     requireValue(Array.isArray(data.rules) && data.rules.length > 0, 'rules must be a nonempty array.');
@@ -36,8 +36,10 @@
     });
     requireValue(Array.isArray(data.reference) && data.reference.length > 0 && data.reference.length <= 200,
       'reference must list between 1 and 200 production applications.');
+    requireValue(data.maxSteps === undefined || (grading === 'completion' && Number.isInteger(data.maxSteps) && data.maxSteps > 0 && data.maxSteps <= 200),
+      'maxSteps requires completion grading and must be an integer between 1 and 200.');
     const task = {id: data.id, title: data.title, prompt: data.prompt, source: data.source, url: sourceURL.href,
-      rules, target: data.target, leftmost: data.leftmost, passRate: data.passRate, grading};
+      rules, target: data.target, leftmost: data.leftmost, passRate: data.passRate, grading, maxSteps: data.maxSteps};
     const state = window.DerivationExerciseEngine.create(task);
     const steps = data.reference.map((step, i) => {
       requireValue(step && Number.isInteger(step.production) && step.production >= 1 && step.production <= rules.length &&
@@ -48,6 +50,8 @@
       return {rule, at, before, after: state.current()};
     });
     requireValue(state.complete(), 'the reference must finish with exactly the target and no nonterminals.');
+    requireValue(grading !== 'completion' || data.maxSteps === undefined || steps.length <= data.maxSteps,
+      'the model derivation must fit within maxSteps.');
     task.verified_steps = [steps];
     if (grading === 'possibility') {
       task.possibility = window.DerivationPossibility.build(task);

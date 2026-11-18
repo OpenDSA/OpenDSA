@@ -382,3 +382,34 @@ The two supported examples are standalone pages and are not registered in the
 textbook build.
 The possibility search remains internal; only the student's own Parse tree is
 shown. Run the possibility and JSAV regression scripts listed above.
+
+## Completion grading and maximum steps (Exercise 11)
+
+Use `"grading": "completion"` for exercises accepting any legal derivation
+that reaches the terminal target. Optional `"maxSteps": 4` requires completion
+in **at most** four production applications. Omit maxSteps for no exercise step
+limit. It must be an integer from 1 to 200; the existing 200-step/512-symbol
+engine safeguards remain separate display limits. maxSteps is rejected in
+reference/possibility modes to avoid silently ignoring an author setting.
+A verified reference still supplies Model Answer, not the grading route, and
+must fit the configured maximum.
+
+Completion mode awards completion credit only at the target, without per-step
+points, persistent penalties, or possibility-tree lookahead. It shows Steps
+taken rather than a fixed-length progress bar. On the last allowed step,
+reaching the target succeeds; otherwise the attempt fails and Reset is
+required (Undo cannot escape a failed attempt). Before failure, Undo returns
+to the previous derivation and restores that current-path step budget. Merely
+selecting symbols or clicking a nonmatching rule does not consume a step.
+The usual Model Answer practice policy and preview reporting isolation remain.
+
+Exercise 11 now has these review configurations (target aabb is our adaptation):
+- `DerivationTextbook11PRO.html` / `.json`: no exercise step maximum.
+- `DerivationPreview.html?config=DerivationTextbook11TwoStepsPRO.json`: maximum 2.
+- `DerivationPreview.html?config=DerivationTextbook11FourStepsPRO.json`: maximum 4.
+
+Two successful routes are `S ⇒ aaSbb ⇒ aabb` and
+`S ⇒ SS ⇒ aaSbbS ⇒ aabbS ⇒ aabb`. Both pass with no maximum or maximum 4;
+only the first fits maximum 2.
+
+Run `node tools/regression/grammar-derivation-maxsteps.cjs` for completion-mode checks (same D3/jsdom setup as above).
