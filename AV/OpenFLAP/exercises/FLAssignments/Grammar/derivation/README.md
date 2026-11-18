@@ -382,3 +382,14 @@ The two supported examples are standalone pages and are not registered in the
 textbook build.
 The possibility search remains internal; only the student's own Parse tree is
 shown. Run the possibility and JSAV regression scripts listed above.
+
+## Score reporting contract
+
+The derivation UI keeps earned points in `exercise.score.correct` and completed
+penalized slots in `undo`. At the JSAV event boundary a fresh score copy converts
+`correct` to earned + undo. Shared odsaAV/odsaMOD then subtract undo exactly once
+for the reported score and use completed steps for completion. Never mutate the
+UI score during transport conversion. A three-step completed derivation with
+one lost point must display 2/3, report 0.67 and report completion 1.
+The module updates proficiency on both passing and failing completed attempts,
+so an old check mark cannot survive a newer failed attempt.

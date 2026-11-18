@@ -174,15 +174,16 @@ function controls(harness) {
     finish(); check('aaabbb', 2, 3, 1);
     assert.equal(exercise.score.undo, 1);
     assert.equal(harness.reports.at(-1).state.complete, 1);
-    assert.equal(harness.reports.at(-1).state.score.correct, 2);
+    assert.equal(harness.reports.at(-1).score, 0.67, 'Exactly one penalty must be reflected in transport');
+    assert.equal(harness.reports.at(-1).state.score.correct, 3);
     assert.match($('result').textContent, /66.7%.*Not passed/);
     assert.equal(doc.querySelector('.jsavamidone').textContent, 'DONE');
-    assert.equal(doc.getElementById('prof_check_mark').style.display, 'none');
+    assert.equal((doc.getElementById('prof_check_mark')?.style.display ?? 'none'), 'none');
     assert($('rule-0').disabled, 'A completed low-score attempt is still complete');
     click('grade'); check('aaabbb', 2, 3, 1);
     assert.match($('status').textContent, /Your score: 2 \/ 3/);
     assert.equal(harness.reports.at(-1).score, 0.67);
-    assert.equal(doc.getElementById('prof_check_mark').style.display, 'none');
+    assert.equal((doc.getElementById('prof_check_mark')?.style.display ?? 'none'), 'none');
 
     // User Undo changes progress but cannot erase a lost point at an earlier step.
     click('undo'); check('aaSbb', 1, 2, 1);
@@ -198,7 +199,8 @@ function controls(harness) {
     apply(1, 1); check('aSb', 1, 1, 1);
     finish(1); check('aaabbb', 2, 3, 1);
     const finalEvent = harness.events.at(-1).score;
-    assert.deepEqual(finalEvent, {total: 3, correct: 2, undo: 1, fix: 0, student: 3});
+    assert.deepEqual(finalEvent, {total: 3, correct: 3, undo: 1, fix: 0, student: 3, grammarDerivation: true});
+    assert.equal(exercise.score.correct, 2, "Transport conversion must not mutate earned UI points");
     assert.equal(harness.reports.at(-1).score, 0.67);
 
     // Undo to before the penalized step and replay it: eligibility is still lost.
@@ -247,9 +249,9 @@ function controls(harness) {
       apply(0, 0); apply(1, 1); finish(1); check('aaabbb', 2, 3, 1);
       const passes = threshold <= 2 / 3;
       assert.match($('result').textContent, passes ? /Passed/ : /Not passed/);
-      assert.equal(doc.getElementById('prof_check_mark').style.display === 'none', !passes);
+      assert.equal((doc.getElementById('prof_check_mark')?.style.display ?? 'none') === 'none', !passes);
       click('grade');
-      assert.equal(doc.getElementById('prof_check_mark').style.display === 'none', !passes);
+      assert.equal((doc.getElementById('prof_check_mark')?.style.display ?? 'none') === 'none', !passes);
       assert.equal(harness.reports.at(-1).score, 0.67, "Course transport uses OpenDSA's rounded score without changing earned points");
       click('reset'); check('S', 0, 0);
       assert.equal($('result').textContent, '');
@@ -278,7 +280,7 @@ function controls(harness) {
       }
       check(task.target, total - 1, total, 1);
       assert.match($('result').textContent, passes ? /Passed/ : /Not passed/);
-      assert.equal(doc.getElementById('prof_check_mark').style.display === 'none', !passes);
+      assert.equal((doc.getElementById('prof_check_mark')?.style.display ?? 'none') === 'none', !passes);
       clean();
     } finally { harness.dom.window.close(); }
   }
@@ -544,21 +546,25 @@ function controls(harness) {
     const child = doc.getElementById('ThresholdPRO_iframe').contentWindow;
     const feedback = [];
     child.postMessage = data => feedback.push(JSON.parse(data));
-    function report(correct, undo, total = 3) {
+    function report(correct, undo, total = 3, grammarDerivation = true) {
       w.dispatchEvent(new w.MessageEvent('message', {origin: 'http://localhost', source: child,
-        data: {subject: 'SPLICE.reportScoreAndState', score: correct / total,
+        data: {subject: 'SPLICE.reportScoreAndState', score: (correct - undo) / total,
           state: {ThresholdPRO: {av: 'ThresholdPRO', type: 'jsav-exercise-grade-change',
-            score: {correct, undo, fix: 0, total}, uiid: 1, totalTime: 1}}}}));
+            score: {correct, undo, fix: 0, total, grammarDerivation}, uiid: 1, totalTime: 1}}}}));
     }
-    report(2, 1);
+    report(3, 1);
     assert.equal(feedback.at(-1).proficient, false, 'A completed 2/3 attempt must not pass a 100% threshold');
     assert.equal(doc.getElementById('ThresholdPRO_check_mark').style.display, 'none');
     report(3, 0);
     assert.equal(feedback.at(-1).proficient, true);
     assert.notEqual(doc.getElementById('ThresholdPRO_check_mark').style.display, 'none');
-    report(2, 1);
+    report(3, 1);
     assert.equal(feedback.at(-1).proficient, false);
     assert.equal(doc.getElementById('ThresholdPRO_check_mark').style.display, 'none');
+    report(3, 0);
+    report(3, 1, 3, false);
+    assert.notEqual(doc.getElementById('ThresholdPRO_check_mark').style.display, 'none',
+      'Other exercise types retain their existing historical proficiency behavior');
     assert.deepEqual(moduleErrors, []);
   } finally { moduleDOM.window.close(); }
   process.stdout.write('PASS: real odsaMOD SPLICE completion handling respects the PE passing threshold and clears a stale proficiency mark.\n');
