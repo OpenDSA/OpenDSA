@@ -4,6 +4,8 @@
   function GrammarDerivationExercise(container, task, solution, options) {
     const root = $(container), node = id => root.find('#' + id)[0];
     const reference = task.verified_steps[solution || 0];
+    const completionGrading = task.grading === 'completion';
+    let limitFailed = false;
     const preview = !!(options && options.preview);
     // Textbook embeds supply threshold through the standard OpenDSA parameter.
     const configuredRate = ODSA.UTILS.params.threshold ?? task.passRate;
@@ -37,8 +39,9 @@
     }
     // Determine the minimum whole points using the same comparison as grading,
     // including thresholds that fall exactly on a fraction such as 2/3.
+    const scoreTotal = completionGrading ? 1 : reference.length;
     let requiredPoints = 0;
-    while (requiredPoints / reference.length < passRate) requiredPoints++;
+    while (requiredPoints / scoreTotal < passRate) requiredPoints++;
     let formState, traceState, selected = null, exercise, creditAllowed = true;
     const av = new JSAV(root, {lang: 'en', logEvent: function (event) {
       // A generic author preview may load any JSON file. It must never report
@@ -132,7 +135,7 @@
       return selected ? formState.value().slice(selected[0], selected[1] + 1) : '';
     }
     function passed() {
-      return student().complete() && exercise.score.correct >= requiredPoints;
+      return !limitFailed && student().complete() && exercise.score.correct >= requiredPoints;
     }
     function percent(value) { return Number((value * 100).toFixed(1)) + '%'; }
     function penalize(step, message) {
@@ -146,6 +149,7 @@
       node('current-form').focus({preventScroll: true});
     }
     function apply(rule) {
+      if (limitFailed) { render('Step limit reached. Select Reset to start a new attempt.', true); return; }
       if (!selected || selectedText() !== task.rules[rule][0]) {
         render('Select a substring that matches the left side of the production.', true);
         return;
@@ -155,6 +159,7 @@
       // A matching production submitted in the wrong derivation order is a
       // mistake too; merely clicking a symbol or an unmatched rule is not.
       if (!result.ok) {
+        if (completionGrading) { render(result.message, true); return; }
         if (possibility && result.message.includes('too long')) {
           render('A search/display limit was reached. The step was not applied or graded, and no point was lost.');
         } else penalize(step, result.message);
@@ -177,6 +182,11 @@
       selected = null;
       // One production application is one JSAV gradeable step.
       exercise.gradeableStep();
+      if (completionGrading) {
+        limitFailed = task.maxSteps !== undefined && state.history().length >= task.maxSteps && !state.complete();
+        refresh(true, limitFailed ? 'Step limit reached without reaching the target. Select Reset to start a new attempt.' : '', limitFailed);
+        return;
+      }
       const score = exercise.grade();
       if (score.correct + score.undo < score.student) {
         // Check the recorded state with JSAV, then discard the wrong step
@@ -199,7 +209,7 @@
         button.classList.toggle('selected', chosen);
         button.setAttribute('aria-pressed', String(chosen));
         button.setAttribute('aria-label', symbol + ', symbol ' + (at + 1));
-        button.disabled = state.complete();
+        button.disabled = state.complete() || limitFailed;
         button.addEventListener('click', () => select(at));
         formNode.append(button);
       });
@@ -221,8 +231,8 @@
         body.append(row);
       });
       renderTree(steps);
-      root.find('input[name="undo"]').prop('disabled', !steps.length);
-      root.find('#rules button').prop('disabled', state.complete());
+      root.find('input[name="undo"]').prop('disabled', !steps.length || limitFailed);
+      root.find('#rules button').prop('disabled', state.complete() || limitFailed);
       const score = exercise.score;
       root.find('.jsavcurrentscore').text(score.correct);
       root.find('.jsavmaxscore').text(score.total);
@@ -241,6 +251,18 @@
       node('result').className = done ? (passed() && creditAllowed ? 'success' : 'error') : '';
       node('status').textContent = message || (done ? '' :
         'Complete the next derivation step. An incorrect step is automatically undone and loses that step\'s point.');
+      if (completionGrading) {
+        root.find('.jsavscore').parent().prop('hidden', true);
+        node('progress').hidden = true;
+        node('attempt-summary').textContent = 'Steps taken: ' + steps.length +
+          (task.maxSteps === undefined ? '. No exercise step limit.' : ' / ' + task.maxSteps + ' maximum.') +
+          ' Reach the target to complete this exercise.';
+        node('result').textContent = limitFailed ? 'Not completed: step limit reached. Select Reset to start again.' :
+          done ? (creditAllowed ? 'Target reached. Exercise completed.' : 'Target reached. Practice only; select Reset for a scored attempt.') : '';
+        node('result').className = limitFailed ? 'error' : done ? 'success' : '';
+        node('status').textContent = message || (limitFailed ? 'Select Reset to start again.' : done ? '' :
+          'Select a matching production. Credit is awarded when the target is reached.');
+      }
       node('status').className = error ? 'error' : '';
       ODSA.AV.sendResizeMsg();
     }
@@ -256,6 +278,8 @@
     node('source').textContent = task.source;
     document.getElementById('examples-link').href = 'DerivationExercises.html' + (preview ? '' : '#' + task.id);
     node('preview-note').hidden = !preview;
+    if (completionGrading) root.children('p.view-note').last().text(
+      'Reach the target using legal productions. There are no per-step points or penalties. If a maximum is configured, reaching the target on the final allowed step succeeds; otherwise Reset is required. Model Answer makes this attempt practice only until Reset.');
     document.querySelectorAll('.scored-links a').forEach(link => {
       if (link.dataset.exercise === task.id) link.setAttribute('aria-current', 'page');
     });
@@ -278,7 +302,7 @@
       modelButtonTitle: 'Model Answer', gradeButtonTitle: 'Grade',
       showGrade: function () {
         this.grade();
-        render('Your score: ' + this.score.correct + ' / ' + this.score.total +
+        render(completionGrading ? (limitFailed ? 'Step limit reached. Select Reset to start again.' : student().complete() ? 'Target reached.' : 'The target has not been reached yet.') : 'Your score: ' + this.score.correct + ' / ' + this.score.total +
           (creditAllowed ? '.' : '. Practice only; select Reset to begin a new scored attempt.'));
       }
     });
@@ -286,6 +310,10 @@
     const grade = exercise.grade.bind(exercise);
     exercise.grade = function () {
       let score;
+      if (completionGrading) {
+        const done = student().complete() && !limitFailed;
+        return Object.assign(exercise.score, {total: 1, correct: done ? 1 : 0, student: done || limitFailed ? 1 : 0, undo: limitFailed ? 1 : 0, fix: 0});
+      }
       if (possibility) {
         const steps = trace();
         let completed = 0;
@@ -306,6 +334,7 @@
     };
     exercise.reset = function () {
       creditAllowed = true;
+      limitFailed = false;
       lostSteps.clear();
       node('credit-note').hidden = true;
       reset();
@@ -313,7 +342,7 @@
       refresh(false);
     };
     exercise.undo = function () {
-      if (!trace().length) return;
+      if (limitFailed || !trace().length) return;
       undo(); selected = null; refresh(true);
     };
     exercise.reset();
