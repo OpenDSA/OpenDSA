@@ -3172,25 +3172,27 @@ var lambda = String.fromCharCode(955),
   }
 
 
-  // function to toggle the intitial state of a node
+  // function to toggle the initial state of a node
   // appears as a button in the right click menu
+  // Like JFLAP, making a state initial moves the initial marker off the old initial state.
   var toggleInitial = function (g, node) {
     $("#rmenu").hide();
     node.unhighlight();
+    g.saveFAState();
     if (node.equals(g.initial)) {
       g.removeInitial(node);
     } else {
       if (g.initial) {
-        alert("There can only be one intial state!");
-      } else {
-        g.makeInitial(node);
+        g.removeInitial(g.initial);
       }
+      g.makeInitial(node);
     }
   };
 
   // function to toggle the final state of a node
   // appears as a button in the right click menu
   var toggleFinal = function (g, node) {
+    g.saveFAState();
     if (node.hasClass("final")) {
       node.removeClass("final");
     } else {
