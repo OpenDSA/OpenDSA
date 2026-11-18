@@ -23,6 +23,7 @@ window.DerivationPROLayout = `
       <a href="DerivationMultiplePRO.html" data-exercise="rodger-g2-multiple-variables">5. G2: Multiple variables</a>
       <a href="DerivationTextbook22PRO.html" data-exercise="textbook-5-1-ex22">6. Textbook Exercise 22</a>
       <a href="DerivationTextbook10PRO.html" data-exercise="textbook-5-1-ex10">7. Textbook Exercise 10</a>
+      <a href="DerivationTextbook11PRO.html" data-exercise="textbook-5-1-ex11pro">8. Textbook Exercise 11</a>
     </nav>
     <div id="derivation-pro" class="avcontainer">
       <h2 id="exercise-title"></h2>
