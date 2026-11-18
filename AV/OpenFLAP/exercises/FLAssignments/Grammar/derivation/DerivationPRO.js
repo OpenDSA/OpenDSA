@@ -61,6 +61,17 @@
       }
       if (event.type === 'jsav-exercise-reset') creditAllowed = true;
       if (!creditAllowed && ['jsav-exercise-grade', 'jsav-exercise-grade-change'].includes(event.type)) return;
+      // Internally correct is earned credit. Shared JSAV reporting expects
+      // correct to include completed-but-penalized steps and subtracts undo.
+      // Adapt a copy exactly once at the reporting boundary; never mutate
+      // exercise.score or reuse an already adapted native event score.
+      if (exercise && ['jsav-exercise-grade', 'jsav-exercise-grade-change', 'jsav-exercise-step-fixed'].includes(event.type)) {
+        const earned = exercise.grade();
+        event = $.extend({}, event, {score: $.extend({}, earned, {
+          correct: earned.correct + (earned.undo || 0),
+          grammarDerivation: true
+        })});
+      }
       $('body').trigger('jsav-log-event', [event]);
       // odsaAV shows its local check mark for completion, including a failed
       // attempt. Keep the mark consistent with this exercise's passing rate.
@@ -238,6 +249,15 @@
       root.find('.jsavmaxscore').text(score.total);
       const done = state.complete();
       if (!passed() || !creditAllowed) $('#prof_check_mark, #check_mark').hide();
+      else {
+        // Standalone JSON thresholds may differ from the shared widget's
+        // default threshold. Reflect this exercise's actual passing decision.
+        if (!$('#prof_check_mark, #check_mark').length) {
+          root.append($('<span>', {id: 'prof_check_mark', role: 'img', 'aria-label': 'Passed', text: '✓'}));
+        }
+        $('#prof_check_mark, #check_mark').show();
+      }
+
       root.find('.jsavamidone').text(done ? 'DONE' : 'In progress');
       node('progress').max = score.total;
       node('progress').value = steps.length;
@@ -327,7 +347,7 @@
       score.undo = [...lostSteps].filter(step => step < completed).length;
       score.fix = 0;
       score.correct = completed - score.undo;
-      // OpenDSA computes completion from (correct + undo + fix) / total.
+      // The internal completed count is correct + undo + fix; reporting adapts this to JSAV semantics.
       // Count lost steps only after they are successfully completed, so a
       // failed attempt cannot report completion before reaching the target.
       return score;
