@@ -2293,12 +2293,14 @@ var lambda = String.fromCharCode(955),
       if (this._stateLabel) {
         this._stateLabel.element.remove();
         this._stateLabel = undefined;
+        this.element.removeClass("jsavHasStateLabel");
         this._fitNodeToLabel(options);
       }
     } else {
       if (!this._stateLabel) {
         this._stateLabel = this.jsav.label(newLabel, { container: this.container.element });
         this._stateLabel.element.addClass("jsavstatelabel");
+        this.element.addClass("jsavHasStateLabel");
       } else {
         this._stateLabel.text(newLabel, options);
       }

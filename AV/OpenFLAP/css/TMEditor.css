@@ -67,8 +67,14 @@
 	margin: 0;
 	pointer-events: none;
 	overflow: hidden;
-	background-color: white;
+	background-color: transparent;
 	border-radius: 50%;
+}
+.jsavHasStateLabel > .jsavvalue {
+	visibility: hidden;
+}
+.jsavHideStateLabels .jsavHasStateLabel > .jsavvalue {
+	visibility: visible;
 }
 /* The label text inside a state - same as FA.css's .label_css, and without
    the border FLA.css gives .label_css elsewhere. */
