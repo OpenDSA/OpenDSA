@@ -79,20 +79,23 @@ controllerProto.startTesting = function () {
 	var exercise = this.tests[this.currentExercise];
 	var type = exercise["type"];
 	var numberOfTestCases = this.testCases.length;
-	if (type == "description" || type == "both") {
-		var t = $("#description").text();
-		if (t.indexOf("DFA") > 0 && t.indexOf("NFA") < 0) {
-			numberOfTestCases++;
-			var isDFA = !this.testND();
-			if (isDFA) {
-				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='correct'>" + "Yes" + "</td></tr>");
-				count++;
-				testRes.push('Test' + testNum + ':' + 'Correct');
-			} else {
-				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='wrong'>" + "No" + "</td></tr>");
-				testRes.push('Test' + testNum + ':' + 'Wrong');
-				return { score: 0, solution: saveFunc(this.fa) }
-			}
+	// Every exercise whose JSON says "exerciseType": "DFA" is checked. The description-text test is kept for older JSON without it.
+	var t = $("#description").text();
+	var isDFAExercise = exercise["exerciseType"] == "DFA" ||
+		((type == "description" || type == "both") && t.indexOf("DFA") > 0 && t.indexOf("NFA") < 0);
+	if (isDFAExercise) {
+		numberOfTestCases++;
+		var isDFA = !this.testND();
+		if (isDFA) {
+			$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='correct'>" + "Yes" + "</td></tr>");
+			count++;
+			testRes.push('DFA check:Correct');
+		} else {
+			$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='wrong'>" + "No" + "</td></tr>");
+			testRes.push('DFA check:Wrong');
+			$("#percentage").text("Your answer must be a DFA, not an NFA.").show();
+			$("#testResults").show();
+			return { score: 0, solution: saveFunc(this.fa) }
 		}
 	}
 
