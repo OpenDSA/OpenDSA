@@ -30,11 +30,11 @@ var FAGrader = (function ($) {
 
   // A separate JSAV instance, so hidden graphs never touch the exercise's own animation.
   // className lets grade() remove the student's temporary graphs while keeping the cached answer key.
+  // Don't call jsav.recorded() here: that turns animation on, and then addClass("final") only lands
+  // after the animation delay, so the grader would read the machine before its final states exist.
   function newHiddenJsav(className) {
     var $el = $("<div>").addClass(className || "").appendTo(scratchArea());
-    var jsav = new JSAV($el);
-    jsav.recorded();
-    return jsav;
+    return new JSAV($el);
   }
 
   // Returns a DFA for the same language: the machine itself if it is already a DFA.
