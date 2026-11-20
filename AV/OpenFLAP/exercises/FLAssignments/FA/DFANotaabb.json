@@ -1,12 +1,8 @@
 [
   {
-    "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM",
     "exerciseType": "DFA",
-    "totalTrueCases": 6,
-    "totalFalseCases": 4,
     "containLetters": ["a", "b"],
     "tools": ["edit", "addState", "addTransition", "delete", "undo", "redo", "addTrapState", "highlightIncomplete", "highlightND"],
-    "randomStringLength": [0, 15],
     "description": "Construct the DFA that accepts the complement of L($((aa)^+bb)^*$)",
     "testCases": [
       {

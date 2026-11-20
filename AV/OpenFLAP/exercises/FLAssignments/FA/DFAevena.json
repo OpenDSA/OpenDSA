@@ -1,14 +1,8 @@
 [{
-  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM",
   "exerciseType": "DFA",
-  "totalTrueCases": 5,
-  "totalFalseCases": 5,
   "containLetters": ["a"],
   "tools": ["edit", "addState", "addTransition", "delete", "undo", "redo"],
-  "randomStringLength": [0, 15],
-  "expression": "",
   "description": "Give a DFA that accepts the language over $\\Sigma = \\{a\\}$ of an even number of a’s.",
-  "type": "description",
   "testCases": [
     {
       "a": false,
