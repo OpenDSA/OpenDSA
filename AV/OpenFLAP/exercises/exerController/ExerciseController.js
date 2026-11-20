@@ -34,9 +34,10 @@ controllerProto.load = function () {
 		}
 	});
 	this.tests = tests;
-	// 	if (this.tests[0].exerciseType != "TM") {
-	generateTestCase(tests, 0);
-	// 	}
+	// FA exercises are graded against their answer key (FAGrader), so they need no random hidden tests.
+	if (!usesFAGrader(tests[0])) {
+		generateTestCase(tests, 0);
+	}
 
 	var proto = this;
 	$('#testSolution').click(function () {
@@ -73,26 +74,32 @@ controllerProto.startTesting = function () {
 	}
 	$("#testResults").empty();
 	$("#testResults").append("<tr><td>Test Case</td><td>Standard Result</td><td>Your Result</td></tr>");
+	var exercise = this.tests[this.currentExercise];
+	if (usesFAGrader(exercise)) {
+		return this.gradeByEquivalence(exercise, saveFunc);
+	}
 	var count = 0;
 	var testRes = [];
 	//For DFA exercises, we need to check if the machine is a DFA not an NFA.
-	var exercise = this.tests[this.currentExercise];
 	var type = exercise["type"];
 	var numberOfTestCases = this.testCases.length;
-	if (type == "description" || type == "both") {
-		var t = $("#description").text();
-		if (t.indexOf("DFA") > 0 && t.indexOf("NFA") < 0) {
-			numberOfTestCases++;
-			var isDFA = !this.testND();
-			if (isDFA) {
-				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='correct'>" + "Yes" + "</td></tr>");
-				count++;
-				testRes.push('Test' + testNum + ':' + 'Correct');
-			} else {
-				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='wrong'>" + "No" + "</td></tr>");
-				testRes.push('Test' + testNum + ':' + 'Wrong');
-				return { score: 0, solution: saveFunc(this.fa) }
-			}
+	// Every exercise whose JSON says "exerciseType": "DFA" is checked. The description-text test is kept for older JSON without it.
+	var t = $("#description").text();
+	var isDFAExercise = exercise["exerciseType"] == "DFA" ||
+		((type == "description" || type == "both") && t.indexOf("DFA") > 0 && t.indexOf("NFA") < 0);
+	if (isDFAExercise) {
+		numberOfTestCases++;
+		var isDFA = !this.testND();
+		if (isDFA) {
+			$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='correct'>" + "Yes" + "</td></tr>");
+			count++;
+			testRes.push('DFA check:Correct');
+		} else {
+			$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='wrong'>" + "No" + "</td></tr>");
+			testRes.push('DFA check:Wrong');
+			$("#percentage").text("Your answer must be a DFA, not an NFA.").show();
+			$("#testResults").show();
+			return { score: 0, solution: saveFunc(this.fa) }
 		}
 	}
 
@@ -190,6 +197,72 @@ controllerProto.startTesting = function () {
 	if (count === 0)
 		return { score: 0, solution: saveFunc(this.fa) }
 	return { score: count / numberOfTestCases, solution: saveFunc(this.fa) };
+};
+
+// True for DFA and NFA exercises on pages that load FAGrader.js. Those are graded by equivalence
+// with their answer key; everything else (PDA, TM, pages without the grader) keeps the test-case path.
+function usesFAGrader(exercise) {
+	return typeof FAGrader !== "undefined" && !!exercise &&
+		(exercise.exerciseType === "DFA" || exercise.exerciseType === "NFA");
+}
+
+// Grades a DFA/NFA exercise with FAGrader. The visible test cases are still run and shown as examples,
+// but the score comes only from whether the machine accepts exactly the answer key's language.
+controllerProto.gradeByEquivalence = function (exercise, saveFunc) {
+	var fa = this.fa;
+	var result = FAGrader.grade(fa, exercise);
+	var $table = $("#testResults");
+	var showString = function (s) { return s === "" ? lambda : s; };
+	var addRow = function (label, expected, actual, ok) {
+		$("<tr>")
+			.append($("<td>").text(label), $("<td>").text(expected), $("<td>").addClass(ok ? "correct" : "wrong").text(actual))
+			.appendTo($table);
+	};
+
+	if (exercise.exerciseType === "DFA") {
+		addRow("The answer is a DFA", "Yes", result.notDFA ? "No" : "Yes", !result.notDFA);
+	}
+	if (!result.error && !result.notDFA) {
+		(exercise.testCases || []).forEach(function (testCase) {
+			if (testCase.ShowTestCase !== true) {
+				return;
+			}
+			var input = Object.keys(testCase).filter(function (k) { return k !== "ShowTestCase"; })[0];
+			var accepts = !FiniteAutomaton.willReject(fa, input);
+			addRow(showString(input), testCase[input] ? "Accept" : "Reject", accepts ? "Accept" : "Reject", accepts === testCase[input]);
+		});
+	}
+
+	var message;
+	if (result.error) {
+		message = "This answer could not be graded. " + result.error;
+	} else if (result.notDFA) {
+		message = "Your answer must be a DFA, not an NFA.";
+	} else if (result.correct) {
+		message = "Correct: your machine accepts exactly the strings in the language.";
+	} else {
+		var ce = result.counterexample;
+		message = ce.studentAccepts ?
+			"Not yet: your machine accepts " + showString(ce.input) + ", but it should reject it." :
+			"Not yet: your machine rejects " + showString(ce.input) + ", but it should accept it.";
+	}
+
+	var score = FAGrader.scoreFor(result);
+	var exer = {};
+	exer['Attempt' + tryC.toString()] = [result.error ? 'Equivalence:Error' : (result.correct ? 'Equivalence:Correct' : 'Equivalence:Wrong')];
+	exer['studentSolution'] = serialize(fa);
+	var exNum = parseInt(this.currentExercise) + 1;
+	if (score > logRecord['Exercise' + exNum + '_Highest']) {
+		logRecord['Exercise' + exNum + '_Highest'] = score;
+	}
+	logRecord['Exercise' + exNum].push(exer);
+	logRecord['Exercise' + exNum + '_Time'].push(new Date());
+
+	$("#percentage").text(message).show();
+	$table.show();
+	window.scrollTo(0, document.body.scrollHeight);
+	$('#container').scrollTop($('#container').prop("scrollHeight"));
+	return { score: score, solution: saveFunc(fa) };
 };
 
 // binded with question links at the top of the page

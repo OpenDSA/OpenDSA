@@ -1,11 +1,7 @@
 [{
-  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM",
   "exerciseType": "NFA",
-  "totalTrueCases": 5,
-  "totalFalseCases": 5,
   "containLetters": ["a", "b"],
   "tools": ["edit", "addState", "addTransition", "delete", "undo", "redo"],
-  "randomStringLength": [0, 15],
   "description": "Construct an NFA that accepts L($((ab)^*ba) + (b^*(ab)^+)$)",
   "testCases": [
     {
@@ -53,5 +49,5 @@
     "nodes": [],
     "edges": []
   },
-  "solution": ""
+  "solution": "../../../machines/FA/NFAex2.jff"
 }]

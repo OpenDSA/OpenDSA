@@ -45,7 +45,7 @@ DFA exercises
 
 |
 
-HINT: If DFA :math:`M` accepts language :math:`L`, the we can create a
+HINT: If DFA :math:`M` accepts language :math:`L`, then we can create a
 machine to accept the complement of :math:`L` by reversing the final
 and non-final states of :math:`M`.
 However, that only works on a complete DFA, meaning that we have to

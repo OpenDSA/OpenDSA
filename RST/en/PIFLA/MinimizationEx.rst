@@ -21,11 +21,11 @@ DFA Minimization Exercises
 --------------------------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAMinEx3.html pe
-   :long_name: DFA minimization exercise
+   :long_name: DFA minimization exercise 1
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAMinEx4.html pe
-   :long_name: DFA minimization exercise
+   :long_name: DFA minimization exercise 2
 
 

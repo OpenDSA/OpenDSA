@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing FA Exercises</title>
+<style>
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    max-width: 52em;
+    margin: 0 auto;
+    padding: 1.5em 1em 4em;
+    line-height: 1.5;
+    color: #222;
+    background: #fff;
+  }
+  h1 { font-size: 1.9em; margin-bottom: 0.2em; }
+  h2 { margin-top: 2em; border-bottom: 1px solid #ccc; padding-bottom: 0.2em; }
+  h3 { margin-top: 1.5em; }
+  .subtitle { color: #555; margin-top: 0; }
+  code, pre { font-family: Menlo, Consolas, "Courier New", monospace; font-size: 0.9em; }
+  code { background: #f3f3f3; padding: 0 0.25em; border-radius: 3px; }
+  pre {
+    background: #f6f6f6;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.8em 1em;
+    overflow-x: auto;
+    line-height: 1.35;
+  }
+  pre code { background: none; padding: 0; }
+  table { border-collapse: collapse; margin: 0.8em 0 1.2em; width: 100%; }
+  th, td { border: 1px solid #ccc; padding: 0.35em 0.6em; text-align: left; vertical-align: top; }
+  th { background: #eee; }
+  .note {
+    background: #fff8e1;
+    border-left: 4px solid #e0a800;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+  }
+  .toc { background: #f6f6f6; border: 1px solid #ddd; padding: 0.5em 1.5em; }
+  .toc ol { margin: 0.4em 0; }
+  .meta { color: #666; font-size: 0.9em; }
+</style>
+</head>
+<body>
+
+<h1>Writing FA Exercises</h1>
+<p class="subtitle">How to add a DFA or NFA construction exercise to OpenFLAP: the files involved, the exercise JSON, and the answer key.</p>
+<p class="meta">Covers exercises graded by <code>AV/OpenFLAP/exercises/exerController/FAGrader.js</code>. PDA, TM, grammar, minimization and NFA-to-DFA exercises work differently and are not covered here.</p>
+
+<div class="toc">
+<strong>Contents</strong>
+<ol>
+  <li><a href="#overview">How FA exercises are graded</a></li>
+  <li><a href="#files">The files for one exercise</a></li>
+  <li><a href="#json">The exercise JSON</a></li>
+  <li><a href="#key">The answer key (<code>.jff</code>)</a></li>
+  <li><a href="#page">The exercise page</a></li>
+  <li><a href="#book">Adding it to a book</a></li>
+  <li><a href="#checklist">Checklist</a></li>
+</ol>
+</div>
+
+<h2 id="overview">1. How FA exercises are graded</h2>
+<p>The student builds a machine in the exercise editor and submits it. The grader compares it with the exercise's <strong>answer key</strong>, a <code>.jff</code> file:</p>
+<ul>
+  <li>The answer is <strong>correct</strong> when the student's machine accepts exactly the same strings as the answer key. It does not need to look like the key: any number of states, any layout, DFA or NFA (unless the exercise asks for a DFA).</li>
+  <li>When it is wrong, the student is told the shortest string the two machines disagree on, e.g. <em>"Not yet: your machine accepts bbbb, but it should reject it."</em></li>
+  <li>On a <code>"DFA"</code> exercise, an answer with a &lambda;-transition or two transitions on the same symbol from one state is rejected with <em>"Your answer must be a DFA, not an NFA."</em></li>
+  <li>The score is 1 for a correct answer and 0 otherwise.</li>
+</ul>
+<p>The exercise's test cases are shown to the student as examples, with their machine's result for each, but they do <strong>not</strong> affect the score. A machine can pass every example and still be wrong.</p>
+
+<div class="note">The answer key is the only definition of the right answer. If the key is wrong, every student is graded against the wrong language, so check it (section 4) before the exercise goes into a book.</div>
+
+<h2 id="files">2. The files for one exercise</h2>
+<p>Using <code>DFAodda</code> ("strings with an odd number of a's") as the example:</p>
+<table>
+  <tr><th>File</th><th>Purpose</th></tr>
+  <tr><td><code>AV/OpenFLAP/exercises/FLAssignments/FA/DFAodda.json</code></td><td>The question, examples, toolbar and the path to the answer key (section 3).</td></tr>
+  <tr><td><code>AV/OpenFLAP/machines/FA/DFAodda.jff</code></td><td>The answer key (section 4).</td></tr>
+  <tr><td><code>AV/OpenFLAP/exercises/FLAssignments/FA/DFAodda.html</code></td><td>A short page that points at the JSON and loads the shared <code>FAExTemplate.html</code> (section 5).</td></tr>
+  <tr><td><code>RST/en/&lt;book&gt;/&lt;module&gt;.rst</code> and <code>config/&lt;book&gt;.json</code></td><td>Where the exercise appears in a book, and how many points it is worth (section 6).</td></tr>
+</table>
+
+<h2 id="json">3. The exercise JSON</h2>
+<p>The file holds an array with one exercise object. A shortened version of <code>DFAodda.json</code>:</p>
+<pre><code>[{
+  "exerciseType": "DFA",
+  "containLetters": ["a", "b"],
+  "tools": ["edit", "addState", "addTransition", "delete", "undo", "redo"],
+  "description": "Give a DFA that accepts the language over $\\Sigma = \\{a, b\\}$ of strings with an odd number of a's.",
+  "testCases": [
+    { "a": true, "ShowTestCase": true },
+    { "aa": false, "ShowTestCase": true },
+    { "": false, "ShowTestCase": true }
+  ],
+  "graph": { "nodes": [], "edges": [] },
+  "solution": "../../../machines/FA/DFAodda.jff"
+}]</code></pre>
+
+<table>
+  <tr><th>Field</th><th>Meaning</th></tr>
+  <tr><td><code>exerciseType</code></td><td><code>"DFA"</code> or <code>"NFA"</code>. This is what sends the exercise to the FA grader. <code>"DFA"</code> also rejects nondeterministic answers; use <code>"NFA"</code> when any machine for the language is acceptable.</td></tr>
+  <tr><td><code>description</code></td><td>The question shown to the student. Text between a pair of <code>$</code> signs is LaTeX, rendered as an image. Backslashes must be doubled inside JSON strings (<code>\\Sigma</code>, <code>\\{</code>); a single <code>\b</code>, <code>\n</code> or <code>\t</code> is a JSON escape for a control character, not LaTeX.</td></tr>
+  <tr><td><code>containLetters</code></td><td>The input alphabet. The trap-state tools use it to decide which transitions are missing, so it must list every symbol of the language, including ones a correct machine might only use to reach a trap state.</td></tr>
+  <tr><td><code>tools</code></td><td>The toolbar buttons, in order. An exercise gets exactly these, and none if the field is missing. A book can override the list with a <code>tools</code> URL parameter, e.g. <code>?tools=edit,addState,addTransition</code>. Names are listed below.</td></tr>
+  <tr><td><code>testCases</code></td><td>Example strings shown to the student after they submit. Each entry is <code>{ "&lt;string&gt;": true|false, "ShowTestCase": true }</code>, where <code>true</code> means the string is in the language. Use <code>""</code> for the empty string (shown as &lambda;). An entry without <code>"ShowTestCase": true</code> is not shown. Examples do not affect the score, but they help students see what is wrong, so include a few short strings on both sides of the language.</td></tr>
+  <tr><td><code>graph</code></td><td>The machine the student starts with. Leave it empty (<code>{ "nodes": [], "edges": [] }</code>) for construction exercises.</td></tr>
+  <tr><td><code>solution</code></td><td>Path to the answer key, relative to the exercise page. For pages in <code>exercises/FLAssignments/&lt;folder&gt;/</code> this is <code>"../../../machines/FA/&lt;name&gt;.jff"</code>. Required: an exercise without one cannot be graded.</td></tr>
+</table>
+
+<h3>Tool names</h3>
+<table>
+  <tr><th>Name</th><th>Button</th></tr>
+  <tr><td><code>edit</code></td><td>Edit states and transitions</td></tr>
+  <tr><td><code>addState</code></td><td>Add states</td></tr>
+  <tr><td><code>addTransition</code></td><td>Add transitions</td></tr>
+  <tr><td><code>delete</code></td><td>Delete states and transitions</td></tr>
+  <tr><td><code>undo</code>, <code>redo</code></td><td>Undo and redo</td></tr>
+  <tr><td><code>addTrapState</code></td><td>Add a state labeled "Trap State"</td></tr>
+  <tr><td><code>highlightIncomplete</code></td><td>Highlight states missing a transition on some symbol of <code>containLetters</code></td></tr>
+  <tr><td><code>completeWithTrap</code></td><td>Add a trap state and every missing transition. This does the main step of a complement exercise for the student, so the complement exercises leave it out.</td></tr>
+  <tr><td><code>highlightND</code></td><td>Highlight nondeterministic states</td></tr>
+</table>
+<p>The usual set is <code>["edit", "addState", "addTransition", "delete", "undo", "redo"]</code>. Complement exercises add <code>"addTrapState", "highlightIncomplete", "highlightND"</code>.</p>
+
+<div class="note">Older exercise files had <code>totalTrueCases</code>, <code>totalFalseCases</code>, <code>randomStringLength</code>, <code>type</code> and <code>_exerciseType</code>. These were for generating random hidden test cases, which FA exercises no longer use. Leave them out of new DFA and NFA exercises.</div>
+
+<h2 id="key">4. The answer key (<code>.jff</code>)</h2>
+<p>The answer key is a finite automaton for the exercise's language, saved in JFLAP's <code>.jff</code> format (see <a href="jff-format.html">JFLAP File Format</a>). Put it in <code>AV/OpenFLAP/machines/FA/</code>.</p>
+<ul>
+  <li>It can be a DFA or an NFA, and it does not need to be minimal or complete. Only the language it accepts matters.</li>
+  <li>Its alphabet should match <code>containLetters</code>.</li>
+  <li>Make it in the FA editor (<code>AV/OpenFLAP/FA.html</code>) and save it, or in JFLAP 7.1. Files from either work.</li>
+  <li>After saving, open the file and check that every transition you drew is there, self-loops included.</li>
+</ul>
+
+<h3>Checking the key</h3>
+<p>Before the exercise goes into a book, open its page and submit:</p>
+<ol>
+  <li><strong>The key itself</strong> (rebuilt in the exercise editor). Expected: <em>"Correct: your machine accepts exactly the strings in the language."</em></li>
+  <li><strong>One initial, non-final state with no transitions</strong> (a machine that accepts nothing). Expected: <em>"Not yet: your machine rejects X, but it should accept it."</em>, where X is the shortest string in the language (&lambda; if the empty string is in it). If X is not the shortest string you expect, the key is wrong.</li>
+  <li><strong>A machine with one mistake</strong> you expect students to make. The message should name a string that really shows the mistake.</li>
+</ol>
+<p>Every example in <code>testCases</code> should also show green when you submit the key. A red example means the example or the key is wrong.</p>
+<p><em>"This answer could not be graded"</em> means the key failed to load: check the <code>solution</code> path and that the file is a <code>fa</code> type <code>.jff</code>.</p>
+
+<h2 id="page">5. The exercise page</h2>
+<p>Copy an existing page such as <code>FA/DFAodda.html</code> and change three things:</p>
+<ul>
+  <li>The JSON path returned by <code>getExerciseLocation</code>.</li>
+  <li>The <code>&lt;title&gt;</code>. Give each exercise its own title, e.g. <code>DFA Exercise: Odd a</code>.</li>
+  <li>The <code>Title:</code> and <code>Description:</code> lines in the comment at the top.</li>
+</ul>
+<p>The page loads <code>FAExTemplate.html</code>, which includes <code>FAGrader.js</code>. A page that does not use the template must include <code>exercises/exerController/FAGrader.js</code> itself, before <code>ExerciseController.js</code>, or its exercise falls back to the old test-case grading.</p>
+
+<h2 id="book">6. Adding it to a book</h2>
+<pre><code>.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAodda.html pe
+   :long_name: Odd number of a's
+   :keyword: Finite Automata; Deterministic Finite Acceptor</code></pre>
+<p>Give each exercise in a module its own <code>:long_name:</code>. Points are set in the book's config file, keyed by the page's file name (<code>"DFAodda": { "points": 1.0 }</code>), so renaming the page later also means updating the config.</p>
+
+<h2 id="checklist">7. Checklist</h2>
+<ul>
+  <li><code>exerciseType</code> is <code>"DFA"</code> or <code>"NFA"</code>.</li>
+  <li><code>solution</code> points to the answer key, and the key accepts exactly the language in <code>description</code>.</li>
+  <li><code>containLetters</code> lists the whole alphabet.</li>
+  <li>The examples include short strings both in and out of the language, and all show green against the key.</li>
+  <li><code>description</code> renders correctly, LaTeX included.</li>
+  <li>The page has its own <code>&lt;title&gt;</code>, and the book's <code>:long_name:</code> is unique in its module.</li>
+  <li>The three key checks in section 4 give the expected messages.</li>
+</ul>
+
+</body>
+</html>
