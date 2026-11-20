@@ -3,7 +3,7 @@
   "totalTrueCases": 5,
   "totalFalseCases": 5,
   "containLetters": ["a", "b"],
-  "tools": ["edit", "addState", "addTransition", "delete", "undo", "redo"],
+  "tools": ["edit", "addState", "addTransition", "delete", "undo", "redo", "addTrapState", "highlightIncomplete", "highlightND"],
   "randomStringLength": [0, 15],
   "description": "Give a DFA that accepts the COMPLEMENT of the language over $\\Sigma = \\{a, b\\}$ of strings that do not end with 'ba'.",
   "testCases": [
