@@ -839,17 +839,14 @@
 
 
     }
-    else if(insert == 4)  //insert == 4 only if the size of the allocation is too big
+    else if(finn == 30 && insert >= fin)  //every free block was checked and none is big enough
     {
-
-      array.unhighlight(insert -1);
-      array.highlight(insert);
-      linesArray[insert].css({"stroke-width": 3});
       if(insert != 0)
       {
+        array.unhighlight(insert -1);
         linesArray[insert-1].css({"stroke-width": 1});
       }
-      jsav.umsg("Your allocation is too big  deallocate and try again")
+      jsav.umsg("Your allocation is too big, try again")
       $('#next').attr("disabled", "disabled");
       ins = 0;
       insert = 0; //reset insert
