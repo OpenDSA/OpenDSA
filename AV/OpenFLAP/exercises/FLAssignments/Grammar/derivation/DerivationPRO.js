@@ -296,8 +296,10 @@
     node('target').textContent = task.target;
     node('source').href = task.url;
     node('source').textContent = task.source;
-    document.getElementById('examples-link').href = 'DerivationExercises.html' + (preview ? '' : '#' + task.id);
-    node('preview-note').hidden = !preview;
+    if (preview) {
+      document.getElementById('examples-link').href = 'DerivationExercises.html';
+      node('preview-note').hidden = false;
+    }
     if (completionGrading) root.children('p.view-note').last().text(
       'Reach the target using legal productions. There are no per-step points or penalties. If a maximum is configured, reaching the target on the final allowed step succeeds; otherwise Reset is required. Model Answer makes this attempt practice only until Reset.');
     document.querySelectorAll('.scored-links a').forEach(link => {
@@ -370,8 +372,10 @@
   }
   window.GrammarDerivationExercise = GrammarDerivationExercise;
   $(function () {
-    document.getElementById('container').innerHTML = window.DerivationPROLayout;
-    const preview = document.body.dataset.preview === 'true';
+    // Preview is an explicit author entry point, never selected by a query flag.
+    const preview = document.body.dataset.preview === 'true' && window.self === window.top;
+    document.body.dataset.view = preview ? 'instructor' : 'student';
+    document.getElementById('container').innerHTML = window.DerivationPROLayout(preview);
     const importer = document.getElementById('json-import');
     const importStatus = document.getElementById('import-status');
     if (preview) {
