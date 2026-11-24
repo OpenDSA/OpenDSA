@@ -328,11 +328,11 @@ if (require.main === module) (async function () {
       const palindrome = page === 'DerivationPalindromePRO.html';
       assert.equal(w.ODSA.SETTINGS.AV_NAME, page.replace('.html', ''));
       assert.equal($('target').textContent, task.target);
-      assert.equal(doc.querySelector('.scored-links [aria-current="page"]').getAttribute('href'), page);
-      assert.match($('examples-link').href, new RegExp('#' + task.id + '$'));
-      for (const link of doc.querySelectorAll('.scored-links a')) {
-        assert(fs.existsSync(path.join(path.dirname(__filename), '../../AV/OpenFLAP/exercises/FLAssignments/Grammar/derivation', link.getAttribute('href'))));
-      }
+      assert.equal(doc.querySelector('.scored-links'), null);
+      assert.equal($('examples-link'), null);
+      assert.equal($('json-import'), null);
+      assert.equal($('preview-note'), null);
+      assert.equal(doc.body.dataset.view, 'student');
       check('S', 0, 0);
       if (palindrome) {
         apply(0, 4); check('S', 0, 0, 1); // Premature lambda is undone.
@@ -392,6 +392,12 @@ if (require.main === module) (async function () {
     assert.equal(task.passRate, 0.6);
     assert.equal(w.DerivationExerciseData, undefined);
     assert.equal(doc.title, 'Author preview: Author fixture: aa — Grammar Derivation Exercise');
+    assert.equal(doc.body.dataset.view, 'instructor');
+    assert.match(doc.querySelector('h1').textContent, /Instructor Preview/);
+    for (const link of doc.querySelectorAll('.scored-links a')) {
+      assert.match(link.getAttribute('href'), /^DerivationPreview\.html\?config=.*\.json$/,
+        'Instructor examples must remain in the ungraded preview');
+    }
     assert.equal($('preview-note').hidden, false);
     assert.match($('preview-note').textContent, /not submitted/);
     assert.equal(task.verified_steps[0][2].after, 'aa', 'Reference forms are calculated from the JSON');
@@ -513,11 +519,38 @@ if (require.main === module) (async function () {
   const scored = await loadPage('DerivationPRO.html');
   try {
     const w = scored.dom.window;
-    assert.equal(w.document.getElementById('json-import').hidden, true);
+    assert.equal(w.document.getElementById('json-import'), null);
     await assert.rejects(w.DerivationPROConfig.importFile(new w.File([JSON.stringify(authored)], 'exercise.json')),
       /standalone author preview/);
     assert.equal(w.sessionStorage.length, 0);
   } finally { scored.dom.window.close(); }
+  // Student entry points stay student-only even outside textbook iframes.
+  const standalone = await loadPage('DerivationPRO.html', '', w => {
+    Object.defineProperty(w, 'self', {value: w});
+  });
+  try {
+    const {doc, apply, finish, check, clean} = controls(standalone);
+    assert.equal(doc.body.dataset.view, 'student');
+    for (const selector of ['#json-import', '#preview-note', '.mode-links', '.scored-links']) {
+      assert.equal(doc.querySelector(selector), null, 'Student view omits ' + selector);
+    }
+    finish(); check('aaabbb', 3, 3); clean();
+  } finally { standalone.dom.window.close(); }
+  const embeddedPreview = await loadPage('DerivationPreview.html', '', w => {
+    Object.defineProperty(w, 'self', {value: {}});
+  });
+  try {
+    const doc = embeddedPreview.dom.window.document;
+    assert.equal(doc.getElementById('json-import'), null);
+    assert.match(doc.getElementById('derivation-pro').textContent, /cannot be embedded/);
+    assert.deepEqual(embeddedPreview.reports, []);
+  } finally { embeddedPreview.dom.window.close(); }
+  const chapter = fs.readFileSync(path.resolve(__dirname, '../../RST/en/PIFLA/CFG1.rst'), 'utf8');
+  assert(!chapter.includes('DerivationPreview.html'), 'Textbook must use fixed student entry points');
+  for (const page of ['DerivationPRO', 'DerivationPalindromePRO', 'DerivationLeftmostPRO']) {
+    assert(chapter.includes('/' + page + '.html pe'));
+  }
+  process.stdout.write('PASS: shared instructor/student views, preview-only navigation, standalone student completion and fixed textbook embeds.\n');
   process.stdout.write('PASS: local JSON FileReader import, session-only reload, cancellation/error preservation, no network/grades, clear preview and scored-page isolation.\n');
 
   // Run the real module-side SPLICE handler too: completion must not grant

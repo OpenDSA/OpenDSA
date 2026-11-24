@@ -413,3 +413,23 @@ Two successful routes are `S ⇒ aaSbb ⇒ aabb` and
 only the first fits maximum 2.
 
 Run `node tools/regression/grammar-derivation-maxsteps.cjs` for completion-mode checks (same D3/jsdom setup as above).
+
+## Instructor preview and student exercise views
+
+Both views use `DerivationPROLayout.js`, `DerivationPRO.js`, the same JSON validator,
+and the same derivation engine and grading logic. No assignment publishing or
+class management is provided.
+
+- **Instructor:** open `DerivationPreview.html`, choose a JSON file, and try the
+  exercise locally. Preview example links stay in this mode. Scores are not
+  submitted, and importing a file does not change the textbook.
+- **Student:** open a fixed exercise entry such as `DerivationPRO.html`. Its
+  `data-config` selects the JSON automatically. JSON import, preview notices,
+  and author navigation are absent, both standalone and embedded. Existing
+  textbook score reporting remains enabled.
+
+PIFLA `RST/en/PIFLA/CFG1.rst` already embeds the fixed student entry points for
+recursive, palindrome, and leftmost practice. Keep textbook embeds pointed at
+these entries, never `DerivationPreview.html`. Authors add a validated definition
+and a fixed HTML entry, then configure the textbook to embed that entry; merely
+importing JSON in preview does not publish an exercise.

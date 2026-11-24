@@ -1,5 +1,7 @@
-/* Shared markup for all scored derivation exercise pages. */
-window.DerivationPROLayout = `
+/* One shared exercise layout; instructor controls exist only in author preview. */
+window.DerivationPROLayout = function (preview) {
+  const layout = document.createElement('div');
+  layout.innerHTML = `
     <h1>Grammar Derivation Exercise</h1>
     <section id="json-import" class="json-import" aria-labelledby="json-import-title" hidden>
       <h2 id="json-import-title">Import an exercise</h2>
@@ -59,3 +61,16 @@ window.DerivationPROLayout = `
       <div class="jsavcanvas" aria-hidden="true"></div>
     </div>
 `;
+
+  if (preview) {
+    layout.querySelector('h1').textContent = 'Grammar Derivation — Instructor Preview';
+    layout.querySelector('.scored-links').setAttribute('aria-label', 'Preview examples');
+    layout.querySelectorAll('.scored-links a').forEach(link => {
+      const config = link.getAttribute('href').replace(/\.html$/, '.json');
+      link.setAttribute('href', 'DerivationPreview.html?config=' + config);
+    });
+  } else {
+    layout.querySelectorAll('#json-import, .mode-links, .scored-links, #preview-note').forEach(element => element.remove());
+  }
+  return layout.innerHTML;
+};
