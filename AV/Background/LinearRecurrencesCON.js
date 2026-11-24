@@ -105,11 +105,11 @@ $(document).ready(function() {
   // Slide 7
   last.removeClass("subProblemNode");
   av.umsg(interpret("sc7"));
-  av.g.line(leftAlign + nodeWidth - 7, topAlign + nodeHeight * 2,
+  av.g.line(leftAlign + nodeWidth - 4.3, topAlign + nodeHeight * 2,
             leftAlign + 2.7 * (nodeGap + nodeWidth), topAlign + nodeHeight * 2,
             {"stroke-width": 2, "arrow-start": "classic-wide-long"});
   av.g.line(leftAlign + 3.55 * (nodeGap + nodeWidth),
-            topAlign + nodeHeight * 2, leftAlign + 6.35 * (nodeGap + nodeWidth),
+            topAlign + nodeHeight * 2, leftAlign + 6.35 * (nodeGap + nodeWidth - 0.4),
             topAlign + nodeHeight * 2,
             {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.g.line(leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 65,

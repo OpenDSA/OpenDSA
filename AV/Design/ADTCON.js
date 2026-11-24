@@ -19,7 +19,7 @@ $(document).ready(function() {
   av.label(interpret("av_tag5"),  {left: left + 185, top:  30});
   av.label(interpret("av_tag6"),  {left: left + 195, top:  50});
 
-  av.g.line(left + 180, 105, left + 180, 130, {"stroke-width": "3", "arrow-end": "classic"});
+  av.g.line(left + 180, 105, left + 180, 124, {"stroke-width": "3", "arrow-end": "classic"});
 
   av.g.rect(left +  10, 130, 338,  75);
   av.label(interpret("av_tag7"),  {left: left +  20, top: 120});

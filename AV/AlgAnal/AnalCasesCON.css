@@ -26,6 +26,24 @@
   height: 75px;
 }
 
+/* Keep the pointer label out of the layout so the pointer is always as wide as its
+   box. Otherwise the arrow start is computed from the wider un-typeset "$k$" label
+   and the dot ends up on the box's right edge once MathJax shrinks it. */
+#AnalCasesDiffCON .jsavpointer .jsavlabel {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+/* Center the pointer box on the arrow's start dot (JSAV places the dot 1px right
+   of and 1px below the box center). */
+#AnalCasesDiffCON .jsavpointer .jsavpointerarea {
+  left: 1px;
+  top: 1px;
+}
+
 .codeLabel{
   font-family:Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
   font-weight: bold;

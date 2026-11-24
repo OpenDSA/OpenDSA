@@ -27,7 +27,11 @@ $(document).ready(function() {
   var leftMargin3 = (canvasWidth - arrWidth3) / 2;
   var i;
   var arrowArray = [];
+
+  //Moves the array down so the arrow doesn't overlap
+  var arrowGap = 10.5;
   var arr = av.ds.array(arrPositions, {indexed: false}).hide();
+  arr.element.css("top", arrowGap);
 
   var alength = arr2Positions.length;
   var curr = 4;

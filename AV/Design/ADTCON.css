@@ -14,6 +14,10 @@
   max-height: 215px !important;
 }
 
+#ADTCON .jsavcanvas svg marker path {
+  fill: #333 !important;
+}
+
 /* Force container in reveal.js context */
 .reveal #ADTCON,
 .reveal .divdgm #ADTCON {

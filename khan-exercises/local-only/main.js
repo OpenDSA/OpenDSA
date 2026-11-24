@@ -6,7 +6,7 @@ requirejs.config({
   packages: [{
     name: "jsav",
     location: "../../lib",
-    main: "JSAV"
+    main: "JSAVD3"
   }, {
     name: "blockUI",
     location: "../../lib",
