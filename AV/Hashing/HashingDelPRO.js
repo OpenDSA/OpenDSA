@@ -113,10 +113,13 @@
           size = modelArr.size();
       jsavInputPos.value(inputPos.value());
       for (var i = 0; i < size; i++) {
-        var val = modelArr.value(i),
-            bgColor = modelArr.css(i, "background-color");
-        if (jsavArr.css(i, "background-color") !== bgColor) { // fix background color
-          jsavArr.css(i, {"background-color": bgColor});
+        var val = modelArr.value(i);
+        // Sync the highlight class, not an inline background-color: an inline
+        // color would override every later highlight/unhighlight by the student.
+        if (modelArr.isHighlight(i)) {
+          jsavArr.highlight(i);
+        } else {
+          jsavArr.unhighlight(i);
         }
         if (val !== jsavArr.value(i)) { // fix values
           jsavArr.value(i, val);
