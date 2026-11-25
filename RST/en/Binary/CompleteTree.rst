@@ -52,11 +52,11 @@ children, parent, and siblings of each node in
 Figure :num:`Figure #BinArray`.
 
 .. _BinArray:
-
+ 
 .. odsafig:: Images/BinArray.png
    :width: 400
    :align: center
-   :capalign: justify
+   :capalign: center
    :figwidth: 90%
    :alt: Complete binary tree node numbering
 

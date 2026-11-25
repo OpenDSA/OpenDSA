@@ -16,7 +16,7 @@ Variable Scoping, File Input/Output, and Streams
 
    * **Analyze and trace** variable visibility, access rules, and lifetimes across nested block scopes, method parameters, and instance fields.
    * **Resolve** variable shadowing conflicts using the ``this`` keyword to disambiguate instance fields from local parameters.
-   * **Implement** file reading routines using ``Scanner`` and ``File`` to parse structured textual data from disk storage.
+   * **Implement** file reading routines using ``Scanner`` and ``IOHelper`` to parse structured textual data from disk storage.
    * **Construct** file writing routines using ``PrintWriter`` to generate persistent text files with proper stream flushing and closing.
    * **Manage** system resources and prevent resource leaks by ensuring streams are reliably closed after processing.
    * **Apply** 2D coordinate geometry and nested loops to traverse spatial grids and transform pixel values.
@@ -236,11 +236,22 @@ It is vital to distinguish between a variable's **scope** and its **lifetime**:
 * **Lifetime** is a runtime, temporal property: *How long does the variable's
   storage slot remain alive in memory?*
 
-| Variable Category | Scope Boundary | Lifetime in Memory |
-| :--- | :--- | :--- |
-| **Block Variable** | From declaration to closing brace ``}`` of block. | From execution of declaration until the block exits. |
-| **Method Parameter** | Entire body of declaring method. | Allocated when method is called; destroyed when method returns. |
-| **Instance Field** | Entire body of declaring class. | Allocated when object is instantiated with ``new``; destroyed when object is garbage collected. |
+.. list-table:: Variable Scope vs. Lifetime
+   :widths: 20 40 40
+   :header-rows: 1
+
+   * - Variable Category
+     - Scope Boundary
+     - Lifetime in Memory
+   * - **Block Variable**
+     - From declaration to closing brace ``}`` of block.
+     - From execution of declaration until the block exits.
+   * - **Method Parameter**
+     - Entire body of declaring method.
+     - Allocated when method is called; destroyed when method returns.
+   * - **Instance Field**
+     - Entire body of declaring class.
+     - Allocated when object is instantiated with ``new``; destroyed when object is garbage collected.
 
 Summarizing Scope Concepts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -278,8 +289,8 @@ credit:
    :long_name: Survey Completed
 
 
-Reading Text Files with `Scanner` and `File`
---------------------------------------------
+Reading Text Files with `Scanner` and `IOHelper`
+------------------------------------------------
 
 In Chapter 11, you learned how to use ``java.util.Scanner`` to tokenize text
 streams and parse command words and numbers (using ``hasNext()``, ``next()``,
@@ -316,64 +327,74 @@ closing them, it exhausts available handles—causing subsequent file operations
 fail. This defect is known as a **resource leak**. Therefore, calling
 ``scanner.close()`` as Step 3 is mandatory whenever reading from disk files.
 
-Reading from Files Using `java.io.File` and `java.util.Scanner`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Opening a Stream for Input with `IOHelper`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To open a physical disk file for reading with a standard ``Scanner``:
-
-1. Create a ``java.io.File`` object representing the file path.
-2. Pass the ``File`` object to the ``Scanner`` constructor.
-
-Because the requested file might not exist on disk, opening a file is a checked
-operation in Java that requires handling ``java.io.FileNotFoundException``:
+The primary class we use for reading textual input in Java is ``Scanner``
+(from the ``java.util`` package). In Chapter 11, you initialized scanners to
+read from interactive keyboard input (``System.in``) or from fixed in-memory
+strings. To read from a file stored on disk, creating a ``Scanner`` is
+simple:
 
 .. code-block:: java
 
-   import java.io.File;
-   import java.io.FileNotFoundException;
+   import student.IOHelper;
+   import java.util.Scanner;
+
+   Scanner inStream = IOHelper.createScanner("input.txt");
+
+This statement declares a reference variable ``inStream`` and creates a new
+``Scanner`` object that reads characters from the file. The
+``createScanner()`` method in the ``student.IOHelper`` class opens files using
+path names relative to your project directory, so a file named ``input.txt``
+should be located directly inside your BlueJ project folder. (You can also
+provide a fully qualified absolute path name if desired.)
+
+Why use ``IOHelper`` instead of creating a ``Scanner`` directly? In standard
+Java, opening a file directly via ``new Scanner(new File(filename))`` requires
+handling *checked exceptions*—the compiler will refuse to build your code unless
+you wrap the file-opening statement in a ``try``/``catch`` block for
+``java.io.FileNotFoundException`` or declare ``throws FileNotFoundException`` in
+your method signature.
+
+Because exception handling is a separate, advanced topic that we will explore
+later in the course (in Chapter 14), the Virginia Tech student support library
+provides ``IOHelper``. The ``IOHelper.createScanner()`` method manages the
+underlying file connection and automatically converts any I/O failure into an
+unchecked runtime error. This allows you to write clean, straightforward
+file-reading routines without needing to write a ``try``/``catch`` block around
+your code.
+
+A Complete File Reading Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Putting the three-step stream lifecycle together (open the stream, read data in
+sequence, close the stream), here is a complete method that reads and prints
+every line of text from a data file:
+
+.. code-block:: java
+
+   import student.IOHelper;
    import java.util.Scanner;
 
    public class DataReader
    {
        public void readScores(String filename)
        {
-           File file = new File(filename);
+           // Step 1: Open the stream using IOHelper (no try/catch needed!)
+           Scanner in = IOHelper.createScanner(filename);
 
-           // Defensive check: verify file exists before attempting to read!
-           if (!file.exists())
+           // Step 2: Read file contents line by line
+           while (in.hasNextLine())
            {
-               System.out.println("Error: File " + filename + " does not exist.");
-               return;
+               String line = in.nextLine();
+               System.out.println("Read: " + line);
            }
 
-           try
-           {
-               Scanner scanner = new Scanner(file);
-
-               // Step 2: Read file contents line by line
-               while (scanner.hasNextLine())
-               {
-                   String line = scanner.nextLine();
-                   System.out.println("Read: " + line);
-               }
-
-               // Step 3: Always close the stream to release the file handle!
-               scanner.close();
-           }
-           catch (FileNotFoundException e)
-           {
-               System.out.println("Could not open file: " + e.getMessage());
-           }
+           // Step 3: Always close the stream to release the file handle!
+           in.close();
        }
    }
-
-In CS 1114, you can also use the VT student support helper method
-``IOHelper.createScanner(filename)``, which encapsulates file opening and error
-handling:
-
-.. code-block:: java
-
-   Scanner scanner = IOHelper.createScanner("data.txt");
 
 Line-by-Line Reading vs. Token Parsing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -449,48 +470,63 @@ While ``Scanner`` handles incoming data streams, the standard class for
 generating human-readable textual output in Java is
 ``java.io.PrintWriter``.
 
-Creating a `PrintWriter`
-~~~~~~~~~~~~~~~~~~~~~~~~
+Opening a Stream for Output with `IOHelper`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To create a new text file and write data to it:
+The standard class for generating human-readable textual output in Java is
+``PrintWriter`` (from the ``java.io`` package). To create a new text file and
+write data to it, we use the ``createPrintWriter()`` utility method in the
+``student.IOHelper`` class:
 
 .. code-block:: java
 
+   import student.IOHelper;
    import java.io.PrintWriter;
-   import java.io.File;
-   import java.io.FileNotFoundException;
 
-   public void createReport(String filename)
+   PrintWriter out = IOHelper.createPrintWriter("output.txt");
+
+This statement creates a new ``PrintWriter`` object that directs output to a
+file in your BlueJ project directory. If a file with that name does not exist,
+the operating system creates a brand-new file. If a file with that name already
+exists, its previous contents are immediately erased (truncated to zero bytes)
+and replaced with the new output.
+
+Just as with ``Scanner``, opening a file directly via standard Java
+constructors (such as ``new PrintWriter(new File(filename))``) requires
+handling the checked exception ``java.io.FileNotFoundException`` with a
+``try``/``catch`` block. By using ``IOHelper.createPrintWriter()``, any checked
+I/O error is automatically converted into an unchecked runtime error.
+Furthermore, because the output methods on a ``PrintWriter`` (such as
+``print()``, ``println()``, and ``printf()``) do not throw checked exceptions,
+**no try/catch block is required** anywhere in your file-writing routines!
+
+A Complete Output Example
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Putting the three-step lifecycle together (open the stream, write data, close
+the stream), here is a complete method that generates a formatted report file:
+
+.. code-block:: java
+
+   import student.IOHelper;
+   import java.io.PrintWriter;
+
+   public class DataReporter
    {
-       try
+       public void createReport(String filename)
        {
-           PrintWriter writer = new PrintWriter(new File(filename));
+           // Step 1: Open the output stream using IOHelper (no try/catch needed!)
+           PrintWriter writer = IOHelper.createPrintWriter(filename);
 
+           // Step 2: Write data sequentially to the stream
            writer.println("=== Daily Sensor Summary ===");
            writer.println("Date: 2026-10-24");
            writer.printf("Average Temperature: %.2f degrees\n", 71.458);
 
-           writer.close(); // Flush and close!
-       }
-       catch (FileNotFoundException e)
-       {
-           System.out.println("Could not create output file: " + e.getMessage());
+           // Step 3: Flush and close the stream to ensure data is written to disk!
+           writer.close();
        }
    }
-
-In CS 1114, you can also use ``IOHelper.createPrintWriter(filename)``:
-
-.. code-block:: java
-
-   PrintWriter writer = IOHelper.createPrintWriter("report.txt");
-
-When creating a ``PrintWriter`` for a filename:
-
-* If the target file **does not exist**, the operating system creates a brand-new
-  empty file.
-
-* If a file with that name **already exists**, its previous contents are
-  immediately erased (truncated to zero bytes) and replaced with the new output.
 
 Core `PrintWriter` Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -574,35 +610,36 @@ To prevent resource leaks and data corruption, follow this foundational rule:
    **The Ownership Rule**: The method or class responsible for *opening* a stream
    must also be responsible for *closing* it.
 
-Modern Resource Management: Try-with-Resources
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A Complete Input/Output Example: Copying a File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Java 7 introduced the **try-with-resources statement**, the gold standard in
-modern Java for safe resource management. Any object implementing the
-``java.lang.AutoCloseable`` interface (which includes ``Scanner`` and
-``PrintWriter``) declared inside the ``try (...)`` parentheses is
-**guaranteed to be closed automatically** when the block exits, whether the code
-completes normally or throws an exception:
+Often, a program needs to combine the processes of reading from some source and
+writing to some destination. In accordance with the Ownership Rule, any method
+that creates multiple streams is responsible for closing each of them.
+
+Here is a complete example that copies text from an input file to an output file
+line by line using ``Scanner`` and ``PrintWriter`` with ``IOHelper``:
 
 .. code-block:: java
 
-   public void copyFile(String sourceName, String destName)
-   {
-       File inFile = new File(sourceName);
-       File outFile = new File(destName);
+   import student.IOHelper;
+   import java.io.PrintWriter;
+   import java.util.Scanner;
 
-       // Try-with-resources automatically closes BOTH streams!
-       try (Scanner source = new Scanner(inFile);
-            PrintWriter dest = new PrintWriter(outFile))
+   public class FileCopier
+   {
+       public void copyFile(String sourceName, String destName)
        {
+           Scanner source = IOHelper.createScanner(sourceName);
+           PrintWriter dest = IOHelper.createPrintWriter(destName);
+
            while (source.hasNextLine())
            {
                dest.println(source.nextLine());
            }
-       }
-       catch (FileNotFoundException e)
-       {
-           System.out.println("File error: " + e.getMessage());
+
+           source.close();
+           dest.close();
        }
    }
 
@@ -794,16 +831,6 @@ Testing File I/O and Spatial Algorithms with `TestCase`
 Testing software that interacts with external files and complex mathematical
 transformations requires disciplined automated test design.
 
-In CS 1114, test classes extend ``TestCase`` (from the ``student`` package).
-Because the BlueJ project template provides the required import
-(``import student.TestCase;``), test classes simply extend ``TestCase``
-directly without package qualification:
-
-.. code-block:: java
-
-   import student.TestCase;
-
-   public class FileProcessorTest extends TestCase
 
 Testing File Input and Output Without Hardcoded Disk Files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

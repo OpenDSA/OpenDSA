@@ -257,7 +257,8 @@
       "NP/threeSAT_to_hamiltonianCycle": {},
       "NP/clique_to_independentSet": {},
       "NP/hamiltonianCycle_to_TSP": {},
-      "NP/NPCoping": {}
+      "NP/NPCoping": {},
+      "SeniorAlgAnal/Impossible": {}
     },
     "Number Problems": {
       "SeniorAlgAnal/Numeric": {},
