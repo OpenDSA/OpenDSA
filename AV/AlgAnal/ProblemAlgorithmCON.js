@@ -69,6 +69,7 @@ $(document).ready(function() {
 
   // Slide 5
   av.umsg(interpret("sc5"), {preserve: true});
+  rect.css({opacity: 0.2, fill: "green"});
   av.step();
 
   // Slide 6
