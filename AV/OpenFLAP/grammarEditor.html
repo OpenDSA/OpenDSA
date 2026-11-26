@@ -39,7 +39,6 @@
         <summary>Edit</summary>
         <div class="grammar-menu-panel">
           <button type="button" id="addrowbutton">Add Row</button>
-          <button type="button" id="deletebutton">Delete Row</button>
         </div>
       </details>
       <details>
@@ -75,6 +74,10 @@
         </div>
       </details>
     </nav>
+    <div class="grammar-edit-controls" aria-label="Grammar editing mode">
+      <button type="button" id="editbutton" aria-pressed="true">Edit Grammar</button>
+      <button type="button" id="deletebutton" aria-pressed="false">Delete Row</button>
+    </div>
     <h2 class="multiple">Grammars</h2>
     <p class="multiple" id="exerciseLinks"></p>
     <div id="buttons" class="grammar-workflow" aria-label="Current operation">

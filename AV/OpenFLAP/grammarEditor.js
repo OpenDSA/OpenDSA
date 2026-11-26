@@ -4,7 +4,24 @@ $(document).ready(function () {
   "use strict";
   localStorage["jsav-speed"] = 1;
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  // Only grammar pages load this controller. Keep shared editor CSS untouched.
+  $('#container').addClass('grammar-editor-ui');
+  if (!$('#av .jsavsettings').length) {
+    $('<a>', {class: 'jsavsettings', href: '#', text: 'Settings',
+      'aria-label': 'Grammar settings'}).prependTo('#av');
+  }
   var jsav = new JSAV("av");
+  $('#av .jsavsettings').first().prependTo('#container');
+  function syncEditingMode() {
+    var matrix = $('#av .jsavmatrix').first();
+    var deleting = matrix.hasClass('deleteMode');
+    $('#editbutton').attr('aria-pressed', String(matrix.hasClass('editMode') && !deleting));
+    $('#deletebutton').attr('aria-pressed', String(deleting));
+    $('.grammar-edit-controls').prop('hidden', !matrix.hasClass('editMode') && !deleting);
+  }
+  new MutationObserver(syncEditingMode).observe(document.getElementById('av'), {
+    subtree: true, childList: true, attributes: true, attributeFilter: ['class']
+  });
   var arrow = String.fromCharCode(8594),
       lastRow,            // index of the last visible row (the empty row)
       //arr,                // the grammar
@@ -174,7 +191,6 @@ $(document).ready(function () {
     //console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi + " m: " + m + " arr: " + arr);
 
     // if ((row != index || col != index2) && fi) {
-    var deleteTimes = 0;
     if (fi) {
       var input = fi.val();
       var regex = new RegExp(emptystring, g);
@@ -196,45 +212,20 @@ $(document).ready(function () {
       layoutTable(m, 2);
     }
     if ($('.jsavmatrix').hasClass('deleteMode')) {
-      if(index === 0 && lastRow === 0){
-        //alert("Can't delete the last row");
-        arr[index][0] = "";
-        arr[index][2] = "";
-        m = init();
-        $('.jsavmatrix').addClass("editMode");
-        $('.jsavmatrix').removeClass("deleteMode");
-        $('.jsavmatrix').removeClass("addrowMode");
-        jsav.umsg('Editing');
-        return;
-      }
-      // recreates the matrix when deleting a row...
-      // arr.splice(index, 1);
-      // lastRow--;
-      // m = init();
-
-      if (!(arr[index][0] === "" && arr[index][2] === "")) {
-        var result = confirm("Are you sure you want to delete this production you selected?");
-        if (result) {
+      var nonempty = arr[index][0] !== '' || arr[index][2] !== '';
+      if (!nonempty || confirm('Are you sure you want to delete this production?')) {
+        if (lastRow === 0) {
+          arr[0] = ['', arrow, ''];
+        } else {
           arr.splice(index, 1);
           lastRow--;
-          deleteTimes++;
-          arr.push(["",arrow,""]);
-          m = init();
+          arr.push(['', arrow, '']);
         }
-      } else {
-        arr.splice(index, 1);
-        lastRow--;
-        deleteTimes++;
-        arr.push(["",arrow,""]);
         m = init();
-
       }
-      for(var i = lastRow + 1; i < arr.length; i++) {
-        arr[i][0] = '';
-        arr[i][2] = '';
-      }
-      m = init();
-      $('.jsavmatrix').addClass('deleteMode');
+      // A delete command applies to one row, including cancellation of its prompt.
+      editMode();
+      return;
     } else if ($('.jsavmatrix').hasClass('editMode')) {
       // ignore if the user clicked an arrow
       if (index2 === 1) {
@@ -244,12 +235,7 @@ $(document).ready(function () {
     } else if ($('.jsavmatrix').hasClass('addrowMode')) {
       addRow(index);
     }
-    if (deleteTimes == 1) {
-      $('.jsavmatrix').addClass("editMode");
-      $('.jsavmatrix').removeClass("deleteMode");
-      $('.jsavmatrix').removeClass("addrowMode");
-      jsav.umsg('Editing');
-    }
+
   };
 
 
@@ -1522,14 +1508,22 @@ $(document).ready(function () {
     $('.jsavmatrix').addClass("editMode");
     $('.jsavmatrix').removeClass("deleteMode");
     $('.jsavmatrix').removeClass("addrowMode");
-    $("#mode").html('Editing');
+    $('#mode').empty();
+    jsav.umsg('');
+    syncEditingMode();
   };
-  var deleteMode = function() {
-    $('#firstinput').remove();
-    $('.jsavmatrix').addClass("deleteMode");
-    $('.jsavmatrix').removeClass("addrowMode");
-    $('.jsavmatrix').removeClass("editMode");
-    jsav.umsg('Deleting');
+  var deleteMode = function(event) {
+    // Save an active cell before entering or leaving the one-row delete command.
+    if (event) defocus(event);
+    fi = null;
+    if ($('#av .jsavmatrix').first().hasClass('deleteMode')) {
+      editMode();
+      return;
+    }
+    $('.jsavmatrix').addClass('deleteMode').removeClass('addrowMode editMode');
+    $('#mode').empty();
+    jsav.umsg('');
+    syncEditingMode();
   };
   var addrowMode = function(){
 
@@ -1549,7 +1543,7 @@ $(document).ready(function () {
     m._arrays[lastRow + 1].show();
     lastRow++;
     layoutTable(m);
-    jsav.umsg('Editing');
+    jsav.umsg('');
     $('.jsavmatrix').addClass("editMode");
     $('.jsavmatrix').removeClass("deleteMode");
     $('.jsavmatrix').removeClass("addrowMode");
