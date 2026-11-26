@@ -54,3 +54,18 @@
   display: block;
   height: 50px;
 }
+
+/* Scoped to the grammar controller: no FA/PDA/editor-wide changes. */
+.grammar-editor-ui { position: relative; padding-top: 42px; }
+.grammar-editor-ui > a.jsavsettings {
+  position: absolute; top: 8px; left: 8px; right: auto;
+  float: none; margin: 0;
+}
+.grammar-editor-ui #editbutton[aria-pressed="true"],
+.grammar-editor-ui #deletebutton[aria-pressed="true"] {
+  background: #dce8f2; border: 2px solid #335b7d; font-weight: bold;
+}
+.grammar-editor-ui #editbutton[aria-pressed="true"]::after,
+.grammar-editor-ui #deletebutton[aria-pressed="true"]::after { content: ' ✓'; }
+.grammar-edit-controls { padding: 8px 16px; }
+.grammar-edit-controls[hidden] { display: none; }
