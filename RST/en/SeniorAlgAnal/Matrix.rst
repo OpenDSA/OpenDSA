@@ -170,10 +170,12 @@ There are other arrangements that can further reduce the exponent.
 The current "fastest" algorithm (in an asymptotic sense) is
 :math:`O(n^{2.371339})`, due to Alman, Duan, Vassilevska Williams,
 Xu, Xu, and Zhou (SODA 2025).
+As of this writing, it is the latest in a long line of small
+incremental improvements in the theoretical running time for matrix
+multiplication.
 But it is even more impractical than Strassen's algorithm due to the
 overhead of a large number of additions.
 
 It is a theoretical open question as to whether it is possible to do
 matrix multiplication in :math:`O(n^2)` time.
-
 
